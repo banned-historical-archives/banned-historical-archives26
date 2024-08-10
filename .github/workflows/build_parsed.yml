@@ -1,0 +1,65 @@
+name: build_parsed
+on:
+  workflow_dispatch:
+  push:
+    branches: ['ocr_patch', 'ocr_cache', 'config']
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  actions: write
+
+jobs:
+  build_parsed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: 'banned-historical-archives/ocr_helper'
+          path: './ocr_helper'
+          ref: 'main'
+      - uses: actions/checkout@v4
+        with:
+          path: './raw'
+          ref: 'main'
+      - uses: actions/checkout@v4
+        with:
+          path: './config'
+          ref: 'config'
+      - uses: actions/checkout@v4
+        with:
+          path: './ocr_cache'
+          ref: 'ocr_cache'
+      - uses: actions/checkout@v4
+        with:
+          path: './ocr_patch'
+          ref: 'ocr_patch'
+      - uses: actions/checkout@v4
+        with:
+          path: './parsed'
+          ref: 'parsed'
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: cd parsed && git checkout --orphan x && git reset --hard
+      - run: cd ocr_helper && npm install && npm run build_parsed -- ../config ../ocr_cache ../ocr_patch ../parsed ../raw
+      - run: git config --global http.postBuffer 2097152000
+      - run: git config --global user.email "you@example.com"
+      - run: git config --global user.name "Your Name"
+
+      - name: Commit and push changes
+        run: |
+          cd ./parsed
+          git add .
+          git commit -m automation
+          git push origin x:parsed -f
+
+      - name: Invoke workflow
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: build.yml
+          ref: master
+          repo: banned-historical-archives/banned-historical-archives.github.io
+          token: ${{secrets.GH_PAT}}
