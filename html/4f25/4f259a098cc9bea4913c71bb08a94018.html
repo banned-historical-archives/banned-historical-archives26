@@ -1,0 +1,2334 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/cerulean.min.css" rel="stylesheet">
+<link href="/bootstrap/css/new-gen.css" rel="stylesheet">
+<link href="/bootstrap/css/submit.css" rel="stylesheet">
+<script type="text/javascript" src="/plusd/js/jquery.min.js"></script>
+<script type="text/javascript" src="/plusd/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<script type="text/javascript" src="/plusd/js/wikipedia.js"></script>
+<script type="text/javascript" src="/plusd/js/qtip.min.js"></script>
+<script type="text/javascript" src="/plusd/js/idle-timer.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+
+(function($) {
+	var show_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").show();
+	}
+	var hide_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").hide();
+	}
+	$(document).idleTimer(180000);
+	$(document).on("idle.idleTimer", show_button);
+	$(document).ready(function() {
+		if( typeof setupDoubleClick == 'function' )
+			setupDoubleClick('http://en.wikipedia.org/w/index.php', 'british', 'tagged-text', 4, "_blank", "/words/ee.json");
+		var current = Math.floor(( new Date( ) ).getTime( )/1000);
+
+		$("#ddonate").click(show_button);
+		$(".dnclose").click(hide_button);
+		$('a.i').each( function() {
+			i=$(this);
+			i.attr("alt", descr[i.attr("title")]);
+		} );
+		$('a.i').qtip( {
+			show: {
+				event: 'click',
+				solo: true
+			},
+			hide: 'click',
+			content: {
+				attr: 'alt',
+				title: {
+					button: true
+				}
+			},
+			style: {
+				classes: 'qtip-blue qtip-shadow'
+			}
+		} );
+
+	} );
+
+
+	var descr = {
+	'Subject': 'Subject line of the document','From': 'Who/where sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-fr/\">A list of origins, with citations for any acronyms used, is available here.</a>','To': 'Who/where received the document.<br /><br /><a href=\"/plusd/about-to/\" class=\"j\">A list of destinations, with citations for any acronyms used, is available here.</a>','Original Classification': 'Classification the document was originally given when produced.<br /><br /><a href=\"/plusd/about-oc/\" class=\"j\">Citations for acronyms used are available here.</a>','Current Classification': 'Classification the document currently holds.<br /><br /><a href=\"/plusd/about-cc/\" class=\"j\">Citations for acronyms used are available here.</a>','Handling Restrictions': 'All handling restrictions governing the document distribution that have been used to date.<br /><br /><i>In the metadata of the Kissinger Cables this field is called \'Previous Handling Restrictions\'.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i><br /><br /><a href=\"/plusd/about-hr/\" class=\"j\">Citations for acronyms used are available here.</a>','Archive Status': 'Original documents not deleted or lost by State Department after review are available in one of four formats:<ul><li>Electronic Telegram - declassified and made available (content and metadata available)</li><li>Electronic Telegram Withdrawal Card - telegram not declassified, or was declassified but not released for other reasons (limited metadata available)</li><li>P-reel Index - Index card for other document type that is stored on microfilm (only metadata available)</li><li>P-reel Index Withdrawal Card - P-reel index card that was not declassified, or was declassified but not released for other reasons (limited metadata available)</li></ul><br /><i class=\"b\">The Kissinger Cables\' metadata does not have this field. It is taken from subsets the documents were released in after State Department review.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Type': 'Correspondence type or format of original document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TE\' (Telegram).</i><br /><br /><a href=\"/plusd/about-ty/\" class=\"j\">Citations for acronyms used are available here.</a>','Locator': 'Where the original document is now held - online or on microfilm, or remains in \"ADS\" (State Department\'s 1973 Automated Data System of indexing by TAGS of electronic telegrams and P-reels) with the text either garbled, not converted or unretrievable.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TEXT ONLINE\'.</i>','Executive Order': 'Executive Order information - often a reference to the E.O. governing the declassification/downgrade of the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Markings': 'Markings of declassification/release review of the document.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'. </i>','Enclosure': 'Attachments or other items sent with the original document. These are not necessarily currently held in this library.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.','Concepts': 'Keywords of subjects dealt with in the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\' for this field.</i>','TAGS': 'Traffic Analysis by Geography and Subject (TAGS)<br /><br />There are geographic, organization and subject \"TAGS\" - the classification system implemented by the Department of State for its central files in 1973.<br /><br /><a href=\"/plusd/about-ta/\" class=\"j\">A list of TAGS, with citations for any acronyms used, is available here.</a>','Office': 'Which United States government office or bureau is dealing with the topics the document concerns.<br /><br /><a href=\"/plusd/about-of/\" class=\"j\">A list offices, with citations for acronym expansions, is available here.</a>','Office Origin': 'Which State Department office or bureau sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Office Action': 'Which State Department office or bureau received the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Character Count': 'The number of characters, including spaces, in the document.','Date': 'The date the document was created.','Canonical ID': 'Unique document identification number.<br /><br /><i>We have created a canonical ID by taking the original document ID and adding a \'_\' at the end and then WikiLeaks\' annotation for different datasets: Cablegate = a, the Kissinger Cables = b, etc. If document IDs are duplicated in the original datasets we number each duplicate, eg 1976WARSAW05657_b2 is the second document with that ID in the Kissinger Cables.</i>','Other cables with the same ID': 'Documents that are linked, for example a P-reel index and the document it is the index for. Or documents that were originally given the same document ID number.',	};
+
+
+
+})(jQuery);
+</script>
+<title>Cable: 1979BEIJIN02774_e</title>
+<link rel="stylesheet" type="text/css" href="/plusd/css/qtip.min.css" id="qtip">
+<link rel="stylesheet" type="text/css" href="/plusd/css/main.css" id="maincss">
+<link rel="stylesheet" type="text/css" href="/plusd/css/print.css" media="print" id="printcss">
+</head>
+<body style="text-align: center;">
+    <div id="submit_wlkey" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<p>Key fingerprint <b>9EF0 C41A FBA5 64AA 650A  0259 9C6D CD17 283E 454C</b></p>
+		<pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQQBBGBjDtIBH6DJa80zDBgR+VqlYGaXu5bEJg9HEgAtJeCLuThdhXfl5Zs32RyB
+I1QjIlttvngepHQozmglBDmi2FZ4S+wWhZv10bZCoyXPIPwwq6TylwPv8+buxuff
+B6tYil3VAB9XKGPyPjKrlXn1fz76VMpuTOs7OGYR8xDidw9EHfBvmb+sQyrU1FOW
+aPHxba5lK6hAo/KYFpTnimsmsz0Cvo1sZAV/EFIkfagiGTL2J/NhINfGPScpj8LB
+bYelVN/NU4c6Ws1ivWbfcGvqU4lymoJgJo/l9HiV6X2bdVyuB24O3xeyhTnD7laf
+epykwxODVfAt4qLC3J478MSSmTXS8zMumaQMNR1tUUYtHCJC0xAKbsFukzbfoRDv
+m2zFCCVxeYHvByxstuzg0SurlPyuiFiy2cENek5+W8Sjt95nEiQ4suBldswpz1Kv
+n71t7vd7zst49xxExB+tD+vmY7GXIds43Rb05dqksQuo2yCeuCbY5RBiMHX3d4nU
+041jHBsv5wY24j0N6bpAsm/s0T0Mt7IO6UaN33I712oPlclTweYTAesW3jDpeQ7A
+ioi0CMjWZnRpUxorcFmzL/Cc/fPqgAtnAL5GIUuEOqUf8AlKmzsKcnKZ7L2d8mxG
+QqN16nlAiUuUpchQNMr+tAa1L5S1uK/fu6thVlSSk7KMQyJfVpwLy6068a1WmNj4
+yxo9HaSeQNXh3cui+61qb9wlrkwlaiouw9+bpCmR0V8+XpWma/D/TEz9tg5vkfNo
+eG4t+FUQ7QgrrvIkDNFcRyTUO9cJHB+kcp2NgCcpCwan3wnuzKka9AWFAitpoAwx
+L6BX0L8kg/LzRPhkQnMOrj/tuu9hZrui4woqURhWLiYi2aZe7WCkuoqR/qMGP6qP
+EQRcvndTWkQo6K9BdCH4ZjRqcGbY1wFt/qgAxhi+uSo2IWiM1fRI4eRCGifpBtYK
+Dw44W9uPAu4cgVnAUzESEeW0bft5XXxAqpvyMBIdv3YqfVfOElZdKbteEu4YuOao
+FLpbk4ajCxO4Fzc9AugJ8iQOAoaekJWA7TjWJ6CbJe8w3thpznP0w6jNG8ZleZ6a
+jHckyGlx5wzQTRLVT5+wK6edFlxKmSd93jkLWWCbrc0Dsa39OkSTDmZPoZgKGRhp
+Yc0C4jePYreTGI6p7/H3AFv84o0fjHt5fn4GpT1Xgfg+1X/wmIv7iNQtljCjAqhD
+6XN+QiOAYAloAym8lOm9zOoCDv1TSDpmeyeP0rNV95OozsmFAUaKSUcUFBUfq9FL
+uyr+rJZQw2DPfq2wE75PtOyJiZH7zljCh12fp5yrNx6L7HSqwwuG7vGO4f0ltYOZ
+dPKzaEhCOO7o108RexdNABEBAAG0Rldpa2lMZWFrcyBFZGl0b3JpYWwgT2ZmaWNl
+IEhpZ2ggU2VjdXJpdHkgQ29tbXVuaWNhdGlvbiBLZXkgKDIwMjEtMjAyNCmJBDEE
+EwEKACcFAmBjDtICGwMFCQWjmoAFCwkIBwMFFQoJCAsFFgIDAQACHgECF4AACgkQ
+nG3NFyg+RUzRbh+eMSKgMYOdoz70u4RKTvev4KyqCAlwji+1RomnW7qsAK+l1s6b
+ugOhOs8zYv2ZSy6lv5JgWITRZogvB69JP94+Juphol6LIImC9X3P/bcBLw7VCdNA
+mP0XQ4OlleLZWXUEW9EqR4QyM0RkPMoxXObfRgtGHKIkjZYXyGhUOd7MxRM8DBzN
+yieFf3CjZNADQnNBk/ZWRdJrpq8J1W0dNKI7IUW2yCyfdgnPAkX/lyIqw4ht5UxF
+VGrva3PoepPir0TeKP3M0BMxpsxYSVOdwcsnkMzMlQ7TOJlsEdtKQwxjV6a1vH+t
+k4TpR4aG8fS7ZtGzxcxPylhndiiRVwdYitr5nKeBP69aWH9uLcpIzplXm4DcusUc
+Bo8KHz+qlIjs03k8hRfqYhUGB96nK6TJ0xS7tN83WUFQXk29fWkXjQSp1Z5dNCcT
+sWQBTxWxwYyEI8iGErH2xnok3HTyMItdCGEVBBhGOs1uCHX3W3yW2CooWLC/8Pia
+qgss3V7m4SHSfl4pDeZJcAPiH3Fm00wlGUslVSziatXW3499f2QdSyNDw6Qc+chK
+hUFflmAaavtpTqXPk+Lzvtw5SSW+iRGmEQICKzD2chpy05mW5v6QUy+G29nchGDD
+rrfpId2Gy1VoyBx8FAto4+6BOWVijrOj9Boz7098huotDQgNoEnidvVdsqP+P1RR
+QJekr97idAV28i7iEOLd99d6qI5xRqc3/QsV+y2ZnnyKB10uQNVPLgUkQljqN0wP
+XmdVer+0X+aeTHUd1d64fcc6M0cpYefNNRCsTsgbnWD+x0rjS9RMo+Uosy41+IxJ
+6qIBhNrMK6fEmQoZG3qTRPYYrDoaJdDJERN2E5yLxP2SPI0rWNjMSoPEA/gk5L91
+m6bToM/0VkEJNJkpxU5fq5834s3PleW39ZdpI0HpBDGeEypo/t9oGDY3Pd7JrMOF
+zOTohxTyu4w2Ql7jgs+7KbO9PH0Fx5dTDmDq66jKIkkC7DI0QtMQclnmWWtn14BS
+KTSZoZekWESVYhORwmPEf32EPiC9t8zDRglXzPGmJAPISSQz+Cc9o1ipoSIkoCCh
+2MWoSbn3KFA53vgsYd0vS/+Nw5aUksSleorFns2yFgp/w5Ygv0D007k6u3DqyRLB
+W5y6tJLvbC1ME7jCBoLW6nFEVxgDo727pqOpMVjGGx5zcEokPIRDMkW/lXjw+fTy
+c6misESDCAWbgzniG/iyt77Kz711unpOhw5aemI9LpOq17AiIbjzSZYt6b1Aq7Wr
+aB+C1yws2ivIl9ZYK911A1m69yuUg0DPK+uyL7Z86XC7hI8B0IY1MM/MbmFiDo6H
+dkfwUckE74sxxeJrFZKkBbkEAQRgYw7SAR+gvktRnaUrj/84Pu0oYVe49nPEcy/7
+5Fs6LvAwAj+JcAQPW3uy7D7fuGFEQguasfRrhWY5R87+g5ria6qQT2/Sf19Tpngs
+d0Dd9DJ1MMTaA1pc5F7PQgoOVKo68fDXfjr76n1NchfCzQbozS1HoM8ys3WnKAw+
+Neae9oymp2t9FB3B+To4nsvsOM9KM06ZfBILO9NtzbWhzaAyWwSrMOFFJfpyxZAQ
+8VbucNDHkPJjhxuafreC9q2f316RlwdS+XjDggRY6xD77fHtzYea04UWuZidc5zL
+VpsuZR1nObXOgE+4s8LU5p6fo7jL0CRxvfFnDhSQg2Z617flsdjYAJ2JR4apg3Es
+G46xWl8xf7t227/0nXaCIMJI7g09FeOOsfCmBaf/ebfiXXnQbK2zCbbDYXbrYgw6
+ESkSTt940lHtynnVmQBvZqSXY93MeKjSaQk1VKyobngqaDAIIzHxNCR941McGD7F
+qHHM2YMTgi6XXaDThNC6u5msI1l/24PPvrxkJxjPSGsNlCbXL2wqaDgrP6LvCP9O
+uooR9dVRxaZXcKQjeVGxrcRtoTSSyZimfjEercwi9RKHt42O5akPsXaOzeVjmvD9
+EB5jrKBe/aAOHgHJEIgJhUNARJ9+dXm7GofpvtN/5RE6qlx11QGvoENHIgawGjGX
+Jy5oyRBS+e+KHcgVqbmV9bvIXdwiC4BDGxkXtjc75hTaGhnDpu69+Cq016cfsh+0
+XaRnHRdh0SZfcYdEqqjn9CTILfNuiEpZm6hYOlrfgYQe1I13rgrnSV+EfVCOLF4L
+P9ejcf3eCvNhIhEjsBNEUDOFAA6J5+YqZvFYtjk3efpM2jCg6XTLZWaI8kCuADMu
+yrQxGrM8yIGvBndrlmmljUqlc8/Nq9rcLVFDsVqb9wOZjrCIJ7GEUD6bRuolmRPE
+SLrpP5mDS+wetdhLn5ME1e9JeVkiSVSFIGsumZTNUaT0a90L4yNj5gBE40dvFplW
+7TLeNE/ewDQk5LiIrfWuTUn3CqpjIOXxsZFLjieNgofX1nSeLjy3tnJwuTYQlVJO
+3CbqH1k6cOIvE9XShnnuxmiSoav4uZIXnLZFQRT9v8UPIuedp7TO8Vjl0xRTajCL
+PdTk21e7fYriax62IssYcsbbo5G5auEdPO04H/+v/hxmRsGIr3XYvSi4ZWXKASxy
+a/jHFu9zEqmy0EBzFzpmSx+FrzpMKPkoU7RbxzMgZwIYEBk66Hh6gxllL0JmWjV0
+iqmJMtOERE4NgYgumQT3dTxKuFtywmFxBTe80BhGlfUbjBtiSrULq59np4ztwlRT
+wDEAVDoZbN57aEXhQ8jjF2RlHtqGXhFMrg9fALHaRQARAQABiQQZBBgBCgAPBQJg
+Yw7SAhsMBQkFo5qAAAoJEJxtzRcoPkVMdigfoK4oBYoxVoWUBCUekCg/alVGyEHa
+ekvFmd3LYSKX/WklAY7cAgL/1UlLIFXbq9jpGXJUmLZBkzXkOylF9FIXNNTFAmBM
+3TRjfPv91D8EhrHJW0SlECN+riBLtfIQV9Y1BUlQthxFPtB1G1fGrv4XR9Y4TsRj
+VSo78cNMQY6/89Kc00ip7tdLeFUHtKcJs+5EfDQgagf8pSfF/TWnYZOMN2mAPRRf
+fh3SkFXeuM7PU/X0B6FJNXefGJbmfJBOXFbaSRnkacTOE9caftRKN1LHBAr8/RPk
+pc9p6y9RBc/+6rLuLRZpn2W3m3kwzb4scDtHHFXXQBNC1ytrqdwxU7kcaJEPOFfC
+XIdKfXw9AQll620qPFmVIPH5qfoZzjk4iTH06Yiq7PI4OgDis6bZKHKyyzFisOkh
+DXiTuuDnzgcu0U4gzL+bkxJ2QRdiyZdKJJMswbm5JDpX6PLsrzPmN314lKIHQx3t
+NNXkbfHL/PxuoUtWLKg7/I3PNnOgNnDqCgqpHJuhU1AZeIkvewHsYu+urT67tnpJ
+AK1Z4CgRxpgbYA4YEV1rWVAPHX1u1okcg85rc5FHK8zh46zQY1wzUTWubAcxqp9K
+1IqjXDDkMgIX2Z2fOA1plJSwugUCbFjn4sbT0t0YuiEFMPMB42ZCjcCyA1yysfAd
+DYAmSer1bq47tyTFQwP+2ZnvW/9p3yJ4oYWzwMzadR3T0K4sgXRC2Us9nPL9k2K5
+TRwZ07wE2CyMpUv+hZ4ja13A/1ynJZDZGKys+pmBNrO6abxTGohM8LIWjS+YBPIq
+trxh8jxzgLazKvMGmaA6KaOGwS8vhfPfxZsu2TJaRPrZMa/HpZ2aEHwxXRy4nm9G
+Kx1eFNJO6Ues5T7KlRtl8gflI5wZCCD/4T5rto3SfG0s0jr3iAVb3NCn9Q73kiph
+PSwHuRxcm+hWNszjJg3/W+Fr8fdXAh5i0JzMNscuFAQNHgfhLigenq+BpCnZzXya
+01kqX24AdoSIbH++vvgE0Bjj6mzuRrH5VJ1Qg9nQ+yMjBWZADljtp3CARUbNkiIg
+tUJ8IJHCGVwXZBqY4qeJc3h/RiwWM2UIFfBZ+E06QPznmVLSkwvvop3zkr4eYNez
+cIKUju8vRdW6sxaaxC/GECDlP0Wo6lH0uChpE3NJ1daoXIeymajmYxNt+drz7+pd
+jMqjDtNA2rgUrjptUgJK8ZLdOQ4WCrPY5pP9ZXAO7+mK7S3u9CTywSJmQpypd8hv
+8Bu8jKZdoxOJXxj8CphK951eNOLYxTOxBUNB8J2lgKbmLIyPvBvbS1l1lCM5oHlw
+WXGlp70pspj3kaX4mOiFaWMKHhOLb+er8yh8jspM184=
+=5a6T
+-----END PGP PUBLIC KEY BLOCK-----
+
+		</pre>
+	</div>
+</div>
+
+<div id="submit_help_contact" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Contact</h3>
+		<p>If you need help using Tor you can contact WikiLeaks for assistance in setting it up using our simple webchat available at: <a href="https://wikileaks.org/talk">https://wikileaks.org/talk</a></p>
+		<p>If you can use Tor, but need to contact WikiLeaks for other reasons use our secured webchat available at <b>http://wlchatc3pjwpli5r.onion</b></p>
+		<p>We recommend contacting us over Tor if you can.</p>
+	</div>
+</div>
+
+<div id="submit_help_tor" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Tor</h3>
+		<p><a href="https://www.torproject.org">Tor</a> is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.</p>
+		<p>In order to use the WikiLeaks public submission system as detailed above you can download the Tor Browser Bundle, which is a Firefox-like browser available for Windows, Mac OS X and GNU/Linux and pre-configured to connect using the anonymising system Tor.</p>
+		<h4>Tails</h4>
+		<p>If you are at high risk and you have the capacity to do so, you can also access the submission system through a secure operating system called <a href="https://tails.boum.org">Tails</a>. Tails is an operating system launched from a USB stick or a DVD that aim to leaves no traces when the computer is shut down after use and automatically routes your internet traffic through Tor. Tails will require you to have either a USB stick or a DVD at least 4GB big and a laptop or desktop computer.</p>
+	</div>
+</div>
+
+<div id="submit_help_tips" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>Tips</h3>
+		<p>Our submission system works hard to preserve your anonymity, but we recommend you also take some of your own precautions. Please review these basic guidelines. </p>
+		<div>
+			<h4>1. Contact us if you have specific problems</h4>
+			<p>If you have a very large submission, or a submission with a complex format, or are a high-risk source, please <a href="#submit_help_contact">contact us</a>. In our experience it is always possible to find a custom solution for even the most seemingly difficult situations.</p>
+		</div>
+		<div>
+			<h4>2. What computer to use</h4>
+			<p>If the computer you are uploading from could subsequently be audited in an investigation, consider using a computer that is not easily tied to you. Technical users can also use <a href="https://tails.boum.org">Tails</a> to help ensure you do not leave any records of your submission on the computer.</p>
+		</div>
+		<div>
+			<h4>3. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+	</div>
+</div>
+
+<div id="submit_help_after" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>After</h3>
+
+		<div>
+			<h4>1. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+		<div>
+			<h4>2. Act normal</h4>
+			<p>If you are a high-risk source, avoid saying anything or doing anything after submitting which might promote suspicion. In particular, you should try to stick to your normal routine and behaviour.</p>
+		</div>
+
+		<div>
+			<h4>3. Remove traces of your submission</h4>
+			<p>If you are a high-risk source and the computer you prepared your submission on, or uploaded it from, could subsequently be audited in an investigation, we recommend that you format and dispose of the computer hard drive and any other storage media you used.</p>
+			<p>In particular, hard drives retain data after formatting which may be visible to a digital forensics team and flash media (USB sticks, memory cards and SSD drives) retain data even after a secure erasure. If you used flash media to store sensitive data, it is important to destroy the media.</p>
+			<p>If you do this and are a high-risk source you should make sure there are no traces of the clean-up, since such traces themselves may draw suspicion.</p>
+			<div>
+				<h4>4. If you face legal action</h4>
+				<p>If a legal action is brought against you as a result of your submission, there are organisations that may help you. The Courage Foundation is an international organisation dedicated to the protection of journalistic sources. You can find more details at <a href="https://www.couragefound.org">https://www.couragefound.org</a>.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="submit" class="submit_banner">
+	<div class="container">
+		<div class="page-header">
+			<h1>Submit documents to WikiLeaks</h1>
+			<a class="remove-button" href="#"><span class="glyphicon glyphicon-remove-circle"></span></a>
+		</div>
+		<p>WikiLeaks publishes documents of political or historical importance that are censored or otherwise suppressed. We specialise in strategic global publishing and large archives.</p>
+		<p>The following is the address of our secure site where you can anonymously upload your documents to WikiLeaks editors. You can only access this submissions system through Tor. (See our <a href="#submit_help_tor">Tor tab</a> for more information.) We also advise you to read our <a href="#submit_help_tips">tips for sources</a> before submitting.</p>
+
+		<div class="alert alert-info">
+			<div class="onion-url">http://ibfckmpsmylhbfovflajicjgldsqpc75k5w454irzwlh7qifgglncbad.onion </div>
+			<!--<div>
+				Copy this address into your Tor browser. Advanced users, if they wish, can also add a further layer of encryption to their submission using <a href="#submit_wlkey">our public PGP key</a>.
+			</div>-->
+		</div>
+
+		<p>If you cannot use Tor, or your submission is very large, or you have specific requirements, WikiLeaks provides several alternative methods. <a href="#submit_help_contact">Contact us</a> to discuss how to proceed.</p>
+	</div>
+</div>
+<div id="submit_help_buttons" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="main">
+	    
+
+<link href="/static/css/styles_topnav.css" rel="stylesheet">
+<link href="/static/css/styles_sidenav.css" rel="stylesheet">
+<div class="top-navigation">
+  <nav class="navbar">
+      <a href="#menu" class="mobile-only hot-dog nav-element">
+      </a>
+    <div class="nav-logo">
+      <a href="https://wikileaks.org">
+        <h1>WikiLeaks</h1>
+      </a>
+    </div>
+    <div class="action-buttons">
+      <a class="button-face donate-link" href="https://shop.wikileaks.org/donate">Donate</a>
+      <a class="button-face submit-link" href="#submit">Submit</a>
+    </div>
+    <form class="global-search" method="get" action="https://search.wikileaks.org/">
+      <input type="text" name="q" placeholder="Search">
+      <button class="btn-search" type="submit"></button>
+    </form>
+    <div class="main-nav">
+
+        <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+            </li>
+
+            <li>
+              <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+            </li>
+
+        </ul>
+
+    </div>
+  </nav>
+</div>
+
+<nav id="menu" class="side-nav rub">
+  <div class="menu-wrapper">
+    <a class="close-btn nav-element" href="#"></a>
+
+      <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+
+          </li>
+
+          <li>
+            <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+
+          </li>
+
+      </ul>
+
+    <aside class="friends mobile-only">
+
+        <ul class="first-level">
+                <li>
+                <a href="https://our.wikileaks.org" target="_blank">our.wikileaks.org</a>
+                </li>
+                <li>
+                <a href="https://www.torproject.org/" target="_blank">Tor Project</a>
+                </li>
+                <li>
+                <a href="https://tails.boum.org/" target="_blank">Tails</a>
+                </li>
+                <li>
+                <a href="https://www.couragefound.org/" target="_blank">Courage</a>
+                </li>
+                <li>
+                <a href="https://www.bitcoin.org/" target="_blank">Bitcoin</a>
+                </li>
+        
+        </ul>
+
+    </aside>
+    <aside class="social mobile-only">
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/wikileaks" class="nav-element" target="_blank" alt="Facebook">
+            <img class="img-responsive" src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" class="nav-element" target="_blank" alt="Twitter">
+            <img class="img-responsive" src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</nav>
+
+
+<div id="overall">
+
+<div id="leftmenu">
+
+        <center><img src="/plusd/images/wl2.jpg" alt="WikiLeaks" /></center>
+        <a class="button" href="/plusd/pressrelease/">Press release</a>
+        <a class="button" href="/plusd/about/">About PlusD</a>
+
+        <div class="pick">
+	<h3>Browse by creation date</h3>
+
+<a href="/plusd/?q=&qtfrom=1966-01-01&qtto=1966-12-31#result">1966</a>
+<a href="/plusd/?q=&qtfrom=1972-01-01&qtto=1972-12-31#result">1972</a>
+<a href="/plusd/?q=&qtfrom=1973-01-01&qtto=1973-12-31#result">1973</a>
+<a href="/plusd/?q=&qtfrom=1974-01-01&qtto=1974-12-31#result">1974</a>
+<a href="/plusd/?q=&qtfrom=1975-01-01&qtto=1975-12-31#result">1975</a>
+<a href="/plusd/?q=&qtfrom=1976-01-01&qtto=1976-12-31#result">1976</a>
+<a href="/plusd/?q=&qtfrom=1977-01-01&qtto=1977-12-31#result">1977</a>
+<a href="/plusd/?q=&qtfrom=1978-01-01&qtto=1978-12-31#result">1978</a>
+<a href="/plusd/?q=&qtfrom=1979-01-01&qtto=1979-12-31#result">1979</a>
+<a href="/plusd/?q=&qtfrom=1985-01-01&qtto=1985-12-31#result">1985</a>
+<a href="/plusd/?q=&qtfrom=1986-01-01&qtto=1986-12-31#result">1986</a>
+<a href="/plusd/?q=&qtfrom=1987-01-01&qtto=1987-12-31#result">1987</a>
+<a href="/plusd/?q=&qtfrom=1988-01-01&qtto=1988-12-31#result">1988</a>
+<a href="/plusd/?q=&qtfrom=1989-01-01&qtto=1989-12-31#result">1989</a>
+<a href="/plusd/?q=&qtfrom=1990-01-01&qtto=1990-12-31#result">1990</a>
+<a href="/plusd/?q=&qtfrom=1991-01-01&qtto=1991-12-31#result">1991</a>
+<a href="/plusd/?q=&qtfrom=1992-01-01&qtto=1992-12-31#result">1992</a>
+<a href="/plusd/?q=&qtfrom=1993-01-01&qtto=1993-12-31#result">1993</a>
+<a href="/plusd/?q=&qtfrom=1994-01-01&qtto=1994-12-31#result">1994</a>
+<a href="/plusd/?q=&qtfrom=1995-01-01&qtto=1995-12-31#result">1995</a>
+<a href="/plusd/?q=&qtfrom=1996-01-01&qtto=1996-12-31#result">1996</a>
+<a href="/plusd/?q=&qtfrom=1997-01-01&qtto=1997-12-31#result">1997</a>
+<a href="/plusd/?q=&qtfrom=1998-01-01&qtto=1998-12-31#result">1998</a>
+<a href="/plusd/?q=&qtfrom=1999-01-01&qtto=1999-12-31#result">1999</a>
+<a href="/plusd/?q=&qtfrom=2000-01-01&qtto=2000-12-31#result">2000</a>
+<a href="/plusd/?q=&qtfrom=2001-01-01&qtto=2001-12-31#result">2001</a>
+<a href="/plusd/?q=&qtfrom=2002-01-01&qtto=2002-12-31#result">2002</a>
+<a href="/plusd/?q=&qtfrom=2003-01-01&qtto=2003-12-31#result">2003</a>
+<a href="/plusd/?q=&qtfrom=2004-01-01&qtto=2004-12-31#result">2004</a>
+<a href="/plusd/?q=&qtfrom=2005-01-01&qtto=2005-12-31#result">2005</a>
+<a href="/plusd/?q=&qtfrom=2006-01-01&qtto=2006-12-31#result">2006</a>
+<a href="/plusd/?q=&qtfrom=2007-01-01&qtto=2007-12-31#result">2007</a>
+<a href="/plusd/?q=&qtfrom=2008-01-01&qtto=2008-12-31#result">2008</a>
+<a href="/plusd/?q=&qtfrom=2009-01-01&qtto=2009-12-31#result">2009</a>
+<a href="/plusd/?q=&qtfrom=2010-01-01&qtto=2010-12-31#result">2010</a>
+
+        </div>
+
+        <div class="sort">
+	<h3>Browse by Classification</h3>
+
+<a href="/plusd/?q=&qfoclass=UNCLASSIFIED#result" title="UNCLASSIFIED (1339531 documents)">UNCLASSIFIED</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL#result" title="CONFIDENTIAL (503750 documents)">CONFIDENTIAL</a><a href="/plusd/?q=&qfoclass=LIMITED+OFFICIAL+USE#result" title="LIMITED OFFICIAL USE (435536 documents)">LIMITED OFFICIAL USE</a><a href="/plusd/?q=&qfoclass=SECRET#result" title="SECRET (120598 documents)">SECRET</a><a href="/plusd/?q=&qfoclass=UNCLASSIFIED%2F%2FFOR+OFFICIAL+USE+ONLY#result" title="UNCLASSIFIED//FOR OFFICIAL USE ONLY (58095 documents)">UNCLASSIFIED//FOR OFFICIAL USE ONLY</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL%2F%2FNOFORN#result" title="CONFIDENTIAL//NOFORN (4678 documents)">CONFIDENTIAL//NOFORN</a><a href="/plusd/?q=&qfoclass=SECRET%2F%2FNOFORN#result" title="SECRET//NOFORN (4330 documents)">SECRET//NOFORN</a>
+        </div>
+
+	<div class="sort">
+	<h3>Browse by Handling Restriction</h3>
+
+<a href="/plusd/?q=&qforiginalhandlingrestriction=EXDIS#result" title="EXDIS - Exclusive Distribution Only (71108 documents)">EXDIS - Exclusive Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=ONLY#result" title="ONLY - Eyes Only (32583 documents)">ONLY - Eyes Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LIMDIS#result" title="LIMDIS - Limited Distribution Only (25098 documents)">LIMDIS - Limited Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NODIS#result" title="NODIS - No Distribution (other than to persons indicated) (24437 documents)">NODIS - No Distribution (other than to persons indicated)</a><a href="/plusd/?q=&qforiginalhandlingrestriction=STADIS#result" title="STADIS - State Distribution Only (20286 documents)">STADIS - State Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CHEROKEE#result" title="CHEROKEE - Limited to senior officials (4343 documents)">CHEROKEE - Limited to senior officials</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NOFORN#result" title="NOFORN - No Foreign Distribution (2197 documents)">NOFORN - No Foreign Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LOU#result" title="LOU - Limited Official Use (598 documents)">LOU - Limited Official Use</a><a href="/plusd/?q=&qforiginalhandlingrestriction=SENSITIVE#result" title="SENSITIVE -  (43 documents)">SENSITIVE - </a><a href="/plusd/?q=&qforiginalhandlingrestriction=BU#result" title="BU - Background Use Only (3 documents)">BU - Background Use Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CONDIS#result" title="CONDIS - Controlled Distribution (1 documents)">CONDIS - Controlled Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=US#result" title="US - US Government Only (1 documents)">US - US Government Only</a>	</div>
+
+	<div class="pick wide">
+	<h3>Browse by TAGS</h3>
+<a href="/plusd/?q=&qftags=US#result" title="US - United States (553685 documents)">US</a> <a href="/plusd/?q=&qftags=PFOR#result" title="PFOR - Political Affairs--Foreign Policy and Relations (294672 documents)">PFOR</a> <a href="/plusd/?q=&qftags=PGOV#result" title="PGOV - Political Affairs--Government; Internal Governmental Affairs (180409 documents)">PGOV</a> <a href="/plusd/?q=&qftags=PREL#result" title="PREL - Political Affairs--External Political Relations (149906 documents)">PREL</a> <a href="/plusd/?q=&qftags=ETRD#result" title="ETRD - Economic Affairs--Foreign Trade (124244 documents)">ETRD</a> <a href="/plusd/?q=&qftags=UR#result" title="UR - Soviet Union (USSR) (117139 documents)">UR</a> <a href="/plusd/?q=&qftags=OVIP#result" title="OVIP - Operations--VIP Travel Arrangements (114816 documents)">OVIP</a> <a href="/plusd/?q=&qftags=ASEC#result" title="ASEC - Administration--Security (114594 documents)">ASEC</a> <a href="/plusd/?q=&qftags=OGEN#result" title="OGEN - Operations--General (114085 documents)">OGEN</a> <a href="/plusd/?q=&qftags=CASC#result" title="CASC - Consular Affairs--Assistance to Citizens (113486 documents)">CASC</a> <a href="/plusd/?q=&qftags=PINT#result" title="PINT - Political Affairs--Internal Political Affairs (104641 documents)">PINT</a> <a href="/plusd/?q=&qftags=EFIN#result" title="EFIN - Economic Affairs--Financial and Monetary Affairs (102225 documents)">EFIN</a> <a href="/plusd/?q=&qftags=BEXP#result" title="BEXP - Business Services--Trade Expansion and Promotion (102142 documents)">BEXP</a> <a href="/plusd/?q=&qftags=OEXC#result" title="OEXC - Operations--Educational and Cultural Exchange Operations (89751 documents)">OEXC</a> <a href="/plusd/?q=&qftags=EAID#result" title="EAID - Economic Affairs--Foreign Assistance (80469 documents)">EAID</a> <a href="/plusd/?q=&qftags=CVIS#result" title="CVIS - Consular Affairs--Visas (79634 documents)">CVIS</a> <a href="/plusd/?q=&qftags=OTRA#result" title="OTRA - Operations--Travel and Visits (79042 documents)">OTRA</a> <a href="/plusd/?q=&qftags=ENRG#result" title="ENRG - Economic Affairs--Energy and Power (76814 documents)">ENRG</a> <a href="/plusd/?q=&qftags=OCON#result" title="OCON - Operations--Conferences and Meetings (76271 documents)">OCON</a> <a href="/plusd/?q=&qftags=ECON#result" title="ECON - Economic Affairs--Economic Conditions, Trends and Potential (75832 documents)">ECON</a> <a href="/plusd/?q=&qftags=NATO#result" title="NATO - North Atlantic Treaty Organization (74653 documents)">NATO</a> <a href="/plusd/?q=&qftags=PINS#result" title="PINS - Political Affairs--Internal Security (72716 documents)">PINS</a> <a href="/plusd/?q=&qftags=GE#result" title="GE - Germany (East) (69261 documents)">GE</a> <a href="/plusd/?q=&qftags=JA#result" title="JA - Japan; Okinawa; (67491 documents)">JA</a> <a href="/plusd/?q=&qftags=UK#result" title="UK - United Kingdom (65645 documents)">UK</a> <a href="/plusd/?q=&qftags=IS#result" title="IS - Israel (61813 documents)">IS</a> <a href="/plusd/?q=&qftags=MARR#result" title="MARR - Military and Defense Affairs--Military and Defense Arrangements (59054 documents)">MARR</a> <a href="/plusd/?q=&qftags=PARM#result" title="PARM - Political Affairs--Arms Controls and Disarmament (58794 documents)">PARM</a> <a href="/plusd/?q=&qftags=UN#result" title="UN - United Nations (58176 documents)">UN</a> <a href="/plusd/?q=&qftags=EG#result" title="EG - Egypt (57176 documents)">EG</a> <a href="/plusd/?q=&qftags=FR#result" title="FR - France (56597 documents)">FR</a> <a href="/plusd/?q=&qftags=PHUM#result" title="PHUM - Political Affairs--Human Rights (55302 documents)">PHUM</a> <a href="/plusd/?q=&qftags=SREF#result" title="SREF - Social Affairs--Refugees (53585 documents)">SREF</a> <a href="/plusd/?q=&qftags=EAIR#result" title="EAIR - Economic Affairs--Aeronautics and Aviation; Civil Aviation (52511 documents)">EAIR</a> <a href="/plusd/?q=&qftags=MASS#result" title="MASS - Military and Defense Affairs--Military Assistance and Sales (51560 documents)">MASS</a> <a href="/plusd/?q=&qftags=APER#result" title="APER - Administration--Personnel (51272 documents)">APER</a> <a href="/plusd/?q=&qftags=SNAR#result" title="SNAR - Social Affairs--Narcotics (49299 documents)">SNAR</a> <a href="/plusd/?q=&qftags=PINR#result" title="PINR - Political Affairs--Intelligence (48667 documents)">PINR</a> <a href="/plusd/?q=&qftags=EAGR#result" title="EAGR - Economic Affairs--Agriculture and Forestry (47350 documents)">EAGR</a> <a href="/plusd/?q=&qftags=PDIP#result" title="PDIP - Political Affairs--Diplomatic and Consular Representation (47061 documents)">PDIP</a> <a href="/plusd/?q=&qftags=AORG#result" title="AORG - Administration--International Organization Administration (42798 documents)">AORG</a> <a href="/plusd/?q=&qftags=PORG#result" title="PORG - Political Affairs--Policy Relations With International Organizations (42754 documents)">PORG</a> <a href="/plusd/?q=&qftags=MX#result" title="MX - Mexico (42577 documents)">MX</a> <a href="/plusd/?q=&qftags=TU#result" title="TU - Turkey (42476 documents)">TU</a> <a href="/plusd/?q=&qftags=ELAB#result" title="ELAB - Economic Affairs--Labor and Manpower; Labor Sector Affairs (41921 documents)">ELAB</a> <a href="/plusd/?q=&qftags=IN#result" title="IN - India (41702 documents)">IN</a> <a href="/plusd/?q=&qftags=CA#result" title="CA - Canada (41623 documents)">CA</a> <a href="/plusd/?q=&qftags=SCUL#result" title="SCUL - Social Affairs--Cultural Affairs (41509 documents)">SCUL</a> <a href="/plusd/?q=&qftags=CH#result" title="CH - China (Mainland) (40426 documents)">CH</a> <a href="/plusd/?q=&qftags=IR#result" title="IR - Iran (39924 documents)">IR</a> <a href="/plusd/?q=&qftags=IT#result" title="IT - Italy (39454 documents)">IT</a> <a href="/plusd/?q=&qftags=XF#result" title="XF - Middle East (38273 documents)">XF</a> <a href="/plusd/?q=&qftags=GW#result" title="GW - Germany (West) (37945 documents)">GW</a> <a href="/plusd/?q=&qftags=EINV#result" title="EINV - Economic Affairs--Investments; Foreign Investments (37616 documents)">EINV</a> <a href="/plusd/?q=&qftags=TH#result" title="TH - Thailand (37385 documents)">TH</a> <a href="/plusd/?q=&qftags=TECH#result" title="TECH - Technology and Science--Technology (36578 documents)">TECH</a> <a href="/plusd/?q=&qftags=SENV#result" title="SENV - Social Affairs--Environment (35665 documents)">SENV</a> <a href="/plusd/?q=&qftags=OREP#result" title="OREP - Operations--Congressional Travel (35140 documents)">OREP</a> <a href="/plusd/?q=&qftags=KS#result" title="KS - Korea (South) (34546 documents)">KS</a> <a href="/plusd/?q=&qftags=EGEN#result" title="EGEN - Economic Affairs--General (34287 documents)">EGEN</a> <a href="/plusd/?q=&qftags=PEPR#result" title="PEPR - PEPR (33866 documents)">PEPR</a> <a href="/plusd/?q=&qftags=MILI#result" title="MILI - Military and Defense Affairs--General (33710 documents)">MILI</a> <a href="/plusd/?q=&qftags=SHUM#result" title="SHUM - Social Affairs--Human Rights (33098 documents)">SHUM</a> <a href="/plusd/?q=&qftags=KISSINGER%2C+HENRY+A#result" title="KISSINGER, HENRY A - Henry Kissinger (32848 documents)">KISSINGER, HENRY A</a> <a href="/plusd/?q=&qftags=PL#result" title="PL - Poland (31163 documents)">PL</a> <a href="/plusd/?q=&qftags=BR#result" title="BR - Brazil (30797 documents)">BR</a> <a href="/plusd/?q=&qftags=RP#result" title="RP - Philippines (30198 documents)">RP</a> <a href="/plusd/?q=&qftags=GR#result" title="GR - Greece; Crete (30183 documents)">GR</a> <a href="/plusd/?q=&qftags=SF#result" title="SF - South Africa (30161 documents)">SF</a> <a href="/plusd/?q=&qftags=AFSP#result" title="AFSP - Administration--Post Administration (29315 documents)">AFSP</a> <a href="/plusd/?q=&qftags=SP#result" title="SP - Spain (29108 documents)">SP</a> <a href="/plusd/?q=&qftags=PTER#result" title="PTER - Political Affairs--Terrorists and Terrorism (28839 documents)">PTER</a> <a href="/plusd/?q=&qftags=MOPS#result" title="MOPS - Military and Defense Affairs--Military Operations (28821 documents)">MOPS</a> <a href="/plusd/?q=&qftags=SA#result" title="SA - Saudi Arabia (28190 documents)">SA</a> <a href="/plusd/?q=&qftags=UNGA#result" title="UNGA - UN General Assembly (27867 documents)">UNGA</a> <a href="/plusd/?q=&qftags=CGEN#result" title="CGEN - Consular Affairs--General (27680 documents)">CGEN</a> <a href="/plusd/?q=&qftags=ESTC#result" title="ESTC - Economic Affairs--Strategic Trade Controls (27627 documents)">ESTC</a> <a href="/plusd/?q=&qftags=SOPN#result" title="SOPN - Social Affairs--Public Opinion and Information (27583 documents)">SOPN</a> <a href="/plusd/?q=&qftags=RO#result" title="RO - Romania (27560 documents)">RO</a> <a href="/plusd/?q=&qftags=LE#result" title="LE - Lebanon (27323 documents)">LE</a> <a href="/plusd/?q=&qftags=TGEN#result" title="TGEN - Technology and Science--General (27058 documents)">TGEN</a> <a href="/plusd/?q=&qftags=PK#result" title="PK - Pakistan (26991 documents)">PK</a> <a href="/plusd/?q=&qftags=AR#result" title="AR - Argentina (26444 documents)">AR</a> <a href="/plusd/?q=&qftags=NI#result" title="NI - Nigeria (26170 documents)">NI</a> <a href="/plusd/?q=&qftags=OSCI#result" title="OSCI - Operations--Science Grants (25846 documents)">OSCI</a> <a href="/plusd/?q=&qftags=CI#result" title="CI - Chile (25827 documents)">CI</a> <a href="/plusd/?q=&qftags=EEC#result" title="EEC - European Common Market (European Communities); European Economic Community (25827 documents)">EEC</a> <a href="/plusd/?q=&qftags=VS#result" title="VS - South Vietnam (25800 documents)">VS</a> <a href="/plusd/?q=&qftags=YO#result" title="YO -  (25447 documents)">YO</a> <a href="/plusd/?q=&qftags=AFIN#result" title="AFIN - Administration--Financial Services (24705 documents)">AFIN</a> <a href="/plusd/?q=&qftags=OECD#result" title="OECD - Organization for Economic Cooperation and Development (24622 documents)">OECD</a> <a href="/plusd/?q=&qftags=SY#result" title="SY - Syria (24419 documents)">SY</a> <a href="/plusd/?q=&qftags=IZ#result" title="IZ - Iraq (24415 documents)">IZ</a> <a href="/plusd/?q=&qftags=ID#result" title="ID - Indonesia (23865 documents)">ID</a> <a href="/plusd/?q=&qftags=VE#result" title="VE - Venezuela (23792 documents)">VE</a> <a href="/plusd/?q=&qftags=TPHY#result" title="TPHY - Technology and Science--Physical Sciences (23741 documents)">TPHY</a> <a href="/plusd/?q=&qftags=TW#result" title="TW - Taiwan (23233 documents)">TW</a> <a href="/plusd/?q=&qftags=AS#result" title="AS - Australia (23143 documents)">AS</a> <a href="/plusd/?q=&qftags=PBOR#result" title="PBOR - Political Affairs--Boundary and Sovereignity Claims (23066 documents)">PBOR</a> 
+	</div>
+
+
+        <div class="sort" style="clear:both;">
+        <h3>Media Organizations</h3>
+        <a target="_blank" href="http://www.theage.com.au/">Australia - The Age</a>
+        <a target="_blank" href="http://www.pagina12.com.ar/">Argentina - Pagina 12</a>
+        <a target="_blank" href="http://www.apublica.org/?p=4041">Brazil - Publica</a>
+        <a target="_blank" href="https://bivol.bg/">Bulgaria - Bivol</a>
+        <a target="_blank" href="http://www.almasryalyoum.com/ ">Egypt - Al Masry Al Youm</a>
+        <a target="_blank" href="http://www.tanea.gr/">Greece - Ta Nea</a>
+        <a target="_blank" href="http://www.plazapublica.com.gt/content/los-cables-de-wikileaks">Guatemala - Plaza Publica</a>
+        <a target="_blank" href="http://www.haiti-liberte.com/">Haiti - Haiti Liberte</a>
+        <a target="_blank" href="http://www.thehindu.com/">India - The Hindu</a>
+        <a target="_blank" href="http://espresso.repubblica.it/">Italy - L'Espresso</a>
+        <a target="_blank" href="http://www.repubblica.it/">Italy - La Repubblica</a>
+        <a target="_blank" href="http://www.al-akhbar.com/">Lebanon - Al Akhbar</a>
+        <a target="_blank" href="http://www.jornada.unam.mx/ultimas/">Mexico - La Jornada</a>
+        <a target="_blank" href="http://www.publico.es/452776">Spain - Publico</a>
+        <a target="_blank" href="http://www.aftonbladet.se/nyheter/article16421007.ab">Sweden - Aftonbladet</a>
+        <a target="_blank" href="http://www.ap.org/">UK - AP</a>
+        <a target="_blank" href="http://thenation.com">US - The Nation</a>
+        </div>
+	<br style="clear: both;" />
+</div>
+
+<div id="content"><div id="content-main">
+
+<!--<p style="text-align: justify; font-size: medium">Click the <b>Chat</b> button above to join a secure chat channel dedicated to media partner The Kissinger Cables discussion. Please go on this to talk to the others currently working on this project. <br />When the chat window opens type the following in the white text space at the bottom of the screen to assign yourself a recognisable name: <b>/nick Espresso</b> and press enter</p>
+<center><h2 style="font-size: x-large;">Public Library of US Diplomacy: PlusD</h2></center>-->
+
+<center><img src="/plusd/images/plusdb.png" /></center>
+<div id="st" style="clear:both;">&nbsp;</div>
+<div id="topnav">
+        <a class="searchbutton active" href="//search.wikileaks.org/plusd/">Specified Search</a>
+        <a class="searchbutton sbinv" href="/plusd/map" target="_blank">View Map</a>
+        <a class="searchbutton sbinv" href="/plusd/graph" target="_blank">Make Timegraph</a>
+        <a class="searchbutton sbinv" href="/plusd/tags/" target="_blank">View Tags</a>
+        <a class="searchbutton sbinv" href="/plusd/imagelibrary/" target="_blank">Image Library</a>
+</div>
+<div class="sections"> 
+<div class="pane-content">
+	<table id="synopsis">
+		<tr style="background:#eee;">
+			<td colspan="2" style="font-size: medium; padding: 5px;color: #000; font-weight: bold; text-align: center;">SECRETARY KREPS' MEETING WITH VICE PREMIER DENG XIAOPING</td>
+		</tr>
+		<tr style="background:#eee;">
+			<td><div class="s_key"><a class="i" title="Date">Date:</a></div><div class="s_val" title=" 1979 May 10, 00:00 (Thursday)">1979 May 10, 00:00 (Thursday)</div></td>
+			<td><div class="s_key"><a class="i" title="Canonical ID">Canonical ID:</a></div><div class="s_val" title=" 1979BEIJIN02774_e">1979BEIJIN02774_e</div></td>
+		</tr>
+		<tr>
+			<td><div class="s_key"><a class="i" title="Original Classification">Original Classification:</a></div><div class="s_val" title=" CONFIDENTIAL (503750 documents)">CONFIDENTIAL</div></td>
+			<td><div class="s_key"><a class="i" title="Current Classification">Current Classification:</a></div><div class="s_val" title=" UNCLASSIFIED (2592391 documents)">UNCLASSIFIED</div></td>
+		</tr>
+
+		<tr>
+			<td>
+<div class="s_key"><a class="i" title="Handling Restrictions", ">Handling Restrictions</a></div> <div class="s_val" title="-- N/A or Blank -- (2412734 documents)">-- N/A or Blank --</div><br /></td>
+			<td><div class="s_key"><a class="i" title="Character Count">Character Count:</a></div><div class="s_val" title=" 26806">26806</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Executive Order">Executive Order:</a></div><div class="s_val" title=" GS 19850510 ROY, J STAPLETON">GS 19850510 ROY, J STAPLETON</div></td>
+			<td><div class="s_key"><a class="i" title="Locator">Locator:</a></div><div class="s_val" title=" TEXT ON MICROFILM,TEXT ONLINE">TEXT ON MICROFILM,TEXT ONLINE</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="TAGS">TAGS:</a></div><div class="s_val" title=" CH - China (Mainland) | ETRD - Economic Affairs--Foreign Trade | KREPS, JUANITA | KREPS, JUANITA M | OVIP - Operations--VIP Travel Arrangements | PEPR - PEPR | US - United States"><a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=CH#result" title="CH China (Mainland) (40426 documents)" >CH<span style="color: #216B7C;"> - China (Mainland)</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=ETRD#result" title="ETRD Economic Affairs: Foreign Trade (124244 documents)" >ETRD<span style="color: #216B7C;"> - Economic Affairs--Foreign Trade</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=KREPS%2C+JUANITA#result" title="KREPS, JUANITA  (101 documents)" >KREPS, JUANITA</a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=KREPS%2C+JUANITA+M#result" title="KREPS, JUANITA M  (160 documents)" >KREPS, JUANITA M</a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=OVIP#result" title="OVIP Operations: VIP Travel Arrangements (114816 documents)" >OVIP<span style="color: #216B7C;"> - Operations--VIP Travel Arrangements</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=PEPR#result" title="PEPR PEPR (33866 documents)" >PEPR<span style="color: #216B7C;"> - PEPR</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=US#result" title="US United States (553685 documents)" >US<span style="color: #216B7C;"> - United States</span></a></div></td>
+			<td><div class="s_key"><a class="i" title="Concepts">Concepts:</a></div><div class="s_val" title=" FOREIGN RELATIONS | MEETING REPORTS | TEXT | TRADE VISITS"><a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=FOREIGN+RELATIONS#result" title="FOREIGN RELATIONS (44460 documents)">FOREIGN RELATIONS</a> <span style=''color:#000;''>|</span> <a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=MEETING+REPORTS#result" title="MEETING REPORTS (27197 documents)">MEETING REPORTS</a> <span style=''color:#000;''>|</span> <a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=TEXT#result" title="TEXT (20534 documents)">TEXT</a> <span style=''color:#000;''>|</span> <a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=TRADE+VISITS#result" title="TRADE VISITS (3681 documents)">TRADE VISITS</a></div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Enclosure">Enclosure:</a></div><div class="s_val" title=" -- N/A or Blank -- (2333922 documents)">-- N/A or Blank --</div></td>
+			<td><div class="s_key"><a class="i" title="Type">Type:</a></div><div class="s_val" title=" TE - Telegram (cable) (2008616 documents)">TE - Telegram (cable)</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc">
+				<div class="s_key"><a class="i" title="Office Origin">Office Origin:</a></div><div class="s_val" title=" -- N/A or Blank -- (2117535 documents)">-- N/A or Blank --</div>				<br style="clear:both;"/>
+				<div class="s_key"><a class="i" title="Office Action">Office Action:</a></div><div class="s_val" title=" ACTION EA - Bureau of East Asian and Pacific Affairs (89915 documents)">ACTION EA - Bureau of East Asian and Pacific Affairs</div>			</td>
+			<td><div class="s_key"><a class="i" title="Archive Status">Archive Status:</a></div><div class="s_val" title=" Electronic Telegrams (1758257 documents)">Electronic Telegrams</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="From">From:</a></div><div class="s_val" title=" BEIJIN  | BEIJING OR-M  | China Beijing"><a style="color: #216B7C; " href="/plusd/?q=&qforigin=BEIJIN#result" title="BEIJIN (2 documents)">BEIJIN</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qforigin=BEIJING+OR-M#result" title="BEIJING OR-M (0 documents)">BEIJING OR-M</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qforigin=China%23%23Beijing#result" title="China Beijing (12048 documents)">China Beijing</a></div></td>
+			<td><div class="s_key"><a class="i" title="Markings">Markings:</a></div><div class="s_val" title=" Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014 (325443 documents)">Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="To">To:</a></div><div class="s_val" title=" Department of Commerce "><a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Department of Commerce#result" title="Department of Commerce  (76854 documents)">Department of Commerce </a></div></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<br />
+
+
+<br style="clear: both;" />
+
+</div>
+<div class="pane-tab"><div class="pane-header">Content</div><div class="pane-content"><div class="text-header hidden">CONFIDENTIAL
+PAGE 01
+BEIJIN 02774 01 OF 05 101556Z
+ACTION EA-12
+INFO OCT-01 ADS-00 EB-08 STR-08 TRSE-00 OMB-01 SS-15
+SSO-00 SP-02 NSCE-00 CIAE-00 INR-10 NSAE-00
+INRE-00 CPR-02 L-03 IO-14 /076 W
+------------------125911 101645Z /50
+O 101355Z MAY 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 5679
+USDOC WASHDC IMMEDIATE
+C O N F I D E N T I A L SECTION 1 OF 5 BEIJING 2774
+E.O. 12065: GDS 5/10/85 (ROY, J.STAPLETON) OR-M
+TAGS: ETRD OVIP (KREPS, JUANITA) CH
+SUBJECT: SECRETARY KREPS' MEETING WITH VICE PREMIER DENG XIAOPING
+</div><div class="text-button" id="showhide">Show&nbsp;Headers</div><div class="text-content"><div id="tagged-text">1. (C - ENTIRE TEXT)
+2. FOLLOWING IS TEXT OF MAY 10, 1979 MEETING BETWEEN SECRETARY KREPS
+ACCOMPANIED BY CHARGE ROY, COOPER, HASLAM AND OTHER
+MEMBERS OF PARTY AND DENG XIAOPING ACCOMPANIED BY LI
+QIANG, MINISTER OF FOREIGN TRADE; JIANG MING, VICE
+MINISTER, STATE SCIENTIFIC AND TECHNOLOGICAL COMMISSION;
+CHEN JIE, VICE MINISTER OF FOREIGN TRADE AND OTHER
+CHINESE OFFICIALS.
+3. BEGIN TEXT:
+DENG: WELCOME*
+KREIC: I REMEMBER YOUR VISIT TO THE UNITED STATES WITH
+GREAT PLEASURE.8
+$3,&amp;: YES, THANK YOU FOR ACCOMPANING ME ON OUR VISIT
+TO ATLANTA.
+CONFIDENTIAL
+CONFIDENTIALBEIJIN 02774 01 OF 05 101556Z
+
+KREPS: WHAT DID YOU THINK OF THE AUTOMOBILE ASSEMBLY
+PLANT YOU SAW?
+DENG: THE THINGS I SAW WERE ALL VERY NICE.
+KREPS: MR. FORD HAS NOW RESIGNED. HE ISN'T MANAGER
+OF THE COMPANY ANYMORE.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+DENG: BUT THE PLANT STILL BELONGS TO THE FORD FAMILY.
+KREPS: AND MANY OTHERS.
+DENG: IS HE THE THIRD FORD TO HEAD THE COMPANY?
+KREPS: YES.
+DENG: THERE WILL BE MANY MORE GENERATIONS OF FORDS. I
+THANK THEM FOR THEIR WARM RECEPTION. I BECAME AN
+ASTRONAUT FOR A WHILE IN THE U.S.
+KREPS: YES. I SAW YOU IN HOUSTON.
+DENG: HOW SHALL I REFER TO YOU: AS MADAME, SECRETARY
+OR EXCELLECNCY? PLEASE MAKE A SUGGESTION.
+KREPS: DO YOU EVER IN CHINA USE FIRST NAMES?
+DENG: WE DON'T CONSIDER IT POLITE.
+KREPS: I HAD VISIONS OF REHEARSING YOU IN HOW TO
+PRONOUNCE MY FIRST NAME &quot;JUANITA.&quot; (LAUGHTER)
+DENG: JUANITA, JUANITA, OK, I'LL CALL YOU THAT (LAUGHTER).
+IS PRESIDENT CARTER WELL?
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 02774 01 OF 05 101556Z
+
+KREPS: YES, HE IS WELL. HE WANTED US ALL TO CARRY HIS WARM
+REGARDS AND TO SAY HOW MUCH HE ENJOYED YOUR VISIT.
+DENG: THE VISIT NOT ONLY STRENGTHENED THE RELATIONS
+BETWEEN OUR TWO COUNTRIES, BUT WE ALSO BUILT A
+PERSONAL FRIENDSHIP. PLEASE CONVEY MY SINCERE
+GREETINGS ON YOUR RETURN.
+KREPS: THANK YOU. THE PRESIDENT ALSO ASKED ME TO
+EXTEND HIS SINCERE WISHES TO PREMIER HUA.
+DENG: I WOULD ASK YOU TO CONVEY PREMIER HUA'S REGARDS TO
+PRESIDENT CARTER AND VICE PRESIDENT MONDALE. HOW
+HAVE YOUR DISCUSSIONS BEEN?
+KREPS: WE THINK WE HAVE MADE A GOOD DEAL OF PROGRESS.
+WE CAME HERETO DISCUSS SEVERAL SPECIFIC ISSUES. WE
+PARTICULARLY WANTED TO MAKE PROGRESS ON THREE
+SPECIFIC AGREEMENTS YOU AND PRESIDENT CARTER DISCUSSED.
+THESE WERE A TRADE AGREEMENT, A SHIPPING AGREEMENT,
+AN AVIATION AGREEMENT.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+I AM PLEASED THAT THESE TALKS ARE PROGRESSING,
+ESPECIALLY IN THE AREA OF THE TRADE AGREEMENT, THANKS
+TO THE WORK OF MY GOOD FRIEND MINISTER KI QIANG.
+I WOULD BE LESS THAN CANDID, HOWEVER, IF I DIDN'T
+ADMIT THAT THESE ISSUES ARE VERY DIFFICULT. ANY
+ASSISTANCE YOU CAN PROVIDE WOULD BE MOST APPRECIATED.
+I HOPE I COULD INITIAL A TRADE AGREEMENT
+WHILE I AM HERE. TIME IS SHORT, BUT I AM LEAVING
+MY NEGOTIATORS BEHIND IN BEIJING WHILE I GO TO OTHER
+CITIES DURING THE NEXT FOUR DAYS IN THE HOPE THAT
+AGREEMENT CAN BE REACHED FOR ME TO INITIAL PRIOR TO
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 02774 01 OF 05 101556Z
+
+MY LEAVING CHINA.
+PRESIDENT CARTER DID CONFIRM TOME THAT HE IS
+PREPARED TO RECOMMEND TO CONGRESS TO APPROVE MFN
+FOR CHINA WHEN AGREEMENT IS REACHED.
+IT IS ALSO MY HOPE THAT BEFORE I LEAVE BEIJING,
+I CANSIGN THE CLAIMS/ASSETS AGREEMENT. WE MET WITH
+THE MINISTER OF FINANCE. HE ASKED FOR ADDITIONAL
+INFORMATION. I CABLED WASHINGTON. YESTERDAY I WAS
+ABLE TO PROVIDE THAT INFORMATION, AND I BELIEVE WE HAVE
+MET ALL YOUR GOVERNMENT'S CONCERNS. I BELIEVE WE
+SHOULD AGREE TO SIGN THE AGREEMENT AND TAKE NOW THIS
+IMPORTANT FIRST STEP THAT YOU AND PRESIDENT
+CARTER DISCUSSED EARLIER.
+DENG: WE DO NOT HAVE ANY BIG PROBLEMS WITH THAT
+AGREEMENT.
+HAN: THE MINISTRY OF FINANCE IS STUDYING THE QUESTION
+WITH THE BANK OF CHINA.
+DENG: THE PRINCIPLES FOR SETTLING WERE ALREADY AGREED
+ON IN WASHINGTON. THESE ALL INVOLVE DETAILS. YOU
+HAVE VERY COMPLICATED LAWS WHICH WE DON'T UNDERSTAND.
+THE UNITED STATES TOPS THE WHOLE WORLD IN THE
+
+CONFIDENTIAL
+
+NNN
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+CONFIDENTIAL
+PAGE 01
+BEIJIN 02774 02 OF 05 101541Z
+ACTION EA-12
+INFO OCT-01 ADS-00 EB-08 STR-08 TRSE-00 OMB-01 SS-15
+SSO-00 SP-02 NSCE-00 CIAE-00 INR-10 NSAE-00
+INRE-00 CPR-02 L-03 IO-14 /076 W
+------------------125730 101646Z /50
+O 101355Z MAY 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WSHDC IMMEDIATE 5680
+USDOC WASHDC IMMEDIATE
+C O N F I D E N T I AL SECTION 2 OF 5 BEIJING 2774
+NUMBER OF LAWS IT HAS. BECAUSE WE DON'T UNDERSTAND
+THESE LAWS, OUR PEOPLE HANDLING THESE PROBLEMS ARE
+CONCERNED NOT TO BE TAKEN ADVANTAGE OF.
+KREPS: RIGHTLY SO. AS I EXPLAINED TO MINISTER
+LI, YOU HAVE MORE PEOPLE AND WE HAVE MORE LAWS.
+(LAUGHTER).
+DENG: I HOPE THAT YOU PRESENT HERE WILL TELL OUR
+AMERICAN FRIENDS IN AGREEMENTS AFTER THIS TO MAKE
+THINGS CLEAR TO US AND HELP US TO KNOW ABOUT THESE
+THINGS. WE, ON OUR PART, INTEND TO PASS SOME
+LEGISLATION, FOR EXAMPLE, INVESTMENT AND PATENT LAWS.
+WITHOUT THIS LEGISLATION, INVESTORS AND INVENTORS
+WON'T FEEL SAFE IN MAKING INVESTMENTS OR TRANSFERRING
+PATENTS. SO AS YOU SUGGESTED WE WILL TRY THIS TIME
+TO COMPLETE INITIALLING OF THIS TRADE AGREEMENT. AS
+FOR THE CLAIMS/ASSETS AGREEMENT, IF YOUR EXPLANATIONS
+ARE CLEAR, WE SHOULD TRY TO GET THAT OUT OF THE WAY.
+WHEN IT COMES TO YOUR EXPLANATIONS, WE JUST NEED TO
+CLARIFY SOME THINGS AND GET THEM DOWN IN WRITING.
+HOWEVER, THERE ARE NO MAJOR PRINCIPLES INVOLVED.
+THE MATTER IS NOT BIG. WE'D ALREADY AGREED.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 02774 02 OF 05 101541Z
+
+KREPS: TRUE. THE MOMENTUM WHICH YOU AND PRESIDENT
+CARTER BEGAN CONTINUED THROUGH THE VISIT OF
+SECRETARY BLUMENTHAL. WE WOULD LIKE TO CONTINUE
+THAT MOMENTUM, FOR PRESIDENT CARTER TO BE ABLE TO
+RECOMMEND MFN FOR CHINA TO THE CONGRESS SO AS TO HAVE A
+FRAMEWORK WITHIN WHICH YOUR EXPORTS TO US AND
+OUR EXPORTS TO YOU CAN INCREASE.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+DENG: WHEN I WAS IN THE UNITED STATES, I MENTIONED
+THESE PROPSOECTS FOR EXTENSIVE DEVELOPMENT OF OUR
+TRADE. AS FAR AS THE VOLUME OF TRADE BETWEEN OUR
+COUNTRIES, SURELY IT WOULD NOT BE LESS THAN OUR
+TRADE WITH JAPAN. SINCE MY VISIT, THE TREND HAS
+DEVELOPED AS I THOUGHT. IF WE PROCEED TO NEGOTIATE
+ON A LINE BY LINE, INDUSTRY BY INDUSTRY BASIS, THE
+AMOUNT WE WILL NEED FROM YOU WILL NOT BE SMALL.
+NOW WE ARE ONLY DISCUSSING SMALL MATTERS OF
+DETAIL. IT SHOULDNOT BE DIFFICULT. YOU ARE
+RIGHT TO EMPHASIZE THE IMPORTANCE OFKEEPINGUP THE
+MOMENTUM. IF WE CAN SPEED UP THE PACE, IT WOULD BE
+EVEN BETTER. WHEN I WAS IN THE UNITED STATES, PEOPLE
+ASKED US TWO QUESTIONS; AND IT SEEMS THESE ARE STILL
+ON PEOPLE'S MINDS: FIRST, WHAT IS THE CONTINUITY OF
+OUR POLICY? SECONDLY, WHAT IS OUR ABILITY TO PAY FOR
+THE TECHNOLOGY WE IMPORT? IN A RECENT PERIOD WE
+HAVE UNDERTAKEN SOME READJUSTMENT OF OUR NATIONAL
+ECONOMIC PLANS, SO THERE HAS BEEN INTERNATIONAL
+SPECULATION ABOUT ITS MEANING. AS MINISTER LI HAS
+EXPLAINED TO YOU, OUR POLICY OF OPENING UP AND
+ABSORBING LARGE AMOUNTS OF FOREIGN CAPITAL AND
+TECHNOLOGY WILL NOT CHANGE BECAUSE IT IS VERY
+ADVANTAGEOUS TO OUR DEVELOPMENT. IN THE LAST 27
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 02774 02 OF 05 101541Z
+
+OR 28 YEARS, CONDITIONS WERE NOT RIGHT FOR SUCH
+A POLICY. NOW WHEN WE HAVE THE CONDITIONS, WHY ADOPT
+THIS POLICY? SO WHY HAVE WORRIES IN THIS RESPECT?
+THERE IS INTERNATIONAL SPECULATION THAT I MAKE
+THESE ECONOMIC POLICY. CHINA'S POLICIES ARE NOT
+MADE BY ME ALONE, BUT BY A COLLECTIVE GROUP. PERHAPS,
+IT SHOULD EVEN BE SAID THAT OURPOLICIES ARE NOT EVEN
+DETERMINED BY THE CENTRAL LEADERSHIP BUT REFLECT A
+BROAD NATIONAL CONSENSUS OF THE OLD, MIDDLE AGED
+AND YOUNG. BY READJUSTMENT WE MEAN THAT IN THE LAST
+DECADE OR SO, THE NATIONAL ECONOMY HAS BECOME
+UNBALANCED. FOR EXAMPLE, WE HAVE SHORTAGES OF ELECTRIC
+POWER; OUR TRANSPORTATION SYSTEM IS NOT SUFFICIENT
+AND OTHER SHORTAGES EXIST. IF THERE IS INSUFFICIENT
+ELECTRIC POWER AND NOT ENOUGH TRANSPORT, HOW CAN WE
+ABOSRB NEW FOREIGN TECHNOLOGY? FOR EXAMPLE, IN THE
+ENERGY FIELD, IF WE DON'T ADMUST THE RATIO BETWEEN
+THE PREPARATION OF NEW COAL MINE SURFACES AND
+THE EXTRACTION OF THE COAL, SE CAN'T CONTINUE. IN
+PETROLEUM YOU HAVE DATA ESTIMATING OUR RESERVES AND
+WE HAVE OUR ESTIMATES, BUT WHICH ARE THE DEPENDABLE
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+ONES? BUT WE DON'T HAVE ACCURATE FIGURES ON OUR
+RESOURCES YET. THIS REFLECTS BACKWARDNESS IN OUR
+SURVEY TECHNOLOGY. WE HOPE THE UNITED STATES WILL
+COOPERATE WELL WITH US IN THIS FIELD. WE WANT TO USE
+MORE THE METHOD OF COMPENSATORY TRADE. BY READJUSTMENT
+OF THE NATIONAL ECONOMY, WE MEAN THINGS LIKE THAT.
+OUR PURPOSE IN READJUSTMENT IS TO SPEED UP THE
+NATIONAL DEVELOPMENT. WE WNAT TO CREATE BETTER
+CONDITIONS TO ABSORB FOREIGN CAPITAL AND ADVANCED
+TECHNOLOGY. OF COURSE, ANOTHER EXAMPLE IS TRAINING
+PEOPLE TO MAKE USE OF THESE TECHNOLOGIES. WE HAVE
+A SHORTAGE OF TECHNICAL AND MANAGEMENT PERSONNEL.
+THESE ARE ALL A PART OF OUR NATIONAL READJUSTMENTS.
+FOR EXAMPLE, WE IMPORTED TECHNOLOGY FROM WEST
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 02774 02 OF 05 101541Z
+
+GERMANY FOR THE WUHAN IRON AND STEEL COMPLEX BUT
+WITHOUT ADEQUATE ELECTRICITY WE HAD PROBLEMS AT
+ONCE. SO READJUSTMENT APPLIES MAINLY TO QUESTIONS
+AT HOME. IT WON'T AFFECT OUR ABSORBING ON A
+LARGE-SCALE FOREIGN CAPITAL AND ADVANCED TECHNOLOGY.
+IF THERE ARE EFFECTS THEY WILL SHOW IN THIS WAY:
+PREVIOUSLY EACH INDUSTRY LINE WAS NEGOTIATIONG SEPARATELY
+TO ARRANGE ADVANCE TECHNOLOGY. NOW WE HAVE TO SET
+PRIORITIES ON WHICH WILL BE FIRST AND WHICH WILL BE
+LATER. ANOTHER ASPECT IS THAT EACH INDUSTRY WILL
+HAVE TO CONSIDER ITS ABILITY TO PAY FOR TECHNOLOGY.
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 02774 03 OF 05 101606Z
+ACTION EA-12
+INFO OCT-01 ADS-00 EB-08 STR-08 TRSE-00 OMB-01 SS-15
+SSO-00 SP-02 NSCE-00 CIAE-00 INR-10 NSAE-00
+INRE-00 CPR-02 L-03 IO-14 /076 W
+------------------126028 101647Z /50
+O 101355Z MAY 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMDIATE 5681
+USDOC WASHDC IMMEDIATE
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+C O N F I D E N T I A L SECTION 3 OF 5 BEIJING 2774
+WE DID NOT HAVE ENOUGH EXPERIENCE IN THIS REGARD.
+FOR EXAMPLE, THE WORLD KNOWS ABOUT OUR RECENT
+CONTROVERSY WITH JAPAN. THE REASON WAS OUR LACK OF
+EXPERIENCE IN IMPORTING EQUIPMENT FOR MAKING PETROCHEMICALS
+AND STEEL.
+WE WERE PAYING CASH SO IF WE DON'T CHANGE,
+OUR CREDIBILITY IS IN QUESTION. AS RATES
+OF INTEREST ARE HIGH WE HAD TO CHOOSE BETWEEN
+PAYMENT IN JAPANESE YEN OR U.S. DOLLARS.
+THIS MAY ALSO BE THE CASE IN NEGOTIATIONS WITH
+U.S. FIRMS. WE DO NOT HAVE ENOUGH EXPERIENCE IN
+MAKING THESE BUSINESS DEALS. SO I TOLD MANY U.S.
+AND JAPANESE FRIENDS THEY SHOULD SUGGEST HOW TO
+WORK OUT THESE DEALS WITH FINANCING. IF THE
+COMPENSATORY TRADE METHOD IS ADOPTED, IT WOULD EASE
+OUR ABILITY TO PAY. IF SOME COMPANIES WANT TO SET
+UP PLANTS IN CHINA, WE CAN AGREE. BUT WE NEED SOME
+LEGISLATION AND LAWS ON INVESTMENTS. IF COMPANIES
+ARE NOT ALLOWED TO REMIT PROFITS ABROAD, THEY WILL
+NOT DO IT(INVEST).
+KREPS: YES.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 02774 03 OF 05 101606Z
+
+DENG: IF THEY OPEN PLANTS HERE AND MANAGERS DON'T HAVE
+A SAY IN RUNNING THE PLANTS, THEY WON'T DO IT EITHER.
+FOR EXAMPLE, WITH REGARD TO THE RIGHT TO FIRE
+WORKERS, OF COURSE THEY MUST HAVE THE RIGHT.
+IN THE PAST, WE HAD NO LAWS REGULATING THESE
+MATTERS SO FOREIGN INVESTORS WERE NOT AT EASE. WITHOUT
+THSE LAWS, WE WILL HAVE NO INVESTMENT.
+IN FOREIGN TRADE, FIRST WE HAVE TO SOLVE THE
+QUESTION OF MFN. NEXT THERE IS THE QUESTION OF
+QUOTAS FOR CHINESE COMMODITIES IN THE U.S. MARKET.
+
+IN SOKO-U.S. RELATIONS, IF WE IMPORT U.S. TECHNOLOGY
+AND CAPITAL AND WE HAVE DIFFICULTY SELLING CHINESE
+GOODS IN YOUR MARKET, WE WOULD HAVE INSUFFICIENT
+ABILITY TO PAY WHICH WOULD BE MANIFEST ITSELF IN
+OUR LIMITED VOLUME OF TRADE.
+KREPS: I WANT TO COME BACK TO THE QUESTION OF ABILITY TO
+PAY. I AM VERY INTERESTED IN YOUR DISCUSSION OF
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+MANAGEMENT PROBLEMS. WE ARE PREPARED TO BE
+COOPERATIVE. HOW WILL YOU PLAN TO TRAIN MANAGERS?
+THE COMPLEX PROCESS OF ECONOMIC DEVELOPMENT REQUIRES
+GREAT MANAGEMENT SKILLS. WE BROUGHT A GROUP OF
+MANAGEMENT EXPERTS WHO ARE ABLE TO RESPOND EXACTLY TO
+THESE TYPES OF QUESTIONS.
+ON THE QUESTION OF JOINT VENTURES, HOW WILL
+YOU DECIDE WHAT KIND OF JOINT VENTURES LAWS ARE BEST
+SUITED FOR CHINA? WITH REGARD TO COMPENSATORY
+TRADE, THIS IS A MATTER BETWEEN YOUR GOVERNMENT AND
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 02774 03 OF 05 101606Z
+
+OUR PRIVATE FIRMS. WE AS A GOVERNMENT DO NOT
+STAND IN OPPOSITION TO THESE ARRANGEMENTS. BUT THE
+MATTER IS MORE COMPLICATED SINCE IT IS WORKED OUT
+WITH PRIVATE FIRMS. UNDER SECRETARY COOPER MAY WANT
+TO ADD TO THIS.
+COOPER: FIRST WITH REGARD TO ABILITY TO PAY, THE
+CONCEPT OF COMPENSATORY TRADE ARISES IN THE CONTEXT
+OF ANXIETIES ABOUT ABILITY TO PAY. YOU ARE RIGHT
+THAT WE HAVE MANY LAWS. OUR LEGISLATIVE SYSTEM MUST
+SEEM VERY COMPLEX TO FOREIGNERS. IN ACTUAL FACT, OVER
+THE PAST 25 YEARS, DESPITE ITS MANY LAWS, AND
+REGULATIONS THE U.S. HAS MAINTAINED A LARGE OPEN MARKET TO
+PRODUCTS OF MANY COUNTRIES. MANY COUNTRIES WHICH 20
+YEARS AGO WERE AT A STAGE OF DEVELOPMENT SIMILAR TO
+CHINA'S TODAY, IMPROVED THEIR ECONOMIES' PROSPERITY
+ENORMOUSLY, LARGELY BY EXPORTING TO THE UNITED
+STATES. IMPORTS OF MANUFACTURES TO THE U.S. FROM
+DEVELOPING COUNTRIES GREW AT A COMPOUND ANNUAL RATE
+OF 16 PERCENT IN THE 1960'S AND 1970'S. THIS IS AN
+ENORMOUS RATE OF GROWTH. THIS HISTORY ISMEANT TO
+ILLUSTRATE THE FACT THAT OUR APPARENT IMPEDIMENTS ARE
+NOT SO GREAT IN REALITY. WHEN WE TRY TO NEGOTIATE
+QUOTAS, AS IN THE CASE OF TEXTILES WITH THE PRC,
+THIS DOES NOT SIGNAL A CHANGE IN OUR SYSTEM OF
+OPENNESS BUT RATHER AN EFFORT TO PRESERVE OUR SYSTEM
+OFOPENNESS. THIS MAY SEEM LIKE A PARADOX, BUT OUR
+ECONOMY LIKE YOURS HAS PROBLEMS OF ADJUSTMENT.
+ADJUTMENT CAN OLY TAKE PLACE SO RAPIDLY. WHEN
+THE PACE IS TOO GREAT, WE TRY TO INTERPOSE RESTRAINTS.
+THIS IS THE PRICE WE HAVE TO PAY TO KEEP AN OPEN
+SYSTEM. IN THE DISCUSSIONS OF DETAILSSO THE TEXTILE
+AGREEMENTS I HOPE YOU CAN APPRECIATE THIS HISTORIC
+BACKGROUND AGAINST WHICH THESE DETAILS SHOULD BE
+CONSIDERED.
+CONFIDENTIAL
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 02774 03 OF 05 101606Z
+
+NOW TO THE QUESTION OF COMPENSATORY TRADE. BECAUSE
+OF OUR OPEN SYSTEM, WE THINK THAT IS NOT NECESSARY.
+OTHER COUNTRIES EARN MONEY EXPORTING TO THE
+UNITED STATES AND CAN SPEND IT WHEREVER THEY WANT.
+THAT SYSTEM, ON BALANCE, WE THINK, WORKS BEST, BUT
+WE REMAIN OPEN-MINDED. WHENEVER A PARTICULAR BUYER
+OR SELLER FINDS IT MUTUALLY ADVANTAGEOUS, WE HAVE NO
+OBJECTION. SO IF IN DISCUSSIONS WITH PARTICULAR
+U.S. FIRMS YOU CAN FIND A COMPENSATORY ARRANGEMENT
+ATTRACTIVE, THE USG HAS NO OBJECTION.
+DENG: IN THE FIELD OF OIL, WE HAVE DESIGNATED SEA AREAS
+WHERE WE WILL ALLOW U.S. FIRMS TO EXPLORE, WHEN THEY
+FIND OIL, WE WILL REPAY THEM IN OIL. DOES THIS FALL
+WITHIN THE SCOPE OF COMPENSATORY TRADE?
+COOPER: MANY OIL COMPANIES HAVE THIS ARRANGEMENT ELSEWHERE
+IN THE WORLD. I THINK YOU WOULD FIND IT EASY TO
+NEGOTIATE WITH THEM.
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 02774 04 OF 05 101617Z
+ACTION EA-12
+INFO OCT-01 ADS-00 EB-08 STR-08 TRSE-00 OMB-01 SS-15
+SSO-00 SP-02 NSCE-00 CIAE-00 INR-10 NSAE-00
+INRE-00 CPR-02 L-03 IO-14 /076 W
+------------------126119 101647Z /50
+O 101355Z MAY 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 5682
+USDOC WASHDC IMMEDIATE
+C O N F I D E N T I A L SECTION 4 OF 5 BEIJING 2774
+DENG: IS THIS CALLED COMPENSATORY TRADE?
+COOPER: WELL, THIS IS A QUESTION OF SEMANTICS.
+(LAUGHTER)
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+KREPS: IT IS ALL RIGHT WITH US IF YOU WISH TO CALL
+IT THAT.
+COOPER: YOU WOULD FIND IT MORE DIFFICULT IF IN EXCHANGE
+FOR EXPLORATION SERVICES YOU TRIED TO EXCHANGE
+BUTTONS WITH THESE FIRMS INSTEAD OF OIL. (LAUGHTER)
+DENG: WE ARE WILLING TO LET U.S. FIRMS EXPLORE
+NOT JUST IN SEA AREAS BUT WE CAN ALSO DESIGNATE
+LAND AREAS FOR THEM TO EXPLORE. WE CAN ALSO
+CONSIDER JOINT VENTURES. FOR EXAMPLE, GM IS NOW
+NEGOTIATING WITH US. THE VEHICLES PRODUCED WOULD
+BE EXPORTED AND SOLD THROUGH ORIGINAL GM CHANNELS
+INTERNATIONALLY AND THIS WILL IMPROVE OUR ABILITY
+TO PAY. WITH REGARD TO NON-FERROUS METALS AND RARE
+METALS (SIC? PROBABLY RARE EARTHS) THERE IS MUCH SCOPE FOR
+COOPERATION.
+IN THESE CASES ALSO WE MUST PAY WITH THE PRODUCTS PRODUCED.
+IN ALL THESE CASES PAYMENT WILL BE DELAYED FOR SEVERAL
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 02774 04 OF 05 101617Z
+
+YEARS BECAUSE IT TAKES SEVERAL YEARS TO GET THESE
+PRODUCTS. BUT FOR THE SHORT TERM OF THREE TO FIVE
+YEARS, WHILE ABSORBING ADVANCED TECHNOLOGY AND
+CAPITAL, OUR ABILITY TO PAY IS THROUGH EXPORTS OF
+LIGHT INDUSTRIAL PRODUCTS: HANDICRAFTS, NATIVE PRODUCTS,
+TEXTILES, AND MAYBE MINERALS. IT IS IN THAT
+FIELD THAT QUOTAS ARE A PROBLEM.
+COOPER: EXPERIENCES OF EACH INDUSTRY DIFFER BECAUSE EACH
+HAS A DIFFERENT CHARACTER. GENERALLY SPEAKING, OIL
+AND NON-FERROUS INDUSTRIES HAVE MUCH EXPERIENCE
+WITH THE KIND OF TIME PATTERN YOU DESCRIBE AND ARE
+USED TO MAKING INVESTMENTS OF THREE, FIVE OR
+EVEN EIGHT YEARS BEFORE ANY PRODUCTION EMERGES.
+THERE THE IMPORTANT THING IS A FRAMEWORK FOR
+INVESTMENT TO ASSURE THAT WHEN THE INVESTMENT COMES
+ON LINE THEY CAN GET THEIR SHARE OF THE PRODUCT.
+SO YOU MAY FIND THE PROBLEM OF PAYMENT BEFORE
+PRODUCTION IS NOT A SERIOUS ISSUE FOR SUCH FIRMS.
+BUT EACH FIRM HAS ITS OWN POLICY, AND THERE
+MAY BE DIFFERENCES AMONG THEM.
+KREPS: YOU WILL HAVE NO PROBLEM WITH OIL COMPANIES.
+DENG: WITH OTHER INDUSTRIES, THIS IS NOT
+NECESSARILY THE CASE?
+KREPS: YES, OTHERS ALSO. I SINGLE OUT OIL COMPANIES
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+BECAUSE THEY ARE PARTICULARLY USED TO MAKING LONG
+TERM INVESTMENTS. BUT OTHERS, FOR EXAMPLE STEEL,
+ARE ALSO WILLING.
+COOPER: IF THE FIRM IS OFFERING EXPLORATION SERVICES ONLY,
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 02774 04 OF 05 101617Z
+
+THEY MAY INSIST BEING PAID IN CASH RIGHT AWAY.
+IF THERE IS A JOINT VENTURE WITH A PRODUCTION
+SHARING PLAN, THE FIRMS WILL WAIT.
+DENG: ANOTHER QUESTION: ON OUR SIDE NEGOTIATIONS ARE
+UNDERTAKEN BY DIFFERENT GOVERNMENT DEPARTMENTS. ON
+YOUR SIDE, WHAT SHOULD WE BE ON THE LOOKOUT FOR IN
+NEGOTIATIONS BY THE GOVERNMENT AND YOUR FIRMS?
+KREPS: WHAT DO YOU HAVE IN MIND?
+DENG: DOES THE GOVERNMENT HAVE NO HAND IN
+THE NEGOTIATIONS OR DOES IT INTERFERE IN SOME AREAS?
+KREPS: WITHIN THE LEGAL FRAMEWORK OF LAWS WHICH REGULATE
+BUSINESS ACTIVITY, THERE ARE SOME THINGS OUR
+FIRMS CAN'T DO IN INTERNATIONAL INVESTMENTS. BUT IF OUR
+FIRMS ARE BEHAVING LEGALLY, THEN OUR GOVERNMENT
+WOULD NOT TAKE A POSITION ON CONTRACTS OF PRIVATE
+FIRMS. YOU SHOULDN'T FEAR THAT THE LACK OF CLOSE
+GOVERNMENT SUPERVISION ALLOWS FIRMS TO ACT
+QUESTIONABLYBECAUSE OUR LAWS ARE VERY EXPLICIT
+WITH REGARD TO WHAT FIRMS CAN AND CANNOT DO
+--MUCH MORE SO THAN OUR FIRMS WOULD LIKE.
+WE FIND IT VERY EFFICIENT TO ALLOW OUR FIRMS THE
+FREEDOM TO NEGOTIATE THEIR CONTRACTS WITH OTHER COMPANIES
+AND GOVERNMENTS AND WE ENCOURAGE THIS. NATURALLY, IN
+ADDITION TO OUR LAWS, THE FRAMEWORK WITHIN WHICH
+TRADE AND INVESTMENT OCCUR IS THE TRADE AGREEMENT
+ITSELF. FINALLY, KEEP IN MIND THAT COMPETITION OF
+OUR FIRMS AND FOREIGN FIRMS TO DO BUSINESS WITH
+CHINA WILL GURANTEE YOU THE BEST POSSIBLE SERVICE
+AT THE LOWEST PRICE.
+COOPER: IN ANSWER TO YOUR QUESTION, IN TWO AREAS THE
+GOVERNMENT IS MOST DIRECTLY INVOLVED IN WHAT
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 02774 04 OF 05 101617Z
+
+OTHERWISE WOULD BE PRIVATE TRANSACTIONS. THE FIRST
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+IS TAXATION. OUR GOVERNMENT TAXES PROFITS OF
+FIRMS WHERE THEY ARE EARNED. BUT WE HAVE RULES
+FOR CREDITING TAXES PAID TO FOREIGN GOVERNMENTS. I AM
+SURE OUR OIL FIRMS WILL RAISE WITH YOUR GOVERNMENT
+QUESTIONS OF TAXATION IN YOUR NEGOTIATIONS. WE TRY TO
+HAVE RULES AS CLEAR AS POSSIBLE BUT OUR LAWS DON'T COVER
+EVERY SITUATION SO NEW QUESTIONS WILL ARISE. THE SECOND
+AREA IS OUR LICENSING REQUIREMENTS ON CERTAIN TYPES OF
+EXPORTS. TO EXPORT SUCH GOODS FIRMS MUST APPLY TO THE
+USG FOR PERMISSION TO EXPORT. BUT AS A GENERAL PROPOSITION,
+FIRMS ARE FREE TO NEGOTIATE THEIR OWN ARRANGEMENTS.
+DENG: I AM INTERESTED IN THE SUBJECT OF PATENTS. DOES
+THE UNITED STATES GOVERNMENT INTERFERE MORE IN THIS
+AREA?
+KREPS: WE HAVE PATENT LAWS DESIGNED TO PROTECT THE
+OWNER. THEY PROVIDE THAT FOR A PERIOD OF TIME THE
+OWNER HAS EXCLUSIVE RIGHT TO THE USE OF THE PATENT
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 02774 05 OF 05 101622Z
+ACTION EA-12
+INFO OCT-01 ADS-00 EB-08 STR-08 TRSE-00 OMB-01 SS-15
+SSO-00 SP-02 NSCE-00 CIAE-00 INR-10 NSAE-00
+INRE-00 CPR-02 L-03 IO-14 /076 W
+------------------126168 101648Z /50
+O 101355Z MAY 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 5683
+USDOC WASHDC IMMEDIATE
+C O N F I D E N T I A L SECTION 5 OF 5 BEIJING 2774
+I BELIEVE IN YOUR CASE YOU ARE CONSIDERING OBSERVING THE
+INTERNATIONAL PATENT CONVENTION, WHICH IS ACCEPTABLE
+TO THE UNITED STATES GOVERNMENT.
+DENG: YES
+COOPER: THE PATENT ISSUE OF CONCERN TO AMERICAN
+FIRMS IS THAT SPECIALIZED &quot;KNOW-HOW&quot; DEVELOPED AT
+THEIR EXPENSE COULD BE TAKEN AND USED WITHOUT PAYMENT.
+OUR LAWS AND THE INTERNATIONAL PATENT CONVENTION
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+ARE DESIGNED TO PROTECTTHAT RIGHT. WE UNDERSTAND
+FROM MINISTER LI THAT THIS IS NOT A PROBLEM SINCE
+YOU PAY FOR PATENTS.
+DENG: THAT IS TRUE. I AM CONCERNED SINCE I HAVE SOME
+PERSONAL EXPERIENCE IN COMPUTERS. IN 1975 WE
+NEGOTIATED AN AGREEMENT WITH AU.S. FIRM TO IMPORT A
+COMPUTER WITH A CAPACITY OF TEN MILLION OPERATIONS
+PER SECOND. THE FIRM AGREED TO SELLBUT THE U.S.
+GOVERNMENT INDICATED IT HAD TO BE A GOVERNMENT-TOGOVERNMENT ARRANGEMENT. I FEEL THIS PROBLEM WILL
+OCCUR AGAIN AND AGAIN, NOT ONLY WITH THE UNITED STATES
+BUT WITH JAPAN AND WESTERN EUROPE IF THE ITEM
+CONCERNED IS A U.S. PRODUCT. I FEEL WE SHOULD
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 02774 05 OF 05 101622Z
+
+NOT ONLY MAINTAIN THE MOMENTUM BUT SHOULD ACCELERATE THE
+DEVELOPMENT OF OUR ECONOMIC TIES. I BRING THIS UP
+BECAUSE I FEAR THIS PROBLEM WILL RECUR.
+COOPER: I DON'T KNOW THE PARTICULAR CASE, BUT I EXPECT
+IT IS NOT A QUESTION OF PATENTS, BUT OF CONTROLS
+WHICH THE USG PUTS ON EXPORTS OF HIGHLY SOPHISTICATED
+EQUIPMENT, OUT OF CONCERN FOR OUR NATIONAL SECURITY.
+SOME VERY HIGH-SPEED COMPUTERS CAN BE USED FOR
+TESTING AND DEVELOPMENT OF ADVANCED WEAPONS. THIS IS OF
+CONCERN TO US. BUT, LIKE YOU, WE WANT TO MAINTAIN
+MOMENTUM. WE ASK RECEIVING COUNTRIES FOR A STATEMENT
+AS TO HOW A CONTROLLED PRODUCT WOULD BE USED. IF WE
+GET A SATISFACTORY END USE STATEMENT AND HAVE A
+PROCESS FOR VERIFICATION THEN WE GO AHEAD AND MAKE THE
+SALE.
+DENG: (TO COOPER) ARE YOU IN CHARGE OF THIS PROGRAM?
+COOPER: NO. I AM INCHARGE OF TRYING TO SMOOTH OVER
+THE DIFFICULTIES THAT ARISE WITH THIS PROGRAM
+(LAUGHTER)
+DENG: IN OVERCOMING THESE DIFFICULTIES, THERE ARE
+FAVORABLE AND UNFAVORABLE WAYS. IN THE CASE OF CHINA,
+PLEASE TRY TO USE THE FAVORABLE WAYS. AND THE
+SECRETARY OF COMMERCE, TOO.
+KREPS: THESE CONTROLS ARE CARRIED OUT IN OUR DEPARTMENT,
+THOUGH I WISH THEY BELONGED TO UNDER SECRETARY COOPER
+(LAUGHTER).
+DENG: WE SHOULD TRY TO SOLVE THIS PROBLEM IN LIGHT OF
+CONFIDENTIAL
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 02774 05 OF 05 101622Z
+
+THE POLITCAL SITUATION. OUR RELATIONS WITH THE
+UNITED STATES ARE NOW FAVORABLE NOT ONLY BECAUSE
+YOUR PRODUCTS ARE MORE COMPETITIVE BUT ALSO FROM THE
+POLITICAL ANGLE. YOU SHOULD BE MORE HELPFUL. THIS
+INCLUDES SUGGESTIONS ON THINGS WHICH WE DON'T
+UNDERSTAND. LAWS CAN BE INTERPRETED THIS WAY AND
+THAT. OTHERWISE LAWYERS WOULD BE UNEMPLOYED.
+(LAUGHTER; APPLAUSE ON THE U.S. SIDE). SOME LAWYERS
+CITE THIS CLAUSE AND WIN THEIR CASE, AND OTHER LAWYERS
+CITE THAT ANOTHER CLAUSE AND LOSE THEIR CASE. AS TO THE
+SPECIFIC AGREEMENTS, WITH REGARD TO THE TRADE AGREEMENT,
+WE HAD BETTER FINISH INITIALLING AS THAT WOULD LEAD
+TO EARLY SETTLEMENT OF MFN. WE HOPE THAT SECRETARY KREPS
+WILL BE MORE HELPFUL IN THE ALLOCATION OF QUOTAS.
+WITH REGARD TO THE CLAIMS/ASSETS AGREEMENT, WE
+WILLL SETTLE IT THIS TIME AND NOT LET IT DRAG ON.
+KREPS: WE ARE DELIGHTED TO HEAR BOTH COMMENTS. I ASSURE
+YOU THAT THE DEPARTMENT OF COMMERCE WILL COOPERATE
+FULLY. IT IS IN YOUR INTEREST AND OURS TO PROMOTE
+A BETTER FLOW OF TRADE BETWEEN OUR COUNTRIES. I
+WOULD BE MOST HAPPY IF WE HAVE YOUR APPROVAL AND PRESIDENT
+CARTER'S TO CONCLUDE BOTH AGREEMENTS WHILE I AM
+HERE.
+DENG: THANK YOU. THANK YOU.
+END TEXT.
+ROY
+
+CONFIDENTIAL
+
+NNN
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014</div></div><br /></div></div><div class="pane-tab"><div class="pane-header">Raw content</div><div class="pane-content"><div class="text-content">CONFIDENTIAL
+PAGE 01
+BEIJIN 02774 01 OF 05 101556Z
+ACTION EA-12
+INFO OCT-01 ADS-00 EB-08 STR-08 TRSE-00 OMB-01 SS-15
+SSO-00 SP-02 NSCE-00 CIAE-00 INR-10 NSAE-00
+INRE-00 CPR-02 L-03 IO-14 /076 W
+------------------125911 101645Z /50
+O 101355Z MAY 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 5679
+USDOC WASHDC IMMEDIATE
+C O N F I D E N T I A L SECTION 1 OF 5 BEIJING 2774
+E.O. 12065: GDS 5/10/85 (ROY, J.STAPLETON) OR-M
+TAGS: ETRD OVIP (KREPS, JUANITA) CH
+SUBJECT: SECRETARY KREPS' MEETING WITH VICE PREMIER DENG XIAOPING
+1. (C - ENTIRE TEXT)
+2. FOLLOWING IS TEXT OF MAY 10, 1979 MEETING BETWEEN SECRETARY KREPS
+ACCOMPANIED BY CHARGE ROY, COOPER, HASLAM AND OTHER
+MEMBERS OF PARTY AND DENG XIAOPING ACCOMPANIED BY LI
+QIANG, MINISTER OF FOREIGN TRADE; JIANG MING, VICE
+MINISTER, STATE SCIENTIFIC AND TECHNOLOGICAL COMMISSION;
+CHEN JIE, VICE MINISTER OF FOREIGN TRADE AND OTHER
+CHINESE OFFICIALS.
+3. BEGIN TEXT:
+DENG: WELCOME*
+KREIC: I REMEMBER YOUR VISIT TO THE UNITED STATES WITH
+GREAT PLEASURE.8
+$3,&amp;: YES, THANK YOU FOR ACCOMPANING ME ON OUR VISIT
+TO ATLANTA.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 02774 01 OF 05 101556Z
+
+KREPS: WHAT DID YOU THINK OF THE AUTOMOBILE ASSEMBLY
+PLANT YOU SAW?
+DENG: THE THINGS I SAW WERE ALL VERY NICE.
+KREPS: MR. FORD HAS NOW RESIGNED. HE ISN'T MANAGER
+OF THE COMPANY ANYMORE.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+DENG: BUT THE PLANT STILL BELONGS TO THE FORD FAMILY.
+KREPS: AND MANY OTHERS.
+DENG: IS HE THE THIRD FORD TO HEAD THE COMPANY?
+KREPS: YES.
+DENG: THERE WILL BE MANY MORE GENERATIONS OF FORDS. I
+THANK THEM FOR THEIR WARM RECEPTION. I BECAME AN
+ASTRONAUT FOR A WHILE IN THE U.S.
+KREPS: YES. I SAW YOU IN HOUSTON.
+DENG: HOW SHALL I REFER TO YOU: AS MADAME, SECRETARY
+OR EXCELLECNCY? PLEASE MAKE A SUGGESTION.
+KREPS: DO YOU EVER IN CHINA USE FIRST NAMES?
+DENG: WE DON'T CONSIDER IT POLITE.
+KREPS: I HAD VISIONS OF REHEARSING YOU IN HOW TO
+PRONOUNCE MY FIRST NAME &quot;JUANITA.&quot; (LAUGHTER)
+DENG: JUANITA, JUANITA, OK, I'LL CALL YOU THAT (LAUGHTER).
+IS PRESIDENT CARTER WELL?
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 02774 01 OF 05 101556Z
+
+KREPS: YES, HE IS WELL. HE WANTED US ALL TO CARRY HIS WARM
+REGARDS AND TO SAY HOW MUCH HE ENJOYED YOUR VISIT.
+DENG: THE VISIT NOT ONLY STRENGTHENED THE RELATIONS
+BETWEEN OUR TWO COUNTRIES, BUT WE ALSO BUILT A
+PERSONAL FRIENDSHIP. PLEASE CONVEY MY SINCERE
+GREETINGS ON YOUR RETURN.
+KREPS: THANK YOU. THE PRESIDENT ALSO ASKED ME TO
+EXTEND HIS SINCERE WISHES TO PREMIER HUA.
+DENG: I WOULD ASK YOU TO CONVEY PREMIER HUA'S REGARDS TO
+PRESIDENT CARTER AND VICE PRESIDENT MONDALE. HOW
+HAVE YOUR DISCUSSIONS BEEN?
+KREPS: WE THINK WE HAVE MADE A GOOD DEAL OF PROGRESS.
+WE CAME HERETO DISCUSS SEVERAL SPECIFIC ISSUES. WE
+PARTICULARLY WANTED TO MAKE PROGRESS ON THREE
+SPECIFIC AGREEMENTS YOU AND PRESIDENT CARTER DISCUSSED.
+THESE WERE A TRADE AGREEMENT, A SHIPPING AGREEMENT,
+AN AVIATION AGREEMENT.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+I AM PLEASED THAT THESE TALKS ARE PROGRESSING,
+ESPECIALLY IN THE AREA OF THE TRADE AGREEMENT, THANKS
+TO THE WORK OF MY GOOD FRIEND MINISTER KI QIANG.
+I WOULD BE LESS THAN CANDID, HOWEVER, IF I DIDN'T
+ADMIT THAT THESE ISSUES ARE VERY DIFFICULT. ANY
+ASSISTANCE YOU CAN PROVIDE WOULD BE MOST APPRECIATED.
+I HOPE I COULD INITIAL A TRADE AGREEMENT
+WHILE I AM HERE. TIME IS SHORT, BUT I AM LEAVING
+MY NEGOTIATORS BEHIND IN BEIJING WHILE I GO TO OTHER
+CITIES DURING THE NEXT FOUR DAYS IN THE HOPE THAT
+AGREEMENT CAN BE REACHED FOR ME TO INITIAL PRIOR TO
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 02774 01 OF 05 101556Z
+
+MY LEAVING CHINA.
+PRESIDENT CARTER DID CONFIRM TOME THAT HE IS
+PREPARED TO RECOMMEND TO CONGRESS TO APPROVE MFN
+FOR CHINA WHEN AGREEMENT IS REACHED.
+IT IS ALSO MY HOPE THAT BEFORE I LEAVE BEIJING,
+I CANSIGN THE CLAIMS/ASSETS AGREEMENT. WE MET WITH
+THE MINISTER OF FINANCE. HE ASKED FOR ADDITIONAL
+INFORMATION. I CABLED WASHINGTON. YESTERDAY I WAS
+ABLE TO PROVIDE THAT INFORMATION, AND I BELIEVE WE HAVE
+MET ALL YOUR GOVERNMENT'S CONCERNS. I BELIEVE WE
+SHOULD AGREE TO SIGN THE AGREEMENT AND TAKE NOW THIS
+IMPORTANT FIRST STEP THAT YOU AND PRESIDENT
+CARTER DISCUSSED EARLIER.
+DENG: WE DO NOT HAVE ANY BIG PROBLEMS WITH THAT
+AGREEMENT.
+HAN: THE MINISTRY OF FINANCE IS STUDYING THE QUESTION
+WITH THE BANK OF CHINA.
+DENG: THE PRINCIPLES FOR SETTLING WERE ALREADY AGREED
+ON IN WASHINGTON. THESE ALL INVOLVE DETAILS. YOU
+HAVE VERY COMPLICATED LAWS WHICH WE DON'T UNDERSTAND.
+THE UNITED STATES TOPS THE WHOLE WORLD IN THE
+
+CONFIDENTIAL
+
+NNN
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+CONFIDENTIAL
+PAGE 01
+BEIJIN 02774 02 OF 05 101541Z
+ACTION EA-12
+INFO OCT-01 ADS-00 EB-08 STR-08 TRSE-00 OMB-01 SS-15
+SSO-00 SP-02 NSCE-00 CIAE-00 INR-10 NSAE-00
+INRE-00 CPR-02 L-03 IO-14 /076 W
+------------------125730 101646Z /50
+O 101355Z MAY 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WSHDC IMMEDIATE 5680
+USDOC WASHDC IMMEDIATE
+C O N F I D E N T I AL SECTION 2 OF 5 BEIJING 2774
+NUMBER OF LAWS IT HAS. BECAUSE WE DON'T UNDERSTAND
+THESE LAWS, OUR PEOPLE HANDLING THESE PROBLEMS ARE
+CONCERNED NOT TO BE TAKEN ADVANTAGE OF.
+KREPS: RIGHTLY SO. AS I EXPLAINED TO MINISTER
+LI, YOU HAVE MORE PEOPLE AND WE HAVE MORE LAWS.
+(LAUGHTER).
+DENG: I HOPE THAT YOU PRESENT HERE WILL TELL OUR
+AMERICAN FRIENDS IN AGREEMENTS AFTER THIS TO MAKE
+THINGS CLEAR TO US AND HELP US TO KNOW ABOUT THESE
+THINGS. WE, ON OUR PART, INTEND TO PASS SOME
+LEGISLATION, FOR EXAMPLE, INVESTMENT AND PATENT LAWS.
+WITHOUT THIS LEGISLATION, INVESTORS AND INVENTORS
+WON'T FEEL SAFE IN MAKING INVESTMENTS OR TRANSFERRING
+PATENTS. SO AS YOU SUGGESTED WE WILL TRY THIS TIME
+TO COMPLETE INITIALLING OF THIS TRADE AGREEMENT. AS
+FOR THE CLAIMS/ASSETS AGREEMENT, IF YOUR EXPLANATIONS
+ARE CLEAR, WE SHOULD TRY TO GET THAT OUT OF THE WAY.
+WHEN IT COMES TO YOUR EXPLANATIONS, WE JUST NEED TO
+CLARIFY SOME THINGS AND GET THEM DOWN IN WRITING.
+HOWEVER, THERE ARE NO MAJOR PRINCIPLES INVOLVED.
+THE MATTER IS NOT BIG. WE'D ALREADY AGREED.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 02774 02 OF 05 101541Z
+
+KREPS: TRUE. THE MOMENTUM WHICH YOU AND PRESIDENT
+CARTER BEGAN CONTINUED THROUGH THE VISIT OF
+SECRETARY BLUMENTHAL. WE WOULD LIKE TO CONTINUE
+THAT MOMENTUM, FOR PRESIDENT CARTER TO BE ABLE TO
+RECOMMEND MFN FOR CHINA TO THE CONGRESS SO AS TO HAVE A
+FRAMEWORK WITHIN WHICH YOUR EXPORTS TO US AND
+OUR EXPORTS TO YOU CAN INCREASE.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+DENG: WHEN I WAS IN THE UNITED STATES, I MENTIONED
+THESE PROPSOECTS FOR EXTENSIVE DEVELOPMENT OF OUR
+TRADE. AS FAR AS THE VOLUME OF TRADE BETWEEN OUR
+COUNTRIES, SURELY IT WOULD NOT BE LESS THAN OUR
+TRADE WITH JAPAN. SINCE MY VISIT, THE TREND HAS
+DEVELOPED AS I THOUGHT. IF WE PROCEED TO NEGOTIATE
+ON A LINE BY LINE, INDUSTRY BY INDUSTRY BASIS, THE
+AMOUNT WE WILL NEED FROM YOU WILL NOT BE SMALL.
+NOW WE ARE ONLY DISCUSSING SMALL MATTERS OF
+DETAIL. IT SHOULDNOT BE DIFFICULT. YOU ARE
+RIGHT TO EMPHASIZE THE IMPORTANCE OFKEEPINGUP THE
+MOMENTUM. IF WE CAN SPEED UP THE PACE, IT WOULD BE
+EVEN BETTER. WHEN I WAS IN THE UNITED STATES, PEOPLE
+ASKED US TWO QUESTIONS; AND IT SEEMS THESE ARE STILL
+ON PEOPLE'S MINDS: FIRST, WHAT IS THE CONTINUITY OF
+OUR POLICY? SECONDLY, WHAT IS OUR ABILITY TO PAY FOR
+THE TECHNOLOGY WE IMPORT? IN A RECENT PERIOD WE
+HAVE UNDERTAKEN SOME READJUSTMENT OF OUR NATIONAL
+ECONOMIC PLANS, SO THERE HAS BEEN INTERNATIONAL
+SPECULATION ABOUT ITS MEANING. AS MINISTER LI HAS
+EXPLAINED TO YOU, OUR POLICY OF OPENING UP AND
+ABSORBING LARGE AMOUNTS OF FOREIGN CAPITAL AND
+TECHNOLOGY WILL NOT CHANGE BECAUSE IT IS VERY
+ADVANTAGEOUS TO OUR DEVELOPMENT. IN THE LAST 27
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 02774 02 OF 05 101541Z
+
+OR 28 YEARS, CONDITIONS WERE NOT RIGHT FOR SUCH
+A POLICY. NOW WHEN WE HAVE THE CONDITIONS, WHY ADOPT
+THIS POLICY? SO WHY HAVE WORRIES IN THIS RESPECT?
+THERE IS INTERNATIONAL SPECULATION THAT I MAKE
+THESE ECONOMIC POLICY. CHINA'S POLICIES ARE NOT
+MADE BY ME ALONE, BUT BY A COLLECTIVE GROUP. PERHAPS,
+IT SHOULD EVEN BE SAID THAT OURPOLICIES ARE NOT EVEN
+DETERMINED BY THE CENTRAL LEADERSHIP BUT REFLECT A
+BROAD NATIONAL CONSENSUS OF THE OLD, MIDDLE AGED
+AND YOUNG. BY READJUSTMENT WE MEAN THAT IN THE LAST
+DECADE OR SO, THE NATIONAL ECONOMY HAS BECOME
+UNBALANCED. FOR EXAMPLE, WE HAVE SHORTAGES OF ELECTRIC
+POWER; OUR TRANSPORTATION SYSTEM IS NOT SUFFICIENT
+AND OTHER SHORTAGES EXIST. IF THERE IS INSUFFICIENT
+ELECTRIC POWER AND NOT ENOUGH TRANSPORT, HOW CAN WE
+ABOSRB NEW FOREIGN TECHNOLOGY? FOR EXAMPLE, IN THE
+ENERGY FIELD, IF WE DON'T ADMUST THE RATIO BETWEEN
+THE PREPARATION OF NEW COAL MINE SURFACES AND
+THE EXTRACTION OF THE COAL, SE CAN'T CONTINUE. IN
+PETROLEUM YOU HAVE DATA ESTIMATING OUR RESERVES AND
+WE HAVE OUR ESTIMATES, BUT WHICH ARE THE DEPENDABLE
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+ONES? BUT WE DON'T HAVE ACCURATE FIGURES ON OUR
+RESOURCES YET. THIS REFLECTS BACKWARDNESS IN OUR
+SURVEY TECHNOLOGY. WE HOPE THE UNITED STATES WILL
+COOPERATE WELL WITH US IN THIS FIELD. WE WANT TO USE
+MORE THE METHOD OF COMPENSATORY TRADE. BY READJUSTMENT
+OF THE NATIONAL ECONOMY, WE MEAN THINGS LIKE THAT.
+OUR PURPOSE IN READJUSTMENT IS TO SPEED UP THE
+NATIONAL DEVELOPMENT. WE WNAT TO CREATE BETTER
+CONDITIONS TO ABSORB FOREIGN CAPITAL AND ADVANCED
+TECHNOLOGY. OF COURSE, ANOTHER EXAMPLE IS TRAINING
+PEOPLE TO MAKE USE OF THESE TECHNOLOGIES. WE HAVE
+A SHORTAGE OF TECHNICAL AND MANAGEMENT PERSONNEL.
+THESE ARE ALL A PART OF OUR NATIONAL READJUSTMENTS.
+FOR EXAMPLE, WE IMPORTED TECHNOLOGY FROM WEST
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 02774 02 OF 05 101541Z
+
+GERMANY FOR THE WUHAN IRON AND STEEL COMPLEX BUT
+WITHOUT ADEQUATE ELECTRICITY WE HAD PROBLEMS AT
+ONCE. SO READJUSTMENT APPLIES MAINLY TO QUESTIONS
+AT HOME. IT WON'T AFFECT OUR ABSORBING ON A
+LARGE-SCALE FOREIGN CAPITAL AND ADVANCED TECHNOLOGY.
+IF THERE ARE EFFECTS THEY WILL SHOW IN THIS WAY:
+PREVIOUSLY EACH INDUSTRY LINE WAS NEGOTIATIONG SEPARATELY
+TO ARRANGE ADVANCE TECHNOLOGY. NOW WE HAVE TO SET
+PRIORITIES ON WHICH WILL BE FIRST AND WHICH WILL BE
+LATER. ANOTHER ASPECT IS THAT EACH INDUSTRY WILL
+HAVE TO CONSIDER ITS ABILITY TO PAY FOR TECHNOLOGY.
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 02774 03 OF 05 101606Z
+ACTION EA-12
+INFO OCT-01 ADS-00 EB-08 STR-08 TRSE-00 OMB-01 SS-15
+SSO-00 SP-02 NSCE-00 CIAE-00 INR-10 NSAE-00
+INRE-00 CPR-02 L-03 IO-14 /076 W
+------------------126028 101647Z /50
+O 101355Z MAY 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMDIATE 5681
+USDOC WASHDC IMMEDIATE
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+C O N F I D E N T I A L SECTION 3 OF 5 BEIJING 2774
+WE DID NOT HAVE ENOUGH EXPERIENCE IN THIS REGARD.
+FOR EXAMPLE, THE WORLD KNOWS ABOUT OUR RECENT
+CONTROVERSY WITH JAPAN. THE REASON WAS OUR LACK OF
+EXPERIENCE IN IMPORTING EQUIPMENT FOR MAKING PETROCHEMICALS
+AND STEEL.
+WE WERE PAYING CASH SO IF WE DON'T CHANGE,
+OUR CREDIBILITY IS IN QUESTION. AS RATES
+OF INTEREST ARE HIGH WE HAD TO CHOOSE BETWEEN
+PAYMENT IN JAPANESE YEN OR U.S. DOLLARS.
+THIS MAY ALSO BE THE CASE IN NEGOTIATIONS WITH
+U.S. FIRMS. WE DO NOT HAVE ENOUGH EXPERIENCE IN
+MAKING THESE BUSINESS DEALS. SO I TOLD MANY U.S.
+AND JAPANESE FRIENDS THEY SHOULD SUGGEST HOW TO
+WORK OUT THESE DEALS WITH FINANCING. IF THE
+COMPENSATORY TRADE METHOD IS ADOPTED, IT WOULD EASE
+OUR ABILITY TO PAY. IF SOME COMPANIES WANT TO SET
+UP PLANTS IN CHINA, WE CAN AGREE. BUT WE NEED SOME
+LEGISLATION AND LAWS ON INVESTMENTS. IF COMPANIES
+ARE NOT ALLOWED TO REMIT PROFITS ABROAD, THEY WILL
+NOT DO IT(INVEST).
+KREPS: YES.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 02774 03 OF 05 101606Z
+
+DENG: IF THEY OPEN PLANTS HERE AND MANAGERS DON'T HAVE
+A SAY IN RUNNING THE PLANTS, THEY WON'T DO IT EITHER.
+FOR EXAMPLE, WITH REGARD TO THE RIGHT TO FIRE
+WORKERS, OF COURSE THEY MUST HAVE THE RIGHT.
+IN THE PAST, WE HAD NO LAWS REGULATING THESE
+MATTERS SO FOREIGN INVESTORS WERE NOT AT EASE. WITHOUT
+THSE LAWS, WE WILL HAVE NO INVESTMENT.
+IN FOREIGN TRADE, FIRST WE HAVE TO SOLVE THE
+QUESTION OF MFN. NEXT THERE IS THE QUESTION OF
+QUOTAS FOR CHINESE COMMODITIES IN THE U.S. MARKET.
+
+IN SOKO-U.S. RELATIONS, IF WE IMPORT U.S. TECHNOLOGY
+AND CAPITAL AND WE HAVE DIFFICULTY SELLING CHINESE
+GOODS IN YOUR MARKET, WE WOULD HAVE INSUFFICIENT
+ABILITY TO PAY WHICH WOULD BE MANIFEST ITSELF IN
+OUR LIMITED VOLUME OF TRADE.
+KREPS: I WANT TO COME BACK TO THE QUESTION OF ABILITY TO
+PAY. I AM VERY INTERESTED IN YOUR DISCUSSION OF
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+MANAGEMENT PROBLEMS. WE ARE PREPARED TO BE
+COOPERATIVE. HOW WILL YOU PLAN TO TRAIN MANAGERS?
+THE COMPLEX PROCESS OF ECONOMIC DEVELOPMENT REQUIRES
+GREAT MANAGEMENT SKILLS. WE BROUGHT A GROUP OF
+MANAGEMENT EXPERTS WHO ARE ABLE TO RESPOND EXACTLY TO
+THESE TYPES OF QUESTIONS.
+ON THE QUESTION OF JOINT VENTURES, HOW WILL
+YOU DECIDE WHAT KIND OF JOINT VENTURES LAWS ARE BEST
+SUITED FOR CHINA? WITH REGARD TO COMPENSATORY
+TRADE, THIS IS A MATTER BETWEEN YOUR GOVERNMENT AND
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 02774 03 OF 05 101606Z
+
+OUR PRIVATE FIRMS. WE AS A GOVERNMENT DO NOT
+STAND IN OPPOSITION TO THESE ARRANGEMENTS. BUT THE
+MATTER IS MORE COMPLICATED SINCE IT IS WORKED OUT
+WITH PRIVATE FIRMS. UNDER SECRETARY COOPER MAY WANT
+TO ADD TO THIS.
+COOPER: FIRST WITH REGARD TO ABILITY TO PAY, THE
+CONCEPT OF COMPENSATORY TRADE ARISES IN THE CONTEXT
+OF ANXIETIES ABOUT ABILITY TO PAY. YOU ARE RIGHT
+THAT WE HAVE MANY LAWS. OUR LEGISLATIVE SYSTEM MUST
+SEEM VERY COMPLEX TO FOREIGNERS. IN ACTUAL FACT, OVER
+THE PAST 25 YEARS, DESPITE ITS MANY LAWS, AND
+REGULATIONS THE U.S. HAS MAINTAINED A LARGE OPEN MARKET TO
+PRODUCTS OF MANY COUNTRIES. MANY COUNTRIES WHICH 20
+YEARS AGO WERE AT A STAGE OF DEVELOPMENT SIMILAR TO
+CHINA'S TODAY, IMPROVED THEIR ECONOMIES' PROSPERITY
+ENORMOUSLY, LARGELY BY EXPORTING TO THE UNITED
+STATES. IMPORTS OF MANUFACTURES TO THE U.S. FROM
+DEVELOPING COUNTRIES GREW AT A COMPOUND ANNUAL RATE
+OF 16 PERCENT IN THE 1960'S AND 1970'S. THIS IS AN
+ENORMOUS RATE OF GROWTH. THIS HISTORY ISMEANT TO
+ILLUSTRATE THE FACT THAT OUR APPARENT IMPEDIMENTS ARE
+NOT SO GREAT IN REALITY. WHEN WE TRY TO NEGOTIATE
+QUOTAS, AS IN THE CASE OF TEXTILES WITH THE PRC,
+THIS DOES NOT SIGNAL A CHANGE IN OUR SYSTEM OF
+OPENNESS BUT RATHER AN EFFORT TO PRESERVE OUR SYSTEM
+OFOPENNESS. THIS MAY SEEM LIKE A PARADOX, BUT OUR
+ECONOMY LIKE YOURS HAS PROBLEMS OF ADJUSTMENT.
+ADJUTMENT CAN OLY TAKE PLACE SO RAPIDLY. WHEN
+THE PACE IS TOO GREAT, WE TRY TO INTERPOSE RESTRAINTS.
+THIS IS THE PRICE WE HAVE TO PAY TO KEEP AN OPEN
+SYSTEM. IN THE DISCUSSIONS OF DETAILSSO THE TEXTILE
+AGREEMENTS I HOPE YOU CAN APPRECIATE THIS HISTORIC
+BACKGROUND AGAINST WHICH THESE DETAILS SHOULD BE
+CONSIDERED.
+CONFIDENTIAL
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 02774 03 OF 05 101606Z
+
+NOW TO THE QUESTION OF COMPENSATORY TRADE. BECAUSE
+OF OUR OPEN SYSTEM, WE THINK THAT IS NOT NECESSARY.
+OTHER COUNTRIES EARN MONEY EXPORTING TO THE
+UNITED STATES AND CAN SPEND IT WHEREVER THEY WANT.
+THAT SYSTEM, ON BALANCE, WE THINK, WORKS BEST, BUT
+WE REMAIN OPEN-MINDED. WHENEVER A PARTICULAR BUYER
+OR SELLER FINDS IT MUTUALLY ADVANTAGEOUS, WE HAVE NO
+OBJECTION. SO IF IN DISCUSSIONS WITH PARTICULAR
+U.S. FIRMS YOU CAN FIND A COMPENSATORY ARRANGEMENT
+ATTRACTIVE, THE USG HAS NO OBJECTION.
+DENG: IN THE FIELD OF OIL, WE HAVE DESIGNATED SEA AREAS
+WHERE WE WILL ALLOW U.S. FIRMS TO EXPLORE, WHEN THEY
+FIND OIL, WE WILL REPAY THEM IN OIL. DOES THIS FALL
+WITHIN THE SCOPE OF COMPENSATORY TRADE?
+COOPER: MANY OIL COMPANIES HAVE THIS ARRANGEMENT ELSEWHERE
+IN THE WORLD. I THINK YOU WOULD FIND IT EASY TO
+NEGOTIATE WITH THEM.
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 02774 04 OF 05 101617Z
+ACTION EA-12
+INFO OCT-01 ADS-00 EB-08 STR-08 TRSE-00 OMB-01 SS-15
+SSO-00 SP-02 NSCE-00 CIAE-00 INR-10 NSAE-00
+INRE-00 CPR-02 L-03 IO-14 /076 W
+------------------126119 101647Z /50
+O 101355Z MAY 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 5682
+USDOC WASHDC IMMEDIATE
+C O N F I D E N T I A L SECTION 4 OF 5 BEIJING 2774
+DENG: IS THIS CALLED COMPENSATORY TRADE?
+COOPER: WELL, THIS IS A QUESTION OF SEMANTICS.
+(LAUGHTER)
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+KREPS: IT IS ALL RIGHT WITH US IF YOU WISH TO CALL
+IT THAT.
+COOPER: YOU WOULD FIND IT MORE DIFFICULT IF IN EXCHANGE
+FOR EXPLORATION SERVICES YOU TRIED TO EXCHANGE
+BUTTONS WITH THESE FIRMS INSTEAD OF OIL. (LAUGHTER)
+DENG: WE ARE WILLING TO LET U.S. FIRMS EXPLORE
+NOT JUST IN SEA AREAS BUT WE CAN ALSO DESIGNATE
+LAND AREAS FOR THEM TO EXPLORE. WE CAN ALSO
+CONSIDER JOINT VENTURES. FOR EXAMPLE, GM IS NOW
+NEGOTIATING WITH US. THE VEHICLES PRODUCED WOULD
+BE EXPORTED AND SOLD THROUGH ORIGINAL GM CHANNELS
+INTERNATIONALLY AND THIS WILL IMPROVE OUR ABILITY
+TO PAY. WITH REGARD TO NON-FERROUS METALS AND RARE
+METALS (SIC? PROBABLY RARE EARTHS) THERE IS MUCH SCOPE FOR
+COOPERATION.
+IN THESE CASES ALSO WE MUST PAY WITH THE PRODUCTS PRODUCED.
+IN ALL THESE CASES PAYMENT WILL BE DELAYED FOR SEVERAL
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 02774 04 OF 05 101617Z
+
+YEARS BECAUSE IT TAKES SEVERAL YEARS TO GET THESE
+PRODUCTS. BUT FOR THE SHORT TERM OF THREE TO FIVE
+YEARS, WHILE ABSORBING ADVANCED TECHNOLOGY AND
+CAPITAL, OUR ABILITY TO PAY IS THROUGH EXPORTS OF
+LIGHT INDUSTRIAL PRODUCTS: HANDICRAFTS, NATIVE PRODUCTS,
+TEXTILES, AND MAYBE MINERALS. IT IS IN THAT
+FIELD THAT QUOTAS ARE A PROBLEM.
+COOPER: EXPERIENCES OF EACH INDUSTRY DIFFER BECAUSE EACH
+HAS A DIFFERENT CHARACTER. GENERALLY SPEAKING, OIL
+AND NON-FERROUS INDUSTRIES HAVE MUCH EXPERIENCE
+WITH THE KIND OF TIME PATTERN YOU DESCRIBE AND ARE
+USED TO MAKING INVESTMENTS OF THREE, FIVE OR
+EVEN EIGHT YEARS BEFORE ANY PRODUCTION EMERGES.
+THERE THE IMPORTANT THING IS A FRAMEWORK FOR
+INVESTMENT TO ASSURE THAT WHEN THE INVESTMENT COMES
+ON LINE THEY CAN GET THEIR SHARE OF THE PRODUCT.
+SO YOU MAY FIND THE PROBLEM OF PAYMENT BEFORE
+PRODUCTION IS NOT A SERIOUS ISSUE FOR SUCH FIRMS.
+BUT EACH FIRM HAS ITS OWN POLICY, AND THERE
+MAY BE DIFFERENCES AMONG THEM.
+KREPS: YOU WILL HAVE NO PROBLEM WITH OIL COMPANIES.
+DENG: WITH OTHER INDUSTRIES, THIS IS NOT
+NECESSARILY THE CASE?
+KREPS: YES, OTHERS ALSO. I SINGLE OUT OIL COMPANIES
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+BECAUSE THEY ARE PARTICULARLY USED TO MAKING LONG
+TERM INVESTMENTS. BUT OTHERS, FOR EXAMPLE STEEL,
+ARE ALSO WILLING.
+COOPER: IF THE FIRM IS OFFERING EXPLORATION SERVICES ONLY,
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 02774 04 OF 05 101617Z
+
+THEY MAY INSIST BEING PAID IN CASH RIGHT AWAY.
+IF THERE IS A JOINT VENTURE WITH A PRODUCTION
+SHARING PLAN, THE FIRMS WILL WAIT.
+DENG: ANOTHER QUESTION: ON OUR SIDE NEGOTIATIONS ARE
+UNDERTAKEN BY DIFFERENT GOVERNMENT DEPARTMENTS. ON
+YOUR SIDE, WHAT SHOULD WE BE ON THE LOOKOUT FOR IN
+NEGOTIATIONS BY THE GOVERNMENT AND YOUR FIRMS?
+KREPS: WHAT DO YOU HAVE IN MIND?
+DENG: DOES THE GOVERNMENT HAVE NO HAND IN
+THE NEGOTIATIONS OR DOES IT INTERFERE IN SOME AREAS?
+KREPS: WITHIN THE LEGAL FRAMEWORK OF LAWS WHICH REGULATE
+BUSINESS ACTIVITY, THERE ARE SOME THINGS OUR
+FIRMS CAN'T DO IN INTERNATIONAL INVESTMENTS. BUT IF OUR
+FIRMS ARE BEHAVING LEGALLY, THEN OUR GOVERNMENT
+WOULD NOT TAKE A POSITION ON CONTRACTS OF PRIVATE
+FIRMS. YOU SHOULDN'T FEAR THAT THE LACK OF CLOSE
+GOVERNMENT SUPERVISION ALLOWS FIRMS TO ACT
+QUESTIONABLYBECAUSE OUR LAWS ARE VERY EXPLICIT
+WITH REGARD TO WHAT FIRMS CAN AND CANNOT DO
+--MUCH MORE SO THAN OUR FIRMS WOULD LIKE.
+WE FIND IT VERY EFFICIENT TO ALLOW OUR FIRMS THE
+FREEDOM TO NEGOTIATE THEIR CONTRACTS WITH OTHER COMPANIES
+AND GOVERNMENTS AND WE ENCOURAGE THIS. NATURALLY, IN
+ADDITION TO OUR LAWS, THE FRAMEWORK WITHIN WHICH
+TRADE AND INVESTMENT OCCUR IS THE TRADE AGREEMENT
+ITSELF. FINALLY, KEEP IN MIND THAT COMPETITION OF
+OUR FIRMS AND FOREIGN FIRMS TO DO BUSINESS WITH
+CHINA WILL GURANTEE YOU THE BEST POSSIBLE SERVICE
+AT THE LOWEST PRICE.
+COOPER: IN ANSWER TO YOUR QUESTION, IN TWO AREAS THE
+GOVERNMENT IS MOST DIRECTLY INVOLVED IN WHAT
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 02774 04 OF 05 101617Z
+
+OTHERWISE WOULD BE PRIVATE TRANSACTIONS. THE FIRST
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+IS TAXATION. OUR GOVERNMENT TAXES PROFITS OF
+FIRMS WHERE THEY ARE EARNED. BUT WE HAVE RULES
+FOR CREDITING TAXES PAID TO FOREIGN GOVERNMENTS. I AM
+SURE OUR OIL FIRMS WILL RAISE WITH YOUR GOVERNMENT
+QUESTIONS OF TAXATION IN YOUR NEGOTIATIONS. WE TRY TO
+HAVE RULES AS CLEAR AS POSSIBLE BUT OUR LAWS DON'T COVER
+EVERY SITUATION SO NEW QUESTIONS WILL ARISE. THE SECOND
+AREA IS OUR LICENSING REQUIREMENTS ON CERTAIN TYPES OF
+EXPORTS. TO EXPORT SUCH GOODS FIRMS MUST APPLY TO THE
+USG FOR PERMISSION TO EXPORT. BUT AS A GENERAL PROPOSITION,
+FIRMS ARE FREE TO NEGOTIATE THEIR OWN ARRANGEMENTS.
+DENG: I AM INTERESTED IN THE SUBJECT OF PATENTS. DOES
+THE UNITED STATES GOVERNMENT INTERFERE MORE IN THIS
+AREA?
+KREPS: WE HAVE PATENT LAWS DESIGNED TO PROTECT THE
+OWNER. THEY PROVIDE THAT FOR A PERIOD OF TIME THE
+OWNER HAS EXCLUSIVE RIGHT TO THE USE OF THE PATENT
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 02774 05 OF 05 101622Z
+ACTION EA-12
+INFO OCT-01 ADS-00 EB-08 STR-08 TRSE-00 OMB-01 SS-15
+SSO-00 SP-02 NSCE-00 CIAE-00 INR-10 NSAE-00
+INRE-00 CPR-02 L-03 IO-14 /076 W
+------------------126168 101648Z /50
+O 101355Z MAY 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 5683
+USDOC WASHDC IMMEDIATE
+C O N F I D E N T I A L SECTION 5 OF 5 BEIJING 2774
+I BELIEVE IN YOUR CASE YOU ARE CONSIDERING OBSERVING THE
+INTERNATIONAL PATENT CONVENTION, WHICH IS ACCEPTABLE
+TO THE UNITED STATES GOVERNMENT.
+DENG: YES
+COOPER: THE PATENT ISSUE OF CONCERN TO AMERICAN
+FIRMS IS THAT SPECIALIZED &quot;KNOW-HOW&quot; DEVELOPED AT
+THEIR EXPENSE COULD BE TAKEN AND USED WITHOUT PAYMENT.
+OUR LAWS AND THE INTERNATIONAL PATENT CONVENTION
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+ARE DESIGNED TO PROTECTTHAT RIGHT. WE UNDERSTAND
+FROM MINISTER LI THAT THIS IS NOT A PROBLEM SINCE
+YOU PAY FOR PATENTS.
+DENG: THAT IS TRUE. I AM CONCERNED SINCE I HAVE SOME
+PERSONAL EXPERIENCE IN COMPUTERS. IN 1975 WE
+NEGOTIATED AN AGREEMENT WITH AU.S. FIRM TO IMPORT A
+COMPUTER WITH A CAPACITY OF TEN MILLION OPERATIONS
+PER SECOND. THE FIRM AGREED TO SELLBUT THE U.S.
+GOVERNMENT INDICATED IT HAD TO BE A GOVERNMENT-TOGOVERNMENT ARRANGEMENT. I FEEL THIS PROBLEM WILL
+OCCUR AGAIN AND AGAIN, NOT ONLY WITH THE UNITED STATES
+BUT WITH JAPAN AND WESTERN EUROPE IF THE ITEM
+CONCERNED IS A U.S. PRODUCT. I FEEL WE SHOULD
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 02774 05 OF 05 101622Z
+
+NOT ONLY MAINTAIN THE MOMENTUM BUT SHOULD ACCELERATE THE
+DEVELOPMENT OF OUR ECONOMIC TIES. I BRING THIS UP
+BECAUSE I FEAR THIS PROBLEM WILL RECUR.
+COOPER: I DON'T KNOW THE PARTICULAR CASE, BUT I EXPECT
+IT IS NOT A QUESTION OF PATENTS, BUT OF CONTROLS
+WHICH THE USG PUTS ON EXPORTS OF HIGHLY SOPHISTICATED
+EQUIPMENT, OUT OF CONCERN FOR OUR NATIONAL SECURITY.
+SOME VERY HIGH-SPEED COMPUTERS CAN BE USED FOR
+TESTING AND DEVELOPMENT OF ADVANCED WEAPONS. THIS IS OF
+CONCERN TO US. BUT, LIKE YOU, WE WANT TO MAINTAIN
+MOMENTUM. WE ASK RECEIVING COUNTRIES FOR A STATEMENT
+AS TO HOW A CONTROLLED PRODUCT WOULD BE USED. IF WE
+GET A SATISFACTORY END USE STATEMENT AND HAVE A
+PROCESS FOR VERIFICATION THEN WE GO AHEAD AND MAKE THE
+SALE.
+DENG: (TO COOPER) ARE YOU IN CHARGE OF THIS PROGRAM?
+COOPER: NO. I AM INCHARGE OF TRYING TO SMOOTH OVER
+THE DIFFICULTIES THAT ARISE WITH THIS PROGRAM
+(LAUGHTER)
+DENG: IN OVERCOMING THESE DIFFICULTIES, THERE ARE
+FAVORABLE AND UNFAVORABLE WAYS. IN THE CASE OF CHINA,
+PLEASE TRY TO USE THE FAVORABLE WAYS. AND THE
+SECRETARY OF COMMERCE, TOO.
+KREPS: THESE CONTROLS ARE CARRIED OUT IN OUR DEPARTMENT,
+THOUGH I WISH THEY BELONGED TO UNDER SECRETARY COOPER
+(LAUGHTER).
+DENG: WE SHOULD TRY TO SOLVE THIS PROBLEM IN LIGHT OF
+CONFIDENTIAL
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 02774 05 OF 05 101622Z
+
+THE POLITCAL SITUATION. OUR RELATIONS WITH THE
+UNITED STATES ARE NOW FAVORABLE NOT ONLY BECAUSE
+YOUR PRODUCTS ARE MORE COMPETITIVE BUT ALSO FROM THE
+POLITICAL ANGLE. YOU SHOULD BE MORE HELPFUL. THIS
+INCLUDES SUGGESTIONS ON THINGS WHICH WE DON'T
+UNDERSTAND. LAWS CAN BE INTERPRETED THIS WAY AND
+THAT. OTHERWISE LAWYERS WOULD BE UNEMPLOYED.
+(LAUGHTER; APPLAUSE ON THE U.S. SIDE). SOME LAWYERS
+CITE THIS CLAUSE AND WIN THEIR CASE, AND OTHER LAWYERS
+CITE THAT ANOTHER CLAUSE AND LOSE THEIR CASE. AS TO THE
+SPECIFIC AGREEMENTS, WITH REGARD TO THE TRADE AGREEMENT,
+WE HAD BETTER FINISH INITIALLING AS THAT WOULD LEAD
+TO EARLY SETTLEMENT OF MFN. WE HOPE THAT SECRETARY KREPS
+WILL BE MORE HELPFUL IN THE ALLOCATION OF QUOTAS.
+WITH REGARD TO THE CLAIMS/ASSETS AGREEMENT, WE
+WILLL SETTLE IT THIS TIME AND NOT LET IT DRAG ON.
+KREPS: WE ARE DELIGHTED TO HEAR BOTH COMMENTS. I ASSURE
+YOU THAT THE DEPARTMENT OF COMMERCE WILL COOPERATE
+FULLY. IT IS IN YOUR INTEREST AND OURS TO PROMOTE
+A BETTER FLOW OF TRADE BETWEEN OUR COUNTRIES. I
+WOULD BE MOST HAPPY IF WE HAVE YOUR APPROVAL AND PRESIDENT
+CARTER'S TO CONCLUDE BOTH AGREEMENTS WHILE I AM
+HERE.
+DENG: THANK YOU. THANK YOU.
+END TEXT.
+ROY
+
+CONFIDENTIAL
+
+NNN
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014</div></div></div><div class="pane-tab"><div class="pane-header">Metadata</div><div class="pane-content"><div class="text-content">---
+Automatic Decaptioning: X
+Capture Date: 01 jan 1994
+Channel Indicators: n/a
+Current Classification: UNCLASSIFIED
+Concepts: TEXT, FOREIGN RELATIONS, TRADE VISITS, MEETING REPORTS
+Control Number: n/a
+Copy: SINGLE
+Draft Date: 10 may 1979
+Decaption Date: 01 jan 1960
+Decaption Note: ''
+Disposition Action: RELEASED
+Disposition Approved on Date: ''
+Disposition Case Number: n/a
+Disposition Comment: 25 YEAR REVIEW
+Disposition Date: 20 Mar 2014
+Disposition Event: ''
+Disposition History: n/a
+Disposition Reason: ''
+Disposition Remarks: ''
+Document Number: 1979BEIJIN02774
+Document Source: CORE
+Document Unique ID: '00'
+Drafter: n/a
+Enclosure: n/a
+Executive Order: GS 19850510 ROY, J STAPLETON
+Errors: N/A
+Expiration: ''
+Film Number: D790212-0545
+Format: TEL
+From: BEIJING OR-M
+Handling Restrictions: n/a
+Image Path: ''
+ISecure: '1'
+Legacy Key: link1979/newtext/t19790588/aaaacuou.tel
+Line Count: ! '745 Litigation Code IDs:'
+Litigation Codes: ''
+Litigation History: ''
+Locator: TEXT ON-LINE, ON MICROFILM
+Message ID: dffd7cb6-c288-dd11-92da-001cc4696bcc
+Office: ACTION EA
+Original Classification: CONFIDENTIAL
+Original Handling Restrictions: n/a
+Original Previous Classification: n/a
+Original Previous Handling Restrictions: n/a
+Page Count: '14'
+Previous Channel Indicators: n/a
+Previous Classification: CONFIDENTIAL
+Previous Handling Restrictions: n/a
+Reference: n/a
+Retention: '0'
+Review Action: RELEASED, APPROVED
+Review Content Flags: ''
+Review Date: 25 oct 2005
+Review Event: ''
+Review Exemptions: n/a
+Review Media Identifier: ''
+Review Release Date: n/a
+Review Release Event: n/a
+Review Transfer Date: ''
+Review Withdrawn Fields: n/a
+SAS ID: '3071593'
+Secure: OPEN
+Status: NATIVE
+Subject: SECRETARY KREPS\' MEETING WITH VICE PREMIER DENG XIAOPING
+TAGS: ETRD, OVIP, PEPR, CH, US, (KREPS, JUANITA M), (DENG XIAOPING)
+To: STATE COM
+Type: TE
+vdkvgwkey: odbc://SAS/SAS.dbo.SAS_Docs/dffd7cb6-c288-dd11-92da-001cc4696bcc
+Review Markings: ! ' Sheryl P. Walter Declassified/Released US Department of State
+  EO Systematic Review 20 Mar 2014'
+Markings: Sheryl P. Walter Declassified/Released US Department of State EO Systematic
+  Review 20 Mar 2014 Sheryl P. Walter Declassified/Released US Department of State
+  EO Systematic Review 20 Mar 2014
+</div></div></div><div class="pane-tab"><div class="pane-header">Raw source</div><div class="pane-content"><div class="text-content"><a href="https://file.wikileaks.org/oc/oc/2776/218198.pdf">oc/2776/218198.pdf</a></div></div></div>
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 61px">Print</div><div class="pane-content pane-print">
+<p>You can use this tool to generate a print-friendly PDF of the document <strong>1979BEIJIN02774_e</strong>.</p>
+<form action="/plusd/pdf/?df=76595" method="post">
+	<input type="hidden" name="p" value="e" />
+	<input type="hidden" name="r" value="1979BEIJIN02774_e" />
+	<input type="checkbox" name="s" id="is" value="cake"><label for="is">Include summary</label></input><br />
+	<input type="checkbox" name="h" id="ih" value="is a"><label for="ih">Include headers</label></input><br />
+	<input type="checkbox" name="m" id="im" value="lie"><label for="im">Include raw metadata</label></input><br /><br />
+	<input type="submit" value="Generate pdf" />
+</form>
+</div></div>
+
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 60px">Share</div><div class="pane-content pane-share">
+<p>The formal reference of this document is <strong>1979BEIJIN02774_e</strong>, please use it for anything written about this document. This will permit you and others to search for it.</p>
+<div class="share-panel">
+<label for="share-link">Direct link to document</label>
+<input readonly="readonly" type="text" class="share" id="share-link" value="https://www.wikileaks.org/plusd/cables/1979BEIJIN02774_e.html" /><br />
+
+<label for="share-reddit">Reddit code</label>
+<input readonly="readonly" type="text" class="share" id="share-reddit" value="[1979BEIJIN02774_e](https://www.wikileaks.org/plusd/cables/1979BEIJIN02774_e.html)" /><br />
+
+<label for="share-html">HTML code</label>
+<input readonly="readonly" type="text" class="share" id="share-html" value="&lt;a href=&quot;https://www.wikileaks.org/plusd/cables/1979BEIJIN02774_e.html&quot; title=&quot;1979BEIJIN02774_e&quot;&gt;1979BEIJIN02774_e&lt;/a&gt;" /><br />
+
+<label for="share-bbcode">Forum code (bbcode)</label>
+<input readonly="readonly" type="text" class="share" id="share-bbcode" value="[url=https://www.wikileaks.org/plusd/cables/1979BEIJIN02774_e.html]1979BEIJIN02774_e[/url]" />
+</div>
+
+
+
+<br style="clear: both;" />
+<p>Submit this story</p>
+<div class="share">
+	<a href="http://www.reddit.com/submit?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1979BEIJIN02774_e.html"><img src="/plusd/images/Reddit-ico.png" /></a>
+</div>
+
+<div class="share">
+        <a href="http://twitter.com/home?status=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1979BEIJIN02774_e.html"><img src="/plusd/images/Twitter-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1979BEIJIN02774_e"><img src="/plusd/images/Gplus-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=1979BEIJIN02774_e&amp;p[summary]=Summary&amp;p[url]=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1979BEIJIN02774_e.html"><img src="/plusd/images/Facebook-ico.png" /></a>
+</div>
+
+<br style="clear: both;" />
+</div></div>
+
+<!--<div class="pane-tab"><div class="pane-header tab-right tab-find">Find</div><div class="pane-content pane-find">-->
+<!--</div></div>-->
+
+<!--<div id="tagged-text"> -->
+	<div id="pane-root" style="display:none">
+		<div id="pane-tabs"></div>
+
+		<div id="pane-contents"></div>
+
+	</div>
+<!--</div>-->
+<div class="pane-content pane-extra">
+<div class="dnpage visible">
+<h1>Help Expand The Public Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+
+
+</div>
+
+</div>
+<br />
+<script type="text/javascript" src="/plusd/js/mootools-core-and-more.js"></script>
+<script type="text/javascript" src="/plusd/js/efatmarker.min.js"></script>
+<script type="text/javascript">
+(function(){
+	window.addEvent('domready', function(){
+	        $$("#showhide").addEvent( "click", function() {
+			$$(".text-header").toggleClass("hidden");
+			t=$$("#showhide");
+			if(t.get("html")=="Show&nbsp;Headers")
+				t.set("html", "Hide&nbsp;Headers");
+			else
+				t.set("html", "Show&nbsp;Headers");
+		} );
+
+		var pane_root = $('pane-root'),
+			pane_tabs = $('pane-tabs'),
+			pane_contents = $('pane-contents'),
+			panes = $$('.pane-tab'),
+			num_panes = panes.length,
+			i, pane,
+			pane_header,
+			pane_content;
+		var activate_tab = function(target) {
+			$$('#pane-contents .pane-content').each(function(e,i){
+				if (i === target) {
+					e.addClass('top');
+					}
+				else {
+					e.removeClass('top');
+					}
+				});
+			$$('#pane-tabs .pane-header').each(function(e,i){
+				if (i === target) {
+					e.removeClass('nottop');
+					e.addClass('ontop');
+					}
+				else {
+					e.addClass('nottop');
+					e.removeClass('ontop');
+					}
+				});
+			};
+		for (i=0; i<num_panes; i++) {
+			pane = panes[i];
+			pane_header = pane.getElement('.pane-header');
+			pane_tabs.grab(pane_header);
+			pane_header.addEvent('click', function(){
+				var target = $('pane-tabs').getChildren().indexOf(this);
+				activate_tab(target);
+				});
+			pane_content = pane.getElement('.pane-content');
+			pane_contents.grab(pane_content);
+			pane.destroy();
+			}
+		activate_tab(0);
+		$('pane-root').style.display = '';
+		}); /* event handler function() */
+	})(); /* namespace function() */
+</script>
+<div id="efm-button">
+	<div id="efm-menu">
+		<h3 style="margin:0 0 2px 0">e-Highlighter</h3>
+		<a id="efm-permalink" class="efm-need-highlight" href="" style="margin-bottom:0;padding-bottom:0;"></a>
+		<p style="margin-top:0;padding-top:0" class="efm-need-highlight">Click to send permalink to address bar, or right-click to copy permalink.</p>
+		<a id="efm-twitter-button" class="efm-need-highlight" href="#" target="_blank"><img src="/plusd/images/tweetn.png" alt="Tweet" title="Tweet these highlights" style="vertical-align:middle"> these highlights</a>
+		<p style="margin:0.5em 0;padding:0;border-top:1px dotted #ccc;height:1px"></p>
+		<a id="efm-unhighlightall" class="efm-need-highlight">Un-highlight all</a>
+		<a id="efm-unhighlight">Un-highlight selection<span>u</span></a>
+		<a id="efm-highlight">Highlight selection<span>h</span></a>
+		</div>
+	</div>
+</div></div></div>
+<script type="text/javascript">
+
+(function(){
+	window.addEvent('domready', function(){
+
+		var markerButton = $('efm-button');
+		if ( markerButton ) {
+			eMarker = new EFatMarker($('content-main'));
+			eMarker.tokenToSpans(); // apply whatever token is there
+			// need to act on mousedown or else selection disappear
+			markerButton.addEvent('mousedown', function(){
+				eMarker.interpretSelection(true);
+				return false;
+				});
+			$('efm-unhighlightall').addEvent('mousedown', function(){
+				eMarker.unhighlightAll(true);
+				return false;
+				});
+			$('efm-unhighlight').addEvent('mousedown', function(){
+				eMarker.unhighlightSelection(true);
+				return false;
+				});
+			$('efm-highlight').addEvent('mousedown', function(){
+				eMarker.highlightSelection(true);
+				return false;
+				});
+			$('efm-permalink').addEvent('mousedown', function(){
+				window.location.href = this.href;
+				return false;
+				});
+			// if Mootools Keyboard is available, use it
+			if (Keyboard) {
+				var keyboard = new Keyboard({
+					defaultEventType: 'keyup',
+					events: {
+						'h': function(){
+							eMarker.highlightSelection(true);
+							},
+						'u': function(){
+							eMarker.unhighlightSelection(true);
+							}
+						}
+					});
+				keyboard.activate();
+				}
+			eMarker.syncDOM();
+			// auto scroll to first highlight, if any
+			if (eMarker.hasSpans()) {
+				var scroll = new Fx.Scroll(window,{offset:{'x':0,'y':-100}}),
+					highlights = $$('#content-main .efm-hi');
+				if (highlights.length > 0) {
+					scroll.toElement(highlights[0]);
+					}
+				}
+			}
+		});
+	})();
+
+</script>
+
+<div class="dnflood"></div>
+<div class="dnbutton">
+<div class="dnmain">
+<h1><span class="dnclose">X</span>Help Expand The Public<br />Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+</div>
+</div>
+
+</div>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<link href="/static/css/styles_footer.css" rel="stylesheet">
+<footer id="page-footer" class="footer-recommendations">
+  <div class="footer-wrapper">
+    <div class="recommendation-container">
+      <a href="#" class="top">Top</a>
+      
+        <ul class="recommendation-links">
+                <li class="recommendation">
+                    <a href="https://our.wikileaks.org" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton666.png" width="360" height="240" />
+                        </div>
+                        <p><p>WL Research Community - user contributed research based on documents published by WikiLeaks. 
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.torproject.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton401.png" width="360" height="240" />
+                        </div>
+                        <p><p>Tor is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://tails.boum.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton405.png" width="360" height="240" />
+                        </div>
+                        <p><p> Tails is a live operating system, that you can start on almost any computer from a DVD, USB stick, or SD card. It aims at preserving your privacy and anonymity.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.couragefound.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton404.png" width="360" height="240" />
+                        </div>
+                        <p><p>The Courage Foundation is an international organisation that supports those who risk life or liberty to make significant contributions to the historical record.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.bitcoin.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton403.png" width="360" height="240" />
+                        </div>
+                        <p><p>Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network.
+</p></p>
+                    </a>
+                </li>
+            </li>
+        </ul>
+      
+      <ul class="social-links">
+        <li>
+          <a href="https://www.facebook.com/wikileaks" target="_blank" alt="Facebook">
+            <img src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" target="_blank" alt="Twitter">
+            <img src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

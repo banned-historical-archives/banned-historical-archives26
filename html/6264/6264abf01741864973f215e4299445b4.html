@@ -1,0 +1,2501 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/cerulean.min.css" rel="stylesheet">
+<link href="/bootstrap/css/new-gen.css" rel="stylesheet">
+<link href="/bootstrap/css/submit.css" rel="stylesheet">
+<script type="text/javascript" src="/plusd/js/jquery.min.js"></script>
+<script type="text/javascript" src="/plusd/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<script type="text/javascript" src="/plusd/js/wikipedia.js"></script>
+<script type="text/javascript" src="/plusd/js/qtip.min.js"></script>
+<script type="text/javascript" src="/plusd/js/idle-timer.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+
+(function($) {
+	var show_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").show();
+	}
+	var hide_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").hide();
+	}
+	$(document).idleTimer(180000);
+	$(document).on("idle.idleTimer", show_button);
+	$(document).ready(function() {
+		if( typeof setupDoubleClick == 'function' )
+			setupDoubleClick('http://en.wikipedia.org/w/index.php', 'british', 'tagged-text', 4, "_blank", "/words/cg.json");
+		var current = Math.floor(( new Date( ) ).getTime( )/1000);
+
+		$("#ddonate").click(show_button);
+		$(".dnclose").click(hide_button);
+		$('a.i').each( function() {
+			i=$(this);
+			i.attr("alt", descr[i.attr("title")]);
+		} );
+		$('a.i').qtip( {
+			show: {
+				event: 'click',
+				solo: true
+			},
+			hide: 'click',
+			content: {
+				attr: 'alt',
+				title: {
+					button: true
+				}
+			},
+			style: {
+				classes: 'qtip-blue qtip-shadow'
+			}
+		} );
+
+	} );
+
+
+	var descr = {
+	'Subject': 'Subject line of the document','From': 'Who/where sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-fr/\">A list of origins, with citations for any acronyms used, is available here.</a>','To': 'Who/where received the document.<br /><br /><a href=\"/plusd/about-to/\" class=\"j\">A list of destinations, with citations for any acronyms used, is available here.</a>','Original Classification': 'Classification the document was originally given when produced.<br /><br /><a href=\"/plusd/about-oc/\" class=\"j\">Citations for acronyms used are available here.</a>','Current Classification': 'Classification the document currently holds.<br /><br /><a href=\"/plusd/about-cc/\" class=\"j\">Citations for acronyms used are available here.</a>','Handling Restrictions': 'All handling restrictions governing the document distribution that have been used to date.<br /><br /><i>In the metadata of the Kissinger Cables this field is called \'Previous Handling Restrictions\'.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i><br /><br /><a href=\"/plusd/about-hr/\" class=\"j\">Citations for acronyms used are available here.</a>','Archive Status': 'Original documents not deleted or lost by State Department after review are available in one of four formats:<ul><li>Electronic Telegram - declassified and made available (content and metadata available)</li><li>Electronic Telegram Withdrawal Card - telegram not declassified, or was declassified but not released for other reasons (limited metadata available)</li><li>P-reel Index - Index card for other document type that is stored on microfilm (only metadata available)</li><li>P-reel Index Withdrawal Card - P-reel index card that was not declassified, or was declassified but not released for other reasons (limited metadata available)</li></ul><br /><i class=\"b\">The Kissinger Cables\' metadata does not have this field. It is taken from subsets the documents were released in after State Department review.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Type': 'Correspondence type or format of original document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TE\' (Telegram).</i><br /><br /><a href=\"/plusd/about-ty/\" class=\"j\">Citations for acronyms used are available here.</a>','Locator': 'Where the original document is now held - online or on microfilm, or remains in \"ADS\" (State Department\'s 1973 Automated Data System of indexing by TAGS of electronic telegrams and P-reels) with the text either garbled, not converted or unretrievable.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TEXT ONLINE\'.</i>','Executive Order': 'Executive Order information - often a reference to the E.O. governing the declassification/downgrade of the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Markings': 'Markings of declassification/release review of the document.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'. </i>','Enclosure': 'Attachments or other items sent with the original document. These are not necessarily currently held in this library.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.','Concepts': 'Keywords of subjects dealt with in the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\' for this field.</i>','TAGS': 'Traffic Analysis by Geography and Subject (TAGS)<br /><br />There are geographic, organization and subject \"TAGS\" - the classification system implemented by the Department of State for its central files in 1973.<br /><br /><a href=\"/plusd/about-ta/\" class=\"j\">A list of TAGS, with citations for any acronyms used, is available here.</a>','Office': 'Which United States government office or bureau is dealing with the topics the document concerns.<br /><br /><a href=\"/plusd/about-of/\" class=\"j\">A list offices, with citations for acronym expansions, is available here.</a>','Office Origin': 'Which State Department office or bureau sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Office Action': 'Which State Department office or bureau received the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Character Count': 'The number of characters, including spaces, in the document.','Date': 'The date the document was created.','Canonical ID': 'Unique document identification number.<br /><br /><i>We have created a canonical ID by taking the original document ID and adding a \'_\' at the end and then WikiLeaks\' annotation for different datasets: Cablegate = a, the Kissinger Cables = b, etc. If document IDs are duplicated in the original datasets we number each duplicate, eg 1976WARSAW05657_b2 is the second document with that ID in the Kissinger Cables.</i>','Other cables with the same ID': 'Documents that are linked, for example a P-reel index and the document it is the index for. Or documents that were originally given the same document ID number.',	};
+
+
+
+})(jQuery);
+</script>
+<title>Cable: 00HANOI1160_a</title>
+<link rel="stylesheet" type="text/css" href="/plusd/css/qtip.min.css" id="qtip">
+<link rel="stylesheet" type="text/css" href="/plusd/css/main.css" id="maincss">
+<link rel="stylesheet" type="text/css" href="/plusd/css/print.css" media="print" id="printcss">
+</head>
+<body style="text-align: center;">
+    <div id="submit_wlkey" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<p>Key fingerprint <b>9EF0 C41A FBA5 64AA 650A  0259 9C6D CD17 283E 454C</b></p>
+		<pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQQBBGBjDtIBH6DJa80zDBgR+VqlYGaXu5bEJg9HEgAtJeCLuThdhXfl5Zs32RyB
+I1QjIlttvngepHQozmglBDmi2FZ4S+wWhZv10bZCoyXPIPwwq6TylwPv8+buxuff
+B6tYil3VAB9XKGPyPjKrlXn1fz76VMpuTOs7OGYR8xDidw9EHfBvmb+sQyrU1FOW
+aPHxba5lK6hAo/KYFpTnimsmsz0Cvo1sZAV/EFIkfagiGTL2J/NhINfGPScpj8LB
+bYelVN/NU4c6Ws1ivWbfcGvqU4lymoJgJo/l9HiV6X2bdVyuB24O3xeyhTnD7laf
+epykwxODVfAt4qLC3J478MSSmTXS8zMumaQMNR1tUUYtHCJC0xAKbsFukzbfoRDv
+m2zFCCVxeYHvByxstuzg0SurlPyuiFiy2cENek5+W8Sjt95nEiQ4suBldswpz1Kv
+n71t7vd7zst49xxExB+tD+vmY7GXIds43Rb05dqksQuo2yCeuCbY5RBiMHX3d4nU
+041jHBsv5wY24j0N6bpAsm/s0T0Mt7IO6UaN33I712oPlclTweYTAesW3jDpeQ7A
+ioi0CMjWZnRpUxorcFmzL/Cc/fPqgAtnAL5GIUuEOqUf8AlKmzsKcnKZ7L2d8mxG
+QqN16nlAiUuUpchQNMr+tAa1L5S1uK/fu6thVlSSk7KMQyJfVpwLy6068a1WmNj4
+yxo9HaSeQNXh3cui+61qb9wlrkwlaiouw9+bpCmR0V8+XpWma/D/TEz9tg5vkfNo
+eG4t+FUQ7QgrrvIkDNFcRyTUO9cJHB+kcp2NgCcpCwan3wnuzKka9AWFAitpoAwx
+L6BX0L8kg/LzRPhkQnMOrj/tuu9hZrui4woqURhWLiYi2aZe7WCkuoqR/qMGP6qP
+EQRcvndTWkQo6K9BdCH4ZjRqcGbY1wFt/qgAxhi+uSo2IWiM1fRI4eRCGifpBtYK
+Dw44W9uPAu4cgVnAUzESEeW0bft5XXxAqpvyMBIdv3YqfVfOElZdKbteEu4YuOao
+FLpbk4ajCxO4Fzc9AugJ8iQOAoaekJWA7TjWJ6CbJe8w3thpznP0w6jNG8ZleZ6a
+jHckyGlx5wzQTRLVT5+wK6edFlxKmSd93jkLWWCbrc0Dsa39OkSTDmZPoZgKGRhp
+Yc0C4jePYreTGI6p7/H3AFv84o0fjHt5fn4GpT1Xgfg+1X/wmIv7iNQtljCjAqhD
+6XN+QiOAYAloAym8lOm9zOoCDv1TSDpmeyeP0rNV95OozsmFAUaKSUcUFBUfq9FL
+uyr+rJZQw2DPfq2wE75PtOyJiZH7zljCh12fp5yrNx6L7HSqwwuG7vGO4f0ltYOZ
+dPKzaEhCOO7o108RexdNABEBAAG0Rldpa2lMZWFrcyBFZGl0b3JpYWwgT2ZmaWNl
+IEhpZ2ggU2VjdXJpdHkgQ29tbXVuaWNhdGlvbiBLZXkgKDIwMjEtMjAyNCmJBDEE
+EwEKACcFAmBjDtICGwMFCQWjmoAFCwkIBwMFFQoJCAsFFgIDAQACHgECF4AACgkQ
+nG3NFyg+RUzRbh+eMSKgMYOdoz70u4RKTvev4KyqCAlwji+1RomnW7qsAK+l1s6b
+ugOhOs8zYv2ZSy6lv5JgWITRZogvB69JP94+Juphol6LIImC9X3P/bcBLw7VCdNA
+mP0XQ4OlleLZWXUEW9EqR4QyM0RkPMoxXObfRgtGHKIkjZYXyGhUOd7MxRM8DBzN
+yieFf3CjZNADQnNBk/ZWRdJrpq8J1W0dNKI7IUW2yCyfdgnPAkX/lyIqw4ht5UxF
+VGrva3PoepPir0TeKP3M0BMxpsxYSVOdwcsnkMzMlQ7TOJlsEdtKQwxjV6a1vH+t
+k4TpR4aG8fS7ZtGzxcxPylhndiiRVwdYitr5nKeBP69aWH9uLcpIzplXm4DcusUc
+Bo8KHz+qlIjs03k8hRfqYhUGB96nK6TJ0xS7tN83WUFQXk29fWkXjQSp1Z5dNCcT
+sWQBTxWxwYyEI8iGErH2xnok3HTyMItdCGEVBBhGOs1uCHX3W3yW2CooWLC/8Pia
+qgss3V7m4SHSfl4pDeZJcAPiH3Fm00wlGUslVSziatXW3499f2QdSyNDw6Qc+chK
+hUFflmAaavtpTqXPk+Lzvtw5SSW+iRGmEQICKzD2chpy05mW5v6QUy+G29nchGDD
+rrfpId2Gy1VoyBx8FAto4+6BOWVijrOj9Boz7098huotDQgNoEnidvVdsqP+P1RR
+QJekr97idAV28i7iEOLd99d6qI5xRqc3/QsV+y2ZnnyKB10uQNVPLgUkQljqN0wP
+XmdVer+0X+aeTHUd1d64fcc6M0cpYefNNRCsTsgbnWD+x0rjS9RMo+Uosy41+IxJ
+6qIBhNrMK6fEmQoZG3qTRPYYrDoaJdDJERN2E5yLxP2SPI0rWNjMSoPEA/gk5L91
+m6bToM/0VkEJNJkpxU5fq5834s3PleW39ZdpI0HpBDGeEypo/t9oGDY3Pd7JrMOF
+zOTohxTyu4w2Ql7jgs+7KbO9PH0Fx5dTDmDq66jKIkkC7DI0QtMQclnmWWtn14BS
+KTSZoZekWESVYhORwmPEf32EPiC9t8zDRglXzPGmJAPISSQz+Cc9o1ipoSIkoCCh
+2MWoSbn3KFA53vgsYd0vS/+Nw5aUksSleorFns2yFgp/w5Ygv0D007k6u3DqyRLB
+W5y6tJLvbC1ME7jCBoLW6nFEVxgDo727pqOpMVjGGx5zcEokPIRDMkW/lXjw+fTy
+c6misESDCAWbgzniG/iyt77Kz711unpOhw5aemI9LpOq17AiIbjzSZYt6b1Aq7Wr
+aB+C1yws2ivIl9ZYK911A1m69yuUg0DPK+uyL7Z86XC7hI8B0IY1MM/MbmFiDo6H
+dkfwUckE74sxxeJrFZKkBbkEAQRgYw7SAR+gvktRnaUrj/84Pu0oYVe49nPEcy/7
+5Fs6LvAwAj+JcAQPW3uy7D7fuGFEQguasfRrhWY5R87+g5ria6qQT2/Sf19Tpngs
+d0Dd9DJ1MMTaA1pc5F7PQgoOVKo68fDXfjr76n1NchfCzQbozS1HoM8ys3WnKAw+
+Neae9oymp2t9FB3B+To4nsvsOM9KM06ZfBILO9NtzbWhzaAyWwSrMOFFJfpyxZAQ
+8VbucNDHkPJjhxuafreC9q2f316RlwdS+XjDggRY6xD77fHtzYea04UWuZidc5zL
+VpsuZR1nObXOgE+4s8LU5p6fo7jL0CRxvfFnDhSQg2Z617flsdjYAJ2JR4apg3Es
+G46xWl8xf7t227/0nXaCIMJI7g09FeOOsfCmBaf/ebfiXXnQbK2zCbbDYXbrYgw6
+ESkSTt940lHtynnVmQBvZqSXY93MeKjSaQk1VKyobngqaDAIIzHxNCR941McGD7F
+qHHM2YMTgi6XXaDThNC6u5msI1l/24PPvrxkJxjPSGsNlCbXL2wqaDgrP6LvCP9O
+uooR9dVRxaZXcKQjeVGxrcRtoTSSyZimfjEercwi9RKHt42O5akPsXaOzeVjmvD9
+EB5jrKBe/aAOHgHJEIgJhUNARJ9+dXm7GofpvtN/5RE6qlx11QGvoENHIgawGjGX
+Jy5oyRBS+e+KHcgVqbmV9bvIXdwiC4BDGxkXtjc75hTaGhnDpu69+Cq016cfsh+0
+XaRnHRdh0SZfcYdEqqjn9CTILfNuiEpZm6hYOlrfgYQe1I13rgrnSV+EfVCOLF4L
+P9ejcf3eCvNhIhEjsBNEUDOFAA6J5+YqZvFYtjk3efpM2jCg6XTLZWaI8kCuADMu
+yrQxGrM8yIGvBndrlmmljUqlc8/Nq9rcLVFDsVqb9wOZjrCIJ7GEUD6bRuolmRPE
+SLrpP5mDS+wetdhLn5ME1e9JeVkiSVSFIGsumZTNUaT0a90L4yNj5gBE40dvFplW
+7TLeNE/ewDQk5LiIrfWuTUn3CqpjIOXxsZFLjieNgofX1nSeLjy3tnJwuTYQlVJO
+3CbqH1k6cOIvE9XShnnuxmiSoav4uZIXnLZFQRT9v8UPIuedp7TO8Vjl0xRTajCL
+PdTk21e7fYriax62IssYcsbbo5G5auEdPO04H/+v/hxmRsGIr3XYvSi4ZWXKASxy
+a/jHFu9zEqmy0EBzFzpmSx+FrzpMKPkoU7RbxzMgZwIYEBk66Hh6gxllL0JmWjV0
+iqmJMtOERE4NgYgumQT3dTxKuFtywmFxBTe80BhGlfUbjBtiSrULq59np4ztwlRT
+wDEAVDoZbN57aEXhQ8jjF2RlHtqGXhFMrg9fALHaRQARAQABiQQZBBgBCgAPBQJg
+Yw7SAhsMBQkFo5qAAAoJEJxtzRcoPkVMdigfoK4oBYoxVoWUBCUekCg/alVGyEHa
+ekvFmd3LYSKX/WklAY7cAgL/1UlLIFXbq9jpGXJUmLZBkzXkOylF9FIXNNTFAmBM
+3TRjfPv91D8EhrHJW0SlECN+riBLtfIQV9Y1BUlQthxFPtB1G1fGrv4XR9Y4TsRj
+VSo78cNMQY6/89Kc00ip7tdLeFUHtKcJs+5EfDQgagf8pSfF/TWnYZOMN2mAPRRf
+fh3SkFXeuM7PU/X0B6FJNXefGJbmfJBOXFbaSRnkacTOE9caftRKN1LHBAr8/RPk
+pc9p6y9RBc/+6rLuLRZpn2W3m3kwzb4scDtHHFXXQBNC1ytrqdwxU7kcaJEPOFfC
+XIdKfXw9AQll620qPFmVIPH5qfoZzjk4iTH06Yiq7PI4OgDis6bZKHKyyzFisOkh
+DXiTuuDnzgcu0U4gzL+bkxJ2QRdiyZdKJJMswbm5JDpX6PLsrzPmN314lKIHQx3t
+NNXkbfHL/PxuoUtWLKg7/I3PNnOgNnDqCgqpHJuhU1AZeIkvewHsYu+urT67tnpJ
+AK1Z4CgRxpgbYA4YEV1rWVAPHX1u1okcg85rc5FHK8zh46zQY1wzUTWubAcxqp9K
+1IqjXDDkMgIX2Z2fOA1plJSwugUCbFjn4sbT0t0YuiEFMPMB42ZCjcCyA1yysfAd
+DYAmSer1bq47tyTFQwP+2ZnvW/9p3yJ4oYWzwMzadR3T0K4sgXRC2Us9nPL9k2K5
+TRwZ07wE2CyMpUv+hZ4ja13A/1ynJZDZGKys+pmBNrO6abxTGohM8LIWjS+YBPIq
+trxh8jxzgLazKvMGmaA6KaOGwS8vhfPfxZsu2TJaRPrZMa/HpZ2aEHwxXRy4nm9G
+Kx1eFNJO6Ues5T7KlRtl8gflI5wZCCD/4T5rto3SfG0s0jr3iAVb3NCn9Q73kiph
+PSwHuRxcm+hWNszjJg3/W+Fr8fdXAh5i0JzMNscuFAQNHgfhLigenq+BpCnZzXya
+01kqX24AdoSIbH++vvgE0Bjj6mzuRrH5VJ1Qg9nQ+yMjBWZADljtp3CARUbNkiIg
+tUJ8IJHCGVwXZBqY4qeJc3h/RiwWM2UIFfBZ+E06QPznmVLSkwvvop3zkr4eYNez
+cIKUju8vRdW6sxaaxC/GECDlP0Wo6lH0uChpE3NJ1daoXIeymajmYxNt+drz7+pd
+jMqjDtNA2rgUrjptUgJK8ZLdOQ4WCrPY5pP9ZXAO7+mK7S3u9CTywSJmQpypd8hv
+8Bu8jKZdoxOJXxj8CphK951eNOLYxTOxBUNB8J2lgKbmLIyPvBvbS1l1lCM5oHlw
+WXGlp70pspj3kaX4mOiFaWMKHhOLb+er8yh8jspM184=
+=5a6T
+-----END PGP PUBLIC KEY BLOCK-----
+
+		</pre>
+	</div>
+</div>
+
+<div id="submit_help_contact" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Contact</h3>
+		<p>If you need help using Tor you can contact WikiLeaks for assistance in setting it up using our simple webchat available at: <a href="https://wikileaks.org/talk">https://wikileaks.org/talk</a></p>
+		<p>If you can use Tor, but need to contact WikiLeaks for other reasons use our secured webchat available at <b>http://wlchatc3pjwpli5r.onion</b></p>
+		<p>We recommend contacting us over Tor if you can.</p>
+	</div>
+</div>
+
+<div id="submit_help_tor" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Tor</h3>
+		<p><a href="https://www.torproject.org">Tor</a> is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.</p>
+		<p>In order to use the WikiLeaks public submission system as detailed above you can download the Tor Browser Bundle, which is a Firefox-like browser available for Windows, Mac OS X and GNU/Linux and pre-configured to connect using the anonymising system Tor.</p>
+		<h4>Tails</h4>
+		<p>If you are at high risk and you have the capacity to do so, you can also access the submission system through a secure operating system called <a href="https://tails.boum.org">Tails</a>. Tails is an operating system launched from a USB stick or a DVD that aim to leaves no traces when the computer is shut down after use and automatically routes your internet traffic through Tor. Tails will require you to have either a USB stick or a DVD at least 4GB big and a laptop or desktop computer.</p>
+	</div>
+</div>
+
+<div id="submit_help_tips" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>Tips</h3>
+		<p>Our submission system works hard to preserve your anonymity, but we recommend you also take some of your own precautions. Please review these basic guidelines. </p>
+		<div>
+			<h4>1. Contact us if you have specific problems</h4>
+			<p>If you have a very large submission, or a submission with a complex format, or are a high-risk source, please <a href="#submit_help_contact">contact us</a>. In our experience it is always possible to find a custom solution for even the most seemingly difficult situations.</p>
+		</div>
+		<div>
+			<h4>2. What computer to use</h4>
+			<p>If the computer you are uploading from could subsequently be audited in an investigation, consider using a computer that is not easily tied to you. Technical users can also use <a href="https://tails.boum.org">Tails</a> to help ensure you do not leave any records of your submission on the computer.</p>
+		</div>
+		<div>
+			<h4>3. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+	</div>
+</div>
+
+<div id="submit_help_after" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>After</h3>
+
+		<div>
+			<h4>1. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+		<div>
+			<h4>2. Act normal</h4>
+			<p>If you are a high-risk source, avoid saying anything or doing anything after submitting which might promote suspicion. In particular, you should try to stick to your normal routine and behaviour.</p>
+		</div>
+
+		<div>
+			<h4>3. Remove traces of your submission</h4>
+			<p>If you are a high-risk source and the computer you prepared your submission on, or uploaded it from, could subsequently be audited in an investigation, we recommend that you format and dispose of the computer hard drive and any other storage media you used.</p>
+			<p>In particular, hard drives retain data after formatting which may be visible to a digital forensics team and flash media (USB sticks, memory cards and SSD drives) retain data even after a secure erasure. If you used flash media to store sensitive data, it is important to destroy the media.</p>
+			<p>If you do this and are a high-risk source you should make sure there are no traces of the clean-up, since such traces themselves may draw suspicion.</p>
+			<div>
+				<h4>4. If you face legal action</h4>
+				<p>If a legal action is brought against you as a result of your submission, there are organisations that may help you. The Courage Foundation is an international organisation dedicated to the protection of journalistic sources. You can find more details at <a href="https://www.couragefound.org">https://www.couragefound.org</a>.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="submit" class="submit_banner">
+	<div class="container">
+		<div class="page-header">
+			<h1>Submit documents to WikiLeaks</h1>
+			<a class="remove-button" href="#"><span class="glyphicon glyphicon-remove-circle"></span></a>
+		</div>
+		<p>WikiLeaks publishes documents of political or historical importance that are censored or otherwise suppressed. We specialise in strategic global publishing and large archives.</p>
+		<p>The following is the address of our secure site where you can anonymously upload your documents to WikiLeaks editors. You can only access this submissions system through Tor. (See our <a href="#submit_help_tor">Tor tab</a> for more information.) We also advise you to read our <a href="#submit_help_tips">tips for sources</a> before submitting.</p>
+
+		<div class="alert alert-info">
+			<div class="onion-url">http://ibfckmpsmylhbfovflajicjgldsqpc75k5w454irzwlh7qifgglncbad.onion </div>
+			<!--<div>
+				Copy this address into your Tor browser. Advanced users, if they wish, can also add a further layer of encryption to their submission using <a href="#submit_wlkey">our public PGP key</a>.
+			</div>-->
+		</div>
+
+		<p>If you cannot use Tor, or your submission is very large, or you have specific requirements, WikiLeaks provides several alternative methods. <a href="#submit_help_contact">Contact us</a> to discuss how to proceed.</p>
+	</div>
+</div>
+<div id="submit_help_buttons" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="main">
+	    
+
+<link href="/static/css/styles_topnav.css" rel="stylesheet">
+<link href="/static/css/styles_sidenav.css" rel="stylesheet">
+<div class="top-navigation">
+  <nav class="navbar">
+      <a href="#menu" class="mobile-only hot-dog nav-element">
+      </a>
+    <div class="nav-logo">
+      <a href="https://wikileaks.org">
+        <h1>WikiLeaks</h1>
+      </a>
+    </div>
+    <div class="action-buttons">
+      <a class="button-face donate-link" href="https://shop.wikileaks.org/donate">Donate</a>
+      <a class="button-face submit-link" href="#submit">Submit</a>
+    </div>
+    <form class="global-search" method="get" action="https://search.wikileaks.org/">
+      <input type="text" name="q" placeholder="Search">
+      <button class="btn-search" type="submit"></button>
+    </form>
+    <div class="main-nav">
+
+        <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+            </li>
+
+            <li>
+              <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+            </li>
+
+        </ul>
+
+    </div>
+  </nav>
+</div>
+
+<nav id="menu" class="side-nav rub">
+  <div class="menu-wrapper">
+    <a class="close-btn nav-element" href="#"></a>
+
+      <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+
+          </li>
+
+          <li>
+            <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+
+          </li>
+
+      </ul>
+
+    <aside class="friends mobile-only">
+
+        <ul class="first-level">
+                <li>
+                <a href="https://our.wikileaks.org" target="_blank">our.wikileaks.org</a>
+                </li>
+                <li>
+                <a href="https://www.torproject.org/" target="_blank">Tor Project</a>
+                </li>
+                <li>
+                <a href="https://tails.boum.org/" target="_blank">Tails</a>
+                </li>
+                <li>
+                <a href="https://www.couragefound.org/" target="_blank">Courage</a>
+                </li>
+                <li>
+                <a href="https://www.bitcoin.org/" target="_blank">Bitcoin</a>
+                </li>
+        
+        </ul>
+
+    </aside>
+    <aside class="social mobile-only">
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/wikileaks" class="nav-element" target="_blank" alt="Facebook">
+            <img class="img-responsive" src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" class="nav-element" target="_blank" alt="Twitter">
+            <img class="img-responsive" src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</nav>
+
+
+<div id="overall">
+
+<div id="leftmenu">
+
+        <center><img src="/plusd/images/wl2.jpg" alt="WikiLeaks" /></center>
+        <a class="button" href="/plusd/pressrelease/">Press release</a>
+        <a class="button" href="/plusd/about/">About PlusD</a>
+
+        <div class="pick">
+	<h3>Browse by creation date</h3>
+
+<a href="/plusd/?q=&qtfrom=1966-01-01&qtto=1966-12-31#result">1966</a>
+<a href="/plusd/?q=&qtfrom=1972-01-01&qtto=1972-12-31#result">1972</a>
+<a href="/plusd/?q=&qtfrom=1973-01-01&qtto=1973-12-31#result">1973</a>
+<a href="/plusd/?q=&qtfrom=1974-01-01&qtto=1974-12-31#result">1974</a>
+<a href="/plusd/?q=&qtfrom=1975-01-01&qtto=1975-12-31#result">1975</a>
+<a href="/plusd/?q=&qtfrom=1976-01-01&qtto=1976-12-31#result">1976</a>
+<a href="/plusd/?q=&qtfrom=1977-01-01&qtto=1977-12-31#result">1977</a>
+<a href="/plusd/?q=&qtfrom=1978-01-01&qtto=1978-12-31#result">1978</a>
+<a href="/plusd/?q=&qtfrom=1979-01-01&qtto=1979-12-31#result">1979</a>
+<a href="/plusd/?q=&qtfrom=1985-01-01&qtto=1985-12-31#result">1985</a>
+<a href="/plusd/?q=&qtfrom=1986-01-01&qtto=1986-12-31#result">1986</a>
+<a href="/plusd/?q=&qtfrom=1987-01-01&qtto=1987-12-31#result">1987</a>
+<a href="/plusd/?q=&qtfrom=1988-01-01&qtto=1988-12-31#result">1988</a>
+<a href="/plusd/?q=&qtfrom=1989-01-01&qtto=1989-12-31#result">1989</a>
+<a href="/plusd/?q=&qtfrom=1990-01-01&qtto=1990-12-31#result">1990</a>
+<a href="/plusd/?q=&qtfrom=1991-01-01&qtto=1991-12-31#result">1991</a>
+<a href="/plusd/?q=&qtfrom=1992-01-01&qtto=1992-12-31#result">1992</a>
+<a href="/plusd/?q=&qtfrom=1993-01-01&qtto=1993-12-31#result">1993</a>
+<a href="/plusd/?q=&qtfrom=1994-01-01&qtto=1994-12-31#result">1994</a>
+<a href="/plusd/?q=&qtfrom=1995-01-01&qtto=1995-12-31#result">1995</a>
+<a href="/plusd/?q=&qtfrom=1996-01-01&qtto=1996-12-31#result">1996</a>
+<a href="/plusd/?q=&qtfrom=1997-01-01&qtto=1997-12-31#result">1997</a>
+<a href="/plusd/?q=&qtfrom=1998-01-01&qtto=1998-12-31#result">1998</a>
+<a href="/plusd/?q=&qtfrom=1999-01-01&qtto=1999-12-31#result">1999</a>
+<a href="/plusd/?q=&qtfrom=2000-01-01&qtto=2000-12-31#result">2000</a>
+<a href="/plusd/?q=&qtfrom=2001-01-01&qtto=2001-12-31#result">2001</a>
+<a href="/plusd/?q=&qtfrom=2002-01-01&qtto=2002-12-31#result">2002</a>
+<a href="/plusd/?q=&qtfrom=2003-01-01&qtto=2003-12-31#result">2003</a>
+<a href="/plusd/?q=&qtfrom=2004-01-01&qtto=2004-12-31#result">2004</a>
+<a href="/plusd/?q=&qtfrom=2005-01-01&qtto=2005-12-31#result">2005</a>
+<a href="/plusd/?q=&qtfrom=2006-01-01&qtto=2006-12-31#result">2006</a>
+<a href="/plusd/?q=&qtfrom=2007-01-01&qtto=2007-12-31#result">2007</a>
+<a href="/plusd/?q=&qtfrom=2008-01-01&qtto=2008-12-31#result">2008</a>
+<a href="/plusd/?q=&qtfrom=2009-01-01&qtto=2009-12-31#result">2009</a>
+<a href="/plusd/?q=&qtfrom=2010-01-01&qtto=2010-12-31#result">2010</a>
+
+        </div>
+
+        <div class="sort">
+	<h3>Browse by Classification</h3>
+
+<a href="/plusd/?q=&qfoclass=UNCLASSIFIED#result" title="UNCLASSIFIED (1339531 documents)">UNCLASSIFIED</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL#result" title="CONFIDENTIAL (503750 documents)">CONFIDENTIAL</a><a href="/plusd/?q=&qfoclass=LIMITED+OFFICIAL+USE#result" title="LIMITED OFFICIAL USE (435536 documents)">LIMITED OFFICIAL USE</a><a href="/plusd/?q=&qfoclass=SECRET#result" title="SECRET (120598 documents)">SECRET</a><a href="/plusd/?q=&qfoclass=UNCLASSIFIED%2F%2FFOR+OFFICIAL+USE+ONLY#result" title="UNCLASSIFIED//FOR OFFICIAL USE ONLY (58095 documents)">UNCLASSIFIED//FOR OFFICIAL USE ONLY</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL%2F%2FNOFORN#result" title="CONFIDENTIAL//NOFORN (4678 documents)">CONFIDENTIAL//NOFORN</a><a href="/plusd/?q=&qfoclass=SECRET%2F%2FNOFORN#result" title="SECRET//NOFORN (4330 documents)">SECRET//NOFORN</a>
+        </div>
+
+	<div class="sort">
+	<h3>Browse by Handling Restriction</h3>
+
+<a href="/plusd/?q=&qforiginalhandlingrestriction=EXDIS#result" title="EXDIS - Exclusive Distribution Only (71108 documents)">EXDIS - Exclusive Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=ONLY#result" title="ONLY - Eyes Only (32583 documents)">ONLY - Eyes Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LIMDIS#result" title="LIMDIS - Limited Distribution Only (25098 documents)">LIMDIS - Limited Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NODIS#result" title="NODIS - No Distribution (other than to persons indicated) (24437 documents)">NODIS - No Distribution (other than to persons indicated)</a><a href="/plusd/?q=&qforiginalhandlingrestriction=STADIS#result" title="STADIS - State Distribution Only (20286 documents)">STADIS - State Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CHEROKEE#result" title="CHEROKEE - Limited to senior officials (4343 documents)">CHEROKEE - Limited to senior officials</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NOFORN#result" title="NOFORN - No Foreign Distribution (2197 documents)">NOFORN - No Foreign Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LOU#result" title="LOU - Limited Official Use (598 documents)">LOU - Limited Official Use</a><a href="/plusd/?q=&qforiginalhandlingrestriction=SENSITIVE#result" title="SENSITIVE -  (43 documents)">SENSITIVE - </a><a href="/plusd/?q=&qforiginalhandlingrestriction=BU#result" title="BU - Background Use Only (3 documents)">BU - Background Use Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CONDIS#result" title="CONDIS - Controlled Distribution (1 documents)">CONDIS - Controlled Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=US#result" title="US - US Government Only (1 documents)">US - US Government Only</a>	</div>
+
+	<div class="pick wide">
+	<h3>Browse by TAGS</h3>
+<a href="/plusd/?q=&qftags=US#result" title="US - United States (553685 documents)">US</a> <a href="/plusd/?q=&qftags=PFOR#result" title="PFOR - Political Affairs--Foreign Policy and Relations (294672 documents)">PFOR</a> <a href="/plusd/?q=&qftags=PGOV#result" title="PGOV - Political Affairs--Government; Internal Governmental Affairs (180409 documents)">PGOV</a> <a href="/plusd/?q=&qftags=PREL#result" title="PREL - Political Affairs--External Political Relations (149906 documents)">PREL</a> <a href="/plusd/?q=&qftags=ETRD#result" title="ETRD - Economic Affairs--Foreign Trade (124244 documents)">ETRD</a> <a href="/plusd/?q=&qftags=UR#result" title="UR - Soviet Union (USSR) (117139 documents)">UR</a> <a href="/plusd/?q=&qftags=OVIP#result" title="OVIP - Operations--VIP Travel Arrangements (114816 documents)">OVIP</a> <a href="/plusd/?q=&qftags=ASEC#result" title="ASEC - Administration--Security (114594 documents)">ASEC</a> <a href="/plusd/?q=&qftags=OGEN#result" title="OGEN - Operations--General (114085 documents)">OGEN</a> <a href="/plusd/?q=&qftags=CASC#result" title="CASC - Consular Affairs--Assistance to Citizens (113486 documents)">CASC</a> <a href="/plusd/?q=&qftags=PINT#result" title="PINT - Political Affairs--Internal Political Affairs (104641 documents)">PINT</a> <a href="/plusd/?q=&qftags=EFIN#result" title="EFIN - Economic Affairs--Financial and Monetary Affairs (102225 documents)">EFIN</a> <a href="/plusd/?q=&qftags=BEXP#result" title="BEXP - Business Services--Trade Expansion and Promotion (102142 documents)">BEXP</a> <a href="/plusd/?q=&qftags=OEXC#result" title="OEXC - Operations--Educational and Cultural Exchange Operations (89751 documents)">OEXC</a> <a href="/plusd/?q=&qftags=EAID#result" title="EAID - Economic Affairs--Foreign Assistance (80469 documents)">EAID</a> <a href="/plusd/?q=&qftags=CVIS#result" title="CVIS - Consular Affairs--Visas (79634 documents)">CVIS</a> <a href="/plusd/?q=&qftags=OTRA#result" title="OTRA - Operations--Travel and Visits (79042 documents)">OTRA</a> <a href="/plusd/?q=&qftags=ENRG#result" title="ENRG - Economic Affairs--Energy and Power (76814 documents)">ENRG</a> <a href="/plusd/?q=&qftags=OCON#result" title="OCON - Operations--Conferences and Meetings (76271 documents)">OCON</a> <a href="/plusd/?q=&qftags=ECON#result" title="ECON - Economic Affairs--Economic Conditions, Trends and Potential (75832 documents)">ECON</a> <a href="/plusd/?q=&qftags=NATO#result" title="NATO - North Atlantic Treaty Organization (74653 documents)">NATO</a> <a href="/plusd/?q=&qftags=PINS#result" title="PINS - Political Affairs--Internal Security (72716 documents)">PINS</a> <a href="/plusd/?q=&qftags=GE#result" title="GE - Germany (East) (69261 documents)">GE</a> <a href="/plusd/?q=&qftags=JA#result" title="JA - Japan; Okinawa; (67491 documents)">JA</a> <a href="/plusd/?q=&qftags=UK#result" title="UK - United Kingdom (65645 documents)">UK</a> <a href="/plusd/?q=&qftags=IS#result" title="IS - Israel (61813 documents)">IS</a> <a href="/plusd/?q=&qftags=MARR#result" title="MARR - Military and Defense Affairs--Military and Defense Arrangements (59054 documents)">MARR</a> <a href="/plusd/?q=&qftags=PARM#result" title="PARM - Political Affairs--Arms Controls and Disarmament (58794 documents)">PARM</a> <a href="/plusd/?q=&qftags=UN#result" title="UN - United Nations (58176 documents)">UN</a> <a href="/plusd/?q=&qftags=EG#result" title="EG - Egypt (57176 documents)">EG</a> <a href="/plusd/?q=&qftags=FR#result" title="FR - France (56597 documents)">FR</a> <a href="/plusd/?q=&qftags=PHUM#result" title="PHUM - Political Affairs--Human Rights (55302 documents)">PHUM</a> <a href="/plusd/?q=&qftags=SREF#result" title="SREF - Social Affairs--Refugees (53585 documents)">SREF</a> <a href="/plusd/?q=&qftags=EAIR#result" title="EAIR - Economic Affairs--Aeronautics and Aviation; Civil Aviation (52511 documents)">EAIR</a> <a href="/plusd/?q=&qftags=MASS#result" title="MASS - Military and Defense Affairs--Military Assistance and Sales (51560 documents)">MASS</a> <a href="/plusd/?q=&qftags=APER#result" title="APER - Administration--Personnel (51272 documents)">APER</a> <a href="/plusd/?q=&qftags=SNAR#result" title="SNAR - Social Affairs--Narcotics (49299 documents)">SNAR</a> <a href="/plusd/?q=&qftags=PINR#result" title="PINR - Political Affairs--Intelligence (48667 documents)">PINR</a> <a href="/plusd/?q=&qftags=EAGR#result" title="EAGR - Economic Affairs--Agriculture and Forestry (47350 documents)">EAGR</a> <a href="/plusd/?q=&qftags=PDIP#result" title="PDIP - Political Affairs--Diplomatic and Consular Representation (47061 documents)">PDIP</a> <a href="/plusd/?q=&qftags=AORG#result" title="AORG - Administration--International Organization Administration (42798 documents)">AORG</a> <a href="/plusd/?q=&qftags=PORG#result" title="PORG - Political Affairs--Policy Relations With International Organizations (42754 documents)">PORG</a> <a href="/plusd/?q=&qftags=MX#result" title="MX - Mexico (42577 documents)">MX</a> <a href="/plusd/?q=&qftags=TU#result" title="TU - Turkey (42476 documents)">TU</a> <a href="/plusd/?q=&qftags=ELAB#result" title="ELAB - Economic Affairs--Labor and Manpower; Labor Sector Affairs (41921 documents)">ELAB</a> <a href="/plusd/?q=&qftags=IN#result" title="IN - India (41702 documents)">IN</a> <a href="/plusd/?q=&qftags=CA#result" title="CA - Canada (41623 documents)">CA</a> <a href="/plusd/?q=&qftags=SCUL#result" title="SCUL - Social Affairs--Cultural Affairs (41509 documents)">SCUL</a> <a href="/plusd/?q=&qftags=CH#result" title="CH - China (Mainland) (40426 documents)">CH</a> <a href="/plusd/?q=&qftags=IR#result" title="IR - Iran (39924 documents)">IR</a> <a href="/plusd/?q=&qftags=IT#result" title="IT - Italy (39454 documents)">IT</a> <a href="/plusd/?q=&qftags=XF#result" title="XF - Middle East (38273 documents)">XF</a> <a href="/plusd/?q=&qftags=GW#result" title="GW - Germany (West) (37945 documents)">GW</a> <a href="/plusd/?q=&qftags=EINV#result" title="EINV - Economic Affairs--Investments; Foreign Investments (37616 documents)">EINV</a> <a href="/plusd/?q=&qftags=TH#result" title="TH - Thailand (37385 documents)">TH</a> <a href="/plusd/?q=&qftags=TECH#result" title="TECH - Technology and Science--Technology (36578 documents)">TECH</a> <a href="/plusd/?q=&qftags=SENV#result" title="SENV - Social Affairs--Environment (35665 documents)">SENV</a> <a href="/plusd/?q=&qftags=OREP#result" title="OREP - Operations--Congressional Travel (35140 documents)">OREP</a> <a href="/plusd/?q=&qftags=KS#result" title="KS - Korea (South) (34546 documents)">KS</a> <a href="/plusd/?q=&qftags=EGEN#result" title="EGEN - Economic Affairs--General (34287 documents)">EGEN</a> <a href="/plusd/?q=&qftags=PEPR#result" title="PEPR - PEPR (33866 documents)">PEPR</a> <a href="/plusd/?q=&qftags=MILI#result" title="MILI - Military and Defense Affairs--General (33710 documents)">MILI</a> <a href="/plusd/?q=&qftags=SHUM#result" title="SHUM - Social Affairs--Human Rights (33098 documents)">SHUM</a> <a href="/plusd/?q=&qftags=KISSINGER%2C+HENRY+A#result" title="KISSINGER, HENRY A - Henry Kissinger (32848 documents)">KISSINGER, HENRY A</a> <a href="/plusd/?q=&qftags=PL#result" title="PL - Poland (31163 documents)">PL</a> <a href="/plusd/?q=&qftags=BR#result" title="BR - Brazil (30797 documents)">BR</a> <a href="/plusd/?q=&qftags=RP#result" title="RP - Philippines (30198 documents)">RP</a> <a href="/plusd/?q=&qftags=GR#result" title="GR - Greece; Crete (30183 documents)">GR</a> <a href="/plusd/?q=&qftags=SF#result" title="SF - South Africa (30161 documents)">SF</a> <a href="/plusd/?q=&qftags=AFSP#result" title="AFSP - Administration--Post Administration (29315 documents)">AFSP</a> <a href="/plusd/?q=&qftags=SP#result" title="SP - Spain (29108 documents)">SP</a> <a href="/plusd/?q=&qftags=PTER#result" title="PTER - Political Affairs--Terrorists and Terrorism (28839 documents)">PTER</a> <a href="/plusd/?q=&qftags=MOPS#result" title="MOPS - Military and Defense Affairs--Military Operations (28821 documents)">MOPS</a> <a href="/plusd/?q=&qftags=SA#result" title="SA - Saudi Arabia (28190 documents)">SA</a> <a href="/plusd/?q=&qftags=UNGA#result" title="UNGA - UN General Assembly (27867 documents)">UNGA</a> <a href="/plusd/?q=&qftags=CGEN#result" title="CGEN - Consular Affairs--General (27680 documents)">CGEN</a> <a href="/plusd/?q=&qftags=ESTC#result" title="ESTC - Economic Affairs--Strategic Trade Controls (27627 documents)">ESTC</a> <a href="/plusd/?q=&qftags=SOPN#result" title="SOPN - Social Affairs--Public Opinion and Information (27583 documents)">SOPN</a> <a href="/plusd/?q=&qftags=RO#result" title="RO - Romania (27560 documents)">RO</a> <a href="/plusd/?q=&qftags=LE#result" title="LE - Lebanon (27323 documents)">LE</a> <a href="/plusd/?q=&qftags=TGEN#result" title="TGEN - Technology and Science--General (27058 documents)">TGEN</a> <a href="/plusd/?q=&qftags=PK#result" title="PK - Pakistan (26991 documents)">PK</a> <a href="/plusd/?q=&qftags=AR#result" title="AR - Argentina (26444 documents)">AR</a> <a href="/plusd/?q=&qftags=NI#result" title="NI - Nigeria (26170 documents)">NI</a> <a href="/plusd/?q=&qftags=OSCI#result" title="OSCI - Operations--Science Grants (25846 documents)">OSCI</a> <a href="/plusd/?q=&qftags=CI#result" title="CI - Chile (25827 documents)">CI</a> <a href="/plusd/?q=&qftags=EEC#result" title="EEC - European Common Market (European Communities); European Economic Community (25827 documents)">EEC</a> <a href="/plusd/?q=&qftags=VS#result" title="VS - South Vietnam (25800 documents)">VS</a> <a href="/plusd/?q=&qftags=YO#result" title="YO -  (25447 documents)">YO</a> <a href="/plusd/?q=&qftags=AFIN#result" title="AFIN - Administration--Financial Services (24705 documents)">AFIN</a> <a href="/plusd/?q=&qftags=OECD#result" title="OECD - Organization for Economic Cooperation and Development (24622 documents)">OECD</a> <a href="/plusd/?q=&qftags=SY#result" title="SY - Syria (24419 documents)">SY</a> <a href="/plusd/?q=&qftags=IZ#result" title="IZ - Iraq (24415 documents)">IZ</a> <a href="/plusd/?q=&qftags=ID#result" title="ID - Indonesia (23865 documents)">ID</a> <a href="/plusd/?q=&qftags=VE#result" title="VE - Venezuela (23792 documents)">VE</a> <a href="/plusd/?q=&qftags=TPHY#result" title="TPHY - Technology and Science--Physical Sciences (23741 documents)">TPHY</a> <a href="/plusd/?q=&qftags=TW#result" title="TW - Taiwan (23233 documents)">TW</a> <a href="/plusd/?q=&qftags=AS#result" title="AS - Australia (23143 documents)">AS</a> <a href="/plusd/?q=&qftags=PBOR#result" title="PBOR - Political Affairs--Boundary and Sovereignity Claims (23066 documents)">PBOR</a> 
+	</div>
+
+
+        <div class="sort" style="clear:both;">
+        <h3>Media Organizations</h3>
+        <a target="_blank" href="http://www.theage.com.au/">Australia - The Age</a>
+        <a target="_blank" href="http://www.pagina12.com.ar/">Argentina - Pagina 12</a>
+        <a target="_blank" href="http://www.apublica.org/?p=4041">Brazil - Publica</a>
+        <a target="_blank" href="https://bivol.bg/">Bulgaria - Bivol</a>
+        <a target="_blank" href="http://www.almasryalyoum.com/ ">Egypt - Al Masry Al Youm</a>
+        <a target="_blank" href="http://www.tanea.gr/">Greece - Ta Nea</a>
+        <a target="_blank" href="http://www.plazapublica.com.gt/content/los-cables-de-wikileaks">Guatemala - Plaza Publica</a>
+        <a target="_blank" href="http://www.haiti-liberte.com/">Haiti - Haiti Liberte</a>
+        <a target="_blank" href="http://www.thehindu.com/">India - The Hindu</a>
+        <a target="_blank" href="http://espresso.repubblica.it/">Italy - L'Espresso</a>
+        <a target="_blank" href="http://www.repubblica.it/">Italy - La Repubblica</a>
+        <a target="_blank" href="http://www.al-akhbar.com/">Lebanon - Al Akhbar</a>
+        <a target="_blank" href="http://www.jornada.unam.mx/ultimas/">Mexico - La Jornada</a>
+        <a target="_blank" href="http://www.publico.es/452776">Spain - Publico</a>
+        <a target="_blank" href="http://www.aftonbladet.se/nyheter/article16421007.ab">Sweden - Aftonbladet</a>
+        <a target="_blank" href="http://www.ap.org/">UK - AP</a>
+        <a target="_blank" href="http://thenation.com">US - The Nation</a>
+        </div>
+	<br style="clear: both;" />
+</div>
+
+<div id="content"><div id="content-main">
+
+<!--<p style="text-align: justify; font-size: medium">Click the <b>Chat</b> button above to join a secure chat channel dedicated to media partner The Kissinger Cables discussion. Please go on this to talk to the others currently working on this project. <br />When the chat window opens type the following in the white text space at the bottom of the screen to assign yourself a recognisable name: <b>/nick Espresso</b> and press enter</p>
+<center><h2 style="font-size: x-large;">Public Library of US Diplomacy: PlusD</h2></center>-->
+
+<center><img src="/plusd/images/plusdb.png" /></center>
+<div id="st" style="clear:both;">&nbsp;</div>
+<div id="topnav">
+        <a class="searchbutton active" href="//search.wikileaks.org/plusd/">Specified Search</a>
+        <a class="searchbutton sbinv" href="/plusd/map" target="_blank">View Map</a>
+        <a class="searchbutton sbinv" href="/plusd/graph" target="_blank">Make Timegraph</a>
+        <a class="searchbutton sbinv" href="/plusd/tags/" target="_blank">View Tags</a>
+        <a class="searchbutton sbinv" href="/plusd/imagelibrary/" target="_blank">Image Library</a>
+</div>
+<div class="sections"> 
+<div class="pane-content">
+	<table id="synopsis">
+		<tr style="background:#eee;">
+			<td colspan="2" style="font-size: medium; padding: 5px;color: #000; font-weight: bold; text-align: center;">A VIETNAMESE JANUS: THE PUBLIC AND PRIVATE FACES OF THE POLITBURO</td>
+		</tr>
+		<tr style="background:#eee;">
+			<td><div class="s_key"><a class="i" title="Date">Date:</a></div><div class="s_val" title=" 2000 May 26, 08:46 (Friday)">2000 May 26, 08:46 (Friday)</div></td>
+			<td><div class="s_key"><a class="i" title="Canonical ID">Canonical ID:</a></div><div class="s_val" title=" 00HANOI1160_a">00HANOI1160_a</div></td>
+		</tr>
+		<tr>
+			<td><div class="s_key"><a class="i" title="Original Classification">Original Classification:</a></div><div class="s_val" title=" CONFIDENTIAL (503750 documents)">CONFIDENTIAL</div></td>
+			<td><div class="s_key"><a class="i" title="Current Classification">Current Classification:</a></div><div class="s_val" title=" CONFIDENTIAL (129738 documents)">CONFIDENTIAL</div></td>
+		</tr>
+
+		<tr>
+			<td>
+<div class="s_key"><a class="i" title="Handling Restrictions", ">Handling Restrictions</a></div> <div class="s_val" title="-- Not Assigned -- (251287 documents)">-- Not Assigned --</div><br /></td>
+			<td><div class="s_key"><a class="i" title="Character Count">Character Count:</a></div><div class="s_val" title=" 39502">39502</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Executive Order">Executive Order:</a></div><div class="s_val" title=" -- Not Assigned -- (251287 documents)">-- Not Assigned --</div></td>
+			<td><div class="s_key"><a class="i" title="Locator">Locator:</a></div><div class="s_val" title=" TEXT ONLINE (1885254 documents)">TEXT ONLINE</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="TAGS">TAGS:</a></div><div class="s_val" title=" DPOL | ECON - Economic Affairs--Economic Conditions, Trends and Potential | PGOV - Political Affairs--Government; Internal Governmental Affairs | PHUM - Political Affairs--Human Rights | PINR - Political Affairs--Intelligence | VM - Vietnam"><a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=DPOL#result" title="DPOL  (88 documents)" >DPOL</a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=ECON#result" title="ECON Economic Affairs: Economic Conditions, Trends and Potential (75832 documents)" >ECON<span style="color: #216B7C;"> - Economic Affairs--Economic Conditions, Trends and Potential</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=PGOV#result" title="PGOV Political Affairs: Government; Internal Governmental Affairs (180409 documents)" >PGOV<span style="color: #216B7C;"> - Political Affairs--Government; Internal Governmental Affairs</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=PHUM#result" title="PHUM Political Affairs: Human Rights (55302 documents)" >PHUM<span style="color: #216B7C;"> - Political Affairs--Human Rights</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=PINR#result" title="PINR Political Affairs: Intelligence (48667 documents)" >PINR<span style="color: #216B7C;"> - Political Affairs--Intelligence</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=VM#result" title="VM Vietnam (10539 documents)" >VM<span style="color: #216B7C;"> - Vietnam</span></a></div></td>
+			<td><div class="s_key"><a class="i" title="Concepts">Concepts:</a></div><div class="s_val" title=" -- Not Assigned --"><a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=--+Not+Assigned+--#result" title="-- Not Assigned -- (251287 documents)">-- Not Assigned --</a></div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Enclosure">Enclosure:</a></div><div class="s_val" title=" -- Not Assigned -- (251287 documents)">-- Not Assigned --</div></td>
+			<td><div class="s_key"><a class="i" title="Type">Type:</a></div><div class="s_val" title=" TE - Telegram (cable) (2008616 documents)">TE - Telegram (cable)</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc">
+				<div class="s_key"><a class="i" title="Office Origin">Office Origin:</a></div><div class="s_val" title=" -- N/A or Blank -- (2117535 documents)">-- N/A or Blank --</div>				<br style="clear:both;"/>
+				<div class="s_key"><a class="i" title="Office Action">Office Action:</a></div><div class="s_val" title=" -- N/A or Blank -- (1411046 documents)">-- N/A or Blank --</div>			</td>
+			<td><div class="s_key"><a class="i" title="Archive Status">Archive Status:</a></div><div class="s_val" title=" -- Not Assigned -- (251288 documents)">-- Not Assigned --</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="From">From:</a></div><div class="s_val" title=" Vietnam Hanoi (2326 documents)"><a style="color: #216B7C; " href="/plusd/?q=&qforigin=Vietnam%23%23Hanoi#result" title="Vietnam Hanoi (2326 documents)">Vietnam Hanoi</a></div></td>
+			<td><div class="s_key"><a class="i" title="Markings">Markings:</a></div><div class="s_val" title=" -- Not Assigned -- (251287 documents)">-- Not Assigned --</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="To">To:</a></div><div class="s_val" title=" China Beijing  | China Hong Kong  | Commander in Chief US Pacific Command   | Defense Intelligence Agency   | Department of Commerce   | Department of the Treasury   | Japan Tokyo  | Joint Chiefs of Staff   | National Security Council   | Secretary of Defense   | Secretary of State   | South Korea Seoul  | The Association of Southeast Asian Nations "><a style="color: #216B7C; " href="/plusd/?q=&qfdestination=China%23%23Beijing#result" title="China Beijing (24798 documents)">China Beijing</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=China%23%23Hong Kong#result" title="China Hong Kong (37426 documents)">China Hong Kong</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Commander in Chief US Pacific Command#result" title="Commander in Chief US Pacific Command  (26371 documents)">Commander in Chief US Pacific Command </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Defense Intelligence Agency#result" title="Defense Intelligence Agency  (43356 documents)">Defense Intelligence Agency </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Department of Commerce#result" title="Department of Commerce  (76854 documents)">Department of Commerce </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Department of the Treasury#result" title="Department of the Treasury  (31233 documents)">Department of the Treasury </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Japan%23%23Tokyo#result" title="Japan Tokyo (71158 documents)">Japan Tokyo</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Joint Chiefs of Staff#result" title="Joint Chiefs of Staff  (33780 documents)">Joint Chiefs of Staff </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=National Security Council#result" title="National Security Council  (59709 documents)">National Security Council </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Secretary of Defense#result" title="Secretary of Defense  (69629 documents)">Secretary of Defense </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Secretary of State#result" title="Secretary of State  (1328443 documents)">Secretary of State </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=South Korea%23%23Seoul#result" title="South Korea Seoul (32734 documents)">South Korea Seoul</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=The Association of Southeast Asian Nations#result" title="The Association of Southeast Asian Nations  (11926 documents)">The Association of Southeast Asian Nations </a></div></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<br />
+
+
+<br style="clear: both;" />
+
+</div>
+<div class="pane-tab"><div class="pane-header">Content</div><div class="pane-content"><div class="text-header hidden">C O N F I D E N T I A L SECTION 01 OF 10 HANOI 001160 
+ 
+SIPDIS 
+ 
+                       CONFIDENTIAL 
+ 
+PAGE 02        HANOI  01160  01 OF 10  261123Z 
+STATE ALSO FOR EAP A/S ROTH AND DAS BOYCE AND EAP/BCLTV 
+STATE ALSO FOR DRL, EB, INR/EAP/SEA, INR/EAP/CM, INR/B 
+STATE PASS USTR AMB FISHER/DAUSTR DAMOND 
+NSC FOR KEN LIEBERTHAL AND RAVIC HUSO 
+WHITE HOUSE FOR OVP TED OSIUS 
+WHITE HOUSE FOR DEP/ASST TO POTUS LBRAINARD 
+OSD FOR ISA/EAP/LSTERN 
+USDOC FOR 4431/MAC/AP/OKSA/HPPHO 
+ 
+E.O. 12958: DECL: 4/14/2010 
+TAGS: PGOV, PINR, ECON, PHUM, VM, DPOL 
+SUBJECT:  A VIETNAMESE JANUS: THE PUBLIC AND PRIVATE FACES OF THE POLITBURO 
+ 
+REF: A) HANOI 839  B) HANOI 232 </div><div class="text-button" id="showhide">Show&nbsp;Headers</div><div class="text-content"><div id="tagged-text"> 
+(U) CLASSIFIED BY ACTING DCM JAMES BRUNO, 
+REASONS 1.5 (B) AND (D). 
+ 
+1. (C) SUMMARY: VIETNAM'S KEY LEADERSHIP BODY -- THE 
+CURRENTLY 18-MEMBER POLITBURO -- IS A LARGELY SHADOWY GROUP 
+WHOSE MEETINGS, AND MANY OF ITS MEMBERS' ACTIVITIES, ARE 
+HIDDEN FROM PUBLIC VIEW.  THE FIVE SEXAGENARIAN MEN IN THE 
+STANDING COMMITTEE, THE INNER CIRCLE OF THE COMMUNIST 
+PARTY'S POLITICAL BUREAU, HAVE HIGHLY VISIBLE PUBLIC 
+PERSONAS.  BUT HALF OF THE POLITBURO MEMBERS VIRTUALLY NEVER 
+APPEAR IN THE VIETNAMESE PRESS, ACCORDING TO A TWO-MONTH 
+ANALYSIS BY THE EMBASSY.  LIKEWISE, THE PARTY'S THREE SENIOR 
+ADVISORS, INCLUDING POWERFUL FORMER PRESIDENT LE DUC ANH, 
+ARE FEATURED ONLY IRREGULARLY IN OFFICIAL MEDIA, AND USUALLY 
+ONLY FOR CEREMONIAL OCCASIONS. 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  01 OF 10  261123Z 
+ 
+2. (C) WITH SO LITTLE PUBLIC INTERACTION AND VISIBILITY -- 
+MUCH LESS DEMOCRATIC ELECTIONS -- THERE IS LITTLE PUBLIC 
+ACCOUNTABILITY FOR THE PARTY LEADERSHIP.  THIS IS A GROUP 
+THAT EXERCISES ITS SUPREME POLITICAL POWER IN A CLOISTERED 
+AND OPAQUE ENVIRONMENT, IN A HIGHLY PATERNALISTIC FASHION. 
+AMONG THIS CONSENSUS-ORIENTED LEADERSHIP, SOME RISING STARS 
+ARE APPARENT: ON THE MORE IDEOLOGICAL WING ARE HANOI PARTY 
+CHIEF TRONG AND ARMY POLITICAL COMMISSAR NGAN, WHILE AMONG 
+THE MORE TECHNOCRATIC REFORMERS ARE DEPUTY PM DUNG, PARTY 
+ECONOMIC COMMISSION CHIEF SANG, AND HCMC PARTY LEADER TRIET. 
+THE POLITBURO'S RELIANCE ON CONSENSUS IN ITS DECISION-MAKING 
+CONTRIBUTES TO THE FUNDAMENTAL STABILITY OF THE GOVERNMENT, 
+BUT IT ALSO MEANS THAT REACHING AGREEMENT ON DRAMATIC 
+REFORMS IS VERY DIFFICULT.  THIS IS THE QUANDARY OF THE 
+MOMENT, WHEN THE MOST IDEOLOGICAL MEMBERS ARE PREVENTING 
+MOVEMENT FORWARD ON THE ECONOMIC REFORMS VIETNAM SO BADLY 
+NEEDS.  END SUMMARY. 
+ 
+--------------------------------------------- ------- 
+HOW THE POLITBURO IS PORTRAYED IN THE OFFICIAL PRESS 
+--------------------------------------------- ------- 
+ 
+3. (SBU) THIS IS THE FIRST OF AN ONGOING SERIES OF CABLES 
+ANALYZING THE PUBLIC PROFILE OF THE MEMBERS OF THE 
+POLITBURO, AS WELL AS THE THREE SENIOR ADVISORS OF THE 
+COMMUNIST PARTY OF VIETNAM (CPV).  IN LATE FEBRUARY THE 
+EMBASSY BEGAN A TRACKING PROJECT TO MONITOR THE ACTIVITIES, 
+MEETINGS, AND SPEECHES OF THESE KEY OFFICIALS IN LEADING 
+OFFICIAL MEDIA -- PRINCIPALLY THE CPV MOUTHPIECE &quot;NHAN DAN&quot; 
+(THE PEOPLE) AND VIETNAMESE NEWS SERVICE (VNS), BUT ALSO 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  01 OF 10  261123Z 
+&quot;HANOI MOI&quot; (NEW HANOI), &quot;TUOI TRE&quot; (YOUTH), AND &quot;SAIGON 
+GIAI PHONG&quot; (SAIGON LIBERATION).  BY FOCUSING ON THESE 
+LEADING PAPERS, POST IS TRACKING HOW VIETNAM'S CPV LEADERS 
+ARE PRESENTED TO THE PUBLIC BY THE GOVERNMENT-CONTROLLED 
+PRESS.  SINCE THE POLITBURO IS SUCH A SECRETIVE, RECLUSIVE 
+BODY, THIS ONGOING RESEARCH WILL HELP US TO ANALYZE BETTER 
+ITS ACTIVITIES AND PROFILE.  OVER THE NEXT YEAR, IN THE RUN- 
+UP TO THE NINTH PARTY CONGRESS IN EARLY 2001, ROUGHLY EVERY 
+TWO MONTHS WE PLAN TO ANALYZE THE TRENDS AND ACTIVITIES OF 
+POLITBURO MEMBERS, AS A SUPPLEMENTAL TO OUR ONGOING SPOT 
+REPORTS, ANALYSES, AND &quot;PULSE OF THE PARTY&quot; SERIES. 
+ 
+--------------------------------------------- ----- 
+GROUP LEADERSHIP BY &quot;THE LEAST COMMON DENOMINATOR&quot; 
+--------------------------------------------- ----- 
+ 
+4. (C) WHEN ANALYZING THE INDIVIDUAL MEMBERS OF THE 
+VIETNAMESE LEADERSHIP, ONE FIRST NEEDS TO RECOGNIZE THIS IS 
+A COLLECTIVE LEADERSHIP THAT RULES BY BROAD CONSENSUS.  FOR 
+EXAMPLE, IN THE PAST EIGHT MONTHS, GENERAL SECRETARY PHIEU 
+AND FORMER PRESIDENT ANH HAVE BEEN INFLUENTIAL IN SHAPING 
+THE LEADERSHIP'S DECISION-MAKING IN A MORE IDEOLOGICAL 
+MANNER.  BUT THEY HAVE ONLY BEEN ABLE TO DO THIS BY SHAPING 
+CONSENSUS AMONG THEIR COLLEAGUES.  IN A SENSE, THE 
+INSTITUTIONAL INTERESTS AND FUNDAMENTAL CAUTION OF THE 
+POLITBURO ARE MORE IMPORTANT THAN THE SUM OF ITS CONSTITUENT 
+PARTS. 
+ 
+5. (C) AS IN ANY POLITICAL SYSTEM, INDIVIDUAL LEADERSHIP 
+PERSONALITIES AND ABILITIES ARE IMPORTANT, BUT OVER THE PAST 
+FOUR DECADES, THE VIETNAMESE LEADERSHIP HAS BEEN STRIKINGLY 
+UNIFIED IN ITS FUNDAMENTAL GOALS AND COLLECTIVE INTERESTS. 
+IN YEARS PAST, THERE HAVE BEEN A HANDFUL OF INTERNECINE 
+BATTLES WHOSE RESULTS HAVE BEEN FLASHED BRIEFLY TO THE 
+PUBLIC, AND OCCASIONALLY POLITBURO MEMBERS HAVE BEEN RETIRED 
+IN DISGRACE OR PUT UNDER RESTRICTIONS AFTER BEING SACKED. 
+BUT VIETNAM'S COMMUNIST HISTORY IS VERY DIFFERENT FROM THAT 
+OF CHINA, FOR EXAMPLE, WHICH HAS LURCHED FROM THE VIOLENT 
+EXCESSES OF THE GREAT LEAP FORWARD TO THE CULTURAL 
+REVOLUTION TO THE TRIAL OF MAOISTS AND THE DRAMATIC 
+BEGINNING OF MARKET REFORMS UNDER DENG XIAOPING.  BY 
+CONTRAST, VIETNAM'S PERIOD OF COMMUNIST RULE IS STRIKING FOR 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  02 OF 10  261122Z 
+THE GRADUALISM -- ONE COULD ARGUE STAGNATION -- OF ITS 
+CONSENSUS-BASED LEADERSHIP.  SEVERAL CPV GENERAL 
+SECRETARIES, SUCH AS LE DUAN AND NGUYEN VAN LINH, HAVE BEEN 
+ 
+SIPDIS 
+VERY POWERFUL, BUT THEIRS HAS NOT BEEN A PERSONAL MANDATE SO 
+MUCH AS A COLLECTIVE ONE, AND NONE OF THEM ATTEMPTED TO MOVE 
+TO ESTABLISH A PERSONALISTIC DICTATORSHIP.  BY SELF- 
+DEFINITION, VIETNAM CLAIMS TO BE A DICTATORSHIP OF THE 
+PROLETARIAT.  MORE ACCURATELY, IT IS A COLLECTIVE OLIGARCHIC 
+DICTATORSHIP OF ONE PARTY. 
+ 
+6. (C) THIS LEADERSHIP STYLE OF THE CPV -- EMPHASIZING 
+CONSENSUS AND GRADUALISM IN DECISION-MAKING -- HAS A 
+POWERFUL IMPACT ON POLICY.  VIETNAM'S MODERN HISTORY HAS 
+SHOWN THAT ONLY WHEN THE CPV IS FACED WITH A PROFOUND 
+DOMESTIC CRISIS WILL THE PARTY LEADERSHIP DECIDE FOR 
+DRAMATIC CHANGE.  THE MOST PROMINENT EXAMPLE OF THIS WAS THE 
+ADVENT OF &quot;DOI MOI&quot; (RENOVATION) ECONOMIC REFORMS IN 1985-86 
+THAT FREED UP THE AGRICULTURAL AND RURAL SECTORS FROM THE 
+DISASTER OF COLLECTIVIST FARMING THAT HAD PUSHED THE COUNTRY 
+TO THE BRINK OF STARVATION.  IN THE MID-1980'S, A BROAD 
+CONSENSUS FORMED AMONG CPV LEADERS, WHO CLEARLY RECOGNIZED 
+THAT DRAMATIC CHANGES WERE NECESSARY TO PREVENT MASSIVE 
+SOCIAL UNREST.  THE RESULTANT DECADE OF HIGH-LEVEL ECONOMIC 
+GROWTH OWES IN LARGE PART TO THIS PERIOD OF REFORMS IN 
+RESPONSE TO CRISIS.  THE PROBLEM TODAY, HOWEVER, IS THAT, IN 
+THE ABSENCE OF SUCH DIRE CIRCUMSTANCES, THE CONSENSUS-BASED 
+POLITBURO SEEMS TO BE INCAPABLE OF AGREEING ON DIFFICULT 
+REFORM CHOICES.  FOR EXAMPLE, THE POLITBURO HAS BEEN UNABLE 
+TO AGREE ON A PRACTICAL PLAN FOR THE PRIVATIZATION OF STATE 
+ENTERPRISES, SINCE THOUSANDS OF POLITICALLY WELL-CONNECTED 
+WORKERS (READ CPV MEMBERS) WOULD LOSE THEIR JOBS IN ORDER TO 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  02 OF 10  261122Z 
+CREATE FAR MORE JOBS THROUGH INCREASED FOREIGN INVESTMENT 
+AND BETTER USE OF STATE MONIES.  THE PAROCHIAL INTERESTS OF 
+A FEW -- WHO ARE POLITICALLY WELL REPRESENTED IN THE 
+LEADERSHIP -- TRUMP THE PLANS OF MORE REFORM-MINDED LEADERS. 
+ 
+7. (C) THE FUNDAMENTAL CAUTION AND GRADUALISM OF THE 
+VIETNAMESE LEADERSHIP'S DECISION-MAKING STYLE CAN BE TRACED 
+IN PART TO THE COMMUNIST STRUGGLE AGAINST FRENCH COLONIAL 
+RULE AND AGAINST THE U.S.-BACKED SOUTHERN GOVERNMENT IN 
+VIETNAM'S CIVIL WAR.  THE INSURGENT MILITARY STRATEGIES 
+ADOPTED BY HO CHI MINH AND HIS KEY MILITARY ADVISORS SUCH AS 
+GEN. GIAP WERE FORGED BY A COLLEGIAL, COLLECTIVIST 
+LEADERSHIP AND CARRIED OUT BY THE PATIENT, LONG-TERM PURSUIT 
+OF MILITARY OBJECTIVES.  MANY SENIOR CPV LEADERS, WHOSE 
+FORMATIVE EXPERIENCES WERE IN THE &quot;NATIONAL LIBERATION 
+STRUGGLE,&quot; BELIEVE THAT STAYING THE COURSE IN A MEASURED, 
+&quot;STEP BY STEP&quot; MANNER IS AN IMPORTANT VIRTUE BORNE OUT BY 
+THE SUCCESSES OF THOSE VIETNAMESE MILITARY VICTORIES. 
+ 
+8. (C) THUS, IT IS VIRTUAL HOLY WRIT FOR MOST PARTY LEADERS 
+THAT STABILITY, PATIENCE AND GRADUALISM WILL ULTIMATELY WIN 
+THE DAY.  THE LEADERSHIP'S EXCESSIVE CAUTION, AS WELL AS 
+CONTINUING SUSPICION ABOUT THE INTENTIONS OF THE &quot;NEW FACE 
+OF IMPERIALISM,&quot; CREATE AN ENVIRONMENT IN WHICH PARALYSIS IS 
+THE ORDER OF THE DAY.  THE LEADERSHIP MAKE DECISIONS BY 
+LEAST COMMON DENOMINATOR: CONSENSUS CAN BE BLOCKED BY THE 
+OPPOSITION OF A HANDFUL OF MEMBERS, SOMETIMES EVEN ONE. 
+WITHIN THE PARTY, THERE IS NO INSTITUTIONAL REQUIREMENT TO 
+FORCE THE LEADERSHIP TO MAKE TOUGH CHOICES, SUCH AS ON 
+DIFFICULT BUDGET QUESTIONS.  IN PART THIS IS BECAUSE THERE 
+IS NO MEANS FOR DIRECT PUBLIC ACCOUNTABILITY, SINCE THE 
+PARTY AND ITS SUBORDINATE GOVERNMENT ORGANS ARE NOT 
+ULTIMATELY ACCOUNTABLE TO THE PUBLIC.  (COMMENT: WHILE 
+ELECTIONS FOR LOCAL GOVERNMENT AND NATIONAL ASSEMBLY ARE 
+HELD, THE COMPLETE LACK OF TRANSPARENCY IN THE PROCESS GIVES 
+LITTLE CONFIDENCE IN THE RESULTS PRESENTED TO THE PUBLIC.) 
+IN THIS CLIMATE, VIETNAM'S COLLECTIVE LEADERSHIP EXERCISES 
+ITS SUPREME POLITICAL POWER. 
+ 
+--------------------------------------------- -------- 
+PUBLIC ACTIVITIES OF THE POLITBURO STANDING COMMITTEE 
+--------------------------------------------- -------- 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  03 OF 10  260849Z 
+ 
+9. (C) DURING THE TEN-WEEK PERIOD FROM FEBRUARY 25 TO APRIL 
+30, EIGHT OF THE 15 POLITBURO MEMBERS WERE FEATURED IN THE 
+PRESS ON AT LEAST 10 DIFFERENT DATES.  INCLUDED AMONG THESE 
+EIGHT ARE THE FIVE MEMBERS OF THE POLITBURO STANDING 
+COMMITTEE, WHO ARE AMONG THOSE WHO MOST FREQUENTLY PRESENT 
+THE &quot;PUBLIC FACE&quot; OF THE LEADERSHIP.  THE FIVE -- CPV 
+GENERAL SECRETARY LE KHA PHIEU, PRESIDENT TRAN DUC LUONG, 
+PRIME MINISTER PHAN VAN KHAI, NATIONAL ASSEMBLY SPEAKER NONG 
+DUC MANH, AND FATHERLAND FRONT LEADER PHAM THE DUYET -- WERE 
+EACH FEATURED IN PROMINENT, SUBSTANTIVE COVERAGE AT LEAST 10 
+DAYS OUT OF THE EIGHT-WEEK PERIOD.  (BY CONTRAST, ONLY THREE 
+OTHER POLITBURO MEMBERS WERE FEATURED THIS OFTEN -- DEPUTY 
+PRIME MINISTER AND FORMER FOREIGN MINISTER NGUYEN MANH CAM, 
+DEPUTY PRIME MINISTER NGUYEN TAN DUNG, AND HO CHI MINH CITY 
+PARTY CHIEF NGUYEN MINH TRIET.)  THE FIVE SENIOR LEADERS 
+WERE FEATURED RECEIVING GUESTS, ATTENDING MEETINGS AND 
+SEMINARS, AND GIVING SPEECHES.  SUCH PROMINENT COVERAGE IN 
+THE OFFICIAL PRESS IS NOT SURPRISING, GIVEN THAT THESE FIVE 
+FIGURES OCCUPY POSITIONS THAT HAVE MAJOR PROTOCOL FUNCTIONS 
+AS THE RESPECTIVE HEADS OF THE FIVE MAIN LEADERSHIP POWER 
+CENTERS ON THE NATIONAL LEVEL: PARTY, STATE, GOVERNMENT, 
+ASSEMBLY, AND MASS ORGANIZATIONS. 
+ 
+10. (C) GENERAL SECRETARY PHIEU, RANKED FIRST IN THE CPV, 
+WAS FEATURED IN THE CPV MOUTHPIECE &quot;NHAN DAN&quot; ON 13 
+DIFFERENT DATES.  HE RECEIVED OFFICIAL VISITORS EIGHT TIMES, 
+INCLUDING WORLD BANK PRESIDENT WOLFENSOHN; MADE VISITS 
+AROUND VIETNAM FOUR TIMES, INCLUDING IN LATE FEBRUARY TO 
+THAI BINH PROVINCE, SITE OF PROVINCIAL UNREST TWO YEARS AGO; 
+ATTENDED COMMEMORATIONS OF THE &quot;LIBERATION&quot; OF HO CHI MINH 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  03 OF 10  260849Z 
+CITY; AND GAVE TWO PROMINENT SPEECHES, INCLUDING ONE OPENING 
+THE CPV CENTRAL COMMITTEE PLENUM APRIL 10.  (TWO OF THESE 
+EVENTS TOOK PLACE THE SAME DAY.)  PHIEU'S APPEARANCES IN THE 
+PRESS, LIKE THOSE OF THE PRIME MINISTER, TEND TO BE MORE 
+&quot;SUBSTANTIVE&quot; THAN THOSE OF MOST POLITBURO MEMBERS.  (MANY 
+OF THE MEDIA APPEARANCES OF LESS PROMINENT POLITBURO MEMBERS 
+LIST THEM MERELY AS ATTENDING CONFERENCES OR CEREMONIAL 
+EVENTS, WITHOUT FURTHER DETAIL.)  PHIEU'S HIGHLY VISIBLE 
+TREATMENT HIGHLIGHTS HIS PROMINENCE IN THE POWER STRUCTURE. 
+THE IMAGE PROJECTED BY THE OFFICIAL MEDIA IS OF A GENERAL 
+SECRETARY WHO IS ACTIVE AND ENGAGED.  IN THE PAST EIGHT 
+ 
+SIPDIS 
+MONTHS, PHIEU APPEARS TO HAVE CONSOLIDATED HIS POSITION WITH 
+THE SUPPORT OF HIS MENTOR, FORMER PRESIDENT LE DUC ANH. 
+PHIEU AND ANH HAVE WORKED CLOSELY SINCE SERVING TOGETHER AS 
+DEPUTY COMMANDER AND COMMANDER OF VIETNAM'S OCCUPATION 
+FORCES IN CAMBODIA IN THE LATE 1980'S. 
+ 
+11. (C) PRESIDENT LUONG, RANKED SECOND IN THE CPV, HAS A 
+LARGELY CEREMONIAL POSITION HIGH ON PROTOCOL AND OFFICIAL 
+VISITS.  HE WAS FEATURED ON 21 DIFFERENT DAYS DURING THE TWO 
+MONTHS.  MOST OF HIS APPEARANCES WERE MAKING OFFICIAL VISITS 
+ABROAD OR RECEIVING FOREIGN VISITORS IN HANOI.  FOR EXAMPLE, 
+HE VISITED UKRAINE, MONGOLIA, AND CUBA, ATTENDING THE G-77 
+SUMMIT IN HAVANA.  HE MET VISITING LEADERS FROM BELARUS, 
+NORTH KOREA, LAOS, INDIA, CONGO, SINGAPORE, AND THE U.S., 
+INCLUDING SECDEF COHEN.  HE ALSO ADDRESSED DOMESTIC 
+CONFERENCES ON MILITARY MASS MOBILIZATION AND JOURNALISM. 
+AN ANALYSIS OF LUONG'S ACTIVITIES REVEALS THAT WHILE HE HAS 
+A HIGHLY VISIBLE POSITION, HIS ROLE IS LESS SUBSTANTIVE THAN 
+THE GENERAL SECRETARY'S OR PRIME MINISTER'S.  (COMMENT: AS 
+REPORTED REF A, GENERAL SECRETARY PHIEU REPORTEDLY IS 
+INTERESTED IN COMBINING THE ROLES OF GENERAL SECRETARY AND 
+STATE PRESIDENT; IN SUCH A CASE, LUONG LIKELY WOULD ASSUME A 
+POSITION OF EVEN LESS INFLUENCE AND BE DROPPED FROM THE 
+STANDING COMMITTEE.  END COMMENT.) 
+ 
+12. (C) PRIME MINISTER KHAI, HEAD OF THE GOVERNMENT AND 
+THIRD-RANKING IN THE CPV, HAD THE HIGHEST VISIBILITY OF ANY 
+POLITBURO MEMBER IN THE PRESS DURING THE TWO-MONTH PERIOD; 
+HE APPEARED IN THE PRESS ON 30 DIFFERENT DATES.  NINE TIMES 
+HE RECEIVED OFFICIAL VISITORS, INCLUDING MANY OF THOSE SEEN 
+BY LUONG; 13 TIMES HE LED GOVERNMENT MEETINGS OR SEMINARS, 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  04 OF 10  261123Z 
+INCLUDING MEETINGS ON ECONOMIC DEVELOPMENT, DRUG CONTROL, 
+TRADE UNIONS, BUSINESS PROMOTION, AND A MEETING OF THE 
+GOVERNMENT CABINET MINISTERS.  ON APRIL 29 HE GAVE THE 
+KEYNOTE ADDRESS IN HANOI CELEBRATING THE &quot;LIBERATION&quot; OF 
+SAIGON.  ON 11 DAYS HE WAS FEATURED TRAVELING AROUND THE 
+COUNTRY, PRIMARILY TO SOUTHERN DELTA AND NORTHERN PROVINCES. 
+AS PRIME MINISTER, KHAI OCCUPIES A POSITION OF BOTH HIGH 
+VISIBILITY AND CLOUT WITHIN THE PARTY AND GOVERNMENT 
+LEADERSHIP, THOUGH IN RECENT MONTHS HIS MORE TECHNOCRATIC 
+AND REFORMIST VIEWS HAVE LOST FAVOR TO THE MORE IDEOLOGICAL 
+DIRECTION PUSHED BY PHIEU.  KHAI, WHO SEEMS DISCOURAGED BY 
+THE RISE OF MORE IDEOLOGICAL THINKING, REPORTEDLY HAS 
+OFFERED TO RESIGN ON SEVERAL OCCASIONS, AND MANY IN HANOI 
+SPECULATE HE MAY BE REPLACED AS PRIME MINISTER, PERHAPS BY 
+ANOTHER SOUTHERN REFORMER, BEFORE OR AT THE COMMUNIST PARTY 
+CONGRESS IN MARCH 2001. 
+ 
+13. (C) NATIONAL ASSEMBLY SPEAKER MANH, FOURTH-RANKING IN 
+THE PARTY, WAS FEATURED ON 22 DAYS.  ON SEVEN OCCASIONS HE 
+RECEIVED FOREIGN LEGISLATORS, INCLUDING SEN. JOHN MCCAIN (R- 
+AZ), REP. BILL ARCHER (R-TX), AND PARLIAMENTARY SPEAKERS 
+FROM BELARUS AND NEW ZEALAND.  ON SEVEN DAYS HE WAS PICTURED 
+ON INTERNATIONAL TRAVELS, INCLUDING AN APRIL 4-10 VISIT TO 
+CHINA, WHERE HE MET JIANG ZEMIN AND LI PENG.  ON EIGHT DAYS 
+HE TRAVELED INSIDE VIETNAM OR ATTENDED EVENTS IN HANOI.  AS 
+THE ONLY ETHNIC MINORITY IN THE LEADERSHIP, MANH HAS A 
+RELATIVELY HIGH PUBLIC PROFILE, THOUGH WE DO NOT PERCEIVE HE 
+HAS MUCH CLOUT WITHIN THE LEADERSHIP.  NATIONAL ASSEMBLY 
+STAFF HAVE INFORMED US MANH SEEMS INTENT ON &quot;NOT ROCKING THE 
+BOAT.&quot;  (COMMENT: THIS TRAIT HELPS ACCOUNT FOR THE POLITICAL 
+SURVIVAL OF MANY OF THE LOW-PROFILE MEMBERS OF THE 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  04 OF 10  261123Z 
+POLITBURO.  IN VIETNAM'S CONSENSUS-ORIENTED LEADERSHIP, 
+STANDING OUT USUALLY IS NOT GOOD FOR HANGING ON.  END 
+COMMENT.) 
+ 
+14. (C) FIFTH-RANKING MEMBER DUYET, WHO HEADS UP THE VIETNAM 
+FATHERLAND FRONT (VFF), WAS FEATURED 15 TIMES IN THE 
+OFFICIAL PRESS.  ON NINE DAYS HE ATTENDED MEETINGS OR 
+CEREMONIAL EVENTS IN HANOI, INCLUDING WOMEN'S DAY 
+CELEBRATIONS, ARTISTIC EXHIBITIONS, MEETINGS WITH MINORITIES 
+AND COMMUNIST YOUTH, AND THE LAWYERS ASSOCIATION.  TWICE HE 
+RECEIVED FOREIGN VISITORS FROM LAOS AND BURMA, AND FOUR 
+TIMES HE WAS DEPICTED TRAVELING IN-COUNTRY TO CENTRAL AND 
+NORTHERN PROVINCES.  DUYET'S PUBLIC PROFILE HAS BECOME 
+HIGHER SINCE HE TOOK OVER THE VFF LAST YEAR.  THOUGH IT WILL 
+NOT BECOME CLEAR UNTIL THE PARTY CONGRESS, IT APPEARS 
+DUYET'S CLOUT AMONG THE LEADERSHIP HAS DROPPED DURING THE 
+PAST YEAR.  REPORTEDLY HE IS NOT IN FAVOR WITH FORMER 
+PRESIDENT LE DUC ANH, WHO HAS HELPED GENERAL SECRETARY PHIEU 
+CONSOLIDATE CONTROL WITHIN THE PARTY DURING THE PAST SIX 
+MONTHS. 
+ 
+--------------------------------------------- ------------ 
+A HANDFUL OF OTHER POLITBURO MEMBERS FEATURED PROMINENTLY 
+--------------------------------------------- ------------ 
+ 
+ 
+15. (C) FOUR OTHER POLITBURO MEMBERS ALSO HAVE RELATIVELY 
+HIGH PROFILES, APPEARING IN THE OFFICIAL PRESS AT LEAST A 
+DOZEN TIMES -- DEPUTY PRIME MINISTER AND FORMER FOREIGN 
+MINISTER NGUYEN MANH CAM, DEPUTY PRIME MINISTER NGUYEN TAN 
+DUNG, HO CHI MINH CITY PARTY CHIEF NGUYEN MINH TRIET, AND 
+HANOI PARTY CHIEF NGUYEN PHU TRONG.  CAM AND DUNG HAVE HIGH- 
+PROFILE POSITIONS AS DEPUTY PRIME MINISTERS OVERSEEING 
+FOREIGN POLICY AND ECONOMIC POLICY, RESPECTIVELY.  TRIET AND 
+TRONG WERE RECENTLY NAMED TO HEAD THE PARTY ORGANIZATIONS IN 
+THE NATION'S TWO LARGEST CITIES AND CONSEQUENTLY ARE 
+FEATURED FREQUENTLY IN THE NATIONAL MEDIA.  THEY ARE BOTH 
+RISING STARS IN THE PARTY: TRIET AS A CHAMPION OF MORE 
+TECHNOCRATIC/REFORMIST VIEWS, AND TRONG AS ONE OF THE MORE 
+IDEOLOGICAL MEMBERS OF THE LEADERSHIP.  IN ADDITION, 
+MINISTER OF DEFENSE PHAM VAN TRA AND MINISTER OF PUBLIC 
+SECURITY LE MINH HUONG WERE FEATURED SIX AND FIVE TIMES, 
+RESPECTIVELY, IN THE NATIONAL PRESS IN THEIR CAPACITIES AS 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  05 OF 10  260900Z 
+MINISTERS.  (TRA AND HUONG APPEAR MORE FREQUENTLY IN OTHER 
+MEDIA, SUCH AS NEWSPAPERS CONTROLLED BY THEIR MINISTRIES.) 
+ 
+16. (C) DEPUTY PM CAM, WHO MOVED UP TO SIXTH IN THE 
+POLITBURO FOLLOWING THE DEATH LAST YEAR OF FORMER DEFENSE 
+MINISTER DOAN KHUE, APPEARED 19 TIMES IN THE OFFICIAL PRESS 
+DURING THE TWO-MONTH PERIOD, DESPITE LOSING HIS TITLE AS 
+FOREIGN MINISTER IN FEBRUARY.  CAM CONTINUED TO MAINTAIN A 
+BUSY SCHEDULE OF HOSTING FOREIGN VISITORS, INCLUDING THOSE 
+FROM THE U.S., JAPAN, SOUTH KOREA, RUSSIA, THAILAND, CHINA, 
+HUNGARY AND THE UNITED NATIONS.  HOWEVER, MOST OF THESE 
+SESSIONS WERE IN THE FOUR WEEKS FOLLOWING HIS RETIREMENT AS 
+FOREIGN MINISTER, WHICH SUGGESTS THESE PROTOCOL MEETINGS MAY 
+BECOME LESS FREQUENT IN THE FUTURE. (NOTE: FROM A PROTOCOL 
+POINT OF VIEW, HOWEVER, CAM MAY CONTINUE TO HAVE A 
+RELATIVELY HIGH PROFILE, SINCE HE WILL BE A USEFUL 
+INTERLOCUTOR FOR FOREIGN VISITORS WHO REQUIRE A MEETING OF 
+DEPUTY PM RANK, BUT WHO DO NOT WARRANT TAKING THE TIME OF 
+OTHER, BUSIER OFFICIALS.)  WE BELIEVE CAM MAY BE RETIRED AT 
+THE PARTY CONGRESS. 
+ 
+17. (C) FIRST DEPUTY PRIME MINISTER DUNG, WHO PLAYS A KEY 
+ROLE IN OVERSIGHT OF THE GOVERNMENT'S ECONOMIC POLICIES, 
+APPEARED IN THE PRESS ON 14 DIFFERENT DATES.  DUNG MET WORLD 
+BANK PRESIDENT WOLFENSOHN AND ECONOMIC AND BANKING 
+DELEGATIONS FROM CUBA, LAOS, SINGAPORE AND MALAYSIA.  HE 
+ALSO WAS FEATURED EIGHT TIMES ATTENDING DOMESTIC MEETINGS OR 
+SEMINARS, INCLUDING MEETINGS WITH BUSINESS GROUPS, THE 
+VIETNAMESE INSURANCE COMPANY, ENGINEERING ASSOCIATIONS, AND 
+GOVERNMENT ECONOMIC MEETINGS.  IN ADDITION, HE JOINED 
+GENERAL SECRETARY PHIEU ON A TRIP TO HAIPHONG MARCH 13. 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  05 OF 10  260900Z 
+CURRENTLY RANKED 14TH IN THE POLITBURO, DUNG PREVIOUSLY WAS 
+RANKED FIFTH UNTIL A SHAKE-UP IN 1997 LED TO HIS SLIPPING IN 
+RANK.  ONE OF THE YOUNGEST POLITBURO MEMBERS AT 51, DUNG IS 
+ONE OF THE SOUTHERNERS WHO IS A POSSIBLE CANDIDATE TO 
+REPLACE KHAI, THOUGH FORMER PRESIDENT ANH REPORTEDLY OPPOSES 
+HIS ELEVATION.  (COMMENT: ONE OF THE FACTORS THAT MAY BE AT 
+WORK IN THE JOCKEYING TO REPLACE PM KHAI IS THAT 
+CONSERVATIVE IDEOLOGUES, SUCH AS PHIEU AND ANH, MAY NOT WANT 
+A YOUNGER, MORE CAPABLE AND EFFECTIVE PRIME MINISTER, SUCH 
+AS DUNG OR OTHER REFORMERS SANG OR TRIET.  THEY MAY PREFER 
+TO MAINTAIN THE STATUS QUO ANTE AND KEEP A RELATIVELY 
+WEAKENED PRIME MINISTER AS NOMINAL HEAD OF THE &quot;REFORM 
+FACTION&quot; OF THE CPV.  END COMMENT.) 
+ 
+18. (C) NGUYEN MINH TRIET, RANKED 16TH, BECAME HEAD OF THE 
+HO CHI MINH PARTY IN FEBRUARY, REPLACING TRUONG TAN SANG. 
+TRIET PREVIOUSLY SERVED IN THE SHADOWS AS THE HEAD OF THE 
+COMMUNIST PARTY'S COMMISSION ON MASS MOBILIZATION.  IN A 
+DRAMATIC ILLUSTRATION OF THE DIVERGENT &quot;JANUS FACES&quot; OF THE 
+PARTY, THE PUBLIC PROFILES OF THE TWO HAVE REVERSED 
+THEMSELVES DRAMATICALLY.  DURING THESE TWO MONTHS, TRIET WAS 
+FEATURED ON 15 DATES -- EIGHT TIMES HOSTING VISITORS, MANY 
+OF THEM CONSUL GENERALS IN HCMC PAYING COURTESY CALLS, AND 
+TEN TIMES ATTENDING MEETINGS AND CONFERENCES.  (ON THREE 
+DATES TRIET WAS FEATURED TWICE IN THE PRESS FOR DIFFERENT 
+EVENTS.  BY CONTRAST, SANG HAS VIRTUALLY DISAPPEARED FROM 
+PUBLIC VIEW; HE DID NOT FEATURE IN ANY MAJOR PRESS STORIES 
+IN &quot;NHAN DAN&quot; DURING THE TWO MONTHS DOCUMENTED.)  AS HCMC 
+PARTY LEADER, TRIET HAS PRESENTED THE IMAGE OF AN ENGAGED 
+LOCAL LEADER.  HE HAS MET WITH LOCAL OFFICIALS FIGHTING DRUG 
+ABUSE IN THE CITY, ENCOURAGED YOUTH VOLUNTEERS, ADDRESSED A 
+CONFERENCE ON POVERTY REDUCTION, AND ATTENDED TRADE FAIRS 
+PROMOTING LOCALLY MADE GOODS.  TRIET, WHO PREVIOUSLY SERVED 
+AS DEPUTY HEAD OF THE HCMC PARTY ORGANIZATION, IS POPULAR IN 
+THE SOUTH AND SEEN BY THE BUSINESS COMMUNITY AS ONE WHO IS 
+SUPPORTIVE OF PRO-BUSINESS REFORMS.  LIKE DEPUTY PM DUNG AND 
+FORMER SAIGON CHIEF SANG, TRIET IS ONE OF THE YOUNG &quot;UP-AND- 
+COMERS&quot; AMONG SOUTHERN REFORMERS IN THE CPV.  (SINCE BOTH 
+DUNG AND SANG APPEAR TO HAVE SOME OPPONENTS AMONG THE SENIOR 
+LEADERSHIP, TRIET IS ANOTHER POSSIBILITY FOR PROMOTION TO 
+MORE SENIOR POSITIONS, POSSIBLY INCLUDING PRIME MINISTER.) 
+ 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  06 OF 10  260851Z 
+19. (C) NGUYEN PHU TRONG, CHAIR OF THE HANOI CPV COMMITTEE, 
+EMERGED FROM THE SHADOWS WHEN HE ASSUMED HIS CURRENT 
+POSITION BY SWAPPING JOBS WITH CURRENT IDEOLOGY CHIEF LE 
+XUAN TUNG.  TRONG RANKS LAST IN THE POLITBURO BY RANK, 
+THOUGH THIS BELIES HIS GROWING INFLUENCE AND RISING 
+PROMINENCE.  ONE OF THE MORE STRONGLY DOCTRINAIRE MEMBERS OF 
+THE POLITBURO, TRONG PREVIOUSLY APPEARED IN PUBLIC VIEW 
+PRIMARILY AS THE AUTHOR OF STRONGLY IDEOLOGICAL ANALYSES IN 
+THE OFFICIAL COMMUNIST PARTY THEORETICAL REVIEW, SUCH AS HIS 
+ESSAY ON THE CPV'S RELIANCE ON &quot;DEMOCRATIC CENTRALISM&quot; IN 
+LATE 1999.  AFTER BECOMING HANOI CHIEF, TRONG APPEARED IN 
+THE PRESS 12 TIMES -- NINE TIMES CHAIRING AND ATTENDING 
+MEETINGS AND THREE TIMES VISITING DISTRICTS OF HANOI.  FOR 
+EXAMPLE, TRONG CHAIRED A PLANNING MEETING FOR THE 990TH 
+ANNIVERSARY OF THE CITY, OPENED AND CHAIRED A CONFERENCE OF 
+THE HANOI CPV COMMITTEE, AND OUTLINED THE CPV'S ROLE IN 
+TEACHING MARXIST-LENINIST VALUES IN HANOI'S UNIVERSITIES. 
+RECENT PRESS ARTICLES HAVE ALSO NOTED THAT TRONG HAS BEEN 
+ASSISTING PHAM THE DUYET IN ORGANIZING THE ACTIVITIES OF THE 
+FIVE-MEMBER STANDING COMMITTEE.  BOTH A SENIOR COLONEL AT 
+THE LEADING MILITARY NEWSPAPER AND THE CHINESE EMBASSY 
+PREDICT TRONG WILL REPLACE DUYET ON THE STANDING COMMITTEE 
+AT THE PARTY CONGRESS.  IN ANY EVENT, TRONG'S STAR IS 
+RISING, AND HE WILL UNDOUBTEDLY MOVE UP IN RANK.  TRONG'S 
+TRENCHANT IDEOLOGICAL VIEWS ARE THE FLAVOR IN FAVOR AT THIS 
+TIME, AND HE APPEARS TO HAVE THE SUPPORT OF PHIEU. 
+ 
+20. (C) MINISTER OF NATIONAL DEFENSE PHAM VAN TRA (RANKED 
+9TH) AND MINISTER OF PUBLIC SECURITY LE MINH HUONG (13TH) 
+BOTH COMMAND CLOUT IN THE POLITBURO BY VIRTUE OF THEIR 
+IMPORTANT MINISTRIES.  (BOTH MINISTRIES, GIVEN THEIR 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  06 OF 10  260851Z 
+NATIONAL AND INTERNAL SECURITY MANDATES, ARE AMONG THE 
+INSTITUTIONS IN VIETNAM THAT ARE MOST SUSPICIOUS OF THE U.S. 
+AND ITS INTENTIONS.  THIS IS ESPECIALLY TRUE AMONG THOSE 
+LEADERS, SUCH AS TRA AND HUONG, WHO FOUGHT AGAINST THE U.S. 
+DURING THE WAR, BUT THIS CONCERN IS MORE BROADLY REFLECTED 
+IN THE MINISTRIES INSTITUTIONALLY AS WELL.)  THE PUBLIC 
+PROFILES OF TRA AND HUONG ARE LOWER THAN CITY PARTY LEADERS 
+AND STANDING COMMITTEE MEMBERS, THOUGH THEY APPEAR IN THE 
+PRESS ON AVERAGE ABOUT EVERY TEN DAYS.  TRA APPEARED IN 
+ARTICLES ON 10 DIFFERENT DATES.  IN FIVE STORIES HE RECEIVED 
+FOREIGN VISITORS, INCLUDING SECDEF COHEN AND THE INDIAN 
+DEFENSE MINISTER.  HE ATTENDED THE FUNERAL OF GENERAL NGUYEN 
+BINH, AND HE CHAIRED MEETINGS REVIEWING THE TRAINING AND 
+MASS MOBILIZATION TASKS OF THE ARMY.  MINISTER OF PUBLIC 
+SECURITY HUONG, NOT SURPRISINGLY AS THE HEAD OF POLICE AND 
+ESPIONAGE ACTIVITIES, APPEARED LESS FREQUENTLY.  HIS SEVEN 
+APPEARANCES IN THE PRESS INCLUDED MEETINGS WITH FOREIGN 
+VISITORS (THE UKRAINIAN DEFENSE MINISTRY AND LAO INTERIOR 
+MINISTER), ATTENDING THE CPV PLENUM, VISITING A TEMPLE OF 
+THE HUNG KINGS, AND CHAIRING A MEETING OF POLICE ON THE 
+RESULTS OF THE CENTRAL COMMITTEE PLENUM.  BOTH TRA AND HUONG 
+ARE AMONG THE OLDER POLITBURO MEMBERS, AND ACCORDING TO SOME 
+REPORTS, HUONG IS NOT IN GOOD HEALTH.  RUMORS CIRCULATE THAT 
+ONE OR BOTH OF THEM MAY BE RETIRED AT THE PARTY CONGRESS. 
+ 
+ 
+--------------------------------------------- ---- 
+MOST OTHER POLITBURO MEMBERS ARE ALMOST INVISIBLE 
+--------------------------------------------- ---- 
+ 
+21. (C) IN A STRIKING ILLUSTRATION OF HOW HIDDEN IS MUCH OF 
+THE PARTY'S INTERNAL WORK, MOST OTHER POLITBURO MEMBERS 
+RARELY, IF EVER, APPEAR IN THE PRESS.  DURING THE TWO MONTHS 
+OF OUR TRACKING, FOUR MEMBERS -- THOSE IN CHARGE OF THE 
+PARTY'S IDEOLOGICAL TRAINING, PERSONNEL ISSUES, 
+INVESTIGATION OF PARTY INFRACTIONS, AND ECONOMIC AFFAIRS -- 
+EITHER NEVER APPEARED OR APPEARED ONLY ONCE IN PROMINENT 
+MEDIA SUCH AS &quot;NHAN DAN.&quot;  INCLUDED IN THIS GROUP IS FORMER 
+HCMC PARTY CHIEF SANG, WHO DROPPED OFF THE SCREEN AFTER HE 
+WAS NAMED HEAD OF THE PARTY'S ECONOMIC COMMISSION.  THIS IS 
+A GRAPHIC EXAMPLE OF HOW SECRETIVE ARE THESE SUPREMELY 
+POWERFUL OFFICIALS -- AND HOW SHELTERED FROM THE PUBLIC ARE 
+THEIR ACTIVITIES AND VIEWS.  TO THE PUBLIC, MOST OF THEM ARE 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  07 OF 10  260851Z 
+CIPHERS AT BEST, AND YET THESE LEADERS SHAPE VIETNAM'S 
+NATIONAL POLICIES. 
+ 
+22. (C) LONG-TIME HEAD OF THE HO CHI MINH POLITICAL ACADEMY 
+NGUYEN DUC BINH, AT AGE 72 ONE OF THE OLDEST POLITBURO 
+MEMBERS, NEVER APPEARED IN &quot;NHAN DAN&quot; OR OTHER PROMINENT 
+OFFICIAL PRESS FOR THE EIGHT-WEEK PERIOD WE MONITORED.  THIS 
+IS STRIKING, BECAUSE SOME SOURCES IN HANOI SUGGEST BINH, 
+SEVENTH IN CPV RANKS, PLAYED A LARGE ROLE IN LEADING THE 
+OPPOSITION TO SIGNING THE BILATERAL TRADE AGREEMENT (BTA) 
+WITH THE U.S. AFTER THE BTA WAS INITIALED IN JULY 1999. 
+BINH HAS CLOSE CONNECTIONS TO MANY OF THE POLITBURO, SINCE 
+SENIOR CPV LEADERS PASS THROUGH THE ACADEMY FOR SENIOR 
+TRAINING.  THUS, THOUGH VIRTUALLY INVISIBLE TO PUBLIC VIEW, 
+BINH EXERCISES SIGNIFICANT INFLUENCE THROUGH HIS LINKS TO 
+HIS FORMER STUDENTS.  BECAUSE OF HIS AGE, WE BELIEVE BINH 
+WILL RETIRE AT THE PARTY CONGRESS.  (SOME SOURCES SUGGEST 
+ONE POSSIBLE CANDIDATE TO REPLACE BINH COULD BE PARTY 
+SPOKESMAN DAO DUY QUAT, WHO HAS ASSUMED HIGHER A PROFILE IN 
+THE CONFIDENT MANNER HE GIVES PUBLIC BRIEFINGS ON RECENT 
+CENTRAL COMMITTEE MEETINGS.  QUAT, WHOSE LATE FATHER SERVED 
+IN THE POLITBURO, MAY HAVE THE PATRONAGE OF LE DUC ANH, 
+ACCORDING TO SOME SOURCES.) 
+ 
+23. (C) NGUYEN VAN AN, HEAD OF THE PARTY'S ORGANIZATION 
+DEPARTMENT, IS ANOTHER ENIGMA IN THE LEADERSHIP.  RANKED 
+EIGHTH, AN APPEARED ONLY ONE TIME IN THE PRESS IN TWO 
+MONTHS, WHEN HE RECEIVED A DELEGATION OF OFFICIALS FROM 
+CHINA.  INTERESTINGLY, AN WAS THE LEADING ALTERNATIVE TO 
+PHIEU IN THE DECEMBER 1997 VOTING AMONG THE POLITBURO FOR 
+GENERAL SECRETARY.  IN A HIGHLY UNUSUAL, CLOSE SPLIT VOTE IN 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  07 OF 10  260851Z 
+THE POLITBURO, PHIEU WAS SELECTED AS GENERAL SECRETARY. 
+SINCE THAT TIME, THE PUBLIC HAS HEARD OR SEEN VIRTUALLY 
+NOTHING OF AN FOR MORE THAN TWO YEARS.  PARTICULARLY BECAUSE 
+OF HIS CHALLENGE TO PHIEU TWO YEARS AGO, HE IS A STRONG 
+CANDIDATE TO BE REPLACED ON THE POLITBURO. 
+ 
+24. (C) NGUYEN THI XUAN MY, CHAIRPERSON OF THE PARTY'S 
+COMMISSION FOR INVESTIGATION AND RANKED 10TH, ALSO RARELY 
+APPEARS IN PUBLIC OR IN THE PRESS.  DURING THE TWO-MONTH 
+PERIOD SHE WAS FEATURED IN THE PRESS ONCE, LEADING A 
+CONFERENCE ON PUBLIC COMPLAINTS IN HO CHI MINH CITY.  WE SEE 
+NO INDICATION SHE HAS SIGNIFICANT CLOUT IN THE POLITBURO. 
+THE FIRST FEMALE POLITBURO MEMBER, SHE WAS APPOINTED IN 
+1996, AND SOME COMMENTATORS BELIEVE SHE WAS APPOINTED BY THE 
+PARTY SO IT CAN CLAIM THERE IS NOT A &quot;GLASS CEILING&quot; IN THE 
+LEADERSHIP RANKS.  (VIETNAM'S OTHER HIGHEST-RANKING WOMAN IS 
+VICE PRESIDENT NGUYEN THI BINH, A WAR HEROINE, WHO EVEN MORE 
+THAN PRESIDENT LUONG HAS PRIMARILY CEREMONIAL DUTIES.) 
+ 
+25. (C) TRUONG TAN SANG, CURRENTLY HEAD OF THE CPV'S 
+COMMISSION FOR ECONOMIC AFFAIRS AND RANKED 11TH, WENT FROM 
+HAVING A VERY HIGH PUBLIC PROFILE AS PARTY LEADER IN HO CHI 
+MINH CITY TO BEING ALMOST INVISIBLE IN HIS CURRENT POSITION. 
+DURING THE TWO-MONTH PERIOD SANG WAS NOT FEATURED AT ALL IN 
+PROMINENT VIETNAMESE MEDIA SUCH AS &quot;NHAN DAN.&quot;  AN ENGAGING 
+AND GREGARIOUS POLITICIAN CUT IN A MORE WESTERN MODE, SANG 
+WAS THOUGHT HIGHLY OF BY THE FOREIGN BUSINESS COMMUNITY IN 
+HCMC DURING HIS TENURE THERE, AND HE HAS BEEN SEEN FOR SOME 
+TIME AS A POTENTIAL RISING STAR AMONG THE MORE TECHNOCRATIC 
+&quot;REFORMERS&quot; IN THE PARTY. SOME CONSIDER THE ECONOMIC 
+COMMISSION AS A BACKWATER WITHOUT MAJOR CLOUT, ALTHOUGH 
+OTHERS WHO HAVE HELD THIS POSITION, SUCH AS FIRST DEPUTY PM 
+DUNG, HAVE EMERGED FROM THIS POSITION TO GREATER PROMINENCE. 
+THE CONVENTIONAL WISDOM IS THAT SANG IS IN A HOLDING PATTERN 
+AND IS BEING WATCHED BY THE SENIOR LEADERSHIP IN HIS CURRENT 
+POSITION, WITH AN EYE TO POSSIBLE FUTURE PROMOTION -- OR 
+CAREER STAGNATION IF HE FALLS OUT OF FAVOR WITH MORE 
+CONSERVATIVE ELEMENTS OF THE LEADERSHIP. 
+ 
+26. (C) LE XUAN TUNG, WHO HAS RESPONSIBILITY FOR 
+IDEOLOGICAL, CULTURAL, SCIENTIFIC AND EDUCATIONAL AFFAIRS 
+AND RANKS 12TH, LIKEWISE MOVED INTO THE SHADOWS AFTER BEING 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  08 OF 10  261124Z 
+REPLACED AS CHAIRPERSON OF THE HANOI PARTY.  DURING THE TWO- 
+MONTH PERIOD TUNG WAS FEATURED IN &quot;NHAN DAN&quot; SIX TIMES -- 
+ATTENDING NATIONAL CONFERENCES FOR JOURNALISTS AND WRITERS 
+AND A CONFERENCE ON IDEOLOGICAL AND CULTURAL WORK, CHAIRING 
+A PLENUM BRIEFING AT THE HO CHI MINH POLITICAL ACADEMY, AND 
+MEETING WITH CPV ETHNIC MINORITY CADRE.  WE HAVE REPORTS 
+THAT TUNG IS IN ILL HEALTH, AND DURING HIS TENURE AS HANOI 
+PARTY LEADER, THE CITY'S PARTY AND PEOPLE'S COMMITTEE, 
+PARTICULARLY THE LATTER, WERE CRITICIZED STRONGLY BY CENTRAL 
+COMMITTEE MEMBERS AND IN THE PRESS FOR MISMANAGEMENT AND 
+CORRUPTION.  (TUNG'S REPLACEMENT BY TRONG PUT A FIRM 
+IDEOLOGICAL ADVOCATE AT THE HELM.)  WE EXPECT TUNG MAY BE 
+DROPPED FROM THE POLITBURO NEXT YEAR. 
+ 
+27. (C) PHAM THANH NGAN, DIRECTOR OF THE GENERAL POLITICAL 
+DEPARTMENT OF THE PEOPLE'S ARMY OF VIETNAM (PAVN) AND RANKED 
+15TH, APPEARS TO BE, WITH TRONG, ONE OF THE RISING 
+IDEOLOGICAL STARS OF THE CPV.  LIKE PHIEU AND TRONG, NGAN 
+APPEARS TO FAVOR A CAUTIOUS, INCREMENTAL APPROACH TO REFORM 
+THAT EMPHASIZES POLITICAL AND SOCIAL STABILITY.  AS 
+POLITICAL COMMISSAR FOR THE MILITARY, NGAN OCCUPIES THE 
+POSITION PREVIOUSLY HELD BY PHIEU, WHO HAS RISEN TO THE TOP. 
+HE PREVIOUSLY SERVED AS PHIEU'S DEPUTY.  NGAN WAS FEATURED 
+FIVE TIMES DURING THE TWO MONTHS -- ATTENDING THE MILITARY 
+FUNERAL OF GEN. NGUYEN BINH MARCH 12, PARTICIPATING IN AN 
+ARMY MEETING ON MASS MOBILIZATION AND IN THE NATIONAL 
+WRITERS' CONFERENCE, AND ATTENDING A TWO-DAY REVIEW MEETING 
+OF THE ARMED FORCES' FIVE-YEAR DEFENSE PLAN.  ACCORDING TO 
+AN EDITOR AT THE &quot;PEOPLE'S ARMY&quot; NEWSPAPER, NGAN AT ONE TIME 
+WAS PUSHED BY PHIEU TO REPLACE DUYET ON THE STANDING 
+COMMITTEE, THOUGH A CONSENSUS WAS NOT REACHED AND NOW IT 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  08 OF 10  261124Z 
+APPEARS MORE LIKELY TRONG WILL MOVE INTO THAT POSITION. 
+NONETHELESS, NGAN LIKELY WILL CONTINUE TO RISE IN PARTY 
+RANKS, GIVEN HIS PERSONAL BACKING FROM PHIEU. 
+ 
+28. (C) PHAN DIEN, CHAIRMAN OF THE CPV IN DANANG, WHO IS 
+RANKED 17TH, PREVIOUSLY SERVED AS DIRECTOR OF THE ECONOMIC 
+COMMISSION.  SINCE BECOMING HEAD OF THE DANANG PARTY, DIEN 
+HAS BEEN FEATURED IN &quot;NHAN DAN&quot; ONLY TWICE -- FOR CEREMONIAL 
+OCCASIONS RELATED TO THE &quot;LIBERATION&quot; OF DANANG IN 1975, 
+SHORTLY BEFORE THE FALL OF SAIGON.  HOWEVER, WE MUST NOTE 
+THAT FOR THIS PROJECT WE ARE NOT TRACKING THE LOCAL PAPERS 
+IN DANANG; DIEN'S PROFILE NO DOUBT IS MUCH HIGHER IN THE 
+CENTRAL REGION OF THE COUNTRY.  WE HAVE HEARD THAT THE 
+DANANG PARTY POST HAS BEEN GIVEN ENHANCED RESPONSIBILITIES 
+WITH OVERSIGHT OVER THE ENTIRE CENTRAL REGION, ESPECIALLY 
+MANAGING THE RECOVERY OF THE SIX CENTRAL PROVINCES AROUND 
+DANANG THAT WERE MOST DAMAGED BY THE HEAVY FLOODS OF 
+NOVEMBER-DECEMBER 1999.  THE AUSTRALIAN AMBASSADOR NOTED HE 
+WAS IMPRESSED WITH DIEN'S RELATIVE OPENNESS, CANDOR AND 
+COMMAND OF HIS BRIEF WHEN HE MET HIM SHORTLY AFTER DIEN'S 
+APPOINTMENT IN DANANG. 
+ 
+--------------------------------------------- -------------- 
+SENIOR ADVISORS' PUBLIC PROFILES DO NOT MATCH PRIVATE POWER 
+--------------------------------------------- -------------- 
+ 
+ 
+29. (C) THE THREE SENIOR ADVISORS TO THE CPV -- FORMER 
+GENERAL SECRETARY DO MUOI, FORMER PRESIDENT LE DUC ANH, AND 
+FORMER PRIME MINISTER VO VAN KIET -- EACH CONTINUE TO BE 
+FEATURED IN THE PRESS, WITH KIET AND MUOI PARTICULARLY 
+KEEPING ACTIVE SCHEDULES OF PUBLIC EVENTS.  HOWEVER, IN A 
+STRIKING EXAMPLE OF THE DIVERGENCE OF PUBLIC ROLES AND 
+PRIVATE POWER AMONG THE VIETNAMESE LEADERSHIP, AT THE 
+PRESENT MOMENT THE LESS PROMINENT THE FIGURE, THE MORE 
+INFLUENCE HE HAS.  THE LAST SIX MONTHS HAVE SEEN THE 
+REEMERGENCE OF LE DUC ANH ON THE SCENE AS A STRONG POLITICAL 
+FORCE.  DURING THE PAST MONTHS, ANH HAS WORKED WITH PHIEU, 
+WHO PREVIOUSLY SERVED UNDER ANH IN THE CAMBODIAN MILITARY 
+CAMPAIGN OF THE 1980'S, TO RESHUFFLE POLITBURO PORTFOLIOS, 
+TO DISCIPLINE SEVERAL ALLIES OF PM KHAI, AND TO GENERALLY 
+IMPOSE A MORE IDEOLOGICAL LINE ON CPV DECISION-MAKING.  YET 
+ANH RARELY APPEARS IN THE PRESS, AND WHEN HE DOES, IT IS 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  09 OF 10  261124Z 
+USUALLY ONLY FOR CEREMONIAL OCCASIONS, WITHOUT A LOT OF 
+SUBSTANCE ATTACHED.  MEANWHILE, KIET, WHO HAS THE HIGHEST 
+PROFILE, APPEARS TO HAVE THE LEAST INFLUENCE ON THE 
+POLITBURO. 
+ 
+30. (C) DURING THE TWO-MONTH PERIOD ANALYZED, ANH WAS 
+FEATURED ONLY THREE TIMES IN STATE-RUN PRINT MEDIA -- 
+ATTENDING THE MARCH 25 JOURNALISTS ASSOCIATION CONFERENCE; 
+BEING PICTURED, CUSTOMARILY, IN THE FRONT ROW FOR THE 
+OPENING OF THE CENTRAL COMMITTEE PLENUM APRIL 10; AND 
+ATTENDING ANNIVERSARY CELEBRATIONS OF THE &quot;LIBERATION&quot; OF 
+HCMC.  THESE BRIEF MENTIONS GIVE HARDLY ANY CLUE OF ANH'S 
+INFLUENCE IN THE LEADERSHIP, SINCE WE HAVE CLEAR INDICATIONS 
+HE EXERTS SIGNIFICANT INFLUENCE ON THE POLITBURO FROM BEHIND 
+THE SCENES.  (COMMENT: IN LARGE PART ANH'S LOWER PROFILE MAY 
+REFLECT HIS RETICENCE FOR PUBLIC APPEARANCES AS WELL AS 
+HEALTH CONCERNS.  A YEAR AGO ANH WAS REPORTED TO BE IN VERY 
+POOR HEALTH, AND SOME HANOI OBSERVERS SPECULATED HE MIGHT 
+NOT LIVE MUCH LONGER.  WHILE HE HAS RECOVERED ENOUGH TO 
+PARTICIPATE IN A LIMITED SCHEDULE, WE SPECULATE HE MAY 
+INTENTIONALLY BE LIMITING HIS SCHEDULE.  END COMMENT.) 
+ 
+31. (C) CONTRAST, DO MUOI APPEARED 10 TIMES IN THE PRESS. 
+HE ATTENDED THE SAME THREE EVENTS AS ANH, AND HE VISITED A 
+MILITARY UNIT, A GARMENT COMPANY, AND A TRADE FAIR.  HE ALSO 
+ATTENDED A CELEBRATION OF THE TRUNG SISTERS FROM VIETNAM'S 
+MILLENNIUM-LONG STRUGGLE AGAINST THE CHINESE, AND MET WITH 
+THE VISITING HEAD OF JAPAN-VIETNAM CULTURAL EXCHANGE 
+ASSOCIATION.  LIKEWISE, FORMER PRIME MINISTER KIET ALSO 
+MAINTAINED AN ACTIVE SCHEDULE OF MEETINGS, BEING FEATURED IN 
+THE PRESS ON 11 DIFFERENT DAYS.  KIET HELD MEETINGS WITH 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  09 OF 10  261124Z 
+REPRESENTATIVES FROM THE YOUTH UNION, THE TRANSPORTATION 
+MINISTRY, AND THE NATIONAL STEEL COMPANY.  UNLIKE ANH AND 
+MUOI, KIET KEPT AN ACTIVE TRAVEL SCHEDULE, VISITING AT LEAST 
+NINE SOUTHERN AND CENTRAL PROVINCES.  KIET VISITED NATURE 
+PRESERVES IN THE SOUTHERN PROVINCES OF CA MAU, CAN THO, DONG 
+THAP AND DONG NGAI; MET WITH REPS OF THE VIETNAM COAL 
+COMPANY IN QUANG NINH; AND VISITED AN IRRIGATION PROJECT IN 
+BEN TRE.  HE WAS THE ONLY ONE OF THE SENIOR ADVISORS TO 
+ATTEND THE LIBERATION OF DANANG CELEBRATIONS, AND HE 
+ATTENDED THE OPENING OF THE CENTRAL COMMITTEE PLENUM IN 
+HANOI (THOUGH HE WAS NOT PICTURED IN &quot;NHAN DAN,&quot; AS WERE 
+MUOI AND ANH).  (COMMENT: AS ONE OF THE SOUTHERNERS MOST 
+RESPONSIBLE FOR ADVANCING &quot;DOI MOI&quot; ECONOMIC REFORMS IN 
+VIETNAM OVER THE PAST DECADE, KIET TODAY SEEMS LIKE A SEMI- 
+RETIRED POLITICIAN PREACHING HIS GOSPEL ON THE BANQUET 
+CIRCUIT.  THOUGH HE HAS LESS CLOUT ON NATIONAL POLICY AT 
+PRESENT BECAUSE OF THE CONSERVATIVE TILT OF THE LEADERSHIP, 
+HE CONTINUES TO BE HIGHLY ESTEEMED IN THE SOUTH AND CENTER 
+OF THE COUNTRY.  END COMMENT.) 
+ 
+--------------------------------------------- --------- 
+WORKING IN THE SHADOWS, LARGELY HIDDEN FROM THE PUBLIC 
+--------------------------------------------- --------- 
+ 
+32. (C) COMMENT: AN ANALYSIS OF THE PUBLIC AND PRIVATE FACES 
+OF THE POLITBURO REVEALS HOW HIDDEN ARE THE WORKINGS OF THIS 
+SUPREME LEADERSHIP BODY.  NEARLY HALF OF THE LEADERS ARE 
+VIRTUALLY INVISIBLE, AND THE PUBLIC AT LARGE KNOWS LITTLE OF 
+THEM FROM THE STATE-CONTROLLED MEDIA.  (AND EVEN FOR THOSE 
+FEATURED MORE OFTEN IN THE OFFICIAL PRESS, THERE IS NARY A 
+CRITICAL WORD ABOUT CURRENT POLITBURO MEMBERS.)  OTHERS IN 
+THE POLITBURO, ESPECIALLY THE STANDING COMMITTEE MEMBERS AND 
+THE PROVINCIAL PARTY CHIEFS, HAVE MANY MORE OPPORTUNITIES TO 
+&quot;RUB SHOULDERS&quot; WITH VIETNAMESE PRIVATE CITIZENS, AND THEIR 
+TRAVELS AND CONSTITUENT MEETINGS NO DOUBT PROVIDE SOME 
+MEASURE OF &quot;GROUNDING&quot; FOR THEM TO LEARN OF POPULAR 
+ATTITUDES AND CONCERNS.  HOWEVER, IN THE LENINIST POLITICAL 
+STRUCTURE OF VIETNAM, THERE IS NO MEANS BY WHICH THE PARTY 
+LEADERSHIP IS ULTIMATELY RESPONSIBLE TO THE PEOPLE.  WITHIN 
+THIS CONSENSUS-ORIENTED BODY, THE DEBATE ON REFORM HAS BEEN 
+GROUND TO A HALT BY ITS STYLE OF GOVERNANCE BASED ON THE 
+LEAST COMMON DENOMINATOR.  WESTERN OBSERVERS LOOKING AT 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  10 OF 10  261125Z 
+VIETNAM TODAY YEARN FOR ONE OF THE COUNTRY'S MORE PRAGMATIC, 
+REFORM-MINDED YOUNGER LEADERS -- SUCH AS DUNG, SANG OR TRIET 
+-- TO STEP FORWARD AND IMPLEMENT A NEW ROUND OF RE-ENERGIZED 
+&quot;DOI MOI&quot; REFORMS.  HOWEVER, THE POLITICAL WINDS ARE NOT 
+BLOWING THAT WAY IN HANOI TODAY, AND WE BELIEVE IT MORE 
+LIKELY THIS CAUTIOUS, CONSENSUS-ORIENTED LEADERSHIP WILL OPT 
+FOR MORE INCREMENTAL MUDDLING THROUGH.  ULTIMATELY, FOR MOST 
+IF NOT ALL OF THE SENIOR LEADERS, THEIR PARAMOUNT OBJECTIVE 
+IS MAINTAINING THE COMMUNIST PARTY'S MONOPOLY ON POLITICAL 
+POWER FOR AS LONG AS THE GAME WILL PLAY.  END COMMENT. 
+PETERSON 
+ 
+                       CONFIDENTIAL 
+ 
+ 
+
+</div></div><br /></div></div><div class="pane-tab"><div class="pane-header">Raw content</div><div class="pane-content"><div class="text-content">C O N F I D E N T I A L SECTION 01 OF 10 HANOI 001160 
+ 
+SIPDIS 
+ 
+                       CONFIDENTIAL 
+ 
+PAGE 02        HANOI  01160  01 OF 10  261123Z 
+STATE ALSO FOR EAP A/S ROTH AND DAS BOYCE AND EAP/BCLTV 
+STATE ALSO FOR DRL, EB, INR/EAP/SEA, INR/EAP/CM, INR/B 
+STATE PASS USTR AMB FISHER/DAUSTR DAMOND 
+NSC FOR KEN LIEBERTHAL AND RAVIC HUSO 
+WHITE HOUSE FOR OVP TED OSIUS 
+WHITE HOUSE FOR DEP/ASST TO POTUS LBRAINARD 
+OSD FOR ISA/EAP/LSTERN 
+USDOC FOR 4431/MAC/AP/OKSA/HPPHO 
+ 
+E.O. 12958: DECL: 4/14/2010 
+TAGS: PGOV, PINR, ECON, PHUM, VM, DPOL 
+SUBJECT:  A VIETNAMESE JANUS: THE PUBLIC AND PRIVATE FACES OF THE POLITBURO 
+ 
+REF: A) HANOI 839  B) HANOI 232 
+ 
+(U) CLASSIFIED BY ACTING DCM JAMES BRUNO, 
+REASONS 1.5 (B) AND (D). 
+ 
+1. (C) SUMMARY: VIETNAM'S KEY LEADERSHIP BODY -- THE 
+CURRENTLY 18-MEMBER POLITBURO -- IS A LARGELY SHADOWY GROUP 
+WHOSE MEETINGS, AND MANY OF ITS MEMBERS' ACTIVITIES, ARE 
+HIDDEN FROM PUBLIC VIEW.  THE FIVE SEXAGENARIAN MEN IN THE 
+STANDING COMMITTEE, THE INNER CIRCLE OF THE COMMUNIST 
+PARTY'S POLITICAL BUREAU, HAVE HIGHLY VISIBLE PUBLIC 
+PERSONAS.  BUT HALF OF THE POLITBURO MEMBERS VIRTUALLY NEVER 
+APPEAR IN THE VIETNAMESE PRESS, ACCORDING TO A TWO-MONTH 
+ANALYSIS BY THE EMBASSY.  LIKEWISE, THE PARTY'S THREE SENIOR 
+ADVISORS, INCLUDING POWERFUL FORMER PRESIDENT LE DUC ANH, 
+ARE FEATURED ONLY IRREGULARLY IN OFFICIAL MEDIA, AND USUALLY 
+ONLY FOR CEREMONIAL OCCASIONS. 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  01 OF 10  261123Z 
+ 
+2. (C) WITH SO LITTLE PUBLIC INTERACTION AND VISIBILITY -- 
+MUCH LESS DEMOCRATIC ELECTIONS -- THERE IS LITTLE PUBLIC 
+ACCOUNTABILITY FOR THE PARTY LEADERSHIP.  THIS IS A GROUP 
+THAT EXERCISES ITS SUPREME POLITICAL POWER IN A CLOISTERED 
+AND OPAQUE ENVIRONMENT, IN A HIGHLY PATERNALISTIC FASHION. 
+AMONG THIS CONSENSUS-ORIENTED LEADERSHIP, SOME RISING STARS 
+ARE APPARENT: ON THE MORE IDEOLOGICAL WING ARE HANOI PARTY 
+CHIEF TRONG AND ARMY POLITICAL COMMISSAR NGAN, WHILE AMONG 
+THE MORE TECHNOCRATIC REFORMERS ARE DEPUTY PM DUNG, PARTY 
+ECONOMIC COMMISSION CHIEF SANG, AND HCMC PARTY LEADER TRIET. 
+THE POLITBURO'S RELIANCE ON CONSENSUS IN ITS DECISION-MAKING 
+CONTRIBUTES TO THE FUNDAMENTAL STABILITY OF THE GOVERNMENT, 
+BUT IT ALSO MEANS THAT REACHING AGREEMENT ON DRAMATIC 
+REFORMS IS VERY DIFFICULT.  THIS IS THE QUANDARY OF THE 
+MOMENT, WHEN THE MOST IDEOLOGICAL MEMBERS ARE PREVENTING 
+MOVEMENT FORWARD ON THE ECONOMIC REFORMS VIETNAM SO BADLY 
+NEEDS.  END SUMMARY. 
+ 
+--------------------------------------------- ------- 
+HOW THE POLITBURO IS PORTRAYED IN THE OFFICIAL PRESS 
+--------------------------------------------- ------- 
+ 
+3. (SBU) THIS IS THE FIRST OF AN ONGOING SERIES OF CABLES 
+ANALYZING THE PUBLIC PROFILE OF THE MEMBERS OF THE 
+POLITBURO, AS WELL AS THE THREE SENIOR ADVISORS OF THE 
+COMMUNIST PARTY OF VIETNAM (CPV).  IN LATE FEBRUARY THE 
+EMBASSY BEGAN A TRACKING PROJECT TO MONITOR THE ACTIVITIES, 
+MEETINGS, AND SPEECHES OF THESE KEY OFFICIALS IN LEADING 
+OFFICIAL MEDIA -- PRINCIPALLY THE CPV MOUTHPIECE &quot;NHAN DAN&quot; 
+(THE PEOPLE) AND VIETNAMESE NEWS SERVICE (VNS), BUT ALSO 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  01 OF 10  261123Z 
+&quot;HANOI MOI&quot; (NEW HANOI), &quot;TUOI TRE&quot; (YOUTH), AND &quot;SAIGON 
+GIAI PHONG&quot; (SAIGON LIBERATION).  BY FOCUSING ON THESE 
+LEADING PAPERS, POST IS TRACKING HOW VIETNAM'S CPV LEADERS 
+ARE PRESENTED TO THE PUBLIC BY THE GOVERNMENT-CONTROLLED 
+PRESS.  SINCE THE POLITBURO IS SUCH A SECRETIVE, RECLUSIVE 
+BODY, THIS ONGOING RESEARCH WILL HELP US TO ANALYZE BETTER 
+ITS ACTIVITIES AND PROFILE.  OVER THE NEXT YEAR, IN THE RUN- 
+UP TO THE NINTH PARTY CONGRESS IN EARLY 2001, ROUGHLY EVERY 
+TWO MONTHS WE PLAN TO ANALYZE THE TRENDS AND ACTIVITIES OF 
+POLITBURO MEMBERS, AS A SUPPLEMENTAL TO OUR ONGOING SPOT 
+REPORTS, ANALYSES, AND &quot;PULSE OF THE PARTY&quot; SERIES. 
+ 
+--------------------------------------------- ----- 
+GROUP LEADERSHIP BY &quot;THE LEAST COMMON DENOMINATOR&quot; 
+--------------------------------------------- ----- 
+ 
+4. (C) WHEN ANALYZING THE INDIVIDUAL MEMBERS OF THE 
+VIETNAMESE LEADERSHIP, ONE FIRST NEEDS TO RECOGNIZE THIS IS 
+A COLLECTIVE LEADERSHIP THAT RULES BY BROAD CONSENSUS.  FOR 
+EXAMPLE, IN THE PAST EIGHT MONTHS, GENERAL SECRETARY PHIEU 
+AND FORMER PRESIDENT ANH HAVE BEEN INFLUENTIAL IN SHAPING 
+THE LEADERSHIP'S DECISION-MAKING IN A MORE IDEOLOGICAL 
+MANNER.  BUT THEY HAVE ONLY BEEN ABLE TO DO THIS BY SHAPING 
+CONSENSUS AMONG THEIR COLLEAGUES.  IN A SENSE, THE 
+INSTITUTIONAL INTERESTS AND FUNDAMENTAL CAUTION OF THE 
+POLITBURO ARE MORE IMPORTANT THAN THE SUM OF ITS CONSTITUENT 
+PARTS. 
+ 
+5. (C) AS IN ANY POLITICAL SYSTEM, INDIVIDUAL LEADERSHIP 
+PERSONALITIES AND ABILITIES ARE IMPORTANT, BUT OVER THE PAST 
+FOUR DECADES, THE VIETNAMESE LEADERSHIP HAS BEEN STRIKINGLY 
+UNIFIED IN ITS FUNDAMENTAL GOALS AND COLLECTIVE INTERESTS. 
+IN YEARS PAST, THERE HAVE BEEN A HANDFUL OF INTERNECINE 
+BATTLES WHOSE RESULTS HAVE BEEN FLASHED BRIEFLY TO THE 
+PUBLIC, AND OCCASIONALLY POLITBURO MEMBERS HAVE BEEN RETIRED 
+IN DISGRACE OR PUT UNDER RESTRICTIONS AFTER BEING SACKED. 
+BUT VIETNAM'S COMMUNIST HISTORY IS VERY DIFFERENT FROM THAT 
+OF CHINA, FOR EXAMPLE, WHICH HAS LURCHED FROM THE VIOLENT 
+EXCESSES OF THE GREAT LEAP FORWARD TO THE CULTURAL 
+REVOLUTION TO THE TRIAL OF MAOISTS AND THE DRAMATIC 
+BEGINNING OF MARKET REFORMS UNDER DENG XIAOPING.  BY 
+CONTRAST, VIETNAM'S PERIOD OF COMMUNIST RULE IS STRIKING FOR 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  02 OF 10  261122Z 
+THE GRADUALISM -- ONE COULD ARGUE STAGNATION -- OF ITS 
+CONSENSUS-BASED LEADERSHIP.  SEVERAL CPV GENERAL 
+SECRETARIES, SUCH AS LE DUAN AND NGUYEN VAN LINH, HAVE BEEN 
+ 
+SIPDIS 
+VERY POWERFUL, BUT THEIRS HAS NOT BEEN A PERSONAL MANDATE SO 
+MUCH AS A COLLECTIVE ONE, AND NONE OF THEM ATTEMPTED TO MOVE 
+TO ESTABLISH A PERSONALISTIC DICTATORSHIP.  BY SELF- 
+DEFINITION, VIETNAM CLAIMS TO BE A DICTATORSHIP OF THE 
+PROLETARIAT.  MORE ACCURATELY, IT IS A COLLECTIVE OLIGARCHIC 
+DICTATORSHIP OF ONE PARTY. 
+ 
+6. (C) THIS LEADERSHIP STYLE OF THE CPV -- EMPHASIZING 
+CONSENSUS AND GRADUALISM IN DECISION-MAKING -- HAS A 
+POWERFUL IMPACT ON POLICY.  VIETNAM'S MODERN HISTORY HAS 
+SHOWN THAT ONLY WHEN THE CPV IS FACED WITH A PROFOUND 
+DOMESTIC CRISIS WILL THE PARTY LEADERSHIP DECIDE FOR 
+DRAMATIC CHANGE.  THE MOST PROMINENT EXAMPLE OF THIS WAS THE 
+ADVENT OF &quot;DOI MOI&quot; (RENOVATION) ECONOMIC REFORMS IN 1985-86 
+THAT FREED UP THE AGRICULTURAL AND RURAL SECTORS FROM THE 
+DISASTER OF COLLECTIVIST FARMING THAT HAD PUSHED THE COUNTRY 
+TO THE BRINK OF STARVATION.  IN THE MID-1980'S, A BROAD 
+CONSENSUS FORMED AMONG CPV LEADERS, WHO CLEARLY RECOGNIZED 
+THAT DRAMATIC CHANGES WERE NECESSARY TO PREVENT MASSIVE 
+SOCIAL UNREST.  THE RESULTANT DECADE OF HIGH-LEVEL ECONOMIC 
+GROWTH OWES IN LARGE PART TO THIS PERIOD OF REFORMS IN 
+RESPONSE TO CRISIS.  THE PROBLEM TODAY, HOWEVER, IS THAT, IN 
+THE ABSENCE OF SUCH DIRE CIRCUMSTANCES, THE CONSENSUS-BASED 
+POLITBURO SEEMS TO BE INCAPABLE OF AGREEING ON DIFFICULT 
+REFORM CHOICES.  FOR EXAMPLE, THE POLITBURO HAS BEEN UNABLE 
+TO AGREE ON A PRACTICAL PLAN FOR THE PRIVATIZATION OF STATE 
+ENTERPRISES, SINCE THOUSANDS OF POLITICALLY WELL-CONNECTED 
+WORKERS (READ CPV MEMBERS) WOULD LOSE THEIR JOBS IN ORDER TO 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  02 OF 10  261122Z 
+CREATE FAR MORE JOBS THROUGH INCREASED FOREIGN INVESTMENT 
+AND BETTER USE OF STATE MONIES.  THE PAROCHIAL INTERESTS OF 
+A FEW -- WHO ARE POLITICALLY WELL REPRESENTED IN THE 
+LEADERSHIP -- TRUMP THE PLANS OF MORE REFORM-MINDED LEADERS. 
+ 
+7. (C) THE FUNDAMENTAL CAUTION AND GRADUALISM OF THE 
+VIETNAMESE LEADERSHIP'S DECISION-MAKING STYLE CAN BE TRACED 
+IN PART TO THE COMMUNIST STRUGGLE AGAINST FRENCH COLONIAL 
+RULE AND AGAINST THE U.S.-BACKED SOUTHERN GOVERNMENT IN 
+VIETNAM'S CIVIL WAR.  THE INSURGENT MILITARY STRATEGIES 
+ADOPTED BY HO CHI MINH AND HIS KEY MILITARY ADVISORS SUCH AS 
+GEN. GIAP WERE FORGED BY A COLLEGIAL, COLLECTIVIST 
+LEADERSHIP AND CARRIED OUT BY THE PATIENT, LONG-TERM PURSUIT 
+OF MILITARY OBJECTIVES.  MANY SENIOR CPV LEADERS, WHOSE 
+FORMATIVE EXPERIENCES WERE IN THE &quot;NATIONAL LIBERATION 
+STRUGGLE,&quot; BELIEVE THAT STAYING THE COURSE IN A MEASURED, 
+&quot;STEP BY STEP&quot; MANNER IS AN IMPORTANT VIRTUE BORNE OUT BY 
+THE SUCCESSES OF THOSE VIETNAMESE MILITARY VICTORIES. 
+ 
+8. (C) THUS, IT IS VIRTUAL HOLY WRIT FOR MOST PARTY LEADERS 
+THAT STABILITY, PATIENCE AND GRADUALISM WILL ULTIMATELY WIN 
+THE DAY.  THE LEADERSHIP'S EXCESSIVE CAUTION, AS WELL AS 
+CONTINUING SUSPICION ABOUT THE INTENTIONS OF THE &quot;NEW FACE 
+OF IMPERIALISM,&quot; CREATE AN ENVIRONMENT IN WHICH PARALYSIS IS 
+THE ORDER OF THE DAY.  THE LEADERSHIP MAKE DECISIONS BY 
+LEAST COMMON DENOMINATOR: CONSENSUS CAN BE BLOCKED BY THE 
+OPPOSITION OF A HANDFUL OF MEMBERS, SOMETIMES EVEN ONE. 
+WITHIN THE PARTY, THERE IS NO INSTITUTIONAL REQUIREMENT TO 
+FORCE THE LEADERSHIP TO MAKE TOUGH CHOICES, SUCH AS ON 
+DIFFICULT BUDGET QUESTIONS.  IN PART THIS IS BECAUSE THERE 
+IS NO MEANS FOR DIRECT PUBLIC ACCOUNTABILITY, SINCE THE 
+PARTY AND ITS SUBORDINATE GOVERNMENT ORGANS ARE NOT 
+ULTIMATELY ACCOUNTABLE TO THE PUBLIC.  (COMMENT: WHILE 
+ELECTIONS FOR LOCAL GOVERNMENT AND NATIONAL ASSEMBLY ARE 
+HELD, THE COMPLETE LACK OF TRANSPARENCY IN THE PROCESS GIVES 
+LITTLE CONFIDENCE IN THE RESULTS PRESENTED TO THE PUBLIC.) 
+IN THIS CLIMATE, VIETNAM'S COLLECTIVE LEADERSHIP EXERCISES 
+ITS SUPREME POLITICAL POWER. 
+ 
+--------------------------------------------- -------- 
+PUBLIC ACTIVITIES OF THE POLITBURO STANDING COMMITTEE 
+--------------------------------------------- -------- 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  03 OF 10  260849Z 
+ 
+9. (C) DURING THE TEN-WEEK PERIOD FROM FEBRUARY 25 TO APRIL 
+30, EIGHT OF THE 15 POLITBURO MEMBERS WERE FEATURED IN THE 
+PRESS ON AT LEAST 10 DIFFERENT DATES.  INCLUDED AMONG THESE 
+EIGHT ARE THE FIVE MEMBERS OF THE POLITBURO STANDING 
+COMMITTEE, WHO ARE AMONG THOSE WHO MOST FREQUENTLY PRESENT 
+THE &quot;PUBLIC FACE&quot; OF THE LEADERSHIP.  THE FIVE -- CPV 
+GENERAL SECRETARY LE KHA PHIEU, PRESIDENT TRAN DUC LUONG, 
+PRIME MINISTER PHAN VAN KHAI, NATIONAL ASSEMBLY SPEAKER NONG 
+DUC MANH, AND FATHERLAND FRONT LEADER PHAM THE DUYET -- WERE 
+EACH FEATURED IN PROMINENT, SUBSTANTIVE COVERAGE AT LEAST 10 
+DAYS OUT OF THE EIGHT-WEEK PERIOD.  (BY CONTRAST, ONLY THREE 
+OTHER POLITBURO MEMBERS WERE FEATURED THIS OFTEN -- DEPUTY 
+PRIME MINISTER AND FORMER FOREIGN MINISTER NGUYEN MANH CAM, 
+DEPUTY PRIME MINISTER NGUYEN TAN DUNG, AND HO CHI MINH CITY 
+PARTY CHIEF NGUYEN MINH TRIET.)  THE FIVE SENIOR LEADERS 
+WERE FEATURED RECEIVING GUESTS, ATTENDING MEETINGS AND 
+SEMINARS, AND GIVING SPEECHES.  SUCH PROMINENT COVERAGE IN 
+THE OFFICIAL PRESS IS NOT SURPRISING, GIVEN THAT THESE FIVE 
+FIGURES OCCUPY POSITIONS THAT HAVE MAJOR PROTOCOL FUNCTIONS 
+AS THE RESPECTIVE HEADS OF THE FIVE MAIN LEADERSHIP POWER 
+CENTERS ON THE NATIONAL LEVEL: PARTY, STATE, GOVERNMENT, 
+ASSEMBLY, AND MASS ORGANIZATIONS. 
+ 
+10. (C) GENERAL SECRETARY PHIEU, RANKED FIRST IN THE CPV, 
+WAS FEATURED IN THE CPV MOUTHPIECE &quot;NHAN DAN&quot; ON 13 
+DIFFERENT DATES.  HE RECEIVED OFFICIAL VISITORS EIGHT TIMES, 
+INCLUDING WORLD BANK PRESIDENT WOLFENSOHN; MADE VISITS 
+AROUND VIETNAM FOUR TIMES, INCLUDING IN LATE FEBRUARY TO 
+THAI BINH PROVINCE, SITE OF PROVINCIAL UNREST TWO YEARS AGO; 
+ATTENDED COMMEMORATIONS OF THE &quot;LIBERATION&quot; OF HO CHI MINH 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  03 OF 10  260849Z 
+CITY; AND GAVE TWO PROMINENT SPEECHES, INCLUDING ONE OPENING 
+THE CPV CENTRAL COMMITTEE PLENUM APRIL 10.  (TWO OF THESE 
+EVENTS TOOK PLACE THE SAME DAY.)  PHIEU'S APPEARANCES IN THE 
+PRESS, LIKE THOSE OF THE PRIME MINISTER, TEND TO BE MORE 
+&quot;SUBSTANTIVE&quot; THAN THOSE OF MOST POLITBURO MEMBERS.  (MANY 
+OF THE MEDIA APPEARANCES OF LESS PROMINENT POLITBURO MEMBERS 
+LIST THEM MERELY AS ATTENDING CONFERENCES OR CEREMONIAL 
+EVENTS, WITHOUT FURTHER DETAIL.)  PHIEU'S HIGHLY VISIBLE 
+TREATMENT HIGHLIGHTS HIS PROMINENCE IN THE POWER STRUCTURE. 
+THE IMAGE PROJECTED BY THE OFFICIAL MEDIA IS OF A GENERAL 
+SECRETARY WHO IS ACTIVE AND ENGAGED.  IN THE PAST EIGHT 
+ 
+SIPDIS 
+MONTHS, PHIEU APPEARS TO HAVE CONSOLIDATED HIS POSITION WITH 
+THE SUPPORT OF HIS MENTOR, FORMER PRESIDENT LE DUC ANH. 
+PHIEU AND ANH HAVE WORKED CLOSELY SINCE SERVING TOGETHER AS 
+DEPUTY COMMANDER AND COMMANDER OF VIETNAM'S OCCUPATION 
+FORCES IN CAMBODIA IN THE LATE 1980'S. 
+ 
+11. (C) PRESIDENT LUONG, RANKED SECOND IN THE CPV, HAS A 
+LARGELY CEREMONIAL POSITION HIGH ON PROTOCOL AND OFFICIAL 
+VISITS.  HE WAS FEATURED ON 21 DIFFERENT DAYS DURING THE TWO 
+MONTHS.  MOST OF HIS APPEARANCES WERE MAKING OFFICIAL VISITS 
+ABROAD OR RECEIVING FOREIGN VISITORS IN HANOI.  FOR EXAMPLE, 
+HE VISITED UKRAINE, MONGOLIA, AND CUBA, ATTENDING THE G-77 
+SUMMIT IN HAVANA.  HE MET VISITING LEADERS FROM BELARUS, 
+NORTH KOREA, LAOS, INDIA, CONGO, SINGAPORE, AND THE U.S., 
+INCLUDING SECDEF COHEN.  HE ALSO ADDRESSED DOMESTIC 
+CONFERENCES ON MILITARY MASS MOBILIZATION AND JOURNALISM. 
+AN ANALYSIS OF LUONG'S ACTIVITIES REVEALS THAT WHILE HE HAS 
+A HIGHLY VISIBLE POSITION, HIS ROLE IS LESS SUBSTANTIVE THAN 
+THE GENERAL SECRETARY'S OR PRIME MINISTER'S.  (COMMENT: AS 
+REPORTED REF A, GENERAL SECRETARY PHIEU REPORTEDLY IS 
+INTERESTED IN COMBINING THE ROLES OF GENERAL SECRETARY AND 
+STATE PRESIDENT; IN SUCH A CASE, LUONG LIKELY WOULD ASSUME A 
+POSITION OF EVEN LESS INFLUENCE AND BE DROPPED FROM THE 
+STANDING COMMITTEE.  END COMMENT.) 
+ 
+12. (C) PRIME MINISTER KHAI, HEAD OF THE GOVERNMENT AND 
+THIRD-RANKING IN THE CPV, HAD THE HIGHEST VISIBILITY OF ANY 
+POLITBURO MEMBER IN THE PRESS DURING THE TWO-MONTH PERIOD; 
+HE APPEARED IN THE PRESS ON 30 DIFFERENT DATES.  NINE TIMES 
+HE RECEIVED OFFICIAL VISITORS, INCLUDING MANY OF THOSE SEEN 
+BY LUONG; 13 TIMES HE LED GOVERNMENT MEETINGS OR SEMINARS, 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  04 OF 10  261123Z 
+INCLUDING MEETINGS ON ECONOMIC DEVELOPMENT, DRUG CONTROL, 
+TRADE UNIONS, BUSINESS PROMOTION, AND A MEETING OF THE 
+GOVERNMENT CABINET MINISTERS.  ON APRIL 29 HE GAVE THE 
+KEYNOTE ADDRESS IN HANOI CELEBRATING THE &quot;LIBERATION&quot; OF 
+SAIGON.  ON 11 DAYS HE WAS FEATURED TRAVELING AROUND THE 
+COUNTRY, PRIMARILY TO SOUTHERN DELTA AND NORTHERN PROVINCES. 
+AS PRIME MINISTER, KHAI OCCUPIES A POSITION OF BOTH HIGH 
+VISIBILITY AND CLOUT WITHIN THE PARTY AND GOVERNMENT 
+LEADERSHIP, THOUGH IN RECENT MONTHS HIS MORE TECHNOCRATIC 
+AND REFORMIST VIEWS HAVE LOST FAVOR TO THE MORE IDEOLOGICAL 
+DIRECTION PUSHED BY PHIEU.  KHAI, WHO SEEMS DISCOURAGED BY 
+THE RISE OF MORE IDEOLOGICAL THINKING, REPORTEDLY HAS 
+OFFERED TO RESIGN ON SEVERAL OCCASIONS, AND MANY IN HANOI 
+SPECULATE HE MAY BE REPLACED AS PRIME MINISTER, PERHAPS BY 
+ANOTHER SOUTHERN REFORMER, BEFORE OR AT THE COMMUNIST PARTY 
+CONGRESS IN MARCH 2001. 
+ 
+13. (C) NATIONAL ASSEMBLY SPEAKER MANH, FOURTH-RANKING IN 
+THE PARTY, WAS FEATURED ON 22 DAYS.  ON SEVEN OCCASIONS HE 
+RECEIVED FOREIGN LEGISLATORS, INCLUDING SEN. JOHN MCCAIN (R- 
+AZ), REP. BILL ARCHER (R-TX), AND PARLIAMENTARY SPEAKERS 
+FROM BELARUS AND NEW ZEALAND.  ON SEVEN DAYS HE WAS PICTURED 
+ON INTERNATIONAL TRAVELS, INCLUDING AN APRIL 4-10 VISIT TO 
+CHINA, WHERE HE MET JIANG ZEMIN AND LI PENG.  ON EIGHT DAYS 
+HE TRAVELED INSIDE VIETNAM OR ATTENDED EVENTS IN HANOI.  AS 
+THE ONLY ETHNIC MINORITY IN THE LEADERSHIP, MANH HAS A 
+RELATIVELY HIGH PUBLIC PROFILE, THOUGH WE DO NOT PERCEIVE HE 
+HAS MUCH CLOUT WITHIN THE LEADERSHIP.  NATIONAL ASSEMBLY 
+STAFF HAVE INFORMED US MANH SEEMS INTENT ON &quot;NOT ROCKING THE 
+BOAT.&quot;  (COMMENT: THIS TRAIT HELPS ACCOUNT FOR THE POLITICAL 
+SURVIVAL OF MANY OF THE LOW-PROFILE MEMBERS OF THE 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  04 OF 10  261123Z 
+POLITBURO.  IN VIETNAM'S CONSENSUS-ORIENTED LEADERSHIP, 
+STANDING OUT USUALLY IS NOT GOOD FOR HANGING ON.  END 
+COMMENT.) 
+ 
+14. (C) FIFTH-RANKING MEMBER DUYET, WHO HEADS UP THE VIETNAM 
+FATHERLAND FRONT (VFF), WAS FEATURED 15 TIMES IN THE 
+OFFICIAL PRESS.  ON NINE DAYS HE ATTENDED MEETINGS OR 
+CEREMONIAL EVENTS IN HANOI, INCLUDING WOMEN'S DAY 
+CELEBRATIONS, ARTISTIC EXHIBITIONS, MEETINGS WITH MINORITIES 
+AND COMMUNIST YOUTH, AND THE LAWYERS ASSOCIATION.  TWICE HE 
+RECEIVED FOREIGN VISITORS FROM LAOS AND BURMA, AND FOUR 
+TIMES HE WAS DEPICTED TRAVELING IN-COUNTRY TO CENTRAL AND 
+NORTHERN PROVINCES.  DUYET'S PUBLIC PROFILE HAS BECOME 
+HIGHER SINCE HE TOOK OVER THE VFF LAST YEAR.  THOUGH IT WILL 
+NOT BECOME CLEAR UNTIL THE PARTY CONGRESS, IT APPEARS 
+DUYET'S CLOUT AMONG THE LEADERSHIP HAS DROPPED DURING THE 
+PAST YEAR.  REPORTEDLY HE IS NOT IN FAVOR WITH FORMER 
+PRESIDENT LE DUC ANH, WHO HAS HELPED GENERAL SECRETARY PHIEU 
+CONSOLIDATE CONTROL WITHIN THE PARTY DURING THE PAST SIX 
+MONTHS. 
+ 
+--------------------------------------------- ------------ 
+A HANDFUL OF OTHER POLITBURO MEMBERS FEATURED PROMINENTLY 
+--------------------------------------------- ------------ 
+ 
+ 
+15. (C) FOUR OTHER POLITBURO MEMBERS ALSO HAVE RELATIVELY 
+HIGH PROFILES, APPEARING IN THE OFFICIAL PRESS AT LEAST A 
+DOZEN TIMES -- DEPUTY PRIME MINISTER AND FORMER FOREIGN 
+MINISTER NGUYEN MANH CAM, DEPUTY PRIME MINISTER NGUYEN TAN 
+DUNG, HO CHI MINH CITY PARTY CHIEF NGUYEN MINH TRIET, AND 
+HANOI PARTY CHIEF NGUYEN PHU TRONG.  CAM AND DUNG HAVE HIGH- 
+PROFILE POSITIONS AS DEPUTY PRIME MINISTERS OVERSEEING 
+FOREIGN POLICY AND ECONOMIC POLICY, RESPECTIVELY.  TRIET AND 
+TRONG WERE RECENTLY NAMED TO HEAD THE PARTY ORGANIZATIONS IN 
+THE NATION'S TWO LARGEST CITIES AND CONSEQUENTLY ARE 
+FEATURED FREQUENTLY IN THE NATIONAL MEDIA.  THEY ARE BOTH 
+RISING STARS IN THE PARTY: TRIET AS A CHAMPION OF MORE 
+TECHNOCRATIC/REFORMIST VIEWS, AND TRONG AS ONE OF THE MORE 
+IDEOLOGICAL MEMBERS OF THE LEADERSHIP.  IN ADDITION, 
+MINISTER OF DEFENSE PHAM VAN TRA AND MINISTER OF PUBLIC 
+SECURITY LE MINH HUONG WERE FEATURED SIX AND FIVE TIMES, 
+RESPECTIVELY, IN THE NATIONAL PRESS IN THEIR CAPACITIES AS 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  05 OF 10  260900Z 
+MINISTERS.  (TRA AND HUONG APPEAR MORE FREQUENTLY IN OTHER 
+MEDIA, SUCH AS NEWSPAPERS CONTROLLED BY THEIR MINISTRIES.) 
+ 
+16. (C) DEPUTY PM CAM, WHO MOVED UP TO SIXTH IN THE 
+POLITBURO FOLLOWING THE DEATH LAST YEAR OF FORMER DEFENSE 
+MINISTER DOAN KHUE, APPEARED 19 TIMES IN THE OFFICIAL PRESS 
+DURING THE TWO-MONTH PERIOD, DESPITE LOSING HIS TITLE AS 
+FOREIGN MINISTER IN FEBRUARY.  CAM CONTINUED TO MAINTAIN A 
+BUSY SCHEDULE OF HOSTING FOREIGN VISITORS, INCLUDING THOSE 
+FROM THE U.S., JAPAN, SOUTH KOREA, RUSSIA, THAILAND, CHINA, 
+HUNGARY AND THE UNITED NATIONS.  HOWEVER, MOST OF THESE 
+SESSIONS WERE IN THE FOUR WEEKS FOLLOWING HIS RETIREMENT AS 
+FOREIGN MINISTER, WHICH SUGGESTS THESE PROTOCOL MEETINGS MAY 
+BECOME LESS FREQUENT IN THE FUTURE. (NOTE: FROM A PROTOCOL 
+POINT OF VIEW, HOWEVER, CAM MAY CONTINUE TO HAVE A 
+RELATIVELY HIGH PROFILE, SINCE HE WILL BE A USEFUL 
+INTERLOCUTOR FOR FOREIGN VISITORS WHO REQUIRE A MEETING OF 
+DEPUTY PM RANK, BUT WHO DO NOT WARRANT TAKING THE TIME OF 
+OTHER, BUSIER OFFICIALS.)  WE BELIEVE CAM MAY BE RETIRED AT 
+THE PARTY CONGRESS. 
+ 
+17. (C) FIRST DEPUTY PRIME MINISTER DUNG, WHO PLAYS A KEY 
+ROLE IN OVERSIGHT OF THE GOVERNMENT'S ECONOMIC POLICIES, 
+APPEARED IN THE PRESS ON 14 DIFFERENT DATES.  DUNG MET WORLD 
+BANK PRESIDENT WOLFENSOHN AND ECONOMIC AND BANKING 
+DELEGATIONS FROM CUBA, LAOS, SINGAPORE AND MALAYSIA.  HE 
+ALSO WAS FEATURED EIGHT TIMES ATTENDING DOMESTIC MEETINGS OR 
+SEMINARS, INCLUDING MEETINGS WITH BUSINESS GROUPS, THE 
+VIETNAMESE INSURANCE COMPANY, ENGINEERING ASSOCIATIONS, AND 
+GOVERNMENT ECONOMIC MEETINGS.  IN ADDITION, HE JOINED 
+GENERAL SECRETARY PHIEU ON A TRIP TO HAIPHONG MARCH 13. 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  05 OF 10  260900Z 
+CURRENTLY RANKED 14TH IN THE POLITBURO, DUNG PREVIOUSLY WAS 
+RANKED FIFTH UNTIL A SHAKE-UP IN 1997 LED TO HIS SLIPPING IN 
+RANK.  ONE OF THE YOUNGEST POLITBURO MEMBERS AT 51, DUNG IS 
+ONE OF THE SOUTHERNERS WHO IS A POSSIBLE CANDIDATE TO 
+REPLACE KHAI, THOUGH FORMER PRESIDENT ANH REPORTEDLY OPPOSES 
+HIS ELEVATION.  (COMMENT: ONE OF THE FACTORS THAT MAY BE AT 
+WORK IN THE JOCKEYING TO REPLACE PM KHAI IS THAT 
+CONSERVATIVE IDEOLOGUES, SUCH AS PHIEU AND ANH, MAY NOT WANT 
+A YOUNGER, MORE CAPABLE AND EFFECTIVE PRIME MINISTER, SUCH 
+AS DUNG OR OTHER REFORMERS SANG OR TRIET.  THEY MAY PREFER 
+TO MAINTAIN THE STATUS QUO ANTE AND KEEP A RELATIVELY 
+WEAKENED PRIME MINISTER AS NOMINAL HEAD OF THE &quot;REFORM 
+FACTION&quot; OF THE CPV.  END COMMENT.) 
+ 
+18. (C) NGUYEN MINH TRIET, RANKED 16TH, BECAME HEAD OF THE 
+HO CHI MINH PARTY IN FEBRUARY, REPLACING TRUONG TAN SANG. 
+TRIET PREVIOUSLY SERVED IN THE SHADOWS AS THE HEAD OF THE 
+COMMUNIST PARTY'S COMMISSION ON MASS MOBILIZATION.  IN A 
+DRAMATIC ILLUSTRATION OF THE DIVERGENT &quot;JANUS FACES&quot; OF THE 
+PARTY, THE PUBLIC PROFILES OF THE TWO HAVE REVERSED 
+THEMSELVES DRAMATICALLY.  DURING THESE TWO MONTHS, TRIET WAS 
+FEATURED ON 15 DATES -- EIGHT TIMES HOSTING VISITORS, MANY 
+OF THEM CONSUL GENERALS IN HCMC PAYING COURTESY CALLS, AND 
+TEN TIMES ATTENDING MEETINGS AND CONFERENCES.  (ON THREE 
+DATES TRIET WAS FEATURED TWICE IN THE PRESS FOR DIFFERENT 
+EVENTS.  BY CONTRAST, SANG HAS VIRTUALLY DISAPPEARED FROM 
+PUBLIC VIEW; HE DID NOT FEATURE IN ANY MAJOR PRESS STORIES 
+IN &quot;NHAN DAN&quot; DURING THE TWO MONTHS DOCUMENTED.)  AS HCMC 
+PARTY LEADER, TRIET HAS PRESENTED THE IMAGE OF AN ENGAGED 
+LOCAL LEADER.  HE HAS MET WITH LOCAL OFFICIALS FIGHTING DRUG 
+ABUSE IN THE CITY, ENCOURAGED YOUTH VOLUNTEERS, ADDRESSED A 
+CONFERENCE ON POVERTY REDUCTION, AND ATTENDED TRADE FAIRS 
+PROMOTING LOCALLY MADE GOODS.  TRIET, WHO PREVIOUSLY SERVED 
+AS DEPUTY HEAD OF THE HCMC PARTY ORGANIZATION, IS POPULAR IN 
+THE SOUTH AND SEEN BY THE BUSINESS COMMUNITY AS ONE WHO IS 
+SUPPORTIVE OF PRO-BUSINESS REFORMS.  LIKE DEPUTY PM DUNG AND 
+FORMER SAIGON CHIEF SANG, TRIET IS ONE OF THE YOUNG &quot;UP-AND- 
+COMERS&quot; AMONG SOUTHERN REFORMERS IN THE CPV.  (SINCE BOTH 
+DUNG AND SANG APPEAR TO HAVE SOME OPPONENTS AMONG THE SENIOR 
+LEADERSHIP, TRIET IS ANOTHER POSSIBILITY FOR PROMOTION TO 
+MORE SENIOR POSITIONS, POSSIBLY INCLUDING PRIME MINISTER.) 
+ 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  06 OF 10  260851Z 
+19. (C) NGUYEN PHU TRONG, CHAIR OF THE HANOI CPV COMMITTEE, 
+EMERGED FROM THE SHADOWS WHEN HE ASSUMED HIS CURRENT 
+POSITION BY SWAPPING JOBS WITH CURRENT IDEOLOGY CHIEF LE 
+XUAN TUNG.  TRONG RANKS LAST IN THE POLITBURO BY RANK, 
+THOUGH THIS BELIES HIS GROWING INFLUENCE AND RISING 
+PROMINENCE.  ONE OF THE MORE STRONGLY DOCTRINAIRE MEMBERS OF 
+THE POLITBURO, TRONG PREVIOUSLY APPEARED IN PUBLIC VIEW 
+PRIMARILY AS THE AUTHOR OF STRONGLY IDEOLOGICAL ANALYSES IN 
+THE OFFICIAL COMMUNIST PARTY THEORETICAL REVIEW, SUCH AS HIS 
+ESSAY ON THE CPV'S RELIANCE ON &quot;DEMOCRATIC CENTRALISM&quot; IN 
+LATE 1999.  AFTER BECOMING HANOI CHIEF, TRONG APPEARED IN 
+THE PRESS 12 TIMES -- NINE TIMES CHAIRING AND ATTENDING 
+MEETINGS AND THREE TIMES VISITING DISTRICTS OF HANOI.  FOR 
+EXAMPLE, TRONG CHAIRED A PLANNING MEETING FOR THE 990TH 
+ANNIVERSARY OF THE CITY, OPENED AND CHAIRED A CONFERENCE OF 
+THE HANOI CPV COMMITTEE, AND OUTLINED THE CPV'S ROLE IN 
+TEACHING MARXIST-LENINIST VALUES IN HANOI'S UNIVERSITIES. 
+RECENT PRESS ARTICLES HAVE ALSO NOTED THAT TRONG HAS BEEN 
+ASSISTING PHAM THE DUYET IN ORGANIZING THE ACTIVITIES OF THE 
+FIVE-MEMBER STANDING COMMITTEE.  BOTH A SENIOR COLONEL AT 
+THE LEADING MILITARY NEWSPAPER AND THE CHINESE EMBASSY 
+PREDICT TRONG WILL REPLACE DUYET ON THE STANDING COMMITTEE 
+AT THE PARTY CONGRESS.  IN ANY EVENT, TRONG'S STAR IS 
+RISING, AND HE WILL UNDOUBTEDLY MOVE UP IN RANK.  TRONG'S 
+TRENCHANT IDEOLOGICAL VIEWS ARE THE FLAVOR IN FAVOR AT THIS 
+TIME, AND HE APPEARS TO HAVE THE SUPPORT OF PHIEU. 
+ 
+20. (C) MINISTER OF NATIONAL DEFENSE PHAM VAN TRA (RANKED 
+9TH) AND MINISTER OF PUBLIC SECURITY LE MINH HUONG (13TH) 
+BOTH COMMAND CLOUT IN THE POLITBURO BY VIRTUE OF THEIR 
+IMPORTANT MINISTRIES.  (BOTH MINISTRIES, GIVEN THEIR 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  06 OF 10  260851Z 
+NATIONAL AND INTERNAL SECURITY MANDATES, ARE AMONG THE 
+INSTITUTIONS IN VIETNAM THAT ARE MOST SUSPICIOUS OF THE U.S. 
+AND ITS INTENTIONS.  THIS IS ESPECIALLY TRUE AMONG THOSE 
+LEADERS, SUCH AS TRA AND HUONG, WHO FOUGHT AGAINST THE U.S. 
+DURING THE WAR, BUT THIS CONCERN IS MORE BROADLY REFLECTED 
+IN THE MINISTRIES INSTITUTIONALLY AS WELL.)  THE PUBLIC 
+PROFILES OF TRA AND HUONG ARE LOWER THAN CITY PARTY LEADERS 
+AND STANDING COMMITTEE MEMBERS, THOUGH THEY APPEAR IN THE 
+PRESS ON AVERAGE ABOUT EVERY TEN DAYS.  TRA APPEARED IN 
+ARTICLES ON 10 DIFFERENT DATES.  IN FIVE STORIES HE RECEIVED 
+FOREIGN VISITORS, INCLUDING SECDEF COHEN AND THE INDIAN 
+DEFENSE MINISTER.  HE ATTENDED THE FUNERAL OF GENERAL NGUYEN 
+BINH, AND HE CHAIRED MEETINGS REVIEWING THE TRAINING AND 
+MASS MOBILIZATION TASKS OF THE ARMY.  MINISTER OF PUBLIC 
+SECURITY HUONG, NOT SURPRISINGLY AS THE HEAD OF POLICE AND 
+ESPIONAGE ACTIVITIES, APPEARED LESS FREQUENTLY.  HIS SEVEN 
+APPEARANCES IN THE PRESS INCLUDED MEETINGS WITH FOREIGN 
+VISITORS (THE UKRAINIAN DEFENSE MINISTRY AND LAO INTERIOR 
+MINISTER), ATTENDING THE CPV PLENUM, VISITING A TEMPLE OF 
+THE HUNG KINGS, AND CHAIRING A MEETING OF POLICE ON THE 
+RESULTS OF THE CENTRAL COMMITTEE PLENUM.  BOTH TRA AND HUONG 
+ARE AMONG THE OLDER POLITBURO MEMBERS, AND ACCORDING TO SOME 
+REPORTS, HUONG IS NOT IN GOOD HEALTH.  RUMORS CIRCULATE THAT 
+ONE OR BOTH OF THEM MAY BE RETIRED AT THE PARTY CONGRESS. 
+ 
+ 
+--------------------------------------------- ---- 
+MOST OTHER POLITBURO MEMBERS ARE ALMOST INVISIBLE 
+--------------------------------------------- ---- 
+ 
+21. (C) IN A STRIKING ILLUSTRATION OF HOW HIDDEN IS MUCH OF 
+THE PARTY'S INTERNAL WORK, MOST OTHER POLITBURO MEMBERS 
+RARELY, IF EVER, APPEAR IN THE PRESS.  DURING THE TWO MONTHS 
+OF OUR TRACKING, FOUR MEMBERS -- THOSE IN CHARGE OF THE 
+PARTY'S IDEOLOGICAL TRAINING, PERSONNEL ISSUES, 
+INVESTIGATION OF PARTY INFRACTIONS, AND ECONOMIC AFFAIRS -- 
+EITHER NEVER APPEARED OR APPEARED ONLY ONCE IN PROMINENT 
+MEDIA SUCH AS &quot;NHAN DAN.&quot;  INCLUDED IN THIS GROUP IS FORMER 
+HCMC PARTY CHIEF SANG, WHO DROPPED OFF THE SCREEN AFTER HE 
+WAS NAMED HEAD OF THE PARTY'S ECONOMIC COMMISSION.  THIS IS 
+A GRAPHIC EXAMPLE OF HOW SECRETIVE ARE THESE SUPREMELY 
+POWERFUL OFFICIALS -- AND HOW SHELTERED FROM THE PUBLIC ARE 
+THEIR ACTIVITIES AND VIEWS.  TO THE PUBLIC, MOST OF THEM ARE 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  07 OF 10  260851Z 
+CIPHERS AT BEST, AND YET THESE LEADERS SHAPE VIETNAM'S 
+NATIONAL POLICIES. 
+ 
+22. (C) LONG-TIME HEAD OF THE HO CHI MINH POLITICAL ACADEMY 
+NGUYEN DUC BINH, AT AGE 72 ONE OF THE OLDEST POLITBURO 
+MEMBERS, NEVER APPEARED IN &quot;NHAN DAN&quot; OR OTHER PROMINENT 
+OFFICIAL PRESS FOR THE EIGHT-WEEK PERIOD WE MONITORED.  THIS 
+IS STRIKING, BECAUSE SOME SOURCES IN HANOI SUGGEST BINH, 
+SEVENTH IN CPV RANKS, PLAYED A LARGE ROLE IN LEADING THE 
+OPPOSITION TO SIGNING THE BILATERAL TRADE AGREEMENT (BTA) 
+WITH THE U.S. AFTER THE BTA WAS INITIALED IN JULY 1999. 
+BINH HAS CLOSE CONNECTIONS TO MANY OF THE POLITBURO, SINCE 
+SENIOR CPV LEADERS PASS THROUGH THE ACADEMY FOR SENIOR 
+TRAINING.  THUS, THOUGH VIRTUALLY INVISIBLE TO PUBLIC VIEW, 
+BINH EXERCISES SIGNIFICANT INFLUENCE THROUGH HIS LINKS TO 
+HIS FORMER STUDENTS.  BECAUSE OF HIS AGE, WE BELIEVE BINH 
+WILL RETIRE AT THE PARTY CONGRESS.  (SOME SOURCES SUGGEST 
+ONE POSSIBLE CANDIDATE TO REPLACE BINH COULD BE PARTY 
+SPOKESMAN DAO DUY QUAT, WHO HAS ASSUMED HIGHER A PROFILE IN 
+THE CONFIDENT MANNER HE GIVES PUBLIC BRIEFINGS ON RECENT 
+CENTRAL COMMITTEE MEETINGS.  QUAT, WHOSE LATE FATHER SERVED 
+IN THE POLITBURO, MAY HAVE THE PATRONAGE OF LE DUC ANH, 
+ACCORDING TO SOME SOURCES.) 
+ 
+23. (C) NGUYEN VAN AN, HEAD OF THE PARTY'S ORGANIZATION 
+DEPARTMENT, IS ANOTHER ENIGMA IN THE LEADERSHIP.  RANKED 
+EIGHTH, AN APPEARED ONLY ONE TIME IN THE PRESS IN TWO 
+MONTHS, WHEN HE RECEIVED A DELEGATION OF OFFICIALS FROM 
+CHINA.  INTERESTINGLY, AN WAS THE LEADING ALTERNATIVE TO 
+PHIEU IN THE DECEMBER 1997 VOTING AMONG THE POLITBURO FOR 
+GENERAL SECRETARY.  IN A HIGHLY UNUSUAL, CLOSE SPLIT VOTE IN 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  07 OF 10  260851Z 
+THE POLITBURO, PHIEU WAS SELECTED AS GENERAL SECRETARY. 
+SINCE THAT TIME, THE PUBLIC HAS HEARD OR SEEN VIRTUALLY 
+NOTHING OF AN FOR MORE THAN TWO YEARS.  PARTICULARLY BECAUSE 
+OF HIS CHALLENGE TO PHIEU TWO YEARS AGO, HE IS A STRONG 
+CANDIDATE TO BE REPLACED ON THE POLITBURO. 
+ 
+24. (C) NGUYEN THI XUAN MY, CHAIRPERSON OF THE PARTY'S 
+COMMISSION FOR INVESTIGATION AND RANKED 10TH, ALSO RARELY 
+APPEARS IN PUBLIC OR IN THE PRESS.  DURING THE TWO-MONTH 
+PERIOD SHE WAS FEATURED IN THE PRESS ONCE, LEADING A 
+CONFERENCE ON PUBLIC COMPLAINTS IN HO CHI MINH CITY.  WE SEE 
+NO INDICATION SHE HAS SIGNIFICANT CLOUT IN THE POLITBURO. 
+THE FIRST FEMALE POLITBURO MEMBER, SHE WAS APPOINTED IN 
+1996, AND SOME COMMENTATORS BELIEVE SHE WAS APPOINTED BY THE 
+PARTY SO IT CAN CLAIM THERE IS NOT A &quot;GLASS CEILING&quot; IN THE 
+LEADERSHIP RANKS.  (VIETNAM'S OTHER HIGHEST-RANKING WOMAN IS 
+VICE PRESIDENT NGUYEN THI BINH, A WAR HEROINE, WHO EVEN MORE 
+THAN PRESIDENT LUONG HAS PRIMARILY CEREMONIAL DUTIES.) 
+ 
+25. (C) TRUONG TAN SANG, CURRENTLY HEAD OF THE CPV'S 
+COMMISSION FOR ECONOMIC AFFAIRS AND RANKED 11TH, WENT FROM 
+HAVING A VERY HIGH PUBLIC PROFILE AS PARTY LEADER IN HO CHI 
+MINH CITY TO BEING ALMOST INVISIBLE IN HIS CURRENT POSITION. 
+DURING THE TWO-MONTH PERIOD SANG WAS NOT FEATURED AT ALL IN 
+PROMINENT VIETNAMESE MEDIA SUCH AS &quot;NHAN DAN.&quot;  AN ENGAGING 
+AND GREGARIOUS POLITICIAN CUT IN A MORE WESTERN MODE, SANG 
+WAS THOUGHT HIGHLY OF BY THE FOREIGN BUSINESS COMMUNITY IN 
+HCMC DURING HIS TENURE THERE, AND HE HAS BEEN SEEN FOR SOME 
+TIME AS A POTENTIAL RISING STAR AMONG THE MORE TECHNOCRATIC 
+&quot;REFORMERS&quot; IN THE PARTY. SOME CONSIDER THE ECONOMIC 
+COMMISSION AS A BACKWATER WITHOUT MAJOR CLOUT, ALTHOUGH 
+OTHERS WHO HAVE HELD THIS POSITION, SUCH AS FIRST DEPUTY PM 
+DUNG, HAVE EMERGED FROM THIS POSITION TO GREATER PROMINENCE. 
+THE CONVENTIONAL WISDOM IS THAT SANG IS IN A HOLDING PATTERN 
+AND IS BEING WATCHED BY THE SENIOR LEADERSHIP IN HIS CURRENT 
+POSITION, WITH AN EYE TO POSSIBLE FUTURE PROMOTION -- OR 
+CAREER STAGNATION IF HE FALLS OUT OF FAVOR WITH MORE 
+CONSERVATIVE ELEMENTS OF THE LEADERSHIP. 
+ 
+26. (C) LE XUAN TUNG, WHO HAS RESPONSIBILITY FOR 
+IDEOLOGICAL, CULTURAL, SCIENTIFIC AND EDUCATIONAL AFFAIRS 
+AND RANKS 12TH, LIKEWISE MOVED INTO THE SHADOWS AFTER BEING 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  08 OF 10  261124Z 
+REPLACED AS CHAIRPERSON OF THE HANOI PARTY.  DURING THE TWO- 
+MONTH PERIOD TUNG WAS FEATURED IN &quot;NHAN DAN&quot; SIX TIMES -- 
+ATTENDING NATIONAL CONFERENCES FOR JOURNALISTS AND WRITERS 
+AND A CONFERENCE ON IDEOLOGICAL AND CULTURAL WORK, CHAIRING 
+A PLENUM BRIEFING AT THE HO CHI MINH POLITICAL ACADEMY, AND 
+MEETING WITH CPV ETHNIC MINORITY CADRE.  WE HAVE REPORTS 
+THAT TUNG IS IN ILL HEALTH, AND DURING HIS TENURE AS HANOI 
+PARTY LEADER, THE CITY'S PARTY AND PEOPLE'S COMMITTEE, 
+PARTICULARLY THE LATTER, WERE CRITICIZED STRONGLY BY CENTRAL 
+COMMITTEE MEMBERS AND IN THE PRESS FOR MISMANAGEMENT AND 
+CORRUPTION.  (TUNG'S REPLACEMENT BY TRONG PUT A FIRM 
+IDEOLOGICAL ADVOCATE AT THE HELM.)  WE EXPECT TUNG MAY BE 
+DROPPED FROM THE POLITBURO NEXT YEAR. 
+ 
+27. (C) PHAM THANH NGAN, DIRECTOR OF THE GENERAL POLITICAL 
+DEPARTMENT OF THE PEOPLE'S ARMY OF VIETNAM (PAVN) AND RANKED 
+15TH, APPEARS TO BE, WITH TRONG, ONE OF THE RISING 
+IDEOLOGICAL STARS OF THE CPV.  LIKE PHIEU AND TRONG, NGAN 
+APPEARS TO FAVOR A CAUTIOUS, INCREMENTAL APPROACH TO REFORM 
+THAT EMPHASIZES POLITICAL AND SOCIAL STABILITY.  AS 
+POLITICAL COMMISSAR FOR THE MILITARY, NGAN OCCUPIES THE 
+POSITION PREVIOUSLY HELD BY PHIEU, WHO HAS RISEN TO THE TOP. 
+HE PREVIOUSLY SERVED AS PHIEU'S DEPUTY.  NGAN WAS FEATURED 
+FIVE TIMES DURING THE TWO MONTHS -- ATTENDING THE MILITARY 
+FUNERAL OF GEN. NGUYEN BINH MARCH 12, PARTICIPATING IN AN 
+ARMY MEETING ON MASS MOBILIZATION AND IN THE NATIONAL 
+WRITERS' CONFERENCE, AND ATTENDING A TWO-DAY REVIEW MEETING 
+OF THE ARMED FORCES' FIVE-YEAR DEFENSE PLAN.  ACCORDING TO 
+AN EDITOR AT THE &quot;PEOPLE'S ARMY&quot; NEWSPAPER, NGAN AT ONE TIME 
+WAS PUSHED BY PHIEU TO REPLACE DUYET ON THE STANDING 
+COMMITTEE, THOUGH A CONSENSUS WAS NOT REACHED AND NOW IT 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  08 OF 10  261124Z 
+APPEARS MORE LIKELY TRONG WILL MOVE INTO THAT POSITION. 
+NONETHELESS, NGAN LIKELY WILL CONTINUE TO RISE IN PARTY 
+RANKS, GIVEN HIS PERSONAL BACKING FROM PHIEU. 
+ 
+28. (C) PHAN DIEN, CHAIRMAN OF THE CPV IN DANANG, WHO IS 
+RANKED 17TH, PREVIOUSLY SERVED AS DIRECTOR OF THE ECONOMIC 
+COMMISSION.  SINCE BECOMING HEAD OF THE DANANG PARTY, DIEN 
+HAS BEEN FEATURED IN &quot;NHAN DAN&quot; ONLY TWICE -- FOR CEREMONIAL 
+OCCASIONS RELATED TO THE &quot;LIBERATION&quot; OF DANANG IN 1975, 
+SHORTLY BEFORE THE FALL OF SAIGON.  HOWEVER, WE MUST NOTE 
+THAT FOR THIS PROJECT WE ARE NOT TRACKING THE LOCAL PAPERS 
+IN DANANG; DIEN'S PROFILE NO DOUBT IS MUCH HIGHER IN THE 
+CENTRAL REGION OF THE COUNTRY.  WE HAVE HEARD THAT THE 
+DANANG PARTY POST HAS BEEN GIVEN ENHANCED RESPONSIBILITIES 
+WITH OVERSIGHT OVER THE ENTIRE CENTRAL REGION, ESPECIALLY 
+MANAGING THE RECOVERY OF THE SIX CENTRAL PROVINCES AROUND 
+DANANG THAT WERE MOST DAMAGED BY THE HEAVY FLOODS OF 
+NOVEMBER-DECEMBER 1999.  THE AUSTRALIAN AMBASSADOR NOTED HE 
+WAS IMPRESSED WITH DIEN'S RELATIVE OPENNESS, CANDOR AND 
+COMMAND OF HIS BRIEF WHEN HE MET HIM SHORTLY AFTER DIEN'S 
+APPOINTMENT IN DANANG. 
+ 
+--------------------------------------------- -------------- 
+SENIOR ADVISORS' PUBLIC PROFILES DO NOT MATCH PRIVATE POWER 
+--------------------------------------------- -------------- 
+ 
+ 
+29. (C) THE THREE SENIOR ADVISORS TO THE CPV -- FORMER 
+GENERAL SECRETARY DO MUOI, FORMER PRESIDENT LE DUC ANH, AND 
+FORMER PRIME MINISTER VO VAN KIET -- EACH CONTINUE TO BE 
+FEATURED IN THE PRESS, WITH KIET AND MUOI PARTICULARLY 
+KEEPING ACTIVE SCHEDULES OF PUBLIC EVENTS.  HOWEVER, IN A 
+STRIKING EXAMPLE OF THE DIVERGENCE OF PUBLIC ROLES AND 
+PRIVATE POWER AMONG THE VIETNAMESE LEADERSHIP, AT THE 
+PRESENT MOMENT THE LESS PROMINENT THE FIGURE, THE MORE 
+INFLUENCE HE HAS.  THE LAST SIX MONTHS HAVE SEEN THE 
+REEMERGENCE OF LE DUC ANH ON THE SCENE AS A STRONG POLITICAL 
+FORCE.  DURING THE PAST MONTHS, ANH HAS WORKED WITH PHIEU, 
+WHO PREVIOUSLY SERVED UNDER ANH IN THE CAMBODIAN MILITARY 
+CAMPAIGN OF THE 1980'S, TO RESHUFFLE POLITBURO PORTFOLIOS, 
+TO DISCIPLINE SEVERAL ALLIES OF PM KHAI, AND TO GENERALLY 
+IMPOSE A MORE IDEOLOGICAL LINE ON CPV DECISION-MAKING.  YET 
+ANH RARELY APPEARS IN THE PRESS, AND WHEN HE DOES, IT IS 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  09 OF 10  261124Z 
+USUALLY ONLY FOR CEREMONIAL OCCASIONS, WITHOUT A LOT OF 
+SUBSTANCE ATTACHED.  MEANWHILE, KIET, WHO HAS THE HIGHEST 
+PROFILE, APPEARS TO HAVE THE LEAST INFLUENCE ON THE 
+POLITBURO. 
+ 
+30. (C) DURING THE TWO-MONTH PERIOD ANALYZED, ANH WAS 
+FEATURED ONLY THREE TIMES IN STATE-RUN PRINT MEDIA -- 
+ATTENDING THE MARCH 25 JOURNALISTS ASSOCIATION CONFERENCE; 
+BEING PICTURED, CUSTOMARILY, IN THE FRONT ROW FOR THE 
+OPENING OF THE CENTRAL COMMITTEE PLENUM APRIL 10; AND 
+ATTENDING ANNIVERSARY CELEBRATIONS OF THE &quot;LIBERATION&quot; OF 
+HCMC.  THESE BRIEF MENTIONS GIVE HARDLY ANY CLUE OF ANH'S 
+INFLUENCE IN THE LEADERSHIP, SINCE WE HAVE CLEAR INDICATIONS 
+HE EXERTS SIGNIFICANT INFLUENCE ON THE POLITBURO FROM BEHIND 
+THE SCENES.  (COMMENT: IN LARGE PART ANH'S LOWER PROFILE MAY 
+REFLECT HIS RETICENCE FOR PUBLIC APPEARANCES AS WELL AS 
+HEALTH CONCERNS.  A YEAR AGO ANH WAS REPORTED TO BE IN VERY 
+POOR HEALTH, AND SOME HANOI OBSERVERS SPECULATED HE MIGHT 
+NOT LIVE MUCH LONGER.  WHILE HE HAS RECOVERED ENOUGH TO 
+PARTICIPATE IN A LIMITED SCHEDULE, WE SPECULATE HE MAY 
+INTENTIONALLY BE LIMITING HIS SCHEDULE.  END COMMENT.) 
+ 
+31. (C) CONTRAST, DO MUOI APPEARED 10 TIMES IN THE PRESS. 
+HE ATTENDED THE SAME THREE EVENTS AS ANH, AND HE VISITED A 
+MILITARY UNIT, A GARMENT COMPANY, AND A TRADE FAIR.  HE ALSO 
+ATTENDED A CELEBRATION OF THE TRUNG SISTERS FROM VIETNAM'S 
+MILLENNIUM-LONG STRUGGLE AGAINST THE CHINESE, AND MET WITH 
+THE VISITING HEAD OF JAPAN-VIETNAM CULTURAL EXCHANGE 
+ASSOCIATION.  LIKEWISE, FORMER PRIME MINISTER KIET ALSO 
+MAINTAINED AN ACTIVE SCHEDULE OF MEETINGS, BEING FEATURED IN 
+THE PRESS ON 11 DIFFERENT DAYS.  KIET HELD MEETINGS WITH 
+                       CONFIDENTIAL 
+ 
+PAGE 04        HANOI  01160  09 OF 10  261124Z 
+REPRESENTATIVES FROM THE YOUTH UNION, THE TRANSPORTATION 
+MINISTRY, AND THE NATIONAL STEEL COMPANY.  UNLIKE ANH AND 
+MUOI, KIET KEPT AN ACTIVE TRAVEL SCHEDULE, VISITING AT LEAST 
+NINE SOUTHERN AND CENTRAL PROVINCES.  KIET VISITED NATURE 
+PRESERVES IN THE SOUTHERN PROVINCES OF CA MAU, CAN THO, DONG 
+THAP AND DONG NGAI; MET WITH REPS OF THE VIETNAM COAL 
+COMPANY IN QUANG NINH; AND VISITED AN IRRIGATION PROJECT IN 
+BEN TRE.  HE WAS THE ONLY ONE OF THE SENIOR ADVISORS TO 
+ATTEND THE LIBERATION OF DANANG CELEBRATIONS, AND HE 
+ATTENDED THE OPENING OF THE CENTRAL COMMITTEE PLENUM IN 
+HANOI (THOUGH HE WAS NOT PICTURED IN &quot;NHAN DAN,&quot; AS WERE 
+MUOI AND ANH).  (COMMENT: AS ONE OF THE SOUTHERNERS MOST 
+RESPONSIBLE FOR ADVANCING &quot;DOI MOI&quot; ECONOMIC REFORMS IN 
+VIETNAM OVER THE PAST DECADE, KIET TODAY SEEMS LIKE A SEMI- 
+RETIRED POLITICIAN PREACHING HIS GOSPEL ON THE BANQUET 
+CIRCUIT.  THOUGH HE HAS LESS CLOUT ON NATIONAL POLICY AT 
+PRESENT BECAUSE OF THE CONSERVATIVE TILT OF THE LEADERSHIP, 
+HE CONTINUES TO BE HIGHLY ESTEEMED IN THE SOUTH AND CENTER 
+OF THE COUNTRY.  END COMMENT.) 
+ 
+--------------------------------------------- --------- 
+WORKING IN THE SHADOWS, LARGELY HIDDEN FROM THE PUBLIC 
+--------------------------------------------- --------- 
+ 
+32. (C) COMMENT: AN ANALYSIS OF THE PUBLIC AND PRIVATE FACES 
+OF THE POLITBURO REVEALS HOW HIDDEN ARE THE WORKINGS OF THIS 
+SUPREME LEADERSHIP BODY.  NEARLY HALF OF THE LEADERS ARE 
+VIRTUALLY INVISIBLE, AND THE PUBLIC AT LARGE KNOWS LITTLE OF 
+THEM FROM THE STATE-CONTROLLED MEDIA.  (AND EVEN FOR THOSE 
+FEATURED MORE OFTEN IN THE OFFICIAL PRESS, THERE IS NARY A 
+CRITICAL WORD ABOUT CURRENT POLITBURO MEMBERS.)  OTHERS IN 
+THE POLITBURO, ESPECIALLY THE STANDING COMMITTEE MEMBERS AND 
+THE PROVINCIAL PARTY CHIEFS, HAVE MANY MORE OPPORTUNITIES TO 
+&quot;RUB SHOULDERS&quot; WITH VIETNAMESE PRIVATE CITIZENS, AND THEIR 
+TRAVELS AND CONSTITUENT MEETINGS NO DOUBT PROVIDE SOME 
+MEASURE OF &quot;GROUNDING&quot; FOR THEM TO LEARN OF POPULAR 
+ATTITUDES AND CONCERNS.  HOWEVER, IN THE LENINIST POLITICAL 
+STRUCTURE OF VIETNAM, THERE IS NO MEANS BY WHICH THE PARTY 
+LEADERSHIP IS ULTIMATELY RESPONSIBLE TO THE PEOPLE.  WITHIN 
+THIS CONSENSUS-ORIENTED BODY, THE DEBATE ON REFORM HAS BEEN 
+GROUND TO A HALT BY ITS STYLE OF GOVERNANCE BASED ON THE 
+LEAST COMMON DENOMINATOR.  WESTERN OBSERVERS LOOKING AT 
+                       CONFIDENTIAL 
+ 
+PAGE 03        HANOI  01160  10 OF 10  261125Z 
+VIETNAM TODAY YEARN FOR ONE OF THE COUNTRY'S MORE PRAGMATIC, 
+REFORM-MINDED YOUNGER LEADERS -- SUCH AS DUNG, SANG OR TRIET 
+-- TO STEP FORWARD AND IMPLEMENT A NEW ROUND OF RE-ENERGIZED 
+&quot;DOI MOI&quot; REFORMS.  HOWEVER, THE POLITICAL WINDS ARE NOT 
+BLOWING THAT WAY IN HANOI TODAY, AND WE BELIEVE IT MORE 
+LIKELY THIS CAUTIOUS, CONSENSUS-ORIENTED LEADERSHIP WILL OPT 
+FOR MORE INCREMENTAL MUDDLING THROUGH.  ULTIMATELY, FOR MOST 
+IF NOT ALL OF THE SENIOR LEADERS, THEIR PARAMOUNT OBJECTIVE 
+IS MAINTAINING THE COMMUNIST PARTY'S MONOPOLY ON POLITICAL 
+POWER FOR AS LONG AS THE GAME WILL PLAY.  END COMMENT. 
+PETERSON 
+ 
+                       CONFIDENTIAL 
+ 
+ 
+
+</div></div></div><div class="pane-tab"><div class="pane-header">Metadata</div><div class="pane-content"><div class="text-content">This record is a partial extract of the original cable. The full text of the original cable is not available.
+
+260846Z May 00
+
+ 2000HANOI01160 - CONFIDENTIAL
+ 
+ 
+ 
+                           CONFIDENTIAL     PTQ0852
+
+PAGE 01        HANOI  01160  01 OF 10  261123Z 
+ACTION EAP-00   
+
+INFO  LOG-00   NP-00    AID-00   ACQ-00   CEA-01   CIAE-00  CTME-00  
+      DINT-00  DOEE-00  DOTE-00  ANHR-00  SRPP-00  DS-00    EB-00    
+      EXIM-01  OIGO-02  E-00     FAAE-00  FBIE-00  VC-00    FRB-00   
+      H-01     TEDE-00  INR-00   IO-00    ITC-01   L-00     VCE-00   
+      MOFM-04  MOF-03   AC-01    DCP-01   NSAE-00  OIC-02   OMB-01   
+      OPIC-01  PA-00    PM-00    PRS-00   ACE-00   P-00     SP-00    
+      SSO-00   STR-00   USIE-00  PMB-00   DSCC-00  PRM-01   DRL-02   
+      G-00     NFAT-00  SAS-00     /022W
+                  ------------------5BDCE2  261123Z /22    
+FM AMEMBASSY HANOI
+TO SECSTATE WASHDC PRIORITY 9948
+INFO NSC WASHDC PRIORITY
+ASEAN COLLECTIVE
+AMEMBASSY BEIJING 
+AMCONSUL HONG KONG 
+AMEMBASSY TOKYO 
+AMEMBASSY SEOUL 
+DEPTTREAS WASHDC
+USDOC WASHDC
+SECDEF WASHDC
+JOINT STAFF WASHDC
+USCINCPAC HONOLULU HI//J5/FPA//
+DIA WASHDC
+</div></div></div>
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 61px">Print</div><div class="pane-content pane-print">
+<p>You can use this tool to generate a print-friendly PDF of the document <strong>00HANOI1160_a</strong>.</p>
+<form action="/plusd/pdf/?df=62615" method="post">
+	<input type="hidden" name="p" value="a" />
+	<input type="hidden" name="r" value="00HANOI1160_a" />
+	<input type="checkbox" name="s" id="is" value="cake"><label for="is">Include summary</label></input><br />
+	<input type="checkbox" name="h" id="ih" value="is a"><label for="ih">Include headers</label></input><br />
+	<input type="checkbox" name="m" id="im" value="lie"><label for="im">Include raw metadata</label></input><br /><br />
+	<input type="submit" value="Generate pdf" />
+</form>
+</div></div>
+
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 60px">Share</div><div class="pane-content pane-share">
+<p>The formal reference of this document is <strong>00HANOI1160_a</strong>, please use it for anything written about this document. This will permit you and others to search for it.</p>
+<div class="share-panel">
+<label for="share-link">Direct link to document</label>
+<input readonly="readonly" type="text" class="share" id="share-link" value="https://www.wikileaks.org/plusd/cables/00HANOI1160_a.html" /><br />
+
+<label for="share-reddit">Reddit code</label>
+<input readonly="readonly" type="text" class="share" id="share-reddit" value="[00HANOI1160_a](https://www.wikileaks.org/plusd/cables/00HANOI1160_a.html)" /><br />
+
+<label for="share-html">HTML code</label>
+<input readonly="readonly" type="text" class="share" id="share-html" value="&lt;a href=&quot;https://www.wikileaks.org/plusd/cables/00HANOI1160_a.html&quot; title=&quot;00HANOI1160_a&quot;&gt;00HANOI1160_a&lt;/a&gt;" /><br />
+
+<label for="share-bbcode">Forum code (bbcode)</label>
+<input readonly="readonly" type="text" class="share" id="share-bbcode" value="[url=https://www.wikileaks.org/plusd/cables/00HANOI1160_a.html]00HANOI1160_a[/url]" />
+</div>
+
+
+
+<br style="clear: both;" />
+<p>Submit this story</p>
+<div class="share">
+	<a href="http://www.reddit.com/submit?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F00HANOI1160_a.html"><img src="/plusd/images/Reddit-ico.png" /></a>
+</div>
+
+<div class="share">
+        <a href="http://twitter.com/home?status=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F00HANOI1160_a.html"><img src="/plusd/images/Twitter-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F00HANOI1160_a"><img src="/plusd/images/Gplus-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=00HANOI1160_a&amp;p[summary]=Summary&amp;p[url]=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F00HANOI1160_a.html"><img src="/plusd/images/Facebook-ico.png" /></a>
+</div>
+
+<br style="clear: both;" />
+</div></div>
+
+<!--<div class="pane-tab"><div class="pane-header tab-right tab-find">Find</div><div class="pane-content pane-find">-->
+<!--</div></div>-->
+
+<!--<div id="tagged-text"> -->
+	<div id="pane-root" style="display:none">
+		<div id="pane-tabs"></div>
+
+		<div id="pane-contents"></div>
+
+	</div>
+<!--</div>-->
+<div class="pane-content pane-extra">
+<table class="references">
+	<thead>
+		<tr>
+			<th>References to this document in other cables</th>
+			<th>References in this document to other cables</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+							</td>
+			<td>
+									<a class="j" href="/plusd/cables/00HANOI839.html" title="HANOI 839">00HANOI839</a>
+									<a class="j" href="/plusd/cables/09HANOI839.html" title="HANOI 839">09HANOI839</a>
+									<a class="j" href="/plusd/cables/06HANOI839.html" title="HANOI 839">06HANOI839</a>
+									<a class="j" href="/plusd/cables/07HANOI839.html" title="HANOI 839">07HANOI839</a>
+									<a class="j" href="/plusd/cables/09HANOI232.html" title="HANOI 232">09HANOI232</a>
+									<a class="j" href="/plusd/cables/07HANOI232.html" title="HANOI 232">07HANOI232</a>
+							</td>
+		</tr>
+	</tbody>
+
+</table>
+<p style="text-align:center">If the reference is ambiguous all possibilities are listed.</p>
+
+</div>
+<div class="pane-content pane-extra">
+<div class="dnpage visible">
+<h1>Help Expand The Public Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+
+
+</div>
+
+</div>
+<br />
+<script type="text/javascript" src="/plusd/js/mootools-core-and-more.js"></script>
+<script type="text/javascript" src="/plusd/js/efatmarker.min.js"></script>
+<script type="text/javascript">
+(function(){
+	window.addEvent('domready', function(){
+	        $$("#showhide").addEvent( "click", function() {
+			$$(".text-header").toggleClass("hidden");
+			t=$$("#showhide");
+			if(t.get("html")=="Show&nbsp;Headers")
+				t.set("html", "Hide&nbsp;Headers");
+			else
+				t.set("html", "Show&nbsp;Headers");
+		} );
+
+		var pane_root = $('pane-root'),
+			pane_tabs = $('pane-tabs'),
+			pane_contents = $('pane-contents'),
+			panes = $$('.pane-tab'),
+			num_panes = panes.length,
+			i, pane,
+			pane_header,
+			pane_content;
+		var activate_tab = function(target) {
+			$$('#pane-contents .pane-content').each(function(e,i){
+				if (i === target) {
+					e.addClass('top');
+					}
+				else {
+					e.removeClass('top');
+					}
+				});
+			$$('#pane-tabs .pane-header').each(function(e,i){
+				if (i === target) {
+					e.removeClass('nottop');
+					e.addClass('ontop');
+					}
+				else {
+					e.addClass('nottop');
+					e.removeClass('ontop');
+					}
+				});
+			};
+		for (i=0; i<num_panes; i++) {
+			pane = panes[i];
+			pane_header = pane.getElement('.pane-header');
+			pane_tabs.grab(pane_header);
+			pane_header.addEvent('click', function(){
+				var target = $('pane-tabs').getChildren().indexOf(this);
+				activate_tab(target);
+				});
+			pane_content = pane.getElement('.pane-content');
+			pane_contents.grab(pane_content);
+			pane.destroy();
+			}
+		activate_tab(0);
+		$('pane-root').style.display = '';
+		}); /* event handler function() */
+	})(); /* namespace function() */
+</script>
+<div id="efm-button">
+	<div id="efm-menu">
+		<h3 style="margin:0 0 2px 0">e-Highlighter</h3>
+		<a id="efm-permalink" class="efm-need-highlight" href="" style="margin-bottom:0;padding-bottom:0;"></a>
+		<p style="margin-top:0;padding-top:0" class="efm-need-highlight">Click to send permalink to address bar, or right-click to copy permalink.</p>
+		<a id="efm-twitter-button" class="efm-need-highlight" href="#" target="_blank"><img src="/plusd/images/tweetn.png" alt="Tweet" title="Tweet these highlights" style="vertical-align:middle"> these highlights</a>
+		<p style="margin:0.5em 0;padding:0;border-top:1px dotted #ccc;height:1px"></p>
+		<a id="efm-unhighlightall" class="efm-need-highlight">Un-highlight all</a>
+		<a id="efm-unhighlight">Un-highlight selection<span>u</span></a>
+		<a id="efm-highlight">Highlight selection<span>h</span></a>
+		</div>
+	</div>
+</div></div></div>
+<script type="text/javascript">
+
+(function(){
+	window.addEvent('domready', function(){
+
+		var markerButton = $('efm-button');
+		if ( markerButton ) {
+			eMarker = new EFatMarker($('content-main'));
+			eMarker.tokenToSpans(); // apply whatever token is there
+			// need to act on mousedown or else selection disappear
+			markerButton.addEvent('mousedown', function(){
+				eMarker.interpretSelection(true);
+				return false;
+				});
+			$('efm-unhighlightall').addEvent('mousedown', function(){
+				eMarker.unhighlightAll(true);
+				return false;
+				});
+			$('efm-unhighlight').addEvent('mousedown', function(){
+				eMarker.unhighlightSelection(true);
+				return false;
+				});
+			$('efm-highlight').addEvent('mousedown', function(){
+				eMarker.highlightSelection(true);
+				return false;
+				});
+			$('efm-permalink').addEvent('mousedown', function(){
+				window.location.href = this.href;
+				return false;
+				});
+			// if Mootools Keyboard is available, use it
+			if (Keyboard) {
+				var keyboard = new Keyboard({
+					defaultEventType: 'keyup',
+					events: {
+						'h': function(){
+							eMarker.highlightSelection(true);
+							},
+						'u': function(){
+							eMarker.unhighlightSelection(true);
+							}
+						}
+					});
+				keyboard.activate();
+				}
+			eMarker.syncDOM();
+			// auto scroll to first highlight, if any
+			if (eMarker.hasSpans()) {
+				var scroll = new Fx.Scroll(window,{offset:{'x':0,'y':-100}}),
+					highlights = $$('#content-main .efm-hi');
+				if (highlights.length > 0) {
+					scroll.toElement(highlights[0]);
+					}
+				}
+			}
+		});
+	})();
+
+</script>
+
+<div class="dnflood"></div>
+<div class="dnbutton">
+<div class="dnmain">
+<h1><span class="dnclose">X</span>Help Expand The Public<br />Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+</div>
+</div>
+
+</div>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<link href="/static/css/styles_footer.css" rel="stylesheet">
+<footer id="page-footer" class="footer-recommendations">
+  <div class="footer-wrapper">
+    <div class="recommendation-container">
+      <a href="#" class="top">Top</a>
+      
+        <ul class="recommendation-links">
+                <li class="recommendation">
+                    <a href="https://our.wikileaks.org" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton666.png" width="360" height="240" />
+                        </div>
+                        <p><p>WL Research Community - user contributed research based on documents published by WikiLeaks. 
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.torproject.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton401.png" width="360" height="240" />
+                        </div>
+                        <p><p>Tor is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://tails.boum.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton405.png" width="360" height="240" />
+                        </div>
+                        <p><p> Tails is a live operating system, that you can start on almost any computer from a DVD, USB stick, or SD card. It aims at preserving your privacy and anonymity.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.couragefound.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton404.png" width="360" height="240" />
+                        </div>
+                        <p><p>The Courage Foundation is an international organisation that supports those who risk life or liberty to make significant contributions to the historical record.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.bitcoin.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton403.png" width="360" height="240" />
+                        </div>
+                        <p><p>Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network.
+</p></p>
+                    </a>
+                </li>
+            </li>
+        </ul>
+      
+      <ul class="social-links">
+        <li>
+          <a href="https://www.facebook.com/wikileaks" target="_blank" alt="Facebook">
+            <img src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" target="_blank" alt="Twitter">
+            <img src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

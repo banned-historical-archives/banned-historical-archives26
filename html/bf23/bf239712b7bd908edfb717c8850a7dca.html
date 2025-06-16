@@ -1,0 +1,3794 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/cerulean.min.css" rel="stylesheet">
+<link href="/bootstrap/css/new-gen.css" rel="stylesheet">
+<link href="/bootstrap/css/submit.css" rel="stylesheet">
+<script type="text/javascript" src="/plusd/js/jquery.min.js"></script>
+<script type="text/javascript" src="/plusd/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<script type="text/javascript" src="/plusd/js/wikipedia.js"></script>
+<script type="text/javascript" src="/plusd/js/qtip.min.js"></script>
+<script type="text/javascript" src="/plusd/js/idle-timer.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+
+(function($) {
+	var show_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").show();
+	}
+	var hide_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").hide();
+	}
+	$(document).idleTimer(180000);
+	$(document).on("idle.idleTimer", show_button);
+	$(document).ready(function() {
+		if( typeof setupDoubleClick == 'function' )
+			setupDoubleClick('http://en.wikipedia.org/w/index.php', 'british', 'tagged-text', 4, "_blank", "/words/ee.json");
+		var current = Math.floor(( new Date( ) ).getTime( )/1000);
+
+		$("#ddonate").click(show_button);
+		$(".dnclose").click(hide_button);
+		$('a.i').each( function() {
+			i=$(this);
+			i.attr("alt", descr[i.attr("title")]);
+		} );
+		$('a.i').qtip( {
+			show: {
+				event: 'click',
+				solo: true
+			},
+			hide: 'click',
+			content: {
+				attr: 'alt',
+				title: {
+					button: true
+				}
+			},
+			style: {
+				classes: 'qtip-blue qtip-shadow'
+			}
+		} );
+
+	} );
+
+
+	var descr = {
+	'Subject': 'Subject line of the document','From': 'Who/where sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-fr/\">A list of origins, with citations for any acronyms used, is available here.</a>','To': 'Who/where received the document.<br /><br /><a href=\"/plusd/about-to/\" class=\"j\">A list of destinations, with citations for any acronyms used, is available here.</a>','Original Classification': 'Classification the document was originally given when produced.<br /><br /><a href=\"/plusd/about-oc/\" class=\"j\">Citations for acronyms used are available here.</a>','Current Classification': 'Classification the document currently holds.<br /><br /><a href=\"/plusd/about-cc/\" class=\"j\">Citations for acronyms used are available here.</a>','Handling Restrictions': 'All handling restrictions governing the document distribution that have been used to date.<br /><br /><i>In the metadata of the Kissinger Cables this field is called \'Previous Handling Restrictions\'.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i><br /><br /><a href=\"/plusd/about-hr/\" class=\"j\">Citations for acronyms used are available here.</a>','Archive Status': 'Original documents not deleted or lost by State Department after review are available in one of four formats:<ul><li>Electronic Telegram - declassified and made available (content and metadata available)</li><li>Electronic Telegram Withdrawal Card - telegram not declassified, or was declassified but not released for other reasons (limited metadata available)</li><li>P-reel Index - Index card for other document type that is stored on microfilm (only metadata available)</li><li>P-reel Index Withdrawal Card - P-reel index card that was not declassified, or was declassified but not released for other reasons (limited metadata available)</li></ul><br /><i class=\"b\">The Kissinger Cables\' metadata does not have this field. It is taken from subsets the documents were released in after State Department review.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Type': 'Correspondence type or format of original document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TE\' (Telegram).</i><br /><br /><a href=\"/plusd/about-ty/\" class=\"j\">Citations for acronyms used are available here.</a>','Locator': 'Where the original document is now held - online or on microfilm, or remains in \"ADS\" (State Department\'s 1973 Automated Data System of indexing by TAGS of electronic telegrams and P-reels) with the text either garbled, not converted or unretrievable.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TEXT ONLINE\'.</i>','Executive Order': 'Executive Order information - often a reference to the E.O. governing the declassification/downgrade of the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Markings': 'Markings of declassification/release review of the document.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'. </i>','Enclosure': 'Attachments or other items sent with the original document. These are not necessarily currently held in this library.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.','Concepts': 'Keywords of subjects dealt with in the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\' for this field.</i>','TAGS': 'Traffic Analysis by Geography and Subject (TAGS)<br /><br />There are geographic, organization and subject \"TAGS\" - the classification system implemented by the Department of State for its central files in 1973.<br /><br /><a href=\"/plusd/about-ta/\" class=\"j\">A list of TAGS, with citations for any acronyms used, is available here.</a>','Office': 'Which United States government office or bureau is dealing with the topics the document concerns.<br /><br /><a href=\"/plusd/about-of/\" class=\"j\">A list offices, with citations for acronym expansions, is available here.</a>','Office Origin': 'Which State Department office or bureau sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Office Action': 'Which State Department office or bureau received the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Character Count': 'The number of characters, including spaces, in the document.','Date': 'The date the document was created.','Canonical ID': 'Unique document identification number.<br /><br /><i>We have created a canonical ID by taking the original document ID and adding a \'_\' at the end and then WikiLeaks\' annotation for different datasets: Cablegate = a, the Kissinger Cables = b, etc. If document IDs are duplicated in the original datasets we number each duplicate, eg 1976WARSAW05657_b2 is the second document with that ID in the Kissinger Cables.</i>','Other cables with the same ID': 'Documents that are linked, for example a P-reel index and the document it is the index for. Or documents that were originally given the same document ID number.',	};
+
+
+
+})(jQuery);
+</script>
+<title>Cable: 1979BEIJIN01333_e</title>
+<link rel="stylesheet" type="text/css" href="/plusd/css/qtip.min.css" id="qtip">
+<link rel="stylesheet" type="text/css" href="/plusd/css/main.css" id="maincss">
+<link rel="stylesheet" type="text/css" href="/plusd/css/print.css" media="print" id="printcss">
+</head>
+<body style="text-align: center;">
+    <div id="submit_wlkey" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<p>Key fingerprint <b>9EF0 C41A FBA5 64AA 650A  0259 9C6D CD17 283E 454C</b></p>
+		<pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQQBBGBjDtIBH6DJa80zDBgR+VqlYGaXu5bEJg9HEgAtJeCLuThdhXfl5Zs32RyB
+I1QjIlttvngepHQozmglBDmi2FZ4S+wWhZv10bZCoyXPIPwwq6TylwPv8+buxuff
+B6tYil3VAB9XKGPyPjKrlXn1fz76VMpuTOs7OGYR8xDidw9EHfBvmb+sQyrU1FOW
+aPHxba5lK6hAo/KYFpTnimsmsz0Cvo1sZAV/EFIkfagiGTL2J/NhINfGPScpj8LB
+bYelVN/NU4c6Ws1ivWbfcGvqU4lymoJgJo/l9HiV6X2bdVyuB24O3xeyhTnD7laf
+epykwxODVfAt4qLC3J478MSSmTXS8zMumaQMNR1tUUYtHCJC0xAKbsFukzbfoRDv
+m2zFCCVxeYHvByxstuzg0SurlPyuiFiy2cENek5+W8Sjt95nEiQ4suBldswpz1Kv
+n71t7vd7zst49xxExB+tD+vmY7GXIds43Rb05dqksQuo2yCeuCbY5RBiMHX3d4nU
+041jHBsv5wY24j0N6bpAsm/s0T0Mt7IO6UaN33I712oPlclTweYTAesW3jDpeQ7A
+ioi0CMjWZnRpUxorcFmzL/Cc/fPqgAtnAL5GIUuEOqUf8AlKmzsKcnKZ7L2d8mxG
+QqN16nlAiUuUpchQNMr+tAa1L5S1uK/fu6thVlSSk7KMQyJfVpwLy6068a1WmNj4
+yxo9HaSeQNXh3cui+61qb9wlrkwlaiouw9+bpCmR0V8+XpWma/D/TEz9tg5vkfNo
+eG4t+FUQ7QgrrvIkDNFcRyTUO9cJHB+kcp2NgCcpCwan3wnuzKka9AWFAitpoAwx
+L6BX0L8kg/LzRPhkQnMOrj/tuu9hZrui4woqURhWLiYi2aZe7WCkuoqR/qMGP6qP
+EQRcvndTWkQo6K9BdCH4ZjRqcGbY1wFt/qgAxhi+uSo2IWiM1fRI4eRCGifpBtYK
+Dw44W9uPAu4cgVnAUzESEeW0bft5XXxAqpvyMBIdv3YqfVfOElZdKbteEu4YuOao
+FLpbk4ajCxO4Fzc9AugJ8iQOAoaekJWA7TjWJ6CbJe8w3thpznP0w6jNG8ZleZ6a
+jHckyGlx5wzQTRLVT5+wK6edFlxKmSd93jkLWWCbrc0Dsa39OkSTDmZPoZgKGRhp
+Yc0C4jePYreTGI6p7/H3AFv84o0fjHt5fn4GpT1Xgfg+1X/wmIv7iNQtljCjAqhD
+6XN+QiOAYAloAym8lOm9zOoCDv1TSDpmeyeP0rNV95OozsmFAUaKSUcUFBUfq9FL
+uyr+rJZQw2DPfq2wE75PtOyJiZH7zljCh12fp5yrNx6L7HSqwwuG7vGO4f0ltYOZ
+dPKzaEhCOO7o108RexdNABEBAAG0Rldpa2lMZWFrcyBFZGl0b3JpYWwgT2ZmaWNl
+IEhpZ2ggU2VjdXJpdHkgQ29tbXVuaWNhdGlvbiBLZXkgKDIwMjEtMjAyNCmJBDEE
+EwEKACcFAmBjDtICGwMFCQWjmoAFCwkIBwMFFQoJCAsFFgIDAQACHgECF4AACgkQ
+nG3NFyg+RUzRbh+eMSKgMYOdoz70u4RKTvev4KyqCAlwji+1RomnW7qsAK+l1s6b
+ugOhOs8zYv2ZSy6lv5JgWITRZogvB69JP94+Juphol6LIImC9X3P/bcBLw7VCdNA
+mP0XQ4OlleLZWXUEW9EqR4QyM0RkPMoxXObfRgtGHKIkjZYXyGhUOd7MxRM8DBzN
+yieFf3CjZNADQnNBk/ZWRdJrpq8J1W0dNKI7IUW2yCyfdgnPAkX/lyIqw4ht5UxF
+VGrva3PoepPir0TeKP3M0BMxpsxYSVOdwcsnkMzMlQ7TOJlsEdtKQwxjV6a1vH+t
+k4TpR4aG8fS7ZtGzxcxPylhndiiRVwdYitr5nKeBP69aWH9uLcpIzplXm4DcusUc
+Bo8KHz+qlIjs03k8hRfqYhUGB96nK6TJ0xS7tN83WUFQXk29fWkXjQSp1Z5dNCcT
+sWQBTxWxwYyEI8iGErH2xnok3HTyMItdCGEVBBhGOs1uCHX3W3yW2CooWLC/8Pia
+qgss3V7m4SHSfl4pDeZJcAPiH3Fm00wlGUslVSziatXW3499f2QdSyNDw6Qc+chK
+hUFflmAaavtpTqXPk+Lzvtw5SSW+iRGmEQICKzD2chpy05mW5v6QUy+G29nchGDD
+rrfpId2Gy1VoyBx8FAto4+6BOWVijrOj9Boz7098huotDQgNoEnidvVdsqP+P1RR
+QJekr97idAV28i7iEOLd99d6qI5xRqc3/QsV+y2ZnnyKB10uQNVPLgUkQljqN0wP
+XmdVer+0X+aeTHUd1d64fcc6M0cpYefNNRCsTsgbnWD+x0rjS9RMo+Uosy41+IxJ
+6qIBhNrMK6fEmQoZG3qTRPYYrDoaJdDJERN2E5yLxP2SPI0rWNjMSoPEA/gk5L91
+m6bToM/0VkEJNJkpxU5fq5834s3PleW39ZdpI0HpBDGeEypo/t9oGDY3Pd7JrMOF
+zOTohxTyu4w2Ql7jgs+7KbO9PH0Fx5dTDmDq66jKIkkC7DI0QtMQclnmWWtn14BS
+KTSZoZekWESVYhORwmPEf32EPiC9t8zDRglXzPGmJAPISSQz+Cc9o1ipoSIkoCCh
+2MWoSbn3KFA53vgsYd0vS/+Nw5aUksSleorFns2yFgp/w5Ygv0D007k6u3DqyRLB
+W5y6tJLvbC1ME7jCBoLW6nFEVxgDo727pqOpMVjGGx5zcEokPIRDMkW/lXjw+fTy
+c6misESDCAWbgzniG/iyt77Kz711unpOhw5aemI9LpOq17AiIbjzSZYt6b1Aq7Wr
+aB+C1yws2ivIl9ZYK911A1m69yuUg0DPK+uyL7Z86XC7hI8B0IY1MM/MbmFiDo6H
+dkfwUckE74sxxeJrFZKkBbkEAQRgYw7SAR+gvktRnaUrj/84Pu0oYVe49nPEcy/7
+5Fs6LvAwAj+JcAQPW3uy7D7fuGFEQguasfRrhWY5R87+g5ria6qQT2/Sf19Tpngs
+d0Dd9DJ1MMTaA1pc5F7PQgoOVKo68fDXfjr76n1NchfCzQbozS1HoM8ys3WnKAw+
+Neae9oymp2t9FB3B+To4nsvsOM9KM06ZfBILO9NtzbWhzaAyWwSrMOFFJfpyxZAQ
+8VbucNDHkPJjhxuafreC9q2f316RlwdS+XjDggRY6xD77fHtzYea04UWuZidc5zL
+VpsuZR1nObXOgE+4s8LU5p6fo7jL0CRxvfFnDhSQg2Z617flsdjYAJ2JR4apg3Es
+G46xWl8xf7t227/0nXaCIMJI7g09FeOOsfCmBaf/ebfiXXnQbK2zCbbDYXbrYgw6
+ESkSTt940lHtynnVmQBvZqSXY93MeKjSaQk1VKyobngqaDAIIzHxNCR941McGD7F
+qHHM2YMTgi6XXaDThNC6u5msI1l/24PPvrxkJxjPSGsNlCbXL2wqaDgrP6LvCP9O
+uooR9dVRxaZXcKQjeVGxrcRtoTSSyZimfjEercwi9RKHt42O5akPsXaOzeVjmvD9
+EB5jrKBe/aAOHgHJEIgJhUNARJ9+dXm7GofpvtN/5RE6qlx11QGvoENHIgawGjGX
+Jy5oyRBS+e+KHcgVqbmV9bvIXdwiC4BDGxkXtjc75hTaGhnDpu69+Cq016cfsh+0
+XaRnHRdh0SZfcYdEqqjn9CTILfNuiEpZm6hYOlrfgYQe1I13rgrnSV+EfVCOLF4L
+P9ejcf3eCvNhIhEjsBNEUDOFAA6J5+YqZvFYtjk3efpM2jCg6XTLZWaI8kCuADMu
+yrQxGrM8yIGvBndrlmmljUqlc8/Nq9rcLVFDsVqb9wOZjrCIJ7GEUD6bRuolmRPE
+SLrpP5mDS+wetdhLn5ME1e9JeVkiSVSFIGsumZTNUaT0a90L4yNj5gBE40dvFplW
+7TLeNE/ewDQk5LiIrfWuTUn3CqpjIOXxsZFLjieNgofX1nSeLjy3tnJwuTYQlVJO
+3CbqH1k6cOIvE9XShnnuxmiSoav4uZIXnLZFQRT9v8UPIuedp7TO8Vjl0xRTajCL
+PdTk21e7fYriax62IssYcsbbo5G5auEdPO04H/+v/hxmRsGIr3XYvSi4ZWXKASxy
+a/jHFu9zEqmy0EBzFzpmSx+FrzpMKPkoU7RbxzMgZwIYEBk66Hh6gxllL0JmWjV0
+iqmJMtOERE4NgYgumQT3dTxKuFtywmFxBTe80BhGlfUbjBtiSrULq59np4ztwlRT
+wDEAVDoZbN57aEXhQ8jjF2RlHtqGXhFMrg9fALHaRQARAQABiQQZBBgBCgAPBQJg
+Yw7SAhsMBQkFo5qAAAoJEJxtzRcoPkVMdigfoK4oBYoxVoWUBCUekCg/alVGyEHa
+ekvFmd3LYSKX/WklAY7cAgL/1UlLIFXbq9jpGXJUmLZBkzXkOylF9FIXNNTFAmBM
+3TRjfPv91D8EhrHJW0SlECN+riBLtfIQV9Y1BUlQthxFPtB1G1fGrv4XR9Y4TsRj
+VSo78cNMQY6/89Kc00ip7tdLeFUHtKcJs+5EfDQgagf8pSfF/TWnYZOMN2mAPRRf
+fh3SkFXeuM7PU/X0B6FJNXefGJbmfJBOXFbaSRnkacTOE9caftRKN1LHBAr8/RPk
+pc9p6y9RBc/+6rLuLRZpn2W3m3kwzb4scDtHHFXXQBNC1ytrqdwxU7kcaJEPOFfC
+XIdKfXw9AQll620qPFmVIPH5qfoZzjk4iTH06Yiq7PI4OgDis6bZKHKyyzFisOkh
+DXiTuuDnzgcu0U4gzL+bkxJ2QRdiyZdKJJMswbm5JDpX6PLsrzPmN314lKIHQx3t
+NNXkbfHL/PxuoUtWLKg7/I3PNnOgNnDqCgqpHJuhU1AZeIkvewHsYu+urT67tnpJ
+AK1Z4CgRxpgbYA4YEV1rWVAPHX1u1okcg85rc5FHK8zh46zQY1wzUTWubAcxqp9K
+1IqjXDDkMgIX2Z2fOA1plJSwugUCbFjn4sbT0t0YuiEFMPMB42ZCjcCyA1yysfAd
+DYAmSer1bq47tyTFQwP+2ZnvW/9p3yJ4oYWzwMzadR3T0K4sgXRC2Us9nPL9k2K5
+TRwZ07wE2CyMpUv+hZ4ja13A/1ynJZDZGKys+pmBNrO6abxTGohM8LIWjS+YBPIq
+trxh8jxzgLazKvMGmaA6KaOGwS8vhfPfxZsu2TJaRPrZMa/HpZ2aEHwxXRy4nm9G
+Kx1eFNJO6Ues5T7KlRtl8gflI5wZCCD/4T5rto3SfG0s0jr3iAVb3NCn9Q73kiph
+PSwHuRxcm+hWNszjJg3/W+Fr8fdXAh5i0JzMNscuFAQNHgfhLigenq+BpCnZzXya
+01kqX24AdoSIbH++vvgE0Bjj6mzuRrH5VJ1Qg9nQ+yMjBWZADljtp3CARUbNkiIg
+tUJ8IJHCGVwXZBqY4qeJc3h/RiwWM2UIFfBZ+E06QPznmVLSkwvvop3zkr4eYNez
+cIKUju8vRdW6sxaaxC/GECDlP0Wo6lH0uChpE3NJ1daoXIeymajmYxNt+drz7+pd
+jMqjDtNA2rgUrjptUgJK8ZLdOQ4WCrPY5pP9ZXAO7+mK7S3u9CTywSJmQpypd8hv
+8Bu8jKZdoxOJXxj8CphK951eNOLYxTOxBUNB8J2lgKbmLIyPvBvbS1l1lCM5oHlw
+WXGlp70pspj3kaX4mOiFaWMKHhOLb+er8yh8jspM184=
+=5a6T
+-----END PGP PUBLIC KEY BLOCK-----
+
+		</pre>
+	</div>
+</div>
+
+<div id="submit_help_contact" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Contact</h3>
+		<p>If you need help using Tor you can contact WikiLeaks for assistance in setting it up using our simple webchat available at: <a href="https://wikileaks.org/talk">https://wikileaks.org/talk</a></p>
+		<p>If you can use Tor, but need to contact WikiLeaks for other reasons use our secured webchat available at <b>http://wlchatc3pjwpli5r.onion</b></p>
+		<p>We recommend contacting us over Tor if you can.</p>
+	</div>
+</div>
+
+<div id="submit_help_tor" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Tor</h3>
+		<p><a href="https://www.torproject.org">Tor</a> is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.</p>
+		<p>In order to use the WikiLeaks public submission system as detailed above you can download the Tor Browser Bundle, which is a Firefox-like browser available for Windows, Mac OS X and GNU/Linux and pre-configured to connect using the anonymising system Tor.</p>
+		<h4>Tails</h4>
+		<p>If you are at high risk and you have the capacity to do so, you can also access the submission system through a secure operating system called <a href="https://tails.boum.org">Tails</a>. Tails is an operating system launched from a USB stick or a DVD that aim to leaves no traces when the computer is shut down after use and automatically routes your internet traffic through Tor. Tails will require you to have either a USB stick or a DVD at least 4GB big and a laptop or desktop computer.</p>
+	</div>
+</div>
+
+<div id="submit_help_tips" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>Tips</h3>
+		<p>Our submission system works hard to preserve your anonymity, but we recommend you also take some of your own precautions. Please review these basic guidelines. </p>
+		<div>
+			<h4>1. Contact us if you have specific problems</h4>
+			<p>If you have a very large submission, or a submission with a complex format, or are a high-risk source, please <a href="#submit_help_contact">contact us</a>. In our experience it is always possible to find a custom solution for even the most seemingly difficult situations.</p>
+		</div>
+		<div>
+			<h4>2. What computer to use</h4>
+			<p>If the computer you are uploading from could subsequently be audited in an investigation, consider using a computer that is not easily tied to you. Technical users can also use <a href="https://tails.boum.org">Tails</a> to help ensure you do not leave any records of your submission on the computer.</p>
+		</div>
+		<div>
+			<h4>3. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+	</div>
+</div>
+
+<div id="submit_help_after" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>After</h3>
+
+		<div>
+			<h4>1. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+		<div>
+			<h4>2. Act normal</h4>
+			<p>If you are a high-risk source, avoid saying anything or doing anything after submitting which might promote suspicion. In particular, you should try to stick to your normal routine and behaviour.</p>
+		</div>
+
+		<div>
+			<h4>3. Remove traces of your submission</h4>
+			<p>If you are a high-risk source and the computer you prepared your submission on, or uploaded it from, could subsequently be audited in an investigation, we recommend that you format and dispose of the computer hard drive and any other storage media you used.</p>
+			<p>In particular, hard drives retain data after formatting which may be visible to a digital forensics team and flash media (USB sticks, memory cards and SSD drives) retain data even after a secure erasure. If you used flash media to store sensitive data, it is important to destroy the media.</p>
+			<p>If you do this and are a high-risk source you should make sure there are no traces of the clean-up, since such traces themselves may draw suspicion.</p>
+			<div>
+				<h4>4. If you face legal action</h4>
+				<p>If a legal action is brought against you as a result of your submission, there are organisations that may help you. The Courage Foundation is an international organisation dedicated to the protection of journalistic sources. You can find more details at <a href="https://www.couragefound.org">https://www.couragefound.org</a>.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="submit" class="submit_banner">
+	<div class="container">
+		<div class="page-header">
+			<h1>Submit documents to WikiLeaks</h1>
+			<a class="remove-button" href="#"><span class="glyphicon glyphicon-remove-circle"></span></a>
+		</div>
+		<p>WikiLeaks publishes documents of political or historical importance that are censored or otherwise suppressed. We specialise in strategic global publishing and large archives.</p>
+		<p>The following is the address of our secure site where you can anonymously upload your documents to WikiLeaks editors. You can only access this submissions system through Tor. (See our <a href="#submit_help_tor">Tor tab</a> for more information.) We also advise you to read our <a href="#submit_help_tips">tips for sources</a> before submitting.</p>
+
+		<div class="alert alert-info">
+			<div class="onion-url">http://ibfckmpsmylhbfovflajicjgldsqpc75k5w454irzwlh7qifgglncbad.onion </div>
+			<!--<div>
+				Copy this address into your Tor browser. Advanced users, if they wish, can also add a further layer of encryption to their submission using <a href="#submit_wlkey">our public PGP key</a>.
+			</div>-->
+		</div>
+
+		<p>If you cannot use Tor, or your submission is very large, or you have specific requirements, WikiLeaks provides several alternative methods. <a href="#submit_help_contact">Contact us</a> to discuss how to proceed.</p>
+	</div>
+</div>
+<div id="submit_help_buttons" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="main">
+	    
+
+<link href="/static/css/styles_topnav.css" rel="stylesheet">
+<link href="/static/css/styles_sidenav.css" rel="stylesheet">
+<div class="top-navigation">
+  <nav class="navbar">
+      <a href="#menu" class="mobile-only hot-dog nav-element">
+      </a>
+    <div class="nav-logo">
+      <a href="https://wikileaks.org">
+        <h1>WikiLeaks</h1>
+      </a>
+    </div>
+    <div class="action-buttons">
+      <a class="button-face donate-link" href="https://shop.wikileaks.org/donate">Donate</a>
+      <a class="button-face submit-link" href="#submit">Submit</a>
+    </div>
+    <form class="global-search" method="get" action="https://search.wikileaks.org/">
+      <input type="text" name="q" placeholder="Search">
+      <button class="btn-search" type="submit"></button>
+    </form>
+    <div class="main-nav">
+
+        <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+            </li>
+
+            <li>
+              <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+            </li>
+
+        </ul>
+
+    </div>
+  </nav>
+</div>
+
+<nav id="menu" class="side-nav rub">
+  <div class="menu-wrapper">
+    <a class="close-btn nav-element" href="#"></a>
+
+      <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+
+          </li>
+
+          <li>
+            <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+
+          </li>
+
+      </ul>
+
+    <aside class="friends mobile-only">
+
+        <ul class="first-level">
+                <li>
+                <a href="https://our.wikileaks.org" target="_blank">our.wikileaks.org</a>
+                </li>
+                <li>
+                <a href="https://www.torproject.org/" target="_blank">Tor Project</a>
+                </li>
+                <li>
+                <a href="https://tails.boum.org/" target="_blank">Tails</a>
+                </li>
+                <li>
+                <a href="https://www.couragefound.org/" target="_blank">Courage</a>
+                </li>
+                <li>
+                <a href="https://www.bitcoin.org/" target="_blank">Bitcoin</a>
+                </li>
+        
+        </ul>
+
+    </aside>
+    <aside class="social mobile-only">
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/wikileaks" class="nav-element" target="_blank" alt="Facebook">
+            <img class="img-responsive" src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" class="nav-element" target="_blank" alt="Twitter">
+            <img class="img-responsive" src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</nav>
+
+
+<div id="overall">
+
+<div id="leftmenu">
+
+        <center><img src="/plusd/images/wl2.jpg" alt="WikiLeaks" /></center>
+        <a class="button" href="/plusd/pressrelease/">Press release</a>
+        <a class="button" href="/plusd/about/">About PlusD</a>
+
+        <div class="pick">
+	<h3>Browse by creation date</h3>
+
+<a href="/plusd/?q=&qtfrom=1966-01-01&qtto=1966-12-31#result">1966</a>
+<a href="/plusd/?q=&qtfrom=1972-01-01&qtto=1972-12-31#result">1972</a>
+<a href="/plusd/?q=&qtfrom=1973-01-01&qtto=1973-12-31#result">1973</a>
+<a href="/plusd/?q=&qtfrom=1974-01-01&qtto=1974-12-31#result">1974</a>
+<a href="/plusd/?q=&qtfrom=1975-01-01&qtto=1975-12-31#result">1975</a>
+<a href="/plusd/?q=&qtfrom=1976-01-01&qtto=1976-12-31#result">1976</a>
+<a href="/plusd/?q=&qtfrom=1977-01-01&qtto=1977-12-31#result">1977</a>
+<a href="/plusd/?q=&qtfrom=1978-01-01&qtto=1978-12-31#result">1978</a>
+<a href="/plusd/?q=&qtfrom=1979-01-01&qtto=1979-12-31#result">1979</a>
+<a href="/plusd/?q=&qtfrom=1985-01-01&qtto=1985-12-31#result">1985</a>
+<a href="/plusd/?q=&qtfrom=1986-01-01&qtto=1986-12-31#result">1986</a>
+<a href="/plusd/?q=&qtfrom=1987-01-01&qtto=1987-12-31#result">1987</a>
+<a href="/plusd/?q=&qtfrom=1988-01-01&qtto=1988-12-31#result">1988</a>
+<a href="/plusd/?q=&qtfrom=1989-01-01&qtto=1989-12-31#result">1989</a>
+<a href="/plusd/?q=&qtfrom=1990-01-01&qtto=1990-12-31#result">1990</a>
+<a href="/plusd/?q=&qtfrom=1991-01-01&qtto=1991-12-31#result">1991</a>
+<a href="/plusd/?q=&qtfrom=1992-01-01&qtto=1992-12-31#result">1992</a>
+<a href="/plusd/?q=&qtfrom=1993-01-01&qtto=1993-12-31#result">1993</a>
+<a href="/plusd/?q=&qtfrom=1994-01-01&qtto=1994-12-31#result">1994</a>
+<a href="/plusd/?q=&qtfrom=1995-01-01&qtto=1995-12-31#result">1995</a>
+<a href="/plusd/?q=&qtfrom=1996-01-01&qtto=1996-12-31#result">1996</a>
+<a href="/plusd/?q=&qtfrom=1997-01-01&qtto=1997-12-31#result">1997</a>
+<a href="/plusd/?q=&qtfrom=1998-01-01&qtto=1998-12-31#result">1998</a>
+<a href="/plusd/?q=&qtfrom=1999-01-01&qtto=1999-12-31#result">1999</a>
+<a href="/plusd/?q=&qtfrom=2000-01-01&qtto=2000-12-31#result">2000</a>
+<a href="/plusd/?q=&qtfrom=2001-01-01&qtto=2001-12-31#result">2001</a>
+<a href="/plusd/?q=&qtfrom=2002-01-01&qtto=2002-12-31#result">2002</a>
+<a href="/plusd/?q=&qtfrom=2003-01-01&qtto=2003-12-31#result">2003</a>
+<a href="/plusd/?q=&qtfrom=2004-01-01&qtto=2004-12-31#result">2004</a>
+<a href="/plusd/?q=&qtfrom=2005-01-01&qtto=2005-12-31#result">2005</a>
+<a href="/plusd/?q=&qtfrom=2006-01-01&qtto=2006-12-31#result">2006</a>
+<a href="/plusd/?q=&qtfrom=2007-01-01&qtto=2007-12-31#result">2007</a>
+<a href="/plusd/?q=&qtfrom=2008-01-01&qtto=2008-12-31#result">2008</a>
+<a href="/plusd/?q=&qtfrom=2009-01-01&qtto=2009-12-31#result">2009</a>
+<a href="/plusd/?q=&qtfrom=2010-01-01&qtto=2010-12-31#result">2010</a>
+
+        </div>
+
+        <div class="sort">
+	<h3>Browse by Classification</h3>
+
+<a href="/plusd/?q=&qfoclass=UNCLASSIFIED#result" title="UNCLASSIFIED (1339531 documents)">UNCLASSIFIED</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL#result" title="CONFIDENTIAL (503750 documents)">CONFIDENTIAL</a><a href="/plusd/?q=&qfoclass=LIMITED+OFFICIAL+USE#result" title="LIMITED OFFICIAL USE (435536 documents)">LIMITED OFFICIAL USE</a><a href="/plusd/?q=&qfoclass=SECRET#result" title="SECRET (120598 documents)">SECRET</a><a href="/plusd/?q=&qfoclass=UNCLASSIFIED%2F%2FFOR+OFFICIAL+USE+ONLY#result" title="UNCLASSIFIED//FOR OFFICIAL USE ONLY (58095 documents)">UNCLASSIFIED//FOR OFFICIAL USE ONLY</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL%2F%2FNOFORN#result" title="CONFIDENTIAL//NOFORN (4678 documents)">CONFIDENTIAL//NOFORN</a><a href="/plusd/?q=&qfoclass=SECRET%2F%2FNOFORN#result" title="SECRET//NOFORN (4330 documents)">SECRET//NOFORN</a>
+        </div>
+
+	<div class="sort">
+	<h3>Browse by Handling Restriction</h3>
+
+<a href="/plusd/?q=&qforiginalhandlingrestriction=EXDIS#result" title="EXDIS - Exclusive Distribution Only (71108 documents)">EXDIS - Exclusive Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=ONLY#result" title="ONLY - Eyes Only (32583 documents)">ONLY - Eyes Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LIMDIS#result" title="LIMDIS - Limited Distribution Only (25098 documents)">LIMDIS - Limited Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NODIS#result" title="NODIS - No Distribution (other than to persons indicated) (24437 documents)">NODIS - No Distribution (other than to persons indicated)</a><a href="/plusd/?q=&qforiginalhandlingrestriction=STADIS#result" title="STADIS - State Distribution Only (20286 documents)">STADIS - State Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CHEROKEE#result" title="CHEROKEE - Limited to senior officials (4343 documents)">CHEROKEE - Limited to senior officials</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NOFORN#result" title="NOFORN - No Foreign Distribution (2197 documents)">NOFORN - No Foreign Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LOU#result" title="LOU - Limited Official Use (598 documents)">LOU - Limited Official Use</a><a href="/plusd/?q=&qforiginalhandlingrestriction=SENSITIVE#result" title="SENSITIVE -  (43 documents)">SENSITIVE - </a><a href="/plusd/?q=&qforiginalhandlingrestriction=BU#result" title="BU - Background Use Only (3 documents)">BU - Background Use Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CONDIS#result" title="CONDIS - Controlled Distribution (1 documents)">CONDIS - Controlled Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=US#result" title="US - US Government Only (1 documents)">US - US Government Only</a>	</div>
+
+	<div class="pick wide">
+	<h3>Browse by TAGS</h3>
+<a href="/plusd/?q=&qftags=US#result" title="US - United States (553685 documents)">US</a> <a href="/plusd/?q=&qftags=PFOR#result" title="PFOR - Political Affairs--Foreign Policy and Relations (294672 documents)">PFOR</a> <a href="/plusd/?q=&qftags=PGOV#result" title="PGOV - Political Affairs--Government; Internal Governmental Affairs (180409 documents)">PGOV</a> <a href="/plusd/?q=&qftags=PREL#result" title="PREL - Political Affairs--External Political Relations (149906 documents)">PREL</a> <a href="/plusd/?q=&qftags=ETRD#result" title="ETRD - Economic Affairs--Foreign Trade (124244 documents)">ETRD</a> <a href="/plusd/?q=&qftags=UR#result" title="UR - Soviet Union (USSR) (117139 documents)">UR</a> <a href="/plusd/?q=&qftags=OVIP#result" title="OVIP - Operations--VIP Travel Arrangements (114816 documents)">OVIP</a> <a href="/plusd/?q=&qftags=ASEC#result" title="ASEC - Administration--Security (114594 documents)">ASEC</a> <a href="/plusd/?q=&qftags=OGEN#result" title="OGEN - Operations--General (114085 documents)">OGEN</a> <a href="/plusd/?q=&qftags=CASC#result" title="CASC - Consular Affairs--Assistance to Citizens (113486 documents)">CASC</a> <a href="/plusd/?q=&qftags=PINT#result" title="PINT - Political Affairs--Internal Political Affairs (104641 documents)">PINT</a> <a href="/plusd/?q=&qftags=EFIN#result" title="EFIN - Economic Affairs--Financial and Monetary Affairs (102225 documents)">EFIN</a> <a href="/plusd/?q=&qftags=BEXP#result" title="BEXP - Business Services--Trade Expansion and Promotion (102142 documents)">BEXP</a> <a href="/plusd/?q=&qftags=OEXC#result" title="OEXC - Operations--Educational and Cultural Exchange Operations (89751 documents)">OEXC</a> <a href="/plusd/?q=&qftags=EAID#result" title="EAID - Economic Affairs--Foreign Assistance (80469 documents)">EAID</a> <a href="/plusd/?q=&qftags=CVIS#result" title="CVIS - Consular Affairs--Visas (79634 documents)">CVIS</a> <a href="/plusd/?q=&qftags=OTRA#result" title="OTRA - Operations--Travel and Visits (79042 documents)">OTRA</a> <a href="/plusd/?q=&qftags=ENRG#result" title="ENRG - Economic Affairs--Energy and Power (76814 documents)">ENRG</a> <a href="/plusd/?q=&qftags=OCON#result" title="OCON - Operations--Conferences and Meetings (76271 documents)">OCON</a> <a href="/plusd/?q=&qftags=ECON#result" title="ECON - Economic Affairs--Economic Conditions, Trends and Potential (75832 documents)">ECON</a> <a href="/plusd/?q=&qftags=NATO#result" title="NATO - North Atlantic Treaty Organization (74653 documents)">NATO</a> <a href="/plusd/?q=&qftags=PINS#result" title="PINS - Political Affairs--Internal Security (72716 documents)">PINS</a> <a href="/plusd/?q=&qftags=GE#result" title="GE - Germany (East) (69261 documents)">GE</a> <a href="/plusd/?q=&qftags=JA#result" title="JA - Japan; Okinawa; (67491 documents)">JA</a> <a href="/plusd/?q=&qftags=UK#result" title="UK - United Kingdom (65645 documents)">UK</a> <a href="/plusd/?q=&qftags=IS#result" title="IS - Israel (61813 documents)">IS</a> <a href="/plusd/?q=&qftags=MARR#result" title="MARR - Military and Defense Affairs--Military and Defense Arrangements (59054 documents)">MARR</a> <a href="/plusd/?q=&qftags=PARM#result" title="PARM - Political Affairs--Arms Controls and Disarmament (58794 documents)">PARM</a> <a href="/plusd/?q=&qftags=UN#result" title="UN - United Nations (58176 documents)">UN</a> <a href="/plusd/?q=&qftags=EG#result" title="EG - Egypt (57176 documents)">EG</a> <a href="/plusd/?q=&qftags=FR#result" title="FR - France (56597 documents)">FR</a> <a href="/plusd/?q=&qftags=PHUM#result" title="PHUM - Political Affairs--Human Rights (55302 documents)">PHUM</a> <a href="/plusd/?q=&qftags=SREF#result" title="SREF - Social Affairs--Refugees (53585 documents)">SREF</a> <a href="/plusd/?q=&qftags=EAIR#result" title="EAIR - Economic Affairs--Aeronautics and Aviation; Civil Aviation (52511 documents)">EAIR</a> <a href="/plusd/?q=&qftags=MASS#result" title="MASS - Military and Defense Affairs--Military Assistance and Sales (51560 documents)">MASS</a> <a href="/plusd/?q=&qftags=APER#result" title="APER - Administration--Personnel (51272 documents)">APER</a> <a href="/plusd/?q=&qftags=SNAR#result" title="SNAR - Social Affairs--Narcotics (49299 documents)">SNAR</a> <a href="/plusd/?q=&qftags=PINR#result" title="PINR - Political Affairs--Intelligence (48667 documents)">PINR</a> <a href="/plusd/?q=&qftags=EAGR#result" title="EAGR - Economic Affairs--Agriculture and Forestry (47350 documents)">EAGR</a> <a href="/plusd/?q=&qftags=PDIP#result" title="PDIP - Political Affairs--Diplomatic and Consular Representation (47061 documents)">PDIP</a> <a href="/plusd/?q=&qftags=AORG#result" title="AORG - Administration--International Organization Administration (42798 documents)">AORG</a> <a href="/plusd/?q=&qftags=PORG#result" title="PORG - Political Affairs--Policy Relations With International Organizations (42754 documents)">PORG</a> <a href="/plusd/?q=&qftags=MX#result" title="MX - Mexico (42577 documents)">MX</a> <a href="/plusd/?q=&qftags=TU#result" title="TU - Turkey (42476 documents)">TU</a> <a href="/plusd/?q=&qftags=ELAB#result" title="ELAB - Economic Affairs--Labor and Manpower; Labor Sector Affairs (41921 documents)">ELAB</a> <a href="/plusd/?q=&qftags=IN#result" title="IN - India (41702 documents)">IN</a> <a href="/plusd/?q=&qftags=CA#result" title="CA - Canada (41623 documents)">CA</a> <a href="/plusd/?q=&qftags=SCUL#result" title="SCUL - Social Affairs--Cultural Affairs (41509 documents)">SCUL</a> <a href="/plusd/?q=&qftags=CH#result" title="CH - China (Mainland) (40426 documents)">CH</a> <a href="/plusd/?q=&qftags=IR#result" title="IR - Iran (39924 documents)">IR</a> <a href="/plusd/?q=&qftags=IT#result" title="IT - Italy (39454 documents)">IT</a> <a href="/plusd/?q=&qftags=XF#result" title="XF - Middle East (38273 documents)">XF</a> <a href="/plusd/?q=&qftags=GW#result" title="GW - Germany (West) (37945 documents)">GW</a> <a href="/plusd/?q=&qftags=EINV#result" title="EINV - Economic Affairs--Investments; Foreign Investments (37616 documents)">EINV</a> <a href="/plusd/?q=&qftags=TH#result" title="TH - Thailand (37385 documents)">TH</a> <a href="/plusd/?q=&qftags=TECH#result" title="TECH - Technology and Science--Technology (36578 documents)">TECH</a> <a href="/plusd/?q=&qftags=SENV#result" title="SENV - Social Affairs--Environment (35665 documents)">SENV</a> <a href="/plusd/?q=&qftags=OREP#result" title="OREP - Operations--Congressional Travel (35140 documents)">OREP</a> <a href="/plusd/?q=&qftags=KS#result" title="KS - Korea (South) (34546 documents)">KS</a> <a href="/plusd/?q=&qftags=EGEN#result" title="EGEN - Economic Affairs--General (34287 documents)">EGEN</a> <a href="/plusd/?q=&qftags=PEPR#result" title="PEPR - PEPR (33866 documents)">PEPR</a> <a href="/plusd/?q=&qftags=MILI#result" title="MILI - Military and Defense Affairs--General (33710 documents)">MILI</a> <a href="/plusd/?q=&qftags=SHUM#result" title="SHUM - Social Affairs--Human Rights (33098 documents)">SHUM</a> <a href="/plusd/?q=&qftags=KISSINGER%2C+HENRY+A#result" title="KISSINGER, HENRY A - Henry Kissinger (32848 documents)">KISSINGER, HENRY A</a> <a href="/plusd/?q=&qftags=PL#result" title="PL - Poland (31163 documents)">PL</a> <a href="/plusd/?q=&qftags=BR#result" title="BR - Brazil (30797 documents)">BR</a> <a href="/plusd/?q=&qftags=RP#result" title="RP - Philippines (30198 documents)">RP</a> <a href="/plusd/?q=&qftags=GR#result" title="GR - Greece; Crete (30183 documents)">GR</a> <a href="/plusd/?q=&qftags=SF#result" title="SF - South Africa (30161 documents)">SF</a> <a href="/plusd/?q=&qftags=AFSP#result" title="AFSP - Administration--Post Administration (29315 documents)">AFSP</a> <a href="/plusd/?q=&qftags=SP#result" title="SP - Spain (29108 documents)">SP</a> <a href="/plusd/?q=&qftags=PTER#result" title="PTER - Political Affairs--Terrorists and Terrorism (28839 documents)">PTER</a> <a href="/plusd/?q=&qftags=MOPS#result" title="MOPS - Military and Defense Affairs--Military Operations (28821 documents)">MOPS</a> <a href="/plusd/?q=&qftags=SA#result" title="SA - Saudi Arabia (28190 documents)">SA</a> <a href="/plusd/?q=&qftags=UNGA#result" title="UNGA - UN General Assembly (27867 documents)">UNGA</a> <a href="/plusd/?q=&qftags=CGEN#result" title="CGEN - Consular Affairs--General (27680 documents)">CGEN</a> <a href="/plusd/?q=&qftags=ESTC#result" title="ESTC - Economic Affairs--Strategic Trade Controls (27627 documents)">ESTC</a> <a href="/plusd/?q=&qftags=SOPN#result" title="SOPN - Social Affairs--Public Opinion and Information (27583 documents)">SOPN</a> <a href="/plusd/?q=&qftags=RO#result" title="RO - Romania (27560 documents)">RO</a> <a href="/plusd/?q=&qftags=LE#result" title="LE - Lebanon (27323 documents)">LE</a> <a href="/plusd/?q=&qftags=TGEN#result" title="TGEN - Technology and Science--General (27058 documents)">TGEN</a> <a href="/plusd/?q=&qftags=PK#result" title="PK - Pakistan (26991 documents)">PK</a> <a href="/plusd/?q=&qftags=AR#result" title="AR - Argentina (26444 documents)">AR</a> <a href="/plusd/?q=&qftags=NI#result" title="NI - Nigeria (26170 documents)">NI</a> <a href="/plusd/?q=&qftags=OSCI#result" title="OSCI - Operations--Science Grants (25846 documents)">OSCI</a> <a href="/plusd/?q=&qftags=CI#result" title="CI - Chile (25827 documents)">CI</a> <a href="/plusd/?q=&qftags=EEC#result" title="EEC - European Common Market (European Communities); European Economic Community (25827 documents)">EEC</a> <a href="/plusd/?q=&qftags=VS#result" title="VS - South Vietnam (25800 documents)">VS</a> <a href="/plusd/?q=&qftags=YO#result" title="YO -  (25447 documents)">YO</a> <a href="/plusd/?q=&qftags=AFIN#result" title="AFIN - Administration--Financial Services (24705 documents)">AFIN</a> <a href="/plusd/?q=&qftags=OECD#result" title="OECD - Organization for Economic Cooperation and Development (24622 documents)">OECD</a> <a href="/plusd/?q=&qftags=SY#result" title="SY - Syria (24419 documents)">SY</a> <a href="/plusd/?q=&qftags=IZ#result" title="IZ - Iraq (24415 documents)">IZ</a> <a href="/plusd/?q=&qftags=ID#result" title="ID - Indonesia (23865 documents)">ID</a> <a href="/plusd/?q=&qftags=VE#result" title="VE - Venezuela (23792 documents)">VE</a> <a href="/plusd/?q=&qftags=TPHY#result" title="TPHY - Technology and Science--Physical Sciences (23741 documents)">TPHY</a> <a href="/plusd/?q=&qftags=TW#result" title="TW - Taiwan (23233 documents)">TW</a> <a href="/plusd/?q=&qftags=AS#result" title="AS - Australia (23143 documents)">AS</a> <a href="/plusd/?q=&qftags=PBOR#result" title="PBOR - Political Affairs--Boundary and Sovereignity Claims (23066 documents)">PBOR</a> 
+	</div>
+
+
+        <div class="sort" style="clear:both;">
+        <h3>Media Organizations</h3>
+        <a target="_blank" href="http://www.theage.com.au/">Australia - The Age</a>
+        <a target="_blank" href="http://www.pagina12.com.ar/">Argentina - Pagina 12</a>
+        <a target="_blank" href="http://www.apublica.org/?p=4041">Brazil - Publica</a>
+        <a target="_blank" href="https://bivol.bg/">Bulgaria - Bivol</a>
+        <a target="_blank" href="http://www.almasryalyoum.com/ ">Egypt - Al Masry Al Youm</a>
+        <a target="_blank" href="http://www.tanea.gr/">Greece - Ta Nea</a>
+        <a target="_blank" href="http://www.plazapublica.com.gt/content/los-cables-de-wikileaks">Guatemala - Plaza Publica</a>
+        <a target="_blank" href="http://www.haiti-liberte.com/">Haiti - Haiti Liberte</a>
+        <a target="_blank" href="http://www.thehindu.com/">India - The Hindu</a>
+        <a target="_blank" href="http://espresso.repubblica.it/">Italy - L'Espresso</a>
+        <a target="_blank" href="http://www.repubblica.it/">Italy - La Repubblica</a>
+        <a target="_blank" href="http://www.al-akhbar.com/">Lebanon - Al Akhbar</a>
+        <a target="_blank" href="http://www.jornada.unam.mx/ultimas/">Mexico - La Jornada</a>
+        <a target="_blank" href="http://www.publico.es/452776">Spain - Publico</a>
+        <a target="_blank" href="http://www.aftonbladet.se/nyheter/article16421007.ab">Sweden - Aftonbladet</a>
+        <a target="_blank" href="http://www.ap.org/">UK - AP</a>
+        <a target="_blank" href="http://thenation.com">US - The Nation</a>
+        </div>
+	<br style="clear: both;" />
+</div>
+
+<div id="content"><div id="content-main">
+
+<!--<p style="text-align: justify; font-size: medium">Click the <b>Chat</b> button above to join a secure chat channel dedicated to media partner The Kissinger Cables discussion. Please go on this to talk to the others currently working on this project. <br />When the chat window opens type the following in the white text space at the bottom of the screen to assign yourself a recognisable name: <b>/nick Espresso</b> and press enter</p>
+<center><h2 style="font-size: x-large;">Public Library of US Diplomacy: PlusD</h2></center>-->
+
+<center><img src="/plusd/images/plusdb.png" /></center>
+<div id="st" style="clear:both;">&nbsp;</div>
+<div id="topnav">
+        <a class="searchbutton active" href="//search.wikileaks.org/plusd/">Specified Search</a>
+        <a class="searchbutton sbinv" href="/plusd/map" target="_blank">View Map</a>
+        <a class="searchbutton sbinv" href="/plusd/graph" target="_blank">Make Timegraph</a>
+        <a class="searchbutton sbinv" href="/plusd/tags/" target="_blank">View Tags</a>
+        <a class="searchbutton sbinv" href="/plusd/imagelibrary/" target="_blank">Image Library</a>
+</div>
+<div class="sections"> 
+<div class="pane-content">
+	<table id="synopsis">
+		<tr style="background:#eee;">
+			<td colspan="2" style="font-size: medium; padding: 5px;color: #000; font-weight: bold; text-align: center;">BLUMENTHAL VISIT: TRADE WORKING GROUP MEETINGS</td>
+		</tr>
+		<tr style="background:#eee;">
+			<td><div class="s_key"><a class="i" title="Date">Date:</a></div><div class="s_val" title=" 1979 March 10, 00:00 (Saturday)">1979 March 10, 00:00 (Saturday)</div></td>
+			<td><div class="s_key"><a class="i" title="Canonical ID">Canonical ID:</a></div><div class="s_val" title=" 1979BEIJIN01333_e">1979BEIJIN01333_e</div></td>
+		</tr>
+		<tr>
+			<td><div class="s_key"><a class="i" title="Original Classification">Original Classification:</a></div><div class="s_val" title=" CONFIDENTIAL (503750 documents)">CONFIDENTIAL</div></td>
+			<td><div class="s_key"><a class="i" title="Current Classification">Current Classification:</a></div><div class="s_val" title=" UNCLASSIFIED (2592391 documents)">UNCLASSIFIED</div></td>
+		</tr>
+
+		<tr>
+			<td>
+<div class="s_key"><a class="i" title="Handling Restrictions", ">Handling Restrictions</a></div> <div class="s_val" title="-- N/A or Blank -- (2412734 documents)">-- N/A or Blank --</div><br /></td>
+			<td><div class="s_key"><a class="i" title="Character Count">Character Count:</a></div><div class="s_val" title=" 64430">64430</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Executive Order">Executive Order:</a></div><div class="s_val" title=" GS 19850310 WOODCOCK, LEONARD">GS 19850310 WOODCOCK, LEONARD</div></td>
+			<td><div class="s_key"><a class="i" title="Locator">Locator:</a></div><div class="s_val" title=" TEXT ON MICROFILM,TEXT ONLINE">TEXT ON MICROFILM,TEXT ONLINE</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="TAGS">TAGS:</a></div><div class="s_val" title=" BLUMENTHAL, W MICHAEL | BLUMENTHAL, W. MICHAEL | CH - China (Mainland) | EFIN - Economic Affairs--Financial and Monetary Affairs | OVIP - Operations--VIP Travel Arrangements | TRSY - Department of the Treasury | US - United States"><a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=BLUMENTHAL%2C+W+MICHAEL#result" title="BLUMENTHAL, W MICHAEL  (897 documents)" >BLUMENTHAL, W MICHAEL</a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=BLUMENTHAL%2C+W.+MICHAEL#result" title="BLUMENTHAL, W. MICHAEL  (404 documents)" >BLUMENTHAL, W. MICHAEL</a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=CH#result" title="CH China (Mainland) (40426 documents)" >CH<span style="color: #216B7C;"> - China (Mainland)</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=EFIN#result" title="EFIN Economic Affairs: Financial and Monetary Affairs (102225 documents)" >EFIN<span style="color: #216B7C;"> - Economic Affairs--Financial and Monetary Affairs</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=OVIP#result" title="OVIP Operations: VIP Travel Arrangements (114816 documents)" >OVIP<span style="color: #216B7C;"> - Operations--VIP Travel Arrangements</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=TRSY#result" title="TRSY Department of the Treasury (1068 documents)" >TRSY<span style="color: #216B7C;"> - Department of the Treasury</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=US#result" title="US United States (553685 documents)" >US<span style="color: #216B7C;"> - United States</span></a></div></td>
+			<td><div class="s_key"><a class="i" title="Concepts">Concepts:</a></div><div class="s_val" title=" MINISTERIAL VISITS | NEGOTIATIONS | TRADE"><a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=MINISTERIAL+VISITS#result" title="MINISTERIAL VISITS (23080 documents)">MINISTERIAL VISITS</a> <span style=''color:#000;''>|</span> <a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=NEGOTIATIONS#result" title="NEGOTIATIONS (69012 documents)">NEGOTIATIONS</a> <span style=''color:#000;''>|</span> <a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=TRADE#result" title="TRADE (11181 documents)">TRADE</a></div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Enclosure">Enclosure:</a></div><div class="s_val" title=" -- N/A or Blank -- (2333922 documents)">-- N/A or Blank --</div></td>
+			<td><div class="s_key"><a class="i" title="Type">Type:</a></div><div class="s_val" title=" TE - Telegram (cable) (2008616 documents)">TE - Telegram (cable)</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc">
+				<div class="s_key"><a class="i" title="Office Origin">Office Origin:</a></div><div class="s_val" title=" -- N/A or Blank -- (2117535 documents)">-- N/A or Blank --</div>				<br style="clear:both;"/>
+				<div class="s_key"><a class="i" title="Office Action">Office Action:</a></div><div class="s_val" title=" ACTION EA - Bureau of East Asian and Pacific Affairs (89915 documents)">ACTION EA - Bureau of East Asian and Pacific Affairs</div>			</td>
+			<td><div class="s_key"><a class="i" title="Archive Status">Archive Status:</a></div><div class="s_val" title=" Electronic Telegrams (1758257 documents)">Electronic Telegrams</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="From">From:</a></div><div class="s_val" title=" BEIJIN  | BEIJING OR-M  | China Beijing"><a style="color: #216B7C; " href="/plusd/?q=&qforigin=BEIJIN#result" title="BEIJIN (2 documents)">BEIJIN</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qforigin=BEIJING+OR-M#result" title="BEIJING OR-M (0 documents)">BEIJING OR-M</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qforigin=China%23%23Beijing#result" title="China Beijing (12048 documents)">China Beijing</a></div></td>
+			<td><div class="s_key"><a class="i" title="Markings">Markings:</a></div><div class="s_val" title=" Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014 (325443 documents)">Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="To">To:</a></div><div class="s_val" title=" Department of State "><a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Department of State#result" title="Department of State  (921114 documents)">Department of State </a></div></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<br />
+
+
+<br style="clear: both;" />
+
+</div>
+<div class="pane-tab"><div class="pane-header">Content</div><div class="pane-content"><div class="text-header hidden">CONFIDENTIAL
+PAGE 01
+BEIJIN 01333 01 OF 09 100623Z
+ACTION EA-12
+INFO OCT-01 EB-08 ISO-00 SP-02 AID-05 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------100012 100931Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4469
+C O N F I D E N T I A L SECTION 1 OF 9 BEIJING 1333
+DEPT FOR E-B AST SEC KATS
+DEPT PASS TREASURY FOR EXEC ASST TO SECRETARY RICHARD W. FISHER
+E.O. 12065: GDS 3/5/79 (WOODCOCK, LEONARD) OR-M
+TAGS: EFIN OVIP (BLUMENTHAL, W. MICHAEL)
+SUBJ: BLUMENTHAL VISIT: TRADE WORKING GROUP MEETINGS
+REF: STATE 58258</div><div class="text-button" id="showhide">Show&nbsp;Headers</div><div class="text-content"><div id="tagged-text">1. (C) ENTIRE TEXT
+2. TRNSCRIPTS OF TRADE WORKING GROUP MEETINGS HELD ON
+FEBRUARY 27 AND 28 FOLLOW:
+BEGIN TEXT:
+PARTICIPANTS: CHINESE: WANG RUNSHENG, VICE MINISTER OF FOREIGN TRADE
+SUN SUOCHANG, DIRECTOR THIRD DEPT, MINISTRY OF FOREIGN TRADE
+CHI HAIBIN, JEPUTY DIRECTOR, DEPARTMENT OF INDUSTRY, TRANSPORTATION,
+COMMERCE AND FINANCE, MINISTRY OF FOREIGN TRADE.
+WANG, DOUGUANG, DEPUTY DIRECTO, THE CUSTOMS ADMINISTRATION OF THE PRC
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 01 OF 09 100623Z
+
+REN JIANXIN, (ADVISOR) DIRECTOR, LEGAL DEPARTMENT, CHINA
+COUNCIL FOR THE PROMOTION OF INTERNATIONAL TRADE.
+ZHANG WENZHONG, DIVISION CHIEF, THIRD DEPT, MINISTRY OF FOREIGN TRADE
+YUAN ZIJIANG, DEPUTY MANAGER, BANKING DEPARTMENT, BANK OF CHINA
+ZHANG GUOSHEN, DEPUTY DIVISION CHIEF, THIRD DEPT, MINISTRY
+OF FOREIGN TRADE.
+LI WEI, OFFICIAL, THIRD DEPARTMENT, MINISTRY OF FOREIGN TRADE
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+LI WEI, OFFICIAL, THIRD DEPT, MINISTRY OF FOREIGN TRADE.
+CHEN SHIBIAO, OFFICIAL, THIRD DEPT. MINISTRY OF FOREIGN TRADE
+AMERICAN: JULIUS L. KATZ, ASST SECY OF STATE FOR ECONOMIC AND BUSINESS AFFAIRS.
+MARK B. FELDMAN, DEPUTY LEGAL ADVISER, DEPT OF STATE.
+STANLEY MARCUSS, SENIOR DEPUTY ASST SECY, DEPT OF COMMERCE.
+JOHN RENNER, COUNSELOR AND SPECIAL ENVOY, OFFICE OF THE SPECIAL
+REPRESENTATIVE FOR TRADE NEGOTIATION.
+RUSSELL MUNK, DEPUTY ASST GENERAL COUSELOR, TREASURY DEPT.
+PHILIP T. LINCOLN, JR. COMMERCIAL/ECONOMIC OFFICER, USLO
+DATE: FEB 27, 1979
+PLACE: MINISTRY OF FOREIGN TRADE, BEIJING
+SUBJ: TRADE WORKING GROUP MEETING
+(OPENING PLEASANTRIES CONCERNED THE WEATHER, TIME
+DIFFERENTIAL BETWEEN THE US AND CHINA, ETC.)
+WANG: HOW SHALL WE PROCEED?
+KATZ: I AM PREPARED TO PROCEED IN ANY WAY YOU PREFER. I
+RAISED WITH MR. SUN SOME SUBJECTS YESTERDAY.
+WANG: SECRETARY BLUMENTHAL HAD TALKS WITH VICE PREMIER
+YU QUILI AND MINISTER OF FINANCE ZHANGJINFU AND THIS
+MORNING HE HADTALKS WITH MINISTER OF FOREIGN TRADE LI
+JIANG. ALL THESE TALKS TOUCHED UPON THE TOTAL RELAIONSHIP
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 01 OF 09 100623Z
+
+BETWEEN OUR TWO COUNTRIES, INCLUDING TRADE RELATIONS. I
+THINK ALL THESE TALKS HAVE RESOLVED THE PRINCIPLES FOR OUR
+TALKS. THUS THE TALKS HAVE ALREADY PASSED THE HALFWAY POINT.
+WE THINK OUR WORK IS NOW EASY. (AT THIS POINT VICE MINISTER
+WANG INTRODUCED THE CHINESE PARTICIPANTS AND ASSISTANT
+SECRETARY KATZ INTRODUCED THE US SIDE)
+WANG: USLO HAS HANDED OVER A LIST OF SUBJECTS TO BE CONTAINED
+IN THE TRADE AGREEMENT WHICH YOU WISH TO DISCUSS WITH US.
+YOU HAD AN EXCHANGE OF VIEWS WITH MR. SUN. SO NOW WE WOULD
+LIKE TO LISTEN TO YOUR VIEWS ON THESE ISSUES.
+KATZ: THANK YOU. AS SECRETARY BLUMENTHAL SAID THIS MORNING,
+OUR PURPOSE IS TO LAY A FOUNDATION ON WHICH WE CAN BUILD
+A FAST GROWING TRADE RELATIONSHIP. A TRADE AGREEMENT IS
+AN ESSENTIAL ELEMENT IN THIS FOUNDATION. UNDER OUR LAWS,
+IT IS NECESSARY THAT MOST FAVORED NATION (MFN) TREATMENT
+BE PROVIDED IN THE FRAMEWORK OF A TRADE AGREEMENT. OUR LAWS,
+MOREOVER, SPECIFY CERTAIN ELEMENTS WHICH MUST BE PART OF
+THAT TRADE AGREEMENT. WHAT WE HOPE TO DO THIS WEEK IS TO
+INTRODUCE OUR REQUIREMENTS, EXPLAIN WHAT WE HAVE IN MIND,
+EXCHANGE VIEWS, AND PLAN HOW WE SHOULD PROCEED -- LOOKING
+FORWARD TO THE CONCLUSION OF A TRADE AGREEMENT. I CONVEYED
+TO MR. SUN NINE POINTS WHICH WE BELIEVE ARE REQUIRED OR
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+RELEVANT FOR INCLUSION IN A TRADE AGREEMENT. IF YOU AGREE
+THAT THIS CAN FORM THE AGENDA FOR OUR WORK, I WOULD PROPOSE
+TO START WITH THE FIRST OF THESE ITEMS, AND THEN DISCUSS THE REST.
+DISCUSSIONS CAN BE CONTINUED TOMORROW IF ECESSARY.
+WANG: AGREED.
+KATZ: THE FIRST ITEM CALLS FOR MUTUAL ASSISTANCE WITH
+RESPECT TO TRADE OPPORTUNITIES AND NON-DISCRIMINATORY
+TREATMENT INCLUDING MFN AND RECIPROCAL TRADE OPPORTUNITIES.
+THE ITEM WE ARE DISCUSSING DEALS WITH THE ROVISION OF MFN
+TREATMENT. OUR SIDE, THIS PROVISION IS VERY SIMPLE-ESSENTIALLY, IT IS A STANDARD MFN PROVISION FOUND IN MOST
+TRADE AGREEMENTS. WE, OF COURSE, HAVE A TWO-COLUMN
+TARIFF SYSTEM, AS YOU MAY KNOW -- ONE COLUMN APPLIES TO MFN;
+THE OTHER COLUMN HAS TO DO WITH STATUTORY RATES, WHICH ARE
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 01 OF 09 100623Z
+
+CONSIDERABLY HIGHER. WE HAVE A REQUIREMENT THAT MFN TREATMENT BE RECIPROCATED ON YOU SIDE BY SOME PROVISIONS TO
+ASSURE THAT THEERE ARE EQUIVALENT AND RECIPROCAL TRADE
+OPPORTUNITIES IN YOUR MARKET.
+FRANKLY SPEAKING, WE DO NOT KNOW MUCH ABOUT YOUR
+TARIFF SITUATION. WE UNDERSTAND YOU HAVE A TARRIFF SYSTEM,
+BUT WE DO NOT KNOW HOW IT OPERATES. THERE ARE VARIOUS
+WAYS WE COULD PROVIDE FOR RECIPROCITY, AS WE HAVE WITH
+OTHER COUNTRIES. SOME OF THE RECIPROCITY COULD BE PROVIDED
+IN OTHER PROVISIONS IN THE TRADE AGREEMENT, SUCH AS TOSE
+COVERING BUSINESS FACILITATION, BUT WE THINK THAT THERE COULD BE
+OTHER PROVISIONS DEALING WITH THIS MATTER. FOR EXAMPLE,
+THERE COULD BE A DECISION THAT CHINA WILL BASE ITS PURCHASES
+FROM THE UNITED STATES SOLELY ON COMMERCIAL TERMS, THAT IS,
+PRICE, QUALITY, DELIVERY, AND CREDIT TERMS. WE ALSO WANT
+SOME PROVISION THAT THERE WILL BE NO DISCRIMINATION AGAINST
+THE US, EITHER BY CHINESE ENTERPRISE OR THE CHINESE
+GOVERNMENT -- WHOEVER MAKES IMPORTANT DECISIONS. THAT'S ALL I
+WANT TO SAY ABOUT THIS ITEM -- PERHAPS YOU WANT TO COMMENT?
+WANG: WE SHARE YOUR VIEWS. SIGNING OF A TRADE AGREEMENT
+SHOULD HELP TO DEVELOP TRADE. GRANTING MFN TREATMENT TO
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+PAGE 01
+BEIJIN 01333 02 OF 09 100649Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------100112 100934Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4470
+C O N F I D E N T I A L SECTION 2 OF 9 BEIJING 1333
+DEPT FOR EB- ASST SEC KATZ
+DEPT PASS TREASURY FOR EXEC ASST TO SECRETARY RICHARD W. FISHER
+EACH OTHER IS A VERY IMPORTANT ELEMENT. MFN TREATMENT IS
+RELATED TO TARIFFS -- WHICH ARE VERY IMPORTANT IN TRADE.
+SO WE THINK THE TRADE AGREEMENT MUST EMBODY FACILITATION
+FOR TRADE; EMBODY MFN TREATMENT. WE AGREE TO HAVE SUCH
+PROVISIONS -- MFN TREATMENT -- IN OUR TRADE AGREEMENT.
+WE HAVE IN CHINA TWO TYPES OF TARIFFS -- GENERAL
+TARIFFS AND LOW TARIFFS (MFN TARIFFS). THIS IS THE SAME
+AS YOUR SYSTEM. FOR OUR PART, THERE IS NO DIFFICULTY TO
+STIPULATE N MFN TREATMENT CLAUSE IN THE TRADE AGREEMENT.
+AS FOR EXCEPTIONAL CLAUSES IN ADDITION TO MFN TREATMENT,
+WE WOULD LIKE TO LISTEN TO YOUR VIEWS. I WOULD LKKE TO
+TAKE THIS IOPPORTUNITY TO MAKE ANOTHER POINT, NOT CONNECTED
+WITH MFN, BUT ALSO A &quot;FAVORED ITEM.&quot; CHINA SHOULD ENJOY
+BENEFICIARY STATUS UNDER GSP FOR DEVELOPING COUNTRIES.
+WE HOPE THIS CLAUSE WILL BE INCLUDED IN THE TRADE AGREEMENT.
+WE WOULD LIKE TO LISTEN TO YOUR VIEWS ON HOW TO PUT THIS
+IN THE TRADE AGREEMENT.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 02 OF 09 100649Z
+
+KATZ: LET ME SAY FIRST, WITH RESPECT TO YOUR TARIFFS, AS
+WE UNDERSTAND IT, THE CHINESE TARIFF SYSTEM IS NOT A
+REGULATOR OF TRADE AS IT IS IN A MARKET ECONOMY SUCH AS
+OURS -- ALTHOUGH WE WOULD BE GLAD TO LISTEN TO AN EXPLANATION
+OF YOUR TARIFF SYSTEM.
+WANG: OUR TARIFF SYSTEM HAS TWO COLUMNS -- GENERAL AND LOW
+TARIFFS. THE LOW TARIFFS ARE THE MFN TARIFFS. THIS IN
+ITSELF IS AN ASSURANCE FOR THE DEVELOPMENT OF TRADE -IT IS BENEFICIAL TO YOUR EXPORTS TO CHINA.
+KATZ: DOES AN ENTERPRISE FACED WITH A DECISION ON IMPORT-
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+ING FROM TWO DIFFERENT SOURCES -- DOES THE TARIFF AFFECT
+THE DECISION?
+WANG: YES. OF COURSE, IT VARIES FROM ONE CASE TO ANOTHER.
+WE HAVE MFN AND NON-MFN TARIFFS -- THE TWO RATES DIFFER.
+KATZ: DO YOU HAVE THE RATES?
+WANG: YES, WE HAVE, BUT NOT IN ENGLISH.
+KATZ: PERHAPS THAT WOULD BE HELPFUL.
+WANG: YES, WE CAN GIVE THEM TO YOU.
+KATZ: I ASSUME YOU ARE WILLING TO CONSIDER THE LANGUAGE
+WE WISH TO PROPOSE?
+WANG: YES.
+KATZ: I SHOULD HAVE STATED AT THE OUTSET THE OBVIOUS -THERE IS A WELL-KNOWN ISSUE RELATING TO MFN EXTENSION
+WHICH SECRETARY BLUMENTHAL REFERRED TO THIS MORNING. INDEED
+IT WAS DISCUSSED WITH VICE PREMIER DENG XIAOPING BY
+PRESIDENT CARTER WHEN HE WAS IN WASHINGTON, DC. AS
+SECRETARY BLUMENTHAL RESTATED THIS MORNING, IT IS OUR DESIRE
+TO ACCORD CHINESE EXPORTS MFN BECAUSE WE UNDERSTAND IT
+IS THE NECESSARY BASIS FOR THE DEVELOPMENT OF TRADE. WE
+ARE WORKING WITH CONGRESS TO FIND A WAY TO DEAL WITH THIS
+LEGAL PROBLEM. SO WE ARE PROCEEDING IN THIS WORKING GROUP
+ON THE ASSUMPTION THAT A WAY WILL BE FOUND AROUND THE LEGAL
+PROBLEM DURING THE COURSE OF THE YEAR. WE CAN DISCUSS THE
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 02 OF 09 100649Z
+
+REQUIREMENTS OF A TRADE AGREEMENT, BUT WE ARE NOT DEALING
+WITH THE LEGAL PROBLEM IN THIS WORKING GROUP.
+WITH RESPECT TO THE QUESTION OF GSP WHICH YOU RAISED,
+UNDER OUR LAW THERE ARE SPECIFIC REQUIREMENTS FOR ELIGIBILITY
+FOR GSP. I ASSUME THESE ARE FAMILIAR TO YOU. ONE REQUIREMENT HAS TO DO WITH MFN -- THE COUNTRY MUST RECEIVE MFN
+IN ORDER TO RECEIVE GSP. SECOND, THE COUNTRY MUST BE A
+MEMBER OF IMF AND GATT. THIRD, THE COUNTRY MUST NOT BE
+DOMINATED OR CONTROLLED BY INTERNATIONAL COMMUNISM. THAT
+LATTER IS A HISTORICAL REFERENCE IN A SENSE, INTENDED
+REALLY TO MAKE TWO COUNTRIES ELIGIBLE -- POLAND AND YUGOSLAVIA.
+AS A PRACTICAL MATTER, IN THE NEAR TERM, IMF AND GATT MEMBERSHIP ARE THE IMMEDIATE PROBLEMS. I WOULD NOT ENCOURAGE YOU
+TO EXPECT THAT GSP WOULD BE AVAILABLE IN THE NEAR FUTURE. I
+THINK AS A PRACTICAL MATTER -- IN TERMS OF OUR WORK -- WE SHOULD
+THINK IN TERMS OF THE OTHER ELEMENTS WHICH WOULD BE INCLUDED
+IN THE TRADE AGREEMENT.
+WANG: ALL RIGHT. SINCE WE ARE A DEVELOPING COUNTRY, WE
+THINK CHINA SHOULD BE ELIGIBLE TO ENJOY GSP TREATMENT -WE PUT THIS FORWARD FOR YOUR CONSIDERATION. IF THERE IS
+NOTHING FURTHER TO DISCUSS ON THIS, WE CAN GO ON TO THE
+NEXT TOPIC.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+KATZ: VERY GOOD. THE NEXT SUBJECT IS TRADE FACILITATION.
+WE HAD SOME DISCUSSION ON THIS THIS MORNING. I UNDERSTOOD
+MINISTER LI JIANG TO SAY THAT HE FAVORED FACILITATIVE
+ARRANGEMENTS FOR BUSINESSMEN. THERE ARE SEVERAL ASPECTS
+WHICH I WOULD LIKE TO EXPLAIN. WE THINK THE TRADE AGREEMENT
+SHOULD ESTABLISH PRINCIPLES FOR EQUITABLE PARTICIPATION
+BY FIRMS AND ENTERPRISES OF BOTH COUNTRIES IN THE OTHER
+COUNTRY WITH RESPECT TO A NUMBER OF SERVICES. THIS INCLUDES
+TRANSPORTATION, INSURANCE, FINANCIAL MATTERS, TECHNICAL
+ADVICE, ADVERTISING, AND OTHER THINGS. ALSO, TO PERMIT
+TRADE RELATIONS TO FLOURISH, IT IS IMPORTANT TO HAVE AVAILCONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 02 OF 09 100649Z
+
+ABLE INFORMATION CONCERNING LAWS, REGULATIONS, AND STATISTICS
+WITH RESPECT TO EACH COUNTRY. THIS MORNING THERE WERE DISCUSSIONS CONCERNING THE ESTABLISHMENT OF REPRESENTATIVE
+OFFICES IN EACH COUNTRY. WE BELIEVE THAT THE TRADE AGREMENT
+SHOULD PROVIDE FOR THE ESTABLISHMENT OFSUCH OFFICES, INCLUDING PROVISIONS FOR OFFICE SPACE, IMPORTATION OF PERSONAL
+EFFFECTS,AUTOMOBILES, ENTRY AND EXIT, HIRING AND COMPENSATION
+OF LOCAL PERSONNEL, IMPORTATION OF SAMPLES, AND SO FORTH.
+WE THINK THESE MTTERS SHOULD BE INCLUDED IN THE TRADE
+AGREEMENT. BECAUSE THESE THINGS FACILITATE THE DEVELOPMENT
+OF TRADE, WE BELIEVE WE SHOULD DEVOTE PARTICULAR ATTENTION
+TO THIS QUESTION AND PERHAPS CONCLUDE AN INTERIM AGREEMENT
+IN ADVANCE OF THIS TRADE AGREEMENT. IF WE CAN PROGRESS
+RAPIDLY, THIS ISPERHAPS A MATTER THAT SECRETARY KREPS COULD
+CONCLUDE DURING HER VISIT. THERE ARE TWO OTHER MATTERS
+WHICH SHOULD BE COVERED IN THIS AREA. ONE IS GOVERNMENT
+TRADE OFFICES (PREVIOUSLY I WAS TALKING ABOUT PRIVATE
+ENTERPRISES). WE SHOULD MAKE PROVISIONS FOR GOVERNMENT
+OFFICES. ESSENTIALLY, THESE OFFICES, IN BEIJING AND
+WASHINGTON, DC, WOULD BE INTEGRAL PARTS OF OUR RESPECTIVE
+EMBASSIES, ALTHOUGH THEY COULD BE LOCATED IN SEPARATE
+PREMISES. THE COMMERCIAL OFFICERS OF THESE OFFICES WOULD
+BE PART OF THE EMBASSY DIPLOMATIC STAFF WITH ALL THE STATUS
+OF EMBASSY OFFICIALS -- THEY WOULD ENJOY DIPLOMATIC STATUS. AS TO
+THE FUNCTIONS OF THESE OFFICES, WE WOULD PROPOSE (FOR THE US) THAT
+THEY WOULD SUPPORT EXHIBITS OF US PRODUCTS AND OTHER KINDS
+OF TRADE PROMOTION ACTIVITIES. THEY WOULD ASSIST BOTH
+AMERICAN BUSINESSMEN AND CHINESE ORGANIZATIONS INTERESTED
+IN SALES OR OTHER COMMERCIAL TRANSACTIONS -- BOTH IMPORTS
+AND EXPORTS. ONE TING WE ARE PREPARED TO OFFER ON AN
+EARLY BASIS IS SEMINARS WITH RESPECT TO PARTICULAR INDUSTRIES
+OR PRODUCTS WHICH WOULD BE OF INTEREST TO YOUR ORGANIZATIONS.
+WE THINK THIS GENERAL SUBJECT -- TRADE FACILITATION, WITH BOTH PRIVAT
+CONFIDENTIAL
+CONFIDENTIAL
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+PAGE 05
+
+BEIJIN 01333 02 OF 09 100649Z
+
+E
+AN GOVERNMENT ROLES -- IS A PARTICULARLY USEFUL ONE FOR
+EXPANDING BILATERAL TRADE AND WE WOULD LIKE TO PROPOSE THAT
+WE MOVE AS RAPIDLY AS POSSIBLE IN THIS AREA..
+WANG: THIS PROBLEM OF COMMERCIAL CTIVITIES IS ONE TOUCHED
+ON BY OUR TWO MINISTERS. WE THINK WE CAN AGREE ON THE
+CONFIDENTIAL
+
+ADP524
+
+PAGE 01
+BEIJIN 01333 03 OF 09 100712Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------100274 100935Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4471
+C O N F I D E N T I A L SECTION 3 OF 9 BEIJING 1333
+DEPT FOR EB-ASST SEC KATZ
+DEPT PASS TREASURY FOR EXEC ASST TO SECRETARY RICHARD W. FISHER
+PRINCIPLE OF AN AGREEMENT.WE THINK BOTH SIDES CAN SET UP
+RESIDENT REPRESENTATIVES IN EACH OTHER'S COUNTRIES. WE
+WILL SEND OURS TO WASHINGTON, DC AND YOURS TO BEIJING.
+FOR OUR PART, HOWEVER, THERE EXIST TECHNICAL PROBLEMS. WE
+LACK HOTEL ACCOMODATIONS. NEVERTHELESS, WE HAVE ALREADY
+OFFEREED CONVENIENCES AND FACILITIES FOR AMERICAN BUSINESSMENT, FOR EXAMPLE, FOR SOME TECHNICIANS WHO HAVE STAYED IN
+CHINA FOR A LONG TIME TO OFFER TECHNICAL SEMINARS. WE
+EXTENED THEIR VISAS FROM TIME TO TIME AND OFFEREED THEM
+FACILITIES. WE HAVE NO AGREEMENT, BUT WE CAN AGREE ON
+THE AGREEMENT. AS FOR RESIDENT REPRESENTATIVES IN OTHER
+CITIES IN CHINA, WE CAN STUDY THE PSSIBILITIES IN ACCORD
+WITH OUR WORKING REQUIREMENTS. WE CAN OFFER FACILITIES
+AND CONVENIENCES FOR ALL BUSINESSMEN IF REQUIRED. AS A
+MATTER OF FACT, WE HAVE ALREADY OFFERED CONVENIENCES BENEFICIAL TO BOTH SIDES. YOUR USLO OFFICER IS VERY FAMILIAR
+WITH THIS. FOR EXAMPLE, IN THE CASE OF CHEMICAL FERTILIZER
+TECHNICIANS, WE ALLOWED THEM TO TRAVEL TO MANY PARTS OF
+CHINA. ON THE QUESTION OF GOVERNMENT TRADE REPRESENTATION,
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 03 OF 09 100712Z
+
+WE CAN AGREE TO ESTABLISH COMMERCIAL OFFICES UNDER THE
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+EMBASSIES WHICH ENJOY DIPLOMATIC STATUS. WE CAN OFFER
+FACILITIES AND CONVENIENCES TO EITHER PRIVATE ENTERPRISES
+OR OFFICIAL REPRESENTATIVES. AS A MATTER OF FACT, WE ARE
+ALREADY DOING SO. WE THINK IT IS NECESSARY TO INCLUDE A
+CLAUSE IN THE AGREEMENT AND WE ARE PREPARED TO PERMIT YOU TO
+ESTABLISH
+CONSULATES GENERAL WITH COMMERCIAL OFFICES IN OTHER PARTS
+OF OUR COUNTRY. ACCORDING TO AMERICAN PRACTICE, WOULD
+THESE CONSULATES GENERAL INCLUDE COMMERCIAL REPRESENTATIVES?
+KATZ: YES.
+WANG: WE WILL PROVIDE CONVENIENCES FOR BUSINESSMEN.
+KATZ: I AM PLEASED WITH YOUR RESPONSE. BOTH GOVERNMENT
+AND PRIVATE OFFICES ARE NECESSARY TO PROVIDE ASSISTANCE FOR
+DOING BUSINESS. BUT GOVERNMENT OFFICES CAN BE BERY HELPFUL
+TO YOU -- IN THE SERVICES THEY CAN PROVIDE TO YOU. AS WELL AS
+TO PRIVATE BUSINESSMEN. I THINK YOU WOULD FIND, FOR EXAMPLE,
+THAT OUR COMMERCIAL OFFICE IN BEIJING WOULD BE WELL EQUIPPED
+WITH INFORMATION ABOUT ALL US BUSINESSES AND INDUSTRIES.
+IF YOU WANTED INFORMATION ABOUT A SPECIFIC PRODUCT OR INDUSTRY,
+YOU COULD GO THERE TO FIND CATALOGS.
+WANG: YES, WE HOPE SO.
+KATZ: THIS CAN BE A USEFUL POINT OF CONTACT IF YOU WANT TO
+LEARN MORE ABOUT WHAT IS AVAILABLE IN THE US CONCERNING
+A PARTICULAR FIRM OR INDUSTRY.
+WANG: ALONG WITH THE ESTABLISHMENT OF COMMERCIAL REPRESENTATION,
+THER WILL BE A LOT OF ROUTINE WORK. IF WE ESTABLISHED COMMERCIAL
+REPRESENTATION IN THE US, WE WOULD WISH TO ENJOY SUITABLE
+FACILITIES. THIS SHOULD BE RECIPROCAL. FOR OUR PART, THERE
+IS NO DIFFICULTY.WE THINK IT IS NECESSARY TO HAVE TECHNICAL
+SEMINARS TO PROMOTE MUTUAL UNDERSTANDING. THE CHINA COUNCIL
+FOR THE PROMOTION OF INTERNATIONAL TRADE (CCPIT) IS IN CHARGE
+OF THIS WORK. THE MINISTRY OF FOREIGN TRADE SUPPORTS SUCH
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 03 OF 09 100712Z
+
+SEMINARS. REPRESENTATIVES FROM FACTORIES AND INDIVIDUAL
+DEPARTMENTS HAVE ATTENDED SEMINARS SPONSORED BY AMERICAN FIRMS.
+KATZ: THE NEXT SUBJECT HAS TO DO WITH FINANCIAL PROVISIONS.
+WE THINK IT IS DESIRABLE TO COVER PROVISIONS CONCERNING PAYMENTS, REMITTANCE OF CURRENCY, RATES OF EXCHANGE, BANKING
+RELATIONS, AND SIMILAR MATTERS. WE MIGHT ALSO HAVE PROVISIONS
+FOR THE ESTABLISHMENT OF BRANCH BANKS OF EACH COUNTRY IN THE
+OTHER COUNTRY. IN HIS MEETING YESTERDAY WITH THE MINISTER OF
+FINANCE, SECRETARY BLUMENTHAL SAID HE HOPED TO SEE A SIGN
+SAYING &quot;BANK OF CHINA&quot; ON WALL STREET. WITHOUT PLAYING FAVORITESN
+WE HOPE TO SEE A SIGN SAYING &quot;BANKS OF AMERICA&quot; IN CHINA (BECAUSE
+WE HAVE MORE THAN ONE COMMERCIAL BANK).
+WANG: WE THINK THIS SUBJECT FALLS WITHIN THE AREA OF BANKING
+BUSINESS; YOU SHOULD CONTACT THE BANK OF CHINA. MAYBE THE US
+FRIENDS ARE AWARE THAT WE HAVE ESTABLISHED A BRANCH BANK IN
+LONDON. VERY SOON. WE ARE PREPARING TO ESTABLISH A BRANCH
+BANK IN LUXEMBOURG. WE THINK YOU MAY RECEIVE AN EXPLANATION
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+FROM THE BANK OF CHINA ABOUT THE BUSINESS
+REQUIREMENTS. IF IT IS NECESSARY TO INCLUDE PROVISIONS
+IN THE TRAE AGREEMENT, WE CAN STUDY THAT.
+KATZ: THE WORKING GROUP ON BAKING PROBLEMS IS DISCUSSING
+THIS SAME MATTER -- THERE IS NO NEED FOR US TO DISCUSS
+THIS IN DETAIL.
+WANG: YES.
+KATZ: WE HAVE PROVISIONS LIKE THIS IN OTHER TRADE AGREEMENTS
+AS YOU MAY BE AWARE. THEY ARE NOT VERY COMPLEX. WE WILL
+GIVE YOU A COPY.
+WANG: TO DEVELOP TRADE, WE NEED CREDIT. WE WONDER WHETHER
+YOU CAN OFFER FACILITIES FOR PROVIDING CREDIT?
+KATZ: WE THINK IT IS QUITE NORMAL TO PROVIDE FOR CREDIT
+FACILITIES. WE UNDERSTAND THAT GIVEN YOUR STATE OF ECONOMIC
+DEVELOPMENT AND TRADE DEVELOPMENT, CREDIT WOULD PLAY AN
+IMPORTANT ROLE. INDEED, THERE WAS SOME DISCUSSION OF THIS
+MATTER BETWEEN SECRETARY BLUMENTHAL AND THE MIISTER OF
+FINANCE. AT THE MOMENT, THERE ARE SOME LEGAL PROBLEMS AND
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 03 OF 09 100712Z
+
+FINANCIAL OBSTACLES. WE ASSUME THAT IN TIME THESE WILL BE
+OVERCOME. I SHOULD EMPHASIZE THAT WE ARE SPEAKING OF
+OFFICIAL CREDITS, NOT PRIVATE CREDITS.
+WANG: IF YOU REMOVE ALL THE OBSTACLES, THEN THERE WILL BE NO PROBLEM?
+KATZ: THERE IS ONLY ONE REMINING PROBLEM -- MONEY*
+(LAUGHTER)
+WANG: YOU CAN OFFER CREDIT FACILITIES?
+KATZ: WE CAN EXPECT THATAFTER THE PROBLEMS ARE RESOLVED,
+WE CAN OFFER CREDIT FACILITIES. TO BE VERY CLEAR, I SHOULD
+MAKE THREE POINTS. FIRST, THERE IS A LEGAL PROBLEM SIMILAR
+TO MFN. I ASSUME THAT WHEN THE PROBLEM OF ONE IS RESOLVED
+(MFN), THE OTHER WILL BE RESOLVED AT THE SAME TIME (CREDITS).
+SECOND, RELATIONS NEED TO BE DEVELOPED WITH THE EXPORT
+IMPORT BANK, WHICH IS OUR CREDIT AGENCY. IT IS A PART OF
+THE US GOVERNMENT, BUT OPERATES INDEPENDENTLY UTILIZING
+PRINCIPLES OF CREDIT WORTHINESS, AND SO FORTH. AND THERE
+IS AN ISSUE OF OUTSTANDING DEBT WHICH NEEDS TO BE RESOLVED.
+THIRS,AND THIS PURELY AN AMERICAN PROBLEM, IS TO FIND
+THE MONEY. AT PRESENT, THE EXPORT IMPORT BANK IS LIMITED
+IN ITS RESOURCES. IT HAS DEMANDS WHICH EXCEED ITS RESOURCES
+(MONEY) BY THREE TIMES. WE THINK THIS IS A PROBLEM WHICH
+CAN BE RESOLVED. IT REQUIRES SOME TIME AND THE RESOLUTION
+OF THE EARLIER ISSUES I REFERRED TO.
+KATZ: THE NEXT SUBJECT -- UNDER THE TRADE ACT OF 1974,
+WE REQUIRE CERTAIN PROVISIONS WHICH ARE NECESSARY TO PROTECT
+OUR MARKET FROM DISRUPTION OF IMPORTS. ESSENTIALLY, THESE
+PROVISIONS REQUIRE THAT THERE BE BILATERAL CONSULTATIONS
+IN AN EFFORT TO RESOLVE THE PROBLEM ON A MUTUALLY SATISFACTORY
+BASIS. IF THE PROBLEM CAN NOT BE RESOLVED ON A MUTUALLY
+SATISFACTORY BASIS, WE NEED THE RIGHT TO TAKE UNILATERAL
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+ACTION IN A SPECIFIC CASE. ESSENTIALLY, THIS IS NOT VERY
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 01333 04 OF 09 100736Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------100409 100936Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4472
+C O N F I D E N T I A L SECTION 4 OF 9 BEIJING 1333
+DEPT FOREB-ASST SEC KATZ
+DEPT PASS TREASYRY FOR EXEC ASST TO SECRETARY RICHARD W. FISHER
+DIFFERENT FROM THE TEXTILE PROBLEM WHICH WE HAVE BEEN
+DISCUSSING RECENTLY, EXCEPT THAT TEXTILES IS PERHAPS THE
+MOST AGGRAVATED PROBLEM OF TRADE. THE REASON IS THAT ORLD
+TEXTILE TRADE IS SO LARGE, EVERY COUNTRY HAS PROBLEMS WITH
+TEXTILE IMPORTS SO THIS PROBLEMS IS TAKING ON MULTINATIONAL
+OR INTERNATIONAL CHARACTERISTICS.THE OTHER CASES WILL NOT BE
+AS LARGE. ONLY ONE CASE HAS BEEN BROUGHT UNDER THIS PROVISION,
+AND NO ACTION WAS TAKEN. THE OBJECT IS TO PROVIDE A PROCEDURE
+WHICH WILL DIMINISH PROBLEMS RATHRR THAN TO PERMIT THEM TO
+BECOME WORSE. THE ESSENTIAL INGREDIENT IS TO FIND A MUTUAL
+SOLUTION. RATHER THAN TO TAKE UNILATERAL ACTION.
+WANG: WE THINK THIS IS A TWO-PART PROBLEM. ONE PART RELATES
+TO THE LAWS IN FORCE, THE OTHER PART ISTHE ACTUAL PRACTICES.
+WE HOPE THERE WILL NOT BE PROTECTION PROVISIONS IN THE TRADE
+AGREEMENT. IF YOU INSIST, WE WILL CONSIDER HOW TO DEVELOP
+APPROPRIATE WORDING FOR SUCH A PROVISION IN THE AGREEMENT
+WE THINK THAT, IN ORDER TO DEVELOP TRADE, WE CAN SOLVE PROBLEMS
+THROUGH MUTUAL CONSULTATION. WE HOPE YOU WILL NOT OVERESTIMATE
+OUR ABILITY. AS FOR THE TIEMS YOU THOUGHT SENSITIVE, FOR
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 04 OF 09 100736Z
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+EXAMPLE, TEXTILES, WE HAVE ONLY A LIMITED QUANITYT FOR
+EXPORT. WE HOPE YOU WILL OFFER US A REASONABLE QUOTAM.
+CONSUMER GOODS ARE THE MAIN ITEMS OF OUR EXPORTS -- THEY
+ACCOUNT FOR A BIG PROPORTION OF OUR TRADE, BUT ONLY A SMALL
+PART OF THE US MARKET. WE MUST START FROM THE ACTUAL
+CIRCUMSTANCES. RECENTLY, WE SENT A TEXTILE GROUP TO THE
+TO HAVE CONSULTATIONS WITH YOU. THIS SHOWS WE WISH
+TO SOLVE PROBLEMS THROUGH CONSULTATIONS. WE HOPE YOU
+WILL CONSIDER THIS PROBLEM POSITIVELY, WHICH WILL BE
+BENEFICIAL TO TRADE.
+KATZ: LET ME EMPHASIZE, OUR OBJECTIVE IS NOT TO BUILD
+PROTECTIONISM INTO THE AGREEMENT, BUT TO AVOID HAVING TO
+RESORT TO PROTECTIONISM. ESSENTIALLY WE DO THAT BY
+PROVIDINGFOR APROCEDURE FOR CONSULTATIONS SO SMALL
+PROBLEMS DO NOT BECOME WORSE OR UNMANAGEABLE.
+WANG: WE THINK IT IS BETTER NOT TO PUT A PROTECTIONIST
+CLAUSE IN THE AGREEMENT.
+KATZ: WE HAVE A REQUIREMENT FOR SUCH A CLAUSE (READS
+PASSAGE FOROM SECTION 405 OF THE TRADE ACT). AS A PRACTICAL
+MATTER, WE ARE REQUIRED BY LAW TO PUT SUCH A PROVISION IN
+THE AGREEMENT, BUT, IN FACT, WE THINK THAT SUCH LANGUAGE
+IS HELPFUL TO YOU RATHER THANHARMFUL TO YOU. IT IS NOT
+OUR PRACTICE, AS IS THE CASE OF SOME COUNTRIES, TO PUT
+LIMITS IN THE AGREEMENT ON WHAT YOU CAN SELL TO US. WE
+DO NOT WANT TO DO THAT, BUT WE MUST HAVE SOME PROCEDURE
+FOR DEALING WITH PROBLEMS IF SUCH PROBLEMS ARISE OR
+THREATEN TOARISE -- ESPECIALLY TO PROVIDE FOR CONSULTATIONS
+TO FINA A MUTUAL SOLUTION. BUT IF THEY ARE NOT RESOLVED,
+WE MUST HAVE THE RIGHT TO TTAKE ACTION. WE CAN PROVIDE
+SOME TEXTS WHICH YOU CAN SEE ARE NOT PROTECTIONIST -- WHICH
+ARE NOT RESTRICTIVE, BUT ASSIST IN RESOLVING PROBLEMS.
+WANG: WE THINK SUCH WORDING IS PROTECTIONIST IN NATURE -AP CAN NOT UNDERSTAND YOUR POSITION. IN PRINCIPLE, IN
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 04 OF 09 100736Z
+
+ORDER TO DEVELOP TRADE, WHEN WE HAVE PROBLEMS WE NEED TO
+MUTUALLY SOLVE THEM. WE CAN PUT THIS IN THE AGREEMENT
+FROM OUR SIDE, WE DO NOT TINK THAT WE WILL CAUSE MARKET
+DISRUPTIONS.
+KATZ: LOOKING AT THE PROBLEM FROM OUR PERSPECTIVE, WE SEE
+A NATION OF 900 MILLION PRODUCERS;.
+WANG: OR, WE CAN SAY WE HAVE 900 MILLION CONSUMERS AS WELL*
+(LAUGHTER) (TELLS JOKE ABOUT CHINESE POUPLATION)
+KATZ: WHAT WE ARE PROPOSING WILL NOT BE A PROBLEM.
+WANG: WE WILL STUDY THIS FURTHER. WE HOPE ALL THE WORDING
+WILL BE POSITIVE -- NOT NEGATIVE. WE WILL STUDY THE ACTUAL
+WORDING TO DEVELOP A CLAUSE.
+KATZ: THE NEXT SUBJECT RELATES TO COPYRIGHTS, PATENTS, AND
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+INDUSTRIAL PROPERTY. SUCH A CLAUSE IS REQUIRED BY OUR LAW.
+SPECIFICALLY, WE WANT TREATMENT EQUIVALENT TO THAT PROVIDED
+IN THE PARIS CONVENTION AND THE INDUSTRIAL PROPERTY
+CONVENTION. IN THE MEETING THIS MORNING, YOUR MINISTER SAID
+THAT YOU PROVIDED SUCH PROTECTON. BUT IT WOULD BE DESIRABLE -ESSENTIAL-- TO HAVE SUCH A PROVISION SET OUT IN THE TRADE
+AGREEMENT TO GIVE CONFIDENCE TO OUR INVESTORS AND TRADEERS.
+I UNDERSAND TAHT YOU ARECONSIDERING JOINING THESE TWO
+CONVENTIONS. I ASSUME THAT THE SECRETARIATS OF THESE
+TWO CONVENTIONS HAVE PROVIDED TECHNICAL ADVICE ON THE LAWS
+ANDREGULATIONS THAT ARENECESSARY. IN ADDITION, WE HAVE EXPERTS
+IN OUR
+GOVERNMENT WHICH COULD ASSIST IN THIS IF
+REQUIRED. WE ARE VERY INTERESTED IN HEARING WHAT THE
+POSSIBILITIES AARE IN THIS AREA AND THE STATUS OF YOUR
+NEGOTIATIONS WITH THESE TWO ORGANIZATIONS.
+WANG: WE HAVE A RELEVANT DEPARTMENT HANDLING PATENTS
+AND COPYRIGHT AFFAIRS. AS FOR THE PARIS CONVENTION, THE
+DEPARTMENTS CONCERNED ARE ACTIVELY CONSIDERING THIS. IN
+THE PAST FEW YEARS, WE DID NOT HAVE THE OPPORTUNITY TO
+CONSIDER THIS &quot;DUE TO A NUMBER OF REASONS&quot;. WE ARE NOW
+ENGAGED IN INTERNATIONAL ACTIVITIES. THE ORGANIZATIONS
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 04 OF 09 100736Z
+
+CONCERNED ARE ACTIVELY CONSIDERING THIS SUBJECT. EVEN
+THOUGH WE HAVE NOT PARTICIPAED IN THE PARIS CONVENTION,
+WE HAVE ACTIVELY PROTECTED PATENTS. WE ABIDE BY THE
+CONVENTION BY HONORINGCONTRACTS SIGNED BY ENTITIES OF
+BOTH COUNTRYES. WE HAVE IMPORTED PATENTS FROM JAPAN AND
+OTHER COUNTRIES, AND SO FAR THERE HAVE BEEN NO COMPLAINTS
+CONCERNING OUR
+FAILURE TO HONOR THE CONTRACTS. BUT THIS
+DOES NOT EXCLUDE THE POSSIBILITY THAT CHINA WILL PARTICIPATE
+IN THIS CONVENTION. YOU CAN HAVE FULL CONFIDENCE IN CHINA.
+WHEN WE SIGN THE TRADE AGREEMENT, WE WILL NOT NECESSARILY
+BE ALREADY PARTICPATING IN THE PARIS CONVENTION -- THESE
+ARE TWO DIFFERENT THINGS. WE CAN CONSIDER THE WORDING -HOW TO EXPRESS THIS IN THE TRADEE AGREEMENT.
+COPYRIGHTS AREHANDLED BY ANOTHER DEPARTMENT. AT
+PRESENT, MANY OTHER DEPARTMENTS IN CHINA ARE NEGOTIATING
+WITH THEIR COUNTERPARTS ON THE US SIDE, FOR EXAMPLE,
+IN SCIENCE ANDTECHNOLOGY AND CULTURE. MAYBE THIS WILL
+BE COVERED IN OTHER AGREEMENTS.
+KATZ: I THINK THAT FROM WHAT YOU SAY, WE CAN FIND WORDING
+TO MEET OUR LEGAL RQUIREMENTS AND TO SATISFY THE CONFIDENCE
+OF TRADERS AND INVESTORS. IF IT WERE INCLUDED IN THE AGREEMENT, IT WOULD NOT BE NECESSARY TO HAVE THIS IN THE S&amp;T AREA.
+BUT ITHINK IT WILL BE POSSIBLE TO FIND SOMEWORDING WHICH
+WILL BE ACCEPTABLE TO BOTH SIDES.
+WANG: WE CAN STUDY THIS FURTHER.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+KATZ: THE NEXT SUBJECT WAS ALSO COVEREDTHIS MORNING. I
+UNDERSTOOD YOUR MINISTER TO SAY THAT THERE WOULD BE NO
+PROBLEM TO PROVIDE FOR DISPUTE SETELEMENT. THIS IS STANDARD
+IN OUR TRADE AGREEMENTS, AND THE TRADE AGREEMENTS OF MANY
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 01333 05 OF 09 100829Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------100778 100937Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4473
+C O N F I D E N T I A L SECTION 5 OF 9 BEIJING 1333
+DEPT FOR EB-ASST SEC KATZ
+DEPT PASS TREASURY FOR EXEC ASST TO SECRETARY RICHARD W. FISHER
+OTHER COUNTRIES PROVIDE
+FOR IMPARTIAL ARBITRATION IF THE PARTIES CAN NOT OTHERWISE
+SETTLE THEIR DISPUTES. MANY CONTRACTS PROVIDE FOR THIS,
+BUT WE ARE PROPOSING A GENERAL PROVISION.
+WANG: WE AGREE TO INCLUDE SUCH A PROVISION IN THE AGREEMENT,
+ALTHOUGH WE HOPE THAT THE BUYERS AND SELLERS HAVE NO
+DISPUTES -- THAT THEY AVOID THEM. ACCORDING TO OUR PRINCIPLES,
+ALL OUR DISPUTES SHOULD BE SETTLED BY MUTUAL DISCUSSION. IF
+THERE IS NO SOLUTION, THEN THE QUESTION CAN BE SUBMITTED TO
+ARBITRATION FOR SETTELEMENT. ARBITRATION CAN BE HELD EITHER
+IN THE US, CHINA, OR IN A MUTUALLY AGREED THIRD COUNTRY.
+WE CAN AGREETO THIS. THE CCPIT ISRESPONSIBLE FOR THIS.
+THERE IS A LEGAL DEPARTMENT IN THE CCPIT WHICH HAS RESPONSIBILITY. THE PURPOSE IS TO PROMOTE TRADE -- TO PROMOTE TRADE
+BY SOLVING PROBLEMS THROUGH MEDIATION. (LAUGHS) WE CAN
+CONSIDER THE WORDING. WE WISH TO TAKE A AMICABLE AND
+POSITIVE ATTITUDE TOWARD DISPUTES AND TO SUBMIT THEM TO AN
+ARBITRATION TRIBUNAL ONLY IF IT IS THEONLY WAY OUT.
+KATZ: WITH DUE RESPECT TO MY COLLEAGUES, TWO OF WHOM ARE
+CONFIDENTIAL
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 05 OF 09 100829Z
+
+PRACTICING LAWYERS AND ONE (MR. MARCUSS) A NON-PRACTICIING
+LAWYER, I THINK WE ARE BETTER OFF SETTLING BEFORE GETTING
+THEMATTER INTO THEHANDS OF LAWYERS.
+MARCUSS: I DISAGREE WITH MY SUPERIOR*
+WANG: WE HOPE IN YOUR ARBITRATION RECORDS THERE IS NO RECORD
+OF DISPUTES BETWEEN AMERICAN AND CHINESEFIRMS.
+KATZ:I AGREE.
+SUN: THEN, YOU (MARCUSS) WILLLOSE YOUR JOB*
+MARCUSS: I'LL HAVE TO STAY IN GOVERNMENT*
+KATZ: HE NEXT SUBJECT IS A VERY SIMPLE PROVISION PROVIDING
+FOR SUSPENSION IN CASES OF NATIONAL SECURITY.THIS IS A
+TECHNICAL POINT REALLY.
+WANG: WHAT DOES IT MEAN?
+KATZ: ITWOULD ESSENTIALLY STATE, ACCORDING TO ONE FORMULATION, &quot;THE PROVISIONS OF THIS AGREEMENT SHALL NOT LIMIT
+THE RIGHT OF EITHER PARTY TO TAKE ANY ACTION FOR THE
+PROTECTION OF ITS SECURITY INTERESTS.&quot;
+WANG: PLEASE EXPLAIN WHAT THAT MEANS.
+KATZ: ESSENTIALLY IT COVERS ONLY NATIONAL SECURITY. IF
+EITHERCOUNTRYFELT THAT ITS NATIONAL SECURITY WAS THREATENED,
+IT COULD SUSPEND THE PROVISIONS OF THE AGREEMENT. THIS IS
+AN OVERRIDING PROVISION.
+WANG: THIS IS ONLY CONNECTED WITH THE TERMS AND RESPOSIBILITIES
+OF THE TRADEAGREEMENT?
+KATZ: YES, ALTHOUGH THERE IS A QUESION OF EXPORT CONTROL
+WHICH WE MAINTAIN FOR NATIONAL SECURITY REASONS.
+WANG: WE DON'T THINK THAT THERE EXISTS SUCH A PROBLEM -BECAUSE YOUR EXPORTER SIGNS CONTRACTS IN ACCORDANCE WITH
+US LAWS AND REGULATIONS. SO WE THINK THAT THE US
+GOVERNMENT SHOULD OFFER FACILITATION TO BUSINESSMEN. WE
+THINK THIS CLAUSE IS CONTRARY TO THE DESIRE TO DEVELOP TRADE.
+KATZ: IT ISIN ONE SENSE -- IT IS AN EXCEPTION TO EVERYTHING IN THE AGREEMENT. IT PROVIDES FOR NONPERFORMANCE.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 05 OF 09 100829Z
+
+PREFERABLY, IT WOULD NOT BE USED. BUT THERE MAY BE TIMES
+AND CIRCUMSTANCES WHEN EITHER COUNTRY MIGHT FEEL THAT IT
+COULD NOT HONOR THE AGREEMENT FOR NATIONAL SECURITY REASONS.
+WANG: WETHINK BOTH SIDES SHOULD HAVE FURTHER CONSULTATIONS
+ON THIS SUBJECT. FROM THE STANDPOINT OF THE ACTUAL SITUATION, SOME MEASURES THATTHE US GOVERNMENT HAS TAKEN
+HAVE NOT BEEN BENEFICIAL TO THE DEVELOPMENT OF TRADE. WE
+HAVE SIGNED A NUMBER OF CONTRACTS WITH AMERICAN FIRMS FOR
+WHICH THE US GOVERNMENT HAS REFUSED TO GRANT EXPORT
+LICENSES. SO THE CONTRACTS ARE STILL OUTSTANDING - THEY
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+CAN NOT BE HONORED. FOR SOME ITEMS, THE PROBLEM WAS
+SOLVED BUT IT TOOK A LONG TIME. SOME OF YOUR PRODUCTS
+ARE ADVANCED IN TECHNOLOGY, THAT IS, YOU ARE COMPETITIVE
+IN THIS AREA. IF YOU IMPOSE RESTRICTIONS ON EXPORTS,
+YOU LIMITEDYOUR ABILITY TO EXPORT (LAUGHTER). ADVANCED
+TECHNOLOGY PRODUCTS FROM THE US HAVE BEEN IMPORTANT
+IN OUR TRADE AND THEY ARE REQUIRED FOR THE FOUR MODERNIZATIONS. IF WE INTRODUCE HIGH TECHNOLOGY PRODUCTS FROM TH
+US, THIS WILL RAISE THE STANDARDS OF THE FOUR MODERNIZATIONS. WE DON'T THINK THIS WILL THREATEN THE US
+THE MOREPOWERFUL CHINA IS, THE MORE THIS WILL CONTRIBUTE
+TO THE US SECURITY.
+KATZ: UNFORTUNATELY, WE LIVE IN AN IMPERFECT WORLD. IT
+IS A MATTER OF MUCH REGRET THAT WE MUST SPEND SO MUCH OF
+OUR RESOURCES, EVEN HUMAN LIFE, IN WHAT WE REGARD AS
+NATIONAL SECURITY. WE LIVE WITH THREATSTOSECURITY.
+SOME AE REAL; SOME PERHAPS ARE NOT REAL, BUT THEY ARE
+PERCIEIVED AS REAL. WE ALL TAKE MEASURES TO PROTECT OUR
+SECURITY. WE HAVE TRIED TO REDUCE THE THREAT IN VARIOUS
+WAYS -- THROUGH WORK IN THE UNITED NATIONS AND INDEVELOPING
+RELATIONS WITH COUNTRIESAND REGIONS OF THE WORLD, THROUGH
+DISARMAMENT, THROUGH THE TREATIES ON NUCLEAR NON-PROLIFERATION,
+BUT DESPITE THESE EFFORTS, THERE ARE PROBLEMS AND THREATS
+THAT REMAIN. SO, MAYBE THIS PROVISION IS INCONSISTENT WITH
+THE GENERAL THRUST OF OUR EFFORTS WHICH PROVIDE FOR THE
+EXPANSION OF TRADE, BUT HERE WE MAY IN CERTAIN CIRCUMSTANCES
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 05 OF 09 100829Z
+
+HAVE TO SUSPEND AN AGREEMENT. THIS IS A DELIBERATE EFFORT,
+WHICH WE FEEL ISREQUIRED.
+WANG: I WOULD LIKE TO SAY A FEW WORD WHICH ARE ON ANOTHER,
+UNRELATED, SUBJECT. YOU WANT TO LIMIT STRATEGIC WEAPONS.
+YET THE MORE YOU LIMIT THEM, THE MORE YOU STRENGTHEN &quot;THE OTHER
+COUNTRY.&quot;
+DISARMAMENT IS NOT MUTUAL. SUCH A PROBLEM
+THAT CONGRESS MIGHT TAKE SUCH A NEGATIVE ACTON. AGAIN,
+THIS IS ATECHNICAL, LEGAL REQUIREMENT RATHER THAN A
+POINT OF GREAT SUBSTANCE.
+WANG: GOOD.
+KATZ: THE LAST POINT IS INDUSTRIAL COOPERATION AND INVESTMENT.
+HERE, WE THOUGHT ITWOULD BE DESIRABLE TO PUT IN PROVISIONS
+ON THESE SUBJECTS WHICH WOULD PROMOTE AND FOSTER INVESTMENT.
+WE ARE VERY INTERESTED AND PLEASED WITH THEDISCUSSIONS UNDERWAY WITH US FIRMS WITH RESPECT TO MAJOR INDUSTRIAL CORPORATIONS. WE WERE VERY INTERESTED IN HEARING THEPLANS OF THE
+MINISTER AND VICE PREMIER YU QIULI CONCERNING COMPENSATION
+TRADE, JOINT VENTURES, COPRODUCTION, AND SO FORTH. OUR
+THOUGHT WAS THAT WE COULD INCLUDE PROVISIONS IN THE AGREEMENT
+TO ENCOURAGE THESE ARRANGEMENTS. FRANKLY, WE HAVE NO LANGUAGE
+PREPARED ON THIS, BUT WE WANT TO GET YOUR REACTION TO PUTTING
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+THIS TYPE OF LANGUAGE IN THE AGREEMENT.
+WANG: WE ARE CONSIDERING LAWS ON ALL THESE SUBJECTS. OUT
+STATE CORPORATIONS HAVE ALREADY SIGNED AGREEMENTS WITH
+AMERICAN FIRMS AND OTHER FOREIGN FIRMS. WE THINK THESE ARE
+LEGAL. IT TAKES TIME FOR US TO MAKE LAWS CONCERNING INVESTMENT, COMPENSTATION TRADE, JOINT VENTURES, AND COPRODUCTION.
+IN ORDER TO EXPRESS OUR JOINT DESIRE, WE CAN INCLUDESUCH
+A PROVISION IN THE AGREEMENT.
+KATZ: YESTERDAY, I MENTIONED TO MR. SUN TWO OTHER SUBJECTS.
+ONE WAS SUFFICIENTLY DISCUSSED THIS MORNING -- TEXTILES.
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 01333 06 OF 09 100812Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------100693 100938Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4474
+C O N F I D E N T I A L SECTION 6 OF 9 BEIJING 1333
+
+WANG: WE CAN CONTINUUE THE TALKS TOMORROW.
+KATZ: FINE, TOMORROW. ONE SUGGESTION IS TO RECORD IS A
+NOTE VERBALE OR SOME OTHER PIECE OF PAPER THE DISCUSSIONS
+WE HAD TODAY.
+WANG: YES, YES. YOU MAKE A SUMMARY OF THE TALKS CONCERNING
+THE SUBJECTS WE HAVEDISCUSSED, THE EXCHANGE OF VIEWS, AND
+NEXT STEPS. WE HOPE THAT BEFORE THE ARRIVAL OF MRS. KREPS,
+WE CAN MAKE SOME PREPARATIONS FOR HER VISIT.
+KATZ: ALL RIGHT. WE WILL SEE YOU IN THE MORNING.
+WANG: WE ARE VERY HAPPY TO EXCHANGE VIEWS ON SUBJESTS OF
+MUTUAL INTEREST.
+DATE: FEBRUARY 28, 1979
+PLACE: MINISTRY OF FOREIGN TRADE
+SUBJECT TRADE WORKING GROUP MEETING
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+WANG: YESTERDAY, WE WISHED TO CONTINUE TALKS BUT THERE WAS
+NO TIME. PERHAPS WE CAN CONTINUE THIS MORNING. (GIVES
+MR. KATZ THE CHINESE TARIFF REGULATTIONS).
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 06 OF 09 100812Z
+
+KATZ: THIS WILL BE HELPFUL. WE HAVE SOME PEOPLE WHO WILL
+BE ABLE TO READ THIS. LET ME SAY THAT THE DISCUSSIONS
+YESTERDAY COVERED QUITE A LOT OF GROUND -- ALL THE ELEMENTS
+WE THINK SHOULD BE IN A TRADE AGREEMENT. THE NEXT STEP,
+I THINK, WOULD BE TO LOOK AT SOME ACTUAL LANGUAGE, RATHER
+THAN STUDYING THESE PROVISIONS IN GENERAL. I WOULD LIKE
+TO PROPOSE THAT SOME DAYS AFTER WE LEAVE, EITHER WE PROVIDE
+LANGUAGE ON OUR SIDE, OR IF YOU HAVE LANGUAGE, WE EXCHANGE
+DRAFTS. THAT IS, ON MARCH 15, SAY, EXCHANGE DRAFTS AND,
+IF CONVENIENT, A MONTH OR SO AFTER THAT PLAN TO HAVE THE
+FIRST MEETING. I THINK, TO MAKE OUR WORK MOST EFFICIENT,
+WE MIGHT PLAN TO HAVE TEXTS OF A DRAFT AGREEMENT TO
+ALLOW TIME FOR CONSIDERATION AND TO ALLOW TIME FOR AN
+EXCHANGE OF VIEWS THROUGH DIPLOMATIC CHANNELS -- THAT IS
+THROUGH OUR NEW EMBASSIES. THEN, WE CAN PLAN FOR A
+MEETING AFTER THAT. WE WOULD WELCOME A CHINESE DELEGATION
+TO VISIT WASHINGTON TO DISCUSS THESE MATTERS.
+WANG: YOU ARE PROPOSING TO EXCHANGE A DRAFT AGREEMENT
+ON MARCH 15 AND IN ANOTHER TWO OR THREE WEEKS OR A MONTH
+LATER TO MEET TO EXCHANGE PRELIMINARY VIEWS.
+KATZ: YES. IN THAT TWO TO THREE WEEK PERIOD THERE MIGHT
+BE SOME QUESTIONS OR PROBLEMS, AND WE CAN EXCHANGE VIEWS
+THROUGH OUR RESPECTIVE EMBASSIES.
+WANG: IN PRINCIPLE, WE AGREE TOEXCHANGE DRAFT AGREEMENTS
+ON MARCH 15. TWO OR THREE WEEKS AFTER EXCHANGING DRAFT
+AGREEMENTS WE CAN HAVE AN INITIAL EXCHANGE OF VIEWS
+THROUGH THE US EMBASSY IN BEIJING.(DISCUSSION AMONG
+THE CHINESE -- NOT TRANSLATED -- ABOUT THE TIMING OF THE
+KREPS VISIT).
+WANG: WE HAVE INVITED MRS. KREPS ON MAY 7. SO FAR WE HAVE
+RECEIVED NO FINAL RESPONSE. WE SUGGEST THAT PERHAPS, BEFORE
+MRS. KREPS' ARRIVAL IN CHINA, AN ADVANCE GROUPS COME FROM THE
+US SO WE CAN HAVE A FURTHER EXCHANGE OF VIEWS TO
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 06 OF 09 100812Z
+
+FIX THE WORDING OF THE FINAL AGREEMENT. AS FOR TIMING OF
+THE SIGNATURE, WE CAN DISCUSS THIS AT A LATER DATE. THE
+AGREEMENT COVERS A WIDE RANGE OF SUBJECTS WHICH ARE THE
+RESPONSIBILITY NOT ONLY OF THE MINISTRY OF FOREIGN TRADE,
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+BUT OTHER DEPARTMENTS AS WELL.
+KATZ: WE ARE NOT ALTOGETHERCLEAR ON MINISTER LI'S REMARKS
+YESTERDAY. WILL HE BE IN CHINA DURING THE PERIOD WHEN
+MRS. KREPS COMES?
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 01333 07 OF 09 100841Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------100816 100938Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4475
+C O N F I D E N T I A L SECTION 7 OF 9 BEIJING 1333
+WANG: IN PLANNING MINISTER LI'S SCHEDULE WE HAD SUGGESTED
+THAT MRS. KREPS' VISIT BE POSTPONED UNTIL JUNE -- BUT SHE
+WANTED O COME EARLIE. WE HAVE ADVANCED THE DATE EARLIER.
+SO FAR WE HAVE NOT HEEARD FROM HER.
+KATZ: WILL THE MINISTER BE HERE THEN?
+WANG: YES, OF COURSE. WE ARRANGED IT THAT WAY.
+KATZ: LET ME MAKE THIS CLEAR. WE WILL EXCHANGE DRAFTS
+ON ABOUT MARCH 15; THERAFTER,WHATEVER COMMENTS THERE
+ARE WILL BE FORWARDED THROUGH DIPLOMATIC CHANNELS. ON
+THE QUESTION OF A DELEGATION VISIT, IT IS INCONVENIENT
+FOR A DELEGATION TO COME TO WASHINGTON?
+WANG: WE THINK IT WOULD BE BETTER TO EXCHANGE VIEWS IN
+BEIJING.
+KATZ: WHY DON'T WE LEAVE IT AS FOLLOWS: WE WILL PROCEED
+TO EXCHANGE DRAFTS BY MARCH 15. THEREAFTER WE WILL TRY
+TO MAKE AS MUCH PROGRESS AS POSSIBLE THROUGH OUR RESPECTIVE
+EMBASSIES. WE WILL LEAVE OPEN THE PRECISE DATE OF A
+FURTHER MEETING, BUT WITH THE UNDERSTANDING THAT IT WILL
+TAKE PLCE AS SOON AS WE CAN FIX AN APPROPRIATE DATE.
+WANG: FINE.
+KATZ: WITH THE UNDERSTANDING THAT WE EXPECT A MEETING
+WILL TAKE PLACE IN EARLY SPRING.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 07 OF 09 100841Z
+
+WANG: THAT IS, THE FURTHER MEETING WILL BE ARRANGED
+AFTER THE EXCHANGE OF VIEWS THROUGH DIPLOMATIC CHANNELS.
+MAYBE IN APRIL?
+KATZ: PERHAPS.
+WANG: WE WILL LEAVE THIS OPEN?
+KATZ YES, BUT WITH THE UNDERSTTANDING THAT IT WILL BE
+SOMETIME IN APRIL.
+WANG: GOOD.
+KATZ: IN HELPING US TO DEVELOP OUR THOUGHTS ON THE AGREEMENT, I HAVE SOME QUESTIONS WHICH I WOULD LIKE TO PUT TO
+YOU.
+FIRST, IT WOULD BE HELPFUL TO HAVE SOME ESTIMATE OF
+YOUR EXPECTATIONS OF TOTAL EXPORTS AND IMPORTS OVER THE
+NEXT TWO TO THREE SAARS WITH RESPECT TO AGRICULTURE ON
+THE ONE HAND AND INDUSTRIAL PRODUCTS ON THE OTHER.
+WANG: AS A WHOLE WE THINK FOREIGN TRADE WILL DEVELOP
+FURTHER TOGETHER WITH THE DEVELOPMENT OF OUR NATIONAL
+ECONOMY. ALL THE STATISTICS ANDSIMILAR INFORMATION ARE
+HANDLED BY THE STATISTICAL DEPARTMENTS, BUT THEY HAVE
+NOT PUBLISHED THE STATISTICS. JUST RECENTLY, SOME
+STATISTICS FOR SOME MAJOR ITEMS OF OUR NATIONAL ECONOMY
+HAVE BEEN PUBLISHED, BUT WE HAVE NOT GOT THE STATISTICAL
+PICTURE OF THE WHOLE ECONOMY. OUR TRADE FIGURES, W
+THINK THESE ARE OPEN TO THE PUBLIC BECAUSE TRADE IS
+TWO-WAY. ALTHOUGH SOME FIGURES HAVE BEEN PUBLISHED,
+THE METHODS OF CALCULATION VARY FROM ONE COUNTRY TO
+ANOTHER -- SO THE FIGURES DON'T AGREE. BUT USUALLY
+THERE IS NOT MUCH DIFFERENCE. IN LINE WITH OUR REQUIREMENTS
+WE THINK THAT FOREIGN TRADE ILL BE EXPANDINGALONG WITH
+THE NATIONAL ECONOMY. INDUSTRIAL OUTPUT WILL INCREASE
+BY ABOUT10 PERCENT ANNUALLY. AGRICULTURAL OUTPUT WILL
+INCREASE BY FOUR TO FIVE PERCENT ON AN ANUAL BASIS.
+DEPENDINGON THE RATE OF GROWTH OF INDUSTRIAL OUTPUT AND
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 07 OF 09 100841Z
+
+AGRICULTURAL OUTPUT, WE THINK FOREIGN TRADE WILL DEVELOP
+ON THE AVERAGE ABOUT 10 PERCENT ANNUALLY. IN THE INITIAL
+STAGES, IMPORTS WILL BE GREATER THAN EXPORTS. WE WISH
+TO DEVELOP FOREIGN TRADE, BUT FUNDS ARE INSUFFICIENT.
+SOME COUNTRIES ARE OFFERING US CREDIT. THAT'S WHY IMPORTS
+WILL BE GREATER THAN EXPORTS FOR SOME TIME IN THE FUTURE.
+HOWEVER, IN A FEW YEARS, OUR EXPORTS MAY EXCEED OUR IMPORTS
+BECAUSE WE HAVE TO PAY BACK OUR DEBT. THIS IS THE GENERAL
+IDEA. SINO-US TRADE WILL REGISTER A REMARKABLE ACHIEVE-
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+MENT. VICE PREMIER DENG XIAOPING SAID DURING HIS STAY
+IN THE UNITED STATES THAT SINO-US TRADE WILL BE DOUBLED.
+IF BOTH SIDES FACILITATE TRADE, THIS POSSIBILITY EXISTS.
+BEFORE NORMALIZATION, SINO-US TRADE GREW, THEN FELL.
+AFTER NORMALIZATION, WE THINK TRADE WILL DEVELOP STEADILY -NOT FLUCTUATIONS LIKE A SNAKE -- BUT STEADY GROWTH.
+JOINT EFFORTS ARE REQUIRED FOR HIS PURPOSE -- BOTH SIDES
+GRANTING MFN -- AND THIS WILL BE BENEFICIAL FOR THE
+EXPANSION OF TRADE. WE THINK THAT MFN TREATMENT IS BENEFICIAL FOR BOTH SIDES.
+KATZ: SECOND, WITH RESPECT TO STATISTICS, DO YOU ENVISION
+THAT THERE MIGHT BE PUBLISHED STATISTICS ON A REGULAR BASIS
+IN THE NEAR FUTURE?
+WANG: OUR STATISTICAL DEPARTMENT IS STUDYING THIS PROPOSAL.
+EVEN IF WE HAVE NO STATISTICS AVAILABLE, HOWEVER, WE CAN
+EXCHANGE VIEWS ON THE SITUATION IN ORDER TO PROMOTE MUTUAL
+UNDERSTANDING. AS TO THE QUESTION OF WHETHER OR NOT TO
+PUBLISH STATISTICS,THIS IS HANDLED BY ANOTHER DEPARTMENT.
+KATZ: I MIGHT SAY, WITH THE KIND OF OPEN TRADING RELATIONSHIP WE HOPE TO DEVELOP, IT IS IMPORTANT THAT GENERAL
+INTERNATIONAL PRACTICES BE FOLLOWED. IT IS USEFUL FOR
+BUSINESS AND GOVERNMENT TO GET A PICTURE OF WHAT THE TRADE
+OPPORTUNITIES MIGHT BE. THERE WAS A DISCUSSION OF IMF
+MEMBERSHIP, FOR EXAMPLE. THE IMF USUALY PUBLISHES
+STATISTICS OF MEMBER COUNTRIES. IT WOULD BE USEFUL IF
+WE COULD LOOK FORWARD TO THIS POSSIBILIITY FOR CHINA.
+WANG: WE WISH TO ENGAGE IN MORE INTERNATIONAL ACTIVITY.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 07 OF 09 100841Z
+
+AS FOR STATISTICS, WE CAN WORK ON IT AND CONSIDER HOW TO
+PUBLISH THEM. IN THE PAST WE PUBLISHED STATISTICS. BUT
+IN THE PAST SEVERAL YEARS, SUCH WORK STOOD STILL. WE
+WOULD NOW LIKE TO RESUME NORMAL WORK. FOR EXAMPLE, PUBLISHING
+CUSTOMS STATISTICS CAN BE CONSIDERED NORMAL. WE
+SHOULD OFFER THEM TO YOU-- WE DO NOT HAVE THEM AVAILABLE.
+WE ARE CONSDERING HOW TO RESUME THIS. PERHAPS YOU
+NOTICED IN THE PEOPLE'S DAILY, THE STANDING COMMITTEE
+OF THE NPC IS NOW CONSIDERING HOW TO FORMULATE A WIDE RANGE
+OF LAWS. WE WISH TO NORMALIZE THESE THINGS, BUT IT
+TAKES TIME.
+KATZ: THIRD, THE OTHER QUESTION IS WITH RESPECT TO OUR
+BILATERAL TRADE. IS THERE ANY GENERAL ESTIMATE YOU COULD
+PUT ON THIS FOR THE NEXT SEVERAL YEARS, POSSIBLY TO PUT
+A DOLLAR FIGURE ON THIS?
+WANG: DO YOU KNOW WHAT TOTAL TRADE WAS LAST YEAR?
+LINCOLN: $1.14 BILLION, TWO-WAY.
+WANG:(AFTER CONSULTING WITH HIS CHINESE COLLEAGUES)
+ACCORDING TO OUR STATISTICS, IT WAS ABOUT $1 BILLION. THAT
+IS VERY CLOSE. VICE PREMIER DENG STATED THAT HE EXPECTED
+US-PRC TRADE TO INCREASE BY SEVERAL-FOLD. ACCORDING TO OUR
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+ESTIMATE, THIS YEAR'S FIGURE WILL BE MUCH BIGGER THAN LAST
+YEAR.
+KATZ: DO YOU HAVE A FIGURE?
+WANG: IT DEPENDS ON THE CONCLUSION OF CONTRACTS; WE
+EXPECT A BIGGER FIGURE THIS YEAR. WHAT IS YOUR VIEW?
+KATZ: IT IS DIFFICULT FOR USTO KNOW. OUR TRADING SYSTEM
+IS MADE UP OF MANY FIRMS. IT IS DIFFICULT TO PUT TOGETHER
+A CLEAR PICTURE.
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 01333 08 OF 09 100914Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------101073 100939Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4476
+C O N F I D E N T I A L SECTION 8 OF 9 BEIJING 1333
+WANG: WE ALSO HAVE THE SAME SITUATION. IT DEPENDS ON
+BUSINESS NEGOTIATIONS BETWEEN OUR INDUSTRIAL DEPARTMENTS
+AND THE US COUNTERPARTS. FOR SOME HIGH TECHNOLOGY
+PRODUCTS, WE THOUGHT THE US PRODUCTS ARE VERY GOOD. BUT
+FOR A NUMBER OF REASONS, THE AMERICAN EXPORTERS THINK THEY
+CAN NOT GET THE SUPPORT OF THE AMERICAN GOVERNMENT. THEY
+THINK IF THEY SIGN A CONTRACT, THEY WILL NOT BE ABLE TO
+HONOR IT. SO OUR DESIRE CAN NOT BE FULFILLED.
+KATZ: IT WOULD BE HELPFUL IN THAT REGARD, IF THERE ARE
+PARTICULAR KINDS OF PRODUCTS, IF YOU COULD TELL US, E
+MIGHT BE ABLE TO GIVE SOME ADVICE AND THERE ARE CERTAIN
+PROBLEMS WHICH WE MIGHT BE ABLE TO RESOLVE. WE WOULD
+LIKE TO BE HELPFUL IN THAT REGARD.
+WANG: NOW, OUR INDUSTRIAL DEPARTMENTS ARE EXCHANGING VIEWS
+WITH THEIR COUNTERPARTS IN THE US. VICE PREMIER YU QIULI
+EXCHANGED VIEWS WITH TREASURY SECRETARY BLUMENTHAL ON THE
+MAJOR ITEMS WE WISH TO IMPORT. RECENTLY, OIL EXPLORATION
+AND PRODUCTION IS A VERY ACTIVE AREA; ALSO CHEMICAL PLANTS AND
+EQUIPMENT; WE WISH TO MAKE FULL USE OF OUR WATER RESOURCES,
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+SO WE NEED HYDROPOWER EQUIPMENT; WE CAN ECHANGE VIEWS ON
+COOPERATION IN THE METALLURGICAL INDUSTRIES. WE ARE ALSO
+INTERESTED IN PRECISION INSTRUMENTS CONNECTED WITH
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 08 OF 09 100914Z
+
+ELECTRONICS AND COMPUTERIZED SYSTEMS.
+KATZ: ON THE POINT YOU MENTIONED A MOMENT AGO REGARDING
+THE UNCERTAINTIES OF FIRMS ONTHAT THEY CAN EXPORT, AS YOU
+KNOW WE HAVE EXPORT CONTROL ON CERTAIN TYPES OF GOODS.
+WANG: IF YOU DID NOT EXPORT THESE SAME COMMODITIES TO
+OTHER COUNTRIES, WE WOULD HAVE NO COMPLAINTS, BECAUSE
+THIS WOULD BE EQUAL TREATMENT.
+KATZ: IT IS SOMETIMES NOT THAT CLEAR. IT IS NOT ALWAYS A
+QUESTION OF THE COUNTRY TO WHICH A PRODUCT IS BEING
+EXPORTED, BUT THE PURPOSE OF THE USE OF THE GOODS.
+FREQUENTLY IT ISA QUESTION OF ASSURING OURSELVES THAT
+THE PROPOSED USE OF THE GOODSWOULD NOT MAKE PROBLEMS
+FOR US. MR. MARCUSS RECENTLY MET WITH YOUR LIAISON OFFICE
+IN WASHINGTON TO INFORM THEM OF CERTAIN FORMAL REQUIREMENTS
+WE HAVE FOR EXPORTS. THESE ARE REQUIREMENTS ATHAT ARE
+REALLY IMPOSED ON ALL COUNTRIES. MR. MARCUSS' VISIT WAS
+REALLY AN EFFORT TO FACILITATE XPORT LICENSING, AND IN
+THAT SENSE I MADE THEPOINT A MOMENT AGO -- IF WE KNOW
+OF A PARTICULAR INTEREST, WE CAN GIVE ADVICE ON HOW TO
+AVOID PROBLEMS. THE OFFICE OFEXPORT ADMINISTRATION
+IN THE DEPARTMENT OF COMMERCE CAN BE A POINT OF CONTACT
+FOR YOUR NEW EMBASSY. OF COURSE, MOST BUSINESSMEN KNOW
+HOW TO GET ANSWERS TO QUESTIONS, BUT FREQUENTLY THE ANSWER
+DEPENDS ON THE USE OF THE PRODUCT AND THAT INFORMATION WE
+MUST GET FROM YOU. I THINK IF WE DEVELOP RELATIONS,
+PROCEDUREES AND CONFIDENCE -- I THINK THE PROBLEMS IN
+THIS AREA WILL BE VERY FEW.
+WANG: WE HOPEYOU UNDERSTAND THE PRINCIPLE THAT THE MORE
+WE EXPORT TO THE US, THE MORETRADE WILL DEVELOP. WE THINK
+IT IS A NATURAL TENDENCY THAT CHINA WISHES TO DEVELOP ITS
+NATIONAL ECONOMY AND CHANGE ITS BACKWARD STATUS. IF
+CHINA IS MORE FLOURISHINGAND POWERFUL, IT WILL HAVE A
+GREATER ABILITY FOR EXPORTING, AND MORE IMPORTS WILL FOLLOW.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 08 OF 09 100914Z
+
+IN NO WAY WILL THIS AFFECT THE NATIONAL SECURITY OF THE US.
+WE MUST JUDGE THIS MATEER FROM THE ANGLE OF PRINCIPLE. WE
+KNOW YOU HAVE REGULATIONS AND RULES GOVERNING YOUR EXPORTS.
+W THINK WE CANCONSULT IN THESE MTTERS. WE THINK THAT
+THE US ADMINISTRATION WILL FACILITATE THIS.
+KATZ: WE HAVE PRINCIPLES AND POLICIES WHICH IN SOME CASES
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+MAY BE DIFFERENT. OUR TASK IS TO FIND THE MUTUAL INTEREST.
+OUR TASK IS TO TRY TO MEET THE LARGER OBJECTIVE OF DEVELOPING TRADE RELATIONS IN THE CONTEXT OF DIFFERING ECONOMIC
+SYSTEMSAND IN SOME CASES DIFFERING POLITICAL OBJECTIVES.
+BUT WE ARE CONFIDENT THAT WE CAN BRIDGE THESE DIFFICULTIES
+IF WE APPROACH THE PROBLEMS IN A PRACTICAL MANNER. OUR
+FIRST TASK IS TO UNDERSTAND WHAT THE PRINCIPLES, POLICIES,
+LAWS, AND REGULATIONS ARE.
+WANG: WE AGREE WITH YOUR OPINION. WE THINK
+WE MUST JUDGE THEMATTER FROM THEWHOLE PERSPECTIVE -- TOTAL TRADE
+RELATIONS BETWEEN THE TWO COUNTRIES AND THE HARMFUL EFFECTS
+OF YOUR EXPORT CONTROLS. ALTOUGH OUR SYSTEMS ARE DIFFERENT,
+WE HAVE A COMMON DESIE TO DEVELOP TRADE. IT IS A COMMON
+GROUND. WE THINK BOTH COUNTRIES HAVE SIMILAR OUTLOOKS IN
+INTERNATIONAL AFFAIRS. WHEN WE DEAL WITH SPECIFIC PROBLEMS,
+WE MUST TTAKE ALL FACTORS INTO ACCOUNT BECAUSE THEY ARE
+CONNECTED WITH THE GENERAL PRINCIPLES. AS FOR US OFFICIALS,
+YOU HAVE A POLICY THAT YOU MUST TREAT CHINA AND THE SOVIET
+UNION EQUALLY. WE UNDERSTAND THAT YOU HAVE THIS POSITION.
+BUT WHEN YOUDEAL ON SPECIFIC MATTERS, YOU CAN NOT TREAT
+THESEE MATERS EQUALLY.
+KATZ: OUR POLICY IS NOT TO TREAT ONLY THE USSR AND CHINA EQUALLY
+BUT TO TREAT ALL COUNTRIES EQUALLY.IN ONE WAY, OUR EXPORT
+CONTROLS DO NOT DIFFERENTIATE BETWEEN THE USSR OR BRAZIL
+OR FRANCE. THIS DOES NOT MEAN THAT WE APPROVE SPECIFIC
+EQUIPMENT FOR ONE COUNTRY OR ANOTHER, BUT THAT THE POLICY
+IS CONSISTENT. THE JUDGMENTSWE MAKE ARE THE SAME FOR
+EACH COUNTRY ALTHOUGH THE DECISIONS MAY BE DIFFERENT.
+WANG: WE HOPE YOU HAVE FEXIBILITY.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 08 OF 09 100914Z
+
+KATZ: WE DO, AND LET ME EMPHASIZE OUR OBJECTIVE IS TO
+PUT THE EMPHASIS ON THE POSITIVE NOT THE NEGATIVE. WE
+WANT VERY MUCH TO DEVELOP TRADE WITH CHINA; WE MUST WORK
+WITHIN THE OTHER POLICIES WE MAY ENCOUNTER, BUT OUR
+OBJECTIVE IS TO OVERCOME THE PROBLEMS AND EXPAND TRADE.
+WANG: WE HOPE THE SITUATION WILL IMPROVE IN THE TIMES
+AHEAD. WE ARE GOING TO SET UP A JOINT ECONOMIC COMMITTEE.
+THIS COMMITTEE CAN DISCUSS MAJOR ITEMS.
+KATZ: I THINK THIS IS VERY IMPORTANT. MANY OF THE PROBLEMS
+WE HAVE OR APPEAR TOHAVE CAN EASILY BE RESOLVED THROUGH
+DISCUSSIONS. IF WE BUILD A PRACTICE OF REGULAR CONSULTATION,
+WE CAN DECREASE THE NUMBER OF PROBLEMS ENCOUNTERED AND THE
+MAGNITUDE OF THE PROBLEMS. I THINK YOU WILL FIND THAT ALL
+PARTS OF OUR GOVERNMENT WILL BE VERY OPEN TO DISCUSSIONS
+WITH YOU. THE PURPOSE OF THE JOINT COMMITTEE WILL BE TO
+FIND SOME FOCUS TO THE OVERALL RELATIONS AND ALSO TO PROVIDE A PLACE TO RESOLVE PROBLEMS WHICH CAN NOT BE RESOLVED
+THROUGH NORMAL CHANNELS.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+WANG: WE THINK THAT THE JOINT COMMITTEE WILL PROVIDE A
+FOCAL POINT AND ALSO ENABLE USETO RESOLVE MINOR PROBLEMS.
+I THINK THERE STILL EXISTS SOME PROBLEMS ON THE AMERICAN
+SIDE. WE HOPE THE US ADMINISTRATION WILL MAKE EFFORTS TO
+RESOLVE THESE PROBLEMS. INTERMS OF OUR EXPORTS TO THE
+US, WE HOPE THE US GOVERNMENT WILL MAKE EFFORTS TO BRING
+ABOUT THE EXPANSION OF TRADE IN THIS DIRECTON. IN THE
+PREVIOUS TRADE, WE HAD AN UNFAVORABLE BALANCE. IN THE
+PRESENT SITUATION, WE DO NOT REJECT THE POSSIBILITY OF TRADE
+IMBALANCES.
+BUT WE THINK IT IS NECESSARY FOR BOTH SIDES TO DIMINISH
+THE IMBALANCES-- JOINT EFFORTS ARE REQUIRED. WE HOPE
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 01333 09 OF 09 100913Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------101054 100930Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4477
+C O N F I D E N T I A L SECTION 9 OF 9 BEIJING 1333
+YOU WILL FACILITATE OUR EXPORTS. ON SOME ITEMS YOU HAVE
+RESTRICTIONS; WE HOPE YOU WILL GIVE US A FAIR QUOTA.
+OTHERWISE, HOW CAN WE PAY FOR OUR IMPORTS? I QUITE AGREE
+WITH YOU THAT WE SHOULD FACILITATE TRADE.
+KATZ: FOR WHICH PRODUCTS:
+WANG: IF WE RESOLVE MFN THAT WILL FACILITATE OUR EXPORTS.
+FOR THE NEXT STEP, WE HOPE YOU WILL EXTEND GSP. CONCERNING
+TEXTILES, WE HOPE THAT YOU WILL GIVE USA FAIR QUOTA. WE
+DO NOT ASK FOR FREE TRADE, BUT THE QUOTA MUST BE REASONABLE.
+WETHINK OUR REQUEST IS VERY REASONABLE,AND YOU CAN DO THIS.
+KATZ: TEXTILES IS THE ONLY PROBLEM TO WHICH YOU REFER?
+WANG: YES.
+KATZ: MFN, WE HOPE AND EXPECT YOU WILL BE RESOLVED OVER THE
+COURSE OF THE YEAR. AS WE PROCEED WITH CONGRESSIONAL CONSULTATIONS, WE CAN BEGIN NEGOTIATIONS FOR A TRADE AGREEMENT;
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+IN DUE COURSE, WE HOPE THAT HE PROBLEM WILL BE RESOLVED.
+GSP ISA MORE DIFFICULT MATTER. WE HAVE A SAYING IN OUR
+COUNTRY: &quot;THE DIFFICULT THINGS WE DO RIGHT AWAY, THE
+IMPOSSIBLE TAKES LONGER.&quot;
+WANG:WE DO NO ASK YOU TO RESOLVE THE TWO PROBLEMS
+SIMULTANEOUSLY, BUT ONE BY ONE. FIRST SOLVE MFN, THEN GSP.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 09 OF 09 100913Z
+
+KATZ:I THINK WE SHOULD SPEND A FEW MINUTES ON TEXTILES.
+AS SECRETARY BLUMENTHAL SAID YESTERDAY TO MINISTER LI,
+THIS IS A VERY DIFFICULT PROBLEM -- A WORLD WIDE PROBLEM.
+I THINK YOU KNOW FROM YOUR RELATIONS WITH OTHER COUNTRIES
+THAT THIS IS A PROBLEM WITH OTHER COUNTIES, AS WELL.
+IN EUROPE, THEY HAVE PUT AN ABSOLUTE QUOTA ON THEIR
+TEXTILE IMPORTS. MANY COUNTRIES HAVE EMBARGOES ON
+TEXTILE IMPORTS. WE DO NOT DO THAT. OUR POLICY IS
+RESTRICTIVE, BUT NOT A S RESTRICTIVE AS OTHER COUNTRIES
+AND WE HAVE PERMITTED IMPORTS TO INCREASE TO THE US.
+AS SECRETARY BLUMENTHAL SAID, WE ARE A BIG MARKET BUT NOT
+AN UNLIMITED MARKET.THE TEXTILE AND APPAREL INDUSTRIES
+MUST BE LOOKED AT TOGETHER. IT IS A LARGE INDUSTRY IN
+THE US. THE TWO INDUSTRIES EMPLOY A LOT OF WORKERS. IT
+IS A PRBLEM OF POLITICAL SENSITIVITY IN THE US AS WELL AS IN OTHER
+COUNTRIES -- HOW THE IMPORTS WILL AFFECT THE EMPLOYMENT OF
+WORKERS IN THESE INDUSTRIES. WE RECOGNIZE THAT TEXTILES
+ARE A NATURAL EXPORT FOR CHINA. IN FACT, YOU HAVE COME
+FROM ZERO TO SIXTH PLACE IN OUR MARKET. THAT IS, YOU ARE
+NUMBER SIX IN EXPORTS TO OUR MARKET. WHAT WE NEED IS AN
+UNDERSTANDING AND AGREEMENT THAT WILL PERMIT YOUR EXPORTS
+TO INCREASE AT AA REASONABLE RATE. IT WOULD BE DESIRABLE
+IF YOUR EXPORTS WERE NOT CONCENTRATED IN PARTICULAR PRODUCTS. SO W HAVE MADE SUGGESTIONS FOR THE MEANS FOR YOUR
+EXPORTS TO CONTINUE TO INCREASE WITHOUT CREATING PROBLEMS
+FOR OUR MARKET. I WON'T GO INTOTHE DETWILS OF THE
+NEGOTIATIONS AND THE PROPOSALS. I AM NOT REALLY EQUIPPED
+TO DO SO.A FURTHER MEETING WILL BE HELD BETWEEN THE TWO
+SIDES IN MARCH. WE THINK I IS VERY IMPORTANT THAT A
+SOLUTION BE FOUND AT THE NEXT MEETING. IF NO SOLUTION IS
+FOUND, ONE WILL BE IMPOSED ON YOU -- AND ON US. WE WILL BE
+FORCED TO TAKE UNILATERAL ACTION. IN THE LAST CONGRESS, OVER HALF
+THE MEMBERS SUPPORTED A BILL TO AKE UNILATERAL ACTION TO
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 09 OF 09 100913Z
+
+RESTRAIN TEXTILES. IN OCTOBER, CONGRESSDID PASS LESIGLATION TO REQUIRE THE PRESIDENT TO TAKE TEXTILES OUT OF
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+THE MTN NEGOTIATIONS IN GENEVA. THE PRESIDENTDID NOT
+ACCEPT TIS -- HE VETOED THEBILL. BUT AS A PRACTICAL
+REALITY, WE CAN NOT IGNORE THEPOLITICAL FORCES IN OUR
+COUNTRY. IF WE CAN NOT FINDAA MUTUALLY AGREEABLE SOLUTION,
+WE WILL BEFORCED TO TAKE UNILATERAL ACTION -- WHICH WE
+DON'T WANT TO DO.
+WANG: I AGREE THAT WE SHOULD NOT GO INTO THIS PROBLEM
+IN TOO MUCH DETAIL, BUT I WANT TO DISCUSS THE PRINCIPLE.
+FIRST, WE EXPORT EXTILES NOT ONLY TO THE US BUT TO MANY
+OTHER CONTRIES. SECOND, OUR CAPACITY TO EXPORT TEXTILES
+IS LIMITED. THIRD, WE HOPE WE CAN EXERT OUR JOINT EFFORTS
+TO FIND A REASONABLE SOLUTION. WE THINK IF YOU GIE US
+AN UNFAIR QUOTA -- TAKE UNILATERAL ACTION -- THIS MEANS
+YOU CREATED A PRETEXT FOR YOUR UNILATERAL ACTON. WE THINK
+THAT IF YOU GIVE US A REAONSABLE AND FAIR QUOTA, WE CAN
+FIND A SOLUTION. I WISH TO EPEAT, IF YOU GIVE US AN
+UNREASONABLE QUOTA WHICH WE WOULD BE COMPELLED NOT TO
+ACCEPT, AND YOU TOOK UNILAERAL ACTION, THIS MEANS THAT
+YOU CREATED THE PRETEXT FOR YOUR ATION. WE THINK THIS
+CAN BE RESOLVED. WE HOPE WE CAN RESOLVE THIS AT THE NEXT
+MEETING. IT IS VERY IMPORTANT.
+KATZ: THE ONLY OTHER POINT -- WE TALKED YESTERDAY ABOUT
+A MEMORANDUM OF RECORD.WE DID PREPARE SOMETHING LAST
+NIGHT, BUT IT NEEDS TO BE AMENDED TO REFLECT THE DISCUSSIONS
+THS MORNING. UNFORTUATELY, WE DO NOT HAVE A CLEAN COPY
+TO GIVE YOU; THIS ONE IS MARKED UP. LET ME READ THIS TO
+YOU AND THEN GIVE YOU A CLEAN COPY LATER. (MR. KATZ
+READ THE DRAFT MEMORANDUM OF RECORD.)
+WANG: ACCORDING TO OUR PRACTICES, WE HAVE NO PRACTICE OF
+PREPARING SUCH A MEMORANDUM OF RECORD. BUT IN ACCORDNCE
+WITH YOUR REQUEST, WE CAN WORK OUT SUCH A MEMORANDUM.
+PERHAPS WE CAN SAY: &quot;BOTH SIDES HAVE EXCHANGED VIEWS ON
+THE CONTENT OF A TRADEAGREEMENT.FOR SOME PROVISIONS,
+BOTH SIDES EXPRESSED THEIR RESPECTIVE VIEWS. FOR SOME
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 09 OF 09 100913Z
+
+PROVISIONS, THERE NEED TO BE FURTHER EXPLORATORY TALKS.&quot;
+FOR EXAMPLE, YESTERDAY, WE SPENT A LOT OF TIME DISCUSSING
+WHAT YOU CALL &quot;NATIONAL SECURITY&quot;. PERHAPS YOU CAN AMEND
+THIS AND GIVE US A CLEAN COPY.
+YOU HAVE DONE MORE WORK THAN WE HAVE (ON THE
+MEMORANDUM).
+KATZ:THAT'S WHY WE'RE HERE. LET ME REITERATE THAT OUR
+PURPOSE IS NOT TO COMMIT YOU TO A PARTICULAR VIEW BUT ONLY
+TO SET DOWN OUR UNDERSTANDING ON THESE MATTERS FOR THE
+RECORD.
+WANG: TO REFLECT THE TRUE PICTURE. IN PRINCIPLE WE AGRE,
+BUT PERHAPS SOME ADJUSTMENTS IN THE WORDING ARE NEEDED.
+KATZ: THANK YOU. I HAVE NO FURTHER ITEMS ON MY SIDE.
+I WOULD BE GLAD TO CONSIDER ANY YOU WOULD LIKE TO RAISE.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+WANG: NO, I DON'T HAVE ANYTHING MORE, BUT BOTH SIDES TOOK
+A POSITIVE ATTITUDE; BOTH SIDES EXPRESSED THEIR OWN VIEWS.
+WE RESPECT YOUR NORMAL PRACTICES AND REULES AND REGULATIONS.
+WE HOPE YOU ALSO RESPECT OURS. WE THINK BOTH SIDES HAVE
+SOLVED MAJOR ITEMS. SO IT IS EASIER TO RESOLVE THE MINOR
+TINGS. WE THINK A TRADE AGREEMENT MUST RESPECT EACH OTHER'S
+DESIRES. I GREATLY APPRECIAE THE KIND OF COOPERATION YOU
+EXTENDED TO US. DIRECTOR ZHANG, DIVISION CHIEF, WILL HAVE
+FURTHER CONTACT WITH YOU ON THE MEMORANDUM OF RECORD.
+KATZ: LET ME SAY, I THINK WE HAD TWO DAYS OF PRODUCTIVE
+MEETINGS. I FEEL OUR SIDE WE HAVE CCOMPLISHED OUR
+MMISSION -- TO LAY THE FOUNDATION FOR NEGOTIAION OF A
+TRADE AGREEMENT. WE HAVE CLARIFIED A NUMBER OF MATTERS.
+THERE ARE SOME ISSUES FOR WHICH WE NEED TO DO FURTHER
+WORK, BUT I FEEL CONFIDENT THAT THE OBJECTIVE OF BOTH
+SIDES IS THAT WE CAN RESOLVE THES PROBLEMS VERY QUICKLY.
+WE WILL PROVIDE A CLEAN COPY OF THE MEMORANDUM VERY SOON.
+END TEXT.
+WOODCOCK
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 05
+
+BEIJIN 01333 09 OF 09 100913Z
+
+CONFIDENTIAL
+
+NNN
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014</div></div><br /></div></div><div class="pane-tab"><div class="pane-header">Raw content</div><div class="pane-content"><div class="text-content">CONFIDENTIAL
+PAGE 01
+BEIJIN 01333 01 OF 09 100623Z
+ACTION EA-12
+INFO OCT-01 EB-08 ISO-00 SP-02 AID-05 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------100012 100931Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4469
+C O N F I D E N T I A L SECTION 1 OF 9 BEIJING 1333
+DEPT FOR E-B AST SEC KATS
+DEPT PASS TREASURY FOR EXEC ASST TO SECRETARY RICHARD W. FISHER
+E.O. 12065: GDS 3/5/79 (WOODCOCK, LEONARD) OR-M
+TAGS: EFIN OVIP (BLUMENTHAL, W. MICHAEL)
+SUBJ: BLUMENTHAL VISIT: TRADE WORKING GROUP MEETINGS
+REF: STATE 58258
+1. (C) ENTIRE TEXT
+2. TRNSCRIPTS OF TRADE WORKING GROUP MEETINGS HELD ON
+FEBRUARY 27 AND 28 FOLLOW:
+BEGIN TEXT:
+PARTICIPANTS: CHINESE: WANG RUNSHENG, VICE MINISTER OF FOREIGN TRADE
+SUN SUOCHANG, DIRECTOR THIRD DEPT, MINISTRY OF FOREIGN TRADE
+CHI HAIBIN, JEPUTY DIRECTOR, DEPARTMENT OF INDUSTRY, TRANSPORTATION,
+COMMERCE AND FINANCE, MINISTRY OF FOREIGN TRADE.
+WANG, DOUGUANG, DEPUTY DIRECTO, THE CUSTOMS ADMINISTRATION OF THE PRC
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 01 OF 09 100623Z
+
+REN JIANXIN, (ADVISOR) DIRECTOR, LEGAL DEPARTMENT, CHINA
+COUNCIL FOR THE PROMOTION OF INTERNATIONAL TRADE.
+ZHANG WENZHONG, DIVISION CHIEF, THIRD DEPT, MINISTRY OF FOREIGN TRADE
+YUAN ZIJIANG, DEPUTY MANAGER, BANKING DEPARTMENT, BANK OF CHINA
+ZHANG GUOSHEN, DEPUTY DIVISION CHIEF, THIRD DEPT, MINISTRY
+OF FOREIGN TRADE.
+LI WEI, OFFICIAL, THIRD DEPARTMENT, MINISTRY OF FOREIGN TRADE
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+LI WEI, OFFICIAL, THIRD DEPT, MINISTRY OF FOREIGN TRADE.
+CHEN SHIBIAO, OFFICIAL, THIRD DEPT. MINISTRY OF FOREIGN TRADE
+AMERICAN: JULIUS L. KATZ, ASST SECY OF STATE FOR ECONOMIC AND BUSINESS AFFAIRS.
+MARK B. FELDMAN, DEPUTY LEGAL ADVISER, DEPT OF STATE.
+STANLEY MARCUSS, SENIOR DEPUTY ASST SECY, DEPT OF COMMERCE.
+JOHN RENNER, COUNSELOR AND SPECIAL ENVOY, OFFICE OF THE SPECIAL
+REPRESENTATIVE FOR TRADE NEGOTIATION.
+RUSSELL MUNK, DEPUTY ASST GENERAL COUSELOR, TREASURY DEPT.
+PHILIP T. LINCOLN, JR. COMMERCIAL/ECONOMIC OFFICER, USLO
+DATE: FEB 27, 1979
+PLACE: MINISTRY OF FOREIGN TRADE, BEIJING
+SUBJ: TRADE WORKING GROUP MEETING
+(OPENING PLEASANTRIES CONCERNED THE WEATHER, TIME
+DIFFERENTIAL BETWEEN THE US AND CHINA, ETC.)
+WANG: HOW SHALL WE PROCEED?
+KATZ: I AM PREPARED TO PROCEED IN ANY WAY YOU PREFER. I
+RAISED WITH MR. SUN SOME SUBJECTS YESTERDAY.
+WANG: SECRETARY BLUMENTHAL HAD TALKS WITH VICE PREMIER
+YU QUILI AND MINISTER OF FINANCE ZHANGJINFU AND THIS
+MORNING HE HADTALKS WITH MINISTER OF FOREIGN TRADE LI
+JIANG. ALL THESE TALKS TOUCHED UPON THE TOTAL RELAIONSHIP
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 01 OF 09 100623Z
+
+BETWEEN OUR TWO COUNTRIES, INCLUDING TRADE RELATIONS. I
+THINK ALL THESE TALKS HAVE RESOLVED THE PRINCIPLES FOR OUR
+TALKS. THUS THE TALKS HAVE ALREADY PASSED THE HALFWAY POINT.
+WE THINK OUR WORK IS NOW EASY. (AT THIS POINT VICE MINISTER
+WANG INTRODUCED THE CHINESE PARTICIPANTS AND ASSISTANT
+SECRETARY KATZ INTRODUCED THE US SIDE)
+WANG: USLO HAS HANDED OVER A LIST OF SUBJECTS TO BE CONTAINED
+IN THE TRADE AGREEMENT WHICH YOU WISH TO DISCUSS WITH US.
+YOU HAD AN EXCHANGE OF VIEWS WITH MR. SUN. SO NOW WE WOULD
+LIKE TO LISTEN TO YOUR VIEWS ON THESE ISSUES.
+KATZ: THANK YOU. AS SECRETARY BLUMENTHAL SAID THIS MORNING,
+OUR PURPOSE IS TO LAY A FOUNDATION ON WHICH WE CAN BUILD
+A FAST GROWING TRADE RELATIONSHIP. A TRADE AGREEMENT IS
+AN ESSENTIAL ELEMENT IN THIS FOUNDATION. UNDER OUR LAWS,
+IT IS NECESSARY THAT MOST FAVORED NATION (MFN) TREATMENT
+BE PROVIDED IN THE FRAMEWORK OF A TRADE AGREEMENT. OUR LAWS,
+MOREOVER, SPECIFY CERTAIN ELEMENTS WHICH MUST BE PART OF
+THAT TRADE AGREEMENT. WHAT WE HOPE TO DO THIS WEEK IS TO
+INTRODUCE OUR REQUIREMENTS, EXPLAIN WHAT WE HAVE IN MIND,
+EXCHANGE VIEWS, AND PLAN HOW WE SHOULD PROCEED -- LOOKING
+FORWARD TO THE CONCLUSION OF A TRADE AGREEMENT. I CONVEYED
+TO MR. SUN NINE POINTS WHICH WE BELIEVE ARE REQUIRED OR
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+RELEVANT FOR INCLUSION IN A TRADE AGREEMENT. IF YOU AGREE
+THAT THIS CAN FORM THE AGENDA FOR OUR WORK, I WOULD PROPOSE
+TO START WITH THE FIRST OF THESE ITEMS, AND THEN DISCUSS THE REST.
+DISCUSSIONS CAN BE CONTINUED TOMORROW IF ECESSARY.
+WANG: AGREED.
+KATZ: THE FIRST ITEM CALLS FOR MUTUAL ASSISTANCE WITH
+RESPECT TO TRADE OPPORTUNITIES AND NON-DISCRIMINATORY
+TREATMENT INCLUDING MFN AND RECIPROCAL TRADE OPPORTUNITIES.
+THE ITEM WE ARE DISCUSSING DEALS WITH THE ROVISION OF MFN
+TREATMENT. OUR SIDE, THIS PROVISION IS VERY SIMPLE-ESSENTIALLY, IT IS A STANDARD MFN PROVISION FOUND IN MOST
+TRADE AGREEMENTS. WE, OF COURSE, HAVE A TWO-COLUMN
+TARIFF SYSTEM, AS YOU MAY KNOW -- ONE COLUMN APPLIES TO MFN;
+THE OTHER COLUMN HAS TO DO WITH STATUTORY RATES, WHICH ARE
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 01 OF 09 100623Z
+
+CONSIDERABLY HIGHER. WE HAVE A REQUIREMENT THAT MFN TREATMENT BE RECIPROCATED ON YOU SIDE BY SOME PROVISIONS TO
+ASSURE THAT THEERE ARE EQUIVALENT AND RECIPROCAL TRADE
+OPPORTUNITIES IN YOUR MARKET.
+FRANKLY SPEAKING, WE DO NOT KNOW MUCH ABOUT YOUR
+TARIFF SITUATION. WE UNDERSTAND YOU HAVE A TARRIFF SYSTEM,
+BUT WE DO NOT KNOW HOW IT OPERATES. THERE ARE VARIOUS
+WAYS WE COULD PROVIDE FOR RECIPROCITY, AS WE HAVE WITH
+OTHER COUNTRIES. SOME OF THE RECIPROCITY COULD BE PROVIDED
+IN OTHER PROVISIONS IN THE TRADE AGREEMENT, SUCH AS TOSE
+COVERING BUSINESS FACILITATION, BUT WE THINK THAT THERE COULD BE
+OTHER PROVISIONS DEALING WITH THIS MATTER. FOR EXAMPLE,
+THERE COULD BE A DECISION THAT CHINA WILL BASE ITS PURCHASES
+FROM THE UNITED STATES SOLELY ON COMMERCIAL TERMS, THAT IS,
+PRICE, QUALITY, DELIVERY, AND CREDIT TERMS. WE ALSO WANT
+SOME PROVISION THAT THERE WILL BE NO DISCRIMINATION AGAINST
+THE US, EITHER BY CHINESE ENTERPRISE OR THE CHINESE
+GOVERNMENT -- WHOEVER MAKES IMPORTANT DECISIONS. THAT'S ALL I
+WANT TO SAY ABOUT THIS ITEM -- PERHAPS YOU WANT TO COMMENT?
+WANG: WE SHARE YOUR VIEWS. SIGNING OF A TRADE AGREEMENT
+SHOULD HELP TO DEVELOP TRADE. GRANTING MFN TREATMENT TO
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+PAGE 01
+BEIJIN 01333 02 OF 09 100649Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------100112 100934Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4470
+C O N F I D E N T I A L SECTION 2 OF 9 BEIJING 1333
+DEPT FOR EB- ASST SEC KATZ
+DEPT PASS TREASURY FOR EXEC ASST TO SECRETARY RICHARD W. FISHER
+EACH OTHER IS A VERY IMPORTANT ELEMENT. MFN TREATMENT IS
+RELATED TO TARIFFS -- WHICH ARE VERY IMPORTANT IN TRADE.
+SO WE THINK THE TRADE AGREEMENT MUST EMBODY FACILITATION
+FOR TRADE; EMBODY MFN TREATMENT. WE AGREE TO HAVE SUCH
+PROVISIONS -- MFN TREATMENT -- IN OUR TRADE AGREEMENT.
+WE HAVE IN CHINA TWO TYPES OF TARIFFS -- GENERAL
+TARIFFS AND LOW TARIFFS (MFN TARIFFS). THIS IS THE SAME
+AS YOUR SYSTEM. FOR OUR PART, THERE IS NO DIFFICULTY TO
+STIPULATE N MFN TREATMENT CLAUSE IN THE TRADE AGREEMENT.
+AS FOR EXCEPTIONAL CLAUSES IN ADDITION TO MFN TREATMENT,
+WE WOULD LIKE TO LISTEN TO YOUR VIEWS. I WOULD LKKE TO
+TAKE THIS IOPPORTUNITY TO MAKE ANOTHER POINT, NOT CONNECTED
+WITH MFN, BUT ALSO A &quot;FAVORED ITEM.&quot; CHINA SHOULD ENJOY
+BENEFICIARY STATUS UNDER GSP FOR DEVELOPING COUNTRIES.
+WE HOPE THIS CLAUSE WILL BE INCLUDED IN THE TRADE AGREEMENT.
+WE WOULD LIKE TO LISTEN TO YOUR VIEWS ON HOW TO PUT THIS
+IN THE TRADE AGREEMENT.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 02 OF 09 100649Z
+
+KATZ: LET ME SAY FIRST, WITH RESPECT TO YOUR TARIFFS, AS
+WE UNDERSTAND IT, THE CHINESE TARIFF SYSTEM IS NOT A
+REGULATOR OF TRADE AS IT IS IN A MARKET ECONOMY SUCH AS
+OURS -- ALTHOUGH WE WOULD BE GLAD TO LISTEN TO AN EXPLANATION
+OF YOUR TARIFF SYSTEM.
+WANG: OUR TARIFF SYSTEM HAS TWO COLUMNS -- GENERAL AND LOW
+TARIFFS. THE LOW TARIFFS ARE THE MFN TARIFFS. THIS IN
+ITSELF IS AN ASSURANCE FOR THE DEVELOPMENT OF TRADE -IT IS BENEFICIAL TO YOUR EXPORTS TO CHINA.
+KATZ: DOES AN ENTERPRISE FACED WITH A DECISION ON IMPORT-
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+ING FROM TWO DIFFERENT SOURCES -- DOES THE TARIFF AFFECT
+THE DECISION?
+WANG: YES. OF COURSE, IT VARIES FROM ONE CASE TO ANOTHER.
+WE HAVE MFN AND NON-MFN TARIFFS -- THE TWO RATES DIFFER.
+KATZ: DO YOU HAVE THE RATES?
+WANG: YES, WE HAVE, BUT NOT IN ENGLISH.
+KATZ: PERHAPS THAT WOULD BE HELPFUL.
+WANG: YES, WE CAN GIVE THEM TO YOU.
+KATZ: I ASSUME YOU ARE WILLING TO CONSIDER THE LANGUAGE
+WE WISH TO PROPOSE?
+WANG: YES.
+KATZ: I SHOULD HAVE STATED AT THE OUTSET THE OBVIOUS -THERE IS A WELL-KNOWN ISSUE RELATING TO MFN EXTENSION
+WHICH SECRETARY BLUMENTHAL REFERRED TO THIS MORNING. INDEED
+IT WAS DISCUSSED WITH VICE PREMIER DENG XIAOPING BY
+PRESIDENT CARTER WHEN HE WAS IN WASHINGTON, DC. AS
+SECRETARY BLUMENTHAL RESTATED THIS MORNING, IT IS OUR DESIRE
+TO ACCORD CHINESE EXPORTS MFN BECAUSE WE UNDERSTAND IT
+IS THE NECESSARY BASIS FOR THE DEVELOPMENT OF TRADE. WE
+ARE WORKING WITH CONGRESS TO FIND A WAY TO DEAL WITH THIS
+LEGAL PROBLEM. SO WE ARE PROCEEDING IN THIS WORKING GROUP
+ON THE ASSUMPTION THAT A WAY WILL BE FOUND AROUND THE LEGAL
+PROBLEM DURING THE COURSE OF THE YEAR. WE CAN DISCUSS THE
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 02 OF 09 100649Z
+
+REQUIREMENTS OF A TRADE AGREEMENT, BUT WE ARE NOT DEALING
+WITH THE LEGAL PROBLEM IN THIS WORKING GROUP.
+WITH RESPECT TO THE QUESTION OF GSP WHICH YOU RAISED,
+UNDER OUR LAW THERE ARE SPECIFIC REQUIREMENTS FOR ELIGIBILITY
+FOR GSP. I ASSUME THESE ARE FAMILIAR TO YOU. ONE REQUIREMENT HAS TO DO WITH MFN -- THE COUNTRY MUST RECEIVE MFN
+IN ORDER TO RECEIVE GSP. SECOND, THE COUNTRY MUST BE A
+MEMBER OF IMF AND GATT. THIRD, THE COUNTRY MUST NOT BE
+DOMINATED OR CONTROLLED BY INTERNATIONAL COMMUNISM. THAT
+LATTER IS A HISTORICAL REFERENCE IN A SENSE, INTENDED
+REALLY TO MAKE TWO COUNTRIES ELIGIBLE -- POLAND AND YUGOSLAVIA.
+AS A PRACTICAL MATTER, IN THE NEAR TERM, IMF AND GATT MEMBERSHIP ARE THE IMMEDIATE PROBLEMS. I WOULD NOT ENCOURAGE YOU
+TO EXPECT THAT GSP WOULD BE AVAILABLE IN THE NEAR FUTURE. I
+THINK AS A PRACTICAL MATTER -- IN TERMS OF OUR WORK -- WE SHOULD
+THINK IN TERMS OF THE OTHER ELEMENTS WHICH WOULD BE INCLUDED
+IN THE TRADE AGREEMENT.
+WANG: ALL RIGHT. SINCE WE ARE A DEVELOPING COUNTRY, WE
+THINK CHINA SHOULD BE ELIGIBLE TO ENJOY GSP TREATMENT -WE PUT THIS FORWARD FOR YOUR CONSIDERATION. IF THERE IS
+NOTHING FURTHER TO DISCUSS ON THIS, WE CAN GO ON TO THE
+NEXT TOPIC.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+KATZ: VERY GOOD. THE NEXT SUBJECT IS TRADE FACILITATION.
+WE HAD SOME DISCUSSION ON THIS THIS MORNING. I UNDERSTOOD
+MINISTER LI JIANG TO SAY THAT HE FAVORED FACILITATIVE
+ARRANGEMENTS FOR BUSINESSMEN. THERE ARE SEVERAL ASPECTS
+WHICH I WOULD LIKE TO EXPLAIN. WE THINK THE TRADE AGREEMENT
+SHOULD ESTABLISH PRINCIPLES FOR EQUITABLE PARTICIPATION
+BY FIRMS AND ENTERPRISES OF BOTH COUNTRIES IN THE OTHER
+COUNTRY WITH RESPECT TO A NUMBER OF SERVICES. THIS INCLUDES
+TRANSPORTATION, INSURANCE, FINANCIAL MATTERS, TECHNICAL
+ADVICE, ADVERTISING, AND OTHER THINGS. ALSO, TO PERMIT
+TRADE RELATIONS TO FLOURISH, IT IS IMPORTANT TO HAVE AVAILCONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 02 OF 09 100649Z
+
+ABLE INFORMATION CONCERNING LAWS, REGULATIONS, AND STATISTICS
+WITH RESPECT TO EACH COUNTRY. THIS MORNING THERE WERE DISCUSSIONS CONCERNING THE ESTABLISHMENT OF REPRESENTATIVE
+OFFICES IN EACH COUNTRY. WE BELIEVE THAT THE TRADE AGREMENT
+SHOULD PROVIDE FOR THE ESTABLISHMENT OFSUCH OFFICES, INCLUDING PROVISIONS FOR OFFICE SPACE, IMPORTATION OF PERSONAL
+EFFFECTS,AUTOMOBILES, ENTRY AND EXIT, HIRING AND COMPENSATION
+OF LOCAL PERSONNEL, IMPORTATION OF SAMPLES, AND SO FORTH.
+WE THINK THESE MTTERS SHOULD BE INCLUDED IN THE TRADE
+AGREEMENT. BECAUSE THESE THINGS FACILITATE THE DEVELOPMENT
+OF TRADE, WE BELIEVE WE SHOULD DEVOTE PARTICULAR ATTENTION
+TO THIS QUESTION AND PERHAPS CONCLUDE AN INTERIM AGREEMENT
+IN ADVANCE OF THIS TRADE AGREEMENT. IF WE CAN PROGRESS
+RAPIDLY, THIS ISPERHAPS A MATTER THAT SECRETARY KREPS COULD
+CONCLUDE DURING HER VISIT. THERE ARE TWO OTHER MATTERS
+WHICH SHOULD BE COVERED IN THIS AREA. ONE IS GOVERNMENT
+TRADE OFFICES (PREVIOUSLY I WAS TALKING ABOUT PRIVATE
+ENTERPRISES). WE SHOULD MAKE PROVISIONS FOR GOVERNMENT
+OFFICES. ESSENTIALLY, THESE OFFICES, IN BEIJING AND
+WASHINGTON, DC, WOULD BE INTEGRAL PARTS OF OUR RESPECTIVE
+EMBASSIES, ALTHOUGH THEY COULD BE LOCATED IN SEPARATE
+PREMISES. THE COMMERCIAL OFFICERS OF THESE OFFICES WOULD
+BE PART OF THE EMBASSY DIPLOMATIC STAFF WITH ALL THE STATUS
+OF EMBASSY OFFICIALS -- THEY WOULD ENJOY DIPLOMATIC STATUS. AS TO
+THE FUNCTIONS OF THESE OFFICES, WE WOULD PROPOSE (FOR THE US) THAT
+THEY WOULD SUPPORT EXHIBITS OF US PRODUCTS AND OTHER KINDS
+OF TRADE PROMOTION ACTIVITIES. THEY WOULD ASSIST BOTH
+AMERICAN BUSINESSMEN AND CHINESE ORGANIZATIONS INTERESTED
+IN SALES OR OTHER COMMERCIAL TRANSACTIONS -- BOTH IMPORTS
+AND EXPORTS. ONE TING WE ARE PREPARED TO OFFER ON AN
+EARLY BASIS IS SEMINARS WITH RESPECT TO PARTICULAR INDUSTRIES
+OR PRODUCTS WHICH WOULD BE OF INTEREST TO YOUR ORGANIZATIONS.
+WE THINK THIS GENERAL SUBJECT -- TRADE FACILITATION, WITH BOTH PRIVAT
+CONFIDENTIAL
+CONFIDENTIAL
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+PAGE 05
+
+BEIJIN 01333 02 OF 09 100649Z
+
+E
+AN GOVERNMENT ROLES -- IS A PARTICULARLY USEFUL ONE FOR
+EXPANDING BILATERAL TRADE AND WE WOULD LIKE TO PROPOSE THAT
+WE MOVE AS RAPIDLY AS POSSIBLE IN THIS AREA..
+WANG: THIS PROBLEM OF COMMERCIAL CTIVITIES IS ONE TOUCHED
+ON BY OUR TWO MINISTERS. WE THINK WE CAN AGREE ON THE
+CONFIDENTIAL
+
+ADP524
+
+PAGE 01
+BEIJIN 01333 03 OF 09 100712Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------100274 100935Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4471
+C O N F I D E N T I A L SECTION 3 OF 9 BEIJING 1333
+DEPT FOR EB-ASST SEC KATZ
+DEPT PASS TREASURY FOR EXEC ASST TO SECRETARY RICHARD W. FISHER
+PRINCIPLE OF AN AGREEMENT.WE THINK BOTH SIDES CAN SET UP
+RESIDENT REPRESENTATIVES IN EACH OTHER'S COUNTRIES. WE
+WILL SEND OURS TO WASHINGTON, DC AND YOURS TO BEIJING.
+FOR OUR PART, HOWEVER, THERE EXIST TECHNICAL PROBLEMS. WE
+LACK HOTEL ACCOMODATIONS. NEVERTHELESS, WE HAVE ALREADY
+OFFEREED CONVENIENCES AND FACILITIES FOR AMERICAN BUSINESSMENT, FOR EXAMPLE, FOR SOME TECHNICIANS WHO HAVE STAYED IN
+CHINA FOR A LONG TIME TO OFFER TECHNICAL SEMINARS. WE
+EXTENED THEIR VISAS FROM TIME TO TIME AND OFFEREED THEM
+FACILITIES. WE HAVE NO AGREEMENT, BUT WE CAN AGREE ON
+THE AGREEMENT. AS FOR RESIDENT REPRESENTATIVES IN OTHER
+CITIES IN CHINA, WE CAN STUDY THE PSSIBILITIES IN ACCORD
+WITH OUR WORKING REQUIREMENTS. WE CAN OFFER FACILITIES
+AND CONVENIENCES FOR ALL BUSINESSMEN IF REQUIRED. AS A
+MATTER OF FACT, WE HAVE ALREADY OFFERED CONVENIENCES BENEFICIAL TO BOTH SIDES. YOUR USLO OFFICER IS VERY FAMILIAR
+WITH THIS. FOR EXAMPLE, IN THE CASE OF CHEMICAL FERTILIZER
+TECHNICIANS, WE ALLOWED THEM TO TRAVEL TO MANY PARTS OF
+CHINA. ON THE QUESTION OF GOVERNMENT TRADE REPRESENTATION,
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 03 OF 09 100712Z
+
+WE CAN AGREE TO ESTABLISH COMMERCIAL OFFICES UNDER THE
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+EMBASSIES WHICH ENJOY DIPLOMATIC STATUS. WE CAN OFFER
+FACILITIES AND CONVENIENCES TO EITHER PRIVATE ENTERPRISES
+OR OFFICIAL REPRESENTATIVES. AS A MATTER OF FACT, WE ARE
+ALREADY DOING SO. WE THINK IT IS NECESSARY TO INCLUDE A
+CLAUSE IN THE AGREEMENT AND WE ARE PREPARED TO PERMIT YOU TO
+ESTABLISH
+CONSULATES GENERAL WITH COMMERCIAL OFFICES IN OTHER PARTS
+OF OUR COUNTRY. ACCORDING TO AMERICAN PRACTICE, WOULD
+THESE CONSULATES GENERAL INCLUDE COMMERCIAL REPRESENTATIVES?
+KATZ: YES.
+WANG: WE WILL PROVIDE CONVENIENCES FOR BUSINESSMEN.
+KATZ: I AM PLEASED WITH YOUR RESPONSE. BOTH GOVERNMENT
+AND PRIVATE OFFICES ARE NECESSARY TO PROVIDE ASSISTANCE FOR
+DOING BUSINESS. BUT GOVERNMENT OFFICES CAN BE BERY HELPFUL
+TO YOU -- IN THE SERVICES THEY CAN PROVIDE TO YOU. AS WELL AS
+TO PRIVATE BUSINESSMEN. I THINK YOU WOULD FIND, FOR EXAMPLE,
+THAT OUR COMMERCIAL OFFICE IN BEIJING WOULD BE WELL EQUIPPED
+WITH INFORMATION ABOUT ALL US BUSINESSES AND INDUSTRIES.
+IF YOU WANTED INFORMATION ABOUT A SPECIFIC PRODUCT OR INDUSTRY,
+YOU COULD GO THERE TO FIND CATALOGS.
+WANG: YES, WE HOPE SO.
+KATZ: THIS CAN BE A USEFUL POINT OF CONTACT IF YOU WANT TO
+LEARN MORE ABOUT WHAT IS AVAILABLE IN THE US CONCERNING
+A PARTICULAR FIRM OR INDUSTRY.
+WANG: ALONG WITH THE ESTABLISHMENT OF COMMERCIAL REPRESENTATION,
+THER WILL BE A LOT OF ROUTINE WORK. IF WE ESTABLISHED COMMERCIAL
+REPRESENTATION IN THE US, WE WOULD WISH TO ENJOY SUITABLE
+FACILITIES. THIS SHOULD BE RECIPROCAL. FOR OUR PART, THERE
+IS NO DIFFICULTY.WE THINK IT IS NECESSARY TO HAVE TECHNICAL
+SEMINARS TO PROMOTE MUTUAL UNDERSTANDING. THE CHINA COUNCIL
+FOR THE PROMOTION OF INTERNATIONAL TRADE (CCPIT) IS IN CHARGE
+OF THIS WORK. THE MINISTRY OF FOREIGN TRADE SUPPORTS SUCH
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 03 OF 09 100712Z
+
+SEMINARS. REPRESENTATIVES FROM FACTORIES AND INDIVIDUAL
+DEPARTMENTS HAVE ATTENDED SEMINARS SPONSORED BY AMERICAN FIRMS.
+KATZ: THE NEXT SUBJECT HAS TO DO WITH FINANCIAL PROVISIONS.
+WE THINK IT IS DESIRABLE TO COVER PROVISIONS CONCERNING PAYMENTS, REMITTANCE OF CURRENCY, RATES OF EXCHANGE, BANKING
+RELATIONS, AND SIMILAR MATTERS. WE MIGHT ALSO HAVE PROVISIONS
+FOR THE ESTABLISHMENT OF BRANCH BANKS OF EACH COUNTRY IN THE
+OTHER COUNTRY. IN HIS MEETING YESTERDAY WITH THE MINISTER OF
+FINANCE, SECRETARY BLUMENTHAL SAID HE HOPED TO SEE A SIGN
+SAYING &quot;BANK OF CHINA&quot; ON WALL STREET. WITHOUT PLAYING FAVORITESN
+WE HOPE TO SEE A SIGN SAYING &quot;BANKS OF AMERICA&quot; IN CHINA (BECAUSE
+WE HAVE MORE THAN ONE COMMERCIAL BANK).
+WANG: WE THINK THIS SUBJECT FALLS WITHIN THE AREA OF BANKING
+BUSINESS; YOU SHOULD CONTACT THE BANK OF CHINA. MAYBE THE US
+FRIENDS ARE AWARE THAT WE HAVE ESTABLISHED A BRANCH BANK IN
+LONDON. VERY SOON. WE ARE PREPARING TO ESTABLISH A BRANCH
+BANK IN LUXEMBOURG. WE THINK YOU MAY RECEIVE AN EXPLANATION
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+FROM THE BANK OF CHINA ABOUT THE BUSINESS
+REQUIREMENTS. IF IT IS NECESSARY TO INCLUDE PROVISIONS
+IN THE TRAE AGREEMENT, WE CAN STUDY THAT.
+KATZ: THE WORKING GROUP ON BAKING PROBLEMS IS DISCUSSING
+THIS SAME MATTER -- THERE IS NO NEED FOR US TO DISCUSS
+THIS IN DETAIL.
+WANG: YES.
+KATZ: WE HAVE PROVISIONS LIKE THIS IN OTHER TRADE AGREEMENTS
+AS YOU MAY BE AWARE. THEY ARE NOT VERY COMPLEX. WE WILL
+GIVE YOU A COPY.
+WANG: TO DEVELOP TRADE, WE NEED CREDIT. WE WONDER WHETHER
+YOU CAN OFFER FACILITIES FOR PROVIDING CREDIT?
+KATZ: WE THINK IT IS QUITE NORMAL TO PROVIDE FOR CREDIT
+FACILITIES. WE UNDERSTAND THAT GIVEN YOUR STATE OF ECONOMIC
+DEVELOPMENT AND TRADE DEVELOPMENT, CREDIT WOULD PLAY AN
+IMPORTANT ROLE. INDEED, THERE WAS SOME DISCUSSION OF THIS
+MATTER BETWEEN SECRETARY BLUMENTHAL AND THE MIISTER OF
+FINANCE. AT THE MOMENT, THERE ARE SOME LEGAL PROBLEMS AND
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 03 OF 09 100712Z
+
+FINANCIAL OBSTACLES. WE ASSUME THAT IN TIME THESE WILL BE
+OVERCOME. I SHOULD EMPHASIZE THAT WE ARE SPEAKING OF
+OFFICIAL CREDITS, NOT PRIVATE CREDITS.
+WANG: IF YOU REMOVE ALL THE OBSTACLES, THEN THERE WILL BE NO PROBLEM?
+KATZ: THERE IS ONLY ONE REMINING PROBLEM -- MONEY*
+(LAUGHTER)
+WANG: YOU CAN OFFER CREDIT FACILITIES?
+KATZ: WE CAN EXPECT THATAFTER THE PROBLEMS ARE RESOLVED,
+WE CAN OFFER CREDIT FACILITIES. TO BE VERY CLEAR, I SHOULD
+MAKE THREE POINTS. FIRST, THERE IS A LEGAL PROBLEM SIMILAR
+TO MFN. I ASSUME THAT WHEN THE PROBLEM OF ONE IS RESOLVED
+(MFN), THE OTHER WILL BE RESOLVED AT THE SAME TIME (CREDITS).
+SECOND, RELATIONS NEED TO BE DEVELOPED WITH THE EXPORT
+IMPORT BANK, WHICH IS OUR CREDIT AGENCY. IT IS A PART OF
+THE US GOVERNMENT, BUT OPERATES INDEPENDENTLY UTILIZING
+PRINCIPLES OF CREDIT WORTHINESS, AND SO FORTH. AND THERE
+IS AN ISSUE OF OUTSTANDING DEBT WHICH NEEDS TO BE RESOLVED.
+THIRS,AND THIS PURELY AN AMERICAN PROBLEM, IS TO FIND
+THE MONEY. AT PRESENT, THE EXPORT IMPORT BANK IS LIMITED
+IN ITS RESOURCES. IT HAS DEMANDS WHICH EXCEED ITS RESOURCES
+(MONEY) BY THREE TIMES. WE THINK THIS IS A PROBLEM WHICH
+CAN BE RESOLVED. IT REQUIRES SOME TIME AND THE RESOLUTION
+OF THE EARLIER ISSUES I REFERRED TO.
+KATZ: THE NEXT SUBJECT -- UNDER THE TRADE ACT OF 1974,
+WE REQUIRE CERTAIN PROVISIONS WHICH ARE NECESSARY TO PROTECT
+OUR MARKET FROM DISRUPTION OF IMPORTS. ESSENTIALLY, THESE
+PROVISIONS REQUIRE THAT THERE BE BILATERAL CONSULTATIONS
+IN AN EFFORT TO RESOLVE THE PROBLEM ON A MUTUALLY SATISFACTORY
+BASIS. IF THE PROBLEM CAN NOT BE RESOLVED ON A MUTUALLY
+SATISFACTORY BASIS, WE NEED THE RIGHT TO TAKE UNILATERAL
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+ACTION IN A SPECIFIC CASE. ESSENTIALLY, THIS IS NOT VERY
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 01333 04 OF 09 100736Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------100409 100936Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4472
+C O N F I D E N T I A L SECTION 4 OF 9 BEIJING 1333
+DEPT FOREB-ASST SEC KATZ
+DEPT PASS TREASYRY FOR EXEC ASST TO SECRETARY RICHARD W. FISHER
+DIFFERENT FROM THE TEXTILE PROBLEM WHICH WE HAVE BEEN
+DISCUSSING RECENTLY, EXCEPT THAT TEXTILES IS PERHAPS THE
+MOST AGGRAVATED PROBLEM OF TRADE. THE REASON IS THAT ORLD
+TEXTILE TRADE IS SO LARGE, EVERY COUNTRY HAS PROBLEMS WITH
+TEXTILE IMPORTS SO THIS PROBLEMS IS TAKING ON MULTINATIONAL
+OR INTERNATIONAL CHARACTERISTICS.THE OTHER CASES WILL NOT BE
+AS LARGE. ONLY ONE CASE HAS BEEN BROUGHT UNDER THIS PROVISION,
+AND NO ACTION WAS TAKEN. THE OBJECT IS TO PROVIDE A PROCEDURE
+WHICH WILL DIMINISH PROBLEMS RATHRR THAN TO PERMIT THEM TO
+BECOME WORSE. THE ESSENTIAL INGREDIENT IS TO FIND A MUTUAL
+SOLUTION. RATHER THAN TO TAKE UNILATERAL ACTION.
+WANG: WE THINK THIS IS A TWO-PART PROBLEM. ONE PART RELATES
+TO THE LAWS IN FORCE, THE OTHER PART ISTHE ACTUAL PRACTICES.
+WE HOPE THERE WILL NOT BE PROTECTION PROVISIONS IN THE TRADE
+AGREEMENT. IF YOU INSIST, WE WILL CONSIDER HOW TO DEVELOP
+APPROPRIATE WORDING FOR SUCH A PROVISION IN THE AGREEMENT
+WE THINK THAT, IN ORDER TO DEVELOP TRADE, WE CAN SOLVE PROBLEMS
+THROUGH MUTUAL CONSULTATION. WE HOPE YOU WILL NOT OVERESTIMATE
+OUR ABILITY. AS FOR THE TIEMS YOU THOUGHT SENSITIVE, FOR
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 04 OF 09 100736Z
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+EXAMPLE, TEXTILES, WE HAVE ONLY A LIMITED QUANITYT FOR
+EXPORT. WE HOPE YOU WILL OFFER US A REASONABLE QUOTAM.
+CONSUMER GOODS ARE THE MAIN ITEMS OF OUR EXPORTS -- THEY
+ACCOUNT FOR A BIG PROPORTION OF OUR TRADE, BUT ONLY A SMALL
+PART OF THE US MARKET. WE MUST START FROM THE ACTUAL
+CIRCUMSTANCES. RECENTLY, WE SENT A TEXTILE GROUP TO THE
+TO HAVE CONSULTATIONS WITH YOU. THIS SHOWS WE WISH
+TO SOLVE PROBLEMS THROUGH CONSULTATIONS. WE HOPE YOU
+WILL CONSIDER THIS PROBLEM POSITIVELY, WHICH WILL BE
+BENEFICIAL TO TRADE.
+KATZ: LET ME EMPHASIZE, OUR OBJECTIVE IS NOT TO BUILD
+PROTECTIONISM INTO THE AGREEMENT, BUT TO AVOID HAVING TO
+RESORT TO PROTECTIONISM. ESSENTIALLY WE DO THAT BY
+PROVIDINGFOR APROCEDURE FOR CONSULTATIONS SO SMALL
+PROBLEMS DO NOT BECOME WORSE OR UNMANAGEABLE.
+WANG: WE THINK IT IS BETTER NOT TO PUT A PROTECTIONIST
+CLAUSE IN THE AGREEMENT.
+KATZ: WE HAVE A REQUIREMENT FOR SUCH A CLAUSE (READS
+PASSAGE FOROM SECTION 405 OF THE TRADE ACT). AS A PRACTICAL
+MATTER, WE ARE REQUIRED BY LAW TO PUT SUCH A PROVISION IN
+THE AGREEMENT, BUT, IN FACT, WE THINK THAT SUCH LANGUAGE
+IS HELPFUL TO YOU RATHER THANHARMFUL TO YOU. IT IS NOT
+OUR PRACTICE, AS IS THE CASE OF SOME COUNTRIES, TO PUT
+LIMITS IN THE AGREEMENT ON WHAT YOU CAN SELL TO US. WE
+DO NOT WANT TO DO THAT, BUT WE MUST HAVE SOME PROCEDURE
+FOR DEALING WITH PROBLEMS IF SUCH PROBLEMS ARISE OR
+THREATEN TOARISE -- ESPECIALLY TO PROVIDE FOR CONSULTATIONS
+TO FINA A MUTUAL SOLUTION. BUT IF THEY ARE NOT RESOLVED,
+WE MUST HAVE THE RIGHT TO TTAKE ACTION. WE CAN PROVIDE
+SOME TEXTS WHICH YOU CAN SEE ARE NOT PROTECTIONIST -- WHICH
+ARE NOT RESTRICTIVE, BUT ASSIST IN RESOLVING PROBLEMS.
+WANG: WE THINK SUCH WORDING IS PROTECTIONIST IN NATURE -AP CAN NOT UNDERSTAND YOUR POSITION. IN PRINCIPLE, IN
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 04 OF 09 100736Z
+
+ORDER TO DEVELOP TRADE, WHEN WE HAVE PROBLEMS WE NEED TO
+MUTUALLY SOLVE THEM. WE CAN PUT THIS IN THE AGREEMENT
+FROM OUR SIDE, WE DO NOT TINK THAT WE WILL CAUSE MARKET
+DISRUPTIONS.
+KATZ: LOOKING AT THE PROBLEM FROM OUR PERSPECTIVE, WE SEE
+A NATION OF 900 MILLION PRODUCERS;.
+WANG: OR, WE CAN SAY WE HAVE 900 MILLION CONSUMERS AS WELL*
+(LAUGHTER) (TELLS JOKE ABOUT CHINESE POUPLATION)
+KATZ: WHAT WE ARE PROPOSING WILL NOT BE A PROBLEM.
+WANG: WE WILL STUDY THIS FURTHER. WE HOPE ALL THE WORDING
+WILL BE POSITIVE -- NOT NEGATIVE. WE WILL STUDY THE ACTUAL
+WORDING TO DEVELOP A CLAUSE.
+KATZ: THE NEXT SUBJECT RELATES TO COPYRIGHTS, PATENTS, AND
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+INDUSTRIAL PROPERTY. SUCH A CLAUSE IS REQUIRED BY OUR LAW.
+SPECIFICALLY, WE WANT TREATMENT EQUIVALENT TO THAT PROVIDED
+IN THE PARIS CONVENTION AND THE INDUSTRIAL PROPERTY
+CONVENTION. IN THE MEETING THIS MORNING, YOUR MINISTER SAID
+THAT YOU PROVIDED SUCH PROTECTON. BUT IT WOULD BE DESIRABLE -ESSENTIAL-- TO HAVE SUCH A PROVISION SET OUT IN THE TRADE
+AGREEMENT TO GIVE CONFIDENCE TO OUR INVESTORS AND TRADEERS.
+I UNDERSAND TAHT YOU ARECONSIDERING JOINING THESE TWO
+CONVENTIONS. I ASSUME THAT THE SECRETARIATS OF THESE
+TWO CONVENTIONS HAVE PROVIDED TECHNICAL ADVICE ON THE LAWS
+ANDREGULATIONS THAT ARENECESSARY. IN ADDITION, WE HAVE EXPERTS
+IN OUR
+GOVERNMENT WHICH COULD ASSIST IN THIS IF
+REQUIRED. WE ARE VERY INTERESTED IN HEARING WHAT THE
+POSSIBILITIES AARE IN THIS AREA AND THE STATUS OF YOUR
+NEGOTIATIONS WITH THESE TWO ORGANIZATIONS.
+WANG: WE HAVE A RELEVANT DEPARTMENT HANDLING PATENTS
+AND COPYRIGHT AFFAIRS. AS FOR THE PARIS CONVENTION, THE
+DEPARTMENTS CONCERNED ARE ACTIVELY CONSIDERING THIS. IN
+THE PAST FEW YEARS, WE DID NOT HAVE THE OPPORTUNITY TO
+CONSIDER THIS &quot;DUE TO A NUMBER OF REASONS&quot;. WE ARE NOW
+ENGAGED IN INTERNATIONAL ACTIVITIES. THE ORGANIZATIONS
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 04 OF 09 100736Z
+
+CONCERNED ARE ACTIVELY CONSIDERING THIS SUBJECT. EVEN
+THOUGH WE HAVE NOT PARTICIPAED IN THE PARIS CONVENTION,
+WE HAVE ACTIVELY PROTECTED PATENTS. WE ABIDE BY THE
+CONVENTION BY HONORINGCONTRACTS SIGNED BY ENTITIES OF
+BOTH COUNTRYES. WE HAVE IMPORTED PATENTS FROM JAPAN AND
+OTHER COUNTRIES, AND SO FAR THERE HAVE BEEN NO COMPLAINTS
+CONCERNING OUR
+FAILURE TO HONOR THE CONTRACTS. BUT THIS
+DOES NOT EXCLUDE THE POSSIBILITY THAT CHINA WILL PARTICIPATE
+IN THIS CONVENTION. YOU CAN HAVE FULL CONFIDENCE IN CHINA.
+WHEN WE SIGN THE TRADE AGREEMENT, WE WILL NOT NECESSARILY
+BE ALREADY PARTICPATING IN THE PARIS CONVENTION -- THESE
+ARE TWO DIFFERENT THINGS. WE CAN CONSIDER THE WORDING -HOW TO EXPRESS THIS IN THE TRADEE AGREEMENT.
+COPYRIGHTS AREHANDLED BY ANOTHER DEPARTMENT. AT
+PRESENT, MANY OTHER DEPARTMENTS IN CHINA ARE NEGOTIATING
+WITH THEIR COUNTERPARTS ON THE US SIDE, FOR EXAMPLE,
+IN SCIENCE ANDTECHNOLOGY AND CULTURE. MAYBE THIS WILL
+BE COVERED IN OTHER AGREEMENTS.
+KATZ: I THINK THAT FROM WHAT YOU SAY, WE CAN FIND WORDING
+TO MEET OUR LEGAL RQUIREMENTS AND TO SATISFY THE CONFIDENCE
+OF TRADERS AND INVESTORS. IF IT WERE INCLUDED IN THE AGREEMENT, IT WOULD NOT BE NECESSARY TO HAVE THIS IN THE S&amp;T AREA.
+BUT ITHINK IT WILL BE POSSIBLE TO FIND SOMEWORDING WHICH
+WILL BE ACCEPTABLE TO BOTH SIDES.
+WANG: WE CAN STUDY THIS FURTHER.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+KATZ: THE NEXT SUBJECT WAS ALSO COVEREDTHIS MORNING. I
+UNDERSTOOD YOUR MINISTER TO SAY THAT THERE WOULD BE NO
+PROBLEM TO PROVIDE FOR DISPUTE SETELEMENT. THIS IS STANDARD
+IN OUR TRADE AGREEMENTS, AND THE TRADE AGREEMENTS OF MANY
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 01333 05 OF 09 100829Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------100778 100937Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4473
+C O N F I D E N T I A L SECTION 5 OF 9 BEIJING 1333
+DEPT FOR EB-ASST SEC KATZ
+DEPT PASS TREASURY FOR EXEC ASST TO SECRETARY RICHARD W. FISHER
+OTHER COUNTRIES PROVIDE
+FOR IMPARTIAL ARBITRATION IF THE PARTIES CAN NOT OTHERWISE
+SETTLE THEIR DISPUTES. MANY CONTRACTS PROVIDE FOR THIS,
+BUT WE ARE PROPOSING A GENERAL PROVISION.
+WANG: WE AGREE TO INCLUDE SUCH A PROVISION IN THE AGREEMENT,
+ALTHOUGH WE HOPE THAT THE BUYERS AND SELLERS HAVE NO
+DISPUTES -- THAT THEY AVOID THEM. ACCORDING TO OUR PRINCIPLES,
+ALL OUR DISPUTES SHOULD BE SETTLED BY MUTUAL DISCUSSION. IF
+THERE IS NO SOLUTION, THEN THE QUESTION CAN BE SUBMITTED TO
+ARBITRATION FOR SETTELEMENT. ARBITRATION CAN BE HELD EITHER
+IN THE US, CHINA, OR IN A MUTUALLY AGREED THIRD COUNTRY.
+WE CAN AGREETO THIS. THE CCPIT ISRESPONSIBLE FOR THIS.
+THERE IS A LEGAL DEPARTMENT IN THE CCPIT WHICH HAS RESPONSIBILITY. THE PURPOSE IS TO PROMOTE TRADE -- TO PROMOTE TRADE
+BY SOLVING PROBLEMS THROUGH MEDIATION. (LAUGHS) WE CAN
+CONSIDER THE WORDING. WE WISH TO TAKE A AMICABLE AND
+POSITIVE ATTITUDE TOWARD DISPUTES AND TO SUBMIT THEM TO AN
+ARBITRATION TRIBUNAL ONLY IF IT IS THEONLY WAY OUT.
+KATZ: WITH DUE RESPECT TO MY COLLEAGUES, TWO OF WHOM ARE
+CONFIDENTIAL
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 05 OF 09 100829Z
+
+PRACTICING LAWYERS AND ONE (MR. MARCUSS) A NON-PRACTICIING
+LAWYER, I THINK WE ARE BETTER OFF SETTLING BEFORE GETTING
+THEMATTER INTO THEHANDS OF LAWYERS.
+MARCUSS: I DISAGREE WITH MY SUPERIOR*
+WANG: WE HOPE IN YOUR ARBITRATION RECORDS THERE IS NO RECORD
+OF DISPUTES BETWEEN AMERICAN AND CHINESEFIRMS.
+KATZ:I AGREE.
+SUN: THEN, YOU (MARCUSS) WILLLOSE YOUR JOB*
+MARCUSS: I'LL HAVE TO STAY IN GOVERNMENT*
+KATZ: HE NEXT SUBJECT IS A VERY SIMPLE PROVISION PROVIDING
+FOR SUSPENSION IN CASES OF NATIONAL SECURITY.THIS IS A
+TECHNICAL POINT REALLY.
+WANG: WHAT DOES IT MEAN?
+KATZ: ITWOULD ESSENTIALLY STATE, ACCORDING TO ONE FORMULATION, &quot;THE PROVISIONS OF THIS AGREEMENT SHALL NOT LIMIT
+THE RIGHT OF EITHER PARTY TO TAKE ANY ACTION FOR THE
+PROTECTION OF ITS SECURITY INTERESTS.&quot;
+WANG: PLEASE EXPLAIN WHAT THAT MEANS.
+KATZ: ESSENTIALLY IT COVERS ONLY NATIONAL SECURITY. IF
+EITHERCOUNTRYFELT THAT ITS NATIONAL SECURITY WAS THREATENED,
+IT COULD SUSPEND THE PROVISIONS OF THE AGREEMENT. THIS IS
+AN OVERRIDING PROVISION.
+WANG: THIS IS ONLY CONNECTED WITH THE TERMS AND RESPOSIBILITIES
+OF THE TRADEAGREEMENT?
+KATZ: YES, ALTHOUGH THERE IS A QUESION OF EXPORT CONTROL
+WHICH WE MAINTAIN FOR NATIONAL SECURITY REASONS.
+WANG: WE DON'T THINK THAT THERE EXISTS SUCH A PROBLEM -BECAUSE YOUR EXPORTER SIGNS CONTRACTS IN ACCORDANCE WITH
+US LAWS AND REGULATIONS. SO WE THINK THAT THE US
+GOVERNMENT SHOULD OFFER FACILITATION TO BUSINESSMEN. WE
+THINK THIS CLAUSE IS CONTRARY TO THE DESIRE TO DEVELOP TRADE.
+KATZ: IT ISIN ONE SENSE -- IT IS AN EXCEPTION TO EVERYTHING IN THE AGREEMENT. IT PROVIDES FOR NONPERFORMANCE.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 05 OF 09 100829Z
+
+PREFERABLY, IT WOULD NOT BE USED. BUT THERE MAY BE TIMES
+AND CIRCUMSTANCES WHEN EITHER COUNTRY MIGHT FEEL THAT IT
+COULD NOT HONOR THE AGREEMENT FOR NATIONAL SECURITY REASONS.
+WANG: WETHINK BOTH SIDES SHOULD HAVE FURTHER CONSULTATIONS
+ON THIS SUBJECT. FROM THE STANDPOINT OF THE ACTUAL SITUATION, SOME MEASURES THATTHE US GOVERNMENT HAS TAKEN
+HAVE NOT BEEN BENEFICIAL TO THE DEVELOPMENT OF TRADE. WE
+HAVE SIGNED A NUMBER OF CONTRACTS WITH AMERICAN FIRMS FOR
+WHICH THE US GOVERNMENT HAS REFUSED TO GRANT EXPORT
+LICENSES. SO THE CONTRACTS ARE STILL OUTSTANDING - THEY
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+CAN NOT BE HONORED. FOR SOME ITEMS, THE PROBLEM WAS
+SOLVED BUT IT TOOK A LONG TIME. SOME OF YOUR PRODUCTS
+ARE ADVANCED IN TECHNOLOGY, THAT IS, YOU ARE COMPETITIVE
+IN THIS AREA. IF YOU IMPOSE RESTRICTIONS ON EXPORTS,
+YOU LIMITEDYOUR ABILITY TO EXPORT (LAUGHTER). ADVANCED
+TECHNOLOGY PRODUCTS FROM THE US HAVE BEEN IMPORTANT
+IN OUR TRADE AND THEY ARE REQUIRED FOR THE FOUR MODERNIZATIONS. IF WE INTRODUCE HIGH TECHNOLOGY PRODUCTS FROM TH
+US, THIS WILL RAISE THE STANDARDS OF THE FOUR MODERNIZATIONS. WE DON'T THINK THIS WILL THREATEN THE US
+THE MOREPOWERFUL CHINA IS, THE MORE THIS WILL CONTRIBUTE
+TO THE US SECURITY.
+KATZ: UNFORTUNATELY, WE LIVE IN AN IMPERFECT WORLD. IT
+IS A MATTER OF MUCH REGRET THAT WE MUST SPEND SO MUCH OF
+OUR RESOURCES, EVEN HUMAN LIFE, IN WHAT WE REGARD AS
+NATIONAL SECURITY. WE LIVE WITH THREATSTOSECURITY.
+SOME AE REAL; SOME PERHAPS ARE NOT REAL, BUT THEY ARE
+PERCIEIVED AS REAL. WE ALL TAKE MEASURES TO PROTECT OUR
+SECURITY. WE HAVE TRIED TO REDUCE THE THREAT IN VARIOUS
+WAYS -- THROUGH WORK IN THE UNITED NATIONS AND INDEVELOPING
+RELATIONS WITH COUNTRIESAND REGIONS OF THE WORLD, THROUGH
+DISARMAMENT, THROUGH THE TREATIES ON NUCLEAR NON-PROLIFERATION,
+BUT DESPITE THESE EFFORTS, THERE ARE PROBLEMS AND THREATS
+THAT REMAIN. SO, MAYBE THIS PROVISION IS INCONSISTENT WITH
+THE GENERAL THRUST OF OUR EFFORTS WHICH PROVIDE FOR THE
+EXPANSION OF TRADE, BUT HERE WE MAY IN CERTAIN CIRCUMSTANCES
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 05 OF 09 100829Z
+
+HAVE TO SUSPEND AN AGREEMENT. THIS IS A DELIBERATE EFFORT,
+WHICH WE FEEL ISREQUIRED.
+WANG: I WOULD LIKE TO SAY A FEW WORD WHICH ARE ON ANOTHER,
+UNRELATED, SUBJECT. YOU WANT TO LIMIT STRATEGIC WEAPONS.
+YET THE MORE YOU LIMIT THEM, THE MORE YOU STRENGTHEN &quot;THE OTHER
+COUNTRY.&quot;
+DISARMAMENT IS NOT MUTUAL. SUCH A PROBLEM
+THAT CONGRESS MIGHT TAKE SUCH A NEGATIVE ACTON. AGAIN,
+THIS IS ATECHNICAL, LEGAL REQUIREMENT RATHER THAN A
+POINT OF GREAT SUBSTANCE.
+WANG: GOOD.
+KATZ: THE LAST POINT IS INDUSTRIAL COOPERATION AND INVESTMENT.
+HERE, WE THOUGHT ITWOULD BE DESIRABLE TO PUT IN PROVISIONS
+ON THESE SUBJECTS WHICH WOULD PROMOTE AND FOSTER INVESTMENT.
+WE ARE VERY INTERESTED AND PLEASED WITH THEDISCUSSIONS UNDERWAY WITH US FIRMS WITH RESPECT TO MAJOR INDUSTRIAL CORPORATIONS. WE WERE VERY INTERESTED IN HEARING THEPLANS OF THE
+MINISTER AND VICE PREMIER YU QIULI CONCERNING COMPENSATION
+TRADE, JOINT VENTURES, COPRODUCTION, AND SO FORTH. OUR
+THOUGHT WAS THAT WE COULD INCLUDE PROVISIONS IN THE AGREEMENT
+TO ENCOURAGE THESE ARRANGEMENTS. FRANKLY, WE HAVE NO LANGUAGE
+PREPARED ON THIS, BUT WE WANT TO GET YOUR REACTION TO PUTTING
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+THIS TYPE OF LANGUAGE IN THE AGREEMENT.
+WANG: WE ARE CONSIDERING LAWS ON ALL THESE SUBJECTS. OUT
+STATE CORPORATIONS HAVE ALREADY SIGNED AGREEMENTS WITH
+AMERICAN FIRMS AND OTHER FOREIGN FIRMS. WE THINK THESE ARE
+LEGAL. IT TAKES TIME FOR US TO MAKE LAWS CONCERNING INVESTMENT, COMPENSTATION TRADE, JOINT VENTURES, AND COPRODUCTION.
+IN ORDER TO EXPRESS OUR JOINT DESIRE, WE CAN INCLUDESUCH
+A PROVISION IN THE AGREEMENT.
+KATZ: YESTERDAY, I MENTIONED TO MR. SUN TWO OTHER SUBJECTS.
+ONE WAS SUFFICIENTLY DISCUSSED THIS MORNING -- TEXTILES.
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 01333 06 OF 09 100812Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------100693 100938Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4474
+C O N F I D E N T I A L SECTION 6 OF 9 BEIJING 1333
+
+WANG: WE CAN CONTINUUE THE TALKS TOMORROW.
+KATZ: FINE, TOMORROW. ONE SUGGESTION IS TO RECORD IS A
+NOTE VERBALE OR SOME OTHER PIECE OF PAPER THE DISCUSSIONS
+WE HAD TODAY.
+WANG: YES, YES. YOU MAKE A SUMMARY OF THE TALKS CONCERNING
+THE SUBJECTS WE HAVEDISCUSSED, THE EXCHANGE OF VIEWS, AND
+NEXT STEPS. WE HOPE THAT BEFORE THE ARRIVAL OF MRS. KREPS,
+WE CAN MAKE SOME PREPARATIONS FOR HER VISIT.
+KATZ: ALL RIGHT. WE WILL SEE YOU IN THE MORNING.
+WANG: WE ARE VERY HAPPY TO EXCHANGE VIEWS ON SUBJESTS OF
+MUTUAL INTEREST.
+DATE: FEBRUARY 28, 1979
+PLACE: MINISTRY OF FOREIGN TRADE
+SUBJECT TRADE WORKING GROUP MEETING
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+WANG: YESTERDAY, WE WISHED TO CONTINUE TALKS BUT THERE WAS
+NO TIME. PERHAPS WE CAN CONTINUE THIS MORNING. (GIVES
+MR. KATZ THE CHINESE TARIFF REGULATTIONS).
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 06 OF 09 100812Z
+
+KATZ: THIS WILL BE HELPFUL. WE HAVE SOME PEOPLE WHO WILL
+BE ABLE TO READ THIS. LET ME SAY THAT THE DISCUSSIONS
+YESTERDAY COVERED QUITE A LOT OF GROUND -- ALL THE ELEMENTS
+WE THINK SHOULD BE IN A TRADE AGREEMENT. THE NEXT STEP,
+I THINK, WOULD BE TO LOOK AT SOME ACTUAL LANGUAGE, RATHER
+THAN STUDYING THESE PROVISIONS IN GENERAL. I WOULD LIKE
+TO PROPOSE THAT SOME DAYS AFTER WE LEAVE, EITHER WE PROVIDE
+LANGUAGE ON OUR SIDE, OR IF YOU HAVE LANGUAGE, WE EXCHANGE
+DRAFTS. THAT IS, ON MARCH 15, SAY, EXCHANGE DRAFTS AND,
+IF CONVENIENT, A MONTH OR SO AFTER THAT PLAN TO HAVE THE
+FIRST MEETING. I THINK, TO MAKE OUR WORK MOST EFFICIENT,
+WE MIGHT PLAN TO HAVE TEXTS OF A DRAFT AGREEMENT TO
+ALLOW TIME FOR CONSIDERATION AND TO ALLOW TIME FOR AN
+EXCHANGE OF VIEWS THROUGH DIPLOMATIC CHANNELS -- THAT IS
+THROUGH OUR NEW EMBASSIES. THEN, WE CAN PLAN FOR A
+MEETING AFTER THAT. WE WOULD WELCOME A CHINESE DELEGATION
+TO VISIT WASHINGTON TO DISCUSS THESE MATTERS.
+WANG: YOU ARE PROPOSING TO EXCHANGE A DRAFT AGREEMENT
+ON MARCH 15 AND IN ANOTHER TWO OR THREE WEEKS OR A MONTH
+LATER TO MEET TO EXCHANGE PRELIMINARY VIEWS.
+KATZ: YES. IN THAT TWO TO THREE WEEK PERIOD THERE MIGHT
+BE SOME QUESTIONS OR PROBLEMS, AND WE CAN EXCHANGE VIEWS
+THROUGH OUR RESPECTIVE EMBASSIES.
+WANG: IN PRINCIPLE, WE AGREE TOEXCHANGE DRAFT AGREEMENTS
+ON MARCH 15. TWO OR THREE WEEKS AFTER EXCHANGING DRAFT
+AGREEMENTS WE CAN HAVE AN INITIAL EXCHANGE OF VIEWS
+THROUGH THE US EMBASSY IN BEIJING.(DISCUSSION AMONG
+THE CHINESE -- NOT TRANSLATED -- ABOUT THE TIMING OF THE
+KREPS VISIT).
+WANG: WE HAVE INVITED MRS. KREPS ON MAY 7. SO FAR WE HAVE
+RECEIVED NO FINAL RESPONSE. WE SUGGEST THAT PERHAPS, BEFORE
+MRS. KREPS' ARRIVAL IN CHINA, AN ADVANCE GROUPS COME FROM THE
+US SO WE CAN HAVE A FURTHER EXCHANGE OF VIEWS TO
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 06 OF 09 100812Z
+
+FIX THE WORDING OF THE FINAL AGREEMENT. AS FOR TIMING OF
+THE SIGNATURE, WE CAN DISCUSS THIS AT A LATER DATE. THE
+AGREEMENT COVERS A WIDE RANGE OF SUBJECTS WHICH ARE THE
+RESPONSIBILITY NOT ONLY OF THE MINISTRY OF FOREIGN TRADE,
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+BUT OTHER DEPARTMENTS AS WELL.
+KATZ: WE ARE NOT ALTOGETHERCLEAR ON MINISTER LI'S REMARKS
+YESTERDAY. WILL HE BE IN CHINA DURING THE PERIOD WHEN
+MRS. KREPS COMES?
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 01333 07 OF 09 100841Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------100816 100938Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4475
+C O N F I D E N T I A L SECTION 7 OF 9 BEIJING 1333
+WANG: IN PLANNING MINISTER LI'S SCHEDULE WE HAD SUGGESTED
+THAT MRS. KREPS' VISIT BE POSTPONED UNTIL JUNE -- BUT SHE
+WANTED O COME EARLIE. WE HAVE ADVANCED THE DATE EARLIER.
+SO FAR WE HAVE NOT HEEARD FROM HER.
+KATZ: WILL THE MINISTER BE HERE THEN?
+WANG: YES, OF COURSE. WE ARRANGED IT THAT WAY.
+KATZ: LET ME MAKE THIS CLEAR. WE WILL EXCHANGE DRAFTS
+ON ABOUT MARCH 15; THERAFTER,WHATEVER COMMENTS THERE
+ARE WILL BE FORWARDED THROUGH DIPLOMATIC CHANNELS. ON
+THE QUESTION OF A DELEGATION VISIT, IT IS INCONVENIENT
+FOR A DELEGATION TO COME TO WASHINGTON?
+WANG: WE THINK IT WOULD BE BETTER TO EXCHANGE VIEWS IN
+BEIJING.
+KATZ: WHY DON'T WE LEAVE IT AS FOLLOWS: WE WILL PROCEED
+TO EXCHANGE DRAFTS BY MARCH 15. THEREAFTER WE WILL TRY
+TO MAKE AS MUCH PROGRESS AS POSSIBLE THROUGH OUR RESPECTIVE
+EMBASSIES. WE WILL LEAVE OPEN THE PRECISE DATE OF A
+FURTHER MEETING, BUT WITH THE UNDERSTANDING THAT IT WILL
+TAKE PLCE AS SOON AS WE CAN FIX AN APPROPRIATE DATE.
+WANG: FINE.
+KATZ: WITH THE UNDERSTANDING THAT WE EXPECT A MEETING
+WILL TAKE PLACE IN EARLY SPRING.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 07 OF 09 100841Z
+
+WANG: THAT IS, THE FURTHER MEETING WILL BE ARRANGED
+AFTER THE EXCHANGE OF VIEWS THROUGH DIPLOMATIC CHANNELS.
+MAYBE IN APRIL?
+KATZ: PERHAPS.
+WANG: WE WILL LEAVE THIS OPEN?
+KATZ YES, BUT WITH THE UNDERSTTANDING THAT IT WILL BE
+SOMETIME IN APRIL.
+WANG: GOOD.
+KATZ: IN HELPING US TO DEVELOP OUR THOUGHTS ON THE AGREEMENT, I HAVE SOME QUESTIONS WHICH I WOULD LIKE TO PUT TO
+YOU.
+FIRST, IT WOULD BE HELPFUL TO HAVE SOME ESTIMATE OF
+YOUR EXPECTATIONS OF TOTAL EXPORTS AND IMPORTS OVER THE
+NEXT TWO TO THREE SAARS WITH RESPECT TO AGRICULTURE ON
+THE ONE HAND AND INDUSTRIAL PRODUCTS ON THE OTHER.
+WANG: AS A WHOLE WE THINK FOREIGN TRADE WILL DEVELOP
+FURTHER TOGETHER WITH THE DEVELOPMENT OF OUR NATIONAL
+ECONOMY. ALL THE STATISTICS ANDSIMILAR INFORMATION ARE
+HANDLED BY THE STATISTICAL DEPARTMENTS, BUT THEY HAVE
+NOT PUBLISHED THE STATISTICS. JUST RECENTLY, SOME
+STATISTICS FOR SOME MAJOR ITEMS OF OUR NATIONAL ECONOMY
+HAVE BEEN PUBLISHED, BUT WE HAVE NOT GOT THE STATISTICAL
+PICTURE OF THE WHOLE ECONOMY. OUR TRADE FIGURES, W
+THINK THESE ARE OPEN TO THE PUBLIC BECAUSE TRADE IS
+TWO-WAY. ALTHOUGH SOME FIGURES HAVE BEEN PUBLISHED,
+THE METHODS OF CALCULATION VARY FROM ONE COUNTRY TO
+ANOTHER -- SO THE FIGURES DON'T AGREE. BUT USUALLY
+THERE IS NOT MUCH DIFFERENCE. IN LINE WITH OUR REQUIREMENTS
+WE THINK THAT FOREIGN TRADE ILL BE EXPANDINGALONG WITH
+THE NATIONAL ECONOMY. INDUSTRIAL OUTPUT WILL INCREASE
+BY ABOUT10 PERCENT ANNUALLY. AGRICULTURAL OUTPUT WILL
+INCREASE BY FOUR TO FIVE PERCENT ON AN ANUAL BASIS.
+DEPENDINGON THE RATE OF GROWTH OF INDUSTRIAL OUTPUT AND
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 07 OF 09 100841Z
+
+AGRICULTURAL OUTPUT, WE THINK FOREIGN TRADE WILL DEVELOP
+ON THE AVERAGE ABOUT 10 PERCENT ANNUALLY. IN THE INITIAL
+STAGES, IMPORTS WILL BE GREATER THAN EXPORTS. WE WISH
+TO DEVELOP FOREIGN TRADE, BUT FUNDS ARE INSUFFICIENT.
+SOME COUNTRIES ARE OFFERING US CREDIT. THAT'S WHY IMPORTS
+WILL BE GREATER THAN EXPORTS FOR SOME TIME IN THE FUTURE.
+HOWEVER, IN A FEW YEARS, OUR EXPORTS MAY EXCEED OUR IMPORTS
+BECAUSE WE HAVE TO PAY BACK OUR DEBT. THIS IS THE GENERAL
+IDEA. SINO-US TRADE WILL REGISTER A REMARKABLE ACHIEVE-
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+MENT. VICE PREMIER DENG XIAOPING SAID DURING HIS STAY
+IN THE UNITED STATES THAT SINO-US TRADE WILL BE DOUBLED.
+IF BOTH SIDES FACILITATE TRADE, THIS POSSIBILITY EXISTS.
+BEFORE NORMALIZATION, SINO-US TRADE GREW, THEN FELL.
+AFTER NORMALIZATION, WE THINK TRADE WILL DEVELOP STEADILY -NOT FLUCTUATIONS LIKE A SNAKE -- BUT STEADY GROWTH.
+JOINT EFFORTS ARE REQUIRED FOR HIS PURPOSE -- BOTH SIDES
+GRANTING MFN -- AND THIS WILL BE BENEFICIAL FOR THE
+EXPANSION OF TRADE. WE THINK THAT MFN TREATMENT IS BENEFICIAL FOR BOTH SIDES.
+KATZ: SECOND, WITH RESPECT TO STATISTICS, DO YOU ENVISION
+THAT THERE MIGHT BE PUBLISHED STATISTICS ON A REGULAR BASIS
+IN THE NEAR FUTURE?
+WANG: OUR STATISTICAL DEPARTMENT IS STUDYING THIS PROPOSAL.
+EVEN IF WE HAVE NO STATISTICS AVAILABLE, HOWEVER, WE CAN
+EXCHANGE VIEWS ON THE SITUATION IN ORDER TO PROMOTE MUTUAL
+UNDERSTANDING. AS TO THE QUESTION OF WHETHER OR NOT TO
+PUBLISH STATISTICS,THIS IS HANDLED BY ANOTHER DEPARTMENT.
+KATZ: I MIGHT SAY, WITH THE KIND OF OPEN TRADING RELATIONSHIP WE HOPE TO DEVELOP, IT IS IMPORTANT THAT GENERAL
+INTERNATIONAL PRACTICES BE FOLLOWED. IT IS USEFUL FOR
+BUSINESS AND GOVERNMENT TO GET A PICTURE OF WHAT THE TRADE
+OPPORTUNITIES MIGHT BE. THERE WAS A DISCUSSION OF IMF
+MEMBERSHIP, FOR EXAMPLE. THE IMF USUALY PUBLISHES
+STATISTICS OF MEMBER COUNTRIES. IT WOULD BE USEFUL IF
+WE COULD LOOK FORWARD TO THIS POSSIBILIITY FOR CHINA.
+WANG: WE WISH TO ENGAGE IN MORE INTERNATIONAL ACTIVITY.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 07 OF 09 100841Z
+
+AS FOR STATISTICS, WE CAN WORK ON IT AND CONSIDER HOW TO
+PUBLISH THEM. IN THE PAST WE PUBLISHED STATISTICS. BUT
+IN THE PAST SEVERAL YEARS, SUCH WORK STOOD STILL. WE
+WOULD NOW LIKE TO RESUME NORMAL WORK. FOR EXAMPLE, PUBLISHING
+CUSTOMS STATISTICS CAN BE CONSIDERED NORMAL. WE
+SHOULD OFFER THEM TO YOU-- WE DO NOT HAVE THEM AVAILABLE.
+WE ARE CONSDERING HOW TO RESUME THIS. PERHAPS YOU
+NOTICED IN THE PEOPLE'S DAILY, THE STANDING COMMITTEE
+OF THE NPC IS NOW CONSIDERING HOW TO FORMULATE A WIDE RANGE
+OF LAWS. WE WISH TO NORMALIZE THESE THINGS, BUT IT
+TAKES TIME.
+KATZ: THIRD, THE OTHER QUESTION IS WITH RESPECT TO OUR
+BILATERAL TRADE. IS THERE ANY GENERAL ESTIMATE YOU COULD
+PUT ON THIS FOR THE NEXT SEVERAL YEARS, POSSIBLY TO PUT
+A DOLLAR FIGURE ON THIS?
+WANG: DO YOU KNOW WHAT TOTAL TRADE WAS LAST YEAR?
+LINCOLN: $1.14 BILLION, TWO-WAY.
+WANG:(AFTER CONSULTING WITH HIS CHINESE COLLEAGUES)
+ACCORDING TO OUR STATISTICS, IT WAS ABOUT $1 BILLION. THAT
+IS VERY CLOSE. VICE PREMIER DENG STATED THAT HE EXPECTED
+US-PRC TRADE TO INCREASE BY SEVERAL-FOLD. ACCORDING TO OUR
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+ESTIMATE, THIS YEAR'S FIGURE WILL BE MUCH BIGGER THAN LAST
+YEAR.
+KATZ: DO YOU HAVE A FIGURE?
+WANG: IT DEPENDS ON THE CONCLUSION OF CONTRACTS; WE
+EXPECT A BIGGER FIGURE THIS YEAR. WHAT IS YOUR VIEW?
+KATZ: IT IS DIFFICULT FOR USTO KNOW. OUR TRADING SYSTEM
+IS MADE UP OF MANY FIRMS. IT IS DIFFICULT TO PUT TOGETHER
+A CLEAR PICTURE.
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 01333 08 OF 09 100914Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------101073 100939Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4476
+C O N F I D E N T I A L SECTION 8 OF 9 BEIJING 1333
+WANG: WE ALSO HAVE THE SAME SITUATION. IT DEPENDS ON
+BUSINESS NEGOTIATIONS BETWEEN OUR INDUSTRIAL DEPARTMENTS
+AND THE US COUNTERPARTS. FOR SOME HIGH TECHNOLOGY
+PRODUCTS, WE THOUGHT THE US PRODUCTS ARE VERY GOOD. BUT
+FOR A NUMBER OF REASONS, THE AMERICAN EXPORTERS THINK THEY
+CAN NOT GET THE SUPPORT OF THE AMERICAN GOVERNMENT. THEY
+THINK IF THEY SIGN A CONTRACT, THEY WILL NOT BE ABLE TO
+HONOR IT. SO OUR DESIRE CAN NOT BE FULFILLED.
+KATZ: IT WOULD BE HELPFUL IN THAT REGARD, IF THERE ARE
+PARTICULAR KINDS OF PRODUCTS, IF YOU COULD TELL US, E
+MIGHT BE ABLE TO GIVE SOME ADVICE AND THERE ARE CERTAIN
+PROBLEMS WHICH WE MIGHT BE ABLE TO RESOLVE. WE WOULD
+LIKE TO BE HELPFUL IN THAT REGARD.
+WANG: NOW, OUR INDUSTRIAL DEPARTMENTS ARE EXCHANGING VIEWS
+WITH THEIR COUNTERPARTS IN THE US. VICE PREMIER YU QIULI
+EXCHANGED VIEWS WITH TREASURY SECRETARY BLUMENTHAL ON THE
+MAJOR ITEMS WE WISH TO IMPORT. RECENTLY, OIL EXPLORATION
+AND PRODUCTION IS A VERY ACTIVE AREA; ALSO CHEMICAL PLANTS AND
+EQUIPMENT; WE WISH TO MAKE FULL USE OF OUR WATER RESOURCES,
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+SO WE NEED HYDROPOWER EQUIPMENT; WE CAN ECHANGE VIEWS ON
+COOPERATION IN THE METALLURGICAL INDUSTRIES. WE ARE ALSO
+INTERESTED IN PRECISION INSTRUMENTS CONNECTED WITH
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 08 OF 09 100914Z
+
+ELECTRONICS AND COMPUTERIZED SYSTEMS.
+KATZ: ON THE POINT YOU MENTIONED A MOMENT AGO REGARDING
+THE UNCERTAINTIES OF FIRMS ONTHAT THEY CAN EXPORT, AS YOU
+KNOW WE HAVE EXPORT CONTROL ON CERTAIN TYPES OF GOODS.
+WANG: IF YOU DID NOT EXPORT THESE SAME COMMODITIES TO
+OTHER COUNTRIES, WE WOULD HAVE NO COMPLAINTS, BECAUSE
+THIS WOULD BE EQUAL TREATMENT.
+KATZ: IT IS SOMETIMES NOT THAT CLEAR. IT IS NOT ALWAYS A
+QUESTION OF THE COUNTRY TO WHICH A PRODUCT IS BEING
+EXPORTED, BUT THE PURPOSE OF THE USE OF THE GOODS.
+FREQUENTLY IT ISA QUESTION OF ASSURING OURSELVES THAT
+THE PROPOSED USE OF THE GOODSWOULD NOT MAKE PROBLEMS
+FOR US. MR. MARCUSS RECENTLY MET WITH YOUR LIAISON OFFICE
+IN WASHINGTON TO INFORM THEM OF CERTAIN FORMAL REQUIREMENTS
+WE HAVE FOR EXPORTS. THESE ARE REQUIREMENTS ATHAT ARE
+REALLY IMPOSED ON ALL COUNTRIES. MR. MARCUSS' VISIT WAS
+REALLY AN EFFORT TO FACILITATE XPORT LICENSING, AND IN
+THAT SENSE I MADE THEPOINT A MOMENT AGO -- IF WE KNOW
+OF A PARTICULAR INTEREST, WE CAN GIVE ADVICE ON HOW TO
+AVOID PROBLEMS. THE OFFICE OFEXPORT ADMINISTRATION
+IN THE DEPARTMENT OF COMMERCE CAN BE A POINT OF CONTACT
+FOR YOUR NEW EMBASSY. OF COURSE, MOST BUSINESSMEN KNOW
+HOW TO GET ANSWERS TO QUESTIONS, BUT FREQUENTLY THE ANSWER
+DEPENDS ON THE USE OF THE PRODUCT AND THAT INFORMATION WE
+MUST GET FROM YOU. I THINK IF WE DEVELOP RELATIONS,
+PROCEDUREES AND CONFIDENCE -- I THINK THE PROBLEMS IN
+THIS AREA WILL BE VERY FEW.
+WANG: WE HOPEYOU UNDERSTAND THE PRINCIPLE THAT THE MORE
+WE EXPORT TO THE US, THE MORETRADE WILL DEVELOP. WE THINK
+IT IS A NATURAL TENDENCY THAT CHINA WISHES TO DEVELOP ITS
+NATIONAL ECONOMY AND CHANGE ITS BACKWARD STATUS. IF
+CHINA IS MORE FLOURISHINGAND POWERFUL, IT WILL HAVE A
+GREATER ABILITY FOR EXPORTING, AND MORE IMPORTS WILL FOLLOW.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 08 OF 09 100914Z
+
+IN NO WAY WILL THIS AFFECT THE NATIONAL SECURITY OF THE US.
+WE MUST JUDGE THIS MATEER FROM THE ANGLE OF PRINCIPLE. WE
+KNOW YOU HAVE REGULATIONS AND RULES GOVERNING YOUR EXPORTS.
+W THINK WE CANCONSULT IN THESE MTTERS. WE THINK THAT
+THE US ADMINISTRATION WILL FACILITATE THIS.
+KATZ: WE HAVE PRINCIPLES AND POLICIES WHICH IN SOME CASES
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+MAY BE DIFFERENT. OUR TASK IS TO FIND THE MUTUAL INTEREST.
+OUR TASK IS TO TRY TO MEET THE LARGER OBJECTIVE OF DEVELOPING TRADE RELATIONS IN THE CONTEXT OF DIFFERING ECONOMIC
+SYSTEMSAND IN SOME CASES DIFFERING POLITICAL OBJECTIVES.
+BUT WE ARE CONFIDENT THAT WE CAN BRIDGE THESE DIFFICULTIES
+IF WE APPROACH THE PROBLEMS IN A PRACTICAL MANNER. OUR
+FIRST TASK IS TO UNDERSTAND WHAT THE PRINCIPLES, POLICIES,
+LAWS, AND REGULATIONS ARE.
+WANG: WE AGREE WITH YOUR OPINION. WE THINK
+WE MUST JUDGE THEMATTER FROM THEWHOLE PERSPECTIVE -- TOTAL TRADE
+RELATIONS BETWEEN THE TWO COUNTRIES AND THE HARMFUL EFFECTS
+OF YOUR EXPORT CONTROLS. ALTOUGH OUR SYSTEMS ARE DIFFERENT,
+WE HAVE A COMMON DESIE TO DEVELOP TRADE. IT IS A COMMON
+GROUND. WE THINK BOTH COUNTRIES HAVE SIMILAR OUTLOOKS IN
+INTERNATIONAL AFFAIRS. WHEN WE DEAL WITH SPECIFIC PROBLEMS,
+WE MUST TTAKE ALL FACTORS INTO ACCOUNT BECAUSE THEY ARE
+CONNECTED WITH THE GENERAL PRINCIPLES. AS FOR US OFFICIALS,
+YOU HAVE A POLICY THAT YOU MUST TREAT CHINA AND THE SOVIET
+UNION EQUALLY. WE UNDERSTAND THAT YOU HAVE THIS POSITION.
+BUT WHEN YOUDEAL ON SPECIFIC MATTERS, YOU CAN NOT TREAT
+THESEE MATERS EQUALLY.
+KATZ: OUR POLICY IS NOT TO TREAT ONLY THE USSR AND CHINA EQUALLY
+BUT TO TREAT ALL COUNTRIES EQUALLY.IN ONE WAY, OUR EXPORT
+CONTROLS DO NOT DIFFERENTIATE BETWEEN THE USSR OR BRAZIL
+OR FRANCE. THIS DOES NOT MEAN THAT WE APPROVE SPECIFIC
+EQUIPMENT FOR ONE COUNTRY OR ANOTHER, BUT THAT THE POLICY
+IS CONSISTENT. THE JUDGMENTSWE MAKE ARE THE SAME FOR
+EACH COUNTRY ALTHOUGH THE DECISIONS MAY BE DIFFERENT.
+WANG: WE HOPE YOU HAVE FEXIBILITY.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 08 OF 09 100914Z
+
+KATZ: WE DO, AND LET ME EMPHASIZE OUR OBJECTIVE IS TO
+PUT THE EMPHASIS ON THE POSITIVE NOT THE NEGATIVE. WE
+WANT VERY MUCH TO DEVELOP TRADE WITH CHINA; WE MUST WORK
+WITHIN THE OTHER POLICIES WE MAY ENCOUNTER, BUT OUR
+OBJECTIVE IS TO OVERCOME THE PROBLEMS AND EXPAND TRADE.
+WANG: WE HOPE THE SITUATION WILL IMPROVE IN THE TIMES
+AHEAD. WE ARE GOING TO SET UP A JOINT ECONOMIC COMMITTEE.
+THIS COMMITTEE CAN DISCUSS MAJOR ITEMS.
+KATZ: I THINK THIS IS VERY IMPORTANT. MANY OF THE PROBLEMS
+WE HAVE OR APPEAR TOHAVE CAN EASILY BE RESOLVED THROUGH
+DISCUSSIONS. IF WE BUILD A PRACTICE OF REGULAR CONSULTATION,
+WE CAN DECREASE THE NUMBER OF PROBLEMS ENCOUNTERED AND THE
+MAGNITUDE OF THE PROBLEMS. I THINK YOU WILL FIND THAT ALL
+PARTS OF OUR GOVERNMENT WILL BE VERY OPEN TO DISCUSSIONS
+WITH YOU. THE PURPOSE OF THE JOINT COMMITTEE WILL BE TO
+FIND SOME FOCUS TO THE OVERALL RELATIONS AND ALSO TO PROVIDE A PLACE TO RESOLVE PROBLEMS WHICH CAN NOT BE RESOLVED
+THROUGH NORMAL CHANNELS.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+WANG: WE THINK THAT THE JOINT COMMITTEE WILL PROVIDE A
+FOCAL POINT AND ALSO ENABLE USETO RESOLVE MINOR PROBLEMS.
+I THINK THERE STILL EXISTS SOME PROBLEMS ON THE AMERICAN
+SIDE. WE HOPE THE US ADMINISTRATION WILL MAKE EFFORTS TO
+RESOLVE THESE PROBLEMS. INTERMS OF OUR EXPORTS TO THE
+US, WE HOPE THE US GOVERNMENT WILL MAKE EFFORTS TO BRING
+ABOUT THE EXPANSION OF TRADE IN THIS DIRECTON. IN THE
+PREVIOUS TRADE, WE HAD AN UNFAVORABLE BALANCE. IN THE
+PRESENT SITUATION, WE DO NOT REJECT THE POSSIBILITY OF TRADE
+IMBALANCES.
+BUT WE THINK IT IS NECESSARY FOR BOTH SIDES TO DIMINISH
+THE IMBALANCES-- JOINT EFFORTS ARE REQUIRED. WE HOPE
+
+CONFIDENTIAL
+
+NNN
+CONFIDENTIAL
+PAGE 01
+BEIJIN 01333 09 OF 09 100913Z
+ACTION EA-12
+INFO OCT-01 ISO-00 SP-02 AID-05 EB-08 TRSE-00 SS-15
+STR-08 OMB-01 CEA-01 SSO-00 NSCE-00 INRE-00
+ICAE-00 L-03 COM-02 ITC-01 H-01 CIAE-00 FRB-03
+INR-10 NSAE-00 XMB-02 OPIC-03 LAB-04 SIL-01 PA-01
+CPR-02 AGRE-00 OPR-02 PER-01 LOC-01 IO-14 DOE-15
+SOE-02 /121 W
+------------------101054 100930Z /10
+O 100459Z MAR 79
+FM AMEMBASSY BEIJING
+TO SECSTATE WASHDC IMMEDIATE 4477
+C O N F I D E N T I A L SECTION 9 OF 9 BEIJING 1333
+YOU WILL FACILITATE OUR EXPORTS. ON SOME ITEMS YOU HAVE
+RESTRICTIONS; WE HOPE YOU WILL GIVE US A FAIR QUOTA.
+OTHERWISE, HOW CAN WE PAY FOR OUR IMPORTS? I QUITE AGREE
+WITH YOU THAT WE SHOULD FACILITATE TRADE.
+KATZ: FOR WHICH PRODUCTS:
+WANG: IF WE RESOLVE MFN THAT WILL FACILITATE OUR EXPORTS.
+FOR THE NEXT STEP, WE HOPE YOU WILL EXTEND GSP. CONCERNING
+TEXTILES, WE HOPE THAT YOU WILL GIVE USA FAIR QUOTA. WE
+DO NOT ASK FOR FREE TRADE, BUT THE QUOTA MUST BE REASONABLE.
+WETHINK OUR REQUEST IS VERY REASONABLE,AND YOU CAN DO THIS.
+KATZ: TEXTILES IS THE ONLY PROBLEM TO WHICH YOU REFER?
+WANG: YES.
+KATZ: MFN, WE HOPE AND EXPECT YOU WILL BE RESOLVED OVER THE
+COURSE OF THE YEAR. AS WE PROCEED WITH CONGRESSIONAL CONSULTATIONS, WE CAN BEGIN NEGOTIATIONS FOR A TRADE AGREEMENT;
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+IN DUE COURSE, WE HOPE THAT HE PROBLEM WILL BE RESOLVED.
+GSP ISA MORE DIFFICULT MATTER. WE HAVE A SAYING IN OUR
+COUNTRY: &quot;THE DIFFICULT THINGS WE DO RIGHT AWAY, THE
+IMPOSSIBLE TAKES LONGER.&quot;
+WANG:WE DO NO ASK YOU TO RESOLVE THE TWO PROBLEMS
+SIMULTANEOUSLY, BUT ONE BY ONE. FIRST SOLVE MFN, THEN GSP.
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 02
+
+BEIJIN 01333 09 OF 09 100913Z
+
+KATZ:I THINK WE SHOULD SPEND A FEW MINUTES ON TEXTILES.
+AS SECRETARY BLUMENTHAL SAID YESTERDAY TO MINISTER LI,
+THIS IS A VERY DIFFICULT PROBLEM -- A WORLD WIDE PROBLEM.
+I THINK YOU KNOW FROM YOUR RELATIONS WITH OTHER COUNTRIES
+THAT THIS IS A PROBLEM WITH OTHER COUNTIES, AS WELL.
+IN EUROPE, THEY HAVE PUT AN ABSOLUTE QUOTA ON THEIR
+TEXTILE IMPORTS. MANY COUNTRIES HAVE EMBARGOES ON
+TEXTILE IMPORTS. WE DO NOT DO THAT. OUR POLICY IS
+RESTRICTIVE, BUT NOT A S RESTRICTIVE AS OTHER COUNTRIES
+AND WE HAVE PERMITTED IMPORTS TO INCREASE TO THE US.
+AS SECRETARY BLUMENTHAL SAID, WE ARE A BIG MARKET BUT NOT
+AN UNLIMITED MARKET.THE TEXTILE AND APPAREL INDUSTRIES
+MUST BE LOOKED AT TOGETHER. IT IS A LARGE INDUSTRY IN
+THE US. THE TWO INDUSTRIES EMPLOY A LOT OF WORKERS. IT
+IS A PRBLEM OF POLITICAL SENSITIVITY IN THE US AS WELL AS IN OTHER
+COUNTRIES -- HOW THE IMPORTS WILL AFFECT THE EMPLOYMENT OF
+WORKERS IN THESE INDUSTRIES. WE RECOGNIZE THAT TEXTILES
+ARE A NATURAL EXPORT FOR CHINA. IN FACT, YOU HAVE COME
+FROM ZERO TO SIXTH PLACE IN OUR MARKET. THAT IS, YOU ARE
+NUMBER SIX IN EXPORTS TO OUR MARKET. WHAT WE NEED IS AN
+UNDERSTANDING AND AGREEMENT THAT WILL PERMIT YOUR EXPORTS
+TO INCREASE AT AA REASONABLE RATE. IT WOULD BE DESIRABLE
+IF YOUR EXPORTS WERE NOT CONCENTRATED IN PARTICULAR PRODUCTS. SO W HAVE MADE SUGGESTIONS FOR THE MEANS FOR YOUR
+EXPORTS TO CONTINUE TO INCREASE WITHOUT CREATING PROBLEMS
+FOR OUR MARKET. I WON'T GO INTOTHE DETWILS OF THE
+NEGOTIATIONS AND THE PROPOSALS. I AM NOT REALLY EQUIPPED
+TO DO SO.A FURTHER MEETING WILL BE HELD BETWEEN THE TWO
+SIDES IN MARCH. WE THINK I IS VERY IMPORTANT THAT A
+SOLUTION BE FOUND AT THE NEXT MEETING. IF NO SOLUTION IS
+FOUND, ONE WILL BE IMPOSED ON YOU -- AND ON US. WE WILL BE
+FORCED TO TAKE UNILATERAL ACTION. IN THE LAST CONGRESS, OVER HALF
+THE MEMBERS SUPPORTED A BILL TO AKE UNILATERAL ACTION TO
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 03
+
+BEIJIN 01333 09 OF 09 100913Z
+
+RESTRAIN TEXTILES. IN OCTOBER, CONGRESSDID PASS LESIGLATION TO REQUIRE THE PRESIDENT TO TAKE TEXTILES OUT OF
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+THE MTN NEGOTIATIONS IN GENEVA. THE PRESIDENTDID NOT
+ACCEPT TIS -- HE VETOED THEBILL. BUT AS A PRACTICAL
+REALITY, WE CAN NOT IGNORE THEPOLITICAL FORCES IN OUR
+COUNTRY. IF WE CAN NOT FINDAA MUTUALLY AGREEABLE SOLUTION,
+WE WILL BEFORCED TO TAKE UNILATERAL ACTION -- WHICH WE
+DON'T WANT TO DO.
+WANG: I AGREE THAT WE SHOULD NOT GO INTO THIS PROBLEM
+IN TOO MUCH DETAIL, BUT I WANT TO DISCUSS THE PRINCIPLE.
+FIRST, WE EXPORT EXTILES NOT ONLY TO THE US BUT TO MANY
+OTHER CONTRIES. SECOND, OUR CAPACITY TO EXPORT TEXTILES
+IS LIMITED. THIRD, WE HOPE WE CAN EXERT OUR JOINT EFFORTS
+TO FIND A REASONABLE SOLUTION. WE THINK IF YOU GIE US
+AN UNFAIR QUOTA -- TAKE UNILATERAL ACTION -- THIS MEANS
+YOU CREATED A PRETEXT FOR YOUR UNILATERAL ACTON. WE THINK
+THAT IF YOU GIVE US A REAONSABLE AND FAIR QUOTA, WE CAN
+FIND A SOLUTION. I WISH TO EPEAT, IF YOU GIVE US AN
+UNREASONABLE QUOTA WHICH WE WOULD BE COMPELLED NOT TO
+ACCEPT, AND YOU TOOK UNILAERAL ACTION, THIS MEANS THAT
+YOU CREATED THE PRETEXT FOR YOUR ATION. WE THINK THIS
+CAN BE RESOLVED. WE HOPE WE CAN RESOLVE THIS AT THE NEXT
+MEETING. IT IS VERY IMPORTANT.
+KATZ: THE ONLY OTHER POINT -- WE TALKED YESTERDAY ABOUT
+A MEMORANDUM OF RECORD.WE DID PREPARE SOMETHING LAST
+NIGHT, BUT IT NEEDS TO BE AMENDED TO REFLECT THE DISCUSSIONS
+THS MORNING. UNFORTUATELY, WE DO NOT HAVE A CLEAN COPY
+TO GIVE YOU; THIS ONE IS MARKED UP. LET ME READ THIS TO
+YOU AND THEN GIVE YOU A CLEAN COPY LATER. (MR. KATZ
+READ THE DRAFT MEMORANDUM OF RECORD.)
+WANG: ACCORDING TO OUR PRACTICES, WE HAVE NO PRACTICE OF
+PREPARING SUCH A MEMORANDUM OF RECORD. BUT IN ACCORDNCE
+WITH YOUR REQUEST, WE CAN WORK OUT SUCH A MEMORANDUM.
+PERHAPS WE CAN SAY: &quot;BOTH SIDES HAVE EXCHANGED VIEWS ON
+THE CONTENT OF A TRADEAGREEMENT.FOR SOME PROVISIONS,
+BOTH SIDES EXPRESSED THEIR RESPECTIVE VIEWS. FOR SOME
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 04
+
+BEIJIN 01333 09 OF 09 100913Z
+
+PROVISIONS, THERE NEED TO BE FURTHER EXPLORATORY TALKS.&quot;
+FOR EXAMPLE, YESTERDAY, WE SPENT A LOT OF TIME DISCUSSING
+WHAT YOU CALL &quot;NATIONAL SECURITY&quot;. PERHAPS YOU CAN AMEND
+THIS AND GIVE US A CLEAN COPY.
+YOU HAVE DONE MORE WORK THAN WE HAVE (ON THE
+MEMORANDUM).
+KATZ:THAT'S WHY WE'RE HERE. LET ME REITERATE THAT OUR
+PURPOSE IS NOT TO COMMIT YOU TO A PARTICULAR VIEW BUT ONLY
+TO SET DOWN OUR UNDERSTANDING ON THESE MATTERS FOR THE
+RECORD.
+WANG: TO REFLECT THE TRUE PICTURE. IN PRINCIPLE WE AGRE,
+BUT PERHAPS SOME ADJUSTMENTS IN THE WORDING ARE NEEDED.
+KATZ: THANK YOU. I HAVE NO FURTHER ITEMS ON MY SIDE.
+I WOULD BE GLAD TO CONSIDER ANY YOU WOULD LIKE TO RAISE.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+WANG: NO, I DON'T HAVE ANYTHING MORE, BUT BOTH SIDES TOOK
+A POSITIVE ATTITUDE; BOTH SIDES EXPRESSED THEIR OWN VIEWS.
+WE RESPECT YOUR NORMAL PRACTICES AND REULES AND REGULATIONS.
+WE HOPE YOU ALSO RESPECT OURS. WE THINK BOTH SIDES HAVE
+SOLVED MAJOR ITEMS. SO IT IS EASIER TO RESOLVE THE MINOR
+TINGS. WE THINK A TRADE AGREEMENT MUST RESPECT EACH OTHER'S
+DESIRES. I GREATLY APPRECIAE THE KIND OF COOPERATION YOU
+EXTENDED TO US. DIRECTOR ZHANG, DIVISION CHIEF, WILL HAVE
+FURTHER CONTACT WITH YOU ON THE MEMORANDUM OF RECORD.
+KATZ: LET ME SAY, I THINK WE HAD TWO DAYS OF PRODUCTIVE
+MEETINGS. I FEEL OUR SIDE WE HAVE CCOMPLISHED OUR
+MMISSION -- TO LAY THE FOUNDATION FOR NEGOTIAION OF A
+TRADE AGREEMENT. WE HAVE CLARIFIED A NUMBER OF MATTERS.
+THERE ARE SOME ISSUES FOR WHICH WE NEED TO DO FURTHER
+WORK, BUT I FEEL CONFIDENT THAT THE OBJECTIVE OF BOTH
+SIDES IS THAT WE CAN RESOLVE THES PROBLEMS VERY QUICKLY.
+WE WILL PROVIDE A CLEAN COPY OF THE MEMORANDUM VERY SOON.
+END TEXT.
+WOODCOCK
+CONFIDENTIAL
+CONFIDENTIAL
+PAGE 05
+
+BEIJIN 01333 09 OF 09 100913Z
+
+CONFIDENTIAL
+
+NNN
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014</div></div></div><div class="pane-tab"><div class="pane-header">Metadata</div><div class="pane-content"><div class="text-content">---
+Automatic Decaptioning: X
+Capture Date: 01 jan 1994
+Channel Indicators: n/a
+Current Classification: UNCLASSIFIED
+Concepts: TRADE, MINISTERIAL VISITS, NEGOTIATIONS
+Control Number: n/a
+Copy: SINGLE
+Draft Date: 10 mar 1979
+Decaption Date: 01 jan 1960
+Decaption Note: ''
+Disposition Action: RELEASED
+Disposition Approved on Date: ''
+Disposition Case Number: n/a
+Disposition Comment: 25 YEAR REVIEW
+Disposition Date: 20 Mar 2014
+Disposition Event: ''
+Disposition History: n/a
+Disposition Reason: ''
+Disposition Remarks: ''
+Document Number: 1979BEIJIN01333
+Document Source: CORE
+Document Unique ID: '00'
+Drafter: n/a
+Enclosure: n/a
+Executive Order: GS 19850310 WOODCOCK, LEONARD
+Errors: N/A
+Expiration: ''
+Film Number: D790110-0489
+Format: TEL
+From: BEIJING OR-M
+Handling Restrictions: n/a
+Image Path: ''
+ISecure: '1'
+Legacy Key: link1979/newtext/t19790394/aaaadacp.tel
+Line Count: ! '1437 Litigation Code IDs:'
+Litigation Codes: ''
+Litigation History: ''
+Locator: TEXT ON-LINE, ON MICROFILM
+Message ID: a83809e0-c288-dd11-92da-001cc4696bcc
+Office: ACTION EA
+Original Classification: CONFIDENTIAL
+Original Handling Restrictions: n/a
+Original Previous Classification: n/a
+Original Previous Handling Restrictions: n/a
+Page Count: '27'
+Previous Channel Indicators: n/a
+Previous Classification: CONFIDENTIAL
+Previous Handling Restrictions: n/a
+Reference: 79 STATE 58258
+Retention: '0'
+Review Action: RELEASED, APPROVED
+Review Content Flags: ''
+Review Date: 29 nov 2005
+Review Event: ''
+Review Exemptions: n/a
+Review Media Identifier: ''
+Review Release Date: n/a
+Review Release Event: n/a
+Review Transfer Date: ''
+Review Withdrawn Fields: n/a
+SAS ID: '3708248'
+Secure: OPEN
+Status: NATIVE
+Subject: ! 'BLUMENTHAL VISIT: TRADE WORKING GROUP MEETINGS'
+TAGS: EFIN, OVIP, US, CH, TRSY, (BLUMENTHAL, W MICHAEL)
+To: STATE
+Type: TE
+vdkvgwkey: odbc://SAS/SAS.dbo.SAS_Docs/a83809e0-c288-dd11-92da-001cc4696bcc
+Review Markings: ! ' Sheryl P. Walter Declassified/Released US Department of State
+  EO Systematic Review 20 Mar 2014'
+Markings: Sheryl P. Walter Declassified/Released US Department of State EO Systematic
+  Review 20 Mar 2014 Sheryl P. Walter Declassified/Released US Department of State
+  EO Systematic Review 20 Mar 2014
+</div></div></div><div class="pane-tab"><div class="pane-header">Raw source</div><div class="pane-content"><div class="text-content"><a href="https://file.wikileaks.org/oc/oc/2776/186087.pdf">oc/2776/186087.pdf</a></div></div></div>
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 61px">Print</div><div class="pane-content pane-print">
+<p>You can use this tool to generate a print-friendly PDF of the document <strong>1979BEIJIN01333_e</strong>.</p>
+<form action="/plusd/pdf/?df=63307" method="post">
+	<input type="hidden" name="p" value="e" />
+	<input type="hidden" name="r" value="1979BEIJIN01333_e" />
+	<input type="checkbox" name="s" id="is" value="cake"><label for="is">Include summary</label></input><br />
+	<input type="checkbox" name="h" id="ih" value="is a"><label for="ih">Include headers</label></input><br />
+	<input type="checkbox" name="m" id="im" value="lie"><label for="im">Include raw metadata</label></input><br /><br />
+	<input type="submit" value="Generate pdf" />
+</form>
+</div></div>
+
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 60px">Share</div><div class="pane-content pane-share">
+<p>The formal reference of this document is <strong>1979BEIJIN01333_e</strong>, please use it for anything written about this document. This will permit you and others to search for it.</p>
+<div class="share-panel">
+<label for="share-link">Direct link to document</label>
+<input readonly="readonly" type="text" class="share" id="share-link" value="https://www.wikileaks.org/plusd/cables/1979BEIJIN01333_e.html" /><br />
+
+<label for="share-reddit">Reddit code</label>
+<input readonly="readonly" type="text" class="share" id="share-reddit" value="[1979BEIJIN01333_e](https://www.wikileaks.org/plusd/cables/1979BEIJIN01333_e.html)" /><br />
+
+<label for="share-html">HTML code</label>
+<input readonly="readonly" type="text" class="share" id="share-html" value="&lt;a href=&quot;https://www.wikileaks.org/plusd/cables/1979BEIJIN01333_e.html&quot; title=&quot;1979BEIJIN01333_e&quot;&gt;1979BEIJIN01333_e&lt;/a&gt;" /><br />
+
+<label for="share-bbcode">Forum code (bbcode)</label>
+<input readonly="readonly" type="text" class="share" id="share-bbcode" value="[url=https://www.wikileaks.org/plusd/cables/1979BEIJIN01333_e.html]1979BEIJIN01333_e[/url]" />
+</div>
+
+
+
+<br style="clear: both;" />
+<p>Submit this story</p>
+<div class="share">
+	<a href="http://www.reddit.com/submit?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1979BEIJIN01333_e.html"><img src="/plusd/images/Reddit-ico.png" /></a>
+</div>
+
+<div class="share">
+        <a href="http://twitter.com/home?status=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1979BEIJIN01333_e.html"><img src="/plusd/images/Twitter-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1979BEIJIN01333_e"><img src="/plusd/images/Gplus-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=1979BEIJIN01333_e&amp;p[summary]=Summary&amp;p[url]=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1979BEIJIN01333_e.html"><img src="/plusd/images/Facebook-ico.png" /></a>
+</div>
+
+<br style="clear: both;" />
+</div></div>
+
+<!--<div class="pane-tab"><div class="pane-header tab-right tab-find">Find</div><div class="pane-content pane-find">-->
+<!--</div></div>-->
+
+<!--<div id="tagged-text"> -->
+	<div id="pane-root" style="display:none">
+		<div id="pane-tabs"></div>
+
+		<div id="pane-contents"></div>
+
+	</div>
+<!--</div>-->
+<div class="pane-content pane-extra">
+<div class="dnpage visible">
+<h1>Help Expand The Public Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+
+
+</div>
+
+</div>
+<br />
+<script type="text/javascript" src="/plusd/js/mootools-core-and-more.js"></script>
+<script type="text/javascript" src="/plusd/js/efatmarker.min.js"></script>
+<script type="text/javascript">
+(function(){
+	window.addEvent('domready', function(){
+	        $$("#showhide").addEvent( "click", function() {
+			$$(".text-header").toggleClass("hidden");
+			t=$$("#showhide");
+			if(t.get("html")=="Show&nbsp;Headers")
+				t.set("html", "Hide&nbsp;Headers");
+			else
+				t.set("html", "Show&nbsp;Headers");
+		} );
+
+		var pane_root = $('pane-root'),
+			pane_tabs = $('pane-tabs'),
+			pane_contents = $('pane-contents'),
+			panes = $$('.pane-tab'),
+			num_panes = panes.length,
+			i, pane,
+			pane_header,
+			pane_content;
+		var activate_tab = function(target) {
+			$$('#pane-contents .pane-content').each(function(e,i){
+				if (i === target) {
+					e.addClass('top');
+					}
+				else {
+					e.removeClass('top');
+					}
+				});
+			$$('#pane-tabs .pane-header').each(function(e,i){
+				if (i === target) {
+					e.removeClass('nottop');
+					e.addClass('ontop');
+					}
+				else {
+					e.addClass('nottop');
+					e.removeClass('ontop');
+					}
+				});
+			};
+		for (i=0; i<num_panes; i++) {
+			pane = panes[i];
+			pane_header = pane.getElement('.pane-header');
+			pane_tabs.grab(pane_header);
+			pane_header.addEvent('click', function(){
+				var target = $('pane-tabs').getChildren().indexOf(this);
+				activate_tab(target);
+				});
+			pane_content = pane.getElement('.pane-content');
+			pane_contents.grab(pane_content);
+			pane.destroy();
+			}
+		activate_tab(0);
+		$('pane-root').style.display = '';
+		}); /* event handler function() */
+	})(); /* namespace function() */
+</script>
+<div id="efm-button">
+	<div id="efm-menu">
+		<h3 style="margin:0 0 2px 0">e-Highlighter</h3>
+		<a id="efm-permalink" class="efm-need-highlight" href="" style="margin-bottom:0;padding-bottom:0;"></a>
+		<p style="margin-top:0;padding-top:0" class="efm-need-highlight">Click to send permalink to address bar, or right-click to copy permalink.</p>
+		<a id="efm-twitter-button" class="efm-need-highlight" href="#" target="_blank"><img src="/plusd/images/tweetn.png" alt="Tweet" title="Tweet these highlights" style="vertical-align:middle"> these highlights</a>
+		<p style="margin:0.5em 0;padding:0;border-top:1px dotted #ccc;height:1px"></p>
+		<a id="efm-unhighlightall" class="efm-need-highlight">Un-highlight all</a>
+		<a id="efm-unhighlight">Un-highlight selection<span>u</span></a>
+		<a id="efm-highlight">Highlight selection<span>h</span></a>
+		</div>
+	</div>
+</div></div></div>
+<script type="text/javascript">
+
+(function(){
+	window.addEvent('domready', function(){
+
+		var markerButton = $('efm-button');
+		if ( markerButton ) {
+			eMarker = new EFatMarker($('content-main'));
+			eMarker.tokenToSpans(); // apply whatever token is there
+			// need to act on mousedown or else selection disappear
+			markerButton.addEvent('mousedown', function(){
+				eMarker.interpretSelection(true);
+				return false;
+				});
+			$('efm-unhighlightall').addEvent('mousedown', function(){
+				eMarker.unhighlightAll(true);
+				return false;
+				});
+			$('efm-unhighlight').addEvent('mousedown', function(){
+				eMarker.unhighlightSelection(true);
+				return false;
+				});
+			$('efm-highlight').addEvent('mousedown', function(){
+				eMarker.highlightSelection(true);
+				return false;
+				});
+			$('efm-permalink').addEvent('mousedown', function(){
+				window.location.href = this.href;
+				return false;
+				});
+			// if Mootools Keyboard is available, use it
+			if (Keyboard) {
+				var keyboard = new Keyboard({
+					defaultEventType: 'keyup',
+					events: {
+						'h': function(){
+							eMarker.highlightSelection(true);
+							},
+						'u': function(){
+							eMarker.unhighlightSelection(true);
+							}
+						}
+					});
+				keyboard.activate();
+				}
+			eMarker.syncDOM();
+			// auto scroll to first highlight, if any
+			if (eMarker.hasSpans()) {
+				var scroll = new Fx.Scroll(window,{offset:{'x':0,'y':-100}}),
+					highlights = $$('#content-main .efm-hi');
+				if (highlights.length > 0) {
+					scroll.toElement(highlights[0]);
+					}
+				}
+			}
+		});
+	})();
+
+</script>
+
+<div class="dnflood"></div>
+<div class="dnbutton">
+<div class="dnmain">
+<h1><span class="dnclose">X</span>Help Expand The Public<br />Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+</div>
+</div>
+
+</div>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<link href="/static/css/styles_footer.css" rel="stylesheet">
+<footer id="page-footer" class="footer-recommendations">
+  <div class="footer-wrapper">
+    <div class="recommendation-container">
+      <a href="#" class="top">Top</a>
+      
+        <ul class="recommendation-links">
+                <li class="recommendation">
+                    <a href="https://our.wikileaks.org" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton666.png" width="360" height="240" />
+                        </div>
+                        <p><p>WL Research Community - user contributed research based on documents published by WikiLeaks. 
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.torproject.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton401.png" width="360" height="240" />
+                        </div>
+                        <p><p>Tor is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://tails.boum.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton405.png" width="360" height="240" />
+                        </div>
+                        <p><p> Tails is a live operating system, that you can start on almost any computer from a DVD, USB stick, or SD card. It aims at preserving your privacy and anonymity.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.couragefound.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton404.png" width="360" height="240" />
+                        </div>
+                        <p><p>The Courage Foundation is an international organisation that supports those who risk life or liberty to make significant contributions to the historical record.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.bitcoin.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton403.png" width="360" height="240" />
+                        </div>
+                        <p><p>Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network.
+</p></p>
+                    </a>
+                </li>
+            </li>
+        </ul>
+      
+      <ul class="social-links">
+        <li>
+          <a href="https://www.facebook.com/wikileaks" target="_blank" alt="Facebook">
+            <img src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" target="_blank" alt="Twitter">
+            <img src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
