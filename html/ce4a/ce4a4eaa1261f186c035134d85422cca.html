@@ -1,0 +1,4253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/cerulean.min.css" rel="stylesheet">
+<link href="/bootstrap/css/new-gen.css" rel="stylesheet">
+<link href="/bootstrap/css/submit.css" rel="stylesheet">
+<script type="text/javascript" src="/plusd/js/jquery.min.js"></script>
+<script type="text/javascript" src="/plusd/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<script type="text/javascript" src="/plusd/js/wikipedia.js"></script>
+<script type="text/javascript" src="/plusd/js/qtip.min.js"></script>
+<script type="text/javascript" src="/plusd/js/idle-timer.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+
+(function($) {
+	var show_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").show();
+	}
+	var hide_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").hide();
+	}
+	$(document).idleTimer(180000);
+	$(document).on("idle.idleTimer", show_button);
+	$(document).ready(function() {
+		if( typeof setupDoubleClick == 'function' )
+			setupDoubleClick('http://en.wikipedia.org/w/index.php', 'british', 'tagged-text', 4, "_blank", "/words/cc.json");
+		var current = Math.floor(( new Date( ) ).getTime( )/1000);
+
+		$("#ddonate").click(show_button);
+		$(".dnclose").click(hide_button);
+		$('a.i').each( function() {
+			i=$(this);
+			i.attr("alt", descr[i.attr("title")]);
+		} );
+		$('a.i').qtip( {
+			show: {
+				event: 'click',
+				solo: true
+			},
+			hide: 'click',
+			content: {
+				attr: 'alt',
+				title: {
+					button: true
+				}
+			},
+			style: {
+				classes: 'qtip-blue qtip-shadow'
+			}
+		} );
+
+	} );
+
+
+	var descr = {
+	'Subject': 'Subject line of the document','From': 'Who/where sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-fr/\">A list of origins, with citations for any acronyms used, is available here.</a>','To': 'Who/where received the document.<br /><br /><a href=\"/plusd/about-to/\" class=\"j\">A list of destinations, with citations for any acronyms used, is available here.</a>','Original Classification': 'Classification the document was originally given when produced.<br /><br /><a href=\"/plusd/about-oc/\" class=\"j\">Citations for acronyms used are available here.</a>','Current Classification': 'Classification the document currently holds.<br /><br /><a href=\"/plusd/about-cc/\" class=\"j\">Citations for acronyms used are available here.</a>','Handling Restrictions': 'All handling restrictions governing the document distribution that have been used to date.<br /><br /><i>In the metadata of the Kissinger Cables this field is called \'Previous Handling Restrictions\'.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i><br /><br /><a href=\"/plusd/about-hr/\" class=\"j\">Citations for acronyms used are available here.</a>','Archive Status': 'Original documents not deleted or lost by State Department after review are available in one of four formats:<ul><li>Electronic Telegram - declassified and made available (content and metadata available)</li><li>Electronic Telegram Withdrawal Card - telegram not declassified, or was declassified but not released for other reasons (limited metadata available)</li><li>P-reel Index - Index card for other document type that is stored on microfilm (only metadata available)</li><li>P-reel Index Withdrawal Card - P-reel index card that was not declassified, or was declassified but not released for other reasons (limited metadata available)</li></ul><br /><i class=\"b\">The Kissinger Cables\' metadata does not have this field. It is taken from subsets the documents were released in after State Department review.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Type': 'Correspondence type or format of original document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TE\' (Telegram).</i><br /><br /><a href=\"/plusd/about-ty/\" class=\"j\">Citations for acronyms used are available here.</a>','Locator': 'Where the original document is now held - online or on microfilm, or remains in \"ADS\" (State Department\'s 1973 Automated Data System of indexing by TAGS of electronic telegrams and P-reels) with the text either garbled, not converted or unretrievable.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TEXT ONLINE\'.</i>','Executive Order': 'Executive Order information - often a reference to the E.O. governing the declassification/downgrade of the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Markings': 'Markings of declassification/release review of the document.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'. </i>','Enclosure': 'Attachments or other items sent with the original document. These are not necessarily currently held in this library.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.','Concepts': 'Keywords of subjects dealt with in the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\' for this field.</i>','TAGS': 'Traffic Analysis by Geography and Subject (TAGS)<br /><br />There are geographic, organization and subject \"TAGS\" - the classification system implemented by the Department of State for its central files in 1973.<br /><br /><a href=\"/plusd/about-ta/\" class=\"j\">A list of TAGS, with citations for any acronyms used, is available here.</a>','Office': 'Which United States government office or bureau is dealing with the topics the document concerns.<br /><br /><a href=\"/plusd/about-of/\" class=\"j\">A list offices, with citations for acronym expansions, is available here.</a>','Office Origin': 'Which State Department office or bureau sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Office Action': 'Which State Department office or bureau received the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Character Count': 'The number of characters, including spaces, in the document.','Date': 'The date the document was created.','Canonical ID': 'Unique document identification number.<br /><br /><i>We have created a canonical ID by taking the original document ID and adding a \'_\' at the end and then WikiLeaks\' annotation for different datasets: Cablegate = a, the Kissinger Cables = b, etc. If document IDs are duplicated in the original datasets we number each duplicate, eg 1976WARSAW05657_b2 is the second document with that ID in the Kissinger Cables.</i>','Other cables with the same ID': 'Documents that are linked, for example a P-reel index and the document it is the index for. Or documents that were originally given the same document ID number.',	};
+
+
+
+})(jQuery);
+</script>
+<title>Cable: 1977PEKING01173_c</title>
+<link rel="stylesheet" type="text/css" href="/plusd/css/qtip.min.css" id="qtip">
+<link rel="stylesheet" type="text/css" href="/plusd/css/main.css" id="maincss">
+<link rel="stylesheet" type="text/css" href="/plusd/css/print.css" media="print" id="printcss">
+</head>
+<body style="text-align: center;">
+    <div id="submit_wlkey" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<p>Key fingerprint <b>9EF0 C41A FBA5 64AA 650A  0259 9C6D CD17 283E 454C</b></p>
+		<pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQQBBGBjDtIBH6DJa80zDBgR+VqlYGaXu5bEJg9HEgAtJeCLuThdhXfl5Zs32RyB
+I1QjIlttvngepHQozmglBDmi2FZ4S+wWhZv10bZCoyXPIPwwq6TylwPv8+buxuff
+B6tYil3VAB9XKGPyPjKrlXn1fz76VMpuTOs7OGYR8xDidw9EHfBvmb+sQyrU1FOW
+aPHxba5lK6hAo/KYFpTnimsmsz0Cvo1sZAV/EFIkfagiGTL2J/NhINfGPScpj8LB
+bYelVN/NU4c6Ws1ivWbfcGvqU4lymoJgJo/l9HiV6X2bdVyuB24O3xeyhTnD7laf
+epykwxODVfAt4qLC3J478MSSmTXS8zMumaQMNR1tUUYtHCJC0xAKbsFukzbfoRDv
+m2zFCCVxeYHvByxstuzg0SurlPyuiFiy2cENek5+W8Sjt95nEiQ4suBldswpz1Kv
+n71t7vd7zst49xxExB+tD+vmY7GXIds43Rb05dqksQuo2yCeuCbY5RBiMHX3d4nU
+041jHBsv5wY24j0N6bpAsm/s0T0Mt7IO6UaN33I712oPlclTweYTAesW3jDpeQ7A
+ioi0CMjWZnRpUxorcFmzL/Cc/fPqgAtnAL5GIUuEOqUf8AlKmzsKcnKZ7L2d8mxG
+QqN16nlAiUuUpchQNMr+tAa1L5S1uK/fu6thVlSSk7KMQyJfVpwLy6068a1WmNj4
+yxo9HaSeQNXh3cui+61qb9wlrkwlaiouw9+bpCmR0V8+XpWma/D/TEz9tg5vkfNo
+eG4t+FUQ7QgrrvIkDNFcRyTUO9cJHB+kcp2NgCcpCwan3wnuzKka9AWFAitpoAwx
+L6BX0L8kg/LzRPhkQnMOrj/tuu9hZrui4woqURhWLiYi2aZe7WCkuoqR/qMGP6qP
+EQRcvndTWkQo6K9BdCH4ZjRqcGbY1wFt/qgAxhi+uSo2IWiM1fRI4eRCGifpBtYK
+Dw44W9uPAu4cgVnAUzESEeW0bft5XXxAqpvyMBIdv3YqfVfOElZdKbteEu4YuOao
+FLpbk4ajCxO4Fzc9AugJ8iQOAoaekJWA7TjWJ6CbJe8w3thpznP0w6jNG8ZleZ6a
+jHckyGlx5wzQTRLVT5+wK6edFlxKmSd93jkLWWCbrc0Dsa39OkSTDmZPoZgKGRhp
+Yc0C4jePYreTGI6p7/H3AFv84o0fjHt5fn4GpT1Xgfg+1X/wmIv7iNQtljCjAqhD
+6XN+QiOAYAloAym8lOm9zOoCDv1TSDpmeyeP0rNV95OozsmFAUaKSUcUFBUfq9FL
+uyr+rJZQw2DPfq2wE75PtOyJiZH7zljCh12fp5yrNx6L7HSqwwuG7vGO4f0ltYOZ
+dPKzaEhCOO7o108RexdNABEBAAG0Rldpa2lMZWFrcyBFZGl0b3JpYWwgT2ZmaWNl
+IEhpZ2ggU2VjdXJpdHkgQ29tbXVuaWNhdGlvbiBLZXkgKDIwMjEtMjAyNCmJBDEE
+EwEKACcFAmBjDtICGwMFCQWjmoAFCwkIBwMFFQoJCAsFFgIDAQACHgECF4AACgkQ
+nG3NFyg+RUzRbh+eMSKgMYOdoz70u4RKTvev4KyqCAlwji+1RomnW7qsAK+l1s6b
+ugOhOs8zYv2ZSy6lv5JgWITRZogvB69JP94+Juphol6LIImC9X3P/bcBLw7VCdNA
+mP0XQ4OlleLZWXUEW9EqR4QyM0RkPMoxXObfRgtGHKIkjZYXyGhUOd7MxRM8DBzN
+yieFf3CjZNADQnNBk/ZWRdJrpq8J1W0dNKI7IUW2yCyfdgnPAkX/lyIqw4ht5UxF
+VGrva3PoepPir0TeKP3M0BMxpsxYSVOdwcsnkMzMlQ7TOJlsEdtKQwxjV6a1vH+t
+k4TpR4aG8fS7ZtGzxcxPylhndiiRVwdYitr5nKeBP69aWH9uLcpIzplXm4DcusUc
+Bo8KHz+qlIjs03k8hRfqYhUGB96nK6TJ0xS7tN83WUFQXk29fWkXjQSp1Z5dNCcT
+sWQBTxWxwYyEI8iGErH2xnok3HTyMItdCGEVBBhGOs1uCHX3W3yW2CooWLC/8Pia
+qgss3V7m4SHSfl4pDeZJcAPiH3Fm00wlGUslVSziatXW3499f2QdSyNDw6Qc+chK
+hUFflmAaavtpTqXPk+Lzvtw5SSW+iRGmEQICKzD2chpy05mW5v6QUy+G29nchGDD
+rrfpId2Gy1VoyBx8FAto4+6BOWVijrOj9Boz7098huotDQgNoEnidvVdsqP+P1RR
+QJekr97idAV28i7iEOLd99d6qI5xRqc3/QsV+y2ZnnyKB10uQNVPLgUkQljqN0wP
+XmdVer+0X+aeTHUd1d64fcc6M0cpYefNNRCsTsgbnWD+x0rjS9RMo+Uosy41+IxJ
+6qIBhNrMK6fEmQoZG3qTRPYYrDoaJdDJERN2E5yLxP2SPI0rWNjMSoPEA/gk5L91
+m6bToM/0VkEJNJkpxU5fq5834s3PleW39ZdpI0HpBDGeEypo/t9oGDY3Pd7JrMOF
+zOTohxTyu4w2Ql7jgs+7KbO9PH0Fx5dTDmDq66jKIkkC7DI0QtMQclnmWWtn14BS
+KTSZoZekWESVYhORwmPEf32EPiC9t8zDRglXzPGmJAPISSQz+Cc9o1ipoSIkoCCh
+2MWoSbn3KFA53vgsYd0vS/+Nw5aUksSleorFns2yFgp/w5Ygv0D007k6u3DqyRLB
+W5y6tJLvbC1ME7jCBoLW6nFEVxgDo727pqOpMVjGGx5zcEokPIRDMkW/lXjw+fTy
+c6misESDCAWbgzniG/iyt77Kz711unpOhw5aemI9LpOq17AiIbjzSZYt6b1Aq7Wr
+aB+C1yws2ivIl9ZYK911A1m69yuUg0DPK+uyL7Z86XC7hI8B0IY1MM/MbmFiDo6H
+dkfwUckE74sxxeJrFZKkBbkEAQRgYw7SAR+gvktRnaUrj/84Pu0oYVe49nPEcy/7
+5Fs6LvAwAj+JcAQPW3uy7D7fuGFEQguasfRrhWY5R87+g5ria6qQT2/Sf19Tpngs
+d0Dd9DJ1MMTaA1pc5F7PQgoOVKo68fDXfjr76n1NchfCzQbozS1HoM8ys3WnKAw+
+Neae9oymp2t9FB3B+To4nsvsOM9KM06ZfBILO9NtzbWhzaAyWwSrMOFFJfpyxZAQ
+8VbucNDHkPJjhxuafreC9q2f316RlwdS+XjDggRY6xD77fHtzYea04UWuZidc5zL
+VpsuZR1nObXOgE+4s8LU5p6fo7jL0CRxvfFnDhSQg2Z617flsdjYAJ2JR4apg3Es
+G46xWl8xf7t227/0nXaCIMJI7g09FeOOsfCmBaf/ebfiXXnQbK2zCbbDYXbrYgw6
+ESkSTt940lHtynnVmQBvZqSXY93MeKjSaQk1VKyobngqaDAIIzHxNCR941McGD7F
+qHHM2YMTgi6XXaDThNC6u5msI1l/24PPvrxkJxjPSGsNlCbXL2wqaDgrP6LvCP9O
+uooR9dVRxaZXcKQjeVGxrcRtoTSSyZimfjEercwi9RKHt42O5akPsXaOzeVjmvD9
+EB5jrKBe/aAOHgHJEIgJhUNARJ9+dXm7GofpvtN/5RE6qlx11QGvoENHIgawGjGX
+Jy5oyRBS+e+KHcgVqbmV9bvIXdwiC4BDGxkXtjc75hTaGhnDpu69+Cq016cfsh+0
+XaRnHRdh0SZfcYdEqqjn9CTILfNuiEpZm6hYOlrfgYQe1I13rgrnSV+EfVCOLF4L
+P9ejcf3eCvNhIhEjsBNEUDOFAA6J5+YqZvFYtjk3efpM2jCg6XTLZWaI8kCuADMu
+yrQxGrM8yIGvBndrlmmljUqlc8/Nq9rcLVFDsVqb9wOZjrCIJ7GEUD6bRuolmRPE
+SLrpP5mDS+wetdhLn5ME1e9JeVkiSVSFIGsumZTNUaT0a90L4yNj5gBE40dvFplW
+7TLeNE/ewDQk5LiIrfWuTUn3CqpjIOXxsZFLjieNgofX1nSeLjy3tnJwuTYQlVJO
+3CbqH1k6cOIvE9XShnnuxmiSoav4uZIXnLZFQRT9v8UPIuedp7TO8Vjl0xRTajCL
+PdTk21e7fYriax62IssYcsbbo5G5auEdPO04H/+v/hxmRsGIr3XYvSi4ZWXKASxy
+a/jHFu9zEqmy0EBzFzpmSx+FrzpMKPkoU7RbxzMgZwIYEBk66Hh6gxllL0JmWjV0
+iqmJMtOERE4NgYgumQT3dTxKuFtywmFxBTe80BhGlfUbjBtiSrULq59np4ztwlRT
+wDEAVDoZbN57aEXhQ8jjF2RlHtqGXhFMrg9fALHaRQARAQABiQQZBBgBCgAPBQJg
+Yw7SAhsMBQkFo5qAAAoJEJxtzRcoPkVMdigfoK4oBYoxVoWUBCUekCg/alVGyEHa
+ekvFmd3LYSKX/WklAY7cAgL/1UlLIFXbq9jpGXJUmLZBkzXkOylF9FIXNNTFAmBM
+3TRjfPv91D8EhrHJW0SlECN+riBLtfIQV9Y1BUlQthxFPtB1G1fGrv4XR9Y4TsRj
+VSo78cNMQY6/89Kc00ip7tdLeFUHtKcJs+5EfDQgagf8pSfF/TWnYZOMN2mAPRRf
+fh3SkFXeuM7PU/X0B6FJNXefGJbmfJBOXFbaSRnkacTOE9caftRKN1LHBAr8/RPk
+pc9p6y9RBc/+6rLuLRZpn2W3m3kwzb4scDtHHFXXQBNC1ytrqdwxU7kcaJEPOFfC
+XIdKfXw9AQll620qPFmVIPH5qfoZzjk4iTH06Yiq7PI4OgDis6bZKHKyyzFisOkh
+DXiTuuDnzgcu0U4gzL+bkxJ2QRdiyZdKJJMswbm5JDpX6PLsrzPmN314lKIHQx3t
+NNXkbfHL/PxuoUtWLKg7/I3PNnOgNnDqCgqpHJuhU1AZeIkvewHsYu+urT67tnpJ
+AK1Z4CgRxpgbYA4YEV1rWVAPHX1u1okcg85rc5FHK8zh46zQY1wzUTWubAcxqp9K
+1IqjXDDkMgIX2Z2fOA1plJSwugUCbFjn4sbT0t0YuiEFMPMB42ZCjcCyA1yysfAd
+DYAmSer1bq47tyTFQwP+2ZnvW/9p3yJ4oYWzwMzadR3T0K4sgXRC2Us9nPL9k2K5
+TRwZ07wE2CyMpUv+hZ4ja13A/1ynJZDZGKys+pmBNrO6abxTGohM8LIWjS+YBPIq
+trxh8jxzgLazKvMGmaA6KaOGwS8vhfPfxZsu2TJaRPrZMa/HpZ2aEHwxXRy4nm9G
+Kx1eFNJO6Ues5T7KlRtl8gflI5wZCCD/4T5rto3SfG0s0jr3iAVb3NCn9Q73kiph
+PSwHuRxcm+hWNszjJg3/W+Fr8fdXAh5i0JzMNscuFAQNHgfhLigenq+BpCnZzXya
+01kqX24AdoSIbH++vvgE0Bjj6mzuRrH5VJ1Qg9nQ+yMjBWZADljtp3CARUbNkiIg
+tUJ8IJHCGVwXZBqY4qeJc3h/RiwWM2UIFfBZ+E06QPznmVLSkwvvop3zkr4eYNez
+cIKUju8vRdW6sxaaxC/GECDlP0Wo6lH0uChpE3NJ1daoXIeymajmYxNt+drz7+pd
+jMqjDtNA2rgUrjptUgJK8ZLdOQ4WCrPY5pP9ZXAO7+mK7S3u9CTywSJmQpypd8hv
+8Bu8jKZdoxOJXxj8CphK951eNOLYxTOxBUNB8J2lgKbmLIyPvBvbS1l1lCM5oHlw
+WXGlp70pspj3kaX4mOiFaWMKHhOLb+er8yh8jspM184=
+=5a6T
+-----END PGP PUBLIC KEY BLOCK-----
+
+		</pre>
+	</div>
+</div>
+
+<div id="submit_help_contact" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Contact</h3>
+		<p>If you need help using Tor you can contact WikiLeaks for assistance in setting it up using our simple webchat available at: <a href="https://wikileaks.org/talk">https://wikileaks.org/talk</a></p>
+		<p>If you can use Tor, but need to contact WikiLeaks for other reasons use our secured webchat available at <b>http://wlchatc3pjwpli5r.onion</b></p>
+		<p>We recommend contacting us over Tor if you can.</p>
+	</div>
+</div>
+
+<div id="submit_help_tor" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Tor</h3>
+		<p><a href="https://www.torproject.org">Tor</a> is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.</p>
+		<p>In order to use the WikiLeaks public submission system as detailed above you can download the Tor Browser Bundle, which is a Firefox-like browser available for Windows, Mac OS X and GNU/Linux and pre-configured to connect using the anonymising system Tor.</p>
+		<h4>Tails</h4>
+		<p>If you are at high risk and you have the capacity to do so, you can also access the submission system through a secure operating system called <a href="https://tails.boum.org">Tails</a>. Tails is an operating system launched from a USB stick or a DVD that aim to leaves no traces when the computer is shut down after use and automatically routes your internet traffic through Tor. Tails will require you to have either a USB stick or a DVD at least 4GB big and a laptop or desktop computer.</p>
+	</div>
+</div>
+
+<div id="submit_help_tips" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>Tips</h3>
+		<p>Our submission system works hard to preserve your anonymity, but we recommend you also take some of your own precautions. Please review these basic guidelines. </p>
+		<div>
+			<h4>1. Contact us if you have specific problems</h4>
+			<p>If you have a very large submission, or a submission with a complex format, or are a high-risk source, please <a href="#submit_help_contact">contact us</a>. In our experience it is always possible to find a custom solution for even the most seemingly difficult situations.</p>
+		</div>
+		<div>
+			<h4>2. What computer to use</h4>
+			<p>If the computer you are uploading from could subsequently be audited in an investigation, consider using a computer that is not easily tied to you. Technical users can also use <a href="https://tails.boum.org">Tails</a> to help ensure you do not leave any records of your submission on the computer.</p>
+		</div>
+		<div>
+			<h4>3. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+	</div>
+</div>
+
+<div id="submit_help_after" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>After</h3>
+
+		<div>
+			<h4>1. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+		<div>
+			<h4>2. Act normal</h4>
+			<p>If you are a high-risk source, avoid saying anything or doing anything after submitting which might promote suspicion. In particular, you should try to stick to your normal routine and behaviour.</p>
+		</div>
+
+		<div>
+			<h4>3. Remove traces of your submission</h4>
+			<p>If you are a high-risk source and the computer you prepared your submission on, or uploaded it from, could subsequently be audited in an investigation, we recommend that you format and dispose of the computer hard drive and any other storage media you used.</p>
+			<p>In particular, hard drives retain data after formatting which may be visible to a digital forensics team and flash media (USB sticks, memory cards and SSD drives) retain data even after a secure erasure. If you used flash media to store sensitive data, it is important to destroy the media.</p>
+			<p>If you do this and are a high-risk source you should make sure there are no traces of the clean-up, since such traces themselves may draw suspicion.</p>
+			<div>
+				<h4>4. If you face legal action</h4>
+				<p>If a legal action is brought against you as a result of your submission, there are organisations that may help you. The Courage Foundation is an international organisation dedicated to the protection of journalistic sources. You can find more details at <a href="https://www.couragefound.org">https://www.couragefound.org</a>.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="submit" class="submit_banner">
+	<div class="container">
+		<div class="page-header">
+			<h1>Submit documents to WikiLeaks</h1>
+			<a class="remove-button" href="#"><span class="glyphicon glyphicon-remove-circle"></span></a>
+		</div>
+		<p>WikiLeaks publishes documents of political or historical importance that are censored or otherwise suppressed. We specialise in strategic global publishing and large archives.</p>
+		<p>The following is the address of our secure site where you can anonymously upload your documents to WikiLeaks editors. You can only access this submissions system through Tor. (See our <a href="#submit_help_tor">Tor tab</a> for more information.) We also advise you to read our <a href="#submit_help_tips">tips for sources</a> before submitting.</p>
+
+		<div class="alert alert-info">
+			<div class="onion-url">http://ibfckmpsmylhbfovflajicjgldsqpc75k5w454irzwlh7qifgglncbad.onion </div>
+			<!--<div>
+				Copy this address into your Tor browser. Advanced users, if they wish, can also add a further layer of encryption to their submission using <a href="#submit_wlkey">our public PGP key</a>.
+			</div>-->
+		</div>
+
+		<p>If you cannot use Tor, or your submission is very large, or you have specific requirements, WikiLeaks provides several alternative methods. <a href="#submit_help_contact">Contact us</a> to discuss how to proceed.</p>
+	</div>
+</div>
+<div id="submit_help_buttons" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="main">
+	    
+
+<link href="/static/css/styles_topnav.css" rel="stylesheet">
+<link href="/static/css/styles_sidenav.css" rel="stylesheet">
+<div class="top-navigation">
+  <nav class="navbar">
+      <a href="#menu" class="mobile-only hot-dog nav-element">
+      </a>
+    <div class="nav-logo">
+      <a href="https://wikileaks.org">
+        <h1>WikiLeaks</h1>
+      </a>
+    </div>
+    <div class="action-buttons">
+      <a class="button-face donate-link" href="https://shop.wikileaks.org/donate">Donate</a>
+      <a class="button-face submit-link" href="#submit">Submit</a>
+    </div>
+    <form class="global-search" method="get" action="https://search.wikileaks.org/">
+      <input type="text" name="q" placeholder="Search">
+      <button class="btn-search" type="submit"></button>
+    </form>
+    <div class="main-nav">
+
+        <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+            </li>
+
+            <li>
+              <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+            </li>
+
+        </ul>
+
+    </div>
+  </nav>
+</div>
+
+<nav id="menu" class="side-nav rub">
+  <div class="menu-wrapper">
+    <a class="close-btn nav-element" href="#"></a>
+
+      <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+
+          </li>
+
+          <li>
+            <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+
+          </li>
+
+      </ul>
+
+    <aside class="friends mobile-only">
+
+        <ul class="first-level">
+                <li>
+                <a href="https://our.wikileaks.org" target="_blank">our.wikileaks.org</a>
+                </li>
+                <li>
+                <a href="https://www.torproject.org/" target="_blank">Tor Project</a>
+                </li>
+                <li>
+                <a href="https://tails.boum.org/" target="_blank">Tails</a>
+                </li>
+                <li>
+                <a href="https://www.couragefound.org/" target="_blank">Courage</a>
+                </li>
+                <li>
+                <a href="https://www.bitcoin.org/" target="_blank">Bitcoin</a>
+                </li>
+        
+        </ul>
+
+    </aside>
+    <aside class="social mobile-only">
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/wikileaks" class="nav-element" target="_blank" alt="Facebook">
+            <img class="img-responsive" src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" class="nav-element" target="_blank" alt="Twitter">
+            <img class="img-responsive" src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</nav>
+
+
+<div id="overall">
+
+<div id="leftmenu">
+
+        <center><img src="/plusd/images/wl2.jpg" alt="WikiLeaks" /></center>
+        <a class="button" href="/plusd/pressrelease/">Press release</a>
+        <a class="button" href="/plusd/about/">About PlusD</a>
+
+        <div class="pick">
+	<h3>Browse by creation date</h3>
+
+<a href="/plusd/?q=&qtfrom=1966-01-01&qtto=1966-12-31#result">1966</a>
+<a href="/plusd/?q=&qtfrom=1972-01-01&qtto=1972-12-31#result">1972</a>
+<a href="/plusd/?q=&qtfrom=1973-01-01&qtto=1973-12-31#result">1973</a>
+<a href="/plusd/?q=&qtfrom=1974-01-01&qtto=1974-12-31#result">1974</a>
+<a href="/plusd/?q=&qtfrom=1975-01-01&qtto=1975-12-31#result">1975</a>
+<a href="/plusd/?q=&qtfrom=1976-01-01&qtto=1976-12-31#result">1976</a>
+<a href="/plusd/?q=&qtfrom=1977-01-01&qtto=1977-12-31#result">1977</a>
+<a href="/plusd/?q=&qtfrom=1978-01-01&qtto=1978-12-31#result">1978</a>
+<a href="/plusd/?q=&qtfrom=1979-01-01&qtto=1979-12-31#result">1979</a>
+<a href="/plusd/?q=&qtfrom=1985-01-01&qtto=1985-12-31#result">1985</a>
+<a href="/plusd/?q=&qtfrom=1986-01-01&qtto=1986-12-31#result">1986</a>
+<a href="/plusd/?q=&qtfrom=1987-01-01&qtto=1987-12-31#result">1987</a>
+<a href="/plusd/?q=&qtfrom=1988-01-01&qtto=1988-12-31#result">1988</a>
+<a href="/plusd/?q=&qtfrom=1989-01-01&qtto=1989-12-31#result">1989</a>
+<a href="/plusd/?q=&qtfrom=1990-01-01&qtto=1990-12-31#result">1990</a>
+<a href="/plusd/?q=&qtfrom=1991-01-01&qtto=1991-12-31#result">1991</a>
+<a href="/plusd/?q=&qtfrom=1992-01-01&qtto=1992-12-31#result">1992</a>
+<a href="/plusd/?q=&qtfrom=1993-01-01&qtto=1993-12-31#result">1993</a>
+<a href="/plusd/?q=&qtfrom=1994-01-01&qtto=1994-12-31#result">1994</a>
+<a href="/plusd/?q=&qtfrom=1995-01-01&qtto=1995-12-31#result">1995</a>
+<a href="/plusd/?q=&qtfrom=1996-01-01&qtto=1996-12-31#result">1996</a>
+<a href="/plusd/?q=&qtfrom=1997-01-01&qtto=1997-12-31#result">1997</a>
+<a href="/plusd/?q=&qtfrom=1998-01-01&qtto=1998-12-31#result">1998</a>
+<a href="/plusd/?q=&qtfrom=1999-01-01&qtto=1999-12-31#result">1999</a>
+<a href="/plusd/?q=&qtfrom=2000-01-01&qtto=2000-12-31#result">2000</a>
+<a href="/plusd/?q=&qtfrom=2001-01-01&qtto=2001-12-31#result">2001</a>
+<a href="/plusd/?q=&qtfrom=2002-01-01&qtto=2002-12-31#result">2002</a>
+<a href="/plusd/?q=&qtfrom=2003-01-01&qtto=2003-12-31#result">2003</a>
+<a href="/plusd/?q=&qtfrom=2004-01-01&qtto=2004-12-31#result">2004</a>
+<a href="/plusd/?q=&qtfrom=2005-01-01&qtto=2005-12-31#result">2005</a>
+<a href="/plusd/?q=&qtfrom=2006-01-01&qtto=2006-12-31#result">2006</a>
+<a href="/plusd/?q=&qtfrom=2007-01-01&qtto=2007-12-31#result">2007</a>
+<a href="/plusd/?q=&qtfrom=2008-01-01&qtto=2008-12-31#result">2008</a>
+<a href="/plusd/?q=&qtfrom=2009-01-01&qtto=2009-12-31#result">2009</a>
+<a href="/plusd/?q=&qtfrom=2010-01-01&qtto=2010-12-31#result">2010</a>
+
+        </div>
+
+        <div class="sort">
+	<h3>Browse by Classification</h3>
+
+<a href="/plusd/?q=&qfoclass=UNCLASSIFIED#result" title="UNCLASSIFIED (1339531 documents)">UNCLASSIFIED</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL#result" title="CONFIDENTIAL (503750 documents)">CONFIDENTIAL</a><a href="/plusd/?q=&qfoclass=LIMITED+OFFICIAL+USE#result" title="LIMITED OFFICIAL USE (435536 documents)">LIMITED OFFICIAL USE</a><a href="/plusd/?q=&qfoclass=SECRET#result" title="SECRET (120598 documents)">SECRET</a><a href="/plusd/?q=&qfoclass=UNCLASSIFIED%2F%2FFOR+OFFICIAL+USE+ONLY#result" title="UNCLASSIFIED//FOR OFFICIAL USE ONLY (58095 documents)">UNCLASSIFIED//FOR OFFICIAL USE ONLY</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL%2F%2FNOFORN#result" title="CONFIDENTIAL//NOFORN (4678 documents)">CONFIDENTIAL//NOFORN</a><a href="/plusd/?q=&qfoclass=SECRET%2F%2FNOFORN#result" title="SECRET//NOFORN (4330 documents)">SECRET//NOFORN</a>
+        </div>
+
+	<div class="sort">
+	<h3>Browse by Handling Restriction</h3>
+
+<a href="/plusd/?q=&qforiginalhandlingrestriction=EXDIS#result" title="EXDIS - Exclusive Distribution Only (71108 documents)">EXDIS - Exclusive Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=ONLY#result" title="ONLY - Eyes Only (32583 documents)">ONLY - Eyes Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LIMDIS#result" title="LIMDIS - Limited Distribution Only (25098 documents)">LIMDIS - Limited Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NODIS#result" title="NODIS - No Distribution (other than to persons indicated) (24437 documents)">NODIS - No Distribution (other than to persons indicated)</a><a href="/plusd/?q=&qforiginalhandlingrestriction=STADIS#result" title="STADIS - State Distribution Only (20286 documents)">STADIS - State Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CHEROKEE#result" title="CHEROKEE - Limited to senior officials (4343 documents)">CHEROKEE - Limited to senior officials</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NOFORN#result" title="NOFORN - No Foreign Distribution (2197 documents)">NOFORN - No Foreign Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LOU#result" title="LOU - Limited Official Use (598 documents)">LOU - Limited Official Use</a><a href="/plusd/?q=&qforiginalhandlingrestriction=SENSITIVE#result" title="SENSITIVE -  (43 documents)">SENSITIVE - </a><a href="/plusd/?q=&qforiginalhandlingrestriction=BU#result" title="BU - Background Use Only (3 documents)">BU - Background Use Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CONDIS#result" title="CONDIS - Controlled Distribution (1 documents)">CONDIS - Controlled Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=US#result" title="US - US Government Only (1 documents)">US - US Government Only</a>	</div>
+
+	<div class="pick wide">
+	<h3>Browse by TAGS</h3>
+<a href="/plusd/?q=&qftags=US#result" title="US - United States (553685 documents)">US</a> <a href="/plusd/?q=&qftags=PFOR#result" title="PFOR - Political Affairs--Foreign Policy and Relations (294672 documents)">PFOR</a> <a href="/plusd/?q=&qftags=PGOV#result" title="PGOV - Political Affairs--Government; Internal Governmental Affairs (180409 documents)">PGOV</a> <a href="/plusd/?q=&qftags=PREL#result" title="PREL - Political Affairs--External Political Relations (149906 documents)">PREL</a> <a href="/plusd/?q=&qftags=ETRD#result" title="ETRD - Economic Affairs--Foreign Trade (124244 documents)">ETRD</a> <a href="/plusd/?q=&qftags=UR#result" title="UR - Soviet Union (USSR) (117139 documents)">UR</a> <a href="/plusd/?q=&qftags=OVIP#result" title="OVIP - Operations--VIP Travel Arrangements (114816 documents)">OVIP</a> <a href="/plusd/?q=&qftags=ASEC#result" title="ASEC - Administration--Security (114594 documents)">ASEC</a> <a href="/plusd/?q=&qftags=OGEN#result" title="OGEN - Operations--General (114085 documents)">OGEN</a> <a href="/plusd/?q=&qftags=CASC#result" title="CASC - Consular Affairs--Assistance to Citizens (113486 documents)">CASC</a> <a href="/plusd/?q=&qftags=PINT#result" title="PINT - Political Affairs--Internal Political Affairs (104641 documents)">PINT</a> <a href="/plusd/?q=&qftags=EFIN#result" title="EFIN - Economic Affairs--Financial and Monetary Affairs (102225 documents)">EFIN</a> <a href="/plusd/?q=&qftags=BEXP#result" title="BEXP - Business Services--Trade Expansion and Promotion (102142 documents)">BEXP</a> <a href="/plusd/?q=&qftags=OEXC#result" title="OEXC - Operations--Educational and Cultural Exchange Operations (89751 documents)">OEXC</a> <a href="/plusd/?q=&qftags=EAID#result" title="EAID - Economic Affairs--Foreign Assistance (80469 documents)">EAID</a> <a href="/plusd/?q=&qftags=CVIS#result" title="CVIS - Consular Affairs--Visas (79634 documents)">CVIS</a> <a href="/plusd/?q=&qftags=OTRA#result" title="OTRA - Operations--Travel and Visits (79042 documents)">OTRA</a> <a href="/plusd/?q=&qftags=ENRG#result" title="ENRG - Economic Affairs--Energy and Power (76814 documents)">ENRG</a> <a href="/plusd/?q=&qftags=OCON#result" title="OCON - Operations--Conferences and Meetings (76271 documents)">OCON</a> <a href="/plusd/?q=&qftags=ECON#result" title="ECON - Economic Affairs--Economic Conditions, Trends and Potential (75832 documents)">ECON</a> <a href="/plusd/?q=&qftags=NATO#result" title="NATO - North Atlantic Treaty Organization (74653 documents)">NATO</a> <a href="/plusd/?q=&qftags=PINS#result" title="PINS - Political Affairs--Internal Security (72716 documents)">PINS</a> <a href="/plusd/?q=&qftags=GE#result" title="GE - Germany (East) (69261 documents)">GE</a> <a href="/plusd/?q=&qftags=JA#result" title="JA - Japan; Okinawa; (67491 documents)">JA</a> <a href="/plusd/?q=&qftags=UK#result" title="UK - United Kingdom (65645 documents)">UK</a> <a href="/plusd/?q=&qftags=IS#result" title="IS - Israel (61813 documents)">IS</a> <a href="/plusd/?q=&qftags=MARR#result" title="MARR - Military and Defense Affairs--Military and Defense Arrangements (59054 documents)">MARR</a> <a href="/plusd/?q=&qftags=PARM#result" title="PARM - Political Affairs--Arms Controls and Disarmament (58794 documents)">PARM</a> <a href="/plusd/?q=&qftags=UN#result" title="UN - United Nations (58176 documents)">UN</a> <a href="/plusd/?q=&qftags=EG#result" title="EG - Egypt (57176 documents)">EG</a> <a href="/plusd/?q=&qftags=FR#result" title="FR - France (56597 documents)">FR</a> <a href="/plusd/?q=&qftags=PHUM#result" title="PHUM - Political Affairs--Human Rights (55302 documents)">PHUM</a> <a href="/plusd/?q=&qftags=SREF#result" title="SREF - Social Affairs--Refugees (53585 documents)">SREF</a> <a href="/plusd/?q=&qftags=EAIR#result" title="EAIR - Economic Affairs--Aeronautics and Aviation; Civil Aviation (52511 documents)">EAIR</a> <a href="/plusd/?q=&qftags=MASS#result" title="MASS - Military and Defense Affairs--Military Assistance and Sales (51560 documents)">MASS</a> <a href="/plusd/?q=&qftags=APER#result" title="APER - Administration--Personnel (51272 documents)">APER</a> <a href="/plusd/?q=&qftags=SNAR#result" title="SNAR - Social Affairs--Narcotics (49299 documents)">SNAR</a> <a href="/plusd/?q=&qftags=PINR#result" title="PINR - Political Affairs--Intelligence (48667 documents)">PINR</a> <a href="/plusd/?q=&qftags=EAGR#result" title="EAGR - Economic Affairs--Agriculture and Forestry (47350 documents)">EAGR</a> <a href="/plusd/?q=&qftags=PDIP#result" title="PDIP - Political Affairs--Diplomatic and Consular Representation (47061 documents)">PDIP</a> <a href="/plusd/?q=&qftags=AORG#result" title="AORG - Administration--International Organization Administration (42798 documents)">AORG</a> <a href="/plusd/?q=&qftags=PORG#result" title="PORG - Political Affairs--Policy Relations With International Organizations (42754 documents)">PORG</a> <a href="/plusd/?q=&qftags=MX#result" title="MX - Mexico (42577 documents)">MX</a> <a href="/plusd/?q=&qftags=TU#result" title="TU - Turkey (42476 documents)">TU</a> <a href="/plusd/?q=&qftags=ELAB#result" title="ELAB - Economic Affairs--Labor and Manpower; Labor Sector Affairs (41921 documents)">ELAB</a> <a href="/plusd/?q=&qftags=IN#result" title="IN - India (41702 documents)">IN</a> <a href="/plusd/?q=&qftags=CA#result" title="CA - Canada (41623 documents)">CA</a> <a href="/plusd/?q=&qftags=SCUL#result" title="SCUL - Social Affairs--Cultural Affairs (41509 documents)">SCUL</a> <a href="/plusd/?q=&qftags=CH#result" title="CH - China (Mainland) (40426 documents)">CH</a> <a href="/plusd/?q=&qftags=IR#result" title="IR - Iran (39924 documents)">IR</a> <a href="/plusd/?q=&qftags=IT#result" title="IT - Italy (39454 documents)">IT</a> <a href="/plusd/?q=&qftags=XF#result" title="XF - Middle East (38273 documents)">XF</a> <a href="/plusd/?q=&qftags=GW#result" title="GW - Germany (West) (37945 documents)">GW</a> <a href="/plusd/?q=&qftags=EINV#result" title="EINV - Economic Affairs--Investments; Foreign Investments (37616 documents)">EINV</a> <a href="/plusd/?q=&qftags=TH#result" title="TH - Thailand (37385 documents)">TH</a> <a href="/plusd/?q=&qftags=TECH#result" title="TECH - Technology and Science--Technology (36578 documents)">TECH</a> <a href="/plusd/?q=&qftags=SENV#result" title="SENV - Social Affairs--Environment (35665 documents)">SENV</a> <a href="/plusd/?q=&qftags=OREP#result" title="OREP - Operations--Congressional Travel (35140 documents)">OREP</a> <a href="/plusd/?q=&qftags=KS#result" title="KS - Korea (South) (34546 documents)">KS</a> <a href="/plusd/?q=&qftags=EGEN#result" title="EGEN - Economic Affairs--General (34287 documents)">EGEN</a> <a href="/plusd/?q=&qftags=PEPR#result" title="PEPR - PEPR (33866 documents)">PEPR</a> <a href="/plusd/?q=&qftags=MILI#result" title="MILI - Military and Defense Affairs--General (33710 documents)">MILI</a> <a href="/plusd/?q=&qftags=SHUM#result" title="SHUM - Social Affairs--Human Rights (33098 documents)">SHUM</a> <a href="/plusd/?q=&qftags=KISSINGER%2C+HENRY+A#result" title="KISSINGER, HENRY A - Henry Kissinger (32848 documents)">KISSINGER, HENRY A</a> <a href="/plusd/?q=&qftags=PL#result" title="PL - Poland (31163 documents)">PL</a> <a href="/plusd/?q=&qftags=BR#result" title="BR - Brazil (30797 documents)">BR</a> <a href="/plusd/?q=&qftags=RP#result" title="RP - Philippines (30198 documents)">RP</a> <a href="/plusd/?q=&qftags=GR#result" title="GR - Greece; Crete (30183 documents)">GR</a> <a href="/plusd/?q=&qftags=SF#result" title="SF - South Africa (30161 documents)">SF</a> <a href="/plusd/?q=&qftags=AFSP#result" title="AFSP - Administration--Post Administration (29315 documents)">AFSP</a> <a href="/plusd/?q=&qftags=SP#result" title="SP - Spain (29108 documents)">SP</a> <a href="/plusd/?q=&qftags=PTER#result" title="PTER - Political Affairs--Terrorists and Terrorism (28839 documents)">PTER</a> <a href="/plusd/?q=&qftags=MOPS#result" title="MOPS - Military and Defense Affairs--Military Operations (28821 documents)">MOPS</a> <a href="/plusd/?q=&qftags=SA#result" title="SA - Saudi Arabia (28190 documents)">SA</a> <a href="/plusd/?q=&qftags=UNGA#result" title="UNGA - UN General Assembly (27867 documents)">UNGA</a> <a href="/plusd/?q=&qftags=CGEN#result" title="CGEN - Consular Affairs--General (27680 documents)">CGEN</a> <a href="/plusd/?q=&qftags=ESTC#result" title="ESTC - Economic Affairs--Strategic Trade Controls (27627 documents)">ESTC</a> <a href="/plusd/?q=&qftags=SOPN#result" title="SOPN - Social Affairs--Public Opinion and Information (27583 documents)">SOPN</a> <a href="/plusd/?q=&qftags=RO#result" title="RO - Romania (27560 documents)">RO</a> <a href="/plusd/?q=&qftags=LE#result" title="LE - Lebanon (27323 documents)">LE</a> <a href="/plusd/?q=&qftags=TGEN#result" title="TGEN - Technology and Science--General (27058 documents)">TGEN</a> <a href="/plusd/?q=&qftags=PK#result" title="PK - Pakistan (26991 documents)">PK</a> <a href="/plusd/?q=&qftags=AR#result" title="AR - Argentina (26444 documents)">AR</a> <a href="/plusd/?q=&qftags=NI#result" title="NI - Nigeria (26170 documents)">NI</a> <a href="/plusd/?q=&qftags=OSCI#result" title="OSCI - Operations--Science Grants (25846 documents)">OSCI</a> <a href="/plusd/?q=&qftags=CI#result" title="CI - Chile (25827 documents)">CI</a> <a href="/plusd/?q=&qftags=EEC#result" title="EEC - European Common Market (European Communities); European Economic Community (25827 documents)">EEC</a> <a href="/plusd/?q=&qftags=VS#result" title="VS - South Vietnam (25800 documents)">VS</a> <a href="/plusd/?q=&qftags=YO#result" title="YO -  (25447 documents)">YO</a> <a href="/plusd/?q=&qftags=AFIN#result" title="AFIN - Administration--Financial Services (24705 documents)">AFIN</a> <a href="/plusd/?q=&qftags=OECD#result" title="OECD - Organization for Economic Cooperation and Development (24622 documents)">OECD</a> <a href="/plusd/?q=&qftags=SY#result" title="SY - Syria (24419 documents)">SY</a> <a href="/plusd/?q=&qftags=IZ#result" title="IZ - Iraq (24415 documents)">IZ</a> <a href="/plusd/?q=&qftags=ID#result" title="ID - Indonesia (23865 documents)">ID</a> <a href="/plusd/?q=&qftags=VE#result" title="VE - Venezuela (23792 documents)">VE</a> <a href="/plusd/?q=&qftags=TPHY#result" title="TPHY - Technology and Science--Physical Sciences (23741 documents)">TPHY</a> <a href="/plusd/?q=&qftags=TW#result" title="TW - Taiwan (23233 documents)">TW</a> <a href="/plusd/?q=&qftags=AS#result" title="AS - Australia (23143 documents)">AS</a> <a href="/plusd/?q=&qftags=PBOR#result" title="PBOR - Political Affairs--Boundary and Sovereignity Claims (23066 documents)">PBOR</a> 
+	</div>
+
+
+        <div class="sort" style="clear:both;">
+        <h3>Media Organizations</h3>
+        <a target="_blank" href="http://www.theage.com.au/">Australia - The Age</a>
+        <a target="_blank" href="http://www.pagina12.com.ar/">Argentina - Pagina 12</a>
+        <a target="_blank" href="http://www.apublica.org/?p=4041">Brazil - Publica</a>
+        <a target="_blank" href="https://bivol.bg/">Bulgaria - Bivol</a>
+        <a target="_blank" href="http://www.almasryalyoum.com/ ">Egypt - Al Masry Al Youm</a>
+        <a target="_blank" href="http://www.tanea.gr/">Greece - Ta Nea</a>
+        <a target="_blank" href="http://www.plazapublica.com.gt/content/los-cables-de-wikileaks">Guatemala - Plaza Publica</a>
+        <a target="_blank" href="http://www.haiti-liberte.com/">Haiti - Haiti Liberte</a>
+        <a target="_blank" href="http://www.thehindu.com/">India - The Hindu</a>
+        <a target="_blank" href="http://espresso.repubblica.it/">Italy - L'Espresso</a>
+        <a target="_blank" href="http://www.repubblica.it/">Italy - La Repubblica</a>
+        <a target="_blank" href="http://www.al-akhbar.com/">Lebanon - Al Akhbar</a>
+        <a target="_blank" href="http://www.jornada.unam.mx/ultimas/">Mexico - La Jornada</a>
+        <a target="_blank" href="http://www.publico.es/452776">Spain - Publico</a>
+        <a target="_blank" href="http://www.aftonbladet.se/nyheter/article16421007.ab">Sweden - Aftonbladet</a>
+        <a target="_blank" href="http://www.ap.org/">UK - AP</a>
+        <a target="_blank" href="http://thenation.com">US - The Nation</a>
+        </div>
+	<br style="clear: both;" />
+</div>
+
+<div id="content"><div id="content-main">
+
+<!--<p style="text-align: justify; font-size: medium">Click the <b>Chat</b> button above to join a secure chat channel dedicated to media partner The Kissinger Cables discussion. Please go on this to talk to the others currently working on this project. <br />When the chat window opens type the following in the white text space at the bottom of the screen to assign yourself a recognisable name: <b>/nick Espresso</b> and press enter</p>
+<center><h2 style="font-size: x-large;">Public Library of US Diplomacy: PlusD</h2></center>-->
+
+<center><img src="/plusd/images/plusdb.png" /></center>
+<div id="st" style="clear:both;">&nbsp;</div>
+<div id="topnav">
+        <a class="searchbutton active" href="//search.wikileaks.org/plusd/">Specified Search</a>
+        <a class="searchbutton sbinv" href="/plusd/map" target="_blank">View Map</a>
+        <a class="searchbutton sbinv" href="/plusd/graph" target="_blank">Make Timegraph</a>
+        <a class="searchbutton sbinv" href="/plusd/tags/" target="_blank">View Tags</a>
+        <a class="searchbutton sbinv" href="/plusd/imagelibrary/" target="_blank">Image Library</a>
+</div>
+<div class="sections"> 
+<div class="pane-content">
+	<table id="synopsis">
+		<tr style="background:#eee;">
+			<td colspan="2" style="font-size: medium; padding: 5px;color: #000; font-weight: bold; text-align: center;">YOUNG POLITICAL LEADERS MEETING WITH LI HSIEN-NIEN: VERBATIM</td>
+		</tr>
+		<tr style="background:#eee;">
+			<td><div class="s_key"><a class="i" title="Date">Date:</a></div><div class="s_val" title=" 1977 June 10, 00:00 (Friday)">1977 June 10, 00:00 (Friday)</div></td>
+			<td><div class="s_key"><a class="i" title="Canonical ID">Canonical ID:</a></div><div class="s_val" title=" 1977PEKING01173_c">1977PEKING01173_c</div></td>
+		</tr>
+		<tr>
+			<td><div class="s_key"><a class="i" title="Original Classification">Original Classification:</a></div><div class="s_val" title=" CONFIDENTIAL (503750 documents)">CONFIDENTIAL</div></td>
+			<td><div class="s_key"><a class="i" title="Current Classification">Current Classification:</a></div><div class="s_val" title=" UNCLASSIFIED (2592391 documents)">UNCLASSIFIED</div></td>
+		</tr>
+
+		<tr>
+			<td>
+<div class="s_key"><a class="i" title="Handling Restrictions", ">Handling Restrictions</a></div> <div class="s_val" title="EXDIS - Exclusive Distribution Only (71108 documents)">EXDIS - Exclusive Distribution Only</div><br /></td>
+			<td><div class="s_key"><a class="i" title="Character Count">Character Count:</a></div><div class="s_val" title=" 37095">37095</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Executive Order">Executive Order:</a></div><div class="s_val" title=" X3 (7749 documents)">X3</div></td>
+			<td><div class="s_key"><a class="i" title="Locator">Locator:</a></div><div class="s_val" title=" TEXT ON MICROFILM,TEXT ONLINE">TEXT ON MICROFILM,TEXT ONLINE</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="TAGS">TAGS:</a></div><div class="s_val" title=" CH - China (Mainland) | ECON - Economic Affairs--Economic Conditions, Trends and Potential | LI HSIEN-NIEN | PINT - Political Affairs--Internal Political Affairs | TW - Taiwan | US - United States"><a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=CH#result" title="CH China (Mainland) (40426 documents)" >CH<span style="color: #216B7C;"> - China (Mainland)</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=ECON#result" title="ECON Economic Affairs: Economic Conditions, Trends and Potential (75832 documents)" >ECON<span style="color: #216B7C;"> - Economic Affairs--Economic Conditions, Trends and Potential</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=LI+HSIEN-NIEN#result" title="LI HSIEN-NIEN  (67 documents)" >LI HSIEN-NIEN</a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=PINT#result" title="PINT Political Affairs: Internal Political Affairs (104641 documents)" >PINT<span style="color: #216B7C;"> - Political Affairs--Internal Political Affairs</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=TW#result" title="TW Taiwan (23233 documents)" >TW<span style="color: #216B7C;"> - Taiwan</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=US#result" title="US United States (553685 documents)" >US<span style="color: #216B7C;"> - United States</span></a></div></td>
+			<td><div class="s_key"><a class="i" title="Concepts">Concepts:</a></div><div class="s_val" title=" DIPLOMATIC RELATIONS ESTABLISHMENT | ECONOMIC PROGRAMS | FOREIGN POLICY POSITION | MEETINGS | MILITARY CAPABILITIES | POLITICAL LEADERS"><a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=DIPLOMATIC+RELATIONS+ESTABLISHMENT#result" title="DIPLOMATIC RELATIONS ESTABLISHMENT (4544 documents)">DIPLOMATIC RELATIONS ESTABLISHMENT</a> <span style=''color:#000;''>|</span> <a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=ECONOMIC+PROGRAMS#result" title="ECONOMIC PROGRAMS (7343 documents)">ECONOMIC PROGRAMS</a> <span style=''color:#000;''>|</span> <a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=FOREIGN+POLICY+POSITION#result" title="FOREIGN POLICY POSITION (47209 documents)">FOREIGN POLICY POSITION</a> <span style=''color:#000;''>|</span> <a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=MEETINGS#result" title="MEETINGS (94026 documents)">MEETINGS</a> <span style=''color:#000;''>|</span> <a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=MILITARY+CAPABILITIES#result" title="MILITARY CAPABILITIES (2017 documents)">MILITARY CAPABILITIES</a> <span style=''color:#000;''>|</span> <a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=POLITICAL+LEADERS#result" title="POLITICAL LEADERS (12198 documents)">POLITICAL LEADERS</a></div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Enclosure">Enclosure:</a></div><div class="s_val" title=" -- N/A or Blank -- (2333922 documents)">-- N/A or Blank --</div></td>
+			<td><div class="s_key"><a class="i" title="Type">Type:</a></div><div class="s_val" title=" TE - Telegram (cable) (2008616 documents)">TE - Telegram (cable)</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc">
+				<div class="s_key"><a class="i" title="Office Origin">Office Origin:</a></div><div class="s_val" title=" -- N/A or Blank -- (2117535 documents)">-- N/A or Blank --</div>				<br style="clear:both;"/>
+				<div class="s_key"><a class="i" title="Office Action">Office Action:</a></div><div class="s_val" title=" ACTION SS - Executive Secretariat, Department of State (64145 documents)">ACTION SS - Executive Secretariat, Department of State</div>			</td>
+			<td><div class="s_key"><a class="i" title="Archive Status">Archive Status:</a></div><div class="s_val" title=" Electronic Telegrams (1758257 documents)">Electronic Telegrams</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="From">From:</a></div><div class="s_val" title=" China Beijing  | China United States Liason Office Peking (12048 documents)"><a style="color: #216B7C; " href="/plusd/?q=&qforigin=China%23%23Beijing#result" title="China Beijing (12048 documents)">China Beijing</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qforigin=China%23%23United+States+Liason+Office+Peking#result" title="China United States Liason Office Peking (6339 documents)">China United States Liason Office Peking</a></div></td>
+			<td><div class="s_key"><a class="i" title="Markings">Markings:</a></div><div class="s_val" title=" Margaret P. Grafeld  Declassified/Released  US Department of State  EO Systematic Review  22 May 2009 (307218 documents)">Margaret P. Grafeld  Declassified/Released  US Department of State  EO Systematic Review  22 May 2009</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="To">To:</a></div><div class="s_val" title=" SECSTATE HONG KONG "><a style="color: #216B7C; " href="/plusd/?q=&qfdestination=SECSTATE HONG KONG#result" title="SECSTATE HONG KONG  (983 documents)">SECSTATE HONG KONG </a></div></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<br />
+
+
+<br style="clear: both;" />
+
+</div>
+<div class="pane-tab"><div class="pane-header">Content</div><div class="pane-content"><div class="text-header hidden">CONFIDENTIAL
+
+
+PAGE 01    PEKING 01173 01 OF 07 100629Z
+ACTION SS-25
+
+
+INFO OCT-01 ISO-00 SSO-00 /026 W
+
+------------------100631Z 013837 /12
+P 100105Z JUN 77
+FM USLO PEKING
+
+TO SECSTATE WASHDC PRIORITY 7972
+INFO AMCONSUL HONG KONG PRIORITY
+
+AMEMBASSY MOSCOW PRIORITY
+AMEMBASSY TAIPEI PRIORITY
+
+
+C O N F I D E N T I A L SECTION 1 OF 7 PEKING 1173
+
+
+EXDIS
+
+
+C O R R E C T E D C O P Y (TEXT)
+
+
+EO 11652: XGDS-3
+TAGS: PINT, ECON, CH, US
+
+
+SUBJ: YOUNG POLITICAL LEADERS MEETING WITH LI HSIEN-NIEN: VERBATIM
+
+TRANSCRIPT
+
+
+REF: PEKING 1048</div><div class="text-button" id="showhide">Show&nbsp;Headers</div><div class="text-content"><div id="tagged-text">
+
+1. YOUNG POLITICAL LEADERS MEETING WITH VICE PREMIER LI
+HSIEN-NIEN. PLACE: GREAT HALL OF THE PEOPLE, SOUTH ENTRANCE.
+TIME: MAY 24, 1977, 10 AM TO 11:40 AM. CHINESE PARTICI-
+
+PANTS: LI HSIEN-NIEN, VICE PREMIER; TANG WEN-SHENG (INTER-
+PRETER; WANG HAI-JUNG, VICE
+
+FOREIGN MINISTER; KO FO-NIEN, CPIFA; KANG TAI-SHA, CPIFA;
+FAO KUO-HSIANG, CPIFA; LIEN CHENG-PAO, FOREIGN MINISTRY;
+
+HO CHU-FENG, CPIFA; KAO CHING-JUI, CPIFA; PI KANG, CPIFA;
+YIN TSO-CHIN, CPIFA. AMERICAN PARTICIPANTS: YOUNG POLITICAL
+
+LEADERS DELEGATION MEMBERS; DAVID DEAN, ACTING CHIEF, USLO;
+DONALD KEYSER, POLITICAL OFFICER, USLO (NOTE TAKER)
+
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 02    PEKING 01173 01 OF 07 100629Z
+
+
+2. LI HSIEN-NIEN (HEREAFTER ABBREVIATED AS LI): YOU
+GUESTS HAVE ALL COME FROM AFAR. I WOULD LIKE TO EXPRESS
+
+MY WELCOME TO YOU. YOU ARE ALL VERY YOUNG. LET US
+LEARN FROM YOU.
+
+
+3. O'NEILL: THANK YOU FOR TAKING YOUR TIME TO WELCOME
+US. WE HAVE ALREADY BEEN HERE A WEEK AND WE HAVE BEEN
+
+
+
+
+
+
+
+
+
+VERY IMPRESSED BY WHAT WE HAVE SEEN.
+
+
+4. LI: YOU ARE ALL YOUNG POLITICAL LEADERS AND I
+SUPPOSE ONE OF YOU WILL BECOME A FUTURE PRESIDENT.
+
+
+5. LI: O'NEILL: I KNOW YOUR TIME IS VERY TIGHT. I WOULD
+
+LIKE TO TURN THE QUESTION PART OF OUR PROGRAM OVER TO
+ONE OF OUR GROUP. DOES THAT MEET WITH YOUR APPROVAL?
+THE GROUP MEMBER IS BELLAMY FROM NEW YORK STATE. WE
+
+HAVE ASKED HER TO REPRESENT THE WHOLE DELEGATION IN
+POSING QUESTIONS.
+
+
+6. LI: I WILL ANSWER THOSE QUESTIONS THAT I CAN.
+
+
+7. O'NEILL: THANKS. CAN I ASK MISS BELLAMY TO
+
+BEGIN?
+
+
+8. LI: ALRIGHT. THOSE QUESTIONS I CAN ANSWER, I
+WILL. THOSE QUESTIONS I CAN'T, I WILL EXCHANGE
+
+OPINIONS WITH YOU.
+
+
+9. BELLAMY: WE HAVE MANY QUESTIONS WE WOULD LIKE
+TO ASK BUT LET ME SET FORTH THREE BASIC ONES. THE
+
+FIRST QUESTION IS CONCERNED WITH ECONOMICS AND DEVELOP-
+MENT HERE. OVER THE FOUR WEEKS THAT THE DELEGATION WILL
+HAVE BEEN HERE WE WILL HAVE AN OPPORTUNITY TO VISIT
+
+SOME INSTITUTIONSAND PLACES IN YOUR COUNTRY. WE
+UNDERSTAND THE EMPHASIS THAT YOU HAVE BEEN PLACING
+
+ON PROGRESS IN THE ECONOMY AND WE HAVE BEEN VERY IM-
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 03    PEKING 01173 01 OF 07 100629Z
+
+
+PRESSED, BUT WHAT WE WOULD LIKE TO KNOW IS WHAT DO YOU
+
+EXPECT TO BE THE KEY QUESTIONS OVER THE NEXT FIVE
+YEARS AND OVER THE NEXT TEN YEARS IN ECONOMIC DECI-
+
+SIION MAKING. SPECIFICALLY WHAT DO YOU ANTICIPATE TO
+BE THE KEY QUESTIONS OVER THOSE TIME FRAMES IN INDUS-
+
+TRY, IN AGRICULTURE, IN TRADE AND IN SCIENTIFIC AND
+CULTURAL EXCHANGES WITH OTHER COUNTRIES.
+
+
+10. LI: SO MANY QUESTIONS.
+
+
+11. BELLAMY: THE NEXT QUESTION HAS TO DO WITH THE
+MILITARY. IN LIGHT OF THE SOVIET MILITARY BUILD-UP,
+
+WHAT IS THE THRUST OF CHINA'S MILITARY SPENDING AND
+HOW MIGHT THIS IMPACT ON CHINA'S OTHER DOMESTIC
+
+PRIORITUES. THE THIRD QUESTION CONCERNS BILATERAL
+RELATIONS BETWEEN THE UNITED STATES AND CHINA. IN
+
+THE SHANGHAI COMMUNIQUE OF 1972 THE US SIDE RE-
+AFFIRMED ITS COMMITMENT TO PEACEFUL SOLUTION OF THE
+
+TAIWAN QUESTION. DO RECENT STATEMENTS BY CHINESE
+
+
+
+
+
+
+
+
+
+LEADERS THAT CHINA WILL USE FORCE TO LIBERATE TAIWAN
+MAKE THE SHANGHAI COMMUNIQUE INOPERABLE AND PRECLUDE
+
+NORMALLIZATION OF RELATIONS BETWEEN THE UNITED
+STATES AND CHINA?
+
+
+12. (GIVING A SNAP ANSWER): NO.
+
+
+13. BELLAMY: THOSE ARE OUR THREE BASIC QUESTIONS.
+
+
+14. LI: LET ME BEGIN WITH THE LAST QUESTION. I WILL
+ANSWER THAT QUESTION FIRST. WITH REGARD TO SINO-US
+
+RELATIONS, THERE ARE TWO LINES OR TWO ASPECTS SO FAR
+AS TAIWAN IS CONCERNED. ONE IS THE INTERNATIONAL
+
+QUESTION, THE INTERNATIONAL ASPECT OF RELATIONS.
+BETWEEN THE US AND CHINA IT WAS STATED VERYCLEARLY
+
+IN THE SHANGHAI COMMUNIQUE THAT THE US ACKNOWLEDGES
+THAT ALL CHINESE ON EITHER SIDE OF THE TAIWAN STRAIT
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 04    PEKING 01173 01 OF 07 100629Z
+
+
+MAINTAIN THAT THERE IS ONE CHINA AND TAIWAN IS A PART
+OF CHINA. THE UNITED STATES GOVERNMENT DOES NOT
+CHALLENGE THAT POSITION. (THIS PORTION LI READ
+
+DIRECTLY FROM THE TEXT OF THE SHANGHAI COMMUNIQUE
+GIVEN HIM IN A PREPARED BRIEFING BOOK BY US DIVISION
+
+DEPUTY DIRECTOR LIEN CHENG-PAO). AS FOR THE INTERNATIONAL
+ASPECT OF THIS QUESTION THAT IS DESCRIBED IN THE
+
+SHANGHAI COMMUNIQUE.WE ARE WILLING TO REACH A SETTLE-
+MENT WITH THE US ON THIS ISSUE. THIS IS NOT ONLY
+
+OUR PRESENT POLICY BUT ALSO THE POLICY WHICH PREMIER
+CHOU SET FORTH AT THE BANDUNG CONFERENCE. AT THE BANDUNG
+
+CONFERENCE PREMIER CHOU SET FORTH THIS POSITION TO
+HIS US COUNTERPART. HE MADE PLAN THAT THIS ASPECT
+
+OF THE TAIWAN ISSUE--THAT IS THE INTERNATIONAL ASPECT --
+BETWEEN THE U.S. AND CHINA IS NEGOTIABLE. SUBSEQUENTLY
+
+
+
+
+CONFIDENTIAL
+
+
+
+
+
+
+NNN
+
+
+CONFIDENTIAL
+
+
+PAGE 01    PEKING 01173 02 OF 07 100701Z
+ACTION SS-25
+
+
+INFO OCT-01 ISO-00 SSO-00 /026 W
+
+------------------100711Z 014122 /16
+
+
+
+
+
+
+
+
+
+P 100105Z JUN 77
+FM USLO PEKING
+
+TO SECSTATE WASHDC PRIORITY 7973
+INFO AMCONSUL HONG KONG PRIORITY
+
+AMEMBASSY MOSCOW PRIORITY
+AMEMBASSY TAIPEI PRIORITY
+
+
+C O N F I D E N T I A L SECTION 2 OF 7 PEKING 1173
+
+
+EXDIS
+
+
+PREMIER CHOU AGAIN ADDRESSED THIS POINT AT A MEETING OF
+
+THE HEADS OF STATE OF EIGHT COUNTRIES, THAT IS, OF
+AFRO-ASIAN LEADERS ON APRIL 23, 1955. PREMIER CHOU
+
+SAID THE FOLLOWING (LI AGAIN READ FROM A
+BRIEFING PAPER): &quot;THE CHINESE PEOPLE ARE FRIENDLY
+
+TOWARD THE UNITED STATES PEOPLE. THE CHINESE PEOPLE
+DO NOT WISH TO GO TO WAR WITH THE UNITED STATES. WE
+
+WISH TO SIT DOWN WITH THE UNITED STATES GOVERNMENT
+AND TO DISCUSS AN EASING OF TENSIONS IN THE FAR EAST,
+ESPECIALLY IN THE TAIWAN STRAIT.&quot; MAY I QUOTE STILL
+
+ANOTHER STATEMENT MADE BY PREMIER CHOU EN-LAI. THIS
+STATEMENT HE DELIVERED AT THE THIRD SESSION OF THE
+
+FIRST NATIONAL PEOPLE'S CONGRESS ON JUNE 28, 1956.
+IN THIS STATEMENT PREMIER CHOU SAID: &quot;THE CHINESE
+
+SIDE IS NOT AGAINST AN AGREEMENT ON MUTUAL RENUNCIATION
+OF USE OF FORCE IN SINO-AMERICAN RELATIONS. AT BANDUNG
+
+THE CHINESE SIDE DECLARED THAT IT DOES NOT WANT WAR
+WITH THE UNITED STATES AND IS WILLING TO SIT DOWN WITH
+
+THE UNITED STATES ON THE QUESTION OF EASING TENSIONS IN
+THE TAIWAN STRAIT. AT THE SAME TIME THERE ISA QUESTION
+
+AS TO WHAT MEANS CHINA WILL USE TO LIBERATE TAIWAN.
+THIS QUESTION WILL BE DECIDED BY THE CHINESE. THIS
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 02    PEKING 01173 02 OF 07 100701Z
+
+
+IS ENTIRELY A QUESTION OF CHINESE SOVEREIGNTY&quot;. (LI
+CONTINUES) SO YOU CAN SEE TWO ASPECTS TO THE ISSUE.
+
+ONE IS INTERNATIONAL. WE ARE WILLING TO DISCUSS WITH
+YOU THIS QUESTION WITHOUT RESORT TO FORCE OR TO THREAT
+
+OF FORCE. THE OTHER ASPECT IS DOMESTIC. TAIWAN IS A
+PART OF CHINA. DURING THE CAIRO DECLARATION AND ON
+
+THE OCCASION OF THE JAPANESE SURRENDER AT THE END OF
+WORLD WAR II IT WAS CLEARLY STIPULATED THAT TAIWAN
+
+IS PART OF CHINESE TERRITORY, THAT TAIWAN IS A PROVINCE
+OF CHINA. WE SAY THAT THE TAIWAN ISSUE IS ALSO AN
+
+INTERNAL ONEAND WHAT MEANS WE RESORT TO IN LIBERATING
+TAIWAN IS ENTIRELY OUR OWN BUSINESS. WHETHER WE DECIDE
+
+TO USE FORCE OR TO USE PEACEFUL MEANS IS ENTIRELY A
+CHINESE AFFAIR. NO OTHER COUNTRY HAS A RIGHT TO
+INTERVENE AND YOU WILL SEE ALSO WITH CAREFUL ATTENTION
+
+
+
+
+
+
+
+
+
+
+THAT MY EXPLANATION GIVEN TODAY AND THE TWO DOCUMENTS
+QUOTED ARE ENTIRELY IN ACCORD. IT SEEMS TO ME THAT
+
+THESE TWO ASPECTS ARE A BIT CONFUSED IN THE MIINDS OF
+SOME AMERICANS. THE RELATIONS BETWEEN CHINA AND THE
+
+UNITED STATES ARE CONFUSED WITH RELATIONS BETWEEN US
+AND THE JUNIOR CHIANG REGIME IN TAIWAN. ACTUALLY WE
+
+HAVE DISCUSSED THIS QUESTION WITH MANY FRIENDS BEFORE
+AND THE ISSUE HAS BEEN MUTUALLY DISCUSSED WITH YOUR
+
+GOVERNMENT, WITH THE NIXON ADMINISTRATION, WITH THE
+FORD ADMINISTRATION, AND WITH THE PRESENT ADMINISTRA-
+
+TION. ON NUMEROUS OCCASIONS WE HAVE PUT FORWARD TO
+YOUR GOVERNMENT OUR POSITION ON TAIWAN. OUR POSITION
+
+ON TAIWAN IS THAT THE UNITED STATES MUST BREAK DIPLOMATIC
+RELATIONS WITH TAIWAN, MUST WITHDRAW ALL OF ITS MILI-
+
+TARY FORCES FROM TAIWAN, AND MUST ABROGATE ITS SO-
+CALLED DEFENSE TREATY WITH TAIWAN. AS TO HOW WE SOLVE
+
+THE ISSUE OF LIBERATING TAIWAN, THIS IS ENTIRELY AN
+INTERNAL MATTER FOR CHINA TO DECIDE.
+
+
+15. (LI CONTINUING) I HAVE READ A BRIEF SUMMARY OF
+YOUR DISCUSSIONS WITH THE VICE FOREIGN MINISTER,
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 03    PEKING 01173 02 OF 07 100701Z
+
+
+(WANG HAI-JUNG) AND IT SEEMS TO ME THAT THE VICE
+FOREIGN MINISTER IS FOR FORCE. SHE SAYS THAT (READING
+
+A TRANSCRIPT) &quot;THERE IS A BUNCH OF COUNTER-REVOLU-
+TIONARIES IN TAIWAN AND IN OUR VIEW WE THINK THE
+
+QUESTION CAN ONLY BE RESOLVED BY A FIGHT&quot;. I FIND
+THAT I AM IN AGREEMENT WITH HER -- BUT THEN SHE IS
+
+PROBABLY A RADICAL (LAUGHTER). BEFORE THE SETTLEMENT OF THE
+TAIWAN ISSUE, WE CAN HAVE SOME CONTACTS. TRADE
+
+IS GOING ON. THERE ARE SOME CULTURAL EXCHANGES AND
+THERE ARE QUITE A FEW PERSONAL EXCHANGES. AND AS
+
+FOR THE VIEW TOWARDS THE INTERNATIONAL SITUATION,
+THE VIEWS OF THE TWO SIDES ARE IN AGREEMENT ON SOME
+
+MATTERS AND ON OTHERS THERE IS NOT SO MUCH AGREEMENT,
+BUT IT DOESN'T MATTER. FOR EXAMPLE, WITH REGARD TO
+
+THE ISSUE OF JAPAN, WE STATED THAT WE BELIEVE YOUR
+RELATIONS WITH JAPAN COME FIRST. YOU MAY SAY BUT
+
+THAT IS THE AMERICAN POINT OF VIEW. HOW CAN YOU AGREE
+WITH THAT? WELL, IT IS SO ON THIS ISSUE BECAUSE BOTH
+
+THE UNITED STATES AND JAPAN ARE CAPITALIST COUNTRIES.
+YOU ALSO HAVE A MILITARY ALLIANCE BETWEEN YOU. IT IS
+
+ALSO SAID THAT THERE IS A GREAT VOLUME OF TRADE BETWEEN
+THE UNITED STATES AND JAPAN. THAT IS THE STATUS QUO.
+
+IT IS NOT A QUESTION AS TO WHETHER ONE AGREES OR NOT,
+OR WHETHER ONE OBJECTS OR NOT TO THE STATE OF AFFAIRS.
+
+SO PERHAPS THIS IS A COMMON POINT OF VIEW. WITH
+REGARD TO THE POLAR BEAR, THAT IS TO THE SOVIET
+SOCIAL IMPERIALISTS, AS WE CALL THEM, WE SAY THEY
+
+
+
+
+
+
+
+
+
+
+ARE INTERVENING AND ARE CONTENDING WITH YOU. BUT
+WE ALSO BELIEVE THAT YOU ARE IN THE DEFENSIVE POSTURE
+
+WHILE THEY ARE IN AN OFFENSIVE POSITION. AND AMONG
+THE AMERICAN STATESMEN, IT SEEMS TO ME THAT THE VIEWS
+
+OF DR. SCHLESINGER ARE COMPARATIVELY MORE CORRECT.
+I HEAR THAT SOME OF YOU SEEM TO THINK THAT CHINA MIGHT
+
+BE TRYING TO SOW DISCORD BETWEEN YOU AND THE SOVIET
+UNION. WE ARE NOT TRYING TO SOW DISCORD. THIS IS
+AN OBJE TIVE FACT. AND EVEN IF YOU BELIEVE THAT WE
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 04    PEKING 01173 02 OF 07 100701Z
+
+
+ARE TRYING TO SOW DISCORD, WHY WOULD YOU HAVE TO
+LISTEN TO US? AND ALSO, ON THE ISSUE OF YOUR DETER-
+
+MINATION TO DISARM, WE SAW THAT IMMEDIATELY FOLLOWING
+THE EUROPEAN SECURITY CONFERENCE THE SOVIET UNION
+
+WENT INTO ANGOLA AND THERE WAS AN INCREASE OF THEIR
+MILITARY FORCES FROM 3 TO 4 MILLION TROOPS. THAT
+
+MAKES US DISBELIEVE IN DISARMAMENT AND DETENTE. WE
+
+
+
+CONFIDENTIAL
+
+
+
+
+
+
+NNN
+
+
+CONFIDENTIAL
+
+
+PAGE 01    PEKING 01173 03 OF 07 100626Z
+
+ACTION SS-25
+
+
+INFO OCT-01 ISO-00 SSO-00 /026 W
+------------------100631Z 013821 /16
+
+P 100105Z JUN 77
+FM USLO PEKING
+
+TO SECSTATE WASHDC PRIORITY 7974
+INFO AMCONSUL HONG KONG PRIORITY
+AMEMBASSY MOSOCOW PRIORITY
+
+AMEMBASSY TAIPEI PRIORITY
+
+
+C O N F I D E N T I A L SECTION 3 OF 7 PEKING 1173
+
+
+EXDIS
+
+
+THINK THIS TALK DAY IN AND DAY OUT ABOUT DISARMAMENT
+CAN ONLY HAVE THE RESULT OF LULLING THE VIGILANCE OF
+
+THE PEOPLE SO THAT WHEN SOMETHING HAPPENS THEY WILL
+BE UNPREPARED AND WE THINK THAT ON THE CONTRARY IT IS
+
+BETTER TO KEEP ONE'S EYES OPEN AND TO MAINTAIN ONE'S
+
+
+
+
+
+
+
+
+
+VIGILANCE HIGH RATHER THAN CLOSING ONE'S EYES AND
+FALLING ASLEEP ON A SOFT PILLOW. THERE IS AN OLD
+
+CHINESE SAYING &quot;ONE SHOULD NOT HAVE THE DESIRE TO
+KILL OTHERS BUT ONE HAS THE RIGHT TO AVOID HAVING
+
+OTHERS DO THAT TO ONESELF.&quot; IN OUR OPINION IT IS
+BETTER TO MAINTAIN HIGH VIGILANCE AND YOU CAN SEE
+
+THAT WE ARE MAKING PREPARATIONS. FOR EXAMPLE, WE
+ARE DIGGING UNDERGROUND TUNNELS. BUT WE WILL NOT FIRE
+
+THE FIRST SHOT. WE ACT ACCORDING TO THE SENTENCES
+LAID DOWN BY CHAIRMAN MAO. WE WILL NOT ATTACK UNLESS
+
+WE ARE ATTACKED. BUT IF WE ARE ATTACKED, WE WILL
+CERTAINLY COUNTERATTACK. THIS IS JUST AND FAIR. WE
+
+WILL NOT COMMIT AGGRESSION AGAINST OTHERS. BUT IF
+WE ARE ATTACKED WE WILL RESPOND. THIS MUST BE FAIR.
+
+I AM RAMPLING AWAY FROM YOUR TOPICS. (ASKS TANG
+WEN-SHENG TO REMIND HIM OF THE NEXT QUESTION). SO
+
+LET ME GO ON NOW TO DISCUSS ECONOMIC CONSTRUCTION.
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 02    PEKING 01173 03 OF 07 100626Z
+
+
+
+16. YOU ARE ALL PROBABLY FAMILIAR WITH THE FACT THAT
+
+WE ARE BUILDING OUR COUNTRY ACCORDING TO THE PRINCIPLE
+OF INDEPENDENCE, KEEPING INITIATIVE IN OUR OWN HANDS
+
+AND SELF-RELIANCE AND THE SPIRIT OF DILIGENCE, HARD
+WORK AND FRUGALITY. SOME ASKED US DO YOU HAVE THE
+
+PREREQUISITES FOR SELF-RELIANCE? AND I ANSWER YES.
+CHINA HAS 800,000,000 PEOPLE AND RICH NATURAL RESOURCES.
+
+AND I ADD THAT WE HAVE 9.6 MILLION SQUARE KILOMETERS
+OF AREA. THEREFORE WE SAY WE HAVE THE PREREQUISITES
+
+TO ENGAGE IN SELF-RELIANCE. SOME OF YOUR DELEGATION
+MEMBERS, UPON HEARING THIS, THINK THAT WE ARE GOING
+
+TO ADVOCATE A CLOSED-DOOR POLICY. BUT WE DO NOT EX-
+CLUDE COMMERCIAL CONTACTS OR TECHNICAL EXCHANGES WITH
+
+FOREIGN COUNTRIES, INCLUDING WITH ADVANCED COUNTRIES
+LIKE YOURS. OUR FOREIGN TRADE IS CONDUCTED ALONG
+
+SUCH PRINCIPLES TOO. AS FOR PRIORITIES IN DEVELOPING
+OUR ECONOMY, AGRICULTURE OF COURSE COMES FIRST. THE
+
+ORDER OF PRIORITIES IS AGRICULTURE, LIGHT INDUSTRY
+AND HEAVY INDUSTRY. THIS IS BASED ON COMMON SENSE.
+
+HUMAN BEINGS HAVE TO EAT. THEY NEED CLOTHES TO WEAR.
+THEY NEED HOUSING AND TRANSPORTATION. BUT SUCH
+
+COMMON SENSE IS SOMETIMES FORGOTTEN BY SOME PEOPLE.
+FOR EXAMPLE, IN PARTY HISTORY THERE EMERGED A MAN
+
+CALLED WANG MING, WHO FORGOT THAT PEOPLE HAD TO EAT.
+HE IMAGINED THAT WE HAD A GREAT ABILITY TO STRUGGLE
+
+AT THE TIME WHICH WOULD ALLOW US TO FIGHT ONE BATTLE
+AFTER ANOTHER. TO FIGHT ONE BATTLE, THEN A SECOND,
+
+THEN A THIRD AND THEN A FOURTH. TO STORM MAJOR CITIES
+ONE AFTER ANOTHER. BUT WE DID NOT HAVE THAT ABILITY.
+IT SEEMED TO HIM THAT OUR SOLDIERS COULD FIGHT ON
+
+
+
+
+
+
+
+
+
+
+EMPTY STOMACHS, THAT OUR PEOPLE COULD WORK WITHOUT
+SOMETHING TO EAT. THE CHAIRMAN WAS DIFFERENT. HE
+
+SAID THAT AFTER BATTLE YOU HAVE TO REST A WHILE, ALLOW
+TIME FOR MEALS REST, SOME SLEEP. SO WHY DO WE STRESS
+
+AGRICULTURE? THERE ARE 800,000,000 MOUTHS TO FEED
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 03    PEKING 01173 03 OF 07 100626Z
+
+
+EVERY DAY. IS IT POSSIBLE TO FAST FOR ONE WEEK AFTER
+
+ONE MEAL? NO. WE MUST EAT EVERY DAY. THAT IS WHY
+WE ATTACH SUCH GREAT IMPORTANCE TO AGRICULTURE. IN
+
+OUR COUNTRY WE DEVELOP OUR AGRICULTURE BY LEARNING
+FROM TACHAI (TANG WEN-SHENG EXPLAINS THAT TACHAI IS
+
+THE NATIONAL MODEL IN AGRICULTURE AND GIVES SOME DE-
+TAILS ABOUT THE HISTORY OF TACHAI AND THE CONFERENCE
+
+ON LEARNINGSHROM TACHAI IN AGRICULTURE WHICH WAS
+HELD AT THE END OF 1976). IN THE PAST THE TACHAI
+BRIGADE WAS ABLE TO PRODUCE ONE TON OF GRAIN PER
+
+HECTARE. NOW THEYARE TURNING OUT EIGHT TO NINE TONS OF GRAIN
+PER HECTARE. CAN YOU SAY THAT THERE IS A MIRACLE IN
+
+DOING SO, OR THAT THERE IS A HIGH DEGREE OF FARM
+MECHANIZATION? MO. THEY RELY ON THE WORK OF HUMAN
+
+BEINGS, ON SOIL CONSERVATION, ON WATER CONSERVANCY.
+BUT YOU PROABLY ARE NOT GOING TO TACHAI ON THIS TRIP.
+
+YOU ARE GOING TO HUNAN AND YOU WILL SEE THAT WHEN
+CHAIRMAN HUA KKUO-FENG WAS IN HUNAN YOU CAN PERHAPS SEE
+
+THE SHAOSHAN WATER CONSERVANCY WORKS WHICH WERE DEVELOPED
+UNDER THE DIRECTION OF CHAIRMAN HUA WHEN HE WAS IN
+
+HUNAN. THERE IS NOT ONLY ONE SUCH WATER IRRIGATION
+PROJECT IN CHINA. MAN Y OF OUR INDUSTRIAL MATERIALS
+
+COME FROM AGRICULTURE. FOR EXAMPLE, COTTON, TOBACCO
+AND SUGAR. MANY LIGHT INDUSTRY MATERIALS RELY ON
+
+THESE AGRICULTURAL PRODUCTS. THAT IS WHY THE CHAIRMAN
+ENUNCIATED THE POLICY OF TAKING GRAIN AS THE KEY LINK
+
+WHILE MAKING COMPREHENSIVE DEVELOPMENT. THERE IS ALSO
+ANOTHER WAY OF PUTTING IT. DEVELOP COMPREHENSIVELY
+
+AGRICLUTURE, FORESTRY, ANIMAL HUSBANDRY AND SIDELINE
+PRODUCTS. AS FOR HEAVY INDUSTRY, WE WISH TO OPEN UP
+
+NEW AREAS. ONE IS IN PETRO-CHEMICALS AND COAL. WE
+HAVE SOME OIL AND THERE SEEMS TO BE GOOD PROSPECTS
+
+FOR DEVELOPMENT. WE HAVE A TACHING OIL FIELD AND
+DURING THE RECENT CONFERENCE ON LEARNING FROM TACHING
+
+IN INDUSTRY, CHAIRMAN HUA PUT FORTH THE GOAL OF
+TRYING TO ESTABLISH TEN OIL FIEILDS LIKE TACHING. WE
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 04    PEKING 01173 03 OF 07 100626Z
+
+HAVE COAL IN CHINA. WE ALSO USE QUITE A LOT. WE
+
+
+
+
+
+
+
+
+
+
+HAVE BASIC RESOURCES. WE ALSO WISH TO DRAW UP OUR
+NATURAL GAS AND OUR HYDROELECTRIC CAPACITY. WE ALSO
+
+WISH TO DEVELOP SOME NUCLEAR POWER PLANTS BECAUSE
+WITHOUT ENERGY INDUSTRY CANNOT DEVELOP. MANY
+
+INDUSTRIES REQUIRE STEEL BUT IN ORDER TO DEVELOP OTHER
+INDUSTRIES ALL OTHER INDUSTRIES MUST BE DEVELOPED AS
+
+
+
+CONFIDENTIAL
+
+
+
+
+
+
+
+NNN
+
+
+CONFIDENTIAL
+
+
+PAGE 01    PEKING 01173 04 OF 07 100730Z
+ACTION SS-25
+
+
+INFO OCT-01 ISO-00 SSO-00 /026 W
+
+------------------100747Z 014270 /16
+P 100105Z JUN 77
+
+FM USLO PEKING
+TO SECSTATE WASHDC PRIORITY 7975
+INFO AMCONSUL HONG KONG PRIORITY
+
+AMEMBASSY MOSCOW PRIORITY
+AMEMBASSY TAIPEI PRIORITY
+
+
+C O N F I D E N T I A L SECTION 4 OF 7 PEKING 1173
+
+
+EXDIS
+
+
+WELL. BECAUSE YOU CANNOT HAVE A STEEL PLANT WITHOUT
+
+ELECTRICITY AND YOU CANNOT HAVE THAT WITHOUT COAL.
+THIS IS VERY SIMPLE REASONING. ALL WILL UNDERSTAND IT.
+
+THEREFORE WE MUST REACH FOR A HIGH SPEED AND A PRO-
+PORTIONATE DEVELOPMENT. ONE CANNOT JUST DEVELOP ONE
+
+SIDE AND LEAVE ANOTHER ALONE. FOR EXAMPLE, IF YOU
+PAY ATTENTION TO AGRICULTURE ONLY AND NEGLECT INDUSTRY,
+
+HOW CAN YOU HAVE MACHINERY FOR FARM MECHANIZATION.
+BUT TO REALIZE MECHANIZATION YOU NEED STEEL. BUT IF
+ONE ONLY STRESSES INDUSTRY AND NOT AGRICULTURE PEOPLE
+
+STILL HAVE TO EAT. OUR SYSTEM IS DIFFERENT FROM YOURS.
+WE RELY ON A STATE PLAN. IT IS TROUBLESOME. THERE
+
+IS ENTHUSIASM ON ALL FRONTS. ONE WANTS TO GO QUICKLY
+AND YOU WOULD TOO. EVERYONE IS VERY COMPETITIVE.
+
+WE HAVE A STATE PLANNING COMMISSION THAT HAS Z DEAL
+WITH A FEW DOZEN MINISTRIES. THESE DO NOT ALWAYS
+
+AGREE ON THE PRESENT PRIORITITES AND WHEN THEY HAVE
+A DEBATE, IT IS VERY HEATED AND ANIMATED, PERHAPS
+
+MORE THAN YOUR OWN CONGRESSIONAL DEBATES. AND IT
+SEEMS TO ME THAT THE RELATIONSHIP BETWEEN THE CENTRAL
+
+MINISTRIES AND THE MUNICIPALITIES, FOR EXAMPLE, IS
+
+
+
+
+
+
+
+
+
+OFTEN ONE OF COLLUSION AND CONTENTION. BUT THIS
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 02    PEKING 01173 04 OF 07 100730Z
+
+
+DOESN'T MATTER BECAUSE ALL ARE CONTRADICTIONS AMONG
+
+THE PEOPLE AND WHEN THE CENTRAL COMMITTEE MAKES A
+DECISPMN, WE SAY THAT ALL THE OTHER VIEWS DON'T COUNT,
+
+SO WE TRY TO ADOPT A RATIONAL AND REASONABLE PROCEDURE.
+WE HAVE TO PERSUADE THEM THAT THEY ARE WRONG, SO IN
+
+THIS SENSE PLANNING IS ALSO EASY. WE HAVE TO RELY ON
+PARTY COMMITTEES AND THE GOVERNMENT AT MANY LEVELS.
+
+THE SITUATION IN OUR COUNTRY NOW IS QUITE GOOD.
+PERHAPS YOU CAN VISIT SOME PLACES.
+
+
+17. AS FOR MILITARY CONSTRUCTION, THE DEVELOPMENT OF
+
+THE MILITARY INDUSTRY IS DECIDED BY THE DEVELOPMENT
+OF AGRICULTURE. YOU MAY HAVE NOTICED THAT AMONG THE
+FOUR MODERNIZATIONS THAT WE WISH TO ACHIEVE IS
+
+INCLUDED MODERNIZATION OF OUR NATIONAL DEFENSE. WE
+WANT TO DEVELOP OUR ARMAMENTS. THIS ALSO CALLS FOR
+
+AN AGRICULTURAL AND AN INDUSTRIAL BASIS. IN MY
+OPINION THE SOVIET UNION IS STRESSING DEVELOPMENT OF
+
+MILITARY IN SUCH A WAY THAT ITS AGRICULTURE AND ITS
+LIGHT INDUSTRY ARE DEVELOPED DISPROPORTIONATELY. THE
+
+SOVIET PEOPLE DO NOT EAT WELL ENOUGH. THEREFORE WE
+ARE TRYING FOR MODERNIZATION OF NATIONAL DEFENSE ON
+
+THE BASIS OF DEVELOPMENT OF OTHER INDUSTRIES AND OF
+AGRICULTURE. I HEAR THAT SOME FRIENDS HAVE SAID THAT
+
+OUR WEAPONS ARE EXTREMELY BACKWARD. WE ADMIT THAT BUT
+IN WARFARE WE RELY ON MILLET PLUS RIFLES. AS FOR OUR
+
+OVERALL MILITARY CAPABILITY, IT DEPENDS ON HOW YOU
+JUDGE IT AND WITH WHAT YOU COMPARE IT. IF WE COMPARE
+
+NUCLEAR WEAPONS, FOR EXAMPLE, YOUR NUCLEAR WEAPONS CAN
+BE COMPARED WITH THE THUMB WHEREAS OURS ARE SIMPLY THE
+
+TIP OF THE SMALLEST FINGER. IF WE SAY TO THE COUNTRY
+THAT YOURS ARE SO MUCH AND OURS ARE SO MUCH, THAT WOULD BE IRRELE-
+
+VANT. WE ARE NOT WORRIED. THE HUMAN FACTOR IS FIRST. THIS IS
+PROVED BY OUR HISTORY. DURING WORLD WAR II THE WEAPONS USED
+
+BY THE JAPANESE AGGRESSIVE FORCES WERE MORE ADVANCED THAN OURS.
+WE WERE HORRIBLY BACKWARD. SOME USED SPEARS AND KNIVES.
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 03    PEKING 01173 04 OF 07 100730Z
+
+
+AND CHIANG KAI-SHEK ALSO HAD WEAPONS. MANY WERE VERY
+SOPHISTICATED; AIRPLANES, GUNS AND NAVAL FORCES.
+
+THEY WERE VERY MODERN AT THAT TIME IN CHINA. WE ONLY
+HAD INFANTRY, THE SIMPLEST ARTILLERY. THEY
+TRAVELLED IN CARS, WE TRAVELED ON OUR FEET. IN THE
+
+
+
+
+
+
+
+
+
+
+END IT SEEMS THAT THEIR CARS RAN NO FASTER THAN OUR
+FEET AND THE WAR ENDED WITH THEIR DEFEAT. BUT THAT
+
+DOES NOT MEAN THAT WE DON'T WANT TO HAVE ADVANCED
+WEAPONS. WE ARE DOING OUR UTMOST TO ADVANCE TOWARD THAT
+
+GOAL. SO MILLET AND RIFLES DURING THE PRESENT DAY ARE
+NOT QUITE THE SAME. THAT IS CHINA'S BASIC MILITARY
+
+PRINCIPLE, THAT IS, WE ARE STRIVING FOR MILITARY
+MODERNIZATION BASED ON THE DEVELOPMENT OF OTHER
+INDUSTRIES AND OF AGRICULTURE.
+
+
+18. AS FOR EDUCATION, WE ARE TRYING OUR BEST TO ENFORCE
+
+THE EDUCATIONAL LINE ADVANCED BY CHAIRMAN MAO. THIS
+EXPERIENCED GREAT SABOTAGE BY THE GANG OF FOUR. BECAUSE
+
+THE OLD EDUCATIONAL SYSTEM WOULD NOT ALLOW RELATIONS
+BETWEEN TEACHERS AND STUDENTS THEY WERE TOO HOSTILE.
+
+SOME OF THE TEACHERS TOOK THE STUDENTS AS ENEMIES AND
+THEY WERE TOO STRICT. THEY WERE UNREASONABLE. IN SOME
+
+EXTREME CASES, THE TEACHERS EVEN BEAT THE KIDS.
+THIS CAN'T BE DONE. THIS GIVES RISE TO RESISTANCE
+
+ON THE PART OF THE STUDENTS. THERE WAS FORCED
+FEEDING OF THE STUDENTS JUST LIKE FORCED FEEDING OF OUR
+
+PEKING DUCKS. IT DOESN'T MATTER WHETHER THEY WANT
+IT OR WHETHER THEY ARE FULL - JUST SPUEEZE IT INTO
+
+THEM. IF YOU ARE TOO GREEDY AND BITE OFF TOO MUCH
+YOU CAN'T DIGEST IT. SOME TEACHERS ADOPT THE METHOD
+OF SURPRISE ATTACKS AGAINST STUDENTS. THE STUDENTS
+
+DIDN'T WANT TO PUT UP WITH THIS AND THEY BECAME VERY
+ANGRY. BUT THE GANG OF FOUR TRIED TO TAKE ADVANTAGE
+
+OF CRITICISM OF SUCH WRONG PRACTICES TO SAY THAT
+STUDENTS SHOULD NOT TAKE EXAMINATIONS AT ALL. THEY
+
+SAID STUDENTS SHOULD HAD IN BLANK PAPERS. THERE
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 04   PEKING 01173 04 OF 07 100730Z
+
+
+WAS ONE STUDENT NAMED CHANG TIEH-SHENG IN THE NORTH-
+
+EAST WHO WAS FAMOUS FOR HANDING IN A BLANK EXAMINATION
+PAPER. THE GUIDELINES IN EDUCATION PUT FORWARD BY
+
+CHAIRMAN MAO MAKE EDUCATION SERVE PROLETARIAN POLITICS,
+THAT IS, TO COMBINE EDUCATION WITH PRODUCTIVE LABOR.
+THE PURPOSE IS TO CULTIVATE E NEW GENERATION WITH
+
+SOCIALIST CONSCIOUSNESS AND CULTURAL KNOWLEDGE, TO
+ENABLE STUDENTS TO DEVELOP MORALLY, MENTALLY AND
+
+
+
+
+CONFIDENTIAL
+
+
+
+
+
+
+NNN
+
+
+
+
+
+
+
+
+
+
+
+CONFIDENTIAL
+
+
+PAGE 01    PEKING 01173 05 OF 07 100750Z
+ACTION SS-25
+
+
+INFO OCT-01 ISO-00 SSO-00 /026 W
+
+------------------100805Z 014515 /16
+P 100105Z JUN 77
+FM USLO PEKING
+
+TO SECSTATE WASHDC PRIORITY 7976
+INFO AMCONSUL HONG KONG PRIORITY
+
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI PRIORITY
+
+
+C O N F I D E N T I A L SECTION 5 OF 7 PEKING 1173
+
+
+EXDIS
+
+
+PHYSICALLY. SOMETIMES INTELLIGENCE CAN BE A GREAT
+
+NUISANCE. IT SEEMS THERE ARE QUITE A NUMBER OF INTEL-
+LIGENT PERSONS AMONG YOU. SOME INTELLECTUALS ARE A
+
+BIT NASTY, IN FACT; HAVING ACQUIRED SOME KNOW-
+LEDGE THEY TRY TO SCARE THE WORKERS AND PEASANTS WITH
+
+THEIR KNOWLEDGE. BUT ON THE WHOLE THE MAJORITY OF
+INTELLECTUALS ARE GOOD PEOPLE, SO DON'T GET ANGRY
+WITH ME.
+
+
+19. WE HAVE QUITE A SIZEABLE POPULATION, 800,000,000
+
+
+PEOPLE. SOME SAY EVEN LARGER. WE HAVE SO MANY PEOPLE
+
+THAT IT IS NOT QUITE CLEAR EVEN TO OURSELVES HOW MANY
+PEOPLE WE HAVE. IT SEEMS TO ME THAT WE HAVE NOT LESS
+
+THAN 800,000,000 PEOPLE. BUT IF YOU GO BY FIGURES
+AND TOTAL UP THE VARIOUS PROVINCES, YOU WOULD BE
+
+SCARED TO DEATH. WE HAVE AT LEAST 900,000,000 PEOPLE.
+SUCH WORDS CANNOT BE BELIEVED. THEQJHAVE THEIR AIMS
+
+IN PRESENTING THESE FIGURES. WHAT THEY MEAN IS - MY
+POPULATION IS GROWING. I NEED MORE CONSTRUCTION.
+
+THE CENTRAL COMMITTEE MUST TAKE NOTE AND ALLOCATE
+FUNDS ACCORDINGLY. BUT I THINK THERE ARE AROUND
+
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+
+PAGE 02    PEKING 01173 05 OF 07 100750Z
+
+
+800,000,000 PEOPLE AND THAT IS WHY WE MUST GO IN FOR
+
+
+FAMILY PLANNING. THIS HASBEGUN TO BE EFFECTIVE,
+
+INCLUDING IN THE COUNTRYSIDE. IT HAS BEEN EFFECTIVE
+IN THECITY FOR MANY YEARS BECAUSE THE LEVEL OF AWARE-
+
+NESS IN URBAN AREAS IS HIGHER IN THIS RESPECT
+PERHAPS BECAUSE OF HIGHER EDUCATION. AND AT PRESENT
+
+WITH THE DEVELOPMENT OFEDUCATION AND CULTURE IN THE
+
+
+
+
+
+
+
+
+
+COUNTRYSIDE THE RURAL POPULATION IS ACCEPTING FAMILY
+PLANNING MORE AND MORE. IT SEEMS THAT THE POPULATION
+
+OF THE UNITED STATES COULD BE INCREASED A BIT. WHAT IS
+THE AREA OF YOUR COUNTRY AND WHAT IS THE POPULATION?
+
+(ONE OF THE DELEGATION MEMBERS TELLS VICE PREMIER LI
+THAT THE AREA OF THE UNITED STATES IS ABOUT THE SAME AREA AS
+
+CHINA ANDTHAT THEPOPULATION IS AROUND 225 MILLION).
+BUT WE HAVE 800,000,000 AND YOU HAVE ONLY 200 MILLION.
+IN COMPARISON IT SEEMS TO ME THAT YOU HAVE TO DEVELOP
+
+YOUR POPULATION A BIT MORE. IS THAT NOT POSSIBLE?
+
+
+20. GROUP MEMBER: WE WILL TRY OUR BEST TO BE DILI-
+GENT.
+
+
+21. LI: SO PERHAPS THE ONLY THING WE CAN SAY IS THAT
+
+WE WILL NOT INTERFERE IN YOUR DOMESTIC AFFAIRS. AND
+WHAT WE ARE DOING IN CHINA IS ONLY EDUCATION, PROPA-
+
+GANDA AND PERSUASION. BUT IT IS ARDUOUS EDUCATION AND
+HARD PERSUASTION. AND FOR US, WE STILL WISH TO MAKE PEOPLE
+
+AGREE WITH FAMILY PLANNING ON A VOLUNTARY BASIS. IT
+WILL NOT DO TO ENGAGE IN COMMANDISM. IT SEEMS THAT THE
+
+POLICY OF INDIRA GANDHI WAS INCORRECT, NOR WILL IT DO
+TO ENFORCE OPERATIONS OR ABORTIONS. HOW CAN YOU
+
+HAVE YOUR GOVERNMENT OFFICIALS GO OUT INTO THE STREETS AND
+GRAB PEOPLE AND FORCE THEM TO HAVE OPERATIONS. PEOPLE
+SIMPLY WILL NOT ACCEPT THAT. THAT WILL NOT DO. PER-
+
+PHAS THAT IS ONE OF THE REASONS WHY MRS. GHANDI LOST
+HER ELECTION. I HAVE BEEN GOING ON TOO LONG.
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 03    PEKING 01173 05 OF 07 100750Z
+
+
+
+22. DELEGATION MEMBER: IF I COULD RETURN TO YOUR
+
+ANSWER TO THE FIRST QUESTION, YOU MENTIONED THAT WE
+ARE IN A DEFENSIVE POSTURE AND THE SOVIETS IN AN
+
+OFFENSIVE POSTURE. I MIGHT POINT OUT THAT THAT IS IN
+ACCORD WITH THE WISHES OF THE AMERICAN PEOPLE. THE
+
+FOUNDATION OF OUR POLICY IS DEFENSIVE. THE BASIS OF
+THIS POSTURE IS NATO, WHICH IS A DEFENSIVE ALLIANCE.
+THE UNITED STATES HAS ALWAYS BEEN THIS WAY. IN THIS
+
+THE UNITED STATES AND CHINA AGREE.
+
+
+23. LI: IN THE PAST YOU HAVE LAUNCHED YOUR OFFENSI-
+VES TOO.
+
+
+24.DELEGATION MEMBER: WE MIGHT NOT AGREE ON WHETHER
+
+THEY WERE OFFENSIVE OR DEFENSIVE.
+
+
+
+25. LI: I SAY THAT THEY ARE OFFENSIVE. OF COURSE
+
+THAT BELONGS TO THE PAST.
+
+
+
+
+
+
+
+
+
+
+26. DELEGATION MEMBER: SO WE SHOULD AGREE TO LEAVE
+
+IT IN THE PAST. ON ANGOLA I WISH TO MAKE A POINT. THE
+SOVIETS AND THE CHINESE WERE BOTH ACTIVE IN ANGOLA
+
+BEFORE THE PORTUGUESE FORCES LEFT. I MIGHT POINT OUT
+THAT THIS WAS BEFORE THE EUROPEAN CONFERENCE ON SECURITY.
+
+
+27. LI: WHAT I WAS TALKING ABOUT IS THE CUBAN MER-
+CENARIES WENT INTO ANGOLA WITH SOVIET BACKING AFTER
+
+THE COUNCIL ON SECURITY AND COOPERATION IN EUROPE.
+
+
+28. DELEGATION MEMBER: OH, THAT'S TRUE.
+
+
+29. LI: AS FOR THE PERIOD BEFORE THE CUBAN TROOPS
+ENTERED ANGOLA WITH SOVIET SUPPORT, WE HAD SUPPORTED
+
+THE THREE FACTIONS IN ANGOLA. OF COURSE, OUR SUPPORT
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 04    PEKING 01173 05 OF 07 100750Z
+
+
+WAS DIFFERENT IN NATURE. WE SUPPORTED THESE FACTIONS
+
+AGAINST PORTUGUESE COLONIALISM WHILE THE SOVIET UNION
+TRIED TO MEDDLE UNDER THE SIGNBOARD OF ANTI-COLONIALISM
+WITH A PURPOSE OF INSERTING THEIR PAWNS INTO THAT AREA.
+
+THEY SUPPORTED ONE FACTION AGAINST THE OTHERS.
+
+
+30. DELEGATION MEMBER: MORE IMPORTANTLY, MR. VICE
+PREMIER, WEHVRE ALL CONCERNED ABOUT TAIWAN. I AM
+
+SURE THAT EACH TIME THE AMERICAN PEOPLE HAVE MADE
+KNOWN THEIR POSITION ON TAIWAN THEY HAVE POINTED OUT
+
+THAT THEY DESIRE A PEACEFUL SOLUTION. THE LEADERS OF
+THE UNITED STATES ARE IN CLOSE TOUCH WITH THE MASSES
+
+THROUGH OUR ELECTORAL PROCESS, THAT IS, THROUGH THE
+AMERICAN ELECTIONS. IN THE SHANGHAI COMMUNIQUE THE
+
+US SIDE REAFFIRMED ITS INTEREST IN A PEACEFUL SETTLEMENT
+OF THE TAIWAN PROBLEM AND SAID IT WOULD WITHDRAW ITS
+
+MILITARY FORCES AS TENSIONS IN THE AREA DIMINISHED.
+OUR CONCERN IS THAT ON THE EVE OF OUR DEPARTURE AND
+
+AFTER WE ARE HEARING THE CHINESE LEADERS INDICATE THAT
+IT WILL BE NECESSARY TO USE FORCE TO LIBERATE TAIWAN.
+THIS THREAT IS A NEW ELEMENT, AN ELEMENT NOT MENTIONED
+
+IN THE SHANGHAI COMMUNIQUE. THAT IS, YOUR RECENT
+STATEMENTS THAT YOU ARE DETERMINED TO USE FORCE OR THE
+
+THREAT OF FORCE TO LIBERATE TAIWAN. WE ARE CONCERNED
+ABOUT THE IMPACT OF SUCH STATEMENTS ON AMERICAN PUBLIC
+
+OPINION WHICH LIMITS OUR GOVERNMENT'S FLEXIBILITY IN
+REACHING A SOLUTION TO THE TAIWAN PROBLEM.
+
+
+31. LI: THAT IS NOT CORRECT. WHEN WE TALK ABOUT
+
+NOT RESORTING TO FORCE, THAT PERTAINS TO THE SINO-US
+ASPECT. IN THE SHANGHAI COMMUNIQUE IT WAS STATED THAT
+
+WE BELIEVED WE SHOULD NOT RESORT TO FORCE OR THREAT OF
+
+
+
+
+
+
+
+
+
+FORCE IN RELATION TO OTHER STATES OR IN SETTLING
+INTERNATIONAL DISPUTES, WHICH IN THIS CASE MEANS BE-
+
+TWEEN THEPEOPLE OF THE UNITED STATES AND CHINA.
+
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+PAGE 05    PEKING 01173 05 OF 07 100750Z
+
+
+32. DELEGATION MEMBER: I UNDERSTAND, BUT I WAS REFER-
+
+RING TO THE SECTION OF THE SHANGHAI COMMUNIQUE WHICH
+STATES &quot;THE UNITED STATES REAFFIRMS ITS INTEREST IN A
+
+PEACEFULSETTLEMENT OF THE TAIWAN QUESTION BY THE
+CHINESE THEMSELVES. WITH THIS PROSPECT IN MIND IT
+
+AFFIRMS THE ULTIMATE OBJECTIVE OF THE WITHDRAWAL OF
+ALL U.S. FORCES AND MILITARY INSTALLATIONS FROM
+
+TAIWAN. IN THE MEANTIME, IT WILL PROGRESSIVELY REDUCE
+ITS FORCES AND MILITARY INSTALLATIONS ON TAIWAN AS
+
+THE TENSION IN THE AREA DIMINISHES.&quot; THE REASON I POINT
+
+
+
+CONFIDENTIAL
+
+
+
+
+
+
+NNN
+
+
+CONFIDENTIAL
+
+
+PAGE 01    PEKING 01173 06 OF 07 100740Z
+
+ACTION SS-25
+
+
+INFO OCT-01 ISO-00 SSO-00 /026 W
+------------------100805Z 014415 /12
+
+P 100105Z JUN 77
+FM USLO PEKING
+
+TO SECSTATE WASHDC PRIORITY 7977
+INFO AMCONSUL HONG KONG PRIORITY
+
+AMEMBASSY MOSCOW PRIORITY
+AMEMBASSY TAIPEI PRIORITY
+
+
+C O N F I D E N T I A L SECTION 6 OF 7 PEKING 1173
+
+
+EXDIS
+
+
+THIS OUT IS OUR CONCERN THAT RECENT STATEMENTS BY
+CHINESE LEADERS CREATE TENSION RATHER THAN DIMINISH
+
+TENSION, AND THIS CAUSES GREAT CONCERN AMONG THE
+AMERICAN PEOPLE AS EXPRESSED IN PUBLIC OPINION POLLS.
+
+AMERICAN LEADERS THEREFORE SEE IT AS MORE DIFFICULT
+TO RESOLVE. OF COURSE WE ALL RECOGNIZE THAT THIS
+
+IS YOUR INTERNAL AFFAIR. BUT IT IS ALSO AN AFFAIR
+
+
+
+
+
+
+
+
+
+OF CONCERN TO THE UNITED STATES AND EVEN THE VICE
+PREMIER'S STATEMENT THAT YOU ARE WILLING TO SIT DOWN
+
+WITH US RECOGNIZES THAT THERE IS AN AMERICAN INTEREST.
+WHETHER IT IS REASONABLE OR ILLEGITIMATE, THE US
+
+DOES HAVE AN INTEREST. THIS NEW DEVELOPMENT MOVES
+AWAY FROM A SETTLEMENT.
+
+
+32. LI: THERE IS NO NEW DEVELOPMENT IN THE CHINESE
+
+POSITION. THIS HAS BEEN OUR CONSISTENT POSITION.
+BUT YOU ALWAYS STRESS THE US OPINION AND THE
+
+EXPRESSION OF THAT OPINION IN YOUR POLICY. WHY DON'T
+YOU GIVE EMPHASIS TO THE POSITION OF THE CHINESE PEOPLE?
+
+IF THERE WAS A REFERENDUM AMONG THE 800 MILLION PEOPLE
+OF CHINA, 95 PERCENT WOULD BE FOR THE IMMEDIATE
+
+LIBERATION OF TAIWAN. YOU SAY THAT THE AMERICAN
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 02    PEKING 01173 06 OF 07 100740Z
+
+
+LEADERS ARE IN A DIFFICULT POSITION. WE SAY THAT IF
+THE TAIWAN ISSUE IS NOT SETTLED CORRECTLY, HOW WILL WE
+
+FACE OUR PEOPLE.
+
+
+33. DELEGATION MEMBER: I THINK THAT IN SUCH A CASE
+LEADERS OF BOTH COUNTRIES WILL HAVE TO USE WISDOM AND
+
+COMPROMISE AND THUS REACH AGREEMENT. IF BOTH SIDES
+FOLLOWED ONLY THE OPINIONS OF THEIR PEOPLE, THAT
+
+IS THE 95 PERCENT OF THE CHINESE PEOPLE WHO FAVOR
+LIBERATION OF TAIWAN, AND THE MAJORITY OF US PUBLIC
+
+OPINION WHICH FAVORS A PEACEFUL SETTLEMENT, IF WE
+FOLLOW ONLY THESE OPIIIONS THEN WE WOULDN'T BE
+
+SITTING HERE TODAY. AND THERE WOULD HAVE BEEN NO
+SHANGHAI COMMUNIQUE.
+
+
+34. LI: I CANNOT AGREE THAT THE SHANGHAI COMMUNIQUE
+
+AND YOUR BEING HERE TODAY ARE IN CONFLICT WITH THE
+DESIRES OF OUR TWO PEOPLES. I CAN ONLY SAY THAT THE
+
+VIEWS OF 95 PERCENT OF OUR PEOPLE ARE WELL-KNOWN TO
+US AND ALL I CAN DO IN RESPONSE IS TO GIVE YOU THAT
+
+OPINION. IN THE FINAL ANALYSIS, THE TAIWAN ISSUE IS
+AN INTERNAL ISSUE AND WE ASK YOU TO CEASE YOUR
+
+INTERFERENCE IN THIS. IF OTHERS INTERFERED IN YOUR AFFAIRS
+HOW WOULD YOU REACT?
+
+
+35. DELEGATION MEMBER: I MIGHT MENTION THAT THERE
+
+WAS A DELEGATION OF MAYORS THAT INCLUDED THE MAYOR
+OF SAN JUAN, PUERTO RICO, WHICH ULTIMATELY DID NOT
+
+COME TO VISIT THE PEOPLE'S REPUBLIC OF CHINA BECAUSE
+OF THE PEOPLE'S REPUBLIC OF CHINA'S POSITION THAT
+
+PUERTO RICO IS NOT A PART OF THE UNITED STATES.
+
+36. LI: THE CHINESE POSITION ON THAT ISSUE WAS STATED
+
+
+
+
+
+
+
+
+
+
+AT THE UNITED NATIONS.
+
+
+37. DELEGATION MEMBER: WITH REGARD TO NORMALIZATION
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 03    PEKING 01173 06 OF 07 100740Z
+
+
+OF RELATIONS, IT IS OUR RESPONSIBILITY TO TELL YOU
+FRANKLY WHAT THE VIEWS AND CONSIDERATIONS OF OUR
+
+PEOPLE ARE. WE AR ALL IN AGREEMENT, AS WAS EARLIER
+STATED, THAT THIS VISIT WILL ENHANCE UNDERSTANDING
+
+BETWEEN OUR TWO COUNTRIES. THIS KIND OF EXCHANGE IS
+NECESSARY IF WE WANT TO CONTINUE THE PROCESS, A
+
+PROCESS THAT MUST GO ON IF WE ARE TO PROCEED TO
+NORMALIZATION OF RELATIONS.
+
+
+38. LI: A VISIT WHICH INCLUDES EXCHANGE OF OPINIONS
+
+CAN BE BENEFICIAL. THERE IS TIME FOR ONE FINAL QUESTION.
+
+
+39. DELEGATION MEMBER: AS WE CONTINUE OUR VISIT AND
+VISIT YOUR PROJECTS, I THINK IT WOULD BE HELPFUL TO
+
+UNDERSTAND THE TOOLS OF MEASUREMENT YOU USE IN
+DETERMINING YOUR CAPITAL INVESTMENT. IN OTHER WORDS,
+TO UNDERSTAND WHAT METHOD YOU USE TO DECIDE
+
+ABOUT YOUR PRIORITIES. IN THE WEST WE USE A COST
+EFFECTIVENESS TECHNIQUE AND WE SIMPLY DON'T UNDERSTAND
+
+WHAT METHOD YOU USE.
+
+
+40. LI: THIS WILL INVOLVE A HUGE AMOUNT OF INVESTIGATION
+AND CAREFUL WEIGHING OF PROS AND CONS AND HEARING
+
+OF VAST OPINIONS. BUT I MUST HONESTLY SAY THAT OUR
+PLANNING COMMISSION SOMETIMES MAKES MISTAKES. BUT WE
+
+
+
+
+CONFIDENTIAL
+
+
+
+
+
+
+NNN
+
+
+CONFIDENTIAL
+
+
+PAGE 01    PEKING 01173 07 OF 07 100705Z
+ACTION SS-25
+
+
+INFO OCT-01 ISO-00 SSO-00 /026 W
+
+------------------100717Z 014094 /16
+P 100105Z JUN 77
+
+FM USLO PEKING
+TO SECSTATE WASHDC PRIORITY 7978
+
+INFO AMCONSUL HONG KONG PRIORITY
+
+
+
+
+
+
+
+
+
+AMEMBASSY MOSCOW PRIORITY
+AMEMBASSY TAIPEI PRIORITY
+
+
+C O N F I D E N T I A L SECTION 7 OF 7 PEKING 1173
+
+
+EXDIS
+
+
+TRY OUR BEST. WE THINK IT ALLOWABLE TO MAKE MISTAKES.
+FIRST WE HOPE THERE ARE NO MISTAKES, BUT SECOND WE CON-
+
+SIDER IT ALLOWABLE TO MAKE SOME MISTAKES. SO WHAT WE
+RELY ON MOST OF ALL IS TO LEND AN EAR TO DIFF-
+
+ERENT OPINIONS. LET THE PEOPLE IN THE COAL INDUSTRY,
+IN THE STEEL INDUSTRY, HAVE THEIR SAY AND THEN TRY TO
+
+BALANCE THEIR OPINIONS. OF COURSE, THIS IS TROUBLE-
+SOME.
+
+
+41. DELEGATION MEMBER: NO, WHAT I MEANT WAS WHAT
+
+KIND OF METHOD DO YOU USE. FOR EXAMPLE, IN OUR COUN-
+TRY WE USE RETURN ON INVESTMENT WITHIN THE GOVERNMENT
+
+AND IN BUSINESS WE USE A COST-BENEFIT ANALYSIS. (SIC)
+
+
+42. LI: THAT WORKS WITH YOUR GOVERNMENT.
+
+
+43. DELEGATION MEMBER: WE UNDERSTAND THE COMPETI-
+TION BETWEEN VARIOUS INTERESTS BECAUSE THAT IS THE
+PROCESS IN OUR OWN GOVERNMENT, ESPECIALLY BUDGET
+
+DEVELOPMENT.
+
+
+44. LI: IN YOUR COUNTRY PROFITS TAKE COMMAND. FOR
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 02    PEKING 01173 07 OF 07 100705Z
+
+
+EXAMPLE, IF TODAY THE COAL INDUSTRY TAKES IN THE MOST
+
+PROFITS, THEN MANY OF YOUR INVESTMENTS WILL FLOW IN THAT
+DIRECTION. AND WHERE THERE IS SURPLUS, FOR EXAMPLE,
+
+WITH STEEL, INVESTMENTS WILL FLOW IN ANOTHER DIRECTION.
+THAT IS NOT THE WAY WE OPERATE. IN AGRICULTURE, FOR
+
+EXAMPLE, WE NOT ONLY DO NOT GO ABOUT IT THAT WAY, WE DO
+NOT GET PROFITS BUT IN FACT WE MUST SUBSIDIZE BY MORE
+THAN 5 MILLION RMB.
+
+
+45. DELEGATION MEMBER: THAT IS CORRECT FOR BUSINESS
+
+BUT NOT FOR GOVERNMENT.
+
+
+
+46. LI: SO THAT IS THE DIFFERENCE IN OUR SOCIAL
+
+SYSTEMS. PERHAPS IT MAKES IT MORE DIFFICULT TO
+UNDERSTAND OUR SYSTEM.
+
+
+47. LI: SO, ONCE AGAIN LET ME EXPRESS WELCOME TO
+
+ALL THE FRIENDS. I HOPE THAT YOU WILL HAVE A GOOD
+
+
+
+
+
+
+
+
+
+VISIT TO MANY PLACES AND THAT YOU WILL SEE AS MUCH
+AS POSSIBLE. WHEN YOU VISIT THESE PLACES LOOK WITH
+
+AN EYE TO COMPARING, INCLUDING FIRST OF ALL TO COM-
+PARE THINGS TODAY WITH THE WAY THINGS WERE IN PRE-
+
+LIBERATION ERA DURING THE CHIANG KAI-SHEK DAYS. OF
+COURSE, WE ALSO ADMIT THAT WE HAVE MANY BACKWARD
+
+ASPECTS. FOR EXAMPLE, IN THE MEANS OF TRANSPORT WE
+HAVE BOTH ADVANCED AND VERY BACKWARD MEANS. ON THE
+ONE HAND WE HAVE AIRPLANES, SHIPS, TRAINS AND AUTO-
+
+MOBILES. BUT WE ALSO HAVE OXEN CARTS. WE ALSO RELY
+ON HUMAN LABOR, SUCH AS PEOPLE PUSHING CARTS OR CARRY-
+
+ING THINGS ON THEIR BACKS. BUT I THINK IT IS GOOD
+TO HAVE CANDID EXCHANGES.
+
+
+48. DELEGATION MEMBER: I THINK WE HAVE ALREADY EX-
+
+CEEDED OUR ALLOTED TIME. WE THANK YOU FOR THIS GOOD
+OPPORTUNITY TO HEAR YOU AND TO COME TO THE GREAT HALL OF
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 03   PEKING 01173 07 OF 07 100705Z
+
+
+THE PEOPLE. THE WHOLE WORLD HAS HEARD OF THE VICE
+PREMIER'S LEADERSHIP AND WE HAVE SEEN THIS LEADERSHIP
+TODAY. AS CHAIRMAN MAO SAID &quot;STUDY, STUDY, STUDY&quot;.
+
+49. LI: YOU FLATTER ME TOO MUCH. I LIKE YOUNG
+PEOPLE. WE OLD PEOPLE ARE MOVING TOWARD DEATH.
+
+
+50. DELEGATION MEMBER: WE CAN LEARN MUCH FROM OUR
+
+ELDERS. TODAY WE HAVE LEARNED MUCH FROM YOU.
+THOMAS
+
+
+
+
+CONFIDENTIAL
+
+
+
+
+
+
+NNN</div></div><br /></div></div><div class="pane-tab"><div class="pane-header">Raw content</div><div class="pane-content"><div class="text-content">CONFIDENTIAL
+
+
+PAGE 01    PEKING 01173 01 OF 07 100629Z
+ACTION SS-25
+
+
+INFO OCT-01 ISO-00 SSO-00 /026 W
+
+------------------100631Z 013837 /12
+P 100105Z JUN 77
+FM USLO PEKING
+
+TO SECSTATE WASHDC PRIORITY 7972
+INFO AMCONSUL HONG KONG PRIORITY
+
+AMEMBASSY MOSCOW PRIORITY
+AMEMBASSY TAIPEI PRIORITY
+
+
+C O N F I D E N T I A L SECTION 1 OF 7 PEKING 1173
+
+
+EXDIS
+
+
+C O R R E C T E D C O P Y (TEXT)
+
+
+EO 11652: XGDS-3
+TAGS: PINT, ECON, CH, US
+
+
+SUBJ: YOUNG POLITICAL LEADERS MEETING WITH LI HSIEN-NIEN: VERBATIM
+
+TRANSCRIPT
+
+
+REF: PEKING 1048
+
+
+1. YOUNG POLITICAL LEADERS MEETING WITH VICE PREMIER LI
+HSIEN-NIEN. PLACE: GREAT HALL OF THE PEOPLE, SOUTH ENTRANCE.
+TIME: MAY 24, 1977, 10 AM TO 11:40 AM. CHINESE PARTICI-
+
+PANTS: LI HSIEN-NIEN, VICE PREMIER; TANG WEN-SHENG (INTER-
+PRETER; WANG HAI-JUNG, VICE
+
+FOREIGN MINISTER; KO FO-NIEN, CPIFA; KANG TAI-SHA, CPIFA;
+FAO KUO-HSIANG, CPIFA; LIEN CHENG-PAO, FOREIGN MINISTRY;
+
+HO CHU-FENG, CPIFA; KAO CHING-JUI, CPIFA; PI KANG, CPIFA;
+YIN TSO-CHIN, CPIFA. AMERICAN PARTICIPANTS: YOUNG POLITICAL
+
+LEADERS DELEGATION MEMBERS; DAVID DEAN, ACTING CHIEF, USLO;
+DONALD KEYSER, POLITICAL OFFICER, USLO (NOTE TAKER)
+
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 02    PEKING 01173 01 OF 07 100629Z
+
+
+2. LI HSIEN-NIEN (HEREAFTER ABBREVIATED AS LI): YOU
+GUESTS HAVE ALL COME FROM AFAR. I WOULD LIKE TO EXPRESS
+
+MY WELCOME TO YOU. YOU ARE ALL VERY YOUNG. LET US
+LEARN FROM YOU.
+
+
+3. O'NEILL: THANK YOU FOR TAKING YOUR TIME TO WELCOME
+US. WE HAVE ALREADY BEEN HERE A WEEK AND WE HAVE BEEN
+
+
+
+
+
+
+
+
+
+VERY IMPRESSED BY WHAT WE HAVE SEEN.
+
+
+4. LI: YOU ARE ALL YOUNG POLITICAL LEADERS AND I
+SUPPOSE ONE OF YOU WILL BECOME A FUTURE PRESIDENT.
+
+
+5. LI: O'NEILL: I KNOW YOUR TIME IS VERY TIGHT. I WOULD
+
+LIKE TO TURN THE QUESTION PART OF OUR PROGRAM OVER TO
+ONE OF OUR GROUP. DOES THAT MEET WITH YOUR APPROVAL?
+THE GROUP MEMBER IS BELLAMY FROM NEW YORK STATE. WE
+
+HAVE ASKED HER TO REPRESENT THE WHOLE DELEGATION IN
+POSING QUESTIONS.
+
+
+6. LI: I WILL ANSWER THOSE QUESTIONS THAT I CAN.
+
+
+7. O'NEILL: THANKS. CAN I ASK MISS BELLAMY TO
+
+BEGIN?
+
+
+8. LI: ALRIGHT. THOSE QUESTIONS I CAN ANSWER, I
+WILL. THOSE QUESTIONS I CAN'T, I WILL EXCHANGE
+
+OPINIONS WITH YOU.
+
+
+9. BELLAMY: WE HAVE MANY QUESTIONS WE WOULD LIKE
+TO ASK BUT LET ME SET FORTH THREE BASIC ONES. THE
+
+FIRST QUESTION IS CONCERNED WITH ECONOMICS AND DEVELOP-
+MENT HERE. OVER THE FOUR WEEKS THAT THE DELEGATION WILL
+HAVE BEEN HERE WE WILL HAVE AN OPPORTUNITY TO VISIT
+
+SOME INSTITUTIONSAND PLACES IN YOUR COUNTRY. WE
+UNDERSTAND THE EMPHASIS THAT YOU HAVE BEEN PLACING
+
+ON PROGRESS IN THE ECONOMY AND WE HAVE BEEN VERY IM-
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 03    PEKING 01173 01 OF 07 100629Z
+
+
+PRESSED, BUT WHAT WE WOULD LIKE TO KNOW IS WHAT DO YOU
+
+EXPECT TO BE THE KEY QUESTIONS OVER THE NEXT FIVE
+YEARS AND OVER THE NEXT TEN YEARS IN ECONOMIC DECI-
+
+SIION MAKING. SPECIFICALLY WHAT DO YOU ANTICIPATE TO
+BE THE KEY QUESTIONS OVER THOSE TIME FRAMES IN INDUS-
+
+TRY, IN AGRICULTURE, IN TRADE AND IN SCIENTIFIC AND
+CULTURAL EXCHANGES WITH OTHER COUNTRIES.
+
+
+10. LI: SO MANY QUESTIONS.
+
+
+11. BELLAMY: THE NEXT QUESTION HAS TO DO WITH THE
+MILITARY. IN LIGHT OF THE SOVIET MILITARY BUILD-UP,
+
+WHAT IS THE THRUST OF CHINA'S MILITARY SPENDING AND
+HOW MIGHT THIS IMPACT ON CHINA'S OTHER DOMESTIC
+
+PRIORITUES. THE THIRD QUESTION CONCERNS BILATERAL
+RELATIONS BETWEEN THE UNITED STATES AND CHINA. IN
+
+THE SHANGHAI COMMUNIQUE OF 1972 THE US SIDE RE-
+AFFIRMED ITS COMMITMENT TO PEACEFUL SOLUTION OF THE
+
+TAIWAN QUESTION. DO RECENT STATEMENTS BY CHINESE
+
+
+
+
+
+
+
+
+
+LEADERS THAT CHINA WILL USE FORCE TO LIBERATE TAIWAN
+MAKE THE SHANGHAI COMMUNIQUE INOPERABLE AND PRECLUDE
+
+NORMALLIZATION OF RELATIONS BETWEEN THE UNITED
+STATES AND CHINA?
+
+
+12. (GIVING A SNAP ANSWER): NO.
+
+
+13. BELLAMY: THOSE ARE OUR THREE BASIC QUESTIONS.
+
+
+14. LI: LET ME BEGIN WITH THE LAST QUESTION. I WILL
+ANSWER THAT QUESTION FIRST. WITH REGARD TO SINO-US
+
+RELATIONS, THERE ARE TWO LINES OR TWO ASPECTS SO FAR
+AS TAIWAN IS CONCERNED. ONE IS THE INTERNATIONAL
+
+QUESTION, THE INTERNATIONAL ASPECT OF RELATIONS.
+BETWEEN THE US AND CHINA IT WAS STATED VERYCLEARLY
+
+IN THE SHANGHAI COMMUNIQUE THAT THE US ACKNOWLEDGES
+THAT ALL CHINESE ON EITHER SIDE OF THE TAIWAN STRAIT
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 04    PEKING 01173 01 OF 07 100629Z
+
+
+MAINTAIN THAT THERE IS ONE CHINA AND TAIWAN IS A PART
+OF CHINA. THE UNITED STATES GOVERNMENT DOES NOT
+CHALLENGE THAT POSITION. (THIS PORTION LI READ
+
+DIRECTLY FROM THE TEXT OF THE SHANGHAI COMMUNIQUE
+GIVEN HIM IN A PREPARED BRIEFING BOOK BY US DIVISION
+
+DEPUTY DIRECTOR LIEN CHENG-PAO). AS FOR THE INTERNATIONAL
+ASPECT OF THIS QUESTION THAT IS DESCRIBED IN THE
+
+SHANGHAI COMMUNIQUE.WE ARE WILLING TO REACH A SETTLE-
+MENT WITH THE US ON THIS ISSUE. THIS IS NOT ONLY
+
+OUR PRESENT POLICY BUT ALSO THE POLICY WHICH PREMIER
+CHOU SET FORTH AT THE BANDUNG CONFERENCE. AT THE BANDUNG
+
+CONFERENCE PREMIER CHOU SET FORTH THIS POSITION TO
+HIS US COUNTERPART. HE MADE PLAN THAT THIS ASPECT
+
+OF THE TAIWAN ISSUE--THAT IS THE INTERNATIONAL ASPECT --
+BETWEEN THE U.S. AND CHINA IS NEGOTIABLE. SUBSEQUENTLY
+
+
+
+
+CONFIDENTIAL
+
+
+
+
+
+
+NNN
+
+
+CONFIDENTIAL
+
+
+PAGE 01    PEKING 01173 02 OF 07 100701Z
+ACTION SS-25
+
+
+INFO OCT-01 ISO-00 SSO-00 /026 W
+
+------------------100711Z 014122 /16
+
+
+
+
+
+
+
+
+
+P 100105Z JUN 77
+FM USLO PEKING
+
+TO SECSTATE WASHDC PRIORITY 7973
+INFO AMCONSUL HONG KONG PRIORITY
+
+AMEMBASSY MOSCOW PRIORITY
+AMEMBASSY TAIPEI PRIORITY
+
+
+C O N F I D E N T I A L SECTION 2 OF 7 PEKING 1173
+
+
+EXDIS
+
+
+PREMIER CHOU AGAIN ADDRESSED THIS POINT AT A MEETING OF
+
+THE HEADS OF STATE OF EIGHT COUNTRIES, THAT IS, OF
+AFRO-ASIAN LEADERS ON APRIL 23, 1955. PREMIER CHOU
+
+SAID THE FOLLOWING (LI AGAIN READ FROM A
+BRIEFING PAPER): &quot;THE CHINESE PEOPLE ARE FRIENDLY
+
+TOWARD THE UNITED STATES PEOPLE. THE CHINESE PEOPLE
+DO NOT WISH TO GO TO WAR WITH THE UNITED STATES. WE
+
+WISH TO SIT DOWN WITH THE UNITED STATES GOVERNMENT
+AND TO DISCUSS AN EASING OF TENSIONS IN THE FAR EAST,
+ESPECIALLY IN THE TAIWAN STRAIT.&quot; MAY I QUOTE STILL
+
+ANOTHER STATEMENT MADE BY PREMIER CHOU EN-LAI. THIS
+STATEMENT HE DELIVERED AT THE THIRD SESSION OF THE
+
+FIRST NATIONAL PEOPLE'S CONGRESS ON JUNE 28, 1956.
+IN THIS STATEMENT PREMIER CHOU SAID: &quot;THE CHINESE
+
+SIDE IS NOT AGAINST AN AGREEMENT ON MUTUAL RENUNCIATION
+OF USE OF FORCE IN SINO-AMERICAN RELATIONS. AT BANDUNG
+
+THE CHINESE SIDE DECLARED THAT IT DOES NOT WANT WAR
+WITH THE UNITED STATES AND IS WILLING TO SIT DOWN WITH
+
+THE UNITED STATES ON THE QUESTION OF EASING TENSIONS IN
+THE TAIWAN STRAIT. AT THE SAME TIME THERE ISA QUESTION
+
+AS TO WHAT MEANS CHINA WILL USE TO LIBERATE TAIWAN.
+THIS QUESTION WILL BE DECIDED BY THE CHINESE. THIS
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 02    PEKING 01173 02 OF 07 100701Z
+
+
+IS ENTIRELY A QUESTION OF CHINESE SOVEREIGNTY&quot;. (LI
+CONTINUES) SO YOU CAN SEE TWO ASPECTS TO THE ISSUE.
+
+ONE IS INTERNATIONAL. WE ARE WILLING TO DISCUSS WITH
+YOU THIS QUESTION WITHOUT RESORT TO FORCE OR TO THREAT
+
+OF FORCE. THE OTHER ASPECT IS DOMESTIC. TAIWAN IS A
+PART OF CHINA. DURING THE CAIRO DECLARATION AND ON
+
+THE OCCASION OF THE JAPANESE SURRENDER AT THE END OF
+WORLD WAR II IT WAS CLEARLY STIPULATED THAT TAIWAN
+
+IS PART OF CHINESE TERRITORY, THAT TAIWAN IS A PROVINCE
+OF CHINA. WE SAY THAT THE TAIWAN ISSUE IS ALSO AN
+
+INTERNAL ONEAND WHAT MEANS WE RESORT TO IN LIBERATING
+TAIWAN IS ENTIRELY OUR OWN BUSINESS. WHETHER WE DECIDE
+
+TO USE FORCE OR TO USE PEACEFUL MEANS IS ENTIRELY A
+CHINESE AFFAIR. NO OTHER COUNTRY HAS A RIGHT TO
+INTERVENE AND YOU WILL SEE ALSO WITH CAREFUL ATTENTION
+
+
+
+
+
+
+
+
+
+
+THAT MY EXPLANATION GIVEN TODAY AND THE TWO DOCUMENTS
+QUOTED ARE ENTIRELY IN ACCORD. IT SEEMS TO ME THAT
+
+THESE TWO ASPECTS ARE A BIT CONFUSED IN THE MIINDS OF
+SOME AMERICANS. THE RELATIONS BETWEEN CHINA AND THE
+
+UNITED STATES ARE CONFUSED WITH RELATIONS BETWEEN US
+AND THE JUNIOR CHIANG REGIME IN TAIWAN. ACTUALLY WE
+
+HAVE DISCUSSED THIS QUESTION WITH MANY FRIENDS BEFORE
+AND THE ISSUE HAS BEEN MUTUALLY DISCUSSED WITH YOUR
+
+GOVERNMENT, WITH THE NIXON ADMINISTRATION, WITH THE
+FORD ADMINISTRATION, AND WITH THE PRESENT ADMINISTRA-
+
+TION. ON NUMEROUS OCCASIONS WE HAVE PUT FORWARD TO
+YOUR GOVERNMENT OUR POSITION ON TAIWAN. OUR POSITION
+
+ON TAIWAN IS THAT THE UNITED STATES MUST BREAK DIPLOMATIC
+RELATIONS WITH TAIWAN, MUST WITHDRAW ALL OF ITS MILI-
+
+TARY FORCES FROM TAIWAN, AND MUST ABROGATE ITS SO-
+CALLED DEFENSE TREATY WITH TAIWAN. AS TO HOW WE SOLVE
+
+THE ISSUE OF LIBERATING TAIWAN, THIS IS ENTIRELY AN
+INTERNAL MATTER FOR CHINA TO DECIDE.
+
+
+15. (LI CONTINUING) I HAVE READ A BRIEF SUMMARY OF
+YOUR DISCUSSIONS WITH THE VICE FOREIGN MINISTER,
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 03    PEKING 01173 02 OF 07 100701Z
+
+
+(WANG HAI-JUNG) AND IT SEEMS TO ME THAT THE VICE
+FOREIGN MINISTER IS FOR FORCE. SHE SAYS THAT (READING
+
+A TRANSCRIPT) &quot;THERE IS A BUNCH OF COUNTER-REVOLU-
+TIONARIES IN TAIWAN AND IN OUR VIEW WE THINK THE
+
+QUESTION CAN ONLY BE RESOLVED BY A FIGHT&quot;. I FIND
+THAT I AM IN AGREEMENT WITH HER -- BUT THEN SHE IS
+
+PROBABLY A RADICAL (LAUGHTER). BEFORE THE SETTLEMENT OF THE
+TAIWAN ISSUE, WE CAN HAVE SOME CONTACTS. TRADE
+
+IS GOING ON. THERE ARE SOME CULTURAL EXCHANGES AND
+THERE ARE QUITE A FEW PERSONAL EXCHANGES. AND AS
+
+FOR THE VIEW TOWARDS THE INTERNATIONAL SITUATION,
+THE VIEWS OF THE TWO SIDES ARE IN AGREEMENT ON SOME
+
+MATTERS AND ON OTHERS THERE IS NOT SO MUCH AGREEMENT,
+BUT IT DOESN'T MATTER. FOR EXAMPLE, WITH REGARD TO
+
+THE ISSUE OF JAPAN, WE STATED THAT WE BELIEVE YOUR
+RELATIONS WITH JAPAN COME FIRST. YOU MAY SAY BUT
+
+THAT IS THE AMERICAN POINT OF VIEW. HOW CAN YOU AGREE
+WITH THAT? WELL, IT IS SO ON THIS ISSUE BECAUSE BOTH
+
+THE UNITED STATES AND JAPAN ARE CAPITALIST COUNTRIES.
+YOU ALSO HAVE A MILITARY ALLIANCE BETWEEN YOU. IT IS
+
+ALSO SAID THAT THERE IS A GREAT VOLUME OF TRADE BETWEEN
+THE UNITED STATES AND JAPAN. THAT IS THE STATUS QUO.
+
+IT IS NOT A QUESTION AS TO WHETHER ONE AGREES OR NOT,
+OR WHETHER ONE OBJECTS OR NOT TO THE STATE OF AFFAIRS.
+
+SO PERHAPS THIS IS A COMMON POINT OF VIEW. WITH
+REGARD TO THE POLAR BEAR, THAT IS TO THE SOVIET
+SOCIAL IMPERIALISTS, AS WE CALL THEM, WE SAY THEY
+
+
+
+
+
+
+
+
+
+
+ARE INTERVENING AND ARE CONTENDING WITH YOU. BUT
+WE ALSO BELIEVE THAT YOU ARE IN THE DEFENSIVE POSTURE
+
+WHILE THEY ARE IN AN OFFENSIVE POSITION. AND AMONG
+THE AMERICAN STATESMEN, IT SEEMS TO ME THAT THE VIEWS
+
+OF DR. SCHLESINGER ARE COMPARATIVELY MORE CORRECT.
+I HEAR THAT SOME OF YOU SEEM TO THINK THAT CHINA MIGHT
+
+BE TRYING TO SOW DISCORD BETWEEN YOU AND THE SOVIET
+UNION. WE ARE NOT TRYING TO SOW DISCORD. THIS IS
+AN OBJE TIVE FACT. AND EVEN IF YOU BELIEVE THAT WE
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 04    PEKING 01173 02 OF 07 100701Z
+
+
+ARE TRYING TO SOW DISCORD, WHY WOULD YOU HAVE TO
+LISTEN TO US? AND ALSO, ON THE ISSUE OF YOUR DETER-
+
+MINATION TO DISARM, WE SAW THAT IMMEDIATELY FOLLOWING
+THE EUROPEAN SECURITY CONFERENCE THE SOVIET UNION
+
+WENT INTO ANGOLA AND THERE WAS AN INCREASE OF THEIR
+MILITARY FORCES FROM 3 TO 4 MILLION TROOPS. THAT
+
+MAKES US DISBELIEVE IN DISARMAMENT AND DETENTE. WE
+
+
+
+CONFIDENTIAL
+
+
+
+
+
+
+NNN
+
+
+CONFIDENTIAL
+
+
+PAGE 01    PEKING 01173 03 OF 07 100626Z
+
+ACTION SS-25
+
+
+INFO OCT-01 ISO-00 SSO-00 /026 W
+------------------100631Z 013821 /16
+
+P 100105Z JUN 77
+FM USLO PEKING
+
+TO SECSTATE WASHDC PRIORITY 7974
+INFO AMCONSUL HONG KONG PRIORITY
+AMEMBASSY MOSOCOW PRIORITY
+
+AMEMBASSY TAIPEI PRIORITY
+
+
+C O N F I D E N T I A L SECTION 3 OF 7 PEKING 1173
+
+
+EXDIS
+
+
+THINK THIS TALK DAY IN AND DAY OUT ABOUT DISARMAMENT
+CAN ONLY HAVE THE RESULT OF LULLING THE VIGILANCE OF
+
+THE PEOPLE SO THAT WHEN SOMETHING HAPPENS THEY WILL
+BE UNPREPARED AND WE THINK THAT ON THE CONTRARY IT IS
+
+BETTER TO KEEP ONE'S EYES OPEN AND TO MAINTAIN ONE'S
+
+
+
+
+
+
+
+
+
+VIGILANCE HIGH RATHER THAN CLOSING ONE'S EYES AND
+FALLING ASLEEP ON A SOFT PILLOW. THERE IS AN OLD
+
+CHINESE SAYING &quot;ONE SHOULD NOT HAVE THE DESIRE TO
+KILL OTHERS BUT ONE HAS THE RIGHT TO AVOID HAVING
+
+OTHERS DO THAT TO ONESELF.&quot; IN OUR OPINION IT IS
+BETTER TO MAINTAIN HIGH VIGILANCE AND YOU CAN SEE
+
+THAT WE ARE MAKING PREPARATIONS. FOR EXAMPLE, WE
+ARE DIGGING UNDERGROUND TUNNELS. BUT WE WILL NOT FIRE
+
+THE FIRST SHOT. WE ACT ACCORDING TO THE SENTENCES
+LAID DOWN BY CHAIRMAN MAO. WE WILL NOT ATTACK UNLESS
+
+WE ARE ATTACKED. BUT IF WE ARE ATTACKED, WE WILL
+CERTAINLY COUNTERATTACK. THIS IS JUST AND FAIR. WE
+
+WILL NOT COMMIT AGGRESSION AGAINST OTHERS. BUT IF
+WE ARE ATTACKED WE WILL RESPOND. THIS MUST BE FAIR.
+
+I AM RAMPLING AWAY FROM YOUR TOPICS. (ASKS TANG
+WEN-SHENG TO REMIND HIM OF THE NEXT QUESTION). SO
+
+LET ME GO ON NOW TO DISCUSS ECONOMIC CONSTRUCTION.
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 02    PEKING 01173 03 OF 07 100626Z
+
+
+
+16. YOU ARE ALL PROBABLY FAMILIAR WITH THE FACT THAT
+
+WE ARE BUILDING OUR COUNTRY ACCORDING TO THE PRINCIPLE
+OF INDEPENDENCE, KEEPING INITIATIVE IN OUR OWN HANDS
+
+AND SELF-RELIANCE AND THE SPIRIT OF DILIGENCE, HARD
+WORK AND FRUGALITY. SOME ASKED US DO YOU HAVE THE
+
+PREREQUISITES FOR SELF-RELIANCE? AND I ANSWER YES.
+CHINA HAS 800,000,000 PEOPLE AND RICH NATURAL RESOURCES.
+
+AND I ADD THAT WE HAVE 9.6 MILLION SQUARE KILOMETERS
+OF AREA. THEREFORE WE SAY WE HAVE THE PREREQUISITES
+
+TO ENGAGE IN SELF-RELIANCE. SOME OF YOUR DELEGATION
+MEMBERS, UPON HEARING THIS, THINK THAT WE ARE GOING
+
+TO ADVOCATE A CLOSED-DOOR POLICY. BUT WE DO NOT EX-
+CLUDE COMMERCIAL CONTACTS OR TECHNICAL EXCHANGES WITH
+
+FOREIGN COUNTRIES, INCLUDING WITH ADVANCED COUNTRIES
+LIKE YOURS. OUR FOREIGN TRADE IS CONDUCTED ALONG
+
+SUCH PRINCIPLES TOO. AS FOR PRIORITIES IN DEVELOPING
+OUR ECONOMY, AGRICULTURE OF COURSE COMES FIRST. THE
+
+ORDER OF PRIORITIES IS AGRICULTURE, LIGHT INDUSTRY
+AND HEAVY INDUSTRY. THIS IS BASED ON COMMON SENSE.
+
+HUMAN BEINGS HAVE TO EAT. THEY NEED CLOTHES TO WEAR.
+THEY NEED HOUSING AND TRANSPORTATION. BUT SUCH
+
+COMMON SENSE IS SOMETIMES FORGOTTEN BY SOME PEOPLE.
+FOR EXAMPLE, IN PARTY HISTORY THERE EMERGED A MAN
+
+CALLED WANG MING, WHO FORGOT THAT PEOPLE HAD TO EAT.
+HE IMAGINED THAT WE HAD A GREAT ABILITY TO STRUGGLE
+
+AT THE TIME WHICH WOULD ALLOW US TO FIGHT ONE BATTLE
+AFTER ANOTHER. TO FIGHT ONE BATTLE, THEN A SECOND,
+
+THEN A THIRD AND THEN A FOURTH. TO STORM MAJOR CITIES
+ONE AFTER ANOTHER. BUT WE DID NOT HAVE THAT ABILITY.
+IT SEEMED TO HIM THAT OUR SOLDIERS COULD FIGHT ON
+
+
+
+
+
+
+
+
+
+
+EMPTY STOMACHS, THAT OUR PEOPLE COULD WORK WITHOUT
+SOMETHING TO EAT. THE CHAIRMAN WAS DIFFERENT. HE
+
+SAID THAT AFTER BATTLE YOU HAVE TO REST A WHILE, ALLOW
+TIME FOR MEALS REST, SOME SLEEP. SO WHY DO WE STRESS
+
+AGRICULTURE? THERE ARE 800,000,000 MOUTHS TO FEED
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 03    PEKING 01173 03 OF 07 100626Z
+
+
+EVERY DAY. IS IT POSSIBLE TO FAST FOR ONE WEEK AFTER
+
+ONE MEAL? NO. WE MUST EAT EVERY DAY. THAT IS WHY
+WE ATTACH SUCH GREAT IMPORTANCE TO AGRICULTURE. IN
+
+OUR COUNTRY WE DEVELOP OUR AGRICULTURE BY LEARNING
+FROM TACHAI (TANG WEN-SHENG EXPLAINS THAT TACHAI IS
+
+THE NATIONAL MODEL IN AGRICULTURE AND GIVES SOME DE-
+TAILS ABOUT THE HISTORY OF TACHAI AND THE CONFERENCE
+
+ON LEARNINGSHROM TACHAI IN AGRICULTURE WHICH WAS
+HELD AT THE END OF 1976). IN THE PAST THE TACHAI
+BRIGADE WAS ABLE TO PRODUCE ONE TON OF GRAIN PER
+
+HECTARE. NOW THEYARE TURNING OUT EIGHT TO NINE TONS OF GRAIN
+PER HECTARE. CAN YOU SAY THAT THERE IS A MIRACLE IN
+
+DOING SO, OR THAT THERE IS A HIGH DEGREE OF FARM
+MECHANIZATION? MO. THEY RELY ON THE WORK OF HUMAN
+
+BEINGS, ON SOIL CONSERVATION, ON WATER CONSERVANCY.
+BUT YOU PROABLY ARE NOT GOING TO TACHAI ON THIS TRIP.
+
+YOU ARE GOING TO HUNAN AND YOU WILL SEE THAT WHEN
+CHAIRMAN HUA KKUO-FENG WAS IN HUNAN YOU CAN PERHAPS SEE
+
+THE SHAOSHAN WATER CONSERVANCY WORKS WHICH WERE DEVELOPED
+UNDER THE DIRECTION OF CHAIRMAN HUA WHEN HE WAS IN
+
+HUNAN. THERE IS NOT ONLY ONE SUCH WATER IRRIGATION
+PROJECT IN CHINA. MAN Y OF OUR INDUSTRIAL MATERIALS
+
+COME FROM AGRICULTURE. FOR EXAMPLE, COTTON, TOBACCO
+AND SUGAR. MANY LIGHT INDUSTRY MATERIALS RELY ON
+
+THESE AGRICULTURAL PRODUCTS. THAT IS WHY THE CHAIRMAN
+ENUNCIATED THE POLICY OF TAKING GRAIN AS THE KEY LINK
+
+WHILE MAKING COMPREHENSIVE DEVELOPMENT. THERE IS ALSO
+ANOTHER WAY OF PUTTING IT. DEVELOP COMPREHENSIVELY
+
+AGRICLUTURE, FORESTRY, ANIMAL HUSBANDRY AND SIDELINE
+PRODUCTS. AS FOR HEAVY INDUSTRY, WE WISH TO OPEN UP
+
+NEW AREAS. ONE IS IN PETRO-CHEMICALS AND COAL. WE
+HAVE SOME OIL AND THERE SEEMS TO BE GOOD PROSPECTS
+
+FOR DEVELOPMENT. WE HAVE A TACHING OIL FIELD AND
+DURING THE RECENT CONFERENCE ON LEARNING FROM TACHING
+
+IN INDUSTRY, CHAIRMAN HUA PUT FORTH THE GOAL OF
+TRYING TO ESTABLISH TEN OIL FIEILDS LIKE TACHING. WE
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 04    PEKING 01173 03 OF 07 100626Z
+
+HAVE COAL IN CHINA. WE ALSO USE QUITE A LOT. WE
+
+
+
+
+
+
+
+
+
+
+HAVE BASIC RESOURCES. WE ALSO WISH TO DRAW UP OUR
+NATURAL GAS AND OUR HYDROELECTRIC CAPACITY. WE ALSO
+
+WISH TO DEVELOP SOME NUCLEAR POWER PLANTS BECAUSE
+WITHOUT ENERGY INDUSTRY CANNOT DEVELOP. MANY
+
+INDUSTRIES REQUIRE STEEL BUT IN ORDER TO DEVELOP OTHER
+INDUSTRIES ALL OTHER INDUSTRIES MUST BE DEVELOPED AS
+
+
+
+CONFIDENTIAL
+
+
+
+
+
+
+
+NNN
+
+
+CONFIDENTIAL
+
+
+PAGE 01    PEKING 01173 04 OF 07 100730Z
+ACTION SS-25
+
+
+INFO OCT-01 ISO-00 SSO-00 /026 W
+
+------------------100747Z 014270 /16
+P 100105Z JUN 77
+
+FM USLO PEKING
+TO SECSTATE WASHDC PRIORITY 7975
+INFO AMCONSUL HONG KONG PRIORITY
+
+AMEMBASSY MOSCOW PRIORITY
+AMEMBASSY TAIPEI PRIORITY
+
+
+C O N F I D E N T I A L SECTION 4 OF 7 PEKING 1173
+
+
+EXDIS
+
+
+WELL. BECAUSE YOU CANNOT HAVE A STEEL PLANT WITHOUT
+
+ELECTRICITY AND YOU CANNOT HAVE THAT WITHOUT COAL.
+THIS IS VERY SIMPLE REASONING. ALL WILL UNDERSTAND IT.
+
+THEREFORE WE MUST REACH FOR A HIGH SPEED AND A PRO-
+PORTIONATE DEVELOPMENT. ONE CANNOT JUST DEVELOP ONE
+
+SIDE AND LEAVE ANOTHER ALONE. FOR EXAMPLE, IF YOU
+PAY ATTENTION TO AGRICULTURE ONLY AND NEGLECT INDUSTRY,
+
+HOW CAN YOU HAVE MACHINERY FOR FARM MECHANIZATION.
+BUT TO REALIZE MECHANIZATION YOU NEED STEEL. BUT IF
+ONE ONLY STRESSES INDUSTRY AND NOT AGRICULTURE PEOPLE
+
+STILL HAVE TO EAT. OUR SYSTEM IS DIFFERENT FROM YOURS.
+WE RELY ON A STATE PLAN. IT IS TROUBLESOME. THERE
+
+IS ENTHUSIASM ON ALL FRONTS. ONE WANTS TO GO QUICKLY
+AND YOU WOULD TOO. EVERYONE IS VERY COMPETITIVE.
+
+WE HAVE A STATE PLANNING COMMISSION THAT HAS Z DEAL
+WITH A FEW DOZEN MINISTRIES. THESE DO NOT ALWAYS
+
+AGREE ON THE PRESENT PRIORITITES AND WHEN THEY HAVE
+A DEBATE, IT IS VERY HEATED AND ANIMATED, PERHAPS
+
+MORE THAN YOUR OWN CONGRESSIONAL DEBATES. AND IT
+SEEMS TO ME THAT THE RELATIONSHIP BETWEEN THE CENTRAL
+
+MINISTRIES AND THE MUNICIPALITIES, FOR EXAMPLE, IS
+
+
+
+
+
+
+
+
+
+OFTEN ONE OF COLLUSION AND CONTENTION. BUT THIS
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 02    PEKING 01173 04 OF 07 100730Z
+
+
+DOESN'T MATTER BECAUSE ALL ARE CONTRADICTIONS AMONG
+
+THE PEOPLE AND WHEN THE CENTRAL COMMITTEE MAKES A
+DECISPMN, WE SAY THAT ALL THE OTHER VIEWS DON'T COUNT,
+
+SO WE TRY TO ADOPT A RATIONAL AND REASONABLE PROCEDURE.
+WE HAVE TO PERSUADE THEM THAT THEY ARE WRONG, SO IN
+
+THIS SENSE PLANNING IS ALSO EASY. WE HAVE TO RELY ON
+PARTY COMMITTEES AND THE GOVERNMENT AT MANY LEVELS.
+
+THE SITUATION IN OUR COUNTRY NOW IS QUITE GOOD.
+PERHAPS YOU CAN VISIT SOME PLACES.
+
+
+17. AS FOR MILITARY CONSTRUCTION, THE DEVELOPMENT OF
+
+THE MILITARY INDUSTRY IS DECIDED BY THE DEVELOPMENT
+OF AGRICULTURE. YOU MAY HAVE NOTICED THAT AMONG THE
+FOUR MODERNIZATIONS THAT WE WISH TO ACHIEVE IS
+
+INCLUDED MODERNIZATION OF OUR NATIONAL DEFENSE. WE
+WANT TO DEVELOP OUR ARMAMENTS. THIS ALSO CALLS FOR
+
+AN AGRICULTURAL AND AN INDUSTRIAL BASIS. IN MY
+OPINION THE SOVIET UNION IS STRESSING DEVELOPMENT OF
+
+MILITARY IN SUCH A WAY THAT ITS AGRICULTURE AND ITS
+LIGHT INDUSTRY ARE DEVELOPED DISPROPORTIONATELY. THE
+
+SOVIET PEOPLE DO NOT EAT WELL ENOUGH. THEREFORE WE
+ARE TRYING FOR MODERNIZATION OF NATIONAL DEFENSE ON
+
+THE BASIS OF DEVELOPMENT OF OTHER INDUSTRIES AND OF
+AGRICULTURE. I HEAR THAT SOME FRIENDS HAVE SAID THAT
+
+OUR WEAPONS ARE EXTREMELY BACKWARD. WE ADMIT THAT BUT
+IN WARFARE WE RELY ON MILLET PLUS RIFLES. AS FOR OUR
+
+OVERALL MILITARY CAPABILITY, IT DEPENDS ON HOW YOU
+JUDGE IT AND WITH WHAT YOU COMPARE IT. IF WE COMPARE
+
+NUCLEAR WEAPONS, FOR EXAMPLE, YOUR NUCLEAR WEAPONS CAN
+BE COMPARED WITH THE THUMB WHEREAS OURS ARE SIMPLY THE
+
+TIP OF THE SMALLEST FINGER. IF WE SAY TO THE COUNTRY
+THAT YOURS ARE SO MUCH AND OURS ARE SO MUCH, THAT WOULD BE IRRELE-
+
+VANT. WE ARE NOT WORRIED. THE HUMAN FACTOR IS FIRST. THIS IS
+PROVED BY OUR HISTORY. DURING WORLD WAR II THE WEAPONS USED
+
+BY THE JAPANESE AGGRESSIVE FORCES WERE MORE ADVANCED THAN OURS.
+WE WERE HORRIBLY BACKWARD. SOME USED SPEARS AND KNIVES.
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 03    PEKING 01173 04 OF 07 100730Z
+
+
+AND CHIANG KAI-SHEK ALSO HAD WEAPONS. MANY WERE VERY
+SOPHISTICATED; AIRPLANES, GUNS AND NAVAL FORCES.
+
+THEY WERE VERY MODERN AT THAT TIME IN CHINA. WE ONLY
+HAD INFANTRY, THE SIMPLEST ARTILLERY. THEY
+TRAVELLED IN CARS, WE TRAVELED ON OUR FEET. IN THE
+
+
+
+
+
+
+
+
+
+
+END IT SEEMS THAT THEIR CARS RAN NO FASTER THAN OUR
+FEET AND THE WAR ENDED WITH THEIR DEFEAT. BUT THAT
+
+DOES NOT MEAN THAT WE DON'T WANT TO HAVE ADVANCED
+WEAPONS. WE ARE DOING OUR UTMOST TO ADVANCE TOWARD THAT
+
+GOAL. SO MILLET AND RIFLES DURING THE PRESENT DAY ARE
+NOT QUITE THE SAME. THAT IS CHINA'S BASIC MILITARY
+
+PRINCIPLE, THAT IS, WE ARE STRIVING FOR MILITARY
+MODERNIZATION BASED ON THE DEVELOPMENT OF OTHER
+INDUSTRIES AND OF AGRICULTURE.
+
+
+18. AS FOR EDUCATION, WE ARE TRYING OUR BEST TO ENFORCE
+
+THE EDUCATIONAL LINE ADVANCED BY CHAIRMAN MAO. THIS
+EXPERIENCED GREAT SABOTAGE BY THE GANG OF FOUR. BECAUSE
+
+THE OLD EDUCATIONAL SYSTEM WOULD NOT ALLOW RELATIONS
+BETWEEN TEACHERS AND STUDENTS THEY WERE TOO HOSTILE.
+
+SOME OF THE TEACHERS TOOK THE STUDENTS AS ENEMIES AND
+THEY WERE TOO STRICT. THEY WERE UNREASONABLE. IN SOME
+
+EXTREME CASES, THE TEACHERS EVEN BEAT THE KIDS.
+THIS CAN'T BE DONE. THIS GIVES RISE TO RESISTANCE
+
+ON THE PART OF THE STUDENTS. THERE WAS FORCED
+FEEDING OF THE STUDENTS JUST LIKE FORCED FEEDING OF OUR
+
+PEKING DUCKS. IT DOESN'T MATTER WHETHER THEY WANT
+IT OR WHETHER THEY ARE FULL - JUST SPUEEZE IT INTO
+
+THEM. IF YOU ARE TOO GREEDY AND BITE OFF TOO MUCH
+YOU CAN'T DIGEST IT. SOME TEACHERS ADOPT THE METHOD
+OF SURPRISE ATTACKS AGAINST STUDENTS. THE STUDENTS
+
+DIDN'T WANT TO PUT UP WITH THIS AND THEY BECAME VERY
+ANGRY. BUT THE GANG OF FOUR TRIED TO TAKE ADVANTAGE
+
+OF CRITICISM OF SUCH WRONG PRACTICES TO SAY THAT
+STUDENTS SHOULD NOT TAKE EXAMINATIONS AT ALL. THEY
+
+SAID STUDENTS SHOULD HAD IN BLANK PAPERS. THERE
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 04   PEKING 01173 04 OF 07 100730Z
+
+
+WAS ONE STUDENT NAMED CHANG TIEH-SHENG IN THE NORTH-
+
+EAST WHO WAS FAMOUS FOR HANDING IN A BLANK EXAMINATION
+PAPER. THE GUIDELINES IN EDUCATION PUT FORWARD BY
+
+CHAIRMAN MAO MAKE EDUCATION SERVE PROLETARIAN POLITICS,
+THAT IS, TO COMBINE EDUCATION WITH PRODUCTIVE LABOR.
+THE PURPOSE IS TO CULTIVATE E NEW GENERATION WITH
+
+SOCIALIST CONSCIOUSNESS AND CULTURAL KNOWLEDGE, TO
+ENABLE STUDENTS TO DEVELOP MORALLY, MENTALLY AND
+
+
+
+
+CONFIDENTIAL
+
+
+
+
+
+
+NNN
+
+
+
+
+
+
+
+
+
+
+
+CONFIDENTIAL
+
+
+PAGE 01    PEKING 01173 05 OF 07 100750Z
+ACTION SS-25
+
+
+INFO OCT-01 ISO-00 SSO-00 /026 W
+
+------------------100805Z 014515 /16
+P 100105Z JUN 77
+FM USLO PEKING
+
+TO SECSTATE WASHDC PRIORITY 7976
+INFO AMCONSUL HONG KONG PRIORITY
+
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI PRIORITY
+
+
+C O N F I D E N T I A L SECTION 5 OF 7 PEKING 1173
+
+
+EXDIS
+
+
+PHYSICALLY. SOMETIMES INTELLIGENCE CAN BE A GREAT
+
+NUISANCE. IT SEEMS THERE ARE QUITE A NUMBER OF INTEL-
+LIGENT PERSONS AMONG YOU. SOME INTELLECTUALS ARE A
+
+BIT NASTY, IN FACT; HAVING ACQUIRED SOME KNOW-
+LEDGE THEY TRY TO SCARE THE WORKERS AND PEASANTS WITH
+
+THEIR KNOWLEDGE. BUT ON THE WHOLE THE MAJORITY OF
+INTELLECTUALS ARE GOOD PEOPLE, SO DON'T GET ANGRY
+WITH ME.
+
+
+19. WE HAVE QUITE A SIZEABLE POPULATION, 800,000,000
+
+
+PEOPLE. SOME SAY EVEN LARGER. WE HAVE SO MANY PEOPLE
+
+THAT IT IS NOT QUITE CLEAR EVEN TO OURSELVES HOW MANY
+PEOPLE WE HAVE. IT SEEMS TO ME THAT WE HAVE NOT LESS
+
+THAN 800,000,000 PEOPLE. BUT IF YOU GO BY FIGURES
+AND TOTAL UP THE VARIOUS PROVINCES, YOU WOULD BE
+
+SCARED TO DEATH. WE HAVE AT LEAST 900,000,000 PEOPLE.
+SUCH WORDS CANNOT BE BELIEVED. THEQJHAVE THEIR AIMS
+
+IN PRESENTING THESE FIGURES. WHAT THEY MEAN IS - MY
+POPULATION IS GROWING. I NEED MORE CONSTRUCTION.
+
+THE CENTRAL COMMITTEE MUST TAKE NOTE AND ALLOCATE
+FUNDS ACCORDINGLY. BUT I THINK THERE ARE AROUND
+
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+
+PAGE 02    PEKING 01173 05 OF 07 100750Z
+
+
+800,000,000 PEOPLE AND THAT IS WHY WE MUST GO IN FOR
+
+
+FAMILY PLANNING. THIS HASBEGUN TO BE EFFECTIVE,
+
+INCLUDING IN THE COUNTRYSIDE. IT HAS BEEN EFFECTIVE
+IN THECITY FOR MANY YEARS BECAUSE THE LEVEL OF AWARE-
+
+NESS IN URBAN AREAS IS HIGHER IN THIS RESPECT
+PERHAPS BECAUSE OF HIGHER EDUCATION. AND AT PRESENT
+
+WITH THE DEVELOPMENT OFEDUCATION AND CULTURE IN THE
+
+
+
+
+
+
+
+
+
+COUNTRYSIDE THE RURAL POPULATION IS ACCEPTING FAMILY
+PLANNING MORE AND MORE. IT SEEMS THAT THE POPULATION
+
+OF THE UNITED STATES COULD BE INCREASED A BIT. WHAT IS
+THE AREA OF YOUR COUNTRY AND WHAT IS THE POPULATION?
+
+(ONE OF THE DELEGATION MEMBERS TELLS VICE PREMIER LI
+THAT THE AREA OF THE UNITED STATES IS ABOUT THE SAME AREA AS
+
+CHINA ANDTHAT THEPOPULATION IS AROUND 225 MILLION).
+BUT WE HAVE 800,000,000 AND YOU HAVE ONLY 200 MILLION.
+IN COMPARISON IT SEEMS TO ME THAT YOU HAVE TO DEVELOP
+
+YOUR POPULATION A BIT MORE. IS THAT NOT POSSIBLE?
+
+
+20. GROUP MEMBER: WE WILL TRY OUR BEST TO BE DILI-
+GENT.
+
+
+21. LI: SO PERHAPS THE ONLY THING WE CAN SAY IS THAT
+
+WE WILL NOT INTERFERE IN YOUR DOMESTIC AFFAIRS. AND
+WHAT WE ARE DOING IN CHINA IS ONLY EDUCATION, PROPA-
+
+GANDA AND PERSUASION. BUT IT IS ARDUOUS EDUCATION AND
+HARD PERSUASTION. AND FOR US, WE STILL WISH TO MAKE PEOPLE
+
+AGREE WITH FAMILY PLANNING ON A VOLUNTARY BASIS. IT
+WILL NOT DO TO ENGAGE IN COMMANDISM. IT SEEMS THAT THE
+
+POLICY OF INDIRA GANDHI WAS INCORRECT, NOR WILL IT DO
+TO ENFORCE OPERATIONS OR ABORTIONS. HOW CAN YOU
+
+HAVE YOUR GOVERNMENT OFFICIALS GO OUT INTO THE STREETS AND
+GRAB PEOPLE AND FORCE THEM TO HAVE OPERATIONS. PEOPLE
+SIMPLY WILL NOT ACCEPT THAT. THAT WILL NOT DO. PER-
+
+PHAS THAT IS ONE OF THE REASONS WHY MRS. GHANDI LOST
+HER ELECTION. I HAVE BEEN GOING ON TOO LONG.
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 03    PEKING 01173 05 OF 07 100750Z
+
+
+
+22. DELEGATION MEMBER: IF I COULD RETURN TO YOUR
+
+ANSWER TO THE FIRST QUESTION, YOU MENTIONED THAT WE
+ARE IN A DEFENSIVE POSTURE AND THE SOVIETS IN AN
+
+OFFENSIVE POSTURE. I MIGHT POINT OUT THAT THAT IS IN
+ACCORD WITH THE WISHES OF THE AMERICAN PEOPLE. THE
+
+FOUNDATION OF OUR POLICY IS DEFENSIVE. THE BASIS OF
+THIS POSTURE IS NATO, WHICH IS A DEFENSIVE ALLIANCE.
+THE UNITED STATES HAS ALWAYS BEEN THIS WAY. IN THIS
+
+THE UNITED STATES AND CHINA AGREE.
+
+
+23. LI: IN THE PAST YOU HAVE LAUNCHED YOUR OFFENSI-
+VES TOO.
+
+
+24.DELEGATION MEMBER: WE MIGHT NOT AGREE ON WHETHER
+
+THEY WERE OFFENSIVE OR DEFENSIVE.
+
+
+
+25. LI: I SAY THAT THEY ARE OFFENSIVE. OF COURSE
+
+THAT BELONGS TO THE PAST.
+
+
+
+
+
+
+
+
+
+
+26. DELEGATION MEMBER: SO WE SHOULD AGREE TO LEAVE
+
+IT IN THE PAST. ON ANGOLA I WISH TO MAKE A POINT. THE
+SOVIETS AND THE CHINESE WERE BOTH ACTIVE IN ANGOLA
+
+BEFORE THE PORTUGUESE FORCES LEFT. I MIGHT POINT OUT
+THAT THIS WAS BEFORE THE EUROPEAN CONFERENCE ON SECURITY.
+
+
+27. LI: WHAT I WAS TALKING ABOUT IS THE CUBAN MER-
+CENARIES WENT INTO ANGOLA WITH SOVIET BACKING AFTER
+
+THE COUNCIL ON SECURITY AND COOPERATION IN EUROPE.
+
+
+28. DELEGATION MEMBER: OH, THAT'S TRUE.
+
+
+29. LI: AS FOR THE PERIOD BEFORE THE CUBAN TROOPS
+ENTERED ANGOLA WITH SOVIET SUPPORT, WE HAD SUPPORTED
+
+THE THREE FACTIONS IN ANGOLA. OF COURSE, OUR SUPPORT
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 04    PEKING 01173 05 OF 07 100750Z
+
+
+WAS DIFFERENT IN NATURE. WE SUPPORTED THESE FACTIONS
+
+AGAINST PORTUGUESE COLONIALISM WHILE THE SOVIET UNION
+TRIED TO MEDDLE UNDER THE SIGNBOARD OF ANTI-COLONIALISM
+WITH A PURPOSE OF INSERTING THEIR PAWNS INTO THAT AREA.
+
+THEY SUPPORTED ONE FACTION AGAINST THE OTHERS.
+
+
+30. DELEGATION MEMBER: MORE IMPORTANTLY, MR. VICE
+PREMIER, WEHVRE ALL CONCERNED ABOUT TAIWAN. I AM
+
+SURE THAT EACH TIME THE AMERICAN PEOPLE HAVE MADE
+KNOWN THEIR POSITION ON TAIWAN THEY HAVE POINTED OUT
+
+THAT THEY DESIRE A PEACEFUL SOLUTION. THE LEADERS OF
+THE UNITED STATES ARE IN CLOSE TOUCH WITH THE MASSES
+
+THROUGH OUR ELECTORAL PROCESS, THAT IS, THROUGH THE
+AMERICAN ELECTIONS. IN THE SHANGHAI COMMUNIQUE THE
+
+US SIDE REAFFIRMED ITS INTEREST IN A PEACEFUL SETTLEMENT
+OF THE TAIWAN PROBLEM AND SAID IT WOULD WITHDRAW ITS
+
+MILITARY FORCES AS TENSIONS IN THE AREA DIMINISHED.
+OUR CONCERN IS THAT ON THE EVE OF OUR DEPARTURE AND
+
+AFTER WE ARE HEARING THE CHINESE LEADERS INDICATE THAT
+IT WILL BE NECESSARY TO USE FORCE TO LIBERATE TAIWAN.
+THIS THREAT IS A NEW ELEMENT, AN ELEMENT NOT MENTIONED
+
+IN THE SHANGHAI COMMUNIQUE. THAT IS, YOUR RECENT
+STATEMENTS THAT YOU ARE DETERMINED TO USE FORCE OR THE
+
+THREAT OF FORCE TO LIBERATE TAIWAN. WE ARE CONCERNED
+ABOUT THE IMPACT OF SUCH STATEMENTS ON AMERICAN PUBLIC
+
+OPINION WHICH LIMITS OUR GOVERNMENT'S FLEXIBILITY IN
+REACHING A SOLUTION TO THE TAIWAN PROBLEM.
+
+
+31. LI: THAT IS NOT CORRECT. WHEN WE TALK ABOUT
+
+NOT RESORTING TO FORCE, THAT PERTAINS TO THE SINO-US
+ASPECT. IN THE SHANGHAI COMMUNIQUE IT WAS STATED THAT
+
+WE BELIEVED WE SHOULD NOT RESORT TO FORCE OR THREAT OF
+
+
+
+
+
+
+
+
+
+FORCE IN RELATION TO OTHER STATES OR IN SETTLING
+INTERNATIONAL DISPUTES, WHICH IN THIS CASE MEANS BE-
+
+TWEEN THEPEOPLE OF THE UNITED STATES AND CHINA.
+
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+PAGE 05    PEKING 01173 05 OF 07 100750Z
+
+
+32. DELEGATION MEMBER: I UNDERSTAND, BUT I WAS REFER-
+
+RING TO THE SECTION OF THE SHANGHAI COMMUNIQUE WHICH
+STATES &quot;THE UNITED STATES REAFFIRMS ITS INTEREST IN A
+
+PEACEFULSETTLEMENT OF THE TAIWAN QUESTION BY THE
+CHINESE THEMSELVES. WITH THIS PROSPECT IN MIND IT
+
+AFFIRMS THE ULTIMATE OBJECTIVE OF THE WITHDRAWAL OF
+ALL U.S. FORCES AND MILITARY INSTALLATIONS FROM
+
+TAIWAN. IN THE MEANTIME, IT WILL PROGRESSIVELY REDUCE
+ITS FORCES AND MILITARY INSTALLATIONS ON TAIWAN AS
+
+THE TENSION IN THE AREA DIMINISHES.&quot; THE REASON I POINT
+
+
+
+CONFIDENTIAL
+
+
+
+
+
+
+NNN
+
+
+CONFIDENTIAL
+
+
+PAGE 01    PEKING 01173 06 OF 07 100740Z
+
+ACTION SS-25
+
+
+INFO OCT-01 ISO-00 SSO-00 /026 W
+------------------100805Z 014415 /12
+
+P 100105Z JUN 77
+FM USLO PEKING
+
+TO SECSTATE WASHDC PRIORITY 7977
+INFO AMCONSUL HONG KONG PRIORITY
+
+AMEMBASSY MOSCOW PRIORITY
+AMEMBASSY TAIPEI PRIORITY
+
+
+C O N F I D E N T I A L SECTION 6 OF 7 PEKING 1173
+
+
+EXDIS
+
+
+THIS OUT IS OUR CONCERN THAT RECENT STATEMENTS BY
+CHINESE LEADERS CREATE TENSION RATHER THAN DIMINISH
+
+TENSION, AND THIS CAUSES GREAT CONCERN AMONG THE
+AMERICAN PEOPLE AS EXPRESSED IN PUBLIC OPINION POLLS.
+
+AMERICAN LEADERS THEREFORE SEE IT AS MORE DIFFICULT
+TO RESOLVE. OF COURSE WE ALL RECOGNIZE THAT THIS
+
+IS YOUR INTERNAL AFFAIR. BUT IT IS ALSO AN AFFAIR
+
+
+
+
+
+
+
+
+
+OF CONCERN TO THE UNITED STATES AND EVEN THE VICE
+PREMIER'S STATEMENT THAT YOU ARE WILLING TO SIT DOWN
+
+WITH US RECOGNIZES THAT THERE IS AN AMERICAN INTEREST.
+WHETHER IT IS REASONABLE OR ILLEGITIMATE, THE US
+
+DOES HAVE AN INTEREST. THIS NEW DEVELOPMENT MOVES
+AWAY FROM A SETTLEMENT.
+
+
+32. LI: THERE IS NO NEW DEVELOPMENT IN THE CHINESE
+
+POSITION. THIS HAS BEEN OUR CONSISTENT POSITION.
+BUT YOU ALWAYS STRESS THE US OPINION AND THE
+
+EXPRESSION OF THAT OPINION IN YOUR POLICY. WHY DON'T
+YOU GIVE EMPHASIS TO THE POSITION OF THE CHINESE PEOPLE?
+
+IF THERE WAS A REFERENDUM AMONG THE 800 MILLION PEOPLE
+OF CHINA, 95 PERCENT WOULD BE FOR THE IMMEDIATE
+
+LIBERATION OF TAIWAN. YOU SAY THAT THE AMERICAN
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 02    PEKING 01173 06 OF 07 100740Z
+
+
+LEADERS ARE IN A DIFFICULT POSITION. WE SAY THAT IF
+THE TAIWAN ISSUE IS NOT SETTLED CORRECTLY, HOW WILL WE
+
+FACE OUR PEOPLE.
+
+
+33. DELEGATION MEMBER: I THINK THAT IN SUCH A CASE
+LEADERS OF BOTH COUNTRIES WILL HAVE TO USE WISDOM AND
+
+COMPROMISE AND THUS REACH AGREEMENT. IF BOTH SIDES
+FOLLOWED ONLY THE OPINIONS OF THEIR PEOPLE, THAT
+
+IS THE 95 PERCENT OF THE CHINESE PEOPLE WHO FAVOR
+LIBERATION OF TAIWAN, AND THE MAJORITY OF US PUBLIC
+
+OPINION WHICH FAVORS A PEACEFUL SETTLEMENT, IF WE
+FOLLOW ONLY THESE OPIIIONS THEN WE WOULDN'T BE
+
+SITTING HERE TODAY. AND THERE WOULD HAVE BEEN NO
+SHANGHAI COMMUNIQUE.
+
+
+34. LI: I CANNOT AGREE THAT THE SHANGHAI COMMUNIQUE
+
+AND YOUR BEING HERE TODAY ARE IN CONFLICT WITH THE
+DESIRES OF OUR TWO PEOPLES. I CAN ONLY SAY THAT THE
+
+VIEWS OF 95 PERCENT OF OUR PEOPLE ARE WELL-KNOWN TO
+US AND ALL I CAN DO IN RESPONSE IS TO GIVE YOU THAT
+
+OPINION. IN THE FINAL ANALYSIS, THE TAIWAN ISSUE IS
+AN INTERNAL ISSUE AND WE ASK YOU TO CEASE YOUR
+
+INTERFERENCE IN THIS. IF OTHERS INTERFERED IN YOUR AFFAIRS
+HOW WOULD YOU REACT?
+
+
+35. DELEGATION MEMBER: I MIGHT MENTION THAT THERE
+
+WAS A DELEGATION OF MAYORS THAT INCLUDED THE MAYOR
+OF SAN JUAN, PUERTO RICO, WHICH ULTIMATELY DID NOT
+
+COME TO VISIT THE PEOPLE'S REPUBLIC OF CHINA BECAUSE
+OF THE PEOPLE'S REPUBLIC OF CHINA'S POSITION THAT
+
+PUERTO RICO IS NOT A PART OF THE UNITED STATES.
+
+36. LI: THE CHINESE POSITION ON THAT ISSUE WAS STATED
+
+
+
+
+
+
+
+
+
+
+AT THE UNITED NATIONS.
+
+
+37. DELEGATION MEMBER: WITH REGARD TO NORMALIZATION
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 03    PEKING 01173 06 OF 07 100740Z
+
+
+OF RELATIONS, IT IS OUR RESPONSIBILITY TO TELL YOU
+FRANKLY WHAT THE VIEWS AND CONSIDERATIONS OF OUR
+
+PEOPLE ARE. WE AR ALL IN AGREEMENT, AS WAS EARLIER
+STATED, THAT THIS VISIT WILL ENHANCE UNDERSTANDING
+
+BETWEEN OUR TWO COUNTRIES. THIS KIND OF EXCHANGE IS
+NECESSARY IF WE WANT TO CONTINUE THE PROCESS, A
+
+PROCESS THAT MUST GO ON IF WE ARE TO PROCEED TO
+NORMALIZATION OF RELATIONS.
+
+
+38. LI: A VISIT WHICH INCLUDES EXCHANGE OF OPINIONS
+
+CAN BE BENEFICIAL. THERE IS TIME FOR ONE FINAL QUESTION.
+
+
+39. DELEGATION MEMBER: AS WE CONTINUE OUR VISIT AND
+VISIT YOUR PROJECTS, I THINK IT WOULD BE HELPFUL TO
+
+UNDERSTAND THE TOOLS OF MEASUREMENT YOU USE IN
+DETERMINING YOUR CAPITAL INVESTMENT. IN OTHER WORDS,
+TO UNDERSTAND WHAT METHOD YOU USE TO DECIDE
+
+ABOUT YOUR PRIORITIES. IN THE WEST WE USE A COST
+EFFECTIVENESS TECHNIQUE AND WE SIMPLY DON'T UNDERSTAND
+
+WHAT METHOD YOU USE.
+
+
+40. LI: THIS WILL INVOLVE A HUGE AMOUNT OF INVESTIGATION
+AND CAREFUL WEIGHING OF PROS AND CONS AND HEARING
+
+OF VAST OPINIONS. BUT I MUST HONESTLY SAY THAT OUR
+PLANNING COMMISSION SOMETIMES MAKES MISTAKES. BUT WE
+
+
+
+
+CONFIDENTIAL
+
+
+
+
+
+
+NNN
+
+
+CONFIDENTIAL
+
+
+PAGE 01    PEKING 01173 07 OF 07 100705Z
+ACTION SS-25
+
+
+INFO OCT-01 ISO-00 SSO-00 /026 W
+
+------------------100717Z 014094 /16
+P 100105Z JUN 77
+
+FM USLO PEKING
+TO SECSTATE WASHDC PRIORITY 7978
+
+INFO AMCONSUL HONG KONG PRIORITY
+
+
+
+
+
+
+
+
+
+AMEMBASSY MOSCOW PRIORITY
+AMEMBASSY TAIPEI PRIORITY
+
+
+C O N F I D E N T I A L SECTION 7 OF 7 PEKING 1173
+
+
+EXDIS
+
+
+TRY OUR BEST. WE THINK IT ALLOWABLE TO MAKE MISTAKES.
+FIRST WE HOPE THERE ARE NO MISTAKES, BUT SECOND WE CON-
+
+SIDER IT ALLOWABLE TO MAKE SOME MISTAKES. SO WHAT WE
+RELY ON MOST OF ALL IS TO LEND AN EAR TO DIFF-
+
+ERENT OPINIONS. LET THE PEOPLE IN THE COAL INDUSTRY,
+IN THE STEEL INDUSTRY, HAVE THEIR SAY AND THEN TRY TO
+
+BALANCE THEIR OPINIONS. OF COURSE, THIS IS TROUBLE-
+SOME.
+
+
+41. DELEGATION MEMBER: NO, WHAT I MEANT WAS WHAT
+
+KIND OF METHOD DO YOU USE. FOR EXAMPLE, IN OUR COUN-
+TRY WE USE RETURN ON INVESTMENT WITHIN THE GOVERNMENT
+
+AND IN BUSINESS WE USE A COST-BENEFIT ANALYSIS. (SIC)
+
+
+42. LI: THAT WORKS WITH YOUR GOVERNMENT.
+
+
+43. DELEGATION MEMBER: WE UNDERSTAND THE COMPETI-
+TION BETWEEN VARIOUS INTERESTS BECAUSE THAT IS THE
+PROCESS IN OUR OWN GOVERNMENT, ESPECIALLY BUDGET
+
+DEVELOPMENT.
+
+
+44. LI: IN YOUR COUNTRY PROFITS TAKE COMMAND. FOR
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 02    PEKING 01173 07 OF 07 100705Z
+
+
+EXAMPLE, IF TODAY THE COAL INDUSTRY TAKES IN THE MOST
+
+PROFITS, THEN MANY OF YOUR INVESTMENTS WILL FLOW IN THAT
+DIRECTION. AND WHERE THERE IS SURPLUS, FOR EXAMPLE,
+
+WITH STEEL, INVESTMENTS WILL FLOW IN ANOTHER DIRECTION.
+THAT IS NOT THE WAY WE OPERATE. IN AGRICULTURE, FOR
+
+EXAMPLE, WE NOT ONLY DO NOT GO ABOUT IT THAT WAY, WE DO
+NOT GET PROFITS BUT IN FACT WE MUST SUBSIDIZE BY MORE
+THAN 5 MILLION RMB.
+
+
+45. DELEGATION MEMBER: THAT IS CORRECT FOR BUSINESS
+
+BUT NOT FOR GOVERNMENT.
+
+
+
+46. LI: SO THAT IS THE DIFFERENCE IN OUR SOCIAL
+
+SYSTEMS. PERHAPS IT MAKES IT MORE DIFFICULT TO
+UNDERSTAND OUR SYSTEM.
+
+
+47. LI: SO, ONCE AGAIN LET ME EXPRESS WELCOME TO
+
+ALL THE FRIENDS. I HOPE THAT YOU WILL HAVE A GOOD
+
+
+
+
+
+
+
+
+
+VISIT TO MANY PLACES AND THAT YOU WILL SEE AS MUCH
+AS POSSIBLE. WHEN YOU VISIT THESE PLACES LOOK WITH
+
+AN EYE TO COMPARING, INCLUDING FIRST OF ALL TO COM-
+PARE THINGS TODAY WITH THE WAY THINGS WERE IN PRE-
+
+LIBERATION ERA DURING THE CHIANG KAI-SHEK DAYS. OF
+COURSE, WE ALSO ADMIT THAT WE HAVE MANY BACKWARD
+
+ASPECTS. FOR EXAMPLE, IN THE MEANS OF TRANSPORT WE
+HAVE BOTH ADVANCED AND VERY BACKWARD MEANS. ON THE
+ONE HAND WE HAVE AIRPLANES, SHIPS, TRAINS AND AUTO-
+
+MOBILES. BUT WE ALSO HAVE OXEN CARTS. WE ALSO RELY
+ON HUMAN LABOR, SUCH AS PEOPLE PUSHING CARTS OR CARRY-
+
+ING THINGS ON THEIR BACKS. BUT I THINK IT IS GOOD
+TO HAVE CANDID EXCHANGES.
+
+
+48. DELEGATION MEMBER: I THINK WE HAVE ALREADY EX-
+
+CEEDED OUR ALLOTED TIME. WE THANK YOU FOR THIS GOOD
+OPPORTUNITY TO HEAR YOU AND TO COME TO THE GREAT HALL OF
+
+CONFIDENTIAL
+
+
+CONFIDENTIAL
+
+
+PAGE 03   PEKING 01173 07 OF 07 100705Z
+
+
+THE PEOPLE. THE WHOLE WORLD HAS HEARD OF THE VICE
+PREMIER'S LEADERSHIP AND WE HAVE SEEN THIS LEADERSHIP
+TODAY. AS CHAIRMAN MAO SAID &quot;STUDY, STUDY, STUDY&quot;.
+
+49. LI: YOU FLATTER ME TOO MUCH. I LIKE YOUNG
+PEOPLE. WE OLD PEOPLE ARE MOVING TOWARD DEATH.
+
+
+50. DELEGATION MEMBER: WE CAN LEARN MUCH FROM OUR
+
+ELDERS. TODAY WE HAVE LEARNED MUCH FROM YOU.
+THOMAS
+
+
+
+
+CONFIDENTIAL
+
+
+
+
+
+
+NNN</div></div></div><div class="pane-tab"><div class="pane-header">Metadata</div><div class="pane-content"><div class="text-content">---
+Automatic Decaptioning: Z
+Capture Date: 01-Jan-1994 12:00:00 am
+Channel Indicators: n/a
+Current Classification: UNCLASSIFIED
+Concepts: DIPLOMATIC RELATIONS ESTABLISHMENT, POLITICAL LEADERS, MEETINGS, FOREIGN
+  POLICY POSITION, ECONOMIC PROGRAMS, MILITARY CAPABILITIES
+Control Number: n/a
+Sent Date: 10-Jun-1977 12:00:00 am
+Decaption Date: 22 May 2009
+Decaption Note: 25 YEAR REVIEW
+Disposition Action: RELEASED
+Disposition Approved on Date: ''
+Disposition Case Number: n/a
+Disposition Comment: 25 YEAR REVIEW
+Disposition Date: 22 May 2009
+Disposition Event: ''
+Disposition History: n/a
+Disposition Reason: ''
+Disposition Remarks: ''
+Document Number: 1977PEKING01173
+Document Source: CORE
+Document Unique ID: '00'
+Drafter: n/a
+Enclosure: n/a
+Executive Order: X3
+Errors: N/A
+Expiration: ''
+Film Number: D770276-0774, D770207-0171
+Format: TEL
+From: PEKING
+Handling Restrictions: ''
+Image Path: ''
+ISecure: '1'
+Legacy Key: link1977/newtext/t19770669/aaaacicd.tel
+Line Count: '1012'
+Litigation Code Aides: ''
+Litigation Codes: ''
+Litigation History: Hold (001 Tobacco) added on 4/16/2009 3:39:07 PM by WASHDCMcGoldRJ,
+  Hold (001 Tobacco) removed on 4/16/2009 3:45:04 PM by WASHDCMcGoldRJ (Litigation
+  Hold Lifted)
+Locator: TEXT ON-LINE, ON MICROFILM
+Message ID: b31a667f-c288-dd11-92da-001cc4696bcc
+Office: ACTION SS
+Original Classification: CONFIDENTIAL
+Original Handling Restrictions: EXDIS
+Original Previous Classification: n/a
+Original Previous Handling Restrictions: n/a
+Page Count: '19'
+Previous Channel Indicators: n/a
+Previous Classification: CONFIDENTIAL
+Previous Handling Restrictions: EXDIS
+Reference: 77 PEKING 1048
+Retention: '0'
+Review Action: RELEASED, APPROVED
+Review Content Flags: ''
+Review Date: 13-Oct-2004 12:00:00 am
+Review Event: ''
+Review Media Identifier: ''
+Review Release Date: n/a
+Review Release Event: n/a
+Review Transfer Date: ''
+Review Withdrawn Fields: n/a
+SAS ID: '2194686'
+Secure: OPEN
+Status: NATIVE
+Subject: ! 'YOUNG POLITICAL LEADERS MEETING WITH LI HSIEN-NIEN: VERBATIM TRANSCRIPT'
+TAGS: PINT, ECON, CH, US, TW, (LI HSIEN-NIEN)
+To: STATE
+Type: TE
+vdkvgwkey: odbc://SAS/SAS.dbo.SAS_Docs/b31a667f-c288-dd11-92da-001cc4696bcc
+Review Markings: ! ' Declassified/Released US Department of State EO Systematic Review
+  22 May 2009'
+Markings: ! &quot;Margaret P. Grafeld \tDeclassified/Released \tUS Department of State
+  \tEO Systematic Review \t22 May 2009&quot;
+</div></div></div><div class="pane-tab"><div class="pane-header">Raw source</div><div class="pane-content"><div class="text-content"><a href="https://file.wikileaks.org/oc/oc/2532/133470.pdf">oc/2532/133470.pdf</a></div></div></div>
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 61px">Print</div><div class="pane-content pane-print">
+<p>You can use this tool to generate a print-friendly PDF of the document <strong>1977PEKING01173_c</strong>.</p>
+<form action="/plusd/pdf/?df=49291" method="post">
+	<input type="hidden" name="p" value="c" />
+	<input type="hidden" name="r" value="1977PEKING01173_c" />
+	<input type="checkbox" name="s" id="is" value="cake"><label for="is">Include summary</label></input><br />
+	<input type="checkbox" name="h" id="ih" value="is a"><label for="ih">Include headers</label></input><br />
+	<input type="checkbox" name="m" id="im" value="lie"><label for="im">Include raw metadata</label></input><br /><br />
+	<input type="submit" value="Generate pdf" />
+</form>
+</div></div>
+
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 60px">Share</div><div class="pane-content pane-share">
+<p>The formal reference of this document is <strong>1977PEKING01173_c</strong>, please use it for anything written about this document. This will permit you and others to search for it.</p>
+<div class="share-panel">
+<label for="share-link">Direct link to document</label>
+<input readonly="readonly" type="text" class="share" id="share-link" value="https://www.wikileaks.org/plusd/cables/1977PEKING01173_c.html" /><br />
+
+<label for="share-reddit">Reddit code</label>
+<input readonly="readonly" type="text" class="share" id="share-reddit" value="[1977PEKING01173_c](https://www.wikileaks.org/plusd/cables/1977PEKING01173_c.html)" /><br />
+
+<label for="share-html">HTML code</label>
+<input readonly="readonly" type="text" class="share" id="share-html" value="&lt;a href=&quot;https://www.wikileaks.org/plusd/cables/1977PEKING01173_c.html&quot; title=&quot;1977PEKING01173_c&quot;&gt;1977PEKING01173_c&lt;/a&gt;" /><br />
+
+<label for="share-bbcode">Forum code (bbcode)</label>
+<input readonly="readonly" type="text" class="share" id="share-bbcode" value="[url=https://www.wikileaks.org/plusd/cables/1977PEKING01173_c.html]1977PEKING01173_c[/url]" />
+</div>
+
+
+
+<br style="clear: both;" />
+<p>Submit this story</p>
+<div class="share">
+	<a href="http://www.reddit.com/submit?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1977PEKING01173_c.html"><img src="/plusd/images/Reddit-ico.png" /></a>
+</div>
+
+<div class="share">
+        <a href="http://twitter.com/home?status=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1977PEKING01173_c.html"><img src="/plusd/images/Twitter-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1977PEKING01173_c"><img src="/plusd/images/Gplus-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=1977PEKING01173_c&amp;p[summary]=Summary&amp;p[url]=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1977PEKING01173_c.html"><img src="/plusd/images/Facebook-ico.png" /></a>
+</div>
+
+<br style="clear: both;" />
+</div></div>
+
+<!--<div class="pane-tab"><div class="pane-header tab-right tab-find">Find</div><div class="pane-content pane-find">-->
+<!--</div></div>-->
+
+<!--<div id="tagged-text"> -->
+	<div id="pane-root" style="display:none">
+		<div id="pane-tabs"></div>
+
+		<div id="pane-contents"></div>
+
+	</div>
+<!--</div>-->
+<div class="pane-content pane-extra">
+<div class="dnpage visible">
+<h1>Help Expand The Public Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+
+
+</div>
+
+</div>
+<br />
+<script type="text/javascript" src="/plusd/js/mootools-core-and-more.js"></script>
+<script type="text/javascript" src="/plusd/js/efatmarker.min.js"></script>
+<script type="text/javascript">
+(function(){
+	window.addEvent('domready', function(){
+	        $$("#showhide").addEvent( "click", function() {
+			$$(".text-header").toggleClass("hidden");
+			t=$$("#showhide");
+			if(t.get("html")=="Show&nbsp;Headers")
+				t.set("html", "Hide&nbsp;Headers");
+			else
+				t.set("html", "Show&nbsp;Headers");
+		} );
+
+		var pane_root = $('pane-root'),
+			pane_tabs = $('pane-tabs'),
+			pane_contents = $('pane-contents'),
+			panes = $$('.pane-tab'),
+			num_panes = panes.length,
+			i, pane,
+			pane_header,
+			pane_content;
+		var activate_tab = function(target) {
+			$$('#pane-contents .pane-content').each(function(e,i){
+				if (i === target) {
+					e.addClass('top');
+					}
+				else {
+					e.removeClass('top');
+					}
+				});
+			$$('#pane-tabs .pane-header').each(function(e,i){
+				if (i === target) {
+					e.removeClass('nottop');
+					e.addClass('ontop');
+					}
+				else {
+					e.addClass('nottop');
+					e.removeClass('ontop');
+					}
+				});
+			};
+		for (i=0; i<num_panes; i++) {
+			pane = panes[i];
+			pane_header = pane.getElement('.pane-header');
+			pane_tabs.grab(pane_header);
+			pane_header.addEvent('click', function(){
+				var target = $('pane-tabs').getChildren().indexOf(this);
+				activate_tab(target);
+				});
+			pane_content = pane.getElement('.pane-content');
+			pane_contents.grab(pane_content);
+			pane.destroy();
+			}
+		activate_tab(0);
+		$('pane-root').style.display = '';
+		}); /* event handler function() */
+	})(); /* namespace function() */
+</script>
+<div id="efm-button">
+	<div id="efm-menu">
+		<h3 style="margin:0 0 2px 0">e-Highlighter</h3>
+		<a id="efm-permalink" class="efm-need-highlight" href="" style="margin-bottom:0;padding-bottom:0;"></a>
+		<p style="margin-top:0;padding-top:0" class="efm-need-highlight">Click to send permalink to address bar, or right-click to copy permalink.</p>
+		<a id="efm-twitter-button" class="efm-need-highlight" href="#" target="_blank"><img src="/plusd/images/tweetn.png" alt="Tweet" title="Tweet these highlights" style="vertical-align:middle"> these highlights</a>
+		<p style="margin:0.5em 0;padding:0;border-top:1px dotted #ccc;height:1px"></p>
+		<a id="efm-unhighlightall" class="efm-need-highlight">Un-highlight all</a>
+		<a id="efm-unhighlight">Un-highlight selection<span>u</span></a>
+		<a id="efm-highlight">Highlight selection<span>h</span></a>
+		</div>
+	</div>
+</div></div></div>
+<script type="text/javascript">
+
+(function(){
+	window.addEvent('domready', function(){
+
+		var markerButton = $('efm-button');
+		if ( markerButton ) {
+			eMarker = new EFatMarker($('content-main'));
+			eMarker.tokenToSpans(); // apply whatever token is there
+			// need to act on mousedown or else selection disappear
+			markerButton.addEvent('mousedown', function(){
+				eMarker.interpretSelection(true);
+				return false;
+				});
+			$('efm-unhighlightall').addEvent('mousedown', function(){
+				eMarker.unhighlightAll(true);
+				return false;
+				});
+			$('efm-unhighlight').addEvent('mousedown', function(){
+				eMarker.unhighlightSelection(true);
+				return false;
+				});
+			$('efm-highlight').addEvent('mousedown', function(){
+				eMarker.highlightSelection(true);
+				return false;
+				});
+			$('efm-permalink').addEvent('mousedown', function(){
+				window.location.href = this.href;
+				return false;
+				});
+			// if Mootools Keyboard is available, use it
+			if (Keyboard) {
+				var keyboard = new Keyboard({
+					defaultEventType: 'keyup',
+					events: {
+						'h': function(){
+							eMarker.highlightSelection(true);
+							},
+						'u': function(){
+							eMarker.unhighlightSelection(true);
+							}
+						}
+					});
+				keyboard.activate();
+				}
+			eMarker.syncDOM();
+			// auto scroll to first highlight, if any
+			if (eMarker.hasSpans()) {
+				var scroll = new Fx.Scroll(window,{offset:{'x':0,'y':-100}}),
+					highlights = $$('#content-main .efm-hi');
+				if (highlights.length > 0) {
+					scroll.toElement(highlights[0]);
+					}
+				}
+			}
+		});
+	})();
+
+</script>
+
+<div class="dnflood"></div>
+<div class="dnbutton">
+<div class="dnmain">
+<h1><span class="dnclose">X</span>Help Expand The Public<br />Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+</div>
+</div>
+
+</div>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<link href="/static/css/styles_footer.css" rel="stylesheet">
+<footer id="page-footer" class="footer-recommendations">
+  <div class="footer-wrapper">
+    <div class="recommendation-container">
+      <a href="#" class="top">Top</a>
+      
+        <ul class="recommendation-links">
+                <li class="recommendation">
+                    <a href="https://our.wikileaks.org" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton666.png" width="360" height="240" />
+                        </div>
+                        <p><p>WL Research Community - user contributed research based on documents published by WikiLeaks. 
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.torproject.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton401.png" width="360" height="240" />
+                        </div>
+                        <p><p>Tor is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://tails.boum.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton405.png" width="360" height="240" />
+                        </div>
+                        <p><p> Tails is a live operating system, that you can start on almost any computer from a DVD, USB stick, or SD card. It aims at preserving your privacy and anonymity.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.couragefound.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton404.png" width="360" height="240" />
+                        </div>
+                        <p><p>The Courage Foundation is an international organisation that supports those who risk life or liberty to make significant contributions to the historical record.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.bitcoin.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton403.png" width="360" height="240" />
+                        </div>
+                        <p><p>Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network.
+</p></p>
+                    </a>
+                </li>
+            </li>
+        </ul>
+      
+      <ul class="social-links">
+        <li>
+          <a href="https://www.facebook.com/wikileaks" target="_blank" alt="Facebook">
+            <img src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" target="_blank" alt="Twitter">
+            <img src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

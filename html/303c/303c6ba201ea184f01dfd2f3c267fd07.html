@@ -1,0 +1,2739 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/cerulean.min.css" rel="stylesheet">
+<link href="/bootstrap/css/new-gen.css" rel="stylesheet">
+<link href="/bootstrap/css/submit.css" rel="stylesheet">
+<script type="text/javascript" src="/plusd/js/jquery.min.js"></script>
+<script type="text/javascript" src="/plusd/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<script type="text/javascript" src="/plusd/js/wikipedia.js"></script>
+<script type="text/javascript" src="/plusd/js/qtip.min.js"></script>
+<script type="text/javascript" src="/plusd/js/idle-timer.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+
+(function($) {
+	var show_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").show();
+	}
+	var hide_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").hide();
+	}
+	$(document).idleTimer(180000);
+	$(document).on("idle.idleTimer", show_button);
+	$(document).ready(function() {
+		if( typeof setupDoubleClick == 'function' )
+			setupDoubleClick('http://en.wikipedia.org/w/index.php', 'british', 'tagged-text', 4, "_blank", "/words/ps.json");
+		var current = Math.floor(( new Date( ) ).getTime( )/1000);
+
+		$("#ddonate").click(show_button);
+		$(".dnclose").click(hide_button);
+		$('a.i').each( function() {
+			i=$(this);
+			i.attr("alt", descr[i.attr("title")]);
+		} );
+		$('a.i').qtip( {
+			show: {
+				event: 'click',
+				solo: true
+			},
+			hide: 'click',
+			content: {
+				attr: 'alt',
+				title: {
+					button: true
+				}
+			},
+			style: {
+				classes: 'qtip-blue qtip-shadow'
+			}
+		} );
+
+	} );
+
+
+	var descr = {
+	'Subject': 'Subject line of the document','From': 'Who/where sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-fr/\">A list of origins, with citations for any acronyms used, is available here.</a>','To': 'Who/where received the document.<br /><br /><a href=\"/plusd/about-to/\" class=\"j\">A list of destinations, with citations for any acronyms used, is available here.</a>','Original Classification': 'Classification the document was originally given when produced.<br /><br /><a href=\"/plusd/about-oc/\" class=\"j\">Citations for acronyms used are available here.</a>','Current Classification': 'Classification the document currently holds.<br /><br /><a href=\"/plusd/about-cc/\" class=\"j\">Citations for acronyms used are available here.</a>','Handling Restrictions': 'All handling restrictions governing the document distribution that have been used to date.<br /><br /><i>In the metadata of the Kissinger Cables this field is called \'Previous Handling Restrictions\'.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i><br /><br /><a href=\"/plusd/about-hr/\" class=\"j\">Citations for acronyms used are available here.</a>','Archive Status': 'Original documents not deleted or lost by State Department after review are available in one of four formats:<ul><li>Electronic Telegram - declassified and made available (content and metadata available)</li><li>Electronic Telegram Withdrawal Card - telegram not declassified, or was declassified but not released for other reasons (limited metadata available)</li><li>P-reel Index - Index card for other document type that is stored on microfilm (only metadata available)</li><li>P-reel Index Withdrawal Card - P-reel index card that was not declassified, or was declassified but not released for other reasons (limited metadata available)</li></ul><br /><i class=\"b\">The Kissinger Cables\' metadata does not have this field. It is taken from subsets the documents were released in after State Department review.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Type': 'Correspondence type or format of original document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TE\' (Telegram).</i><br /><br /><a href=\"/plusd/about-ty/\" class=\"j\">Citations for acronyms used are available here.</a>','Locator': 'Where the original document is now held - online or on microfilm, or remains in \"ADS\" (State Department\'s 1973 Automated Data System of indexing by TAGS of electronic telegrams and P-reels) with the text either garbled, not converted or unretrievable.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TEXT ONLINE\'.</i>','Executive Order': 'Executive Order information - often a reference to the E.O. governing the declassification/downgrade of the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Markings': 'Markings of declassification/release review of the document.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'. </i>','Enclosure': 'Attachments or other items sent with the original document. These are not necessarily currently held in this library.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.','Concepts': 'Keywords of subjects dealt with in the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\' for this field.</i>','TAGS': 'Traffic Analysis by Geography and Subject (TAGS)<br /><br />There are geographic, organization and subject \"TAGS\" - the classification system implemented by the Department of State for its central files in 1973.<br /><br /><a href=\"/plusd/about-ta/\" class=\"j\">A list of TAGS, with citations for any acronyms used, is available here.</a>','Office': 'Which United States government office or bureau is dealing with the topics the document concerns.<br /><br /><a href=\"/plusd/about-of/\" class=\"j\">A list offices, with citations for acronym expansions, is available here.</a>','Office Origin': 'Which State Department office or bureau sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Office Action': 'Which State Department office or bureau received the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Character Count': 'The number of characters, including spaces, in the document.','Date': 'The date the document was created.','Canonical ID': 'Unique document identification number.<br /><br /><i>We have created a canonical ID by taking the original document ID and adding a \'_\' at the end and then WikiLeaks\' annotation for different datasets: Cablegate = a, the Kissinger Cables = b, etc. If document IDs are duplicated in the original datasets we number each duplicate, eg 1976WARSAW05657_b2 is the second document with that ID in the Kissinger Cables.</i>','Other cables with the same ID': 'Documents that are linked, for example a P-reel index and the document it is the index for. Or documents that were originally given the same document ID number.',	};
+
+
+
+})(jQuery);
+</script>
+<title>Cable: 1976PEKING02368_b</title>
+<link rel="stylesheet" type="text/css" href="/plusd/css/qtip.min.css" id="qtip">
+<link rel="stylesheet" type="text/css" href="/plusd/css/main.css" id="maincss">
+<link rel="stylesheet" type="text/css" href="/plusd/css/print.css" media="print" id="printcss">
+</head>
+<body style="text-align: center;">
+    <div id="submit_wlkey" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<p>Key fingerprint <b>9EF0 C41A FBA5 64AA 650A  0259 9C6D CD17 283E 454C</b></p>
+		<pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+=5a6T
+-----END PGP PUBLIC KEY BLOCK-----
+
+		</pre>
+	</div>
+</div>
+
+<div id="submit_help_contact" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Contact</h3>
+		<p>If you need help using Tor you can contact WikiLeaks for assistance in setting it up using our simple webchat available at: <a href="https://wikileaks.org/talk">https://wikileaks.org/talk</a></p>
+		<p>If you can use Tor, but need to contact WikiLeaks for other reasons use our secured webchat available at <b>http://wlchatc3pjwpli5r.onion</b></p>
+		<p>We recommend contacting us over Tor if you can.</p>
+	</div>
+</div>
+
+<div id="submit_help_tor" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Tor</h3>
+		<p><a href="https://www.torproject.org">Tor</a> is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.</p>
+		<p>In order to use the WikiLeaks public submission system as detailed above you can download the Tor Browser Bundle, which is a Firefox-like browser available for Windows, Mac OS X and GNU/Linux and pre-configured to connect using the anonymising system Tor.</p>
+		<h4>Tails</h4>
+		<p>If you are at high risk and you have the capacity to do so, you can also access the submission system through a secure operating system called <a href="https://tails.boum.org">Tails</a>. Tails is an operating system launched from a USB stick or a DVD that aim to leaves no traces when the computer is shut down after use and automatically routes your internet traffic through Tor. Tails will require you to have either a USB stick or a DVD at least 4GB big and a laptop or desktop computer.</p>
+	</div>
+</div>
+
+<div id="submit_help_tips" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>Tips</h3>
+		<p>Our submission system works hard to preserve your anonymity, but we recommend you also take some of your own precautions. Please review these basic guidelines. </p>
+		<div>
+			<h4>1. Contact us if you have specific problems</h4>
+			<p>If you have a very large submission, or a submission with a complex format, or are a high-risk source, please <a href="#submit_help_contact">contact us</a>. In our experience it is always possible to find a custom solution for even the most seemingly difficult situations.</p>
+		</div>
+		<div>
+			<h4>2. What computer to use</h4>
+			<p>If the computer you are uploading from could subsequently be audited in an investigation, consider using a computer that is not easily tied to you. Technical users can also use <a href="https://tails.boum.org">Tails</a> to help ensure you do not leave any records of your submission on the computer.</p>
+		</div>
+		<div>
+			<h4>3. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+	</div>
+</div>
+
+<div id="submit_help_after" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>After</h3>
+
+		<div>
+			<h4>1. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+		<div>
+			<h4>2. Act normal</h4>
+			<p>If you are a high-risk source, avoid saying anything or doing anything after submitting which might promote suspicion. In particular, you should try to stick to your normal routine and behaviour.</p>
+		</div>
+
+		<div>
+			<h4>3. Remove traces of your submission</h4>
+			<p>If you are a high-risk source and the computer you prepared your submission on, or uploaded it from, could subsequently be audited in an investigation, we recommend that you format and dispose of the computer hard drive and any other storage media you used.</p>
+			<p>In particular, hard drives retain data after formatting which may be visible to a digital forensics team and flash media (USB sticks, memory cards and SSD drives) retain data even after a secure erasure. If you used flash media to store sensitive data, it is important to destroy the media.</p>
+			<p>If you do this and are a high-risk source you should make sure there are no traces of the clean-up, since such traces themselves may draw suspicion.</p>
+			<div>
+				<h4>4. If you face legal action</h4>
+				<p>If a legal action is brought against you as a result of your submission, there are organisations that may help you. The Courage Foundation is an international organisation dedicated to the protection of journalistic sources. You can find more details at <a href="https://www.couragefound.org">https://www.couragefound.org</a>.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="submit" class="submit_banner">
+	<div class="container">
+		<div class="page-header">
+			<h1>Submit documents to WikiLeaks</h1>
+			<a class="remove-button" href="#"><span class="glyphicon glyphicon-remove-circle"></span></a>
+		</div>
+		<p>WikiLeaks publishes documents of political or historical importance that are censored or otherwise suppressed. We specialise in strategic global publishing and large archives.</p>
+		<p>The following is the address of our secure site where you can anonymously upload your documents to WikiLeaks editors. You can only access this submissions system through Tor. (See our <a href="#submit_help_tor">Tor tab</a> for more information.) We also advise you to read our <a href="#submit_help_tips">tips for sources</a> before submitting.</p>
+
+		<div class="alert alert-info">
+			<div class="onion-url">http://ibfckmpsmylhbfovflajicjgldsqpc75k5w454irzwlh7qifgglncbad.onion </div>
+			<!--<div>
+				Copy this address into your Tor browser. Advanced users, if they wish, can also add a further layer of encryption to their submission using <a href="#submit_wlkey">our public PGP key</a>.
+			</div>-->
+		</div>
+
+		<p>If you cannot use Tor, or your submission is very large, or you have specific requirements, WikiLeaks provides several alternative methods. <a href="#submit_help_contact">Contact us</a> to discuss how to proceed.</p>
+	</div>
+</div>
+<div id="submit_help_buttons" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="main">
+	    
+
+<link href="/static/css/styles_topnav.css" rel="stylesheet">
+<link href="/static/css/styles_sidenav.css" rel="stylesheet">
+<div class="top-navigation">
+  <nav class="navbar">
+      <a href="#menu" class="mobile-only hot-dog nav-element">
+      </a>
+    <div class="nav-logo">
+      <a href="https://wikileaks.org">
+        <h1>WikiLeaks</h1>
+      </a>
+    </div>
+    <div class="action-buttons">
+      <a class="button-face donate-link" href="https://shop.wikileaks.org/donate">Donate</a>
+      <a class="button-face submit-link" href="#submit">Submit</a>
+    </div>
+    <form class="global-search" method="get" action="https://search.wikileaks.org/">
+      <input type="text" name="q" placeholder="Search">
+      <button class="btn-search" type="submit"></button>
+    </form>
+    <div class="main-nav">
+
+        <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+            </li>
+
+            <li>
+              <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+            </li>
+
+        </ul>
+
+    </div>
+  </nav>
+</div>
+
+<nav id="menu" class="side-nav rub">
+  <div class="menu-wrapper">
+    <a class="close-btn nav-element" href="#"></a>
+
+      <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+
+          </li>
+
+          <li>
+            <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+
+          </li>
+
+      </ul>
+
+    <aside class="friends mobile-only">
+
+        <ul class="first-level">
+                <li>
+                <a href="https://our.wikileaks.org" target="_blank">our.wikileaks.org</a>
+                </li>
+                <li>
+                <a href="https://www.torproject.org/" target="_blank">Tor Project</a>
+                </li>
+                <li>
+                <a href="https://tails.boum.org/" target="_blank">Tails</a>
+                </li>
+                <li>
+                <a href="https://www.couragefound.org/" target="_blank">Courage</a>
+                </li>
+                <li>
+                <a href="https://www.bitcoin.org/" target="_blank">Bitcoin</a>
+                </li>
+        
+        </ul>
+
+    </aside>
+    <aside class="social mobile-only">
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/wikileaks" class="nav-element" target="_blank" alt="Facebook">
+            <img class="img-responsive" src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" class="nav-element" target="_blank" alt="Twitter">
+            <img class="img-responsive" src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</nav>
+
+
+<div id="overall">
+
+<div id="leftmenu">
+
+        <center><img src="/plusd/images/wl2.jpg" alt="WikiLeaks" /></center>
+        <a class="button" href="/plusd/pressrelease/">Press release</a>
+        <a class="button" href="/plusd/about/">About PlusD</a>
+
+        <div class="pick">
+	<h3>Browse by creation date</h3>
+
+<a href="/plusd/?q=&qtfrom=1966-01-01&qtto=1966-12-31#result">1966</a>
+<a href="/plusd/?q=&qtfrom=1972-01-01&qtto=1972-12-31#result">1972</a>
+<a href="/plusd/?q=&qtfrom=1973-01-01&qtto=1973-12-31#result">1973</a>
+<a href="/plusd/?q=&qtfrom=1974-01-01&qtto=1974-12-31#result">1974</a>
+<a href="/plusd/?q=&qtfrom=1975-01-01&qtto=1975-12-31#result">1975</a>
+<a href="/plusd/?q=&qtfrom=1976-01-01&qtto=1976-12-31#result">1976</a>
+<a href="/plusd/?q=&qtfrom=1977-01-01&qtto=1977-12-31#result">1977</a>
+<a href="/plusd/?q=&qtfrom=1978-01-01&qtto=1978-12-31#result">1978</a>
+<a href="/plusd/?q=&qtfrom=1979-01-01&qtto=1979-12-31#result">1979</a>
+<a href="/plusd/?q=&qtfrom=1985-01-01&qtto=1985-12-31#result">1985</a>
+<a href="/plusd/?q=&qtfrom=1986-01-01&qtto=1986-12-31#result">1986</a>
+<a href="/plusd/?q=&qtfrom=1987-01-01&qtto=1987-12-31#result">1987</a>
+<a href="/plusd/?q=&qtfrom=1988-01-01&qtto=1988-12-31#result">1988</a>
+<a href="/plusd/?q=&qtfrom=1989-01-01&qtto=1989-12-31#result">1989</a>
+<a href="/plusd/?q=&qtfrom=1990-01-01&qtto=1990-12-31#result">1990</a>
+<a href="/plusd/?q=&qtfrom=1991-01-01&qtto=1991-12-31#result">1991</a>
+<a href="/plusd/?q=&qtfrom=1992-01-01&qtto=1992-12-31#result">1992</a>
+<a href="/plusd/?q=&qtfrom=1993-01-01&qtto=1993-12-31#result">1993</a>
+<a href="/plusd/?q=&qtfrom=1994-01-01&qtto=1994-12-31#result">1994</a>
+<a href="/plusd/?q=&qtfrom=1995-01-01&qtto=1995-12-31#result">1995</a>
+<a href="/plusd/?q=&qtfrom=1996-01-01&qtto=1996-12-31#result">1996</a>
+<a href="/plusd/?q=&qtfrom=1997-01-01&qtto=1997-12-31#result">1997</a>
+<a href="/plusd/?q=&qtfrom=1998-01-01&qtto=1998-12-31#result">1998</a>
+<a href="/plusd/?q=&qtfrom=1999-01-01&qtto=1999-12-31#result">1999</a>
+<a href="/plusd/?q=&qtfrom=2000-01-01&qtto=2000-12-31#result">2000</a>
+<a href="/plusd/?q=&qtfrom=2001-01-01&qtto=2001-12-31#result">2001</a>
+<a href="/plusd/?q=&qtfrom=2002-01-01&qtto=2002-12-31#result">2002</a>
+<a href="/plusd/?q=&qtfrom=2003-01-01&qtto=2003-12-31#result">2003</a>
+<a href="/plusd/?q=&qtfrom=2004-01-01&qtto=2004-12-31#result">2004</a>
+<a href="/plusd/?q=&qtfrom=2005-01-01&qtto=2005-12-31#result">2005</a>
+<a href="/plusd/?q=&qtfrom=2006-01-01&qtto=2006-12-31#result">2006</a>
+<a href="/plusd/?q=&qtfrom=2007-01-01&qtto=2007-12-31#result">2007</a>
+<a href="/plusd/?q=&qtfrom=2008-01-01&qtto=2008-12-31#result">2008</a>
+<a href="/plusd/?q=&qtfrom=2009-01-01&qtto=2009-12-31#result">2009</a>
+<a href="/plusd/?q=&qtfrom=2010-01-01&qtto=2010-12-31#result">2010</a>
+
+        </div>
+
+        <div class="sort">
+	<h3>Browse by Classification</h3>
+
+<a href="/plusd/?q=&qfoclass=UNCLASSIFIED#result" title="UNCLASSIFIED (1339531 documents)">UNCLASSIFIED</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL#result" title="CONFIDENTIAL (503750 documents)">CONFIDENTIAL</a><a href="/plusd/?q=&qfoclass=LIMITED+OFFICIAL+USE#result" title="LIMITED OFFICIAL USE (435536 documents)">LIMITED OFFICIAL USE</a><a href="/plusd/?q=&qfoclass=SECRET#result" title="SECRET (120598 documents)">SECRET</a><a href="/plusd/?q=&qfoclass=UNCLASSIFIED%2F%2FFOR+OFFICIAL+USE+ONLY#result" title="UNCLASSIFIED//FOR OFFICIAL USE ONLY (58095 documents)">UNCLASSIFIED//FOR OFFICIAL USE ONLY</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL%2F%2FNOFORN#result" title="CONFIDENTIAL//NOFORN (4678 documents)">CONFIDENTIAL//NOFORN</a><a href="/plusd/?q=&qfoclass=SECRET%2F%2FNOFORN#result" title="SECRET//NOFORN (4330 documents)">SECRET//NOFORN</a>
+        </div>
+
+	<div class="sort">
+	<h3>Browse by Handling Restriction</h3>
+
+<a href="/plusd/?q=&qforiginalhandlingrestriction=EXDIS#result" title="EXDIS - Exclusive Distribution Only (71108 documents)">EXDIS - Exclusive Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=ONLY#result" title="ONLY - Eyes Only (32583 documents)">ONLY - Eyes Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LIMDIS#result" title="LIMDIS - Limited Distribution Only (25098 documents)">LIMDIS - Limited Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NODIS#result" title="NODIS - No Distribution (other than to persons indicated) (24437 documents)">NODIS - No Distribution (other than to persons indicated)</a><a href="/plusd/?q=&qforiginalhandlingrestriction=STADIS#result" title="STADIS - State Distribution Only (20286 documents)">STADIS - State Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CHEROKEE#result" title="CHEROKEE - Limited to senior officials (4343 documents)">CHEROKEE - Limited to senior officials</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NOFORN#result" title="NOFORN - No Foreign Distribution (2197 documents)">NOFORN - No Foreign Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LOU#result" title="LOU - Limited Official Use (598 documents)">LOU - Limited Official Use</a><a href="/plusd/?q=&qforiginalhandlingrestriction=SENSITIVE#result" title="SENSITIVE -  (43 documents)">SENSITIVE - </a><a href="/plusd/?q=&qforiginalhandlingrestriction=BU#result" title="BU - Background Use Only (3 documents)">BU - Background Use Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CONDIS#result" title="CONDIS - Controlled Distribution (1 documents)">CONDIS - Controlled Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=US#result" title="US - US Government Only (1 documents)">US - US Government Only</a>	</div>
+
+	<div class="pick wide">
+	<h3>Browse by TAGS</h3>
+<a href="/plusd/?q=&qftags=US#result" title="US - United States (553685 documents)">US</a> <a href="/plusd/?q=&qftags=PFOR#result" title="PFOR - Political Affairs--Foreign Policy and Relations (294672 documents)">PFOR</a> <a href="/plusd/?q=&qftags=PGOV#result" title="PGOV - Political Affairs--Government; Internal Governmental Affairs (180409 documents)">PGOV</a> <a href="/plusd/?q=&qftags=PREL#result" title="PREL - Political Affairs--External Political Relations (149906 documents)">PREL</a> <a href="/plusd/?q=&qftags=ETRD#result" title="ETRD - Economic Affairs--Foreign Trade (124244 documents)">ETRD</a> <a href="/plusd/?q=&qftags=UR#result" title="UR - Soviet Union (USSR) (117139 documents)">UR</a> <a href="/plusd/?q=&qftags=OVIP#result" title="OVIP - Operations--VIP Travel Arrangements (114816 documents)">OVIP</a> <a href="/plusd/?q=&qftags=ASEC#result" title="ASEC - Administration--Security (114594 documents)">ASEC</a> <a href="/plusd/?q=&qftags=OGEN#result" title="OGEN - Operations--General (114085 documents)">OGEN</a> <a href="/plusd/?q=&qftags=CASC#result" title="CASC - Consular Affairs--Assistance to Citizens (113486 documents)">CASC</a> <a href="/plusd/?q=&qftags=PINT#result" title="PINT - Political Affairs--Internal Political Affairs (104641 documents)">PINT</a> <a href="/plusd/?q=&qftags=EFIN#result" title="EFIN - Economic Affairs--Financial and Monetary Affairs (102225 documents)">EFIN</a> <a href="/plusd/?q=&qftags=BEXP#result" title="BEXP - Business Services--Trade Expansion and Promotion (102142 documents)">BEXP</a> <a href="/plusd/?q=&qftags=OEXC#result" title="OEXC - Operations--Educational and Cultural Exchange Operations (89751 documents)">OEXC</a> <a href="/plusd/?q=&qftags=EAID#result" title="EAID - Economic Affairs--Foreign Assistance (80469 documents)">EAID</a> <a href="/plusd/?q=&qftags=CVIS#result" title="CVIS - Consular Affairs--Visas (79634 documents)">CVIS</a> <a href="/plusd/?q=&qftags=OTRA#result" title="OTRA - Operations--Travel and Visits (79042 documents)">OTRA</a> <a href="/plusd/?q=&qftags=ENRG#result" title="ENRG - Economic Affairs--Energy and Power (76814 documents)">ENRG</a> <a href="/plusd/?q=&qftags=OCON#result" title="OCON - Operations--Conferences and Meetings (76271 documents)">OCON</a> <a href="/plusd/?q=&qftags=ECON#result" title="ECON - Economic Affairs--Economic Conditions, Trends and Potential (75832 documents)">ECON</a> <a href="/plusd/?q=&qftags=NATO#result" title="NATO - North Atlantic Treaty Organization (74653 documents)">NATO</a> <a href="/plusd/?q=&qftags=PINS#result" title="PINS - Political Affairs--Internal Security (72716 documents)">PINS</a> <a href="/plusd/?q=&qftags=GE#result" title="GE - Germany (East) (69261 documents)">GE</a> <a href="/plusd/?q=&qftags=JA#result" title="JA - Japan; Okinawa; (67491 documents)">JA</a> <a href="/plusd/?q=&qftags=UK#result" title="UK - United Kingdom (65645 documents)">UK</a> <a href="/plusd/?q=&qftags=IS#result" title="IS - Israel (61813 documents)">IS</a> <a href="/plusd/?q=&qftags=MARR#result" title="MARR - Military and Defense Affairs--Military and Defense Arrangements (59054 documents)">MARR</a> <a href="/plusd/?q=&qftags=PARM#result" title="PARM - Political Affairs--Arms Controls and Disarmament (58794 documents)">PARM</a> <a href="/plusd/?q=&qftags=UN#result" title="UN - United Nations (58176 documents)">UN</a> <a href="/plusd/?q=&qftags=EG#result" title="EG - Egypt (57176 documents)">EG</a> <a href="/plusd/?q=&qftags=FR#result" title="FR - France (56597 documents)">FR</a> <a href="/plusd/?q=&qftags=PHUM#result" title="PHUM - Political Affairs--Human Rights (55302 documents)">PHUM</a> <a href="/plusd/?q=&qftags=SREF#result" title="SREF - Social Affairs--Refugees (53585 documents)">SREF</a> <a href="/plusd/?q=&qftags=EAIR#result" title="EAIR - Economic Affairs--Aeronautics and Aviation; Civil Aviation (52511 documents)">EAIR</a> <a href="/plusd/?q=&qftags=MASS#result" title="MASS - Military and Defense Affairs--Military Assistance and Sales (51560 documents)">MASS</a> <a href="/plusd/?q=&qftags=APER#result" title="APER - Administration--Personnel (51272 documents)">APER</a> <a href="/plusd/?q=&qftags=SNAR#result" title="SNAR - Social Affairs--Narcotics (49299 documents)">SNAR</a> <a href="/plusd/?q=&qftags=PINR#result" title="PINR - Political Affairs--Intelligence (48667 documents)">PINR</a> <a href="/plusd/?q=&qftags=EAGR#result" title="EAGR - Economic Affairs--Agriculture and Forestry (47350 documents)">EAGR</a> <a href="/plusd/?q=&qftags=PDIP#result" title="PDIP - Political Affairs--Diplomatic and Consular Representation (47061 documents)">PDIP</a> <a href="/plusd/?q=&qftags=AORG#result" title="AORG - Administration--International Organization Administration (42798 documents)">AORG</a> <a href="/plusd/?q=&qftags=PORG#result" title="PORG - Political Affairs--Policy Relations With International Organizations (42754 documents)">PORG</a> <a href="/plusd/?q=&qftags=MX#result" title="MX - Mexico (42577 documents)">MX</a> <a href="/plusd/?q=&qftags=TU#result" title="TU - Turkey (42476 documents)">TU</a> <a href="/plusd/?q=&qftags=ELAB#result" title="ELAB - Economic Affairs--Labor and Manpower; Labor Sector Affairs (41921 documents)">ELAB</a> <a href="/plusd/?q=&qftags=IN#result" title="IN - India (41702 documents)">IN</a> <a href="/plusd/?q=&qftags=CA#result" title="CA - Canada (41623 documents)">CA</a> <a href="/plusd/?q=&qftags=SCUL#result" title="SCUL - Social Affairs--Cultural Affairs (41509 documents)">SCUL</a> <a href="/plusd/?q=&qftags=CH#result" title="CH - China (Mainland) (40426 documents)">CH</a> <a href="/plusd/?q=&qftags=IR#result" title="IR - Iran (39924 documents)">IR</a> <a href="/plusd/?q=&qftags=IT#result" title="IT - Italy (39454 documents)">IT</a> <a href="/plusd/?q=&qftags=XF#result" title="XF - Middle East (38273 documents)">XF</a> <a href="/plusd/?q=&qftags=GW#result" title="GW - Germany (West) (37945 documents)">GW</a> <a href="/plusd/?q=&qftags=EINV#result" title="EINV - Economic Affairs--Investments; Foreign Investments (37616 documents)">EINV</a> <a href="/plusd/?q=&qftags=TH#result" title="TH - Thailand (37385 documents)">TH</a> <a href="/plusd/?q=&qftags=TECH#result" title="TECH - Technology and Science--Technology (36578 documents)">TECH</a> <a href="/plusd/?q=&qftags=SENV#result" title="SENV - Social Affairs--Environment (35665 documents)">SENV</a> <a href="/plusd/?q=&qftags=OREP#result" title="OREP - Operations--Congressional Travel (35140 documents)">OREP</a> <a href="/plusd/?q=&qftags=KS#result" title="KS - Korea (South) (34546 documents)">KS</a> <a href="/plusd/?q=&qftags=EGEN#result" title="EGEN - Economic Affairs--General (34287 documents)">EGEN</a> <a href="/plusd/?q=&qftags=PEPR#result" title="PEPR - PEPR (33866 documents)">PEPR</a> <a href="/plusd/?q=&qftags=MILI#result" title="MILI - Military and Defense Affairs--General (33710 documents)">MILI</a> <a href="/plusd/?q=&qftags=SHUM#result" title="SHUM - Social Affairs--Human Rights (33098 documents)">SHUM</a> <a href="/plusd/?q=&qftags=KISSINGER%2C+HENRY+A#result" title="KISSINGER, HENRY A - Henry Kissinger (32848 documents)">KISSINGER, HENRY A</a> <a href="/plusd/?q=&qftags=PL#result" title="PL - Poland (31163 documents)">PL</a> <a href="/plusd/?q=&qftags=BR#result" title="BR - Brazil (30797 documents)">BR</a> <a href="/plusd/?q=&qftags=RP#result" title="RP - Philippines (30198 documents)">RP</a> <a href="/plusd/?q=&qftags=GR#result" title="GR - Greece; Crete (30183 documents)">GR</a> <a href="/plusd/?q=&qftags=SF#result" title="SF - South Africa (30161 documents)">SF</a> <a href="/plusd/?q=&qftags=AFSP#result" title="AFSP - Administration--Post Administration (29315 documents)">AFSP</a> <a href="/plusd/?q=&qftags=SP#result" title="SP - Spain (29108 documents)">SP</a> <a href="/plusd/?q=&qftags=PTER#result" title="PTER - Political Affairs--Terrorists and Terrorism (28839 documents)">PTER</a> <a href="/plusd/?q=&qftags=MOPS#result" title="MOPS - Military and Defense Affairs--Military Operations (28821 documents)">MOPS</a> <a href="/plusd/?q=&qftags=SA#result" title="SA - Saudi Arabia (28190 documents)">SA</a> <a href="/plusd/?q=&qftags=UNGA#result" title="UNGA - UN General Assembly (27867 documents)">UNGA</a> <a href="/plusd/?q=&qftags=CGEN#result" title="CGEN - Consular Affairs--General (27680 documents)">CGEN</a> <a href="/plusd/?q=&qftags=ESTC#result" title="ESTC - Economic Affairs--Strategic Trade Controls (27627 documents)">ESTC</a> <a href="/plusd/?q=&qftags=SOPN#result" title="SOPN - Social Affairs--Public Opinion and Information (27583 documents)">SOPN</a> <a href="/plusd/?q=&qftags=RO#result" title="RO - Romania (27560 documents)">RO</a> <a href="/plusd/?q=&qftags=LE#result" title="LE - Lebanon (27323 documents)">LE</a> <a href="/plusd/?q=&qftags=TGEN#result" title="TGEN - Technology and Science--General (27058 documents)">TGEN</a> <a href="/plusd/?q=&qftags=PK#result" title="PK - Pakistan (26991 documents)">PK</a> <a href="/plusd/?q=&qftags=AR#result" title="AR - Argentina (26444 documents)">AR</a> <a href="/plusd/?q=&qftags=NI#result" title="NI - Nigeria (26170 documents)">NI</a> <a href="/plusd/?q=&qftags=OSCI#result" title="OSCI - Operations--Science Grants (25846 documents)">OSCI</a> <a href="/plusd/?q=&qftags=CI#result" title="CI - Chile (25827 documents)">CI</a> <a href="/plusd/?q=&qftags=EEC#result" title="EEC - European Common Market (European Communities); European Economic Community (25827 documents)">EEC</a> <a href="/plusd/?q=&qftags=VS#result" title="VS - South Vietnam (25800 documents)">VS</a> <a href="/plusd/?q=&qftags=YO#result" title="YO -  (25447 documents)">YO</a> <a href="/plusd/?q=&qftags=AFIN#result" title="AFIN - Administration--Financial Services (24705 documents)">AFIN</a> <a href="/plusd/?q=&qftags=OECD#result" title="OECD - Organization for Economic Cooperation and Development (24622 documents)">OECD</a> <a href="/plusd/?q=&qftags=SY#result" title="SY - Syria (24419 documents)">SY</a> <a href="/plusd/?q=&qftags=IZ#result" title="IZ - Iraq (24415 documents)">IZ</a> <a href="/plusd/?q=&qftags=ID#result" title="ID - Indonesia (23865 documents)">ID</a> <a href="/plusd/?q=&qftags=VE#result" title="VE - Venezuela (23792 documents)">VE</a> <a href="/plusd/?q=&qftags=TPHY#result" title="TPHY - Technology and Science--Physical Sciences (23741 documents)">TPHY</a> <a href="/plusd/?q=&qftags=TW#result" title="TW - Taiwan (23233 documents)">TW</a> <a href="/plusd/?q=&qftags=AS#result" title="AS - Australia (23143 documents)">AS</a> <a href="/plusd/?q=&qftags=PBOR#result" title="PBOR - Political Affairs--Boundary and Sovereignity Claims (23066 documents)">PBOR</a> 
+	</div>
+
+
+        <div class="sort" style="clear:both;">
+        <h3>Media Organizations</h3>
+        <a target="_blank" href="http://www.theage.com.au/">Australia - The Age</a>
+        <a target="_blank" href="http://www.pagina12.com.ar/">Argentina - Pagina 12</a>
+        <a target="_blank" href="http://www.apublica.org/?p=4041">Brazil - Publica</a>
+        <a target="_blank" href="https://bivol.bg/">Bulgaria - Bivol</a>
+        <a target="_blank" href="http://www.almasryalyoum.com/ ">Egypt - Al Masry Al Youm</a>
+        <a target="_blank" href="http://www.tanea.gr/">Greece - Ta Nea</a>
+        <a target="_blank" href="http://www.plazapublica.com.gt/content/los-cables-de-wikileaks">Guatemala - Plaza Publica</a>
+        <a target="_blank" href="http://www.haiti-liberte.com/">Haiti - Haiti Liberte</a>
+        <a target="_blank" href="http://www.thehindu.com/">India - The Hindu</a>
+        <a target="_blank" href="http://espresso.repubblica.it/">Italy - L'Espresso</a>
+        <a target="_blank" href="http://www.repubblica.it/">Italy - La Repubblica</a>
+        <a target="_blank" href="http://www.al-akhbar.com/">Lebanon - Al Akhbar</a>
+        <a target="_blank" href="http://www.jornada.unam.mx/ultimas/">Mexico - La Jornada</a>
+        <a target="_blank" href="http://www.publico.es/452776">Spain - Publico</a>
+        <a target="_blank" href="http://www.aftonbladet.se/nyheter/article16421007.ab">Sweden - Aftonbladet</a>
+        <a target="_blank" href="http://www.ap.org/">UK - AP</a>
+        <a target="_blank" href="http://thenation.com">US - The Nation</a>
+        </div>
+	<br style="clear: both;" />
+</div>
+
+<div id="content"><div id="content-main">
+
+<!--<p style="text-align: justify; font-size: medium">Click the <b>Chat</b> button above to join a secure chat channel dedicated to media partner The Kissinger Cables discussion. Please go on this to talk to the others currently working on this project. <br />When the chat window opens type the following in the white text space at the bottom of the screen to assign yourself a recognisable name: <b>/nick Espresso</b> and press enter</p>
+<center><h2 style="font-size: x-large;">Public Library of US Diplomacy: PlusD</h2></center>-->
+
+<center><img src="/plusd/images/plusdb.png" /></center>
+<div id="st" style="clear:both;">&nbsp;</div>
+<div id="topnav">
+        <a class="searchbutton active" href="//search.wikileaks.org/plusd/">Specified Search</a>
+        <a class="searchbutton sbinv" href="/plusd/map" target="_blank">View Map</a>
+        <a class="searchbutton sbinv" href="/plusd/graph" target="_blank">Make Timegraph</a>
+        <a class="searchbutton sbinv" href="/plusd/tags/" target="_blank">View Tags</a>
+        <a class="searchbutton sbinv" href="/plusd/imagelibrary/" target="_blank">Image Library</a>
+</div>
+<div class="sections"> 
+<div class="pane-content">
+	<table id="synopsis">
+		<tr style="background:#eee;">
+			<td colspan="2" style="font-size: medium; padding: 5px;color: #000; font-weight: bold; text-align: center;">TRANSCRIPT OF LI HSIEN-NIEN/CODEL CURTIS CONVERSATION</td>
+		</tr>
+		<tr style="background:#eee;">
+			<td><div class="s_key"><a class="i" title="Date">Date:</a></div><div class="s_val" title=" 1976 November 16, 09:09 (Tuesday)">1976 November 16, 09:09 (Tuesday)</div></td>
+			<td><div class="s_key"><a class="i" title="Canonical ID">Canonical ID:</a></div><div class="s_val" title=" 1976PEKING02368_b">1976PEKING02368_b</div></td>
+		</tr>
+		<tr>
+			<td><div class="s_key"><a class="i" title="Original Classification">Original Classification:</a></div><div class="s_val" title=" CONFIDENTIAL (503750 documents)">CONFIDENTIAL</div></td>
+			<td><div class="s_key"><a class="i" title="Current Classification">Current Classification:</a></div><div class="s_val" title=" UNCLASSIFIED (2592391 documents)">UNCLASSIFIED</div></td>
+		</tr>
+
+		<tr>
+			<td>
+<div class="s_key"><a class="i" title="Handling Restrictions", ">Handling Restrictions</a></div> <div class="s_val" title="EXDIS - Exclusive Distribution Only (71108 documents)">EXDIS - Exclusive Distribution Only</div><br /></td>
+			<td><div class="s_key"><a class="i" title="Character Count">Character Count:</a></div><div class="s_val" title=" 29246">29246</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Executive Order">Executive Order:</a></div><div class="s_val" title=" X1 (30639 documents)">X1</div></td>
+			<td><div class="s_key"><a class="i" title="Locator">Locator:</a></div><div class="s_val" title=" TEXT ON MICROFILM,TEXT ONLINE">TEXT ON MICROFILM,TEXT ONLINE</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="TAGS">TAGS:</a></div><div class="s_val" title=" CH - China (Mainland) | CURTIS, CARL | ECON - Economic Affairs--Economic Conditions, Trends and Potential | OREP - Operations--Congressional Travel | PFOR - Political Affairs--Foreign Policy and Relations | TW - Taiwan | UR - Soviet Union (USSR) | US - United States"><a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=CH#result" title="CH China (Mainland) (40426 documents)" >CH<span style="color: #216B7C;"> - China (Mainland)</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=CURTIS%2C+CARL#result" title="CURTIS, CARL  (43 documents)" >CURTIS, CARL</a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=ECON#result" title="ECON Economic Affairs: Economic Conditions, Trends and Potential (75832 documents)" >ECON<span style="color: #216B7C;"> - Economic Affairs--Economic Conditions, Trends and Potential</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=OREP#result" title="OREP Operations: Congressional Travel (35140 documents)" >OREP<span style="color: #216B7C;"> - Operations--Congressional Travel</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=PFOR#result" title="PFOR Political Affairs: Foreign Policy and Relations (294672 documents)" >PFOR<span style="color: #216B7C;"> - Political Affairs--Foreign Policy and Relations</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=TW#result" title="TW Taiwan (23233 documents)" >TW<span style="color: #216B7C;"> - Taiwan</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=UR#result" title="UR Soviet Union (USSR) (117139 documents)" >UR<span style="color: #216B7C;"> - Soviet Union (USSR)</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=US#result" title="US United States (553685 documents)" >US<span style="color: #216B7C;"> - United States</span></a></div></td>
+			<td><div class="s_key"><a class="i" title="Concepts">Concepts:</a></div><div class="s_val" title=" -- N/A or Blank --"><a title="-- N/A or Blank -- (1154091 documents)" style="color: #216B7C; " target="_blank" href="/plusd/?q=&amp;qfconcept=-- N/A OR BLANK --#result">-- N/A or Blank --</a></div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Enclosure">Enclosure:</a></div><div class="s_val" title=" -- N/A or Blank -- (2333922 documents)">-- N/A or Blank --</div></td>
+			<td><div class="s_key"><a class="i" title="Type">Type:</a></div><div class="s_val" title=" TE - Telegram (cable) (2008616 documents)">TE - Telegram (cable)</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc">
+				<div class="s_key"><a class="i" title="Office Origin">Office Origin:</a></div><div class="s_val" title=" -- N/A or Blank -- (2117535 documents)">-- N/A or Blank --</div>				<br style="clear:both;"/>
+				<div class="s_key"><a class="i" title="Office Action">Office Action:</a></div><div class="s_val" title=" ACTION SS - Executive Secretariat, Department of State (64145 documents)">ACTION SS - Executive Secretariat, Department of State</div>			</td>
+			<td><div class="s_key"><a class="i" title="Archive Status">Archive Status:</a></div><div class="s_val" title=" Electronic Telegrams (1758257 documents)">Electronic Telegrams</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="From">From:</a></div><div class="s_val" title=" China Beijing  | China United States Liason Office Peking (12048 documents)"><a style="color: #216B7C; " href="/plusd/?q=&qforigin=China%23%23Beijing#result" title="China Beijing (12048 documents)">China Beijing</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qforigin=China%23%23United+States+Liason+Office+Peking#result" title="China United States Liason Office Peking (6339 documents)">China United States Liason Office Peking</a></div></td>
+			<td><div class="s_key"><a class="i" title="Markings">Markings:</a></div><div class="s_val" title=" Margaret P. Grafeld Declassified/Released US Department of State EO Systematic Review 04 MAY 2006 (347411 documents)">Margaret P. Grafeld Declassified/Released US Department of State EO Systematic Review 04 MAY 2006</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="To">To:</a></div><div class="s_val" title=" China Hong Kong  | Department of State   | Japan Tokyo  | Russia Moscow  | Secretary of State   | Taiwan Taipei City"><a style="color: #216B7C; " href="/plusd/?q=&qfdestination=China%23%23Hong Kong#result" title="China Hong Kong (37426 documents)">China Hong Kong</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Department of State#result" title="Department of State  (921114 documents)">Department of State </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Japan%23%23Tokyo#result" title="Japan Tokyo (71158 documents)">Japan Tokyo</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Russia%23%23Moscow#result" title="Russia Moscow (95499 documents)">Russia Moscow</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Secretary of State#result" title="Secretary of State  (1328443 documents)">Secretary of State </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Taiwan%23%23Taipei City#result" title="Taiwan Taipei City (19279 documents)">Taiwan Taipei City</a></div></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<br />
+
+
+<br style="clear: both;" />
+
+</div>
+<div class="pane-tab"><div class="pane-header">Content</div><div class="pane-content"><div class="text-header hidden">
+
+CONFIDENTIAL
+
+PAGE 01        PEKING 02368  01 OF 07  161130Z
+
+14
+ACTION SS-25
+
+INFO  OCT-01  ISO-00  SSO-00  NSCE-00  /026 W
+---------------------     117254
+O R 160909Z NOV 76
+FM USLO  PEKING
+TO SECSTATE WASHDC IMMEDIATE 6787
+INFO AMCONSUL HONG KONG
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI
+AMEMBASSY TOKYO
+
+C O N F I D E N T I A L SECTION 1 OF 7 PEKING 2368
+
+EXDIS
+
+E.O. 11652: XGDS-1
+TAGS: PFOR, ECON, CH, US, UR, TW, OREP (CURTIS, CARL)
+SUBJECT: TRANSCRIPT OF LI HSIEN-NIEN/CODEL CURTIS CONVERSATION
+
+REF: PEKING 2353</div><div class="text-button" id="showhide">Show&nbsp;Headers</div><div class="text-content"><div id="tagged-text">
+1. THERE FOLLOWS NEARLY VERBATIM TRANSCRIPT, CLEARED BY
+SENATOR CURTIS, OF CONVERSATION BETWEEN CODEL CURTIS AND
+PRC VICE PREMIER LI HSIEN-NIEN ON NOVEMBER 14, 4:45 -
+6:15 P.M., AT THE GREAT HALL OF THE PEOPLE. AMERICANS
+PRESENT WERE:
+
+CODEL:
+SENATOR AND MRS. CARL CURTIS
+SENATOR AND MRS. BIRCH BAYH
+SENATOR AND MRS. MILTON YOUNG
+SENATOR AND MRS. ERNEST HOLLINGS
+SENATOR AND MRS. TED STEVENS
+SENATOR AND MRS. BENNETT JOHNSON
+MR. AND MRS. ROBERT WOLTHIUS
+MR. TERRY HOWE
+MR. RICHARD HART
+
+USLO:
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 02        PEKING 02368  01 OF 07  161130Z
+
+AMBASSADOR GATES
+MR. RICHARD BOCK
+
+PRINCIPAL CHINESE PRESENT, IN ADDITION TO VICE
+PREMIER LI, WERE:
+VICE FOREIGN MINISTER WANG HAI-JUNG
+TANG WEN-SHENG, DEPUTY DIRECTOR, AMERICAN AND OCEANIAN
+DEPARTMENT, MFA
+KO PO-NIEN, VICE PRESIDENT, CHINESE PEOPLE'S INSTITUTE
+OF FOREIGN AFFAIRS (CPIFA)
+KANG TAI-SHA, DEPUTY SECRETARY-GENERAL, CPIFA.
+
+2.  LI: WELCOME TO OUR FRIENDS.
+
+CURTIS: WE ARE DELIGHTED TO BE HERE.
+
+LI: TODAY YOU VISITED THE GREAT WALL?
+
+CURTIS: WE HAVE READ OF IT THROUGH THE YEARS. FOR MANY OF US
+THIS IS OUR FIRST VISIT TO CHINA AND WE WERE DELIGHTED TO VISIT
+THE GREAT WALL.
+
+LI: IT'S A PLACE OF HISTORICAL INTEREST. I WONDER WHETHER
+ANY OF YOU HAVE BEEN TO CHINA BEFORE.
+
+CURTIS: SENATOR STEVENS, TELL US OF YOUR FIRST TRIP TO CHINA.
+
+STEVENS: I WAS IN THE 14TH AIR FORCE, STATIONED IN KUNMING AND
+WAS HERE IN PEKING IN 1945 RIGHT AFTER THE WAR ENDED.
+
+LI: THAT IS UNDER CHENNAULT?
+
+STEVENS: YES, I SERVED WITH GENERAL CHENNAULT.
+
+LI: YOU WERE IN CHINA DURING WORLD WAR II. AT THAT TIME YOU
+HAD A TRANSPORT TEAM.
+
+STEVENS: I WAS A PILOT. I FLEW TRANSPORT PLANES INTO SIAN,
+HANKOW, KWEILIN, ALL OVER THE COUNTRY.
+
+LI: HOW LONG SINCE YOU ARRIVED IN CHINA?
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 03        PEKING 02368  01 OF 07  161130Z
+
+
+CURTIS: WE ARRIVED LAST MONDAY, HAD A DELIGHTFUL STAY IN
+SHANGHAI, TOOK THE TRAIN TO NANKING, ENJOYED OUR STAY THERE OF
+TWO NIGHTS AND THEN HAD A VERY PLEASANT TRAIN RIDE HERE. WE HAVE
+BEEN TREATED WONDERFULLY.
+
+LI: SO YOU ARRIVED THE 8TH OF NOVEMBER. IN SHANGHAI DID YOU
+READ THE BIG CHARACTER POSTERS?
+
+CURTIS: WE COULDN'T READ THEM OURSELVES, BUT OUR GUIDES TOLD US
+ABOUT SOME OF THEM.
+
+LI: YOU HAVE ARRIVED IN CHINA AT A TIME THAT THE CENTRAL
+COMMITTEE HAS MADE THE DECISION TO APPOINT HUA KUO-FENG AS
+CHAIRMAN OF THE CENTRAL COMMITTEE AND OF THE MILITARY COMMISSION
+OF THE CENTRAL COMMITTEE. IT IS ALSO AT THE TIME THAT WE HAVE
+EXPLAINED THE SCHEMES OF THE GANG OF FOUR -- WANG HUNG-WEN, CHANG
+CHUN-CHIAO, CHIANG CHING, AND YAO WEN-YUAN. THE DECISION WAS MADE IN
+OCTOBER. THUS, YOU MUST HAVE
+SEEM MANY BIG CHARACTER POSTERS IN SHANGHAI.
+
+
+CONFIDENTIAL
+
+
+
+
+NNN
+
+CONFIDENTIAL
+
+PAGE 01        PEKING 02368  02 OF 07  161138Z
+
+14
+ACTION SS-25
+
+INFO  OCT-01  ISO-00  SSO-00  NSCE-00  /026 W
+---------------------     117306
+O R 160909Z NOV 76
+FM USLO  PEKING
+TO SECSTATE WASHDC IMMEDIATE 6788
+INFO AMCONSUL HONG KONG
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI
+AMEMBASSY TOKYO
+
+C O N F I D E N T I A L SECTION 2 OF 7 PEKING 2368
+
+EXDIS
+
+CURTIS: YES, WE DID.
+
+LI: THAT WAS A MAJOR EVENT IN CHINA. THIS YEAR FIRST PREMIER
+CHOU EN-LAI PASSED AWAY, THEN CHU TEH, THE CHAIRMAN OF THE NATIONAL
+PEOPLE'S CONGRESS, AND THEN OUR GREAT LEADER AND TEACHER CHAIRMAN
+MAO TSE-TUNG.
+
+CURTIS: WE FOLLOW ALL THE NEWS WE GET FROM CHINA BECAUSE WE VALUE THE
+FRIENDSHIP OF YOUR GREAT COUNTRY. WE WISH TO EXPRESS OUR CONDOLENCES
+ON THE LOSS OF YOUR LEADERS, PARTICULARLY CHAIRMAN MAO. ALSO, WE
+BRING GREETINGS TO YOU FROM PRESIDENT FORD.
+
+LI: THANK YOU. WHEN PRESIDENT FORD VISITED CHINA LAST YEAR,
+I MET HIM. PLEASE CONVEY MY GREETINGS TO HIM.
+
+CURTIS: THANK YOU, I WILL DO SO. A FEW DAYS BEFORE I LEFT THE U.S.
+I HAD A CALL FROM FORMER PRESIDENT NIXON AND HE ASKED THAT I CONVEY
+HIS GREETINGS TO CHINA AND THE CHINESE PEOPLE.
+
+LI: PLEASE CONVEY MY THANKS TO MR. NIXON.
+
+CURTIS: YOU'LL BE PLEASED TO KNOW THAT WHEN THE ANNOUNCEMENT OF
+OUR VISIT WAS MADE, ALL OF US EXPERIENCED A TREMDNDOUS RESPONSE
+FROM OUR PEOPLE WHO EXPRESSED A GREAT INTEREST IN CHINA. MY
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 02        PEKING 02368  02 OF 07  161138Z
+
+NEBRASKA CONSTITUENTS WERE DELIGHTED THAT WE WERE MAKING THIS TRIP.
+
+LI: YOUR STATE HAS A HIGHLY DEVELOPED AGRICULTURE.
+
+CURTIS: YES, WE ARE A GREAT AGRICULTURAL STATE. A NUMBER OF
+THE SENATORS HERE REPRESENT AGRICULTURAL STATES AND WE HAVE BEEN
+TREMENDOUSLY IMPRESSED BY THE INDUSTRIOUSNESS OF YOUR AGRICULTURAL
+WORKERS.
+
+LI: SENATOR YOUNG, YOU ARE ALSO FROM AN AGRICULTURAL STATE, I
+BELIEVE.
+
+YOUNG: I'M A FARMER MYSELF AND MY THREE SONS FARM. ONE OF THE
+AMAZING THINGS TO ME IS THAT YOUR LAND HAS BEEN PRODUCING FOR
+2,000 YEARS OR MORE AND PRODUCES JUST AS WELL AS OURS WHICH HAS
+BEEN PRODUCING FOR ONLY A LITTLE OVER ONE HUNDRED YEARS.
+
+LI: IN THE PAST 2,000 YEARS OR MORE WE WERE UNDER FEUDAL RULE
+AND PRODUCTION WAS RESTRAINED. AFTERWARDS, THERE WAS AGGRESSION
+BY FOREIGN IMPERIALIST STATES SO OUR AGRICULTURE DID NOT DEVELOP.
+BEFORE LIBERATION (IN 1949) PRODUCTION WAS BACKWARD IN CHINA
+AND NOT ONLY DRAFT ANIMALS BUT ALSO HUMAN BEINGS HAD TO
+PULL PLOWS. THERE WAS THE RUTHLESS PLUNDER BY LANDLORDS
+AND BUREAUTCRATIC-CAPITALISTS, AS WELL AS BY IMPERIALISTS. SO
+PEASANTS
+AT THAT TIME WERE IN A DIRE PLIGHT. IT WAS NOT SURPRISING THAT
+SEVERAL MILLION PEASANTS STARVED TO DEATH. THAT WAS THE
+SITUATION DURING THE FEUDAL DYNASTIES AND UNDER CHIANG KAI-SHEK
+RULE. YOU MIGHT VERY WELL STUDY WHY CHIANG KAI-SHEK FELL,
+THERE MUST BE SOME REASONS BEHIND IT. IT WAS BECAUSE HE
+OFFENDED THE MAJORITY OF THE PEOPLE, ABOVE ALL HE OFFENDED THE
+PEASANTS AND WORKERS. NOW IN CHINA, WITH SUCH A VAST TERRITORY
+AND 800 MILLION PEOPLE, WE HAVE SOLVED THE FOOD PROBLEM IN THE
+MAIN, SO PEOPLE WON'T STARVE TO DEATH OR DIE OF COLD. THIS WAS
+THE GREAT ACHIEVEMENT MADE UNDER THE LEADERSHIP OF CHAIRMAN MAO
+AND BY RELYING ON THE EFFORTS OF THE BROAD MASSES OF PEOPLE.
+BUT WE ARE NOT SATISFIED. JUST NOW I SAID WE HAD SOLVED
+THE FOOD PROBLEM IN THE MAIN. IT IS NOT YET COMPLETELY SOLVED AND
+WE MUST CONTINUE OUR EFFORTS. WE JUST HAVE SUFFICIENT FOOD GRAIN
+TO FEED OUR PEOPLE. WE HAVE SOME TO EXPORT BUT WE ALSO IMPORT
+SOME. THE AMOUNT IS LIMITED COMPARED TO YOURS. WE EXPORT
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 03        PEKING 02368  02 OF 07  161138Z
+
+ONE OR TWO MILLION TONS AND IMPORT ABOUT THE SAME. WE MUST
+RELY ON OUR OWN EFFORTS AND RUN EVERYTHING WITH OUR OWN STRENGTH.
+
+CURTIS: I WISH TO COMEND YOU ON YOUR GREAT PROGRESS, AND ON
+YOUR DETERMINATION TO BE SELF-SUFFICIENT IN FOOD. YOU HAVE DONE A
+GREAT JOB. I UNDERSTAND YOUR EXPORTS INCLUDE SOME RICE. IS THAT
+RIGHT?
+
+LI: WE EXPORT SOME RICE AND SOY BEANS.
+
+CURTIS: WHAT DO YOU IMPORT?
+
+LI: A CERTAIN AMOUNT OF WHEAT, ALSO SOME FOOD GRAINS FROM
+YOUR COUNTRY.
+
+CURTIS: WHILE WE COMMEND YOUR DETERMINATION TO BE
+SELF-SUFFICIENT IN FOOD GRAIN, IF YOU HAVE TO BUY ANY, PLEASE
+COME TO US. SENATOR YOUNG IS A WHEAT FARMER AND SO IS
+SENATOR BAYH.
+
+
+CONFIDENTIAL
+
+
+
+
+NNN
+
+CONFIDENTIAL
+
+PAGE 01        PEKING 02368  03 OF 07  161149Z
+
+12
+ACTION SS-25
+
+INFO  OCT-01  ISO-00  SSO-00  NSCE-00  /026 W
+---------------------     117426
+O R 160909Z NOV 76
+FM USLO  PEKING
+TO SECSTATE WASHDC IMMEDIATE 6789
+INFO AMCONSUL HONG KONG
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI
+AMEMBASSY TOKYO
+
+C O N F I D E N T I A L SECTION 3 OF 7 PEKING 2368
+
+EXDIS
+
+LI: BUT WE DON'T HAVE ENOUGH MONEY.
+
+CURTIS: THEN WE MUST BUY SOMETHING FROM YOU. DO YOU HAVE SOME
+OIL TO SELL US?
+
+LI: WE ARE JUST SELF-SUFFICIENT IN OIL. OUR SURPLUS IS
+NOT MUCH. OF COURSE WE HAVE BIG OIL DEPOSITS.
+
+CURTIS: WE UNDERSTAND THE POTENTIAL IS VERY GREAT.
+
+LI: YES, YOU'RE RIGHT. FURTHER EFFORTS SHOULD BE MADE FOR
+EXPLORATION. OUR OIL INDUSTRY IS STILL VERY YOUNG AND IN THE
+PAST WE HAD VERY LITTLE. IN 1960 WE BEGAN TO HAVE OUR OWN OIL
+INDUSTRY. BUT WE HAD TO IMPORT OIL FROM OTHERS, ESPECIALLY
+FROM OUR NEIGHBOR TO THE NORTH WHO TRIED TO STRANGLE US.
+PERHAPS YOU KNOW WHAT I MEAN BY OUR NEIGHBOR TO THE NORTH. WE'VE HAD
+BAD RELATIONS.
+
+CURTIS: WE DON'T THINK THEY'RE VERY NEIGHBORLY.
+
+LI: THEY SEEK HEGEMONY.
+
+CURTIS: THE MAJOR REASON THE U.S. SPENDS SO MUCH TO STAY STRONG
+MILITARILY IS THAT WE FEEL THAT WILL RETARD ANY CHANCE THAT THE SOVIET
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 02        PEKING 02368  03 OF 07  161149Z
+
+
+UNION WILL TRY AGGRESSION.
+
+LI: THE SOVIETS HAVE BIG AMBITIONS, AND WOULD LIKE TO HAVE THE
+WHOLE GLOBE. BUT THEY ARE UNABLE TO ACHIEVE THAT BECAUSE
+THEIR STRENGTH IS NOT THAT GREAT. POLITICALLY, THEY SEEK HEGEMONY
+NO MATTER WHAT TRICKS OR FINE WORDS THEY USE, THEY WILL EVENTUALLY
+BE EXPOSED BY THE PEOPLE OF THE WORLD. THEIR SEEKING HEGEMONY
+MAKES THEM THE ENEMY OF THE WORLD'S PEOPLE. AT HOME THERE IS
+LOPSIDED DEVELOPMENT IN THE SOVIET ECONOMY, THERE IS NOT ENOUGH
+FOOD TO EAT, NOT ENOUGH FOOD GRAINS. SOME PEOPLE SATIRIZE THE
+SOVIET UNION BY SAYING THE SOVIETS SOW SEEDS IN
+THE UKRAINE AND HARVEST CROPS IN THE US.
+THEIR TOP PRIORITY IS THE DEVELOPMENT OF NATIONAL DEFENSE AND IN
+DOMESTIC POLICIES THE SOVIET UNION OPPRESSES THE MINORITY NATIONAL-
+ITIES AND PRACTICES FASCIST RULE. ACTUALLY THEY ARE VERY
+FEEBLE.
+
+CURTIS: YOU HAVE HAD A LONG AND DISTINGUISHED CAREER AND YOU
+ARE A STUDENT OF ECONOMICS. WHY IN YOUR OPINION IS THE SOVIET
+ECONOMY WEAK?
+
+LI: I'M NO STUDENT OF ECONOMICS. I'M NOT A SCHOLAR OF ECONOMICS.
+BUT I DID FIGHT IN THE WAR. IN MY VIEW, THE SOVIET UNION HAS
+OFFENDED THE WORKERS AND PEASANTS AND BROAD MASSES OF THE PEOPLE,
+THEREFORE THERE IS NO ENTHUSIASM ON THEIR PART. IN PLANNING, THEY
+GIVE PROMINENCE TO DEVELOPMENT OF NATIONAL DEFENSE. OTHER BRANCHES
+OF INDUSTRY -- MACHINE BUILDING, CHEMICALS, ETC, -- ARE LAGGING BE-
+HIND. IN RELATIONS BETWEEN INDUSTRY AND AGRICULTURE, THEY
+NEGLECT THE DEVELOPMENT OF AGRICULTURE. YOU CAN STUDY WHETHER OR
+NOT I'M RIGHT. IN THE SOVIET UNION LINE, PRINCIPLES, AND
+POLICIES ARE ALL WRONG. THEY PRACTICE REVISIONISM AND FASCISM,
+AND THERE IS NO WAY TO MOBILIZE THE ENTHUSIASM OF THE WORKERS,
+PEASANTS AND OTHER PEOPLE.
+
+CURTIS: WE IN THE U.S. ARE VERY AWARE OF THE SOVIET MILITARY
+THREAT AND THE GREAT SUMS THEY ARE SPENDING ON ARMAMENTS. THAT IS
+WHY WE INTEND TO STAY STRONG, WHY WE MAKE SACRIFICES IN MANY
+PARTS OF THE WORLD TO RESIST SOVIET AGGRESSION.
+
+LI: WE ARE ALSO AWARE OF SOVIET MILITARY STRENGTH, BUT THEY
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 03        PEKING 02368  03 OF 07  161149Z
+
+TALK OF DISARMAMENT EVERY DAY.
+
+CURTIS: DO YOU THINK THE SOVIETS HAVE PLANS FOR WESTERN EUROPE IF
+THEY ARE NOT RESISTED?
+
+LI: WHAT DO YOU MEAN BY PLANS? THE SOVIETS THINK FIRST OF ALL
+ABOUT EUROPE.
+
+CURTIS: I MEAN AGGRESSIVE PLANS.
+
+LI: SOME PEOPLE IN THE WORLD TEND TO THINK THAT THE FOCUS
+OF SOVIET STRATEGY LIES IN THE EAST. CHAIRMAN MAO THOUGHT THAT
+THE SOVIET STRATEGIC FOCUS WAS IN EUROPE, INCLUDING THE MIDDLE
+EAST. THIS DOES NOT MEAN WE WILL SLACKEN OUR VIGILANCE. WE ARE
+HEIGHTENING OUR VIGILANCE. THAT IS WHY WE DIG TUNNELS DEEP AND
+STORE GRAIN EVERYWHERE. BY DIGGING TUNNELS DEEP WE MEAN IF THE
+SOVIETS INVADE US WE WILL FIGHT BACK. MAO TAUGHT US TO PREPARE
+AGAINST WAR, PREPARE AGAINST NATURAL DISASTERS, AND DO EVERYTHING
+FOR THE PEOPLE. BY PREPARING FOR WAR WE MEAN IF THE SOVIETS ATTACK
+CHINA, WE CERTAINLY WILL FIGHT BACK. BUT THE FOCUS OF SOVIET
+STRATEGY REMAINS IN EUROPE INCLUDING THE MIDDLE EAST. SO WE
+SUPPORT A UNITED EUROPE. BUT AT PRESENT THE
+EUROPEAN COUNTRIES ARE TOO DIVIDED.
+
+CURTIS: DO YOU SUPPORT THE EFFORTS OF THE UNITED STATES TO
+MAKE NATO STRONG?
+
+LI: YOU CAN'T AFFORD TO LEAVE EUROPE, NEITHER CAN EUROPE.
+
+CURTIS: THE US HAS ASSUMED RESPONSIBILITY IN SO MANY PLACES
+IN THE WORLD AND WE EXPECT TO CONTINUE THOSE RESPONSIBILITIES. SO
+WE WELCOME THE SUPPORT OF THE GREAT PEOPLE OF CHINA IN OPPOSITION
+TO SOVIET AGGRESSION.
+
+
+CONFIDENTIAL
+
+
+
+
+NNN
+
+CONFIDENTIAL
+
+PAGE 01        PEKING 02368  04 OF 07  161157Z
+
+14
+ACTION SS-25
+
+INFO  OCT-01  ISO-00  SSO-00  NSCE-00  /026 W
+---------------------     117489
+O R 160909Z NOV 76
+FM USLO  PEKING
+TO SECSTATE WASHDC IMMEDIATE 6790
+INFO AMCONSUL HONG KONG
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI
+AMEMBASSY TOKYO
+
+C O N F I D E N T I A L SECTION 4 OF 7 PEKING 2368
+
+EXDIS
+
+LI: WE HOPE YOU WILL ESTABLISH AN EQUAL PARTNERSHIP WITH EUROPE
+AND ALL OTHER PEOPLES OF THE WORLD.
+
+CURTIS: DO THE SOVIETS HAVE MANY TROOPS ON YOUR BORDERS?
+
+LI: THEY CLAIM TO HAVE STATIONED ABOUT ONE MILLION TROOPS ON THE
+BORDER. THE BORDER EXTENDS OVER MANY THOUSANDS OF KILOMETERS. ITS
+A LONG FRONT LINE. DO YOU THINK THE ONE MILLION TROOPS ARE
+DIRECTED AGAINST CHINA ONLY? I THINK THEY ARE PRIMARILY DIRECTED
+AGAINST THE U.S., THEN AGAINST JAPAN, AND OF COURSE ARE ALSO
+DIRECTED AGAINST CHINA. ONE MILLION TROOPS IS NOT ENOUGH TO FIGHT
+AGAINST CHINA. EVEN IF THEY ADDED ANOTHER ONE MILLION IT WOULD
+NOT BE ENOUGH, NOR EVEN TWO MILLION MORE. IF THE SOVIETS COME,
+WE'LL YIELD SOME PLACES TO THEM, THEN CLOSE OUR DOOR AND BEAT THE
+DOG INSIDE THE ROOM. WHEN THE DOOR IS CLOSED, IT IS EASIER TO
+DEAL WITH THE DOG AND TO BEAT THE DOG. THAT WAS THE WAY WE
+FOUGHT THE JAPANESE. WE CLOSED THE DOOR AND THOROUGHLY
+ANNIHILATED THE JAPANESE. AT THAT TIME, CHINA WAS RULED BY
+CHIANG KAI-SHEK AND LARGE TRACTS OF TERRITORY IN THE NORTH AND
+CENTRAL CHINA WERE LEFT TO US BECAUSE CHIANG KAI-SHEK RAN AWAY.
+CHIANG KAI-SHEK FIRST RAN FROM THE NORTHEAST AND THE JAPANESE
+OCCUPIED IT. THEN FROM NORTH, CENTRAL, SOUTH AND EAST CHINA.
+CHIANG KAI-SHEK TROOPS WERE RUNNING IN FRONT OF THE JAPANESE AND
+OUR TROOPS WERE RUNNING AFTER THE JAPANESE. THEY TURNED THEIR
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 02        PEKING 02368  04 OF 07  161157Z
+
+BACKS TO THE JAPANESE BUT WE FACED THE JAPANESE. DURING THE WAR
+OF RESISTANCE AGAINST THE JAPANESE, NORTH, CENTRAL, EVEN EAST AND
+SOUTH CHINA WAS LED BY THE COMMUNIST PARTY. SO ONE MILLION
+SOVIET TROOPS ON THE BORDER WILL BE NO MATCH FOR US.
+IN FINAL ANALYSIS, THE FOCUS OF THE SOVIET STRATEGY IS EUROPE.
+MY FRIENDS MAY NOT BELIEVE MY WORDS BUT FACTS WILL BEAR ME
+OUT. AS FOR THE DISARMAMENT THEY ARE ALWAYS
+TALKING ABOUT, WE DON'T BELIEVE IT.
+
+CURTIS: WHAT WOULD BE THE BEST STRATEGY IN EUROPE TO OPPOSE
+SOVIET AGGRESSION?
+
+LI: I DON'T KNOW. THE SOVIET UNION WANTS TO SWALLOW UP THAT
+PLACE.
+
+CURTIS: ARE YOU MAKING PROGRESS IN YOUR ARMAMENT PROGRAM?
+
+LI: SINCE WE MUST MAKE PREPARATIONS AGAINST WAR, WE MUST MANUFACTURE
+SOME THINGS.
+
+CURTIS: YOU HAVE BEEN VERY GRACIOUS IN RECEIVING US. I WOULD LIKE TO
+YIELD AT THIS POINT TO THE VICE CHAIRMAN OF OUR DELEGATION,
+SENATOR BIRCH BAYH OF THE STATE OF INDIANA. HE MIGHT WISH TO MAKE
+SOME COMMENTS OR ASK SOME QUESTIONS.
+
+BAYH: MR. VICE PREMIER. THIS IS MY FIRST TIME IN YOUR COUNTRY.
+EARLIER
+I SAW IT THROUGH THE EYES OF MY FATHER WHO WAS HERE AT THE TIME WHEN
+SENATOR STEVENS WAS HERE, BUT IT'S NOT LIKE SEEING IT MYSELF. MY WIFE
+AND I ARE DELIGHTED AND EXTREMELY IMPRESSED BY WHAT WE HAVE SEEN.
+IT WOULD BE REMISS OF US NOT TO INDICATE OUR GRATITUDE
+TO YOUR VICE FOREIGN MINISTER WHO MET US YESTERDAY, TO OUR HOST
+AT THE BANQUET AND TO ALL THOSE, INCLUDING MADAME KANG, WHO HAVE
+SHOWN US THE KINDEST HOSPITALITY.
+
+LI: WHAT YEARS WAS YOUR FATHER IN CHINA?
+
+BAYH: 1943-45. I'M A FARMER BASICALLY AS WELL AS A SENATOR. I HAVE
+BEEN IMPRESSED BY THE WAY THAT THE GREATEST AMOUNT OF PRODUCTION IS
+OBTAINED FROM EACH SQUARE CENTIMETER OF GROUND, BY THE INDUSTRIOUS-
+NESS
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 03        PEKING 02368  04 OF 07  161157Z
+
+OF YOUR PEOPLE AND BY THE DIVERSIFICATION OF YOUR AGRICULTURE. WE
+HAVE SEEN ALL THIS AS WELL AS YOUR CANCER INSTITUTE, YOUR HOSPITAL,
+YOUR
+INDUSTRIES. IT IS TO SEE THE LEGEND OF CHAIRMAN MAO COME ALIVE.
+WE CAN THUS REALIZE BETTER THE DEPTH OF THE GRIEF YOUR COUNTRY MUST
+HAVE AT THE DEATH OF THE CHAIRMAN, AND WE WISH TO CONVEY OUR
+SYMPATHY.
+
+LI: THANK YOU.
+
+BAYH: I WOULD LIKE TO ASK YOUR THOUGHTS ON A DIFFERENT AREA.
+YOU HAVE UNDERSTANDABLY TALKED ABOUT DEFENSE AGAINST THE WAR-MAKING
+POTENTIAL OF THE SOVIET UNION, WHICH IS OF COURSE EXTREMELY IMPORT-
+ANT.
+WE ARE ALL CONCERNED THAT ANOTHER WAR WITH THE MODERN INSTRUMENTS OF
+WAR NOW AVAILABLE WOULD BE A HOLOCAUST. I WOULD LIKE TO TALK ABOUT
+PEACE. I DO NOT WISH TO CONTRADICT ANYTHING
+YOU HAVE SAID BUT WE HAVE HEARD OF THE IMPORTANT
+WORK YOU HAVE GIVEN IN ECONOMIC GUIDANCE IN HELPING CHAIRMAN MAO.
+I BELIEVE YOU ARE AN ECONOMIC GENIUS. I APPRECIATE YOUR MODESTY, BUT
+I
+
+
+CONFIDENTIAL
+
+
+
+
+NNN
+
+CONFIDENTIAL
+
+PAGE 01        PEKING 02368  05 OF 07  161519Z
+
+42 14
+ACTION SS-25
+
+INFO  OCT-01  ISO-00  SSO-00  NSCE-00  /026 W
+---------------------     119875
+O R 160909Z NOV 76
+FM USLO  PEKING
+TO SECSTATE WASHDC IMMEDIATE 6791
+INFO AMCONSUL HONG KONG
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI
+AMEMBASSY TOKYO
+
+C O N F I D E N T I A L SECTION 5 OF 7 PEKING 2368
+
+EXDIS
+C O R R E C T E D  C O P Y
+BELIEVE WE CAN SEE YOUR EXPERTISE EVERYWHERE.
+
+LI: YOU FLATTER ME.
+
+BAYH: THIS HAS BEEN A LONG PROLOGUE. I WOULD LIKE TO GET YOUR THOUGHT
+S
+ON WHAT I THINK OUR WHOLE COUNTRY WOULD LIKE TO KNOW. AS I UNDERSTAND
+SOMETIME THIS YEAR YOU WILL PROMULGATE YOUR FIFTH FIVE YEAR PLAN OF
+YOUR COUNTRY. ARE THERE ELEMENTS IN THIS PLAN WHICH YOU COULD DISCLOS
+E
+TO US IN WHICH A CLOSER
+RELATIONSHIP OF FRIENDSHIP AND COOPERATION BETWEEN CHINA AND THE US
+COULD BE BENEFICIAL? ARE THERE WAYS IN WHICH WE COULD BE OF ASSISTANC
+E
+-- ALTHOUGH I CAN APPRECIATE YOUR STRONG FEELING OF SELF-RELIANCE --
+TRADE OPPORTUNITIES, MACHINERY, FACTORIES, EQUIPMENT AND A LARGE
+RANGE OF AREAS WHICH COULD BE PART OF THE
+CONTINUING RELATIONSHIP BETEWEN OUR TWO COUNTRIES?
+
+LI: SPEAKING ABOUT OUR PLAN IS COMPLEX AND INVOLVES LOTS OF
+ASPECTS. IT IS DIFFICULT TO DISCUSS IN A SYSTEMATIC WAY.
+DURING HIS LIFETIME, CHAIRMAN MAO NOT ONLY LAID DOWN THE BASIC
+LINE FOR POLICY BUT ALSO THE BASIC LINE AND
+PRINCIPLES FOR CONSTRUCTION OF THE COUNTRY. THESE PRINCIPLES WERE
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 02        PEKING 02368  05 OF 07  161519Z
+
+STATED IN THE REPORT BY THE LATE PREMIER CHOU EN-LAI AT THE FOURTH NP
+C.
+HE DISCUSSED THE MODERNIZATION OF INDUSTRY, AGRICULTURE, NATIONAL
+DEFENSE, AND SCIENCE AND TECHNOLOGY. IN MAKING ECONOMIC PLANS, WE
+MUST FIRST THINK OF THE 800 MILLION PEOPLE AND BEAR
+IN MIND THE FOOD, CLOTHING AND HOUSING PROBLEMS OF 800 MILLION PEOPLE
+.
+SO WE PLAN THE ECONOMY IN THE ORDER OF AGRICULTURE, LIGHT INDUSTRY
+AND HEAVY INDUSTRY. THIS WAS CONSISTENT WITH THE TEACHINGS OF CHAIRMA
+N
+MAO THAT WE MUST FIRST DEVELOP AGRICULTURE. IF WE DON'T HAVE ENOUGH
+FOOD FOR OUR PEOPLE, EVEN IF WE IMPORT 10 OR 20 MILLION TONS OF GRAIN
+,
+THIS WOULD NOT SOLVE OUR PROBLEM. IF AGRICULTURE IS DEVELOPED, IT
+IS EASIER TO DEVELOP LIGHT INDUSTRY, AND HEAVY INDUSTRY WILL HAVE A
+SOLID FOUNDATION. SO WE MAKE OUR PLANS ACCORDING TO THIS PRINCIPLE.
+WE HAVE A PLAN BUT IT IS NOT YET FINALIZED. WE HAVE NO INTENTION OF
+MAKING IT PUBLIC. THE PLAN HAS NOT YET MATURED AND IS STILL UNDER
+DISCUSSION. IN DISCUSSING IT WE MAY FIND NEW PROBLEMS AND REVISE THE
+PLAN. AS FOR RELATIONS BETWEEN OUR TWO COUNTRIES, ESPECIALLY
+TRADE, IT REMAINS TO BE SEEN. WE HAVE BOUGHT SOME EQUIPMENT FROM THE
+US
+--SUCH AS CHEMICAL FERTILIZER PLANTS.
+
+BAYH: THE KELLOGG UREA PLANTS.
+
+LI: IT DEPENDS ON WHETHER WE NEED THIS AND ARE ABLE TO DO IT. THE
+QUESTION OF NECESSITY IS EASY. BUT IF WE ASK OUR MINISTER, HE WILL
+ASK FOR MANY THINGS. AS FOR OUR ABILITY, THAT IS VERY DIFFICULT,
+WE DON'T HAVE THE MONEY TO BUY. ON PRINCIPLE WE RELY ON OUR OWN
+EFFORTS. MAINLY WE RELY ON OUR OWN EFFORTS. WE DO NOT PLAN TO BE IN
+DEBT. WE WERE ONCE IN DEBT TO THE SOVIET UNION. OUR DEBTS TO THE SOVI
+ET
+UNION WERE INCURRED IN 1950-51 DURING THE WAR OF RESISTANCE AGAINST
+THE U.S. AND TO ASSIST KOREA. WE FOUGHT A WAR IN THAT COUNTRY, OUR
+TWO COUNTRIES. IT IS NOT PLEASANT TO BE A DEBTOR.
+
+BAYH: IT IS NOT PLEASANT TO BE A CREDITOR OF THE SOVIETS EITHER.
+
+LI: PERHAPS THE SOVIET UNION FINDS IT PLEASANT. THEN WE MADE
+OUR MINDS UP TO REPAY ALL DEBTS TO THE SOVIET UNION. AFTER THAT WE
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 03        PEKING 02368  05 OF 07  161519Z
+
+NEVER INCURRED ANY FOREIGN OR DOMESTIC DEBTS. ONCE WE ISSUED PUBLIC
+BONDS BUT WE LATER REPAID THEM. SO AS TO TRADE BETWEEN OUR
+TWO COUNTRIES, WE'LL HAVE TO SE. I HAVE JUST SAID THAT IT DEPENDS ON
+NECESSITY AND ABILITY. ANOTHER THING IS YOUR HIGH TARRIFF WHICH IS
+TROUBLESOME. I THINK IT IS NOT EASY TO SOLVE THIS PROBLEM FOR THE
+TIME BEING. ROUGHLY THIS IS WHERE WE ARE AT THE PRESENT STAGE. I
+THINK WE IMPORT MORE FROM THE U.S. THAN YOU DO FROM US.
+
+BAYH: YOU HAVE BEEN VERY KIND AND I APPRECIATE YOUR RESPONSE.
+WHAT I ASKED WAS IN RESPECT TO OUR FUTURE RELATIONS. I THINK THAT TO
+THE EXTENT THAT WE CAN INCREASE TRADE OPPORTUNITIES, PERMIT MORE
+PEOPLE OF THE US TO VISIT CHINA AND MORE CHINESE TO VISIT THE U.S.
+-- THERE HAS BEEN SOME OF THIS BUT IT SHOULD BE INCREASED -- TO
+THE EXTENT THAT TRADE AND OTHER OPEN DOOR POLICIES CAN BE PURSUED
+THEY WILL HELP TO FIND A SOLUTION. THE GROUP HERE IS GOING BACK
+AS AMBASSADORS OF GOODWILL FOR CHINA.
+
+LI: AT PRESENT THERE ARE LOTS OF EXCHANGES ALREADY.
+
+CURTIS: WE FEEL PRIVILEGED AND APPRECIATE THE OPPORTUNITY TO
+CARRY ON THIS CONVERSATION WITH YOU. I WOULD LIKE TO EXTEND TO
+MY COLLEAGUES THE OPPORTUNITY TO SAY SOMETHING OR TO ASK QUESTIONS.
+
+YOUNG: FIRST I WOULD LIKE TO SAY THAT I DEEPLY APPRECIATE THE
+REAL FRIENDSHIP WHICH WE HAVE RECEIVED WHILE HERE. YOU HAVE OPENED
+YOUR DOORS TO US AND SHOWED US REAL FRIENDSHIP. I WOULD LIKE TO SAY
+ALSO THAT NO OTHER NATION IN THE WORLD COULD FEED, CLOTHE, EDUCATE,
+AND PROVIDE SUCH GOOD CARE OF 800 MILLION PEOPLE. TO DO THIS AND TO
+STAY OUT OF DEBT IS SOMETHING. WE COULD LEARN A FEW THINGS FROM YOU A
+BOUT
+
+
+CONFIDENTIAL
+
+
+
+
+NNN
+
+CONFIDENTIAL
+
+PAGE 01        PEKING 02368  06 OF 07  161215Z
+
+14
+ACTION SS-25
+
+INFO  OCT-01  ISO-00  SSO-00  NSCE-00  /026 W
+---------------------     117667
+O R 160909Z NOV 76
+FM USLO  PEKING
+TO SECSTATE WASHDC IMMEDIATE 6792
+INFO AMCONSUL HONG KONG
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI
+AMEMBASSY TOKYO
+
+C O N F I D E N T I A L SECTION 6 OF 7 PEKING 2368
+
+EXDIS
+
+STAYING OUT OF DEBT. THANK YOU.
+
+HOLLINGS: MR. VICE PREMIER, I APPRECIATE VERY MUCH THE OPPORTUNITY
+AND I AM PARTICULARLY HONORED TO HAVE THIS CONVERSATION WITH YOU,
+SINCE YOU ARE WELL KNOWN IN THE U.S. AS ONE OF THE LAST OF THE
+VETERANS OF THE LONG MARCH AND AS A PARTNER WITH CHAIRMAN MAO
+AND PREMIER CHOU IN THE MODERNIZATION OF CHINA.
+
+LI: WE'LL WORK STILL HARDER TO BUILD OUR COUNTRY UNDER THE
+LEADERSHIP OF THE CENTRAL COMMITTEE HEADED BY CHAIRMAN HUA, RELYING
+ON THE EFFORTS OF THE PROPLE.
+
+HOLLINGS: AS A SENATOR, I MUST POINT OUT THAT I SPEAK INDIVIDUALLY.
+WE ARE TOLD THATANYTHING A U.S. SENATOR MAY UTTER IS CONSIDERED
+A POSITION OF THE USG. THAT IS NOT TRUE. EACH ONE OF US SPEAKS FOR
+HIMSELF. THERE ARE FIVE OTHER SENATORS HERE AND THEY DO NOT
+SPEAK FOR ME AND I CANNOT SPEAK FOR THEM. I BELIEVE YOU HAVE AN
+INVESTMENT IN THE TIME AND EFFORT IT TOOK TO BRING ME
+ALL THE WAY TO CHINA AND I WISH TO SPEAK FRANKLY. SPEAKING FOR
+MYSELF,
+WE BELIEVE IN THE PRINCIPLES OF THE SHANGHAI COMMUNIQUE AND WE
+BELIEVE WE ARE ADHERING TO THE PRINCIPLES, AND AS THE COMMUNIQUE
+STATES, AS TENSIONS EASE, WE CAN CONTINUE TO MAKE PROGRESS UNDER THE
+SHANGHAI COMMUNIQUE. WE BELIEVE THIS TRIP SO GENEROUSLY PROVIDED TO
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 02        PEKING 02368  06 OF 07  161215Z
+
+US HAS HELPED TO EASE TENSIONS AND CERTAINLY HAS ENHANCED MY UNDER-
+STANDING AND APPRECIATION OF CHINA. AS SENATOR, I BELIEVE THAT THERE
+IS ONE CHINA AND THAT YOU ARE THAT CHINA.
+
+LI: YOU'RE RIGHT.
+
+HOLLINGS: HOWEVER, WE HAVE HAD FRIENDS OF LONG STANDING ON
+TAIWAN AND AS A SENATOR, I DON'T BELIEVE THE MAJORITY OF THE
+U.S. SENATORS WOULD ABRUPTLY ABANDON THAT FRIENDSHIP. A JOURNEY OF
+1,000 MILES, THEY SAY IN CHINA, BEGINS WITH ONE STEP. I THINK WE
+SHOULD MAKE STEPS TOGETHER TO TRY TO INCREASE TRADE,
+OPEN AIR ROUTES, AND ON OUR SIDE REDUCE TROOPS ON TAIWAN TO
+MAKE STEPS TO THE REALIZATION OF THE SHANGHAI COMMUNIQUE
+PRINCIPLES. WE IN THE US HAVE NEVER BELIEVED IN HEGEMONY. THE FACT IN
+OUR LONG HISTORY IS THAT WE GAVE FREEDOM TO THE PHILIPPINES
+AND CUBA.
+AFTER WORLD WAR II IN WHICH WE DEFEATED GERMANY, ITALY, AND JAPAN,
+WE NOT ONLY GAVE THEM FREEDOM BUT ALSO FINANCED THEIR RECOVERY.
+
+LI: PEOPLE IN THE WORLD BELIEVE YOU STILL HAVE SOME HEGEMONY.
+
+HOLLINGS:
+WE ABSOLUTELY REFUTE THAT BY OUR OWN ACTS OVER 200 YEARS
+OF HISTORY. WE WISH NOTHING BUT FREEDOM FOR THE PEOPLES AND I THINK
+THE U.S. AND CHINA WORKING TOGETHER COULD BRING ABOUT FREEDOM AND
+ECONOMIC SUSTENANCE TO THE THIRD WORLD.
+I'M SURE THIS VISIT HAS SERVED AS A PLATFORM OR STJATING POINT FOR
+ME AS A SENATOR TO UNDERSTAND AND APPRECIATE THE GREATNESS OF CHINA
+AND I HOPE SIMILAR VISITS BY YOUR DISTINGUISHED LEADERS TO THE U.S.
+WILL FOLLOW.
+
+LI: HOW CAN WE GO TO THE US SINCE THE EMBASSY OF THE TAIWAN CLIQUE IS
+THERE?
+
+HOLLINGS: THAT'S ONE OF THE PROBLEMS WE WILL HAVE TO SOLVE
+AND WE IN THE SENATE WILL BE WORKING ON THAT PROBLEM.
+
+LI: THE SOLUTION MUST CONFORM TO THE SHANGHAI COMMUNIQUE.
+
+CURTIS: SENATOR STEVENS OF ALASKA.
+
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 03        PEKING 02368  06 OF 07  161215Z
+
+LI: THAT IS THE NORTHERNMOST STATE.
+
+STEVENS: YES WE ARE. ALASKA IS SOMEWHAT SIMILAR TO YUNNAN PROVINCE
+WHERE I WAS STATIONED DURING THE WAR. IT MAY INTEREST YOU TO KNOW
+THAT THOSE OF US IN THE AIR FORCE HERE HAD GREAT RES SECT FOR YOUR
+PEOPLE IN THE NORTH.MY SQUADRON SUPPLIED YOUR TROOPS AT TIMES. YOU
+SPEAK THE TRUTH WHEN YOU SAY YOU REALLY FOUGHT THE JAPANESE. WE
+KNEW THAT AND RESPECTED YOU FOR IT. MY LARGE COLLEAGUE FROM THE
+SOUTH,
+HE SPEAKS CANDIDLY AND WE RESPECT HIS CANDOR. BUT I'D LIKE TO
+PURSUE HIS POINT. ISN'T THERE SOME WAY WE COULD START THE FLOW
+OF VISITS BOTH WAYS? WE HAVE DIFFICULTIES IN CONGRESS IN BEING
+ABLE TO FOLLOW THROUGH ON THE IMPLICATIONS OF THIS RELATIONSHIP
+BASED ON A LACK OF UNDERSTANDING. YOUR PEOPLE HAVE DOUBLED SINCE I
+WAS HERE. YOUR HOUSING AND FOOD PROBLEMS HAVE BEEN SOLVED, BUT THAT
+WORD ISN'T GETTING BACK TO THE U.S. WE NEED MORE OF OUR PEOPLE
+COMING THIS WAY BUT ALSO MORE OF YOUR PEOPLE COMING TO THE U.S. TO
+VISIT
+COLLEGES, OUR COUNTIES, OUR CITIES, TO INCREASE FRIENDSHIP AND
+UNDERSTANDING. I HAVE BEEN AMAZED BY THE FRIENDSHIP I HAVE FOUND
+HERE.
+I AM DEEPLY IMPRESSED BY THE SMILES I HAVE SEEN ON THE
+STREETS HERE BECAUSE I DIDN'T SEE THAT DURING THE WAR. PERHAPS
+PEOPLE DON'T SMILE DURING WARS. BUT THIS IS A TWO WAY STREET, THIS
+APPROACH TO NORMALIZATION. SOMEHOW I DON'T SEE MUCH COMING OUR WAY
+ON THAT TWO-WAY STREET.
+
+
+CONFIDENTIAL
+
+
+
+
+NNN
+
+CONFIDENTIAL
+
+PAGE 01        PEKING 02368  07 OF 07  161219Z
+
+12
+ACTION SS-25
+
+INFO  OCT-01  ISO-00  SSO-00  NSCE-00  /026 W
+---------------------     117747
+O R 160909Z NOV 76
+FM USLO  PEKING
+TO SECSTATE WASHDC IMMEDIATE 6793
+INFO AMCONSUL HONG KONG
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI
+AMEMBASSY TOKYO
+
+C O N F I D E N T I A L SECTION 7 OF 7 PEKING 2368
+
+EXDIS
+
+LI: IT IS NOT A BAD RECORD HAVING SO MANY PEOPLE VISITING
+BEFORE COMPLETION OF NORMALIZATION OF RELATIONS. THE FUTURE
+DEPENDS ON EVENTS, NEVERTHELESS THERE WILL BE EXCHANGES. AS FOR
+VISITS BY OFFICIALS, OUR RELATIONS ARE NOT YET NORMALIZED. IN
+WASHINGTON THERE IS STILL THE EMBASSY OF TAIWAN. IF WE GO, BOTH
+YOU AND WE WILL BE EMBARRASSED. I'VE HEARD VICE FOREIGN MINISTER
+WANG TOLD YOU THAT THE MAJOR ASPECT IS THE INTERNATIONAL SITUATION,
+AND THE MINOR QUESTION IS TAIWAN. I THINK SHE PUT THE QUESTION
+VERY WELL. NEVERTHELESS TAIWAN REMAINS AN ISSUE. I THINK OUR
+AMERICAN FRIENDS, ESPECIALLY MR. GATES, KNOW OUR VIEWS VERY
+WELL SO I WON'T DISCUSS THIS ANY MORE.
+
+JOHNSTON: MR. VICE PREMIER, I WOULD LIKE TO ADD MY THANKS FOR THE
+WARM HOSPITALITY, I AM PARTICULARLY REASSURED AND
+PLEASED TO LEARN THAT CHAIRMAN HUA IS COMMITTED
+TO CHAIRMAN MAO'S POLICIES IN CARRYING OUT THE PRINCIPLES OF THE
+SHANGHAI COMMUNIQUE, AND TO DEVELOP FURTHER RELATIONSHIPS AND
+COOPERATION BETWEEN OUR TWO COUNTRIES.
+
+LI: YOU ARE RIGHT THAT WE WILL CARRY OUT THE BEHEST OF CHAIRMAN
+MAO.
+
+JOHNSTON: IN OUR COUNTRY, POLICY DOES NOT TRICKLE DOWN FROM THE
+TOP BUT COMES UP FROM THE PEOPLE. PRESIDENTS HAVE FOUND THIS OUT
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 02        PEKING 02368  07 OF 07  161219Z
+
+IN A COUPLE OF INSTANCES, MOST RECENTLY IN OUR POLICIES IN SOUTHEAST
+ASIA AND THE MIDDLE EAST. WHAT MY COLLEAGUES ARE TRYING TO SAY IS THAT
+
+WE ARE TRYING TO HELP YOU AND YOU MUST HELP US WITH OUR PEOPLE IN
+DEVELOPING THIS FRIENDSHIP.
+
+CURTIS: MR. VICE PREMIER, THIS HAS BEEN A MOST ENJOYABLE AND HELPFUL
+OCCASION. I AM GRATEFUL TO YOU FOR HAVING RECEIVED US AND EXPRESS THE
+GRATITUDE OF ALL OF US FOR THE INVITATION TO BRING OUR WIVES ALONG.
+THEY ARE A AVERY INFLUENTIAL GROUP AND HAVE ENJOYED IT, ESPECIALLY
+OUR HOSPITAL TRIP YESTERDAY TO SEE YOUR ADVANCES IN CANCER
+TREATMENT. THANK YOU FOR THIS AND I EXPRESS THE GRATITUDE OF ALL
+OF US.
+
+LI: YOU SHOULD HAVE ASKED THE LADIES TO SIT IN FRONT.
+
+CURTIS: YOU ARE A VERY WISE MAN.
+
+LI: WE MUST SHOW RESPECT FOR THE LADIES. I WOULD LIKE TO THANK
+YOU FOR COMING, FOR HAVING TRAVELLED SO FAR. I EXPRESS
+MY WELCOME TO YOU.
+GATES
+
+
+CONFIDENTIAL
+
+
+
+
+NNN
+
+</div></div><br /></div></div><div class="pane-tab"><div class="pane-header">Raw content</div><div class="pane-content"><div class="text-content">
+
+CONFIDENTIAL
+
+PAGE 01        PEKING 02368  01 OF 07  161130Z
+
+14
+ACTION SS-25
+
+INFO  OCT-01  ISO-00  SSO-00  NSCE-00  /026 W
+---------------------     117254
+O R 160909Z NOV 76
+FM USLO  PEKING
+TO SECSTATE WASHDC IMMEDIATE 6787
+INFO AMCONSUL HONG KONG
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI
+AMEMBASSY TOKYO
+
+C O N F I D E N T I A L SECTION 1 OF 7 PEKING 2368
+
+EXDIS
+
+E.O. 11652: XGDS-1
+TAGS: PFOR, ECON, CH, US, UR, TW, OREP (CURTIS, CARL)
+SUBJECT: TRANSCRIPT OF LI HSIEN-NIEN/CODEL CURTIS CONVERSATION
+
+REF: PEKING 2353
+
+1. THERE FOLLOWS NEARLY VERBATIM TRANSCRIPT, CLEARED BY
+SENATOR CURTIS, OF CONVERSATION BETWEEN CODEL CURTIS AND
+PRC VICE PREMIER LI HSIEN-NIEN ON NOVEMBER 14, 4:45 -
+6:15 P.M., AT THE GREAT HALL OF THE PEOPLE. AMERICANS
+PRESENT WERE:
+
+CODEL:
+SENATOR AND MRS. CARL CURTIS
+SENATOR AND MRS. BIRCH BAYH
+SENATOR AND MRS. MILTON YOUNG
+SENATOR AND MRS. ERNEST HOLLINGS
+SENATOR AND MRS. TED STEVENS
+SENATOR AND MRS. BENNETT JOHNSON
+MR. AND MRS. ROBERT WOLTHIUS
+MR. TERRY HOWE
+MR. RICHARD HART
+
+USLO:
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 02        PEKING 02368  01 OF 07  161130Z
+
+AMBASSADOR GATES
+MR. RICHARD BOCK
+
+PRINCIPAL CHINESE PRESENT, IN ADDITION TO VICE
+PREMIER LI, WERE:
+VICE FOREIGN MINISTER WANG HAI-JUNG
+TANG WEN-SHENG, DEPUTY DIRECTOR, AMERICAN AND OCEANIAN
+DEPARTMENT, MFA
+KO PO-NIEN, VICE PRESIDENT, CHINESE PEOPLE'S INSTITUTE
+OF FOREIGN AFFAIRS (CPIFA)
+KANG TAI-SHA, DEPUTY SECRETARY-GENERAL, CPIFA.
+
+2.  LI: WELCOME TO OUR FRIENDS.
+
+CURTIS: WE ARE DELIGHTED TO BE HERE.
+
+LI: TODAY YOU VISITED THE GREAT WALL?
+
+CURTIS: WE HAVE READ OF IT THROUGH THE YEARS. FOR MANY OF US
+THIS IS OUR FIRST VISIT TO CHINA AND WE WERE DELIGHTED TO VISIT
+THE GREAT WALL.
+
+LI: IT'S A PLACE OF HISTORICAL INTEREST. I WONDER WHETHER
+ANY OF YOU HAVE BEEN TO CHINA BEFORE.
+
+CURTIS: SENATOR STEVENS, TELL US OF YOUR FIRST TRIP TO CHINA.
+
+STEVENS: I WAS IN THE 14TH AIR FORCE, STATIONED IN KUNMING AND
+WAS HERE IN PEKING IN 1945 RIGHT AFTER THE WAR ENDED.
+
+LI: THAT IS UNDER CHENNAULT?
+
+STEVENS: YES, I SERVED WITH GENERAL CHENNAULT.
+
+LI: YOU WERE IN CHINA DURING WORLD WAR II. AT THAT TIME YOU
+HAD A TRANSPORT TEAM.
+
+STEVENS: I WAS A PILOT. I FLEW TRANSPORT PLANES INTO SIAN,
+HANKOW, KWEILIN, ALL OVER THE COUNTRY.
+
+LI: HOW LONG SINCE YOU ARRIVED IN CHINA?
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 03        PEKING 02368  01 OF 07  161130Z
+
+
+CURTIS: WE ARRIVED LAST MONDAY, HAD A DELIGHTFUL STAY IN
+SHANGHAI, TOOK THE TRAIN TO NANKING, ENJOYED OUR STAY THERE OF
+TWO NIGHTS AND THEN HAD A VERY PLEASANT TRAIN RIDE HERE. WE HAVE
+BEEN TREATED WONDERFULLY.
+
+LI: SO YOU ARRIVED THE 8TH OF NOVEMBER. IN SHANGHAI DID YOU
+READ THE BIG CHARACTER POSTERS?
+
+CURTIS: WE COULDN'T READ THEM OURSELVES, BUT OUR GUIDES TOLD US
+ABOUT SOME OF THEM.
+
+LI: YOU HAVE ARRIVED IN CHINA AT A TIME THAT THE CENTRAL
+COMMITTEE HAS MADE THE DECISION TO APPOINT HUA KUO-FENG AS
+CHAIRMAN OF THE CENTRAL COMMITTEE AND OF THE MILITARY COMMISSION
+OF THE CENTRAL COMMITTEE. IT IS ALSO AT THE TIME THAT WE HAVE
+EXPLAINED THE SCHEMES OF THE GANG OF FOUR -- WANG HUNG-WEN, CHANG
+CHUN-CHIAO, CHIANG CHING, AND YAO WEN-YUAN. THE DECISION WAS MADE IN
+OCTOBER. THUS, YOU MUST HAVE
+SEEM MANY BIG CHARACTER POSTERS IN SHANGHAI.
+
+
+CONFIDENTIAL
+
+
+
+
+NNN
+
+CONFIDENTIAL
+
+PAGE 01        PEKING 02368  02 OF 07  161138Z
+
+14
+ACTION SS-25
+
+INFO  OCT-01  ISO-00  SSO-00  NSCE-00  /026 W
+---------------------     117306
+O R 160909Z NOV 76
+FM USLO  PEKING
+TO SECSTATE WASHDC IMMEDIATE 6788
+INFO AMCONSUL HONG KONG
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI
+AMEMBASSY TOKYO
+
+C O N F I D E N T I A L SECTION 2 OF 7 PEKING 2368
+
+EXDIS
+
+CURTIS: YES, WE DID.
+
+LI: THAT WAS A MAJOR EVENT IN CHINA. THIS YEAR FIRST PREMIER
+CHOU EN-LAI PASSED AWAY, THEN CHU TEH, THE CHAIRMAN OF THE NATIONAL
+PEOPLE'S CONGRESS, AND THEN OUR GREAT LEADER AND TEACHER CHAIRMAN
+MAO TSE-TUNG.
+
+CURTIS: WE FOLLOW ALL THE NEWS WE GET FROM CHINA BECAUSE WE VALUE THE
+FRIENDSHIP OF YOUR GREAT COUNTRY. WE WISH TO EXPRESS OUR CONDOLENCES
+ON THE LOSS OF YOUR LEADERS, PARTICULARLY CHAIRMAN MAO. ALSO, WE
+BRING GREETINGS TO YOU FROM PRESIDENT FORD.
+
+LI: THANK YOU. WHEN PRESIDENT FORD VISITED CHINA LAST YEAR,
+I MET HIM. PLEASE CONVEY MY GREETINGS TO HIM.
+
+CURTIS: THANK YOU, I WILL DO SO. A FEW DAYS BEFORE I LEFT THE U.S.
+I HAD A CALL FROM FORMER PRESIDENT NIXON AND HE ASKED THAT I CONVEY
+HIS GREETINGS TO CHINA AND THE CHINESE PEOPLE.
+
+LI: PLEASE CONVEY MY THANKS TO MR. NIXON.
+
+CURTIS: YOU'LL BE PLEASED TO KNOW THAT WHEN THE ANNOUNCEMENT OF
+OUR VISIT WAS MADE, ALL OF US EXPERIENCED A TREMDNDOUS RESPONSE
+FROM OUR PEOPLE WHO EXPRESSED A GREAT INTEREST IN CHINA. MY
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 02        PEKING 02368  02 OF 07  161138Z
+
+NEBRASKA CONSTITUENTS WERE DELIGHTED THAT WE WERE MAKING THIS TRIP.
+
+LI: YOUR STATE HAS A HIGHLY DEVELOPED AGRICULTURE.
+
+CURTIS: YES, WE ARE A GREAT AGRICULTURAL STATE. A NUMBER OF
+THE SENATORS HERE REPRESENT AGRICULTURAL STATES AND WE HAVE BEEN
+TREMENDOUSLY IMPRESSED BY THE INDUSTRIOUSNESS OF YOUR AGRICULTURAL
+WORKERS.
+
+LI: SENATOR YOUNG, YOU ARE ALSO FROM AN AGRICULTURAL STATE, I
+BELIEVE.
+
+YOUNG: I'M A FARMER MYSELF AND MY THREE SONS FARM. ONE OF THE
+AMAZING THINGS TO ME IS THAT YOUR LAND HAS BEEN PRODUCING FOR
+2,000 YEARS OR MORE AND PRODUCES JUST AS WELL AS OURS WHICH HAS
+BEEN PRODUCING FOR ONLY A LITTLE OVER ONE HUNDRED YEARS.
+
+LI: IN THE PAST 2,000 YEARS OR MORE WE WERE UNDER FEUDAL RULE
+AND PRODUCTION WAS RESTRAINED. AFTERWARDS, THERE WAS AGGRESSION
+BY FOREIGN IMPERIALIST STATES SO OUR AGRICULTURE DID NOT DEVELOP.
+BEFORE LIBERATION (IN 1949) PRODUCTION WAS BACKWARD IN CHINA
+AND NOT ONLY DRAFT ANIMALS BUT ALSO HUMAN BEINGS HAD TO
+PULL PLOWS. THERE WAS THE RUTHLESS PLUNDER BY LANDLORDS
+AND BUREAUTCRATIC-CAPITALISTS, AS WELL AS BY IMPERIALISTS. SO
+PEASANTS
+AT THAT TIME WERE IN A DIRE PLIGHT. IT WAS NOT SURPRISING THAT
+SEVERAL MILLION PEASANTS STARVED TO DEATH. THAT WAS THE
+SITUATION DURING THE FEUDAL DYNASTIES AND UNDER CHIANG KAI-SHEK
+RULE. YOU MIGHT VERY WELL STUDY WHY CHIANG KAI-SHEK FELL,
+THERE MUST BE SOME REASONS BEHIND IT. IT WAS BECAUSE HE
+OFFENDED THE MAJORITY OF THE PEOPLE, ABOVE ALL HE OFFENDED THE
+PEASANTS AND WORKERS. NOW IN CHINA, WITH SUCH A VAST TERRITORY
+AND 800 MILLION PEOPLE, WE HAVE SOLVED THE FOOD PROBLEM IN THE
+MAIN, SO PEOPLE WON'T STARVE TO DEATH OR DIE OF COLD. THIS WAS
+THE GREAT ACHIEVEMENT MADE UNDER THE LEADERSHIP OF CHAIRMAN MAO
+AND BY RELYING ON THE EFFORTS OF THE BROAD MASSES OF PEOPLE.
+BUT WE ARE NOT SATISFIED. JUST NOW I SAID WE HAD SOLVED
+THE FOOD PROBLEM IN THE MAIN. IT IS NOT YET COMPLETELY SOLVED AND
+WE MUST CONTINUE OUR EFFORTS. WE JUST HAVE SUFFICIENT FOOD GRAIN
+TO FEED OUR PEOPLE. WE HAVE SOME TO EXPORT BUT WE ALSO IMPORT
+SOME. THE AMOUNT IS LIMITED COMPARED TO YOURS. WE EXPORT
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 03        PEKING 02368  02 OF 07  161138Z
+
+ONE OR TWO MILLION TONS AND IMPORT ABOUT THE SAME. WE MUST
+RELY ON OUR OWN EFFORTS AND RUN EVERYTHING WITH OUR OWN STRENGTH.
+
+CURTIS: I WISH TO COMEND YOU ON YOUR GREAT PROGRESS, AND ON
+YOUR DETERMINATION TO BE SELF-SUFFICIENT IN FOOD. YOU HAVE DONE A
+GREAT JOB. I UNDERSTAND YOUR EXPORTS INCLUDE SOME RICE. IS THAT
+RIGHT?
+
+LI: WE EXPORT SOME RICE AND SOY BEANS.
+
+CURTIS: WHAT DO YOU IMPORT?
+
+LI: A CERTAIN AMOUNT OF WHEAT, ALSO SOME FOOD GRAINS FROM
+YOUR COUNTRY.
+
+CURTIS: WHILE WE COMMEND YOUR DETERMINATION TO BE
+SELF-SUFFICIENT IN FOOD GRAIN, IF YOU HAVE TO BUY ANY, PLEASE
+COME TO US. SENATOR YOUNG IS A WHEAT FARMER AND SO IS
+SENATOR BAYH.
+
+
+CONFIDENTIAL
+
+
+
+
+NNN
+
+CONFIDENTIAL
+
+PAGE 01        PEKING 02368  03 OF 07  161149Z
+
+12
+ACTION SS-25
+
+INFO  OCT-01  ISO-00  SSO-00  NSCE-00  /026 W
+---------------------     117426
+O R 160909Z NOV 76
+FM USLO  PEKING
+TO SECSTATE WASHDC IMMEDIATE 6789
+INFO AMCONSUL HONG KONG
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI
+AMEMBASSY TOKYO
+
+C O N F I D E N T I A L SECTION 3 OF 7 PEKING 2368
+
+EXDIS
+
+LI: BUT WE DON'T HAVE ENOUGH MONEY.
+
+CURTIS: THEN WE MUST BUY SOMETHING FROM YOU. DO YOU HAVE SOME
+OIL TO SELL US?
+
+LI: WE ARE JUST SELF-SUFFICIENT IN OIL. OUR SURPLUS IS
+NOT MUCH. OF COURSE WE HAVE BIG OIL DEPOSITS.
+
+CURTIS: WE UNDERSTAND THE POTENTIAL IS VERY GREAT.
+
+LI: YES, YOU'RE RIGHT. FURTHER EFFORTS SHOULD BE MADE FOR
+EXPLORATION. OUR OIL INDUSTRY IS STILL VERY YOUNG AND IN THE
+PAST WE HAD VERY LITTLE. IN 1960 WE BEGAN TO HAVE OUR OWN OIL
+INDUSTRY. BUT WE HAD TO IMPORT OIL FROM OTHERS, ESPECIALLY
+FROM OUR NEIGHBOR TO THE NORTH WHO TRIED TO STRANGLE US.
+PERHAPS YOU KNOW WHAT I MEAN BY OUR NEIGHBOR TO THE NORTH. WE'VE HAD
+BAD RELATIONS.
+
+CURTIS: WE DON'T THINK THEY'RE VERY NEIGHBORLY.
+
+LI: THEY SEEK HEGEMONY.
+
+CURTIS: THE MAJOR REASON THE U.S. SPENDS SO MUCH TO STAY STRONG
+MILITARILY IS THAT WE FEEL THAT WILL RETARD ANY CHANCE THAT THE SOVIET
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 02        PEKING 02368  03 OF 07  161149Z
+
+
+UNION WILL TRY AGGRESSION.
+
+LI: THE SOVIETS HAVE BIG AMBITIONS, AND WOULD LIKE TO HAVE THE
+WHOLE GLOBE. BUT THEY ARE UNABLE TO ACHIEVE THAT BECAUSE
+THEIR STRENGTH IS NOT THAT GREAT. POLITICALLY, THEY SEEK HEGEMONY
+NO MATTER WHAT TRICKS OR FINE WORDS THEY USE, THEY WILL EVENTUALLY
+BE EXPOSED BY THE PEOPLE OF THE WORLD. THEIR SEEKING HEGEMONY
+MAKES THEM THE ENEMY OF THE WORLD'S PEOPLE. AT HOME THERE IS
+LOPSIDED DEVELOPMENT IN THE SOVIET ECONOMY, THERE IS NOT ENOUGH
+FOOD TO EAT, NOT ENOUGH FOOD GRAINS. SOME PEOPLE SATIRIZE THE
+SOVIET UNION BY SAYING THE SOVIETS SOW SEEDS IN
+THE UKRAINE AND HARVEST CROPS IN THE US.
+THEIR TOP PRIORITY IS THE DEVELOPMENT OF NATIONAL DEFENSE AND IN
+DOMESTIC POLICIES THE SOVIET UNION OPPRESSES THE MINORITY NATIONAL-
+ITIES AND PRACTICES FASCIST RULE. ACTUALLY THEY ARE VERY
+FEEBLE.
+
+CURTIS: YOU HAVE HAD A LONG AND DISTINGUISHED CAREER AND YOU
+ARE A STUDENT OF ECONOMICS. WHY IN YOUR OPINION IS THE SOVIET
+ECONOMY WEAK?
+
+LI: I'M NO STUDENT OF ECONOMICS. I'M NOT A SCHOLAR OF ECONOMICS.
+BUT I DID FIGHT IN THE WAR. IN MY VIEW, THE SOVIET UNION HAS
+OFFENDED THE WORKERS AND PEASANTS AND BROAD MASSES OF THE PEOPLE,
+THEREFORE THERE IS NO ENTHUSIASM ON THEIR PART. IN PLANNING, THEY
+GIVE PROMINENCE TO DEVELOPMENT OF NATIONAL DEFENSE. OTHER BRANCHES
+OF INDUSTRY -- MACHINE BUILDING, CHEMICALS, ETC, -- ARE LAGGING BE-
+HIND. IN RELATIONS BETWEEN INDUSTRY AND AGRICULTURE, THEY
+NEGLECT THE DEVELOPMENT OF AGRICULTURE. YOU CAN STUDY WHETHER OR
+NOT I'M RIGHT. IN THE SOVIET UNION LINE, PRINCIPLES, AND
+POLICIES ARE ALL WRONG. THEY PRACTICE REVISIONISM AND FASCISM,
+AND THERE IS NO WAY TO MOBILIZE THE ENTHUSIASM OF THE WORKERS,
+PEASANTS AND OTHER PEOPLE.
+
+CURTIS: WE IN THE U.S. ARE VERY AWARE OF THE SOVIET MILITARY
+THREAT AND THE GREAT SUMS THEY ARE SPENDING ON ARMAMENTS. THAT IS
+WHY WE INTEND TO STAY STRONG, WHY WE MAKE SACRIFICES IN MANY
+PARTS OF THE WORLD TO RESIST SOVIET AGGRESSION.
+
+LI: WE ARE ALSO AWARE OF SOVIET MILITARY STRENGTH, BUT THEY
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 03        PEKING 02368  03 OF 07  161149Z
+
+TALK OF DISARMAMENT EVERY DAY.
+
+CURTIS: DO YOU THINK THE SOVIETS HAVE PLANS FOR WESTERN EUROPE IF
+THEY ARE NOT RESISTED?
+
+LI: WHAT DO YOU MEAN BY PLANS? THE SOVIETS THINK FIRST OF ALL
+ABOUT EUROPE.
+
+CURTIS: I MEAN AGGRESSIVE PLANS.
+
+LI: SOME PEOPLE IN THE WORLD TEND TO THINK THAT THE FOCUS
+OF SOVIET STRATEGY LIES IN THE EAST. CHAIRMAN MAO THOUGHT THAT
+THE SOVIET STRATEGIC FOCUS WAS IN EUROPE, INCLUDING THE MIDDLE
+EAST. THIS DOES NOT MEAN WE WILL SLACKEN OUR VIGILANCE. WE ARE
+HEIGHTENING OUR VIGILANCE. THAT IS WHY WE DIG TUNNELS DEEP AND
+STORE GRAIN EVERYWHERE. BY DIGGING TUNNELS DEEP WE MEAN IF THE
+SOVIETS INVADE US WE WILL FIGHT BACK. MAO TAUGHT US TO PREPARE
+AGAINST WAR, PREPARE AGAINST NATURAL DISASTERS, AND DO EVERYTHING
+FOR THE PEOPLE. BY PREPARING FOR WAR WE MEAN IF THE SOVIETS ATTACK
+CHINA, WE CERTAINLY WILL FIGHT BACK. BUT THE FOCUS OF SOVIET
+STRATEGY REMAINS IN EUROPE INCLUDING THE MIDDLE EAST. SO WE
+SUPPORT A UNITED EUROPE. BUT AT PRESENT THE
+EUROPEAN COUNTRIES ARE TOO DIVIDED.
+
+CURTIS: DO YOU SUPPORT THE EFFORTS OF THE UNITED STATES TO
+MAKE NATO STRONG?
+
+LI: YOU CAN'T AFFORD TO LEAVE EUROPE, NEITHER CAN EUROPE.
+
+CURTIS: THE US HAS ASSUMED RESPONSIBILITY IN SO MANY PLACES
+IN THE WORLD AND WE EXPECT TO CONTINUE THOSE RESPONSIBILITIES. SO
+WE WELCOME THE SUPPORT OF THE GREAT PEOPLE OF CHINA IN OPPOSITION
+TO SOVIET AGGRESSION.
+
+
+CONFIDENTIAL
+
+
+
+
+NNN
+
+CONFIDENTIAL
+
+PAGE 01        PEKING 02368  04 OF 07  161157Z
+
+14
+ACTION SS-25
+
+INFO  OCT-01  ISO-00  SSO-00  NSCE-00  /026 W
+---------------------     117489
+O R 160909Z NOV 76
+FM USLO  PEKING
+TO SECSTATE WASHDC IMMEDIATE 6790
+INFO AMCONSUL HONG KONG
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI
+AMEMBASSY TOKYO
+
+C O N F I D E N T I A L SECTION 4 OF 7 PEKING 2368
+
+EXDIS
+
+LI: WE HOPE YOU WILL ESTABLISH AN EQUAL PARTNERSHIP WITH EUROPE
+AND ALL OTHER PEOPLES OF THE WORLD.
+
+CURTIS: DO THE SOVIETS HAVE MANY TROOPS ON YOUR BORDERS?
+
+LI: THEY CLAIM TO HAVE STATIONED ABOUT ONE MILLION TROOPS ON THE
+BORDER. THE BORDER EXTENDS OVER MANY THOUSANDS OF KILOMETERS. ITS
+A LONG FRONT LINE. DO YOU THINK THE ONE MILLION TROOPS ARE
+DIRECTED AGAINST CHINA ONLY? I THINK THEY ARE PRIMARILY DIRECTED
+AGAINST THE U.S., THEN AGAINST JAPAN, AND OF COURSE ARE ALSO
+DIRECTED AGAINST CHINA. ONE MILLION TROOPS IS NOT ENOUGH TO FIGHT
+AGAINST CHINA. EVEN IF THEY ADDED ANOTHER ONE MILLION IT WOULD
+NOT BE ENOUGH, NOR EVEN TWO MILLION MORE. IF THE SOVIETS COME,
+WE'LL YIELD SOME PLACES TO THEM, THEN CLOSE OUR DOOR AND BEAT THE
+DOG INSIDE THE ROOM. WHEN THE DOOR IS CLOSED, IT IS EASIER TO
+DEAL WITH THE DOG AND TO BEAT THE DOG. THAT WAS THE WAY WE
+FOUGHT THE JAPANESE. WE CLOSED THE DOOR AND THOROUGHLY
+ANNIHILATED THE JAPANESE. AT THAT TIME, CHINA WAS RULED BY
+CHIANG KAI-SHEK AND LARGE TRACTS OF TERRITORY IN THE NORTH AND
+CENTRAL CHINA WERE LEFT TO US BECAUSE CHIANG KAI-SHEK RAN AWAY.
+CHIANG KAI-SHEK FIRST RAN FROM THE NORTHEAST AND THE JAPANESE
+OCCUPIED IT. THEN FROM NORTH, CENTRAL, SOUTH AND EAST CHINA.
+CHIANG KAI-SHEK TROOPS WERE RUNNING IN FRONT OF THE JAPANESE AND
+OUR TROOPS WERE RUNNING AFTER THE JAPANESE. THEY TURNED THEIR
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 02        PEKING 02368  04 OF 07  161157Z
+
+BACKS TO THE JAPANESE BUT WE FACED THE JAPANESE. DURING THE WAR
+OF RESISTANCE AGAINST THE JAPANESE, NORTH, CENTRAL, EVEN EAST AND
+SOUTH CHINA WAS LED BY THE COMMUNIST PARTY. SO ONE MILLION
+SOVIET TROOPS ON THE BORDER WILL BE NO MATCH FOR US.
+IN FINAL ANALYSIS, THE FOCUS OF THE SOVIET STRATEGY IS EUROPE.
+MY FRIENDS MAY NOT BELIEVE MY WORDS BUT FACTS WILL BEAR ME
+OUT. AS FOR THE DISARMAMENT THEY ARE ALWAYS
+TALKING ABOUT, WE DON'T BELIEVE IT.
+
+CURTIS: WHAT WOULD BE THE BEST STRATEGY IN EUROPE TO OPPOSE
+SOVIET AGGRESSION?
+
+LI: I DON'T KNOW. THE SOVIET UNION WANTS TO SWALLOW UP THAT
+PLACE.
+
+CURTIS: ARE YOU MAKING PROGRESS IN YOUR ARMAMENT PROGRAM?
+
+LI: SINCE WE MUST MAKE PREPARATIONS AGAINST WAR, WE MUST MANUFACTURE
+SOME THINGS.
+
+CURTIS: YOU HAVE BEEN VERY GRACIOUS IN RECEIVING US. I WOULD LIKE TO
+YIELD AT THIS POINT TO THE VICE CHAIRMAN OF OUR DELEGATION,
+SENATOR BIRCH BAYH OF THE STATE OF INDIANA. HE MIGHT WISH TO MAKE
+SOME COMMENTS OR ASK SOME QUESTIONS.
+
+BAYH: MR. VICE PREMIER. THIS IS MY FIRST TIME IN YOUR COUNTRY.
+EARLIER
+I SAW IT THROUGH THE EYES OF MY FATHER WHO WAS HERE AT THE TIME WHEN
+SENATOR STEVENS WAS HERE, BUT IT'S NOT LIKE SEEING IT MYSELF. MY WIFE
+AND I ARE DELIGHTED AND EXTREMELY IMPRESSED BY WHAT WE HAVE SEEN.
+IT WOULD BE REMISS OF US NOT TO INDICATE OUR GRATITUDE
+TO YOUR VICE FOREIGN MINISTER WHO MET US YESTERDAY, TO OUR HOST
+AT THE BANQUET AND TO ALL THOSE, INCLUDING MADAME KANG, WHO HAVE
+SHOWN US THE KINDEST HOSPITALITY.
+
+LI: WHAT YEARS WAS YOUR FATHER IN CHINA?
+
+BAYH: 1943-45. I'M A FARMER BASICALLY AS WELL AS A SENATOR. I HAVE
+BEEN IMPRESSED BY THE WAY THAT THE GREATEST AMOUNT OF PRODUCTION IS
+OBTAINED FROM EACH SQUARE CENTIMETER OF GROUND, BY THE INDUSTRIOUS-
+NESS
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 03        PEKING 02368  04 OF 07  161157Z
+
+OF YOUR PEOPLE AND BY THE DIVERSIFICATION OF YOUR AGRICULTURE. WE
+HAVE SEEN ALL THIS AS WELL AS YOUR CANCER INSTITUTE, YOUR HOSPITAL,
+YOUR
+INDUSTRIES. IT IS TO SEE THE LEGEND OF CHAIRMAN MAO COME ALIVE.
+WE CAN THUS REALIZE BETTER THE DEPTH OF THE GRIEF YOUR COUNTRY MUST
+HAVE AT THE DEATH OF THE CHAIRMAN, AND WE WISH TO CONVEY OUR
+SYMPATHY.
+
+LI: THANK YOU.
+
+BAYH: I WOULD LIKE TO ASK YOUR THOUGHTS ON A DIFFERENT AREA.
+YOU HAVE UNDERSTANDABLY TALKED ABOUT DEFENSE AGAINST THE WAR-MAKING
+POTENTIAL OF THE SOVIET UNION, WHICH IS OF COURSE EXTREMELY IMPORT-
+ANT.
+WE ARE ALL CONCERNED THAT ANOTHER WAR WITH THE MODERN INSTRUMENTS OF
+WAR NOW AVAILABLE WOULD BE A HOLOCAUST. I WOULD LIKE TO TALK ABOUT
+PEACE. I DO NOT WISH TO CONTRADICT ANYTHING
+YOU HAVE SAID BUT WE HAVE HEARD OF THE IMPORTANT
+WORK YOU HAVE GIVEN IN ECONOMIC GUIDANCE IN HELPING CHAIRMAN MAO.
+I BELIEVE YOU ARE AN ECONOMIC GENIUS. I APPRECIATE YOUR MODESTY, BUT
+I
+
+
+CONFIDENTIAL
+
+
+
+
+NNN
+
+CONFIDENTIAL
+
+PAGE 01        PEKING 02368  05 OF 07  161519Z
+
+42 14
+ACTION SS-25
+
+INFO  OCT-01  ISO-00  SSO-00  NSCE-00  /026 W
+---------------------     119875
+O R 160909Z NOV 76
+FM USLO  PEKING
+TO SECSTATE WASHDC IMMEDIATE 6791
+INFO AMCONSUL HONG KONG
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI
+AMEMBASSY TOKYO
+
+C O N F I D E N T I A L SECTION 5 OF 7 PEKING 2368
+
+EXDIS
+C O R R E C T E D  C O P Y
+BELIEVE WE CAN SEE YOUR EXPERTISE EVERYWHERE.
+
+LI: YOU FLATTER ME.
+
+BAYH: THIS HAS BEEN A LONG PROLOGUE. I WOULD LIKE TO GET YOUR THOUGHT
+S
+ON WHAT I THINK OUR WHOLE COUNTRY WOULD LIKE TO KNOW. AS I UNDERSTAND
+SOMETIME THIS YEAR YOU WILL PROMULGATE YOUR FIFTH FIVE YEAR PLAN OF
+YOUR COUNTRY. ARE THERE ELEMENTS IN THIS PLAN WHICH YOU COULD DISCLOS
+E
+TO US IN WHICH A CLOSER
+RELATIONSHIP OF FRIENDSHIP AND COOPERATION BETWEEN CHINA AND THE US
+COULD BE BENEFICIAL? ARE THERE WAYS IN WHICH WE COULD BE OF ASSISTANC
+E
+-- ALTHOUGH I CAN APPRECIATE YOUR STRONG FEELING OF SELF-RELIANCE --
+TRADE OPPORTUNITIES, MACHINERY, FACTORIES, EQUIPMENT AND A LARGE
+RANGE OF AREAS WHICH COULD BE PART OF THE
+CONTINUING RELATIONSHIP BETEWEN OUR TWO COUNTRIES?
+
+LI: SPEAKING ABOUT OUR PLAN IS COMPLEX AND INVOLVES LOTS OF
+ASPECTS. IT IS DIFFICULT TO DISCUSS IN A SYSTEMATIC WAY.
+DURING HIS LIFETIME, CHAIRMAN MAO NOT ONLY LAID DOWN THE BASIC
+LINE FOR POLICY BUT ALSO THE BASIC LINE AND
+PRINCIPLES FOR CONSTRUCTION OF THE COUNTRY. THESE PRINCIPLES WERE
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 02        PEKING 02368  05 OF 07  161519Z
+
+STATED IN THE REPORT BY THE LATE PREMIER CHOU EN-LAI AT THE FOURTH NP
+C.
+HE DISCUSSED THE MODERNIZATION OF INDUSTRY, AGRICULTURE, NATIONAL
+DEFENSE, AND SCIENCE AND TECHNOLOGY. IN MAKING ECONOMIC PLANS, WE
+MUST FIRST THINK OF THE 800 MILLION PEOPLE AND BEAR
+IN MIND THE FOOD, CLOTHING AND HOUSING PROBLEMS OF 800 MILLION PEOPLE
+.
+SO WE PLAN THE ECONOMY IN THE ORDER OF AGRICULTURE, LIGHT INDUSTRY
+AND HEAVY INDUSTRY. THIS WAS CONSISTENT WITH THE TEACHINGS OF CHAIRMA
+N
+MAO THAT WE MUST FIRST DEVELOP AGRICULTURE. IF WE DON'T HAVE ENOUGH
+FOOD FOR OUR PEOPLE, EVEN IF WE IMPORT 10 OR 20 MILLION TONS OF GRAIN
+,
+THIS WOULD NOT SOLVE OUR PROBLEM. IF AGRICULTURE IS DEVELOPED, IT
+IS EASIER TO DEVELOP LIGHT INDUSTRY, AND HEAVY INDUSTRY WILL HAVE A
+SOLID FOUNDATION. SO WE MAKE OUR PLANS ACCORDING TO THIS PRINCIPLE.
+WE HAVE A PLAN BUT IT IS NOT YET FINALIZED. WE HAVE NO INTENTION OF
+MAKING IT PUBLIC. THE PLAN HAS NOT YET MATURED AND IS STILL UNDER
+DISCUSSION. IN DISCUSSING IT WE MAY FIND NEW PROBLEMS AND REVISE THE
+PLAN. AS FOR RELATIONS BETWEEN OUR TWO COUNTRIES, ESPECIALLY
+TRADE, IT REMAINS TO BE SEEN. WE HAVE BOUGHT SOME EQUIPMENT FROM THE
+US
+--SUCH AS CHEMICAL FERTILIZER PLANTS.
+
+BAYH: THE KELLOGG UREA PLANTS.
+
+LI: IT DEPENDS ON WHETHER WE NEED THIS AND ARE ABLE TO DO IT. THE
+QUESTION OF NECESSITY IS EASY. BUT IF WE ASK OUR MINISTER, HE WILL
+ASK FOR MANY THINGS. AS FOR OUR ABILITY, THAT IS VERY DIFFICULT,
+WE DON'T HAVE THE MONEY TO BUY. ON PRINCIPLE WE RELY ON OUR OWN
+EFFORTS. MAINLY WE RELY ON OUR OWN EFFORTS. WE DO NOT PLAN TO BE IN
+DEBT. WE WERE ONCE IN DEBT TO THE SOVIET UNION. OUR DEBTS TO THE SOVI
+ET
+UNION WERE INCURRED IN 1950-51 DURING THE WAR OF RESISTANCE AGAINST
+THE U.S. AND TO ASSIST KOREA. WE FOUGHT A WAR IN THAT COUNTRY, OUR
+TWO COUNTRIES. IT IS NOT PLEASANT TO BE A DEBTOR.
+
+BAYH: IT IS NOT PLEASANT TO BE A CREDITOR OF THE SOVIETS EITHER.
+
+LI: PERHAPS THE SOVIET UNION FINDS IT PLEASANT. THEN WE MADE
+OUR MINDS UP TO REPAY ALL DEBTS TO THE SOVIET UNION. AFTER THAT WE
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 03        PEKING 02368  05 OF 07  161519Z
+
+NEVER INCURRED ANY FOREIGN OR DOMESTIC DEBTS. ONCE WE ISSUED PUBLIC
+BONDS BUT WE LATER REPAID THEM. SO AS TO TRADE BETWEEN OUR
+TWO COUNTRIES, WE'LL HAVE TO SE. I HAVE JUST SAID THAT IT DEPENDS ON
+NECESSITY AND ABILITY. ANOTHER THING IS YOUR HIGH TARRIFF WHICH IS
+TROUBLESOME. I THINK IT IS NOT EASY TO SOLVE THIS PROBLEM FOR THE
+TIME BEING. ROUGHLY THIS IS WHERE WE ARE AT THE PRESENT STAGE. I
+THINK WE IMPORT MORE FROM THE U.S. THAN YOU DO FROM US.
+
+BAYH: YOU HAVE BEEN VERY KIND AND I APPRECIATE YOUR RESPONSE.
+WHAT I ASKED WAS IN RESPECT TO OUR FUTURE RELATIONS. I THINK THAT TO
+THE EXTENT THAT WE CAN INCREASE TRADE OPPORTUNITIES, PERMIT MORE
+PEOPLE OF THE US TO VISIT CHINA AND MORE CHINESE TO VISIT THE U.S.
+-- THERE HAS BEEN SOME OF THIS BUT IT SHOULD BE INCREASED -- TO
+THE EXTENT THAT TRADE AND OTHER OPEN DOOR POLICIES CAN BE PURSUED
+THEY WILL HELP TO FIND A SOLUTION. THE GROUP HERE IS GOING BACK
+AS AMBASSADORS OF GOODWILL FOR CHINA.
+
+LI: AT PRESENT THERE ARE LOTS OF EXCHANGES ALREADY.
+
+CURTIS: WE FEEL PRIVILEGED AND APPRECIATE THE OPPORTUNITY TO
+CARRY ON THIS CONVERSATION WITH YOU. I WOULD LIKE TO EXTEND TO
+MY COLLEAGUES THE OPPORTUNITY TO SAY SOMETHING OR TO ASK QUESTIONS.
+
+YOUNG: FIRST I WOULD LIKE TO SAY THAT I DEEPLY APPRECIATE THE
+REAL FRIENDSHIP WHICH WE HAVE RECEIVED WHILE HERE. YOU HAVE OPENED
+YOUR DOORS TO US AND SHOWED US REAL FRIENDSHIP. I WOULD LIKE TO SAY
+ALSO THAT NO OTHER NATION IN THE WORLD COULD FEED, CLOTHE, EDUCATE,
+AND PROVIDE SUCH GOOD CARE OF 800 MILLION PEOPLE. TO DO THIS AND TO
+STAY OUT OF DEBT IS SOMETHING. WE COULD LEARN A FEW THINGS FROM YOU A
+BOUT
+
+
+CONFIDENTIAL
+
+
+
+
+NNN
+
+CONFIDENTIAL
+
+PAGE 01        PEKING 02368  06 OF 07  161215Z
+
+14
+ACTION SS-25
+
+INFO  OCT-01  ISO-00  SSO-00  NSCE-00  /026 W
+---------------------     117667
+O R 160909Z NOV 76
+FM USLO  PEKING
+TO SECSTATE WASHDC IMMEDIATE 6792
+INFO AMCONSUL HONG KONG
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI
+AMEMBASSY TOKYO
+
+C O N F I D E N T I A L SECTION 6 OF 7 PEKING 2368
+
+EXDIS
+
+STAYING OUT OF DEBT. THANK YOU.
+
+HOLLINGS: MR. VICE PREMIER, I APPRECIATE VERY MUCH THE OPPORTUNITY
+AND I AM PARTICULARLY HONORED TO HAVE THIS CONVERSATION WITH YOU,
+SINCE YOU ARE WELL KNOWN IN THE U.S. AS ONE OF THE LAST OF THE
+VETERANS OF THE LONG MARCH AND AS A PARTNER WITH CHAIRMAN MAO
+AND PREMIER CHOU IN THE MODERNIZATION OF CHINA.
+
+LI: WE'LL WORK STILL HARDER TO BUILD OUR COUNTRY UNDER THE
+LEADERSHIP OF THE CENTRAL COMMITTEE HEADED BY CHAIRMAN HUA, RELYING
+ON THE EFFORTS OF THE PROPLE.
+
+HOLLINGS: AS A SENATOR, I MUST POINT OUT THAT I SPEAK INDIVIDUALLY.
+WE ARE TOLD THATANYTHING A U.S. SENATOR MAY UTTER IS CONSIDERED
+A POSITION OF THE USG. THAT IS NOT TRUE. EACH ONE OF US SPEAKS FOR
+HIMSELF. THERE ARE FIVE OTHER SENATORS HERE AND THEY DO NOT
+SPEAK FOR ME AND I CANNOT SPEAK FOR THEM. I BELIEVE YOU HAVE AN
+INVESTMENT IN THE TIME AND EFFORT IT TOOK TO BRING ME
+ALL THE WAY TO CHINA AND I WISH TO SPEAK FRANKLY. SPEAKING FOR
+MYSELF,
+WE BELIEVE IN THE PRINCIPLES OF THE SHANGHAI COMMUNIQUE AND WE
+BELIEVE WE ARE ADHERING TO THE PRINCIPLES, AND AS THE COMMUNIQUE
+STATES, AS TENSIONS EASE, WE CAN CONTINUE TO MAKE PROGRESS UNDER THE
+SHANGHAI COMMUNIQUE. WE BELIEVE THIS TRIP SO GENEROUSLY PROVIDED TO
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 02        PEKING 02368  06 OF 07  161215Z
+
+US HAS HELPED TO EASE TENSIONS AND CERTAINLY HAS ENHANCED MY UNDER-
+STANDING AND APPRECIATION OF CHINA. AS SENATOR, I BELIEVE THAT THERE
+IS ONE CHINA AND THAT YOU ARE THAT CHINA.
+
+LI: YOU'RE RIGHT.
+
+HOLLINGS: HOWEVER, WE HAVE HAD FRIENDS OF LONG STANDING ON
+TAIWAN AND AS A SENATOR, I DON'T BELIEVE THE MAJORITY OF THE
+U.S. SENATORS WOULD ABRUPTLY ABANDON THAT FRIENDSHIP. A JOURNEY OF
+1,000 MILES, THEY SAY IN CHINA, BEGINS WITH ONE STEP. I THINK WE
+SHOULD MAKE STEPS TOGETHER TO TRY TO INCREASE TRADE,
+OPEN AIR ROUTES, AND ON OUR SIDE REDUCE TROOPS ON TAIWAN TO
+MAKE STEPS TO THE REALIZATION OF THE SHANGHAI COMMUNIQUE
+PRINCIPLES. WE IN THE US HAVE NEVER BELIEVED IN HEGEMONY. THE FACT IN
+OUR LONG HISTORY IS THAT WE GAVE FREEDOM TO THE PHILIPPINES
+AND CUBA.
+AFTER WORLD WAR II IN WHICH WE DEFEATED GERMANY, ITALY, AND JAPAN,
+WE NOT ONLY GAVE THEM FREEDOM BUT ALSO FINANCED THEIR RECOVERY.
+
+LI: PEOPLE IN THE WORLD BELIEVE YOU STILL HAVE SOME HEGEMONY.
+
+HOLLINGS:
+WE ABSOLUTELY REFUTE THAT BY OUR OWN ACTS OVER 200 YEARS
+OF HISTORY. WE WISH NOTHING BUT FREEDOM FOR THE PEOPLES AND I THINK
+THE U.S. AND CHINA WORKING TOGETHER COULD BRING ABOUT FREEDOM AND
+ECONOMIC SUSTENANCE TO THE THIRD WORLD.
+I'M SURE THIS VISIT HAS SERVED AS A PLATFORM OR STJATING POINT FOR
+ME AS A SENATOR TO UNDERSTAND AND APPRECIATE THE GREATNESS OF CHINA
+AND I HOPE SIMILAR VISITS BY YOUR DISTINGUISHED LEADERS TO THE U.S.
+WILL FOLLOW.
+
+LI: HOW CAN WE GO TO THE US SINCE THE EMBASSY OF THE TAIWAN CLIQUE IS
+THERE?
+
+HOLLINGS: THAT'S ONE OF THE PROBLEMS WE WILL HAVE TO SOLVE
+AND WE IN THE SENATE WILL BE WORKING ON THAT PROBLEM.
+
+LI: THE SOLUTION MUST CONFORM TO THE SHANGHAI COMMUNIQUE.
+
+CURTIS: SENATOR STEVENS OF ALASKA.
+
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 03        PEKING 02368  06 OF 07  161215Z
+
+LI: THAT IS THE NORTHERNMOST STATE.
+
+STEVENS: YES WE ARE. ALASKA IS SOMEWHAT SIMILAR TO YUNNAN PROVINCE
+WHERE I WAS STATIONED DURING THE WAR. IT MAY INTEREST YOU TO KNOW
+THAT THOSE OF US IN THE AIR FORCE HERE HAD GREAT RES SECT FOR YOUR
+PEOPLE IN THE NORTH.MY SQUADRON SUPPLIED YOUR TROOPS AT TIMES. YOU
+SPEAK THE TRUTH WHEN YOU SAY YOU REALLY FOUGHT THE JAPANESE. WE
+KNEW THAT AND RESPECTED YOU FOR IT. MY LARGE COLLEAGUE FROM THE
+SOUTH,
+HE SPEAKS CANDIDLY AND WE RESPECT HIS CANDOR. BUT I'D LIKE TO
+PURSUE HIS POINT. ISN'T THERE SOME WAY WE COULD START THE FLOW
+OF VISITS BOTH WAYS? WE HAVE DIFFICULTIES IN CONGRESS IN BEING
+ABLE TO FOLLOW THROUGH ON THE IMPLICATIONS OF THIS RELATIONSHIP
+BASED ON A LACK OF UNDERSTANDING. YOUR PEOPLE HAVE DOUBLED SINCE I
+WAS HERE. YOUR HOUSING AND FOOD PROBLEMS HAVE BEEN SOLVED, BUT THAT
+WORD ISN'T GETTING BACK TO THE U.S. WE NEED MORE OF OUR PEOPLE
+COMING THIS WAY BUT ALSO MORE OF YOUR PEOPLE COMING TO THE U.S. TO
+VISIT
+COLLEGES, OUR COUNTIES, OUR CITIES, TO INCREASE FRIENDSHIP AND
+UNDERSTANDING. I HAVE BEEN AMAZED BY THE FRIENDSHIP I HAVE FOUND
+HERE.
+I AM DEEPLY IMPRESSED BY THE SMILES I HAVE SEEN ON THE
+STREETS HERE BECAUSE I DIDN'T SEE THAT DURING THE WAR. PERHAPS
+PEOPLE DON'T SMILE DURING WARS. BUT THIS IS A TWO WAY STREET, THIS
+APPROACH TO NORMALIZATION. SOMEHOW I DON'T SEE MUCH COMING OUR WAY
+ON THAT TWO-WAY STREET.
+
+
+CONFIDENTIAL
+
+
+
+
+NNN
+
+CONFIDENTIAL
+
+PAGE 01        PEKING 02368  07 OF 07  161219Z
+
+12
+ACTION SS-25
+
+INFO  OCT-01  ISO-00  SSO-00  NSCE-00  /026 W
+---------------------     117747
+O R 160909Z NOV 76
+FM USLO  PEKING
+TO SECSTATE WASHDC IMMEDIATE 6793
+INFO AMCONSUL HONG KONG
+AMEMBASSY MOSCOW
+AMEMBASSY TAIPEI
+AMEMBASSY TOKYO
+
+C O N F I D E N T I A L SECTION 7 OF 7 PEKING 2368
+
+EXDIS
+
+LI: IT IS NOT A BAD RECORD HAVING SO MANY PEOPLE VISITING
+BEFORE COMPLETION OF NORMALIZATION OF RELATIONS. THE FUTURE
+DEPENDS ON EVENTS, NEVERTHELESS THERE WILL BE EXCHANGES. AS FOR
+VISITS BY OFFICIALS, OUR RELATIONS ARE NOT YET NORMALIZED. IN
+WASHINGTON THERE IS STILL THE EMBASSY OF TAIWAN. IF WE GO, BOTH
+YOU AND WE WILL BE EMBARRASSED. I'VE HEARD VICE FOREIGN MINISTER
+WANG TOLD YOU THAT THE MAJOR ASPECT IS THE INTERNATIONAL SITUATION,
+AND THE MINOR QUESTION IS TAIWAN. I THINK SHE PUT THE QUESTION
+VERY WELL. NEVERTHELESS TAIWAN REMAINS AN ISSUE. I THINK OUR
+AMERICAN FRIENDS, ESPECIALLY MR. GATES, KNOW OUR VIEWS VERY
+WELL SO I WON'T DISCUSS THIS ANY MORE.
+
+JOHNSTON: MR. VICE PREMIER, I WOULD LIKE TO ADD MY THANKS FOR THE
+WARM HOSPITALITY, I AM PARTICULARLY REASSURED AND
+PLEASED TO LEARN THAT CHAIRMAN HUA IS COMMITTED
+TO CHAIRMAN MAO'S POLICIES IN CARRYING OUT THE PRINCIPLES OF THE
+SHANGHAI COMMUNIQUE, AND TO DEVELOP FURTHER RELATIONSHIPS AND
+COOPERATION BETWEEN OUR TWO COUNTRIES.
+
+LI: YOU ARE RIGHT THAT WE WILL CARRY OUT THE BEHEST OF CHAIRMAN
+MAO.
+
+JOHNSTON: IN OUR COUNTRY, POLICY DOES NOT TRICKLE DOWN FROM THE
+TOP BUT COMES UP FROM THE PEOPLE. PRESIDENTS HAVE FOUND THIS OUT
+CONFIDENTIAL
+
+CONFIDENTIAL
+
+PAGE 02        PEKING 02368  07 OF 07  161219Z
+
+IN A COUPLE OF INSTANCES, MOST RECENTLY IN OUR POLICIES IN SOUTHEAST
+ASIA AND THE MIDDLE EAST. WHAT MY COLLEAGUES ARE TRYING TO SAY IS THAT
+
+WE ARE TRYING TO HELP YOU AND YOU MUST HELP US WITH OUR PEOPLE IN
+DEVELOPING THIS FRIENDSHIP.
+
+CURTIS: MR. VICE PREMIER, THIS HAS BEEN A MOST ENJOYABLE AND HELPFUL
+OCCASION. I AM GRATEFUL TO YOU FOR HAVING RECEIVED US AND EXPRESS THE
+GRATITUDE OF ALL OF US FOR THE INVITATION TO BRING OUR WIVES ALONG.
+THEY ARE A AVERY INFLUENTIAL GROUP AND HAVE ENJOYED IT, ESPECIALLY
+OUR HOSPITAL TRIP YESTERDAY TO SEE YOUR ADVANCES IN CANCER
+TREATMENT. THANK YOU FOR THIS AND I EXPRESS THE GRATITUDE OF ALL
+OF US.
+
+LI: YOU SHOULD HAVE ASKED THE LADIES TO SIT IN FRONT.
+
+CURTIS: YOU ARE A VERY WISE MAN.
+
+LI: WE MUST SHOW RESPECT FOR THE LADIES. I WOULD LIKE TO THANK
+YOU FOR COMING, FOR HAVING TRAVELLED SO FAR. I EXPRESS
+MY WELCOME TO YOU.
+GATES
+
+
+CONFIDENTIAL
+
+
+
+
+NNN
+
+</div></div></div><div class="pane-tab"><div class="pane-header">Metadata</div><div class="pane-content"><div class="text-content">---
+Capture Date: 01 JAN 1994
+Channel Indicators: n/a
+Current Classification: UNCLASSIFIED
+Concepts: n/a
+Control Number: n/a
+Copy: SINGLE
+Draft Date: 16 NOV 1976
+Decaption Date: 28 MAY 2004
+Decaption Note: 25 YEAR REVIEW
+Disposition Action: RELEASED
+Disposition Approved on Date: n/a
+Disposition Authority: GolinoFR
+Disposition Case Number: n/a
+Disposition Comment: 25 YEAR REVIEW
+Disposition Date: 28 MAY 2004
+Disposition Event: n/a
+Disposition History: n/a
+Disposition Reason: n/a
+Disposition Remarks: n/a
+Document Number: 1976PEKING02368
+Document Source: CORE
+Document Unique ID: '00'
+Drafter: n/a
+Enclosure: n/a
+Executive Order: X1
+Errors: N/A
+Film Number: D760427-0169
+From: PEKING
+Handling Restrictions: n/a
+Image Path: n/a
+ISecure: '1'
+Legacy Key: link1976/newtext/t19761144/aaaablwu.tel
+Line Count: '873'
+Locator: TEXT ON-LINE, ON MICROFILM
+Office: ACTION SS
+Original Classification: CONFIDENTIAL
+Original Handling Restrictions: EXDIS
+Original Previous Classification: n/a
+Original Previous Handling Restrictions: n/a
+Page Count: '16'
+Previous Channel Indicators: n/a
+Previous Classification: CONFIDENTIAL
+Previous Handling Restrictions: EXDIS
+Reference: 76 PEKING 2353
+Review Action: RELEASED, APPROVED
+Review Authority: GolinoFR
+Review Comment: n/a
+Review Content Flags: n/a
+Review Date: 04 MAY 2004
+Review Event: n/a
+Review Exemptions: n/a
+Review History: RELEASED &lt;04 MAY 2004 by ShawDG&gt;; APPROVED &lt;05 MAY 2004 by GolinoFR&gt;
+Review Markings: ! 'n/a
+
+  Margaret P. Grafeld
+  US Department of State
+  EO Systematic Review
+  04 MAY 2006
+
+'
+Review Media Identifier: n/a
+Review Referrals: n/a
+Review Release Date: n/a
+Review Release Event: n/a
+Review Transfer Date: n/a
+Review Withdrawn Fields: n/a
+Secure: OPEN
+Status: NATIVE
+Subject: TRANSCRIPT OF LI HSIEN-NIEN/CODEL CURTIS CONVERSATION
+TAGS: PFOR, ECON, OREP, CH, US, UR, TW, (CURTIS, CARL)
+To: STATE
+Type: TE
+Markings: ! 'Margaret P. Grafeld Declassified/Released US Department of State EO Systematic
+  Review 04 MAY 2006
+  Margaret P. Grafeld Declassified/Released US Department of State EO Systematic Review
+  04 MAY 2006'
+</div></div></div><div class="pane-tab"><div class="pane-header">Raw source</div><div class="pane-content"><div class="text-content"><a href="https://file.wikileaks.org/oc/2082.2/308160.pdf">2082.2/308160.pdf</a></div></div></div>
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 61px">Print</div><div class="pane-content pane-print">
+<p>You can use this tool to generate a print-friendly PDF of the document <strong>1976PEKING02368_b</strong>.</p>
+<form action="/plusd/pdf/?df=64397" method="post">
+	<input type="hidden" name="p" value="b" />
+	<input type="hidden" name="r" value="1976PEKING02368_b" />
+	<input type="checkbox" name="s" id="is" value="cake"><label for="is">Include summary</label></input><br />
+	<input type="checkbox" name="h" id="ih" value="is a"><label for="ih">Include headers</label></input><br />
+	<input type="checkbox" name="m" id="im" value="lie"><label for="im">Include raw metadata</label></input><br /><br />
+	<input type="submit" value="Generate pdf" />
+</form>
+</div></div>
+
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 60px">Share</div><div class="pane-content pane-share">
+<p>The formal reference of this document is <strong>1976PEKING02368_b</strong>, please use it for anything written about this document. This will permit you and others to search for it.</p>
+<div class="share-panel">
+<label for="share-link">Direct link to document</label>
+<input readonly="readonly" type="text" class="share" id="share-link" value="https://www.wikileaks.org/plusd/cables/1976PEKING02368_b.html" /><br />
+
+<label for="share-reddit">Reddit code</label>
+<input readonly="readonly" type="text" class="share" id="share-reddit" value="[1976PEKING02368_b](https://www.wikileaks.org/plusd/cables/1976PEKING02368_b.html)" /><br />
+
+<label for="share-html">HTML code</label>
+<input readonly="readonly" type="text" class="share" id="share-html" value="&lt;a href=&quot;https://www.wikileaks.org/plusd/cables/1976PEKING02368_b.html&quot; title=&quot;1976PEKING02368_b&quot;&gt;1976PEKING02368_b&lt;/a&gt;" /><br />
+
+<label for="share-bbcode">Forum code (bbcode)</label>
+<input readonly="readonly" type="text" class="share" id="share-bbcode" value="[url=https://www.wikileaks.org/plusd/cables/1976PEKING02368_b.html]1976PEKING02368_b[/url]" />
+</div>
+
+
+
+<br style="clear: both;" />
+<p>Submit this story</p>
+<div class="share">
+	<a href="http://www.reddit.com/submit?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1976PEKING02368_b.html"><img src="/plusd/images/Reddit-ico.png" /></a>
+</div>
+
+<div class="share">
+        <a href="http://twitter.com/home?status=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1976PEKING02368_b.html"><img src="/plusd/images/Twitter-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1976PEKING02368_b"><img src="/plusd/images/Gplus-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=1976PEKING02368_b&amp;p[summary]=Summary&amp;p[url]=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1976PEKING02368_b.html"><img src="/plusd/images/Facebook-ico.png" /></a>
+</div>
+
+<br style="clear: both;" />
+</div></div>
+
+<!--<div class="pane-tab"><div class="pane-header tab-right tab-find">Find</div><div class="pane-content pane-find">-->
+<!--</div></div>-->
+
+<!--<div id="tagged-text"> -->
+	<div id="pane-root" style="display:none">
+		<div id="pane-tabs"></div>
+
+		<div id="pane-contents"></div>
+
+	</div>
+<!--</div>-->
+<div class="pane-content pane-extra">
+<table class="references">
+	<thead>
+		<tr>
+			<th>References to this document in other cables</th>
+			<th>References in this document to other cables</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+							</td>
+			<td>
+									<a class="j" href="/plusd/cables/1976PEKING02353.html" title="76 PEKING 2353">1976PEKING02353</a>
+							</td>
+		</tr>
+	</tbody>
+
+</table>
+<p style="text-align:center">If the reference is ambiguous all possibilities are listed.</p>
+
+</div>
+<div class="pane-content pane-extra">
+<div class="dnpage visible">
+<h1>Help Expand The Public Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+
+
+</div>
+
+</div>
+<br />
+<script type="text/javascript" src="/plusd/js/mootools-core-and-more.js"></script>
+<script type="text/javascript" src="/plusd/js/efatmarker.min.js"></script>
+<script type="text/javascript">
+(function(){
+	window.addEvent('domready', function(){
+	        $$("#showhide").addEvent( "click", function() {
+			$$(".text-header").toggleClass("hidden");
+			t=$$("#showhide");
+			if(t.get("html")=="Show&nbsp;Headers")
+				t.set("html", "Hide&nbsp;Headers");
+			else
+				t.set("html", "Show&nbsp;Headers");
+		} );
+
+		var pane_root = $('pane-root'),
+			pane_tabs = $('pane-tabs'),
+			pane_contents = $('pane-contents'),
+			panes = $$('.pane-tab'),
+			num_panes = panes.length,
+			i, pane,
+			pane_header,
+			pane_content;
+		var activate_tab = function(target) {
+			$$('#pane-contents .pane-content').each(function(e,i){
+				if (i === target) {
+					e.addClass('top');
+					}
+				else {
+					e.removeClass('top');
+					}
+				});
+			$$('#pane-tabs .pane-header').each(function(e,i){
+				if (i === target) {
+					e.removeClass('nottop');
+					e.addClass('ontop');
+					}
+				else {
+					e.addClass('nottop');
+					e.removeClass('ontop');
+					}
+				});
+			};
+		for (i=0; i<num_panes; i++) {
+			pane = panes[i];
+			pane_header = pane.getElement('.pane-header');
+			pane_tabs.grab(pane_header);
+			pane_header.addEvent('click', function(){
+				var target = $('pane-tabs').getChildren().indexOf(this);
+				activate_tab(target);
+				});
+			pane_content = pane.getElement('.pane-content');
+			pane_contents.grab(pane_content);
+			pane.destroy();
+			}
+		activate_tab(0);
+		$('pane-root').style.display = '';
+		}); /* event handler function() */
+	})(); /* namespace function() */
+</script>
+<div id="efm-button">
+	<div id="efm-menu">
+		<h3 style="margin:0 0 2px 0">e-Highlighter</h3>
+		<a id="efm-permalink" class="efm-need-highlight" href="" style="margin-bottom:0;padding-bottom:0;"></a>
+		<p style="margin-top:0;padding-top:0" class="efm-need-highlight">Click to send permalink to address bar, or right-click to copy permalink.</p>
+		<a id="efm-twitter-button" class="efm-need-highlight" href="#" target="_blank"><img src="/plusd/images/tweetn.png" alt="Tweet" title="Tweet these highlights" style="vertical-align:middle"> these highlights</a>
+		<p style="margin:0.5em 0;padding:0;border-top:1px dotted #ccc;height:1px"></p>
+		<a id="efm-unhighlightall" class="efm-need-highlight">Un-highlight all</a>
+		<a id="efm-unhighlight">Un-highlight selection<span>u</span></a>
+		<a id="efm-highlight">Highlight selection<span>h</span></a>
+		</div>
+	</div>
+</div></div></div>
+<script type="text/javascript">
+
+(function(){
+	window.addEvent('domready', function(){
+
+		var markerButton = $('efm-button');
+		if ( markerButton ) {
+			eMarker = new EFatMarker($('content-main'));
+			eMarker.tokenToSpans(); // apply whatever token is there
+			// need to act on mousedown or else selection disappear
+			markerButton.addEvent('mousedown', function(){
+				eMarker.interpretSelection(true);
+				return false;
+				});
+			$('efm-unhighlightall').addEvent('mousedown', function(){
+				eMarker.unhighlightAll(true);
+				return false;
+				});
+			$('efm-unhighlight').addEvent('mousedown', function(){
+				eMarker.unhighlightSelection(true);
+				return false;
+				});
+			$('efm-highlight').addEvent('mousedown', function(){
+				eMarker.highlightSelection(true);
+				return false;
+				});
+			$('efm-permalink').addEvent('mousedown', function(){
+				window.location.href = this.href;
+				return false;
+				});
+			// if Mootools Keyboard is available, use it
+			if (Keyboard) {
+				var keyboard = new Keyboard({
+					defaultEventType: 'keyup',
+					events: {
+						'h': function(){
+							eMarker.highlightSelection(true);
+							},
+						'u': function(){
+							eMarker.unhighlightSelection(true);
+							}
+						}
+					});
+				keyboard.activate();
+				}
+			eMarker.syncDOM();
+			// auto scroll to first highlight, if any
+			if (eMarker.hasSpans()) {
+				var scroll = new Fx.Scroll(window,{offset:{'x':0,'y':-100}}),
+					highlights = $$('#content-main .efm-hi');
+				if (highlights.length > 0) {
+					scroll.toElement(highlights[0]);
+					}
+				}
+			}
+		});
+	})();
+
+</script>
+
+<div class="dnflood"></div>
+<div class="dnbutton">
+<div class="dnmain">
+<h1><span class="dnclose">X</span>Help Expand The Public<br />Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+</div>
+</div>
+
+</div>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<link href="/static/css/styles_footer.css" rel="stylesheet">
+<footer id="page-footer" class="footer-recommendations">
+  <div class="footer-wrapper">
+    <div class="recommendation-container">
+      <a href="#" class="top">Top</a>
+      
+        <ul class="recommendation-links">
+                <li class="recommendation">
+                    <a href="https://our.wikileaks.org" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton666.png" width="360" height="240" />
+                        </div>
+                        <p><p>WL Research Community - user contributed research based on documents published by WikiLeaks. 
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.torproject.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton401.png" width="360" height="240" />
+                        </div>
+                        <p><p>Tor is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://tails.boum.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton405.png" width="360" height="240" />
+                        </div>
+                        <p><p> Tails is a live operating system, that you can start on almost any computer from a DVD, USB stick, or SD card. It aims at preserving your privacy and anonymity.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.couragefound.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton404.png" width="360" height="240" />
+                        </div>
+                        <p><p>The Courage Foundation is an international organisation that supports those who risk life or liberty to make significant contributions to the historical record.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.bitcoin.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton403.png" width="360" height="240" />
+                        </div>
+                        <p><p>Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network.
+</p></p>
+                    </a>
+                </li>
+            </li>
+        </ul>
+      
+      <ul class="social-links">
+        <li>
+          <a href="https://www.facebook.com/wikileaks" target="_blank" alt="Facebook">
+            <img src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" target="_blank" alt="Twitter">
+            <img src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

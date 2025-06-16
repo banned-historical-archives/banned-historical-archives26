@@ -20,7 +20,7 @@ proxies = {
     'http': proxy,
     'https': proxy
 } if proxy else None
-def fetch_wikileaks_search_results_with_proxy(query, start_page, end_page, document_date_end=None):
+def fetch_wikileaks_search_results_with_proxy(query, exact_phrase, start_page, end_page, document_date_end=None):
     """
     抓取维基解密搜索结果，支持使用代理，并使用新的CSS选择器。
 
@@ -40,7 +40,7 @@ def fetch_wikileaks_search_results_with_proxy(query, start_page, end_page, docum
         params = {
             "any_of": "",
             "page": page,
-            "exact_phrase": "",
+            "exact_phrase": exact_phrase,
             "query": query,
             "released_date_end": "",
             "document_date_start": "",
@@ -138,16 +138,87 @@ def fetch_detail(link):
 
 if __name__ == "__main__":
     search_query = "deng xiaoping"
+    exact_phrase = ''
     start_page = 1
     end_page = 41
     document_end_date = "2003-06-01" # 固定日期
     
-    # 设置你的SOCKS5代理
-    # 请确保已安装 PySocks: pip install requests[socks] 或 pip install PySocks
-
     print(f"开始抓取维基解密关于 '{search_query}' 的搜索结果 (截止日期: {document_end_date})...")
     fetch_wikileaks_search_results_with_proxy(
         search_query, 
+        exact_phrase,
+        start_page, 
+        end_page, 
+        document_date_end=document_end_date,
+    )
+
+    search_query = "mao zedong"
+    exact_phrase = ''
+    start_page = 1
+    end_page = 8
+    document_end_date = "2003-06-01" # 固定日期
+    
+    print(f"开始抓取维基解密关于 '{search_query}' 的搜索结果 (截止日期: {document_end_date})...")
+    fetch_wikileaks_search_results_with_proxy(
+        search_query, 
+        exact_phrase,
+        start_page, 
+        end_page, 
+        document_date_end=document_end_date,
+    )
+
+    search_query = ""
+    exact_phrase = 'jiang qing'
+    start_page = 1
+    end_page = 1
+    document_end_date = "2003-06-01" # 固定日期
+    print(f"开始抓取维基解密关于 '{search_query}' 的搜索结果 (截止日期: {document_end_date})...")
+    fetch_wikileaks_search_results_with_proxy(
+        search_query, 
+        exact_phrase,
+        start_page, 
+        end_page, 
+        document_date_end=document_end_date,
+    )
+
+    search_query = ""
+    exact_phrase = 'mao yuanxin'
+    start_page = 1
+    end_page = 1
+    document_end_date = "2003-06-01" # 固定日期
+    print(f"开始抓取维基解密关于 '{search_query}' 的搜索结果 (截止日期: {document_end_date})...")
+    fetch_wikileaks_search_results_with_proxy(
+        search_query, 
+        exact_phrase,
+        start_page, 
+        end_page, 
+        document_date_end=document_end_date,
+    )
+
+    search_query = ""
+    exact_phrase = 'gang of four'
+    start_page = 1
+    end_page = 39
+    document_end_date = "2003-06-01" # 固定日期
+    print(f"开始抓取维基解密关于 '{search_query}' 的搜索结果 (截止日期: {document_end_date})...")
+    fetch_wikileaks_search_results_with_proxy(
+        search_query, 
+        exact_phrase,
+        start_page, 
+        end_page, 
+        document_date_end=document_end_date,
+    )
+
+    search_query = ""
+    exact_phrase = 'mao tse-tung'
+    start_page = 1
+    end_page = 35
+    document_end_date = "2003-06-01" # 固定日期
+    
+    print(f"开始抓取维基解密关于 '{search_query}' 的搜索结果 (截止日期: {document_end_date})...")
+    fetch_wikileaks_search_results_with_proxy(
+        search_query, 
+        exact_phrase,
         start_page, 
         end_page, 
         document_date_end=document_end_date,

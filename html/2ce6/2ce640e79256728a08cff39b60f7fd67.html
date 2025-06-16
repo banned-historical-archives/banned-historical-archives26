@@ -1,0 +1,2427 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/cerulean.min.css" rel="stylesheet">
+<link href="/bootstrap/css/new-gen.css" rel="stylesheet">
+<link href="/bootstrap/css/submit.css" rel="stylesheet">
+<script type="text/javascript" src="/plusd/js/jquery.min.js"></script>
+<script type="text/javascript" src="/plusd/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<script type="text/javascript" src="/plusd/js/wikipedia.js"></script>
+<script type="text/javascript" src="/plusd/js/qtip.min.js"></script>
+<script type="text/javascript" src="/plusd/js/idle-timer.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+
+(function($) {
+	var show_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").show();
+	}
+	var hide_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").hide();
+	}
+	$(document).idleTimer(180000);
+	$(document).on("idle.idleTimer", show_button);
+	$(document).ready(function() {
+		if( typeof setupDoubleClick == 'function' )
+			setupDoubleClick('http://en.wikipedia.org/w/index.php', 'british', 'tagged-text', 4, "_blank", "/words/ps.json");
+		var current = Math.floor(( new Date( ) ).getTime( )/1000);
+
+		$("#ddonate").click(show_button);
+		$(".dnclose").click(hide_button);
+		$('a.i').each( function() {
+			i=$(this);
+			i.attr("alt", descr[i.attr("title")]);
+		} );
+		$('a.i').qtip( {
+			show: {
+				event: 'click',
+				solo: true
+			},
+			hide: 'click',
+			content: {
+				attr: 'alt',
+				title: {
+					button: true
+				}
+			},
+			style: {
+				classes: 'qtip-blue qtip-shadow'
+			}
+		} );
+
+	} );
+
+
+	var descr = {
+	'Subject': 'Subject line of the document','From': 'Who/where sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-fr/\">A list of origins, with citations for any acronyms used, is available here.</a>','To': 'Who/where received the document.<br /><br /><a href=\"/plusd/about-to/\" class=\"j\">A list of destinations, with citations for any acronyms used, is available here.</a>','Original Classification': 'Classification the document was originally given when produced.<br /><br /><a href=\"/plusd/about-oc/\" class=\"j\">Citations for acronyms used are available here.</a>','Current Classification': 'Classification the document currently holds.<br /><br /><a href=\"/plusd/about-cc/\" class=\"j\">Citations for acronyms used are available here.</a>','Handling Restrictions': 'All handling restrictions governing the document distribution that have been used to date.<br /><br /><i>In the metadata of the Kissinger Cables this field is called \'Previous Handling Restrictions\'.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i><br /><br /><a href=\"/plusd/about-hr/\" class=\"j\">Citations for acronyms used are available here.</a>','Archive Status': 'Original documents not deleted or lost by State Department after review are available in one of four formats:<ul><li>Electronic Telegram - declassified and made available (content and metadata available)</li><li>Electronic Telegram Withdrawal Card - telegram not declassified, or was declassified but not released for other reasons (limited metadata available)</li><li>P-reel Index - Index card for other document type that is stored on microfilm (only metadata available)</li><li>P-reel Index Withdrawal Card - P-reel index card that was not declassified, or was declassified but not released for other reasons (limited metadata available)</li></ul><br /><i class=\"b\">The Kissinger Cables\' metadata does not have this field. It is taken from subsets the documents were released in after State Department review.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Type': 'Correspondence type or format of original document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TE\' (Telegram).</i><br /><br /><a href=\"/plusd/about-ty/\" class=\"j\">Citations for acronyms used are available here.</a>','Locator': 'Where the original document is now held - online or on microfilm, or remains in \"ADS\" (State Department\'s 1973 Automated Data System of indexing by TAGS of electronic telegrams and P-reels) with the text either garbled, not converted or unretrievable.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TEXT ONLINE\'.</i>','Executive Order': 'Executive Order information - often a reference to the E.O. governing the declassification/downgrade of the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Markings': 'Markings of declassification/release review of the document.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'. </i>','Enclosure': 'Attachments or other items sent with the original document. These are not necessarily currently held in this library.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.','Concepts': 'Keywords of subjects dealt with in the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\' for this field.</i>','TAGS': 'Traffic Analysis by Geography and Subject (TAGS)<br /><br />There are geographic, organization and subject \"TAGS\" - the classification system implemented by the Department of State for its central files in 1973.<br /><br /><a href=\"/plusd/about-ta/\" class=\"j\">A list of TAGS, with citations for any acronyms used, is available here.</a>','Office': 'Which United States government office or bureau is dealing with the topics the document concerns.<br /><br /><a href=\"/plusd/about-of/\" class=\"j\">A list offices, with citations for acronym expansions, is available here.</a>','Office Origin': 'Which State Department office or bureau sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Office Action': 'Which State Department office or bureau received the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Character Count': 'The number of characters, including spaces, in the document.','Date': 'The date the document was created.','Canonical ID': 'Unique document identification number.<br /><br /><i>We have created a canonical ID by taking the original document ID and adding a \'_\' at the end and then WikiLeaks\' annotation for different datasets: Cablegate = a, the Kissinger Cables = b, etc. If document IDs are duplicated in the original datasets we number each duplicate, eg 1976WARSAW05657_b2 is the second document with that ID in the Kissinger Cables.</i>','Other cables with the same ID': 'Documents that are linked, for example a P-reel index and the document it is the index for. Or documents that were originally given the same document ID number.',	};
+
+
+
+})(jQuery);
+</script>
+<title>Cable: 1976STATE280331_b</title>
+<link rel="stylesheet" type="text/css" href="/plusd/css/qtip.min.css" id="qtip">
+<link rel="stylesheet" type="text/css" href="/plusd/css/main.css" id="maincss">
+<link rel="stylesheet" type="text/css" href="/plusd/css/print.css" media="print" id="printcss">
+</head>
+<body style="text-align: center;">
+    <div id="submit_wlkey" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<p>Key fingerprint <b>9EF0 C41A FBA5 64AA 650A  0259 9C6D CD17 283E 454C</b></p>
+		<pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+=5a6T
+-----END PGP PUBLIC KEY BLOCK-----
+
+		</pre>
+	</div>
+</div>
+
+<div id="submit_help_contact" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Contact</h3>
+		<p>If you need help using Tor you can contact WikiLeaks for assistance in setting it up using our simple webchat available at: <a href="https://wikileaks.org/talk">https://wikileaks.org/talk</a></p>
+		<p>If you can use Tor, but need to contact WikiLeaks for other reasons use our secured webchat available at <b>http://wlchatc3pjwpli5r.onion</b></p>
+		<p>We recommend contacting us over Tor if you can.</p>
+	</div>
+</div>
+
+<div id="submit_help_tor" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Tor</h3>
+		<p><a href="https://www.torproject.org">Tor</a> is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.</p>
+		<p>In order to use the WikiLeaks public submission system as detailed above you can download the Tor Browser Bundle, which is a Firefox-like browser available for Windows, Mac OS X and GNU/Linux and pre-configured to connect using the anonymising system Tor.</p>
+		<h4>Tails</h4>
+		<p>If you are at high risk and you have the capacity to do so, you can also access the submission system through a secure operating system called <a href="https://tails.boum.org">Tails</a>. Tails is an operating system launched from a USB stick or a DVD that aim to leaves no traces when the computer is shut down after use and automatically routes your internet traffic through Tor. Tails will require you to have either a USB stick or a DVD at least 4GB big and a laptop or desktop computer.</p>
+	</div>
+</div>
+
+<div id="submit_help_tips" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>Tips</h3>
+		<p>Our submission system works hard to preserve your anonymity, but we recommend you also take some of your own precautions. Please review these basic guidelines. </p>
+		<div>
+			<h4>1. Contact us if you have specific problems</h4>
+			<p>If you have a very large submission, or a submission with a complex format, or are a high-risk source, please <a href="#submit_help_contact">contact us</a>. In our experience it is always possible to find a custom solution for even the most seemingly difficult situations.</p>
+		</div>
+		<div>
+			<h4>2. What computer to use</h4>
+			<p>If the computer you are uploading from could subsequently be audited in an investigation, consider using a computer that is not easily tied to you. Technical users can also use <a href="https://tails.boum.org">Tails</a> to help ensure you do not leave any records of your submission on the computer.</p>
+		</div>
+		<div>
+			<h4>3. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+	</div>
+</div>
+
+<div id="submit_help_after" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>After</h3>
+
+		<div>
+			<h4>1. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+		<div>
+			<h4>2. Act normal</h4>
+			<p>If you are a high-risk source, avoid saying anything or doing anything after submitting which might promote suspicion. In particular, you should try to stick to your normal routine and behaviour.</p>
+		</div>
+
+		<div>
+			<h4>3. Remove traces of your submission</h4>
+			<p>If you are a high-risk source and the computer you prepared your submission on, or uploaded it from, could subsequently be audited in an investigation, we recommend that you format and dispose of the computer hard drive and any other storage media you used.</p>
+			<p>In particular, hard drives retain data after formatting which may be visible to a digital forensics team and flash media (USB sticks, memory cards and SSD drives) retain data even after a secure erasure. If you used flash media to store sensitive data, it is important to destroy the media.</p>
+			<p>If you do this and are a high-risk source you should make sure there are no traces of the clean-up, since such traces themselves may draw suspicion.</p>
+			<div>
+				<h4>4. If you face legal action</h4>
+				<p>If a legal action is brought against you as a result of your submission, there are organisations that may help you. The Courage Foundation is an international organisation dedicated to the protection of journalistic sources. You can find more details at <a href="https://www.couragefound.org">https://www.couragefound.org</a>.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="submit" class="submit_banner">
+	<div class="container">
+		<div class="page-header">
+			<h1>Submit documents to WikiLeaks</h1>
+			<a class="remove-button" href="#"><span class="glyphicon glyphicon-remove-circle"></span></a>
+		</div>
+		<p>WikiLeaks publishes documents of political or historical importance that are censored or otherwise suppressed. We specialise in strategic global publishing and large archives.</p>
+		<p>The following is the address of our secure site where you can anonymously upload your documents to WikiLeaks editors. You can only access this submissions system through Tor. (See our <a href="#submit_help_tor">Tor tab</a> for more information.) We also advise you to read our <a href="#submit_help_tips">tips for sources</a> before submitting.</p>
+
+		<div class="alert alert-info">
+			<div class="onion-url">http://ibfckmpsmylhbfovflajicjgldsqpc75k5w454irzwlh7qifgglncbad.onion </div>
+			<!--<div>
+				Copy this address into your Tor browser. Advanced users, if they wish, can also add a further layer of encryption to their submission using <a href="#submit_wlkey">our public PGP key</a>.
+			</div>-->
+		</div>
+
+		<p>If you cannot use Tor, or your submission is very large, or you have specific requirements, WikiLeaks provides several alternative methods. <a href="#submit_help_contact">Contact us</a> to discuss how to proceed.</p>
+	</div>
+</div>
+<div id="submit_help_buttons" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="main">
+	    
+
+<link href="/static/css/styles_topnav.css" rel="stylesheet">
+<link href="/static/css/styles_sidenav.css" rel="stylesheet">
+<div class="top-navigation">
+  <nav class="navbar">
+      <a href="#menu" class="mobile-only hot-dog nav-element">
+      </a>
+    <div class="nav-logo">
+      <a href="https://wikileaks.org">
+        <h1>WikiLeaks</h1>
+      </a>
+    </div>
+    <div class="action-buttons">
+      <a class="button-face donate-link" href="https://shop.wikileaks.org/donate">Donate</a>
+      <a class="button-face submit-link" href="#submit">Submit</a>
+    </div>
+    <form class="global-search" method="get" action="https://search.wikileaks.org/">
+      <input type="text" name="q" placeholder="Search">
+      <button class="btn-search" type="submit"></button>
+    </form>
+    <div class="main-nav">
+
+        <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+            </li>
+
+            <li>
+              <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+            </li>
+
+        </ul>
+
+    </div>
+  </nav>
+</div>
+
+<nav id="menu" class="side-nav rub">
+  <div class="menu-wrapper">
+    <a class="close-btn nav-element" href="#"></a>
+
+      <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+
+          </li>
+
+          <li>
+            <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+
+          </li>
+
+      </ul>
+
+    <aside class="friends mobile-only">
+
+        <ul class="first-level">
+                <li>
+                <a href="https://our.wikileaks.org" target="_blank">our.wikileaks.org</a>
+                </li>
+                <li>
+                <a href="https://www.torproject.org/" target="_blank">Tor Project</a>
+                </li>
+                <li>
+                <a href="https://tails.boum.org/" target="_blank">Tails</a>
+                </li>
+                <li>
+                <a href="https://www.couragefound.org/" target="_blank">Courage</a>
+                </li>
+                <li>
+                <a href="https://www.bitcoin.org/" target="_blank">Bitcoin</a>
+                </li>
+        
+        </ul>
+
+    </aside>
+    <aside class="social mobile-only">
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/wikileaks" class="nav-element" target="_blank" alt="Facebook">
+            <img class="img-responsive" src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" class="nav-element" target="_blank" alt="Twitter">
+            <img class="img-responsive" src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</nav>
+
+
+<div id="overall">
+
+<div id="leftmenu">
+
+        <center><img src="/plusd/images/wl2.jpg" alt="WikiLeaks" /></center>
+        <a class="button" href="/plusd/pressrelease/">Press release</a>
+        <a class="button" href="/plusd/about/">About PlusD</a>
+
+        <div class="pick">
+	<h3>Browse by creation date</h3>
+
+<a href="/plusd/?q=&qtfrom=1966-01-01&qtto=1966-12-31#result">1966</a>
+<a href="/plusd/?q=&qtfrom=1972-01-01&qtto=1972-12-31#result">1972</a>
+<a href="/plusd/?q=&qtfrom=1973-01-01&qtto=1973-12-31#result">1973</a>
+<a href="/plusd/?q=&qtfrom=1974-01-01&qtto=1974-12-31#result">1974</a>
+<a href="/plusd/?q=&qtfrom=1975-01-01&qtto=1975-12-31#result">1975</a>
+<a href="/plusd/?q=&qtfrom=1976-01-01&qtto=1976-12-31#result">1976</a>
+<a href="/plusd/?q=&qtfrom=1977-01-01&qtto=1977-12-31#result">1977</a>
+<a href="/plusd/?q=&qtfrom=1978-01-01&qtto=1978-12-31#result">1978</a>
+<a href="/plusd/?q=&qtfrom=1979-01-01&qtto=1979-12-31#result">1979</a>
+<a href="/plusd/?q=&qtfrom=1985-01-01&qtto=1985-12-31#result">1985</a>
+<a href="/plusd/?q=&qtfrom=1986-01-01&qtto=1986-12-31#result">1986</a>
+<a href="/plusd/?q=&qtfrom=1987-01-01&qtto=1987-12-31#result">1987</a>
+<a href="/plusd/?q=&qtfrom=1988-01-01&qtto=1988-12-31#result">1988</a>
+<a href="/plusd/?q=&qtfrom=1989-01-01&qtto=1989-12-31#result">1989</a>
+<a href="/plusd/?q=&qtfrom=1990-01-01&qtto=1990-12-31#result">1990</a>
+<a href="/plusd/?q=&qtfrom=1991-01-01&qtto=1991-12-31#result">1991</a>
+<a href="/plusd/?q=&qtfrom=1992-01-01&qtto=1992-12-31#result">1992</a>
+<a href="/plusd/?q=&qtfrom=1993-01-01&qtto=1993-12-31#result">1993</a>
+<a href="/plusd/?q=&qtfrom=1994-01-01&qtto=1994-12-31#result">1994</a>
+<a href="/plusd/?q=&qtfrom=1995-01-01&qtto=1995-12-31#result">1995</a>
+<a href="/plusd/?q=&qtfrom=1996-01-01&qtto=1996-12-31#result">1996</a>
+<a href="/plusd/?q=&qtfrom=1997-01-01&qtto=1997-12-31#result">1997</a>
+<a href="/plusd/?q=&qtfrom=1998-01-01&qtto=1998-12-31#result">1998</a>
+<a href="/plusd/?q=&qtfrom=1999-01-01&qtto=1999-12-31#result">1999</a>
+<a href="/plusd/?q=&qtfrom=2000-01-01&qtto=2000-12-31#result">2000</a>
+<a href="/plusd/?q=&qtfrom=2001-01-01&qtto=2001-12-31#result">2001</a>
+<a href="/plusd/?q=&qtfrom=2002-01-01&qtto=2002-12-31#result">2002</a>
+<a href="/plusd/?q=&qtfrom=2003-01-01&qtto=2003-12-31#result">2003</a>
+<a href="/plusd/?q=&qtfrom=2004-01-01&qtto=2004-12-31#result">2004</a>
+<a href="/plusd/?q=&qtfrom=2005-01-01&qtto=2005-12-31#result">2005</a>
+<a href="/plusd/?q=&qtfrom=2006-01-01&qtto=2006-12-31#result">2006</a>
+<a href="/plusd/?q=&qtfrom=2007-01-01&qtto=2007-12-31#result">2007</a>
+<a href="/plusd/?q=&qtfrom=2008-01-01&qtto=2008-12-31#result">2008</a>
+<a href="/plusd/?q=&qtfrom=2009-01-01&qtto=2009-12-31#result">2009</a>
+<a href="/plusd/?q=&qtfrom=2010-01-01&qtto=2010-12-31#result">2010</a>
+
+        </div>
+
+        <div class="sort">
+	<h3>Browse by Classification</h3>
+
+<a href="/plusd/?q=&qfoclass=UNCLASSIFIED#result" title="UNCLASSIFIED (1339531 documents)">UNCLASSIFIED</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL#result" title="CONFIDENTIAL (503750 documents)">CONFIDENTIAL</a><a href="/plusd/?q=&qfoclass=LIMITED+OFFICIAL+USE#result" title="LIMITED OFFICIAL USE (435536 documents)">LIMITED OFFICIAL USE</a><a href="/plusd/?q=&qfoclass=SECRET#result" title="SECRET (120598 documents)">SECRET</a><a href="/plusd/?q=&qfoclass=UNCLASSIFIED%2F%2FFOR+OFFICIAL+USE+ONLY#result" title="UNCLASSIFIED//FOR OFFICIAL USE ONLY (58095 documents)">UNCLASSIFIED//FOR OFFICIAL USE ONLY</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL%2F%2FNOFORN#result" title="CONFIDENTIAL//NOFORN (4678 documents)">CONFIDENTIAL//NOFORN</a><a href="/plusd/?q=&qfoclass=SECRET%2F%2FNOFORN#result" title="SECRET//NOFORN (4330 documents)">SECRET//NOFORN</a>
+        </div>
+
+	<div class="sort">
+	<h3>Browse by Handling Restriction</h3>
+
+<a href="/plusd/?q=&qforiginalhandlingrestriction=EXDIS#result" title="EXDIS - Exclusive Distribution Only (71108 documents)">EXDIS - Exclusive Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=ONLY#result" title="ONLY - Eyes Only (32583 documents)">ONLY - Eyes Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LIMDIS#result" title="LIMDIS - Limited Distribution Only (25098 documents)">LIMDIS - Limited Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NODIS#result" title="NODIS - No Distribution (other than to persons indicated) (24437 documents)">NODIS - No Distribution (other than to persons indicated)</a><a href="/plusd/?q=&qforiginalhandlingrestriction=STADIS#result" title="STADIS - State Distribution Only (20286 documents)">STADIS - State Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CHEROKEE#result" title="CHEROKEE - Limited to senior officials (4343 documents)">CHEROKEE - Limited to senior officials</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NOFORN#result" title="NOFORN - No Foreign Distribution (2197 documents)">NOFORN - No Foreign Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LOU#result" title="LOU - Limited Official Use (598 documents)">LOU - Limited Official Use</a><a href="/plusd/?q=&qforiginalhandlingrestriction=SENSITIVE#result" title="SENSITIVE -  (43 documents)">SENSITIVE - </a><a href="/plusd/?q=&qforiginalhandlingrestriction=BU#result" title="BU - Background Use Only (3 documents)">BU - Background Use Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CONDIS#result" title="CONDIS - Controlled Distribution (1 documents)">CONDIS - Controlled Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=US#result" title="US - US Government Only (1 documents)">US - US Government Only</a>	</div>
+
+	<div class="pick wide">
+	<h3>Browse by TAGS</h3>
+<a href="/plusd/?q=&qftags=US#result" title="US - United States (553685 documents)">US</a> <a href="/plusd/?q=&qftags=PFOR#result" title="PFOR - Political Affairs--Foreign Policy and Relations (294672 documents)">PFOR</a> <a href="/plusd/?q=&qftags=PGOV#result" title="PGOV - Political Affairs--Government; Internal Governmental Affairs (180409 documents)">PGOV</a> <a href="/plusd/?q=&qftags=PREL#result" title="PREL - Political Affairs--External Political Relations (149906 documents)">PREL</a> <a href="/plusd/?q=&qftags=ETRD#result" title="ETRD - Economic Affairs--Foreign Trade (124244 documents)">ETRD</a> <a href="/plusd/?q=&qftags=UR#result" title="UR - Soviet Union (USSR) (117139 documents)">UR</a> <a href="/plusd/?q=&qftags=OVIP#result" title="OVIP - Operations--VIP Travel Arrangements (114816 documents)">OVIP</a> <a href="/plusd/?q=&qftags=ASEC#result" title="ASEC - Administration--Security (114594 documents)">ASEC</a> <a href="/plusd/?q=&qftags=OGEN#result" title="OGEN - Operations--General (114085 documents)">OGEN</a> <a href="/plusd/?q=&qftags=CASC#result" title="CASC - Consular Affairs--Assistance to Citizens (113486 documents)">CASC</a> <a href="/plusd/?q=&qftags=PINT#result" title="PINT - Political Affairs--Internal Political Affairs (104641 documents)">PINT</a> <a href="/plusd/?q=&qftags=EFIN#result" title="EFIN - Economic Affairs--Financial and Monetary Affairs (102225 documents)">EFIN</a> <a href="/plusd/?q=&qftags=BEXP#result" title="BEXP - Business Services--Trade Expansion and Promotion (102142 documents)">BEXP</a> <a href="/plusd/?q=&qftags=OEXC#result" title="OEXC - Operations--Educational and Cultural Exchange Operations (89751 documents)">OEXC</a> <a href="/plusd/?q=&qftags=EAID#result" title="EAID - Economic Affairs--Foreign Assistance (80469 documents)">EAID</a> <a href="/plusd/?q=&qftags=CVIS#result" title="CVIS - Consular Affairs--Visas (79634 documents)">CVIS</a> <a href="/plusd/?q=&qftags=OTRA#result" title="OTRA - Operations--Travel and Visits (79042 documents)">OTRA</a> <a href="/plusd/?q=&qftags=ENRG#result" title="ENRG - Economic Affairs--Energy and Power (76814 documents)">ENRG</a> <a href="/plusd/?q=&qftags=OCON#result" title="OCON - Operations--Conferences and Meetings (76271 documents)">OCON</a> <a href="/plusd/?q=&qftags=ECON#result" title="ECON - Economic Affairs--Economic Conditions, Trends and Potential (75832 documents)">ECON</a> <a href="/plusd/?q=&qftags=NATO#result" title="NATO - North Atlantic Treaty Organization (74653 documents)">NATO</a> <a href="/plusd/?q=&qftags=PINS#result" title="PINS - Political Affairs--Internal Security (72716 documents)">PINS</a> <a href="/plusd/?q=&qftags=GE#result" title="GE - Germany (East) (69261 documents)">GE</a> <a href="/plusd/?q=&qftags=JA#result" title="JA - Japan; Okinawa; (67491 documents)">JA</a> <a href="/plusd/?q=&qftags=UK#result" title="UK - United Kingdom (65645 documents)">UK</a> <a href="/plusd/?q=&qftags=IS#result" title="IS - Israel (61813 documents)">IS</a> <a href="/plusd/?q=&qftags=MARR#result" title="MARR - Military and Defense Affairs--Military and Defense Arrangements (59054 documents)">MARR</a> <a href="/plusd/?q=&qftags=PARM#result" title="PARM - Political Affairs--Arms Controls and Disarmament (58794 documents)">PARM</a> <a href="/plusd/?q=&qftags=UN#result" title="UN - United Nations (58176 documents)">UN</a> <a href="/plusd/?q=&qftags=EG#result" title="EG - Egypt (57176 documents)">EG</a> <a href="/plusd/?q=&qftags=FR#result" title="FR - France (56597 documents)">FR</a> <a href="/plusd/?q=&qftags=PHUM#result" title="PHUM - Political Affairs--Human Rights (55302 documents)">PHUM</a> <a href="/plusd/?q=&qftags=SREF#result" title="SREF - Social Affairs--Refugees (53585 documents)">SREF</a> <a href="/plusd/?q=&qftags=EAIR#result" title="EAIR - Economic Affairs--Aeronautics and Aviation; Civil Aviation (52511 documents)">EAIR</a> <a href="/plusd/?q=&qftags=MASS#result" title="MASS - Military and Defense Affairs--Military Assistance and Sales (51560 documents)">MASS</a> <a href="/plusd/?q=&qftags=APER#result" title="APER - Administration--Personnel (51272 documents)">APER</a> <a href="/plusd/?q=&qftags=SNAR#result" title="SNAR - Social Affairs--Narcotics (49299 documents)">SNAR</a> <a href="/plusd/?q=&qftags=PINR#result" title="PINR - Political Affairs--Intelligence (48667 documents)">PINR</a> <a href="/plusd/?q=&qftags=EAGR#result" title="EAGR - Economic Affairs--Agriculture and Forestry (47350 documents)">EAGR</a> <a href="/plusd/?q=&qftags=PDIP#result" title="PDIP - Political Affairs--Diplomatic and Consular Representation (47061 documents)">PDIP</a> <a href="/plusd/?q=&qftags=AORG#result" title="AORG - Administration--International Organization Administration (42798 documents)">AORG</a> <a href="/plusd/?q=&qftags=PORG#result" title="PORG - Political Affairs--Policy Relations With International Organizations (42754 documents)">PORG</a> <a href="/plusd/?q=&qftags=MX#result" title="MX - Mexico (42577 documents)">MX</a> <a href="/plusd/?q=&qftags=TU#result" title="TU - Turkey (42476 documents)">TU</a> <a href="/plusd/?q=&qftags=ELAB#result" title="ELAB - Economic Affairs--Labor and Manpower; Labor Sector Affairs (41921 documents)">ELAB</a> <a href="/plusd/?q=&qftags=IN#result" title="IN - India (41702 documents)">IN</a> <a href="/plusd/?q=&qftags=CA#result" title="CA - Canada (41623 documents)">CA</a> <a href="/plusd/?q=&qftags=SCUL#result" title="SCUL - Social Affairs--Cultural Affairs (41509 documents)">SCUL</a> <a href="/plusd/?q=&qftags=CH#result" title="CH - China (Mainland) (40426 documents)">CH</a> <a href="/plusd/?q=&qftags=IR#result" title="IR - Iran (39924 documents)">IR</a> <a href="/plusd/?q=&qftags=IT#result" title="IT - Italy (39454 documents)">IT</a> <a href="/plusd/?q=&qftags=XF#result" title="XF - Middle East (38273 documents)">XF</a> <a href="/plusd/?q=&qftags=GW#result" title="GW - Germany (West) (37945 documents)">GW</a> <a href="/plusd/?q=&qftags=EINV#result" title="EINV - Economic Affairs--Investments; Foreign Investments (37616 documents)">EINV</a> <a href="/plusd/?q=&qftags=TH#result" title="TH - Thailand (37385 documents)">TH</a> <a href="/plusd/?q=&qftags=TECH#result" title="TECH - Technology and Science--Technology (36578 documents)">TECH</a> <a href="/plusd/?q=&qftags=SENV#result" title="SENV - Social Affairs--Environment (35665 documents)">SENV</a> <a href="/plusd/?q=&qftags=OREP#result" title="OREP - Operations--Congressional Travel (35140 documents)">OREP</a> <a href="/plusd/?q=&qftags=KS#result" title="KS - Korea (South) (34546 documents)">KS</a> <a href="/plusd/?q=&qftags=EGEN#result" title="EGEN - Economic Affairs--General (34287 documents)">EGEN</a> <a href="/plusd/?q=&qftags=PEPR#result" title="PEPR - PEPR (33866 documents)">PEPR</a> <a href="/plusd/?q=&qftags=MILI#result" title="MILI - Military and Defense Affairs--General (33710 documents)">MILI</a> <a href="/plusd/?q=&qftags=SHUM#result" title="SHUM - Social Affairs--Human Rights (33098 documents)">SHUM</a> <a href="/plusd/?q=&qftags=KISSINGER%2C+HENRY+A#result" title="KISSINGER, HENRY A - Henry Kissinger (32848 documents)">KISSINGER, HENRY A</a> <a href="/plusd/?q=&qftags=PL#result" title="PL - Poland (31163 documents)">PL</a> <a href="/plusd/?q=&qftags=BR#result" title="BR - Brazil (30797 documents)">BR</a> <a href="/plusd/?q=&qftags=RP#result" title="RP - Philippines (30198 documents)">RP</a> <a href="/plusd/?q=&qftags=GR#result" title="GR - Greece; Crete (30183 documents)">GR</a> <a href="/plusd/?q=&qftags=SF#result" title="SF - South Africa (30161 documents)">SF</a> <a href="/plusd/?q=&qftags=AFSP#result" title="AFSP - Administration--Post Administration (29315 documents)">AFSP</a> <a href="/plusd/?q=&qftags=SP#result" title="SP - Spain (29108 documents)">SP</a> <a href="/plusd/?q=&qftags=PTER#result" title="PTER - Political Affairs--Terrorists and Terrorism (28839 documents)">PTER</a> <a href="/plusd/?q=&qftags=MOPS#result" title="MOPS - Military and Defense Affairs--Military Operations (28821 documents)">MOPS</a> <a href="/plusd/?q=&qftags=SA#result" title="SA - Saudi Arabia (28190 documents)">SA</a> <a href="/plusd/?q=&qftags=UNGA#result" title="UNGA - UN General Assembly (27867 documents)">UNGA</a> <a href="/plusd/?q=&qftags=CGEN#result" title="CGEN - Consular Affairs--General (27680 documents)">CGEN</a> <a href="/plusd/?q=&qftags=ESTC#result" title="ESTC - Economic Affairs--Strategic Trade Controls (27627 documents)">ESTC</a> <a href="/plusd/?q=&qftags=SOPN#result" title="SOPN - Social Affairs--Public Opinion and Information (27583 documents)">SOPN</a> <a href="/plusd/?q=&qftags=RO#result" title="RO - Romania (27560 documents)">RO</a> <a href="/plusd/?q=&qftags=LE#result" title="LE - Lebanon (27323 documents)">LE</a> <a href="/plusd/?q=&qftags=TGEN#result" title="TGEN - Technology and Science--General (27058 documents)">TGEN</a> <a href="/plusd/?q=&qftags=PK#result" title="PK - Pakistan (26991 documents)">PK</a> <a href="/plusd/?q=&qftags=AR#result" title="AR - Argentina (26444 documents)">AR</a> <a href="/plusd/?q=&qftags=NI#result" title="NI - Nigeria (26170 documents)">NI</a> <a href="/plusd/?q=&qftags=OSCI#result" title="OSCI - Operations--Science Grants (25846 documents)">OSCI</a> <a href="/plusd/?q=&qftags=CI#result" title="CI - Chile (25827 documents)">CI</a> <a href="/plusd/?q=&qftags=EEC#result" title="EEC - European Common Market (European Communities); European Economic Community (25827 documents)">EEC</a> <a href="/plusd/?q=&qftags=VS#result" title="VS - South Vietnam (25800 documents)">VS</a> <a href="/plusd/?q=&qftags=YO#result" title="YO -  (25447 documents)">YO</a> <a href="/plusd/?q=&qftags=AFIN#result" title="AFIN - Administration--Financial Services (24705 documents)">AFIN</a> <a href="/plusd/?q=&qftags=OECD#result" title="OECD - Organization for Economic Cooperation and Development (24622 documents)">OECD</a> <a href="/plusd/?q=&qftags=SY#result" title="SY - Syria (24419 documents)">SY</a> <a href="/plusd/?q=&qftags=IZ#result" title="IZ - Iraq (24415 documents)">IZ</a> <a href="/plusd/?q=&qftags=ID#result" title="ID - Indonesia (23865 documents)">ID</a> <a href="/plusd/?q=&qftags=VE#result" title="VE - Venezuela (23792 documents)">VE</a> <a href="/plusd/?q=&qftags=TPHY#result" title="TPHY - Technology and Science--Physical Sciences (23741 documents)">TPHY</a> <a href="/plusd/?q=&qftags=TW#result" title="TW - Taiwan (23233 documents)">TW</a> <a href="/plusd/?q=&qftags=AS#result" title="AS - Australia (23143 documents)">AS</a> <a href="/plusd/?q=&qftags=PBOR#result" title="PBOR - Political Affairs--Boundary and Sovereignity Claims (23066 documents)">PBOR</a> 
+	</div>
+
+
+        <div class="sort" style="clear:both;">
+        <h3>Media Organizations</h3>
+        <a target="_blank" href="http://www.theage.com.au/">Australia - The Age</a>
+        <a target="_blank" href="http://www.pagina12.com.ar/">Argentina - Pagina 12</a>
+        <a target="_blank" href="http://www.apublica.org/?p=4041">Brazil - Publica</a>
+        <a target="_blank" href="https://bivol.bg/">Bulgaria - Bivol</a>
+        <a target="_blank" href="http://www.almasryalyoum.com/ ">Egypt - Al Masry Al Youm</a>
+        <a target="_blank" href="http://www.tanea.gr/">Greece - Ta Nea</a>
+        <a target="_blank" href="http://www.plazapublica.com.gt/content/los-cables-de-wikileaks">Guatemala - Plaza Publica</a>
+        <a target="_blank" href="http://www.haiti-liberte.com/">Haiti - Haiti Liberte</a>
+        <a target="_blank" href="http://www.thehindu.com/">India - The Hindu</a>
+        <a target="_blank" href="http://espresso.repubblica.it/">Italy - L'Espresso</a>
+        <a target="_blank" href="http://www.repubblica.it/">Italy - La Repubblica</a>
+        <a target="_blank" href="http://www.al-akhbar.com/">Lebanon - Al Akhbar</a>
+        <a target="_blank" href="http://www.jornada.unam.mx/ultimas/">Mexico - La Jornada</a>
+        <a target="_blank" href="http://www.publico.es/452776">Spain - Publico</a>
+        <a target="_blank" href="http://www.aftonbladet.se/nyheter/article16421007.ab">Sweden - Aftonbladet</a>
+        <a target="_blank" href="http://www.ap.org/">UK - AP</a>
+        <a target="_blank" href="http://thenation.com">US - The Nation</a>
+        </div>
+	<br style="clear: both;" />
+</div>
+
+<div id="content"><div id="content-main">
+
+<!--<p style="text-align: justify; font-size: medium">Click the <b>Chat</b> button above to join a secure chat channel dedicated to media partner The Kissinger Cables discussion. Please go on this to talk to the others currently working on this project. <br />When the chat window opens type the following in the white text space at the bottom of the screen to assign yourself a recognisable name: <b>/nick Espresso</b> and press enter</p>
+<center><h2 style="font-size: x-large;">Public Library of US Diplomacy: PlusD</h2></center>-->
+
+<center><img src="/plusd/images/plusdb.png" /></center>
+<div id="st" style="clear:both;">&nbsp;</div>
+<div id="topnav">
+        <a class="searchbutton active" href="//search.wikileaks.org/plusd/">Specified Search</a>
+        <a class="searchbutton sbinv" href="/plusd/map" target="_blank">View Map</a>
+        <a class="searchbutton sbinv" href="/plusd/graph" target="_blank">Make Timegraph</a>
+        <a class="searchbutton sbinv" href="/plusd/tags/" target="_blank">View Tags</a>
+        <a class="searchbutton sbinv" href="/plusd/imagelibrary/" target="_blank">Image Library</a>
+</div>
+<div class="sections"> 
+<div class="pane-content">
+	<table id="synopsis">
+		<tr style="background:#eee;">
+			<td colspan="2" style="font-size: medium; padding: 5px;color: #000; font-weight: bold; text-align: center;">NOVEMBER 11 EA PRESS SUMMARY</td>
+		</tr>
+		<tr style="background:#eee;">
+			<td><div class="s_key"><a class="i" title="Date">Date:</a></div><div class="s_val" title=" 1976 November 15, 19:57 (Monday)">1976 November 15, 19:57 (Monday)</div></td>
+			<td><div class="s_key"><a class="i" title="Canonical ID">Canonical ID:</a></div><div class="s_val" title=" 1976STATE280331_b">1976STATE280331_b</div></td>
+		</tr>
+		<tr>
+			<td><div class="s_key"><a class="i" title="Original Classification">Original Classification:</a></div><div class="s_val" title=" UNCLASSIFIED (1339531 documents)">UNCLASSIFIED</div></td>
+			<td><div class="s_key"><a class="i" title="Current Classification">Current Classification:</a></div><div class="s_val" title=" UNCLASSIFIED (2592391 documents)">UNCLASSIFIED</div></td>
+		</tr>
+
+		<tr>
+			<td>
+<div class="s_key"><a class="i" title="Handling Restrictions", ">Handling Restrictions</a></div> <div class="s_val" title="-- N/A or Blank -- (2412734 documents)">-- N/A or Blank --</div><br /></td>
+			<td><div class="s_key"><a class="i" title="Character Count">Character Count:</a></div><div class="s_val" title=" 27038">27038</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Executive Order">Executive Order:</a></div><div class="s_val" title=" -- N/A or Blank -- (1894280 documents)">-- N/A or Blank --</div></td>
+			<td><div class="s_key"><a class="i" title="Locator">Locator:</a></div><div class="s_val" title=" TEXT ON MICROFILM,TEXT ONLINE">TEXT ON MICROFILM,TEXT ONLINE</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="TAGS">TAGS:</a></div><div class="s_val" title=" PFOR - Political Affairs--Foreign Policy and Relations | US - United States | XC - Southeast Asia"><a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=PFOR#result" title="PFOR Political Affairs: Foreign Policy and Relations (294672 documents)" >PFOR<span style="color: #216B7C;"> - Political Affairs--Foreign Policy and Relations</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=US#result" title="US United States (553685 documents)" >US<span style="color: #216B7C;"> - United States</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=XC#result" title="XC Southeast Asia (8202 documents)" >XC<span style="color: #216B7C;"> - Southeast Asia</span></a></div></td>
+			<td><div class="s_key"><a class="i" title="Concepts">Concepts:</a></div><div class="s_val" title=" EARTHQUAKES | POLITICAL SUMMARIES | PRESS SUMMARIES"><a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=EARTHQUAKES#result" title="EARTHQUAKES (1360 documents)">EARTHQUAKES</a> <span style=''color:#000;''>|</span> <a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=POLITICAL+SUMMARIES#result" title="POLITICAL SUMMARIES (4524 documents)">POLITICAL SUMMARIES</a> <span style=''color:#000;''>|</span> <a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=PRESS+SUMMARIES#result" title="PRESS SUMMARIES (3029 documents)">PRESS SUMMARIES</a></div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Enclosure">Enclosure:</a></div><div class="s_val" title=" -- N/A or Blank -- (2333922 documents)">-- N/A or Blank --</div></td>
+			<td><div class="s_key"><a class="i" title="Type">Type:</a></div><div class="s_val" title=" TE - Telegram (cable) (2008616 documents)">TE - Telegram (cable)</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc">
+				<div class="s_key"><a class="i" title="Office Origin">Office Origin:</a></div><div class="s_val" title=" ORIGIN EA - Bureau of East Asian and Pacific Affairs (33058 documents)">ORIGIN EA - Bureau of East Asian and Pacific Affairs</div>				<br style="clear:both;"/>
+				<div class="s_key"><a class="i" title="Office Action">Office Action:</a></div><div class="s_val" title=" -- N/A or Blank -- (1411046 documents)">-- N/A or Blank --</div>			</td>
+			<td><div class="s_key"><a class="i" title="Archive Status">Archive Status:</a></div><div class="s_val" title=" Electronic Telegrams (1758257 documents)">Electronic Telegrams</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="From">From:</a></div><div class="s_val" title=" Department of State"><a style="color: #216B7C; " href="/plusd/?q=&qforigin=Department+of+State#result" title="Department of State (655860 documents)">Department of State</a></div></td>
+			<td><div class="s_key"><a class="i" title="Markings">Markings:</a></div><div class="s_val" title=" Margaret P. Grafeld Declassified/Released US Department of State EO Systematic Review 04 MAY 2006 (347411 documents)">Margaret P. Grafeld Declassified/Released US Department of State EO Systematic Review 04 MAY 2006</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="To">To:</a></div><div class="s_val" title=" Coast Guard   | Commander in Chief US Pacific Command   | Department of State Bureau of East Asian and Pacific Affairs   | Department of the Treasury   | Group Destinations All East Asian and Pacific Diplomatic Posts  | Guam Government of Guam  | Russia Moscow"><a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Coast Guard#result" title="Coast Guard  (2589 documents)">Coast Guard </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Commander in Chief US Pacific Command#result" title="Commander in Chief US Pacific Command  (26371 documents)">Commander in Chief US Pacific Command </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Department of State Bureau of East Asian and Pacific Affairs#result" title="Department of State Bureau of East Asian and Pacific Affairs  (489 documents)">Department of State Bureau of East Asian and Pacific Affairs </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Department of the Treasury#result" title="Department of the Treasury  (31233 documents)">Department of the Treasury </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Group Destinations%23%23All East Asian and Pacific Diplomatic Posts#result" title="Group Destinations All East Asian and Pacific Diplomatic Posts (1186 documents)">Group Destinations All East Asian and Pacific Diplomatic Posts</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Guam%23%23Government of Guam#result" title="Guam Government of Guam (958 documents)">Guam Government of Guam</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Russia%23%23Moscow#result" title="Russia Moscow (95499 documents)">Russia Moscow</a></div></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<br />
+
+
+<br style="clear: both;" />
+
+</div>
+<div class="pane-tab"><div class="pane-header">Content</div><div class="pane-content"><div class="text-header hidden">
+
+UNCLASSIFIED
+
+PAGE 01        STATE  280331
+
+66
+ORIGIN EA-09
+
+INFO  OCT-01  EUR-12  ISO-00  SIG-02  PM-04  PA-02  PRS-01  INR-07
+
+NSCE-00  NSC-05  /043 R
+
+DRAFTED BY EA/P:STAFF:EH
+APPROVED BY EA/P:MSMITH
+DESIRED DISTRIBUTION
+NSC ELECTRONICALLY FOR MR. GLEYSTEEN
+---------------------     109378
+R 151957Z NOV 76
+FM SECSTATE WASHDC
+TO ALL EAST ASIAN AND PACIFIC DIPLOMATIC POSTS
+AMEMBASSY MOSCOW
+INFO CINCPAC
+COGARD
+GOVGUAM
+TRSY
+
+UNCLAS STATE 280331
+
+E.O. 11652: N/A
+
+TAGS: PFOR,XC,US
+
+SUBJECT: NOVEMBER 11 EA PRESS SUMMARY</div><div class="text-button" id="showhide">Show&nbsp;Headers</div><div class="text-content"><div id="tagged-text">1.  CHINA
+
+REUTER (PEKING) SAYS EARTH TREMORS SHOOK CAPITAL MONDAY
+NIGHT, SHATTERING WINDOWS/DOORS, SENDING FRIGHTENED
+CHINESE RUSHING INTO STREET.
+
+IN &quot;TOUGH&quot; BANQUET SPEECH MONDAY NIGHT, LI HSIEN-NIEN
+FLATLY REJECTED ANY RAPPROCHEMENT WTH SOVIET.  SPEECH
+PROVOKED WALK-OUT BY SOVIET AMB, DIPLOS FROM 7 OTHER
+PRO-SOVIET COUNTRIES (REUTER PEKING).
+
+NYT SPEC (11/13) REPORTS DOS OFFICIALS BELIEVE SOVIET IS
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 02        STATE  280331
+
+ATTEMPTING ENCOURAGE BETTER RELS WITH PRC, BUT SO FAR WITH-
+OUT DEMONSTRABLE SUCCESS.  SOURCES FEEL MOSCOW DOES NOT
+WANT ALLOW PERIOD OF UNCERTAINTY, FOLLOWING MAO'S DEATH,
+SLIP BY WITHOUT MAKING RENEWED EFFORT LESSEN HOSTILITY
+WITH PEKING; SOVIET ALSO SEEN TRYING PUT ITS RELS WITH
+PEKING IN BETTER LIGHT THAN REAL SITUATION MAY WARRENT.
+DOS OFFICIALS ALSO THINK NEW PEKING LEADERSHIP MIGHT SEE
+SOME WISDOM IN SMALL FRIENDSHIP GESTURES TO SOVIET, IF ONLY
+TO SIGNAL PRES-ELECT CARTER THAT PRC NOT LOCKED INTO US,
+HAS OTHER OPTIONS.
+
+CSM'S MOSCOW CORRESPONDENT SAYS IF MAO'S PASSING HAS OPENED
+WAY FOR SINO-SOVIET THAW, ANALYSTS THERE SEE NO SIGN OF
+IT YET.  MANY EXPERTS FEEL PEKING HAS STEPPED UP CONSTANT
+CRITICISM OF SOVIET, WHILE KREMLIN SEEMS MORE INTERESTED
+IN BEING ABLE TELL OTHER CP'S, &quot;LOOK, WE TRIED,&quot; THAN IN
+ANY GENUINE PROGRESS.  SIMILARLY, SUN'S MOSCOW BUREAU
+REPORTS SOVIET OFFICIALLY EXPRESSED CONFIDENCE THURS
+THAT ITS FRIENDSHIP WITH PRC WILL BE RESTORED--BUT,
+SPEAKING PRIVATELY, SOVIET ACADEMIC/FOPOLICY SPECIALISTS
+NOT SO SURE (11/13).
+
+REUTER (PEKING) REPORTS THAT ACCORDING CHANGSHA OFFICIAL
+NOTICES, MAN HAS BEEN EXECUTED THERE FOR DEFACING WALL
+POSTER PROCLAIMING HUA'S APPOINTMENT AS CCP CHAIRMAN
+(WP, NYT).
+
+USDA'S ECON RESEARCH EXPERT SAYS PRC WILL PROBABLY PRODUCE
+LESS GRAIN THIS YEAR THAN LAST, AND IS REPORTEDLY PLANNING
+MORE OVERSEAS PURCHASES NEXT YEAR (REUTER, NYT).
+
+NCNA REPORTS US DEL LED BY SEN CURTIS HAS MET WITH VICE
+FM WANG HAI-JUNG (WP 11/14).
+
+CCK WARNS US AGAINST USING ROC AS BARGAINING CHIP IN
+DIPLO GAMBLE TO PLAY OFF PRC AGAINST SOVIET (WP/11/14).
+
+JOC'S BARNETT (BEVERLY HILLS, CALIF) REPORTS TOP ROC TRADE
+OFFICIAL, HKSHAO, IN SPEECH RECENTLY DELIVERED THERE IN
+JOINT FAR EASTERN TRADE SEMINAR, PREDICTED OVERALL TRADE
+BETWEEN CALIF/ROC SHOULD TOP BILLION DOLS THIS YEAR; BUT
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 03        STATE  280331
+
+HE WARNED THAT RISING LABOR/PRODUCTION COSTS WILL BOOST
+WHOLESALE PRICES FOR MANY ROC EXPORTS STARTING JAN.
+ADDED THAT ROC IS STEPPING UP EFFORTS LURE FOREIGN
+INVESTMENTS/TECHNICAL ASSISTANCE, ESPECIALLY LARGE
+CAPITAL INVESTMENTS/TECHNICAL CO-OPERATION FROM US.
+
+2.   JAPAN
+
+MIG25--IN CRATES--LOADED ABOARD SOVIET FREIGHTER 11/12 IN
+HITACHI PORT, NOW HEADED FOR SIBERIA.  FLEET SOVIET VES-
+SELS STANDING OFFSHORE, OVER 2000 ARMED POLICE STANDING
+GUARD ONSHORE, W;TCHED LOADING PROCESS.  NO LASTING/SERIOUS
+DISRUPTION IN JAPANESE-SOVIET RELS EXPECTED (MALCOLM, NYT
+11/13, EXCERPTED IN SUN 11/13).
+
+GOJ ADOPTS 3.3-BIL-DOL, 7-POINT ECON PLAN DESIGNED STIM-
+ULATE BUSINESS ACTVITY.  PLAN INCLUDES CONSTRUCTION
+
+
+20,000 MORE HOMES/PUBLIC WORKS EXPANSION PROJECTS/AID
+AGRICULTURAL AREAS HIT BY POOR WEATHER, NATURAL DISAS-
+TERS.  INTL TRADE/INDUSTRY MINISTER KOMOTO PREDICTS
+RECOVERY WILL QUICKEN TOWARD YEAR'S END, SINCE MEASURES
+WOULD RESUME HIGHER PACE IN JAN-MARCH PERIOD (AP, WSJ;
+CULLISON, JOC; OFUSA, NYT 11/13).
+
+CULLISON REPORTS JAPAN'S BIG INDUSTRIAL CORPS BEGINNING
+ONCE AGAIN TURN TOWARD CAPITAL SPENDING; INDUSTRIAL BANK
+OF JAPAN REASEARCHERS PREDICT CAPITAL OUTLAYS BY MAJOR
+FIRMS WILL INCREASE 14 PCT OVER FY '75/EXCEED 34 BIL DOLS
+BY MARCH.  US/OTHER FON FIRMS HAVE ALSO LAUNCHED NEW MAN-
+UFACTURING OPERATIONS IN JAPAN, DESPITE ECON SLUMP.
+
+JAPANESE INDUSTRIES EXPECTED AT LEAST TEMPORARILY CURB
+EXPORTS TO US/EC IN ORDER COUNTER RISING CHARGES JAPAN
+ATTEMPTING FLOOD MARKETS W/LOW-PRICED GOODS.  FEARS OF
+MOVES TOWARD PROTECTIONISM ABROAD MAY ALSO RESULT IN JA-
+PAN LOWERING MORE NONTARRIFF/OTHER TRADE BARRIERS, UL-
+TIMATELY PROVIDING INCREASED TRADE/INVESTMENT OPPORTUNI-
+TIES IN JAPAN FOR US/W EUR-BASED FIRMS.  MITI AUTHORI-
+TIES HINTING GOJ MAY TAKE STEPS INCREASE IMPORTS FROM
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 04        STATE  280331
+
+US/EC IN HOPES NO ATTACKS WILL BE MADE ON JAPANESE EXP-
+PORTS AS MEANS REDUCING TOKYO'S TRADE SURPLUS (CULLISON).
+
+KAWAHARA (JOC) REVIEWS JAPANESE ECON SLOWDOWN, RECENT
+SIGNS IMPROVEMENT INCL COMMODITY PRICE STABILIZA-
+TION/RECORD EXPORTS/MORE ACTIVE BUYING ON STOCK EXCHANGE
+AS CREDIT RELAXED.  OIL PRICE INCREASE NOT EXPECTED NO-
+TICEABLY AFFECT JAPAN'S EXPORTS UNLESS WORLD MARKETS
+STAGNATE.  THO FURTHER SLOWDOWN IN REAL ECON GROWTH CANNOT
+BE AVOIDED IN 3RD QUARTER '76, EFFECTS GOJ'S PROPOSED RE-
+COVERY MEASURES SHOULD BE EVIDENT BY EARLY '77.
+
+JOC REPORTS JAPAN LIKELY SEE BETWEEN 5-6 PCT GNP RISE
+OVER '75, DESPITE OPTIMISM SOME TOKYO BUSINESSMEN WHO
+SEE 7 PCT INCREASE.  JAPANESE MANUFACTURING INDUSTRY
+ENTERING PERIOD STABILIZED EXPANSION; MASSIVE GROWTH
+RATES IN OUTPUT/PRODUCTIVITY NO LONGER FORTHCOMING.
+IN AGRICULTURAL SECTOR, FARMERS FIND MACHINERY/FERTILI-
+ZER PRICES RISING WHILE MARKET DEMAND REMAINS RELATIVELY
+MODERATE.  FARM OUTPUT THIS YEAR MAY CLIMB BETWEEN 1.5-2
+PCT (JOC).
+
+MITI SAYS JAPAN'S OCT EXPORTS ROSE AT SLOWEST ANNUAL
+RATE IN 8 MONTHS--16 PCT COMPARED W/OVER 30 PCT IN BOTH
+AUG/SEPT (WSJ).
+
+TOYOTA'S OCT EXPORTS ROSE 35 PCT OVER LAST YEAR; NISSAN
+
+EXPORTS GAINED 11 PCT.  TOGETHER, FIRMS EXPORTED 197,179
+VEHICLES IN OCT (WSJ).
+
+OECD PREDICTS JAPAN'S GNP GROWTH RATE, NOW 2ND ONLY TO
+US, WILL SURPASS US RATE IN '77.  OECD ALSO SAYS JAPAN
+WILL MOVE FROM 3.5-BIL-DOL SURPLUS THIS YEAR TO APPROX-
+IMATE BALANCE NEXT YEAR (LEWIS, NYT).
+
+JOC'S FISH REPORTS KEEN COMPETITION AMONG JAPANESE AUTO
+MAKERS HAS SPURRED AMERICAN MOTORS/GM ANNOUNCE REBATE PRO-
+GRAMS AIMED AT STIMULATING LAGGING SMALL CAR SALES; PROGRAM
+SO FAR SHOWS SUBSTANTIAL SUCCESS.
+
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 05        STATE  280331
+
+UNIVERSAL STUDIOS/WALT DISNEY PRODUCTIONS FILE SUIT
+AGAINST SONY, CHARGING FIRM'S BETAMAX VIDEOTAPE RECORDER
+HAS BEEN USED COPY TV MOTION PICTURES/SYNDICATED SERIES
+IN VIOLATION FEDERAL COPYWRIGHT LAWS (WSJ).
+
+MARION LABORATORIES HAS ACQUIRED FROM TANABE SEIYAKU OF
+OSAKA RIGHTS TO MARKET NEW PROUDUCT ;HERBESSER&quot;--DRUG
+USED IN HEART DISEASE TREATMENT.  MARION PLANS MARKET
+DRUG THRU PHARMACEUTICAL DIVISION AFTER CONDUCTING RE-
+SEARCH/DEVELOPMENT WORK NECESSARY FOR FDA APPROVAL.
+
+3.  KOREA
+
+ATTORNEY FOR TONGSUN PARK'S PACIFIC DEVELOPMENT CORP
+ADVISES COMPANY EMPLOYEES &quot;CEASE ALL FORMS OF VOLUNTARY
+COOPERATION&quot; W/ JUSTICE DEPT, DUE LEAKS TO NEWSMEN BY
+PROBERS (HORROCK, NYT; MCALLISTER, WP 11/13).  WP FRONT-
+PAGED PRECEDING INFO (11/13), TOGETHER W/STATEMENT ROK
+EMB REP THAT EMB ALSO MAY NOT COOPERATE WILLINGLY W/
+JUSTICE--UNCERTAIN WHETHER PARK WILL DO LIKEWISE. ATTORNEY
+BLASTS PRESS ACCESS SECRET GRAND JURY SESSIONS, CLAIMS
+NEWSMEN TOLD BY &quot;CIA, JUSTICE AND STATE SOURCES&quot; THAT
+REAL TARGETS PROBE ARE CONGRESS AND PRES PARK.
+
+AP REPORTS TONGSUN PARK GAVE REP BRADEMAS (D-IND) 500 DOLS
+CONTRIBUTION 1970, APART FROM 4,700 DOLS IN 1972/74
+ALREADY REPORTED (SUN; NYT 11/14).
+
+CHITRIB (11/14) REPORTS IRS CHECKING ALLEGATIONS CONGRESS-
+MEN SUSPECTED TAKING SK KICKBACKS/BRIBES DEPOSITED THEM IN
+BAHAMIAN BANKS (ALSO CARRIED SUN).
+
+NYT'S HALLORAN, CITING &quot;RELIABLE FORMER ROKG OFFICIAL&quot;
+AS SOURCE, STATES KCIA HAS ORDERED TONGSUN PARK STAY OUT
+OF BOTH US AND ROK UNTIL INVESTIGATIONS CALM DOWN.  ALSO
+REPORTS KNOREAN CULTURAL FREEDOM CORP, UNDER ITS PRES PAK
+
+
+BO HI, REMITTED ABOUT 1.2 MILL DOLS FROM WASH TO SEOUL IN
+APPARENT EFFORT ESCAPE DETECTION BY FEDS--FUNDS ORIGINALLY
+SOLICITED TO SUPPORT REV MOON'S ACTIVITIES HERE.
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 06        STATE  280331
+
+
+OPPENHEIMER (WSTAR 11/14) DOES FRONT-PAGE PIECE RE WASH'S
+ASIAN FORUM, INC, AND ALLEGED CIA TIES ONE OF ITS DIRECTORS,
+KIM TONG HYON.  ASIAN FORUM, THRU QUESTIONABLE MEANS,
+LANDED CONTRACT FOR FIRST IN-DEPTH STUDY DC AREA ASIAN
+BUSINESS COMMUNITY, PERMITTING INTERVIEW WITH AND DEVELOP-
+MENT PERSONAL DATA ON MOST SK BUSINESSMEN HERE.
+
+WP'S ARMSTRONG/CHESHIRE COLLABORATE ON FRONT PAGE ARTICLE
+ABOUT DC'S DIPLOMAT NATIONAL BANK (11/14).  NOTE TONGSUN
+PARK, PAK BO HI AND ASSOCIATES CONTROLLED ALMOST HALF
+BANK'S STOCK WHEN OPENED, AND QUESTION WHY THEY BECAME SO
+DEEPLY INVOLVED W/BANK, PARTICULARLY THRU USE FRONT MEN
+(ALSO CARRIED GLOBE).
+
+STERBA (NYT 11/14) REPORTS FROM SEOUL PRES PARK HAS OUSTED
+THIRD-RANKING KCIA OFFICIAL, LEE SANG HO--AKA YANG DOO
+WOON--FOR FAILURES CONNECTED W/ROKG INFLUENCES--PEDDLING
+COORDINATION/REPORTING.  YANG NAMED AS KCIA STATION CHIEF
+WASH LATE 60'S/EARLY 70'S--ACCUSED TOO OPTIMISTIC
+REPORTING/FAILURE WARN RE DANGERS INHERENT LOBBYING.  NYT
+FOLLOWS UP W/SEPARATE REPORT RE HEE AKA YANG, LINKING HIM
+TO HARASSMENT KOREANS IN US, KIDNAPPING KOREAN STUDENTS
+IN GERMANY (1967), AND POSSIBLE INVOLVEMENT KIM DAE JUNG
+KIDNAPPING TOKYO (1973).
+
+HALLORAN (NYT 11/14), FRONT PAGE, QUOTES DON RANARD AS
+ASSERTING NIXON ADMIN DID LITTLE CURB ROK LOBBYING DUE
+ROK INVOLVEMENT W/US IN VIETNAM.  RANARD RECALLED NO
+SPECIFIC POLICY GUIDANCE RE QUESTION, BUT SAID ALWAYS
+&quot;FEELING BELOW SURFACE&quot; SK LOBBY TO BE LEFT ALONE BECAUSE
+WE NEEDED KOREAN ASSIST; ADDED NO DELIBERATE COVERUP
+LOBBY, JUST NOTHING DONE.  RANARD SAID FORMER SEC'Y
+ROGERS, HAK AND EX-ATT'Y GEN SAXBE INFORMED KOREAN OPS.
+FORMER SEC DEF LAIRD HAS CONFIRMED HE AWARE LOBBY--ADDED
+AMBS PORTER/HABIB ALSO WELL INFORMED.  CLAIMS MEMO WRITTEN
+BY EX-UND SEC'Y JOHNSON SHOWS HE KNEW OF LOBBY AS WELL.
+STATE SPOKESMAN QUOTED AS SAYING ANY CHARGE STATE OFFICIALS
+FAILED CURB IMPROPER SK ACTS IN EFFORT PRESERVE ROK TROOP
+COMMITMENT VN ABSOLUTELY FALSE.
+
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 07        STATE  280331
+
+FOUR WITNESSES APPROVED BY APPEALS COURT SEOUL FOR MYONG-
+DONG TRIAL.  DECISION WITHHELD ON SUMMONS TO OTHERS (NYT,
+WP 11/14).  SUN (11/14) CARRIES PHOTO MRS. KIM DAE JUNG,
+MRS. YUN PO SUN, AND OTHER WOMEN CONCERNED W/TRIAL
+DISSIDENTS.
+
+4.  INDOCHINA
+
+DOS SAYS US/VN TALKS DEADLOCKED, BUT BOTH AGREE MEET AGAIN.
+NEITHER SIDE WOULD SAY ANYTHING TO PRESS AFTER 2-HR MTG.
+DEPT SPOKESMAN FUNSETH SAYS US HAS NOT BACKED AWAY FROM
+INTENTION VETO VN APPLICATION ENTER UN; ADDS &quot;FAIR ASSUMP-
+TION&quot; THAT NO PROGRESS MADE ON MIA QUESTION AT MTG (WSTAR
+11/13).  IMPORTANT THING ABOUT PARIS MTG WAS THAT IT
+HAPPENED.  US/VN REPORTEDLY EXCHANGED &quot;RITUAL POSITIONS.&quot;
+HOWEVER ANTICIPATED IMPROVED RELS DEVELOP, NOW APPEARS TOO
+LATE FOR VN ENTRY INTO UN DURING CURRENT SCHEDULE (SUN 11/
+13).  VN OBSERVER AT UN SAYS TASK FORCE SET UP TO SEEK
+INFO ON US MIAS (REUTER UN 11/12).
+
+JAPAN ESTABLISHING &quot;ACTIVE ECONOMIC DIPLOMACY&quot; W/ VN THAT
+STEMS IN PART FROM VIEW JAPAN/W NATIONS CAN ENHANCE SEA
+PEACE/STABILITY BY CONTRIBUTING TO ECON RECONSTRUCTION VN
+(PARADE MAG, WP 11/14).
+
+REUTER'S ROGERS (WP 11/14) NOTES CHANGES IN VIENTIANE:
+RUSSIAN PRESENCE, PL SOLDIERS, STREET LOUDSPEAKERS,
+&quot;SEMINARS&quot; FOR PEOPLE DEEMED &quot;SOCIALLY UNDESIRABLE,&quot;
+QUIET LIFE FOR SMALL W COMMUNITY.  MENTIONS TOURISM
+BANNED WHILE GOVT SORTS OUT DETAILS HOTEL ACCOMMODATIONS/
+TRAIN SCHEDULES; MAY START NEXT YR.
+
+PP APPARENTLY CHOSE MUSIC AS KEY PROPAGANDA/TEACHING TOOL,
+BROADCASTS REV MESSAGE IN SONG/RHYME.  REFUGEES SAY NO
+NEWSPAPERS, BUT MUSIC/POETRY MAKE UP ABOUT HALF EACH
+DAY'S 6-HR BROADCASTING PIPED INTO RICE FIELDS OVER LOUD-
+SPEAKERS.  QUOTES ANALYST THAT REV SONGS STAND BETTER
+CHANCE MAKING IMPRESSION ON PEASANTRY THAN ORAL REPORTS.
+NOTES CAMBODIAN HISTORY FADING AS NEW LEGENDS BEING WOVEN,
+OFTEN ON COMMUNIST HARDSHIPS DURING WAR.
+
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 08        STATE  280331
+
+5.  INDOCHINA/THAILAND
+
+SIMONS (WP 11/13) REPORTS THAIS ARREST VIET RESIDENTS AS
+SUBVERSIVES, BASED ON ALLEGATION VIETS OPERATE COMPLEX/
+NATIONWIDE SHADOW GOVT INTENDED MERGE THAILAND W/ GREATER
+INDOCHINA STATE.  MENTIONS MOST VIETS CAME 30 YRS AGO TO
+ESCAPE WAR.  SAYS RTG ACTION DRAWS BLASTS FROM HANOI.
+OUTLINES THAI ALLEGATIONS CONCERNING ORGANIZATION.  RE-
+COUNTS STORIES TOLD BY SOME VIETS.
+
+6.  THAILAND
+
+SIMONS (WP) REPORTS US MAY BET RETURN TO RAMASUN ELECTRONIC
+SPY STATION; THAIS MANNING STATION THINK US WILL COME BACK.
+BELIEVES NEW RTG MAY USE RAMASUN AS LURE TO ATTRACT MORE
+US MIL AID.  DESCRIBES RAMASUN, INCL COST RTG TO MAIN-
+TAIN.  BUT ADDS US EMB OFFICIAL/SENIOR THAI ARMY OFFICER
+BOTH INSIST SPYING OPNS AT RAMASUN WILL NOT RESUME.
+
+7.  BURMA
+
+RANGOON, LISBON AGREE ESTABLISH DIPL RELS (AFP, WP).
+
+8.  AUSTRALIA/NEW ZEALAND
+
+STOVE (JOC) REPORTS POTENTIAL FON INVESTORS IN AUSTRALIA
+--ESPECIALLY US--LIKELY BE WELCOMED/FIND GOA SYMPATHETIC
+DUE NATION'S NEED FOR CAPITAL IN ORDER DEVELOP VAST
+NATURAL RESOURCES, EXPAND DIVERSIFY INDUSTRIES.  IN
+RECENT MONTHS, GAO HAS RARELY MISSED OPPORTUNITY ENCOURAGE
+FON INVESTORS, INDICATING COUNTRY'S STRICT RULES COULD BE
+BENT TO ACCOMMODATE WORTHWHILE VENTURES.
+
+IN SEPARATE ARTICLE, STOVE NOTES DESPITE RECORD TRADING
+LAST YEAR, AUSTRALIS'S OVERALL ECONOMY SLUGGISH.  LACK
+OF CONFIDENCE REFLECTED IN EXCESS CAPACITY/STALLED EXPAN-
+SION PROGRAMS/BLOATED SAVINGS FIGURES.  INDUSTRY SEEKING
+&quot;PUMP-PRIMING&quot; ACTION FROM GOA, HAS SO FAR GOTTEN ONLY
+VERBAL INCENTIVES.
+
+AUSTRALIA LIKELY GO AHEAD WITH MINING/MILLING/EXPORT
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 09        STATE  280331
+
+URANIUM DESPITE STRICT CONTROLS RECOMMENDED BY SUPREME
+COURT COMMISSION.  EXPORTS EXPECTED EARN  1 BIL DOLS
+OVER 30-YR PERIOD, THUS GAO LIKELY IGNORE ANY RESTRICT-
+IONS IF THEY PROVE IMPOSSIBLE IMPLEMENT (STOVE).
+
+HUNT INTL OIL CO ENDS SUSPENSION EXPLORATION OPNS OFF
+NZ COAST AFTER GONZ WITHDREW PROPOSAL FOR 3-DOL PER BARREL
+PRODUCTION TAX (WSJ).
+
+MCLAUCHLAN (JOC) REPORTS NZ HAVING GREAT DIFFICULTY
+CURBING INFLATION/BOP PROBLEMS.  INTENSIVE OIL PROS-
+PECTING/AGREEMENTS W/US ON INCREASED WOOL TRADE/NEW ENERGY
+POLICY OFFER SOME HOPE IN COUNTRY'S EFFORT STRAIGHTEN
+ECONOMY.
+
+9.  PHILIPPINES
+
+PHINQ REPORTS PHILS' HEAVILY FORESTED TABON VILLAGE HAS
+PROVEN MONEY-MAKER.  UNDER AUSPICES PHILS' PAPER INDUS-
+TIRES CORP, CONSERVATION/EXPLOITATION COMBINED THRU SE-
+LECTIVE LOGGING TECHNIQUES, ALLOWING FOREST PRESERVATION
+WHILE AT SAME TIME TAPPING ITS WEALTH.
+
+COMMENT AND ANALYSIS
+
+10.  INDOCHINA
+
+NY POST (11/11) VIEWS PRELIMINARY PARIS TALKS, HOPES
+POSTPONEMENT UNSC VOTE ON VN ADMISSION WILL ENCOURAGE
+CONCILIATORY TALKS.  SEES NO REASON FOR ACRIMONIOUS
+ROUND OF DEBATE ON VN ADMISSION/US VETO; THINKS FURTHER
+POSTPONEMENT OF VOTE ARRANTED.
+
+OBERDORFER (WP 11/13) SEES NO EVIDENCE SUCCESS IN 1ST
+TALKS.  FINDS ATMOSPHERE SECRECY/COLD DIPLOMATIC
+CORRECTNESS REMINISCENT EARLIER PARIS TALKS.  QUOTES
+INDOCHINA RESOURCES CENTR THAT US POLICY TOWARD VN BASED
+ON PERSONAL POL INTERESTS THAT HAK/OTHERS HAD IN
+CONTINUATION HOSTILITY TOWARD VN.  LEWIS (NYT 11/13)
+SAYS NO SUBSTANTIVE PROGRESS LIKELY BEFORE CARTER ADMIN
+BEGINS.  ADDS TALKS DELIBERATELY HELD AT EMB OFFICIAL
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 10        STATE  280331
+
+LEVEL TO MAKE CLEAR TENTATIVE/PROBING STATUS.  REVIEWS
+ISSUES.  IN 11/14 ARTICLE, LEWIS REPORTS VN EMB ISSUED
+COMMUNIQUE THAT APPEARS ENCOURAGING SIGN SERIOUS NEGOTS
+CAN BEGIN ONCE NEW ADMIN IN US.  SAYS CONCILIATORY TONE
+COMMUNIQUE AFTER TALKS SEEMS REFLECT EXPECTATION THAT
+NEXT US ADMIN WILL BE &quot;MORE FAR-SIGHTED,&quot; AS WELL AS
+REALIZATION US COULD AT ANY TIME WITHDRAW MIA ISSUE BY
+DECLARING CHANGE IN STATUS TO DEAD.
+
+LAT (11/12) DENOUNCES VN SINCE &quot;TOYED OUTRAGEOUSLY&quot;
+W/MIA ISSUE; BUT BELIEVES HOSTILITY SHOULD BE REPLACED
+BY ACCOMMODATION, ADVISES US NOT USE MIA ISSUE TO BLOCK
+UN MEMBERSHIP VN.  HOPES PROCESSES CAN BE STARTED THAT
+WILL LEAD TO NORMALIZATION US/VN RELS, INCLUSION VN IN
+WORLD COMMUNITY.
+
+11.  INDOCHINESE REFUGEES
+
+KRAMER (WSJ) TELLS OF HARDSHIPS FACING SVIETS WHO RISK
+DEATH TO FLEE, ARE UNWANTED IN OTHER COUNTRIES, SOME-
+TIMES HAVE SHIPS PASS BY WHEN IN SMALL BOATS.  SEES EXODUS
+REFLECTING HANOI'S TROUBLES W/SVN, WHERE EARLIER
+PERSUASION ATTEMPTS HAVE GIVEN WAY TO FORCE/TERROR.  OPINES
+HANOI TRIES HARD STOP ESCAPES, WHICH MUST EMBARRASS IT,
+THO EFFORTS REPORTEDLY UNDERMINED BY CORRUPTION AMONG
+COMMUNIST OFFICIALS.  MENTIONS ROLE UNHCR IN TRYING FIND
+HOME FOR REFUGEES.  RECOUNTS TALES OF SOME WHO FLED.
+
+12.  THAILAND
+
+ANDERSON/WHITTEN (WP) SAY JUSTICE DEPT &quot;BLIND&quot; TO CIA
+CRIME.  ALLEGE INSTANCE WHEN THAI CIA AGENT INDICTED
+FOR IMPORTING OPIUM INTO US, AND DOJ BACKED CIA REFUSAL
+RELEASE DOCUMENTS CONCERNING CASE.  QUOTE STORY FROM
+STILL-SECRET REPORT COMPILED BY HOUSE GOVT INFO AND
+INDIVIDUAL RIGHTS SUBCMTE.
+
+13.  KOREA
+
+NYDN, CITING ACCUMULATION EVIDENCE RE CONGRESSIONAL TARGETS
+SK LOBBYING, STATES, &quot;WE HAVE NO QUARREL W/KOREANS.
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 11        STATE  280331
+
+THEY WERE WORKING FOR THEIR COUNTRY TO PREVENT HUGE
+WITHDRAWALS OF US TROOPS.&quot;  HOWEVER, SAYS CONGRESSMEN
+INVOLVED WORKING FOR SELVES,AGAINST US INTERESTS.
+CALLS FOR VIGOROUS, HARD-HITTING INVESTIGATION/PROSECUTION
+THOSE INVOLVED.
+
+FRITCHEY (WP 11/13) WARNS FORD ADMIN SHOULD NOT PRE-EMPT
+CARTER ON KOREA IN BRIEF TIME LEFT IT -- HITS STATE
+REASSURANCES TO ROKG.  COMPARES US SUPPORT FOR &quot;ANTI-
+DEMOCRATIC&quot; ROK TO OUR BACKING FOR CKS/ROC AND THIEU/VN.
+NOTES ADMIN FEARS GROWING SCANDAL ROK &quot;INTERVENTION&quot;
+US POLITICS WILL BUILD CONG SUPPORT FOR REVISED CARTER
+POLICY ON KOREA.
+
+WP'S SAAR (11/13) SAYS ANY CARTER MOVE TO WITHDRAW TROOPS/
+NUKES FROM ROK WILL MEET STIFF RESISTANCE FROM SK,JAPAN
+AND US 'FOREIGN POLICY ESTABLISHMENT&quot;.  SKETCHES
+BENEFITS TO ALL THREE FROM US DEFENSE COMMITMENT, AND
+UNDERLINES US INTEREST IN PRESERVING &quot;SUCCESS STORY&quot; ROK --
+DESPITE PRES PARK'S &quot;DICTATORSHIP.&quot;  CONCLUDES SK MUST
+BASE CONTINGENCY PLANNING ON EVENTUAL US WITHDRAWAL OR
+WEAKENED COMMITMENT.  QUESTIONS ARE WHEN AND HOW BEST
+MANAGE WITHDRAWAL TO SUIT AIMS US POLICY AND BEST
+INTERESTS SK PEOPLE.
+
+MCGRORY (WSTAR 11/14) WRITES THAT FAYE MOON, WIFE IM-
+PRISONED CLERGYMAN KOREA, THANKFUL EXPOSURE ROKG
+INFLUENCE-PEDDLING HERE HAS OPENED US EYES TO &quot;REALITIES
+OF THE REPRESSIVE REGIME IN SEOUL&quot;.  MRS. MOON DECRIES
+KOREAN LOSS CIVIL RIGHTS/US SUPPORT FOR PARK REGIME.  SAYS
+MOST USEFUL THING US COULD DO WOULD BE OPENING NK-SK
+DIALOGUE WITH EYE TO EVENTUAL UNIFICATION, THUS ROBBING
+PARK OF RATIONALE FOR DICTATORSHIP.  ADDS, &quot;WE CAN'T HAVE
+THE SAME KIND OF DEMOCRACY AS IN THE US, BUT WE COULD
+
+HAVE SOME FORM OF IT&quot; (ALSO EXCERPTED SUN).
+
+JACK ANDERSON, CONTINUING SERIES COMMENTS ON FOREIGN
+INTELL/PAYOFF OPS IN US, AGAIN HITS KCIA FOR MANIPULATION
+US OPINION/PAYMENTS TO CONG (WP 11/14).
+
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 12        STATE  280331
+
+PROF RICHARD FALK OF PRINCETON WRITES NYT (11/14) ASKING
+HOW WE CAN EXPECT FOREIGN INTELL OPS CEASE HERE WHEN
+OUR CIA ENGAGED BROADER SCOPE ACTS ABROAD.
+
+IN LTR TO EDIT WP, FLETCHER PROF GREG HENDERSON STRONGLY
+CRITICIZES ROKG, WHICH SPEAKS TO OWN PEOPLE OF AUSTERITY/
+SPARTANISM, WHILE PROMOTING LAVISH FORMS CORRUPTION.
+COMPARES ROKG TO KMT ROC/THIEU'S VN, AND ASKS IF ROK
+WORTHY OF DEFENSE.
+
+WP (11/13 AND 11/15) CARRIES TWO PARTS SERIES KIM IL SUNG
+&quot;TALKS&quot; W/EDIT &quot;JAPANESE POLITICO-THEORETICAL MAGAZINE
+SEKAI&quot;, PRESENTED IN USUAL AD FORM W/KIM FOTO BY
+PYONGYANG TIMES.  STANDARD NK PITCH AT SOME LENGTH.
+
+NYDN HAS POL CARTOON SHOWING CONGRESSMAN PASSING FROM
+US CUSTOMS UPON RETURN FROM SEOUL--CARRIES TWO SUITCASES
+OVERFLOWING W/DOLS, AND SAYS TO CUSTOMS OFFICER: &quot;JUST
+A FEW SOUVENIRS.&quot;
+
+14.  TAIWAN/KOREA
+
+WP (11/13) SAYS OVER PAST TWO YEARS DOZENS OF US CONGRESS-
+MEN AND AIDES HAVE ACCEPTED FREE TRIPS TO KOREA AND
+TAIWAN FROM ORGANIZATIONS CLOSE TO THOSE GOVERNMENTS.
+CITES FREEBIES OFFERED BY PACIFIC CULTURAL FOUNDATION
+AND KOREA-US ECONOMIC COUNCIL AND NOTES US OFFICIALS
+BELIEVE THERE IS A CLOSE ASSOCIATION BETWEEN THESE ORGS
+AND GOVTS.  EXTENSIVE STORY CARRIED FRONT PAGE WITH
+LARGE CARRYOVER CITING KOREAN EMBASSY DENIAL OF ANY
+OFFICIAL CONNECTION.
+
+15.  JAPAN
+
+SEIDEN (SUN 11/13), IN HOKKAIDO, REMARKS US 200-MILE
+FISHING LIMIT SEEN AS LIFE-OR-DEATH MATTER IN JAPANESE
+FISHING VILLAGES.  MANY ALSO FEAR US LAW WILL SET
+PRECEDENT FOR SIMILAR MOVES BY OTHER COASTAL NATIONS,
+INCL USSR.  ACCORDING FISHING INDUSTRY ESTIMATES,
+200-MILE ZONE ENACTED GLOBALLY WOULD COST JAPAN NEARLY
+HALF ITS CATCH, PUT 150,000 FISHERMEN OUT OF WORK.  SAYS
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 13        STATE  280331
+
+
+16.  CHINA
+
+SUN RECOMMENDS CARTER CONCLUDE NORMALIZATION WITH PRC, SEND
+MANSFIELD AS FIRST US AMB.  NOTES CHINESE KNOW SEN'S
+PERSONAL HISTORY, AND HIS LIFELONG INTEREST IN CHINA
+WOULD BE AS WELCOMED IN PEKING AS HIS AGE/PRESTIGE.
+
+IN LONG INTERVIEW WITH SUN'S STERNE/FURGURSON, MANSFIELD
+SAYS CHOU ONCE TOLD HIM &quot;DOOR BETWEEN OUR TWO NATIONS
+SHOULD NEVER HAVE BEEN CLOSED.&quot;  SEES PRC OVERTURE AS
+NIXON'S GREATEST FEAT--SINCE MEANT &quot;WE RECOGNIZE AT
+LONG LAST THAT CHINA IS NOT PART OF A MONOLITHIC TWO-
+PRONGED COMMUNIST MENACE,&quot; BUT &quot;IS GOING ITS OWN WAY IN ITS
+OWN MANNER AND IS TRYING TO KEEP IN CONTROL OF ITS OWN
+DESTINY APART FROM ANY OTHER COUNTRY.&quot;
+
+KNIGHT NEWS SERVICE'S CARTER SAYS US INTELL ANALYSTS HAVE
+CONCLUDED SOVIET PITCH FOR DETENTE WITH PRC HAS FAILED.
+REPORTS MANSFIELD ECHOED THIS OFFICIAL ASSESSMENT FRIDAY
+TO &quot;OVERSEAS WRITERS CLUB&quot; LUNCHEON, SAYING SINO-SOVIET
+CHASM &quot;WILL REMAIN WIDE AND DEEP INTO THE INDEFINITE
+FUTURE&quot; (GLOBE 11/14).
+
+TO WP'S MATHEWS (HK 11/14), CHANGES WITHIN PRC DURING
+&quot;ONE TUMULTUOUS MONTH&quot; FOLLOWING MAO'S DEATH ARE, IN
+MANY RESPECTS, &quot;VICTORY FOR CHINESE HISTORY.&quot;  SAYS
+FOR TIME BEING, AS HUA MOVES TO CONSOLIDATE HOLD ON
+COUNTRY, CHINESE ARE LIKELY ENJOY ERA OF GOOD FEELING.
+BUT CHINESE LONG-RANGE POL FUTURE LESS CERTAIN.  IN
+IMPORTANT SENSE, EVENTS OF PAST MONTH HAVE REVIVED
+MIDNIGHT ARREST AS TOOL OF CHINESE POLITICS.  SUGGESTS
+WALLED-IN VILLAS OF CHUNGNANHAI DISTRICT FULL OF MEN/
+WOMEN AMBITIOUS AS HUA OR CHIANG CHING; POINTS OUT
+DISTRICT PERHAPS ALSO HOUSES TENG, WHO NOW HAS CHANCE
+OF ANOTHER POL COMEBACK.  SUGGESTS HARD TO BELIEVE
+HUA CAN AVOID POLICY/PERSONAL CLASHES WITH SOME OF THOSE
+WHO HELPED HIM OUST RADICALS--AND HE HAS NOW SET PRE-
+CEDENT FOR GRASPING POWER THROUGH SUDDEN, RUTHLESS
+ACTION.  HUA'S COORDINATED EFFORT TO BLACKEN NAMES OF
+&quot;GANG OF FOUR&quot; HAS PROVIDED COLORFUL PORTRAIT OF
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 14        STATE  280331
+
+RAGING PERSONAL ANIMOSITY/CONSPIRACY, AND DESTROYED
+NOTION THAT PRC POLITICS NOTHING MORE THAN HIGH-MINDED
+DEBATE OVER PRINCIPLE.
+
+IN 11/13 ARTICLE, MATHEWS SEES NCNA CHARGE--THAT &quot;GANG OF
+FOUR&quot; CRIPPLED TANGSHAN QUAKE RELIEF EFFORTS--AS MOST
+BITTER, PERHAPS MOST DAMAGING, ATTACK YET ON THEM, SINCE
+ATTEMPTS SHOW THEY MADE LIGHT OF ONE OF WORST NATURAL
+DISASTERS IN CHINESE HISTORY.  SAYS WHILE NO WAY VERIFY
+ACCURACY OF CHARGE, AT TIME OF EARTHQUAKE NONE OF FOUR WAS
+LISTED AS PART OF HAU-LED CENTRAL GOVT DEL T;AT RUSHED TO
+TANGSHAN TWO DAYS LATER.  OBSERVES THAT, AS IS USUAL
+PRACTICE IN CHINESE POL CAMPAIGN, MEDIA ATTACKS ON &quot;GANG
+OF FOUR&quot; ARE DESIGNED BLOT OUT ANY ADMIRATION CHINESE
+MIGHT HAVE HAD FOR THEM.
+
+SUN'S ISAACS (HK 11/13) NOTES CHOU, WITH RADICALS IN DIS-
+GRACE, IS ONCE AGAIN RECEIVING HONORS LONG CAREER
+SHOULD HAVE EARNED HIM.  SUGGESTS TRIBUTES FOR CHOU MAY BE
+MORE THAN JUST DELAYED HONOR, SINCE THEY INEVITABLY RAISE
+POSSIBILITY OF REINSTATING TENG.  SAYS ASSUMED BY MOST
+FOREIGN OBSERVERS THAT THERE ARE MEN IN NEW PRC LEADERSHIP
+WHO WOULD WELCOME THEIR OLD COMRADE'S RETURN.  BUT ANALYSTS
+NOT PREDICTING TENG COMEBACK, SINCE RETURNED TENG COULD
+PROVE UNWELCOME CHALLENGE TO HUA.  AS VETERAN OF MORE THAN
+40 YEARS, TENG HAS PERSONAL TIES WITH OTHER LEADERS THAT
+HUA PROBABLY COULD NOT MATCH--FOR EXAMPLE, CHEN HSI-LIEN.
+
+ZORZA (WP 11/13) SEES SOVIET EXTENSION FRIENDSHIP HAND TO
+PRC BEGINNING ELICIT RESPONSE; CHINESE REACTION MORE
+DIFFICULT DESCRIBE, SINCE LESS EXPLICIT, BUT APPEARS
+SILENCE RATHER THAN BARK.  ALSO, ANOTHER IMPORTANT SILENCE
+IS ABSENCE ANGRY ANTI-SOVIET BLASTS FROM PEKING SINCE MAO'S
+DEATH.  FINDS ACCUMULATION OF SIGNS SUGGESTING EXISTENCE
+OF TREND TOWARD RAPPROCHEMENT.
+
+JULIAN SOBIN (INTL MINERALS AND CHEMICAL CORP), IN CANTON,
+FINDSENTIRE ATMOSPHERE OF TRADE FAIR HAS CHANGED FOR
+BETTER SINCE &quot;GANG OF FOUR&quot; ARRESTED.  SAYS US APPROVAL
+COMPUTER SALES TO PRC SIGNALS US EAGERNESS TO TRADE; BUT
+FEELS &quot;OUR LACK OF MOVEMENT ON IMPLEMENTATION&quot; SHANGHAI
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 15        STATE  280331
+
+COMMUNIQUE TIES UP TRADE WITH MANY HISTORICAL/POL FACTORS
+(NYT 11/14).  IN ACCOMPANYING ARTICLE, SALLY HEINEMANN
+DISCUSSES LEE SOBIN--&quot;FIRST AMERICAN WOMAN TRADER WITH
+CHINA--WHO SOME CLIENTS, INVITED TO PEKING, PREFER HAVE
+NEGOTIATE FOR THEM, SINCE SHE HAS &quot;SPECIAL RAPPORT&quot; WITH
+CHINESE.
+
+LAT'S LESLIE (HK 11/13) SAYS PRC'S INVOKING 1956
+&quot;HUNDRED FLOWERS&quot; CAMPAIGN IS UNDOUBTEDLY MEANT AS
+SIGNAL TO COUNTRY'S ARTISTS THEY CAN EXPECT MORE LATITUDE
+IN FUTURE THAN CHIANG CHING ALLOWED.  NOTES MOVIE,
+&quot;PIONEERS,&quot; IS CULTURAL PRODUCTION RAISING BIGGEST
+FURORE IN CHINESE PRESS RECENTLY.  &quot;GANG OF FOUR&quot;
+CHARGED WITH TRYING PREVENT ITS SHOWING ON GROUNDS
+IT &quot;PRETTIFIES&quot; LIU SHAO-CHI.  BUT LESLIE CONCLUDES.
+ON VIEWING FILM, THAT HARD SEE WHAT ALL FUSS IS ABOUT.
+MOVIE SEEMS UNEXCEPTIONAL EXAMPLE OF HIGHLY SIMPLISTIC/
+TURGID FARE PRODUCED IN PRC FOR MANY YEARS.  SUGGESTS
+THAT, AT VERY LEAST, MOVIE'S DISTRIBUTION AFTER CHIANG
+CHING'S DOWNFALL  MAY MEAN WHILE NUMBER OF CHINESE
+ARTISTIC EFFORTS WILL INCREASE, &quot;FLOWERING&quot; WHICH NEW
+LEADERSHIP HAS IN MIND MAY BE SO SUBTLE IN TERMS OF
+CONTENT THAT MANY WESTERNERS, EVEN SOME CHINESE, WILL NOT
+BE ABLE DETECT IT.
+
+&quot;PARADE&quot; MAG'S SHEARER (WP 11/14) INTERVIEWS REWI ALLEY,
+WHO HAS SPENT 50 YEARS IN CHINA.  SPECIAL FAVORITE OF PRC
+YOUTH, ALLEY SAYS HE KEEPS ON WRITING &quot;WHAT I SEE,&quot;
+DENIES HE IS PROPAGANDIST FOR PEKING.
+
+GLOBE'S DWYER (11/14) REPORTS SAT NIGHT BOSTON U ALUMNI
+ASSN DINNER HONORING FECTEAU; DOWNEY AMONG THOSE ATTENDING.
+RETIRING FROM CIA THIS MONTH, FECTEAU SAYS NOT SURE WHAT
+HE'LL DO; WILL LOOK AROUND, INTERESTED IN EDUCATION.
+
+CSM'S STEIN REPORTS 21 BLUE CHIP US FIRMS, IN FACE OF
+STERN REBUKE FROM PEKING, ARE GOING FORWARD WITH PLANS
+TO ESTABLISH ORGANIZATION TO ENCOURAGE TRADE WITH ROC.
+CALLING THEMSELVES &quot;US-ROC ECONOMIC COUNCIL,&quot; GROUP PLANS
+BEGIN OPS DEC IN CHICAGO.  ORGANIZATION PRES, RBT
+PITNER, CRITICIZES NCUSCT'S PHILLIPS FOR CAUSING &quot;GREAT
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 16        STATE  280331
+
+FLAP&quot; IN PASSING ON WORD OF PRC DISPLEASURE WITH NEW GROUP.
+
+17.  TIBET
+
+LAT'S STAMMER (11/12) RECALLS THAT FOLLOWING 10/27 TV
+DEBATE WITH SEN TUNNEY, SEN-ELECT HAYAKAWA HAD TOLD
+REPORTERS HE WOULD HOPE ENCOURAGE INSURRECTION IN HUNGARY,
+POLAND, LATVIA, LITHUANIA, ESTONIA--&quot; OR TIBET, FOR THAT
+MATTER--THOSE POOR, CRUSHED NATIONS THAT HAVE BEEN UNDER
+COMMUNIST TYRANNY ALL THESE YEARS.&quot;  KISSINGER
+
+
+UNCLASSIFIED
+
+
+
+
+NNN
+
+</div></div><br /></div></div><div class="pane-tab"><div class="pane-header">Raw content</div><div class="pane-content"><div class="text-content">
+
+UNCLASSIFIED
+
+PAGE 01        STATE  280331
+
+66
+ORIGIN EA-09
+
+INFO  OCT-01  EUR-12  ISO-00  SIG-02  PM-04  PA-02  PRS-01  INR-07
+
+NSCE-00  NSC-05  /043 R
+
+DRAFTED BY EA/P:STAFF:EH
+APPROVED BY EA/P:MSMITH
+DESIRED DISTRIBUTION
+NSC ELECTRONICALLY FOR MR. GLEYSTEEN
+---------------------     109378
+R 151957Z NOV 76
+FM SECSTATE WASHDC
+TO ALL EAST ASIAN AND PACIFIC DIPLOMATIC POSTS
+AMEMBASSY MOSCOW
+INFO CINCPAC
+COGARD
+GOVGUAM
+TRSY
+
+UNCLAS STATE 280331
+
+E.O. 11652: N/A
+
+TAGS: PFOR,XC,US
+
+SUBJECT: NOVEMBER 11 EA PRESS SUMMARY
+
+1.  CHINA
+
+REUTER (PEKING) SAYS EARTH TREMORS SHOOK CAPITAL MONDAY
+NIGHT, SHATTERING WINDOWS/DOORS, SENDING FRIGHTENED
+CHINESE RUSHING INTO STREET.
+
+IN &quot;TOUGH&quot; BANQUET SPEECH MONDAY NIGHT, LI HSIEN-NIEN
+FLATLY REJECTED ANY RAPPROCHEMENT WTH SOVIET.  SPEECH
+PROVOKED WALK-OUT BY SOVIET AMB, DIPLOS FROM 7 OTHER
+PRO-SOVIET COUNTRIES (REUTER PEKING).
+
+NYT SPEC (11/13) REPORTS DOS OFFICIALS BELIEVE SOVIET IS
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 02        STATE  280331
+
+ATTEMPTING ENCOURAGE BETTER RELS WITH PRC, BUT SO FAR WITH-
+OUT DEMONSTRABLE SUCCESS.  SOURCES FEEL MOSCOW DOES NOT
+WANT ALLOW PERIOD OF UNCERTAINTY, FOLLOWING MAO'S DEATH,
+SLIP BY WITHOUT MAKING RENEWED EFFORT LESSEN HOSTILITY
+WITH PEKING; SOVIET ALSO SEEN TRYING PUT ITS RELS WITH
+PEKING IN BETTER LIGHT THAN REAL SITUATION MAY WARRENT.
+DOS OFFICIALS ALSO THINK NEW PEKING LEADERSHIP MIGHT SEE
+SOME WISDOM IN SMALL FRIENDSHIP GESTURES TO SOVIET, IF ONLY
+TO SIGNAL PRES-ELECT CARTER THAT PRC NOT LOCKED INTO US,
+HAS OTHER OPTIONS.
+
+CSM'S MOSCOW CORRESPONDENT SAYS IF MAO'S PASSING HAS OPENED
+WAY FOR SINO-SOVIET THAW, ANALYSTS THERE SEE NO SIGN OF
+IT YET.  MANY EXPERTS FEEL PEKING HAS STEPPED UP CONSTANT
+CRITICISM OF SOVIET, WHILE KREMLIN SEEMS MORE INTERESTED
+IN BEING ABLE TELL OTHER CP'S, &quot;LOOK, WE TRIED,&quot; THAN IN
+ANY GENUINE PROGRESS.  SIMILARLY, SUN'S MOSCOW BUREAU
+REPORTS SOVIET OFFICIALLY EXPRESSED CONFIDENCE THURS
+THAT ITS FRIENDSHIP WITH PRC WILL BE RESTORED--BUT,
+SPEAKING PRIVATELY, SOVIET ACADEMIC/FOPOLICY SPECIALISTS
+NOT SO SURE (11/13).
+
+REUTER (PEKING) REPORTS THAT ACCORDING CHANGSHA OFFICIAL
+NOTICES, MAN HAS BEEN EXECUTED THERE FOR DEFACING WALL
+POSTER PROCLAIMING HUA'S APPOINTMENT AS CCP CHAIRMAN
+(WP, NYT).
+
+USDA'S ECON RESEARCH EXPERT SAYS PRC WILL PROBABLY PRODUCE
+LESS GRAIN THIS YEAR THAN LAST, AND IS REPORTEDLY PLANNING
+MORE OVERSEAS PURCHASES NEXT YEAR (REUTER, NYT).
+
+NCNA REPORTS US DEL LED BY SEN CURTIS HAS MET WITH VICE
+FM WANG HAI-JUNG (WP 11/14).
+
+CCK WARNS US AGAINST USING ROC AS BARGAINING CHIP IN
+DIPLO GAMBLE TO PLAY OFF PRC AGAINST SOVIET (WP/11/14).
+
+JOC'S BARNETT (BEVERLY HILLS, CALIF) REPORTS TOP ROC TRADE
+OFFICIAL, HKSHAO, IN SPEECH RECENTLY DELIVERED THERE IN
+JOINT FAR EASTERN TRADE SEMINAR, PREDICTED OVERALL TRADE
+BETWEEN CALIF/ROC SHOULD TOP BILLION DOLS THIS YEAR; BUT
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 03        STATE  280331
+
+HE WARNED THAT RISING LABOR/PRODUCTION COSTS WILL BOOST
+WHOLESALE PRICES FOR MANY ROC EXPORTS STARTING JAN.
+ADDED THAT ROC IS STEPPING UP EFFORTS LURE FOREIGN
+INVESTMENTS/TECHNICAL ASSISTANCE, ESPECIALLY LARGE
+CAPITAL INVESTMENTS/TECHNICAL CO-OPERATION FROM US.
+
+2.   JAPAN
+
+MIG25--IN CRATES--LOADED ABOARD SOVIET FREIGHTER 11/12 IN
+HITACHI PORT, NOW HEADED FOR SIBERIA.  FLEET SOVIET VES-
+SELS STANDING OFFSHORE, OVER 2000 ARMED POLICE STANDING
+GUARD ONSHORE, W;TCHED LOADING PROCESS.  NO LASTING/SERIOUS
+DISRUPTION IN JAPANESE-SOVIET RELS EXPECTED (MALCOLM, NYT
+11/13, EXCERPTED IN SUN 11/13).
+
+GOJ ADOPTS 3.3-BIL-DOL, 7-POINT ECON PLAN DESIGNED STIM-
+ULATE BUSINESS ACTVITY.  PLAN INCLUDES CONSTRUCTION
+
+
+20,000 MORE HOMES/PUBLIC WORKS EXPANSION PROJECTS/AID
+AGRICULTURAL AREAS HIT BY POOR WEATHER, NATURAL DISAS-
+TERS.  INTL TRADE/INDUSTRY MINISTER KOMOTO PREDICTS
+RECOVERY WILL QUICKEN TOWARD YEAR'S END, SINCE MEASURES
+WOULD RESUME HIGHER PACE IN JAN-MARCH PERIOD (AP, WSJ;
+CULLISON, JOC; OFUSA, NYT 11/13).
+
+CULLISON REPORTS JAPAN'S BIG INDUSTRIAL CORPS BEGINNING
+ONCE AGAIN TURN TOWARD CAPITAL SPENDING; INDUSTRIAL BANK
+OF JAPAN REASEARCHERS PREDICT CAPITAL OUTLAYS BY MAJOR
+FIRMS WILL INCREASE 14 PCT OVER FY '75/EXCEED 34 BIL DOLS
+BY MARCH.  US/OTHER FON FIRMS HAVE ALSO LAUNCHED NEW MAN-
+UFACTURING OPERATIONS IN JAPAN, DESPITE ECON SLUMP.
+
+JAPANESE INDUSTRIES EXPECTED AT LEAST TEMPORARILY CURB
+EXPORTS TO US/EC IN ORDER COUNTER RISING CHARGES JAPAN
+ATTEMPTING FLOOD MARKETS W/LOW-PRICED GOODS.  FEARS OF
+MOVES TOWARD PROTECTIONISM ABROAD MAY ALSO RESULT IN JA-
+PAN LOWERING MORE NONTARRIFF/OTHER TRADE BARRIERS, UL-
+TIMATELY PROVIDING INCREASED TRADE/INVESTMENT OPPORTUNI-
+TIES IN JAPAN FOR US/W EUR-BASED FIRMS.  MITI AUTHORI-
+TIES HINTING GOJ MAY TAKE STEPS INCREASE IMPORTS FROM
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 04        STATE  280331
+
+US/EC IN HOPES NO ATTACKS WILL BE MADE ON JAPANESE EXP-
+PORTS AS MEANS REDUCING TOKYO'S TRADE SURPLUS (CULLISON).
+
+KAWAHARA (JOC) REVIEWS JAPANESE ECON SLOWDOWN, RECENT
+SIGNS IMPROVEMENT INCL COMMODITY PRICE STABILIZA-
+TION/RECORD EXPORTS/MORE ACTIVE BUYING ON STOCK EXCHANGE
+AS CREDIT RELAXED.  OIL PRICE INCREASE NOT EXPECTED NO-
+TICEABLY AFFECT JAPAN'S EXPORTS UNLESS WORLD MARKETS
+STAGNATE.  THO FURTHER SLOWDOWN IN REAL ECON GROWTH CANNOT
+BE AVOIDED IN 3RD QUARTER '76, EFFECTS GOJ'S PROPOSED RE-
+COVERY MEASURES SHOULD BE EVIDENT BY EARLY '77.
+
+JOC REPORTS JAPAN LIKELY SEE BETWEEN 5-6 PCT GNP RISE
+OVER '75, DESPITE OPTIMISM SOME TOKYO BUSINESSMEN WHO
+SEE 7 PCT INCREASE.  JAPANESE MANUFACTURING INDUSTRY
+ENTERING PERIOD STABILIZED EXPANSION; MASSIVE GROWTH
+RATES IN OUTPUT/PRODUCTIVITY NO LONGER FORTHCOMING.
+IN AGRICULTURAL SECTOR, FARMERS FIND MACHINERY/FERTILI-
+ZER PRICES RISING WHILE MARKET DEMAND REMAINS RELATIVELY
+MODERATE.  FARM OUTPUT THIS YEAR MAY CLIMB BETWEEN 1.5-2
+PCT (JOC).
+
+MITI SAYS JAPAN'S OCT EXPORTS ROSE AT SLOWEST ANNUAL
+RATE IN 8 MONTHS--16 PCT COMPARED W/OVER 30 PCT IN BOTH
+AUG/SEPT (WSJ).
+
+TOYOTA'S OCT EXPORTS ROSE 35 PCT OVER LAST YEAR; NISSAN
+
+EXPORTS GAINED 11 PCT.  TOGETHER, FIRMS EXPORTED 197,179
+VEHICLES IN OCT (WSJ).
+
+OECD PREDICTS JAPAN'S GNP GROWTH RATE, NOW 2ND ONLY TO
+US, WILL SURPASS US RATE IN '77.  OECD ALSO SAYS JAPAN
+WILL MOVE FROM 3.5-BIL-DOL SURPLUS THIS YEAR TO APPROX-
+IMATE BALANCE NEXT YEAR (LEWIS, NYT).
+
+JOC'S FISH REPORTS KEEN COMPETITION AMONG JAPANESE AUTO
+MAKERS HAS SPURRED AMERICAN MOTORS/GM ANNOUNCE REBATE PRO-
+GRAMS AIMED AT STIMULATING LAGGING SMALL CAR SALES; PROGRAM
+SO FAR SHOWS SUBSTANTIAL SUCCESS.
+
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 05        STATE  280331
+
+UNIVERSAL STUDIOS/WALT DISNEY PRODUCTIONS FILE SUIT
+AGAINST SONY, CHARGING FIRM'S BETAMAX VIDEOTAPE RECORDER
+HAS BEEN USED COPY TV MOTION PICTURES/SYNDICATED SERIES
+IN VIOLATION FEDERAL COPYWRIGHT LAWS (WSJ).
+
+MARION LABORATORIES HAS ACQUIRED FROM TANABE SEIYAKU OF
+OSAKA RIGHTS TO MARKET NEW PROUDUCT ;HERBESSER&quot;--DRUG
+USED IN HEART DISEASE TREATMENT.  MARION PLANS MARKET
+DRUG THRU PHARMACEUTICAL DIVISION AFTER CONDUCTING RE-
+SEARCH/DEVELOPMENT WORK NECESSARY FOR FDA APPROVAL.
+
+3.  KOREA
+
+ATTORNEY FOR TONGSUN PARK'S PACIFIC DEVELOPMENT CORP
+ADVISES COMPANY EMPLOYEES &quot;CEASE ALL FORMS OF VOLUNTARY
+COOPERATION&quot; W/ JUSTICE DEPT, DUE LEAKS TO NEWSMEN BY
+PROBERS (HORROCK, NYT; MCALLISTER, WP 11/13).  WP FRONT-
+PAGED PRECEDING INFO (11/13), TOGETHER W/STATEMENT ROK
+EMB REP THAT EMB ALSO MAY NOT COOPERATE WILLINGLY W/
+JUSTICE--UNCERTAIN WHETHER PARK WILL DO LIKEWISE. ATTORNEY
+BLASTS PRESS ACCESS SECRET GRAND JURY SESSIONS, CLAIMS
+NEWSMEN TOLD BY &quot;CIA, JUSTICE AND STATE SOURCES&quot; THAT
+REAL TARGETS PROBE ARE CONGRESS AND PRES PARK.
+
+AP REPORTS TONGSUN PARK GAVE REP BRADEMAS (D-IND) 500 DOLS
+CONTRIBUTION 1970, APART FROM 4,700 DOLS IN 1972/74
+ALREADY REPORTED (SUN; NYT 11/14).
+
+CHITRIB (11/14) REPORTS IRS CHECKING ALLEGATIONS CONGRESS-
+MEN SUSPECTED TAKING SK KICKBACKS/BRIBES DEPOSITED THEM IN
+BAHAMIAN BANKS (ALSO CARRIED SUN).
+
+NYT'S HALLORAN, CITING &quot;RELIABLE FORMER ROKG OFFICIAL&quot;
+AS SOURCE, STATES KCIA HAS ORDERED TONGSUN PARK STAY OUT
+OF BOTH US AND ROK UNTIL INVESTIGATIONS CALM DOWN.  ALSO
+REPORTS KNOREAN CULTURAL FREEDOM CORP, UNDER ITS PRES PAK
+
+
+BO HI, REMITTED ABOUT 1.2 MILL DOLS FROM WASH TO SEOUL IN
+APPARENT EFFORT ESCAPE DETECTION BY FEDS--FUNDS ORIGINALLY
+SOLICITED TO SUPPORT REV MOON'S ACTIVITIES HERE.
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 06        STATE  280331
+
+
+OPPENHEIMER (WSTAR 11/14) DOES FRONT-PAGE PIECE RE WASH'S
+ASIAN FORUM, INC, AND ALLEGED CIA TIES ONE OF ITS DIRECTORS,
+KIM TONG HYON.  ASIAN FORUM, THRU QUESTIONABLE MEANS,
+LANDED CONTRACT FOR FIRST IN-DEPTH STUDY DC AREA ASIAN
+BUSINESS COMMUNITY, PERMITTING INTERVIEW WITH AND DEVELOP-
+MENT PERSONAL DATA ON MOST SK BUSINESSMEN HERE.
+
+WP'S ARMSTRONG/CHESHIRE COLLABORATE ON FRONT PAGE ARTICLE
+ABOUT DC'S DIPLOMAT NATIONAL BANK (11/14).  NOTE TONGSUN
+PARK, PAK BO HI AND ASSOCIATES CONTROLLED ALMOST HALF
+BANK'S STOCK WHEN OPENED, AND QUESTION WHY THEY BECAME SO
+DEEPLY INVOLVED W/BANK, PARTICULARLY THRU USE FRONT MEN
+(ALSO CARRIED GLOBE).
+
+STERBA (NYT 11/14) REPORTS FROM SEOUL PRES PARK HAS OUSTED
+THIRD-RANKING KCIA OFFICIAL, LEE SANG HO--AKA YANG DOO
+WOON--FOR FAILURES CONNECTED W/ROKG INFLUENCES--PEDDLING
+COORDINATION/REPORTING.  YANG NAMED AS KCIA STATION CHIEF
+WASH LATE 60'S/EARLY 70'S--ACCUSED TOO OPTIMISTIC
+REPORTING/FAILURE WARN RE DANGERS INHERENT LOBBYING.  NYT
+FOLLOWS UP W/SEPARATE REPORT RE HEE AKA YANG, LINKING HIM
+TO HARASSMENT KOREANS IN US, KIDNAPPING KOREAN STUDENTS
+IN GERMANY (1967), AND POSSIBLE INVOLVEMENT KIM DAE JUNG
+KIDNAPPING TOKYO (1973).
+
+HALLORAN (NYT 11/14), FRONT PAGE, QUOTES DON RANARD AS
+ASSERTING NIXON ADMIN DID LITTLE CURB ROK LOBBYING DUE
+ROK INVOLVEMENT W/US IN VIETNAM.  RANARD RECALLED NO
+SPECIFIC POLICY GUIDANCE RE QUESTION, BUT SAID ALWAYS
+&quot;FEELING BELOW SURFACE&quot; SK LOBBY TO BE LEFT ALONE BECAUSE
+WE NEEDED KOREAN ASSIST; ADDED NO DELIBERATE COVERUP
+LOBBY, JUST NOTHING DONE.  RANARD SAID FORMER SEC'Y
+ROGERS, HAK AND EX-ATT'Y GEN SAXBE INFORMED KOREAN OPS.
+FORMER SEC DEF LAIRD HAS CONFIRMED HE AWARE LOBBY--ADDED
+AMBS PORTER/HABIB ALSO WELL INFORMED.  CLAIMS MEMO WRITTEN
+BY EX-UND SEC'Y JOHNSON SHOWS HE KNEW OF LOBBY AS WELL.
+STATE SPOKESMAN QUOTED AS SAYING ANY CHARGE STATE OFFICIALS
+FAILED CURB IMPROPER SK ACTS IN EFFORT PRESERVE ROK TROOP
+COMMITMENT VN ABSOLUTELY FALSE.
+
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 07        STATE  280331
+
+FOUR WITNESSES APPROVED BY APPEALS COURT SEOUL FOR MYONG-
+DONG TRIAL.  DECISION WITHHELD ON SUMMONS TO OTHERS (NYT,
+WP 11/14).  SUN (11/14) CARRIES PHOTO MRS. KIM DAE JUNG,
+MRS. YUN PO SUN, AND OTHER WOMEN CONCERNED W/TRIAL
+DISSIDENTS.
+
+4.  INDOCHINA
+
+DOS SAYS US/VN TALKS DEADLOCKED, BUT BOTH AGREE MEET AGAIN.
+NEITHER SIDE WOULD SAY ANYTHING TO PRESS AFTER 2-HR MTG.
+DEPT SPOKESMAN FUNSETH SAYS US HAS NOT BACKED AWAY FROM
+INTENTION VETO VN APPLICATION ENTER UN; ADDS &quot;FAIR ASSUMP-
+TION&quot; THAT NO PROGRESS MADE ON MIA QUESTION AT MTG (WSTAR
+11/13).  IMPORTANT THING ABOUT PARIS MTG WAS THAT IT
+HAPPENED.  US/VN REPORTEDLY EXCHANGED &quot;RITUAL POSITIONS.&quot;
+HOWEVER ANTICIPATED IMPROVED RELS DEVELOP, NOW APPEARS TOO
+LATE FOR VN ENTRY INTO UN DURING CURRENT SCHEDULE (SUN 11/
+13).  VN OBSERVER AT UN SAYS TASK FORCE SET UP TO SEEK
+INFO ON US MIAS (REUTER UN 11/12).
+
+JAPAN ESTABLISHING &quot;ACTIVE ECONOMIC DIPLOMACY&quot; W/ VN THAT
+STEMS IN PART FROM VIEW JAPAN/W NATIONS CAN ENHANCE SEA
+PEACE/STABILITY BY CONTRIBUTING TO ECON RECONSTRUCTION VN
+(PARADE MAG, WP 11/14).
+
+REUTER'S ROGERS (WP 11/14) NOTES CHANGES IN VIENTIANE:
+RUSSIAN PRESENCE, PL SOLDIERS, STREET LOUDSPEAKERS,
+&quot;SEMINARS&quot; FOR PEOPLE DEEMED &quot;SOCIALLY UNDESIRABLE,&quot;
+QUIET LIFE FOR SMALL W COMMUNITY.  MENTIONS TOURISM
+BANNED WHILE GOVT SORTS OUT DETAILS HOTEL ACCOMMODATIONS/
+TRAIN SCHEDULES; MAY START NEXT YR.
+
+PP APPARENTLY CHOSE MUSIC AS KEY PROPAGANDA/TEACHING TOOL,
+BROADCASTS REV MESSAGE IN SONG/RHYME.  REFUGEES SAY NO
+NEWSPAPERS, BUT MUSIC/POETRY MAKE UP ABOUT HALF EACH
+DAY'S 6-HR BROADCASTING PIPED INTO RICE FIELDS OVER LOUD-
+SPEAKERS.  QUOTES ANALYST THAT REV SONGS STAND BETTER
+CHANCE MAKING IMPRESSION ON PEASANTRY THAN ORAL REPORTS.
+NOTES CAMBODIAN HISTORY FADING AS NEW LEGENDS BEING WOVEN,
+OFTEN ON COMMUNIST HARDSHIPS DURING WAR.
+
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 08        STATE  280331
+
+5.  INDOCHINA/THAILAND
+
+SIMONS (WP 11/13) REPORTS THAIS ARREST VIET RESIDENTS AS
+SUBVERSIVES, BASED ON ALLEGATION VIETS OPERATE COMPLEX/
+NATIONWIDE SHADOW GOVT INTENDED MERGE THAILAND W/ GREATER
+INDOCHINA STATE.  MENTIONS MOST VIETS CAME 30 YRS AGO TO
+ESCAPE WAR.  SAYS RTG ACTION DRAWS BLASTS FROM HANOI.
+OUTLINES THAI ALLEGATIONS CONCERNING ORGANIZATION.  RE-
+COUNTS STORIES TOLD BY SOME VIETS.
+
+6.  THAILAND
+
+SIMONS (WP) REPORTS US MAY BET RETURN TO RAMASUN ELECTRONIC
+SPY STATION; THAIS MANNING STATION THINK US WILL COME BACK.
+BELIEVES NEW RTG MAY USE RAMASUN AS LURE TO ATTRACT MORE
+US MIL AID.  DESCRIBES RAMASUN, INCL COST RTG TO MAIN-
+TAIN.  BUT ADDS US EMB OFFICIAL/SENIOR THAI ARMY OFFICER
+BOTH INSIST SPYING OPNS AT RAMASUN WILL NOT RESUME.
+
+7.  BURMA
+
+RANGOON, LISBON AGREE ESTABLISH DIPL RELS (AFP, WP).
+
+8.  AUSTRALIA/NEW ZEALAND
+
+STOVE (JOC) REPORTS POTENTIAL FON INVESTORS IN AUSTRALIA
+--ESPECIALLY US--LIKELY BE WELCOMED/FIND GOA SYMPATHETIC
+DUE NATION'S NEED FOR CAPITAL IN ORDER DEVELOP VAST
+NATURAL RESOURCES, EXPAND DIVERSIFY INDUSTRIES.  IN
+RECENT MONTHS, GAO HAS RARELY MISSED OPPORTUNITY ENCOURAGE
+FON INVESTORS, INDICATING COUNTRY'S STRICT RULES COULD BE
+BENT TO ACCOMMODATE WORTHWHILE VENTURES.
+
+IN SEPARATE ARTICLE, STOVE NOTES DESPITE RECORD TRADING
+LAST YEAR, AUSTRALIS'S OVERALL ECONOMY SLUGGISH.  LACK
+OF CONFIDENCE REFLECTED IN EXCESS CAPACITY/STALLED EXPAN-
+SION PROGRAMS/BLOATED SAVINGS FIGURES.  INDUSTRY SEEKING
+&quot;PUMP-PRIMING&quot; ACTION FROM GOA, HAS SO FAR GOTTEN ONLY
+VERBAL INCENTIVES.
+
+AUSTRALIA LIKELY GO AHEAD WITH MINING/MILLING/EXPORT
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 09        STATE  280331
+
+URANIUM DESPITE STRICT CONTROLS RECOMMENDED BY SUPREME
+COURT COMMISSION.  EXPORTS EXPECTED EARN  1 BIL DOLS
+OVER 30-YR PERIOD, THUS GAO LIKELY IGNORE ANY RESTRICT-
+IONS IF THEY PROVE IMPOSSIBLE IMPLEMENT (STOVE).
+
+HUNT INTL OIL CO ENDS SUSPENSION EXPLORATION OPNS OFF
+NZ COAST AFTER GONZ WITHDREW PROPOSAL FOR 3-DOL PER BARREL
+PRODUCTION TAX (WSJ).
+
+MCLAUCHLAN (JOC) REPORTS NZ HAVING GREAT DIFFICULTY
+CURBING INFLATION/BOP PROBLEMS.  INTENSIVE OIL PROS-
+PECTING/AGREEMENTS W/US ON INCREASED WOOL TRADE/NEW ENERGY
+POLICY OFFER SOME HOPE IN COUNTRY'S EFFORT STRAIGHTEN
+ECONOMY.
+
+9.  PHILIPPINES
+
+PHINQ REPORTS PHILS' HEAVILY FORESTED TABON VILLAGE HAS
+PROVEN MONEY-MAKER.  UNDER AUSPICES PHILS' PAPER INDUS-
+TIRES CORP, CONSERVATION/EXPLOITATION COMBINED THRU SE-
+LECTIVE LOGGING TECHNIQUES, ALLOWING FOREST PRESERVATION
+WHILE AT SAME TIME TAPPING ITS WEALTH.
+
+COMMENT AND ANALYSIS
+
+10.  INDOCHINA
+
+NY POST (11/11) VIEWS PRELIMINARY PARIS TALKS, HOPES
+POSTPONEMENT UNSC VOTE ON VN ADMISSION WILL ENCOURAGE
+CONCILIATORY TALKS.  SEES NO REASON FOR ACRIMONIOUS
+ROUND OF DEBATE ON VN ADMISSION/US VETO; THINKS FURTHER
+POSTPONEMENT OF VOTE ARRANTED.
+
+OBERDORFER (WP 11/13) SEES NO EVIDENCE SUCCESS IN 1ST
+TALKS.  FINDS ATMOSPHERE SECRECY/COLD DIPLOMATIC
+CORRECTNESS REMINISCENT EARLIER PARIS TALKS.  QUOTES
+INDOCHINA RESOURCES CENTR THAT US POLICY TOWARD VN BASED
+ON PERSONAL POL INTERESTS THAT HAK/OTHERS HAD IN
+CONTINUATION HOSTILITY TOWARD VN.  LEWIS (NYT 11/13)
+SAYS NO SUBSTANTIVE PROGRESS LIKELY BEFORE CARTER ADMIN
+BEGINS.  ADDS TALKS DELIBERATELY HELD AT EMB OFFICIAL
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 10        STATE  280331
+
+LEVEL TO MAKE CLEAR TENTATIVE/PROBING STATUS.  REVIEWS
+ISSUES.  IN 11/14 ARTICLE, LEWIS REPORTS VN EMB ISSUED
+COMMUNIQUE THAT APPEARS ENCOURAGING SIGN SERIOUS NEGOTS
+CAN BEGIN ONCE NEW ADMIN IN US.  SAYS CONCILIATORY TONE
+COMMUNIQUE AFTER TALKS SEEMS REFLECT EXPECTATION THAT
+NEXT US ADMIN WILL BE &quot;MORE FAR-SIGHTED,&quot; AS WELL AS
+REALIZATION US COULD AT ANY TIME WITHDRAW MIA ISSUE BY
+DECLARING CHANGE IN STATUS TO DEAD.
+
+LAT (11/12) DENOUNCES VN SINCE &quot;TOYED OUTRAGEOUSLY&quot;
+W/MIA ISSUE; BUT BELIEVES HOSTILITY SHOULD BE REPLACED
+BY ACCOMMODATION, ADVISES US NOT USE MIA ISSUE TO BLOCK
+UN MEMBERSHIP VN.  HOPES PROCESSES CAN BE STARTED THAT
+WILL LEAD TO NORMALIZATION US/VN RELS, INCLUSION VN IN
+WORLD COMMUNITY.
+
+11.  INDOCHINESE REFUGEES
+
+KRAMER (WSJ) TELLS OF HARDSHIPS FACING SVIETS WHO RISK
+DEATH TO FLEE, ARE UNWANTED IN OTHER COUNTRIES, SOME-
+TIMES HAVE SHIPS PASS BY WHEN IN SMALL BOATS.  SEES EXODUS
+REFLECTING HANOI'S TROUBLES W/SVN, WHERE EARLIER
+PERSUASION ATTEMPTS HAVE GIVEN WAY TO FORCE/TERROR.  OPINES
+HANOI TRIES HARD STOP ESCAPES, WHICH MUST EMBARRASS IT,
+THO EFFORTS REPORTEDLY UNDERMINED BY CORRUPTION AMONG
+COMMUNIST OFFICIALS.  MENTIONS ROLE UNHCR IN TRYING FIND
+HOME FOR REFUGEES.  RECOUNTS TALES OF SOME WHO FLED.
+
+12.  THAILAND
+
+ANDERSON/WHITTEN (WP) SAY JUSTICE DEPT &quot;BLIND&quot; TO CIA
+CRIME.  ALLEGE INSTANCE WHEN THAI CIA AGENT INDICTED
+FOR IMPORTING OPIUM INTO US, AND DOJ BACKED CIA REFUSAL
+RELEASE DOCUMENTS CONCERNING CASE.  QUOTE STORY FROM
+STILL-SECRET REPORT COMPILED BY HOUSE GOVT INFO AND
+INDIVIDUAL RIGHTS SUBCMTE.
+
+13.  KOREA
+
+NYDN, CITING ACCUMULATION EVIDENCE RE CONGRESSIONAL TARGETS
+SK LOBBYING, STATES, &quot;WE HAVE NO QUARREL W/KOREANS.
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 11        STATE  280331
+
+THEY WERE WORKING FOR THEIR COUNTRY TO PREVENT HUGE
+WITHDRAWALS OF US TROOPS.&quot;  HOWEVER, SAYS CONGRESSMEN
+INVOLVED WORKING FOR SELVES,AGAINST US INTERESTS.
+CALLS FOR VIGOROUS, HARD-HITTING INVESTIGATION/PROSECUTION
+THOSE INVOLVED.
+
+FRITCHEY (WP 11/13) WARNS FORD ADMIN SHOULD NOT PRE-EMPT
+CARTER ON KOREA IN BRIEF TIME LEFT IT -- HITS STATE
+REASSURANCES TO ROKG.  COMPARES US SUPPORT FOR &quot;ANTI-
+DEMOCRATIC&quot; ROK TO OUR BACKING FOR CKS/ROC AND THIEU/VN.
+NOTES ADMIN FEARS GROWING SCANDAL ROK &quot;INTERVENTION&quot;
+US POLITICS WILL BUILD CONG SUPPORT FOR REVISED CARTER
+POLICY ON KOREA.
+
+WP'S SAAR (11/13) SAYS ANY CARTER MOVE TO WITHDRAW TROOPS/
+NUKES FROM ROK WILL MEET STIFF RESISTANCE FROM SK,JAPAN
+AND US 'FOREIGN POLICY ESTABLISHMENT&quot;.  SKETCHES
+BENEFITS TO ALL THREE FROM US DEFENSE COMMITMENT, AND
+UNDERLINES US INTEREST IN PRESERVING &quot;SUCCESS STORY&quot; ROK --
+DESPITE PRES PARK'S &quot;DICTATORSHIP.&quot;  CONCLUDES SK MUST
+BASE CONTINGENCY PLANNING ON EVENTUAL US WITHDRAWAL OR
+WEAKENED COMMITMENT.  QUESTIONS ARE WHEN AND HOW BEST
+MANAGE WITHDRAWAL TO SUIT AIMS US POLICY AND BEST
+INTERESTS SK PEOPLE.
+
+MCGRORY (WSTAR 11/14) WRITES THAT FAYE MOON, WIFE IM-
+PRISONED CLERGYMAN KOREA, THANKFUL EXPOSURE ROKG
+INFLUENCE-PEDDLING HERE HAS OPENED US EYES TO &quot;REALITIES
+OF THE REPRESSIVE REGIME IN SEOUL&quot;.  MRS. MOON DECRIES
+KOREAN LOSS CIVIL RIGHTS/US SUPPORT FOR PARK REGIME.  SAYS
+MOST USEFUL THING US COULD DO WOULD BE OPENING NK-SK
+DIALOGUE WITH EYE TO EVENTUAL UNIFICATION, THUS ROBBING
+PARK OF RATIONALE FOR DICTATORSHIP.  ADDS, &quot;WE CAN'T HAVE
+THE SAME KIND OF DEMOCRACY AS IN THE US, BUT WE COULD
+
+HAVE SOME FORM OF IT&quot; (ALSO EXCERPTED SUN).
+
+JACK ANDERSON, CONTINUING SERIES COMMENTS ON FOREIGN
+INTELL/PAYOFF OPS IN US, AGAIN HITS KCIA FOR MANIPULATION
+US OPINION/PAYMENTS TO CONG (WP 11/14).
+
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 12        STATE  280331
+
+PROF RICHARD FALK OF PRINCETON WRITES NYT (11/14) ASKING
+HOW WE CAN EXPECT FOREIGN INTELL OPS CEASE HERE WHEN
+OUR CIA ENGAGED BROADER SCOPE ACTS ABROAD.
+
+IN LTR TO EDIT WP, FLETCHER PROF GREG HENDERSON STRONGLY
+CRITICIZES ROKG, WHICH SPEAKS TO OWN PEOPLE OF AUSTERITY/
+SPARTANISM, WHILE PROMOTING LAVISH FORMS CORRUPTION.
+COMPARES ROKG TO KMT ROC/THIEU'S VN, AND ASKS IF ROK
+WORTHY OF DEFENSE.
+
+WP (11/13 AND 11/15) CARRIES TWO PARTS SERIES KIM IL SUNG
+&quot;TALKS&quot; W/EDIT &quot;JAPANESE POLITICO-THEORETICAL MAGAZINE
+SEKAI&quot;, PRESENTED IN USUAL AD FORM W/KIM FOTO BY
+PYONGYANG TIMES.  STANDARD NK PITCH AT SOME LENGTH.
+
+NYDN HAS POL CARTOON SHOWING CONGRESSMAN PASSING FROM
+US CUSTOMS UPON RETURN FROM SEOUL--CARRIES TWO SUITCASES
+OVERFLOWING W/DOLS, AND SAYS TO CUSTOMS OFFICER: &quot;JUST
+A FEW SOUVENIRS.&quot;
+
+14.  TAIWAN/KOREA
+
+WP (11/13) SAYS OVER PAST TWO YEARS DOZENS OF US CONGRESS-
+MEN AND AIDES HAVE ACCEPTED FREE TRIPS TO KOREA AND
+TAIWAN FROM ORGANIZATIONS CLOSE TO THOSE GOVERNMENTS.
+CITES FREEBIES OFFERED BY PACIFIC CULTURAL FOUNDATION
+AND KOREA-US ECONOMIC COUNCIL AND NOTES US OFFICIALS
+BELIEVE THERE IS A CLOSE ASSOCIATION BETWEEN THESE ORGS
+AND GOVTS.  EXTENSIVE STORY CARRIED FRONT PAGE WITH
+LARGE CARRYOVER CITING KOREAN EMBASSY DENIAL OF ANY
+OFFICIAL CONNECTION.
+
+15.  JAPAN
+
+SEIDEN (SUN 11/13), IN HOKKAIDO, REMARKS US 200-MILE
+FISHING LIMIT SEEN AS LIFE-OR-DEATH MATTER IN JAPANESE
+FISHING VILLAGES.  MANY ALSO FEAR US LAW WILL SET
+PRECEDENT FOR SIMILAR MOVES BY OTHER COASTAL NATIONS,
+INCL USSR.  ACCORDING FISHING INDUSTRY ESTIMATES,
+200-MILE ZONE ENACTED GLOBALLY WOULD COST JAPAN NEARLY
+HALF ITS CATCH, PUT 150,000 FISHERMEN OUT OF WORK.  SAYS
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 13        STATE  280331
+
+
+16.  CHINA
+
+SUN RECOMMENDS CARTER CONCLUDE NORMALIZATION WITH PRC, SEND
+MANSFIELD AS FIRST US AMB.  NOTES CHINESE KNOW SEN'S
+PERSONAL HISTORY, AND HIS LIFELONG INTEREST IN CHINA
+WOULD BE AS WELCOMED IN PEKING AS HIS AGE/PRESTIGE.
+
+IN LONG INTERVIEW WITH SUN'S STERNE/FURGURSON, MANSFIELD
+SAYS CHOU ONCE TOLD HIM &quot;DOOR BETWEEN OUR TWO NATIONS
+SHOULD NEVER HAVE BEEN CLOSED.&quot;  SEES PRC OVERTURE AS
+NIXON'S GREATEST FEAT--SINCE MEANT &quot;WE RECOGNIZE AT
+LONG LAST THAT CHINA IS NOT PART OF A MONOLITHIC TWO-
+PRONGED COMMUNIST MENACE,&quot; BUT &quot;IS GOING ITS OWN WAY IN ITS
+OWN MANNER AND IS TRYING TO KEEP IN CONTROL OF ITS OWN
+DESTINY APART FROM ANY OTHER COUNTRY.&quot;
+
+KNIGHT NEWS SERVICE'S CARTER SAYS US INTELL ANALYSTS HAVE
+CONCLUDED SOVIET PITCH FOR DETENTE WITH PRC HAS FAILED.
+REPORTS MANSFIELD ECHOED THIS OFFICIAL ASSESSMENT FRIDAY
+TO &quot;OVERSEAS WRITERS CLUB&quot; LUNCHEON, SAYING SINO-SOVIET
+CHASM &quot;WILL REMAIN WIDE AND DEEP INTO THE INDEFINITE
+FUTURE&quot; (GLOBE 11/14).
+
+TO WP'S MATHEWS (HK 11/14), CHANGES WITHIN PRC DURING
+&quot;ONE TUMULTUOUS MONTH&quot; FOLLOWING MAO'S DEATH ARE, IN
+MANY RESPECTS, &quot;VICTORY FOR CHINESE HISTORY.&quot;  SAYS
+FOR TIME BEING, AS HUA MOVES TO CONSOLIDATE HOLD ON
+COUNTRY, CHINESE ARE LIKELY ENJOY ERA OF GOOD FEELING.
+BUT CHINESE LONG-RANGE POL FUTURE LESS CERTAIN.  IN
+IMPORTANT SENSE, EVENTS OF PAST MONTH HAVE REVIVED
+MIDNIGHT ARREST AS TOOL OF CHINESE POLITICS.  SUGGESTS
+WALLED-IN VILLAS OF CHUNGNANHAI DISTRICT FULL OF MEN/
+WOMEN AMBITIOUS AS HUA OR CHIANG CHING; POINTS OUT
+DISTRICT PERHAPS ALSO HOUSES TENG, WHO NOW HAS CHANCE
+OF ANOTHER POL COMEBACK.  SUGGESTS HARD TO BELIEVE
+HUA CAN AVOID POLICY/PERSONAL CLASHES WITH SOME OF THOSE
+WHO HELPED HIM OUST RADICALS--AND HE HAS NOW SET PRE-
+CEDENT FOR GRASPING POWER THROUGH SUDDEN, RUTHLESS
+ACTION.  HUA'S COORDINATED EFFORT TO BLACKEN NAMES OF
+&quot;GANG OF FOUR&quot; HAS PROVIDED COLORFUL PORTRAIT OF
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 14        STATE  280331
+
+RAGING PERSONAL ANIMOSITY/CONSPIRACY, AND DESTROYED
+NOTION THAT PRC POLITICS NOTHING MORE THAN HIGH-MINDED
+DEBATE OVER PRINCIPLE.
+
+IN 11/13 ARTICLE, MATHEWS SEES NCNA CHARGE--THAT &quot;GANG OF
+FOUR&quot; CRIPPLED TANGSHAN QUAKE RELIEF EFFORTS--AS MOST
+BITTER, PERHAPS MOST DAMAGING, ATTACK YET ON THEM, SINCE
+ATTEMPTS SHOW THEY MADE LIGHT OF ONE OF WORST NATURAL
+DISASTERS IN CHINESE HISTORY.  SAYS WHILE NO WAY VERIFY
+ACCURACY OF CHARGE, AT TIME OF EARTHQUAKE NONE OF FOUR WAS
+LISTED AS PART OF HAU-LED CENTRAL GOVT DEL T;AT RUSHED TO
+TANGSHAN TWO DAYS LATER.  OBSERVES THAT, AS IS USUAL
+PRACTICE IN CHINESE POL CAMPAIGN, MEDIA ATTACKS ON &quot;GANG
+OF FOUR&quot; ARE DESIGNED BLOT OUT ANY ADMIRATION CHINESE
+MIGHT HAVE HAD FOR THEM.
+
+SUN'S ISAACS (HK 11/13) NOTES CHOU, WITH RADICALS IN DIS-
+GRACE, IS ONCE AGAIN RECEIVING HONORS LONG CAREER
+SHOULD HAVE EARNED HIM.  SUGGESTS TRIBUTES FOR CHOU MAY BE
+MORE THAN JUST DELAYED HONOR, SINCE THEY INEVITABLY RAISE
+POSSIBILITY OF REINSTATING TENG.  SAYS ASSUMED BY MOST
+FOREIGN OBSERVERS THAT THERE ARE MEN IN NEW PRC LEADERSHIP
+WHO WOULD WELCOME THEIR OLD COMRADE'S RETURN.  BUT ANALYSTS
+NOT PREDICTING TENG COMEBACK, SINCE RETURNED TENG COULD
+PROVE UNWELCOME CHALLENGE TO HUA.  AS VETERAN OF MORE THAN
+40 YEARS, TENG HAS PERSONAL TIES WITH OTHER LEADERS THAT
+HUA PROBABLY COULD NOT MATCH--FOR EXAMPLE, CHEN HSI-LIEN.
+
+ZORZA (WP 11/13) SEES SOVIET EXTENSION FRIENDSHIP HAND TO
+PRC BEGINNING ELICIT RESPONSE; CHINESE REACTION MORE
+DIFFICULT DESCRIBE, SINCE LESS EXPLICIT, BUT APPEARS
+SILENCE RATHER THAN BARK.  ALSO, ANOTHER IMPORTANT SILENCE
+IS ABSENCE ANGRY ANTI-SOVIET BLASTS FROM PEKING SINCE MAO'S
+DEATH.  FINDS ACCUMULATION OF SIGNS SUGGESTING EXISTENCE
+OF TREND TOWARD RAPPROCHEMENT.
+
+JULIAN SOBIN (INTL MINERALS AND CHEMICAL CORP), IN CANTON,
+FINDSENTIRE ATMOSPHERE OF TRADE FAIR HAS CHANGED FOR
+BETTER SINCE &quot;GANG OF FOUR&quot; ARRESTED.  SAYS US APPROVAL
+COMPUTER SALES TO PRC SIGNALS US EAGERNESS TO TRADE; BUT
+FEELS &quot;OUR LACK OF MOVEMENT ON IMPLEMENTATION&quot; SHANGHAI
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 15        STATE  280331
+
+COMMUNIQUE TIES UP TRADE WITH MANY HISTORICAL/POL FACTORS
+(NYT 11/14).  IN ACCOMPANYING ARTICLE, SALLY HEINEMANN
+DISCUSSES LEE SOBIN--&quot;FIRST AMERICAN WOMAN TRADER WITH
+CHINA--WHO SOME CLIENTS, INVITED TO PEKING, PREFER HAVE
+NEGOTIATE FOR THEM, SINCE SHE HAS &quot;SPECIAL RAPPORT&quot; WITH
+CHINESE.
+
+LAT'S LESLIE (HK 11/13) SAYS PRC'S INVOKING 1956
+&quot;HUNDRED FLOWERS&quot; CAMPAIGN IS UNDOUBTEDLY MEANT AS
+SIGNAL TO COUNTRY'S ARTISTS THEY CAN EXPECT MORE LATITUDE
+IN FUTURE THAN CHIANG CHING ALLOWED.  NOTES MOVIE,
+&quot;PIONEERS,&quot; IS CULTURAL PRODUCTION RAISING BIGGEST
+FURORE IN CHINESE PRESS RECENTLY.  &quot;GANG OF FOUR&quot;
+CHARGED WITH TRYING PREVENT ITS SHOWING ON GROUNDS
+IT &quot;PRETTIFIES&quot; LIU SHAO-CHI.  BUT LESLIE CONCLUDES.
+ON VIEWING FILM, THAT HARD SEE WHAT ALL FUSS IS ABOUT.
+MOVIE SEEMS UNEXCEPTIONAL EXAMPLE OF HIGHLY SIMPLISTIC/
+TURGID FARE PRODUCED IN PRC FOR MANY YEARS.  SUGGESTS
+THAT, AT VERY LEAST, MOVIE'S DISTRIBUTION AFTER CHIANG
+CHING'S DOWNFALL  MAY MEAN WHILE NUMBER OF CHINESE
+ARTISTIC EFFORTS WILL INCREASE, &quot;FLOWERING&quot; WHICH NEW
+LEADERSHIP HAS IN MIND MAY BE SO SUBTLE IN TERMS OF
+CONTENT THAT MANY WESTERNERS, EVEN SOME CHINESE, WILL NOT
+BE ABLE DETECT IT.
+
+&quot;PARADE&quot; MAG'S SHEARER (WP 11/14) INTERVIEWS REWI ALLEY,
+WHO HAS SPENT 50 YEARS IN CHINA.  SPECIAL FAVORITE OF PRC
+YOUTH, ALLEY SAYS HE KEEPS ON WRITING &quot;WHAT I SEE,&quot;
+DENIES HE IS PROPAGANDIST FOR PEKING.
+
+GLOBE'S DWYER (11/14) REPORTS SAT NIGHT BOSTON U ALUMNI
+ASSN DINNER HONORING FECTEAU; DOWNEY AMONG THOSE ATTENDING.
+RETIRING FROM CIA THIS MONTH, FECTEAU SAYS NOT SURE WHAT
+HE'LL DO; WILL LOOK AROUND, INTERESTED IN EDUCATION.
+
+CSM'S STEIN REPORTS 21 BLUE CHIP US FIRMS, IN FACE OF
+STERN REBUKE FROM PEKING, ARE GOING FORWARD WITH PLANS
+TO ESTABLISH ORGANIZATION TO ENCOURAGE TRADE WITH ROC.
+CALLING THEMSELVES &quot;US-ROC ECONOMIC COUNCIL,&quot; GROUP PLANS
+BEGIN OPS DEC IN CHICAGO.  ORGANIZATION PRES, RBT
+PITNER, CRITICIZES NCUSCT'S PHILLIPS FOR CAUSING &quot;GREAT
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 16        STATE  280331
+
+FLAP&quot; IN PASSING ON WORD OF PRC DISPLEASURE WITH NEW GROUP.
+
+17.  TIBET
+
+LAT'S STAMMER (11/12) RECALLS THAT FOLLOWING 10/27 TV
+DEBATE WITH SEN TUNNEY, SEN-ELECT HAYAKAWA HAD TOLD
+REPORTERS HE WOULD HOPE ENCOURAGE INSURRECTION IN HUNGARY,
+POLAND, LATVIA, LITHUANIA, ESTONIA--&quot; OR TIBET, FOR THAT
+MATTER--THOSE POOR, CRUSHED NATIONS THAT HAVE BEEN UNDER
+COMMUNIST TYRANNY ALL THESE YEARS.&quot;  KISSINGER
+
+
+UNCLASSIFIED
+
+
+
+
+NNN
+
+</div></div></div><div class="pane-tab"><div class="pane-header">Metadata</div><div class="pane-content"><div class="text-content">---
+Capture Date: 01 JAN 1994
+Channel Indicators: n/a
+Current Classification: UNCLASSIFIED
+Concepts: PRESS SUMMARIES, POLITICAL SUMMARIES, EARTHQUAKES
+Control Number: n/a
+Copy: SINGLE
+Draft Date: 15 NOV 1976
+Decaption Date: 01 JAN 1960
+Decaption Note: n/a
+Disposition Action: n/a
+Disposition Approved on Date: n/a
+Disposition Authority: n/a
+Disposition Case Number: n/a
+Disposition Comment: n/a
+Disposition Date: 01 JAN 1960
+Disposition Event: n/a
+Disposition History: n/a
+Disposition Reason: n/a
+Disposition Remarks: n/a
+Document Number: 1976STATE280331
+Document Source: CORE
+Document Unique ID: '00'
+Drafter: STAFF:EH
+Enclosure: n/a
+Executive Order: N/A
+Errors: N/A
+Film Number: D760426-0838
+From: STATE
+Handling Restrictions: n/a
+Image Path: n/a
+ISecure: '1'
+Legacy Key: link1976/newtext/t19761147/aaaabooc.tel
+Line Count: '728'
+Locator: TEXT ON-LINE, ON MICROFILM
+Office: ORIGIN EA
+Original Classification: UNCLASSIFIED
+Original Handling Restrictions: n/a
+Original Previous Classification: n/a
+Original Previous Handling Restrictions: n/a
+Page Count: '14'
+Previous Channel Indicators: n/a
+Previous Classification: n/a
+Previous Handling Restrictions: n/a
+Reference: n/a
+Review Action: RELEASED, APPROVED
+Review Authority: powellba
+Review Comment: n/a
+Review Content Flags: n/a
+Review Date: 29 JUL 2004
+Review Event: n/a
+Review Exemptions: n/a
+Review History: RELEASED &lt;29 JUL 2004 by vandyklc&gt;; APPROVED &lt;01 DEC 2004 by powellba&gt;
+Review Markings: ! 'n/a
+
+  Margaret P. Grafeld
+  US Department of State
+  EO Systematic Review
+  04 MAY 2006
+
+'
+Review Media Identifier: n/a
+Review Referrals: n/a
+Review Release Date: n/a
+Review Release Event: n/a
+Review Transfer Date: n/a
+Review Withdrawn Fields: n/a
+Secure: OPEN
+Status: NATIVE
+Subject: NOVEMBER 11 EA PRESS SUMMARY
+TAGS: PFOR, XC, US
+To: ! 'EA POSTS
+  MOSCOW'
+Type: TE
+Markings: ! 'Margaret P. Grafeld Declassified/Released US Department of State EO Systematic
+  Review 04 MAY 2006
+  Margaret P. Grafeld Declassified/Released US Department of State EO Systematic Review
+  04 MAY 2006'
+</div></div></div><div class="pane-tab"><div class="pane-header">Raw source</div><div class="pane-content"><div class="text-content"><a href="https://file.wikileaks.org/oc/2082.2/283705.pdf">2082.2/283705.pdf</a></div></div></div>
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 61px">Print</div><div class="pane-content pane-print">
+<p>You can use this tool to generate a print-friendly PDF of the document <strong>1976STATE280331_b</strong>.</p>
+<form action="/plusd/pdf/?df=89314" method="post">
+	<input type="hidden" name="p" value="b" />
+	<input type="hidden" name="r" value="1976STATE280331_b" />
+	<input type="checkbox" name="s" id="is" value="cake"><label for="is">Include summary</label></input><br />
+	<input type="checkbox" name="h" id="ih" value="is a"><label for="ih">Include headers</label></input><br />
+	<input type="checkbox" name="m" id="im" value="lie"><label for="im">Include raw metadata</label></input><br /><br />
+	<input type="submit" value="Generate pdf" />
+</form>
+</div></div>
+
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 60px">Share</div><div class="pane-content pane-share">
+<p>The formal reference of this document is <strong>1976STATE280331_b</strong>, please use it for anything written about this document. This will permit you and others to search for it.</p>
+<div class="share-panel">
+<label for="share-link">Direct link to document</label>
+<input readonly="readonly" type="text" class="share" id="share-link" value="https://www.wikileaks.org/plusd/cables/1976STATE280331_b.html" /><br />
+
+<label for="share-reddit">Reddit code</label>
+<input readonly="readonly" type="text" class="share" id="share-reddit" value="[1976STATE280331_b](https://www.wikileaks.org/plusd/cables/1976STATE280331_b.html)" /><br />
+
+<label for="share-html">HTML code</label>
+<input readonly="readonly" type="text" class="share" id="share-html" value="&lt;a href=&quot;https://www.wikileaks.org/plusd/cables/1976STATE280331_b.html&quot; title=&quot;1976STATE280331_b&quot;&gt;1976STATE280331_b&lt;/a&gt;" /><br />
+
+<label for="share-bbcode">Forum code (bbcode)</label>
+<input readonly="readonly" type="text" class="share" id="share-bbcode" value="[url=https://www.wikileaks.org/plusd/cables/1976STATE280331_b.html]1976STATE280331_b[/url]" />
+</div>
+
+
+
+<br style="clear: both;" />
+<p>Submit this story</p>
+<div class="share">
+	<a href="http://www.reddit.com/submit?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1976STATE280331_b.html"><img src="/plusd/images/Reddit-ico.png" /></a>
+</div>
+
+<div class="share">
+        <a href="http://twitter.com/home?status=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1976STATE280331_b.html"><img src="/plusd/images/Twitter-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1976STATE280331_b"><img src="/plusd/images/Gplus-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=1976STATE280331_b&amp;p[summary]=Summary&amp;p[url]=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1976STATE280331_b.html"><img src="/plusd/images/Facebook-ico.png" /></a>
+</div>
+
+<br style="clear: both;" />
+</div></div>
+
+<!--<div class="pane-tab"><div class="pane-header tab-right tab-find">Find</div><div class="pane-content pane-find">-->
+<!--</div></div>-->
+
+<!--<div id="tagged-text"> -->
+	<div id="pane-root" style="display:none">
+		<div id="pane-tabs"></div>
+
+		<div id="pane-contents"></div>
+
+	</div>
+<!--</div>-->
+<div class="pane-content pane-extra">
+<div class="dnpage visible">
+<h1>Help Expand The Public Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+
+
+</div>
+
+</div>
+<br />
+<script type="text/javascript" src="/plusd/js/mootools-core-and-more.js"></script>
+<script type="text/javascript" src="/plusd/js/efatmarker.min.js"></script>
+<script type="text/javascript">
+(function(){
+	window.addEvent('domready', function(){
+	        $$("#showhide").addEvent( "click", function() {
+			$$(".text-header").toggleClass("hidden");
+			t=$$("#showhide");
+			if(t.get("html")=="Show&nbsp;Headers")
+				t.set("html", "Hide&nbsp;Headers");
+			else
+				t.set("html", "Show&nbsp;Headers");
+		} );
+
+		var pane_root = $('pane-root'),
+			pane_tabs = $('pane-tabs'),
+			pane_contents = $('pane-contents'),
+			panes = $$('.pane-tab'),
+			num_panes = panes.length,
+			i, pane,
+			pane_header,
+			pane_content;
+		var activate_tab = function(target) {
+			$$('#pane-contents .pane-content').each(function(e,i){
+				if (i === target) {
+					e.addClass('top');
+					}
+				else {
+					e.removeClass('top');
+					}
+				});
+			$$('#pane-tabs .pane-header').each(function(e,i){
+				if (i === target) {
+					e.removeClass('nottop');
+					e.addClass('ontop');
+					}
+				else {
+					e.addClass('nottop');
+					e.removeClass('ontop');
+					}
+				});
+			};
+		for (i=0; i<num_panes; i++) {
+			pane = panes[i];
+			pane_header = pane.getElement('.pane-header');
+			pane_tabs.grab(pane_header);
+			pane_header.addEvent('click', function(){
+				var target = $('pane-tabs').getChildren().indexOf(this);
+				activate_tab(target);
+				});
+			pane_content = pane.getElement('.pane-content');
+			pane_contents.grab(pane_content);
+			pane.destroy();
+			}
+		activate_tab(0);
+		$('pane-root').style.display = '';
+		}); /* event handler function() */
+	})(); /* namespace function() */
+</script>
+<div id="efm-button">
+	<div id="efm-menu">
+		<h3 style="margin:0 0 2px 0">e-Highlighter</h3>
+		<a id="efm-permalink" class="efm-need-highlight" href="" style="margin-bottom:0;padding-bottom:0;"></a>
+		<p style="margin-top:0;padding-top:0" class="efm-need-highlight">Click to send permalink to address bar, or right-click to copy permalink.</p>
+		<a id="efm-twitter-button" class="efm-need-highlight" href="#" target="_blank"><img src="/plusd/images/tweetn.png" alt="Tweet" title="Tweet these highlights" style="vertical-align:middle"> these highlights</a>
+		<p style="margin:0.5em 0;padding:0;border-top:1px dotted #ccc;height:1px"></p>
+		<a id="efm-unhighlightall" class="efm-need-highlight">Un-highlight all</a>
+		<a id="efm-unhighlight">Un-highlight selection<span>u</span></a>
+		<a id="efm-highlight">Highlight selection<span>h</span></a>
+		</div>
+	</div>
+</div></div></div>
+<script type="text/javascript">
+
+(function(){
+	window.addEvent('domready', function(){
+
+		var markerButton = $('efm-button');
+		if ( markerButton ) {
+			eMarker = new EFatMarker($('content-main'));
+			eMarker.tokenToSpans(); // apply whatever token is there
+			// need to act on mousedown or else selection disappear
+			markerButton.addEvent('mousedown', function(){
+				eMarker.interpretSelection(true);
+				return false;
+				});
+			$('efm-unhighlightall').addEvent('mousedown', function(){
+				eMarker.unhighlightAll(true);
+				return false;
+				});
+			$('efm-unhighlight').addEvent('mousedown', function(){
+				eMarker.unhighlightSelection(true);
+				return false;
+				});
+			$('efm-highlight').addEvent('mousedown', function(){
+				eMarker.highlightSelection(true);
+				return false;
+				});
+			$('efm-permalink').addEvent('mousedown', function(){
+				window.location.href = this.href;
+				return false;
+				});
+			// if Mootools Keyboard is available, use it
+			if (Keyboard) {
+				var keyboard = new Keyboard({
+					defaultEventType: 'keyup',
+					events: {
+						'h': function(){
+							eMarker.highlightSelection(true);
+							},
+						'u': function(){
+							eMarker.unhighlightSelection(true);
+							}
+						}
+					});
+				keyboard.activate();
+				}
+			eMarker.syncDOM();
+			// auto scroll to first highlight, if any
+			if (eMarker.hasSpans()) {
+				var scroll = new Fx.Scroll(window,{offset:{'x':0,'y':-100}}),
+					highlights = $$('#content-main .efm-hi');
+				if (highlights.length > 0) {
+					scroll.toElement(highlights[0]);
+					}
+				}
+			}
+		});
+	})();
+
+</script>
+
+<div class="dnflood"></div>
+<div class="dnbutton">
+<div class="dnmain">
+<h1><span class="dnclose">X</span>Help Expand The Public<br />Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+</div>
+</div>
+
+</div>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<link href="/static/css/styles_footer.css" rel="stylesheet">
+<footer id="page-footer" class="footer-recommendations">
+  <div class="footer-wrapper">
+    <div class="recommendation-container">
+      <a href="#" class="top">Top</a>
+      
+        <ul class="recommendation-links">
+                <li class="recommendation">
+                    <a href="https://our.wikileaks.org" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton666.png" width="360" height="240" />
+                        </div>
+                        <p><p>WL Research Community - user contributed research based on documents published by WikiLeaks. 
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.torproject.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton401.png" width="360" height="240" />
+                        </div>
+                        <p><p>Tor is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://tails.boum.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton405.png" width="360" height="240" />
+                        </div>
+                        <p><p> Tails is a live operating system, that you can start on almost any computer from a DVD, USB stick, or SD card. It aims at preserving your privacy and anonymity.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.couragefound.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton404.png" width="360" height="240" />
+                        </div>
+                        <p><p>The Courage Foundation is an international organisation that supports those who risk life or liberty to make significant contributions to the historical record.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.bitcoin.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton403.png" width="360" height="240" />
+                        </div>
+                        <p><p>Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network.
+</p></p>
+                    </a>
+                </li>
+            </li>
+        </ul>
+      
+      <ul class="social-links">
+        <li>
+          <a href="https://www.facebook.com/wikileaks" target="_blank" alt="Facebook">
+            <img src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" target="_blank" alt="Twitter">
+            <img src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
