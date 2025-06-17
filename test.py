@@ -223,3 +223,18 @@ if __name__ == "__main__":
         end_page, 
         document_date_end=document_end_date,
     )
+
+    search_query = ""
+    exact_phrase = 'hsiao-ping'
+    start_page = 1
+    end_page = 50
+    document_end_date = "2003-06-01" # 固定日期
+    
+    print(f"开始抓取维基解密关于 '{search_query}' 的搜索结果 (截止日期: {document_end_date})...")
+    fetch_wikileaks_search_results_with_proxy(
+        search_query, 
+        exact_phrase,
+        start_page, 
+        end_page, 
+        document_date_end=document_end_date,
+    )
