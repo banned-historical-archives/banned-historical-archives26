@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/cerulean.min.css" rel="stylesheet">
+<link href="/bootstrap/css/new-gen.css" rel="stylesheet">
+<link href="/bootstrap/css/submit.css" rel="stylesheet">
+<script type="text/javascript" src="/plusd/js/jquery.min.js"></script>
+<script type="text/javascript" src="/plusd/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<script type="text/javascript" src="/plusd/js/wikipedia.js"></script>
+<script type="text/javascript" src="/plusd/js/qtip.min.js"></script>
+<script type="text/javascript" src="/plusd/js/idle-timer.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+
+(function($) {
+	var show_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").show();
+	}
+	var hide_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").hide();
+	}
+	$(document).idleTimer(180000);
+	$(document).on("idle.idleTimer", show_button);
+	$(document).ready(function() {
+		if( typeof setupDoubleClick == 'function' )
+			setupDoubleClick('http://en.wikipedia.org/w/index.php', 'british', 'tagged-text', 4, "_blank", "/words/fp.json");
+		var current = Math.floor(( new Date( ) ).getTime( )/1000);
+
+		$("#ddonate").click(show_button);
+		$(".dnclose").click(hide_button);
+		$('a.i').each( function() {
+			i=$(this);
+			i.attr("alt", descr[i.attr("title")]);
+		} );
+		$('a.i').qtip( {
+			show: {
+				event: 'click',
+				solo: true
+			},
+			hide: 'click',
+			content: {
+				attr: 'alt',
+				title: {
+					button: true
+				}
+			},
+			style: {
+				classes: 'qtip-blue qtip-shadow'
+			}
+		} );
+
+	} );
+
+
+	var descr = {
+	'Subject': 'Subject line of the document','From': 'Who/where sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-fr/\">A list of origins, with citations for any acronyms used, is available here.</a>','To': 'Who/where received the document.<br /><br /><a href=\"/plusd/about-to/\" class=\"j\">A list of destinations, with citations for any acronyms used, is available here.</a>','Original Classification': 'Classification the document was originally given when produced.<br /><br /><a href=\"/plusd/about-oc/\" class=\"j\">Citations for acronyms used are available here.</a>','Current Classification': 'Classification the document currently holds.<br /><br /><a href=\"/plusd/about-cc/\" class=\"j\">Citations for acronyms used are available here.</a>','Handling Restrictions': 'All handling restrictions governing the document distribution that have been used to date.<br /><br /><i>In the metadata of the Kissinger Cables this field is called \'Previous Handling Restrictions\'.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i><br /><br /><a href=\"/plusd/about-hr/\" class=\"j\">Citations for acronyms used are available here.</a>','Archive Status': 'Original documents not deleted or lost by State Department after review are available in one of four formats:<ul><li>Electronic Telegram - declassified and made available (content and metadata available)</li><li>Electronic Telegram Withdrawal Card - telegram not declassified, or was declassified but not released for other reasons (limited metadata available)</li><li>P-reel Index - Index card for other document type that is stored on microfilm (only metadata available)</li><li>P-reel Index Withdrawal Card - P-reel index card that was not declassified, or was declassified but not released for other reasons (limited metadata available)</li></ul><br /><i class=\"b\">The Kissinger Cables\' metadata does not have this field. It is taken from subsets the documents were released in after State Department review.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Type': 'Correspondence type or format of original document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TE\' (Telegram).</i><br /><br /><a href=\"/plusd/about-ty/\" class=\"j\">Citations for acronyms used are available here.</a>','Locator': 'Where the original document is now held - online or on microfilm, or remains in \"ADS\" (State Department\'s 1973 Automated Data System of indexing by TAGS of electronic telegrams and P-reels) with the text either garbled, not converted or unretrievable.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TEXT ONLINE\'.</i>','Executive Order': 'Executive Order information - often a reference to the E.O. governing the declassification/downgrade of the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Markings': 'Markings of declassification/release review of the document.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'. </i>','Enclosure': 'Attachments or other items sent with the original document. These are not necessarily currently held in this library.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.','Concepts': 'Keywords of subjects dealt with in the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\' for this field.</i>','TAGS': 'Traffic Analysis by Geography and Subject (TAGS)<br /><br />There are geographic, organization and subject \"TAGS\" - the classification system implemented by the Department of State for its central files in 1973.<br /><br /><a href=\"/plusd/about-ta/\" class=\"j\">A list of TAGS, with citations for any acronyms used, is available here.</a>','Office': 'Which United States government office or bureau is dealing with the topics the document concerns.<br /><br /><a href=\"/plusd/about-of/\" class=\"j\">A list offices, with citations for acronym expansions, is available here.</a>','Office Origin': 'Which State Department office or bureau sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Office Action': 'Which State Department office or bureau received the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Character Count': 'The number of characters, including spaces, in the document.','Date': 'The date the document was created.','Canonical ID': 'Unique document identification number.<br /><br /><i>We have created a canonical ID by taking the original document ID and adding a \'_\' at the end and then WikiLeaks\' annotation for different datasets: Cablegate = a, the Kissinger Cables = b, etc. If document IDs are duplicated in the original datasets we number each duplicate, eg 1976WARSAW05657_b2 is the second document with that ID in the Kissinger Cables.</i>','Other cables with the same ID': 'Documents that are linked, for example a P-reel index and the document it is the index for. Or documents that were originally given the same document ID number.',	};
+
+
+
+})(jQuery);
+</script>
+<title>Cable: 1978STATE273765_d</title>
+<link rel="stylesheet" type="text/css" href="/plusd/css/qtip.min.css" id="qtip">
+<link rel="stylesheet" type="text/css" href="/plusd/css/main.css" id="maincss">
+<link rel="stylesheet" type="text/css" href="/plusd/css/print.css" media="print" id="printcss">
+</head>
+<body style="text-align: center;">
+    <div id="submit_wlkey" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<p>Key fingerprint <b>9EF0 C41A FBA5 64AA 650A  0259 9C6D CD17 283E 454C</b></p>
+		<pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+=5a6T
+-----END PGP PUBLIC KEY BLOCK-----
+
+		</pre>
+	</div>
+</div>
+
+<div id="submit_help_contact" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Contact</h3>
+		<p>If you need help using Tor you can contact WikiLeaks for assistance in setting it up using our simple webchat available at: <a href="https://wikileaks.org/talk">https://wikileaks.org/talk</a></p>
+		<p>If you can use Tor, but need to contact WikiLeaks for other reasons use our secured webchat available at <b>http://wlchatc3pjwpli5r.onion</b></p>
+		<p>We recommend contacting us over Tor if you can.</p>
+	</div>
+</div>
+
+<div id="submit_help_tor" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Tor</h3>
+		<p><a href="https://www.torproject.org">Tor</a> is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.</p>
+		<p>In order to use the WikiLeaks public submission system as detailed above you can download the Tor Browser Bundle, which is a Firefox-like browser available for Windows, Mac OS X and GNU/Linux and pre-configured to connect using the anonymising system Tor.</p>
+		<h4>Tails</h4>
+		<p>If you are at high risk and you have the capacity to do so, you can also access the submission system through a secure operating system called <a href="https://tails.boum.org">Tails</a>. Tails is an operating system launched from a USB stick or a DVD that aim to leaves no traces when the computer is shut down after use and automatically routes your internet traffic through Tor. Tails will require you to have either a USB stick or a DVD at least 4GB big and a laptop or desktop computer.</p>
+	</div>
+</div>
+
+<div id="submit_help_tips" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>Tips</h3>
+		<p>Our submission system works hard to preserve your anonymity, but we recommend you also take some of your own precautions. Please review these basic guidelines. </p>
+		<div>
+			<h4>1. Contact us if you have specific problems</h4>
+			<p>If you have a very large submission, or a submission with a complex format, or are a high-risk source, please <a href="#submit_help_contact">contact us</a>. In our experience it is always possible to find a custom solution for even the most seemingly difficult situations.</p>
+		</div>
+		<div>
+			<h4>2. What computer to use</h4>
+			<p>If the computer you are uploading from could subsequently be audited in an investigation, consider using a computer that is not easily tied to you. Technical users can also use <a href="https://tails.boum.org">Tails</a> to help ensure you do not leave any records of your submission on the computer.</p>
+		</div>
+		<div>
+			<h4>3. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+	</div>
+</div>
+
+<div id="submit_help_after" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>After</h3>
+
+		<div>
+			<h4>1. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+		<div>
+			<h4>2. Act normal</h4>
+			<p>If you are a high-risk source, avoid saying anything or doing anything after submitting which might promote suspicion. In particular, you should try to stick to your normal routine and behaviour.</p>
+		</div>
+
+		<div>
+			<h4>3. Remove traces of your submission</h4>
+			<p>If you are a high-risk source and the computer you prepared your submission on, or uploaded it from, could subsequently be audited in an investigation, we recommend that you format and dispose of the computer hard drive and any other storage media you used.</p>
+			<p>In particular, hard drives retain data after formatting which may be visible to a digital forensics team and flash media (USB sticks, memory cards and SSD drives) retain data even after a secure erasure. If you used flash media to store sensitive data, it is important to destroy the media.</p>
+			<p>If you do this and are a high-risk source you should make sure there are no traces of the clean-up, since such traces themselves may draw suspicion.</p>
+			<div>
+				<h4>4. If you face legal action</h4>
+				<p>If a legal action is brought against you as a result of your submission, there are organisations that may help you. The Courage Foundation is an international organisation dedicated to the protection of journalistic sources. You can find more details at <a href="https://www.couragefound.org">https://www.couragefound.org</a>.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="submit" class="submit_banner">
+	<div class="container">
+		<div class="page-header">
+			<h1>Submit documents to WikiLeaks</h1>
+			<a class="remove-button" href="#"><span class="glyphicon glyphicon-remove-circle"></span></a>
+		</div>
+		<p>WikiLeaks publishes documents of political or historical importance that are censored or otherwise suppressed. We specialise in strategic global publishing and large archives.</p>
+		<p>The following is the address of our secure site where you can anonymously upload your documents to WikiLeaks editors. You can only access this submissions system through Tor. (See our <a href="#submit_help_tor">Tor tab</a> for more information.) We also advise you to read our <a href="#submit_help_tips">tips for sources</a> before submitting.</p>
+
+		<div class="alert alert-info">
+			<div class="onion-url">http://ibfckmpsmylhbfovflajicjgldsqpc75k5w454irzwlh7qifgglncbad.onion </div>
+			<!--<div>
+				Copy this address into your Tor browser. Advanced users, if they wish, can also add a further layer of encryption to their submission using <a href="#submit_wlkey">our public PGP key</a>.
+			</div>-->
+		</div>
+
+		<p>If you cannot use Tor, or your submission is very large, or you have specific requirements, WikiLeaks provides several alternative methods. <a href="#submit_help_contact">Contact us</a> to discuss how to proceed.</p>
+	</div>
+</div>
+<div id="submit_help_buttons" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="main">
+	    
+
+<link href="/static/css/styles_topnav.css" rel="stylesheet">
+<link href="/static/css/styles_sidenav.css" rel="stylesheet">
+<div class="top-navigation">
+  <nav class="navbar">
+      <a href="#menu" class="mobile-only hot-dog nav-element">
+      </a>
+    <div class="nav-logo">
+      <a href="https://wikileaks.org">
+        <h1>WikiLeaks</h1>
+      </a>
+    </div>
+    <div class="action-buttons">
+      <a class="button-face donate-link" href="https://shop.wikileaks.org/donate">Donate</a>
+      <a class="button-face submit-link" href="#submit">Submit</a>
+    </div>
+    <form class="global-search" method="get" action="https://search.wikileaks.org/">
+      <input type="text" name="q" placeholder="Search">
+      <button class="btn-search" type="submit"></button>
+    </form>
+    <div class="main-nav">
+
+        <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+            </li>
+
+            <li>
+              <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+            </li>
+
+        </ul>
+
+    </div>
+  </nav>
+</div>
+
+<nav id="menu" class="side-nav rub">
+  <div class="menu-wrapper">
+    <a class="close-btn nav-element" href="#"></a>
+
+      <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+
+          </li>
+
+          <li>
+            <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+
+          </li>
+
+      </ul>
+
+    <aside class="friends mobile-only">
+
+        <ul class="first-level">
+                <li>
+                <a href="https://our.wikileaks.org" target="_blank">our.wikileaks.org</a>
+                </li>
+                <li>
+                <a href="https://www.torproject.org/" target="_blank">Tor Project</a>
+                </li>
+                <li>
+                <a href="https://tails.boum.org/" target="_blank">Tails</a>
+                </li>
+                <li>
+                <a href="https://www.couragefound.org/" target="_blank">Courage</a>
+                </li>
+                <li>
+                <a href="https://www.bitcoin.org/" target="_blank">Bitcoin</a>
+                </li>
+        
+        </ul>
+
+    </aside>
+    <aside class="social mobile-only">
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/wikileaks" class="nav-element" target="_blank" alt="Facebook">
+            <img class="img-responsive" src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" class="nav-element" target="_blank" alt="Twitter">
+            <img class="img-responsive" src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</nav>
+
+
+<div id="overall">
+
+<div id="leftmenu">
+
+        <center><img src="/plusd/images/wl2.jpg" alt="WikiLeaks" /></center>
+        <a class="button" href="/plusd/pressrelease/">Press release</a>
+        <a class="button" href="/plusd/about/">About PlusD</a>
+
+        <div class="pick">
+	<h3>Browse by creation date</h3>
+
+<a href="/plusd/?q=&qtfrom=1966-01-01&qtto=1966-12-31#result">1966</a>
+<a href="/plusd/?q=&qtfrom=1972-01-01&qtto=1972-12-31#result">1972</a>
+<a href="/plusd/?q=&qtfrom=1973-01-01&qtto=1973-12-31#result">1973</a>
+<a href="/plusd/?q=&qtfrom=1974-01-01&qtto=1974-12-31#result">1974</a>
+<a href="/plusd/?q=&qtfrom=1975-01-01&qtto=1975-12-31#result">1975</a>
+<a href="/plusd/?q=&qtfrom=1976-01-01&qtto=1976-12-31#result">1976</a>
+<a href="/plusd/?q=&qtfrom=1977-01-01&qtto=1977-12-31#result">1977</a>
+<a href="/plusd/?q=&qtfrom=1978-01-01&qtto=1978-12-31#result">1978</a>
+<a href="/plusd/?q=&qtfrom=1979-01-01&qtto=1979-12-31#result">1979</a>
+<a href="/plusd/?q=&qtfrom=1985-01-01&qtto=1985-12-31#result">1985</a>
+<a href="/plusd/?q=&qtfrom=1986-01-01&qtto=1986-12-31#result">1986</a>
+<a href="/plusd/?q=&qtfrom=1987-01-01&qtto=1987-12-31#result">1987</a>
+<a href="/plusd/?q=&qtfrom=1988-01-01&qtto=1988-12-31#result">1988</a>
+<a href="/plusd/?q=&qtfrom=1989-01-01&qtto=1989-12-31#result">1989</a>
+<a href="/plusd/?q=&qtfrom=1990-01-01&qtto=1990-12-31#result">1990</a>
+<a href="/plusd/?q=&qtfrom=1991-01-01&qtto=1991-12-31#result">1991</a>
+<a href="/plusd/?q=&qtfrom=1992-01-01&qtto=1992-12-31#result">1992</a>
+<a href="/plusd/?q=&qtfrom=1993-01-01&qtto=1993-12-31#result">1993</a>
+<a href="/plusd/?q=&qtfrom=1994-01-01&qtto=1994-12-31#result">1994</a>
+<a href="/plusd/?q=&qtfrom=1995-01-01&qtto=1995-12-31#result">1995</a>
+<a href="/plusd/?q=&qtfrom=1996-01-01&qtto=1996-12-31#result">1996</a>
+<a href="/plusd/?q=&qtfrom=1997-01-01&qtto=1997-12-31#result">1997</a>
+<a href="/plusd/?q=&qtfrom=1998-01-01&qtto=1998-12-31#result">1998</a>
+<a href="/plusd/?q=&qtfrom=1999-01-01&qtto=1999-12-31#result">1999</a>
+<a href="/plusd/?q=&qtfrom=2000-01-01&qtto=2000-12-31#result">2000</a>
+<a href="/plusd/?q=&qtfrom=2001-01-01&qtto=2001-12-31#result">2001</a>
+<a href="/plusd/?q=&qtfrom=2002-01-01&qtto=2002-12-31#result">2002</a>
+<a href="/plusd/?q=&qtfrom=2003-01-01&qtto=2003-12-31#result">2003</a>
+<a href="/plusd/?q=&qtfrom=2004-01-01&qtto=2004-12-31#result">2004</a>
+<a href="/plusd/?q=&qtfrom=2005-01-01&qtto=2005-12-31#result">2005</a>
+<a href="/plusd/?q=&qtfrom=2006-01-01&qtto=2006-12-31#result">2006</a>
+<a href="/plusd/?q=&qtfrom=2007-01-01&qtto=2007-12-31#result">2007</a>
+<a href="/plusd/?q=&qtfrom=2008-01-01&qtto=2008-12-31#result">2008</a>
+<a href="/plusd/?q=&qtfrom=2009-01-01&qtto=2009-12-31#result">2009</a>
+<a href="/plusd/?q=&qtfrom=2010-01-01&qtto=2010-12-31#result">2010</a>
+
+        </div>
+
+        <div class="sort">
+	<h3>Browse by Classification</h3>
+
+<a href="/plusd/?q=&qfoclass=UNCLASSIFIED#result" title="UNCLASSIFIED (1339531 documents)">UNCLASSIFIED</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL#result" title="CONFIDENTIAL (503750 documents)">CONFIDENTIAL</a><a href="/plusd/?q=&qfoclass=LIMITED+OFFICIAL+USE#result" title="LIMITED OFFICIAL USE (435536 documents)">LIMITED OFFICIAL USE</a><a href="/plusd/?q=&qfoclass=SECRET#result" title="SECRET (120598 documents)">SECRET</a><a href="/plusd/?q=&qfoclass=UNCLASSIFIED%2F%2FFOR+OFFICIAL+USE+ONLY#result" title="UNCLASSIFIED//FOR OFFICIAL USE ONLY (58095 documents)">UNCLASSIFIED//FOR OFFICIAL USE ONLY</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL%2F%2FNOFORN#result" title="CONFIDENTIAL//NOFORN (4678 documents)">CONFIDENTIAL//NOFORN</a><a href="/plusd/?q=&qfoclass=SECRET%2F%2FNOFORN#result" title="SECRET//NOFORN (4330 documents)">SECRET//NOFORN</a>
+        </div>
+
+	<div class="sort">
+	<h3>Browse by Handling Restriction</h3>
+
+<a href="/plusd/?q=&qforiginalhandlingrestriction=EXDIS#result" title="EXDIS - Exclusive Distribution Only (71108 documents)">EXDIS - Exclusive Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=ONLY#result" title="ONLY - Eyes Only (32583 documents)">ONLY - Eyes Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LIMDIS#result" title="LIMDIS - Limited Distribution Only (25098 documents)">LIMDIS - Limited Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NODIS#result" title="NODIS - No Distribution (other than to persons indicated) (24437 documents)">NODIS - No Distribution (other than to persons indicated)</a><a href="/plusd/?q=&qforiginalhandlingrestriction=STADIS#result" title="STADIS - State Distribution Only (20286 documents)">STADIS - State Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CHEROKEE#result" title="CHEROKEE - Limited to senior officials (4343 documents)">CHEROKEE - Limited to senior officials</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NOFORN#result" title="NOFORN - No Foreign Distribution (2197 documents)">NOFORN - No Foreign Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LOU#result" title="LOU - Limited Official Use (598 documents)">LOU - Limited Official Use</a><a href="/plusd/?q=&qforiginalhandlingrestriction=SENSITIVE#result" title="SENSITIVE -  (43 documents)">SENSITIVE - </a><a href="/plusd/?q=&qforiginalhandlingrestriction=BU#result" title="BU - Background Use Only (3 documents)">BU - Background Use Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CONDIS#result" title="CONDIS - Controlled Distribution (1 documents)">CONDIS - Controlled Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=US#result" title="US - US Government Only (1 documents)">US - US Government Only</a>	</div>
+
+	<div class="pick wide">
+	<h3>Browse by TAGS</h3>
+<a href="/plusd/?q=&qftags=US#result" title="US - United States (553685 documents)">US</a> <a href="/plusd/?q=&qftags=PFOR#result" title="PFOR - Political Affairs--Foreign Policy and Relations (294672 documents)">PFOR</a> <a href="/plusd/?q=&qftags=PGOV#result" title="PGOV - Political Affairs--Government; Internal Governmental Affairs (180409 documents)">PGOV</a> <a href="/plusd/?q=&qftags=PREL#result" title="PREL - Political Affairs--External Political Relations (149906 documents)">PREL</a> <a href="/plusd/?q=&qftags=ETRD#result" title="ETRD - Economic Affairs--Foreign Trade (124244 documents)">ETRD</a> <a href="/plusd/?q=&qftags=UR#result" title="UR - Soviet Union (USSR) (117139 documents)">UR</a> <a href="/plusd/?q=&qftags=OVIP#result" title="OVIP - Operations--VIP Travel Arrangements (114816 documents)">OVIP</a> <a href="/plusd/?q=&qftags=ASEC#result" title="ASEC - Administration--Security (114594 documents)">ASEC</a> <a href="/plusd/?q=&qftags=OGEN#result" title="OGEN - Operations--General (114085 documents)">OGEN</a> <a href="/plusd/?q=&qftags=CASC#result" title="CASC - Consular Affairs--Assistance to Citizens (113486 documents)">CASC</a> <a href="/plusd/?q=&qftags=PINT#result" title="PINT - Political Affairs--Internal Political Affairs (104641 documents)">PINT</a> <a href="/plusd/?q=&qftags=EFIN#result" title="EFIN - Economic Affairs--Financial and Monetary Affairs (102225 documents)">EFIN</a> <a href="/plusd/?q=&qftags=BEXP#result" title="BEXP - Business Services--Trade Expansion and Promotion (102142 documents)">BEXP</a> <a href="/plusd/?q=&qftags=OEXC#result" title="OEXC - Operations--Educational and Cultural Exchange Operations (89751 documents)">OEXC</a> <a href="/plusd/?q=&qftags=EAID#result" title="EAID - Economic Affairs--Foreign Assistance (80469 documents)">EAID</a> <a href="/plusd/?q=&qftags=CVIS#result" title="CVIS - Consular Affairs--Visas (79634 documents)">CVIS</a> <a href="/plusd/?q=&qftags=OTRA#result" title="OTRA - Operations--Travel and Visits (79042 documents)">OTRA</a> <a href="/plusd/?q=&qftags=ENRG#result" title="ENRG - Economic Affairs--Energy and Power (76814 documents)">ENRG</a> <a href="/plusd/?q=&qftags=OCON#result" title="OCON - Operations--Conferences and Meetings (76271 documents)">OCON</a> <a href="/plusd/?q=&qftags=ECON#result" title="ECON - Economic Affairs--Economic Conditions, Trends and Potential (75832 documents)">ECON</a> <a href="/plusd/?q=&qftags=NATO#result" title="NATO - North Atlantic Treaty Organization (74653 documents)">NATO</a> <a href="/plusd/?q=&qftags=PINS#result" title="PINS - Political Affairs--Internal Security (72716 documents)">PINS</a> <a href="/plusd/?q=&qftags=GE#result" title="GE - Germany (East) (69261 documents)">GE</a> <a href="/plusd/?q=&qftags=JA#result" title="JA - Japan; Okinawa; (67491 documents)">JA</a> <a href="/plusd/?q=&qftags=UK#result" title="UK - United Kingdom (65645 documents)">UK</a> <a href="/plusd/?q=&qftags=IS#result" title="IS - Israel (61813 documents)">IS</a> <a href="/plusd/?q=&qftags=MARR#result" title="MARR - Military and Defense Affairs--Military and Defense Arrangements (59054 documents)">MARR</a> <a href="/plusd/?q=&qftags=PARM#result" title="PARM - Political Affairs--Arms Controls and Disarmament (58794 documents)">PARM</a> <a href="/plusd/?q=&qftags=UN#result" title="UN - United Nations (58176 documents)">UN</a> <a href="/plusd/?q=&qftags=EG#result" title="EG - Egypt (57176 documents)">EG</a> <a href="/plusd/?q=&qftags=FR#result" title="FR - France (56597 documents)">FR</a> <a href="/plusd/?q=&qftags=PHUM#result" title="PHUM - Political Affairs--Human Rights (55302 documents)">PHUM</a> <a href="/plusd/?q=&qftags=SREF#result" title="SREF - Social Affairs--Refugees (53585 documents)">SREF</a> <a href="/plusd/?q=&qftags=EAIR#result" title="EAIR - Economic Affairs--Aeronautics and Aviation; Civil Aviation (52511 documents)">EAIR</a> <a href="/plusd/?q=&qftags=MASS#result" title="MASS - Military and Defense Affairs--Military Assistance and Sales (51560 documents)">MASS</a> <a href="/plusd/?q=&qftags=APER#result" title="APER - Administration--Personnel (51272 documents)">APER</a> <a href="/plusd/?q=&qftags=SNAR#result" title="SNAR - Social Affairs--Narcotics (49299 documents)">SNAR</a> <a href="/plusd/?q=&qftags=PINR#result" title="PINR - Political Affairs--Intelligence (48667 documents)">PINR</a> <a href="/plusd/?q=&qftags=EAGR#result" title="EAGR - Economic Affairs--Agriculture and Forestry (47350 documents)">EAGR</a> <a href="/plusd/?q=&qftags=PDIP#result" title="PDIP - Political Affairs--Diplomatic and Consular Representation (47061 documents)">PDIP</a> <a href="/plusd/?q=&qftags=AORG#result" title="AORG - Administration--International Organization Administration (42798 documents)">AORG</a> <a href="/plusd/?q=&qftags=PORG#result" title="PORG - Political Affairs--Policy Relations With International Organizations (42754 documents)">PORG</a> <a href="/plusd/?q=&qftags=MX#result" title="MX - Mexico (42577 documents)">MX</a> <a href="/plusd/?q=&qftags=TU#result" title="TU - Turkey (42476 documents)">TU</a> <a href="/plusd/?q=&qftags=ELAB#result" title="ELAB - Economic Affairs--Labor and Manpower; Labor Sector Affairs (41921 documents)">ELAB</a> <a href="/plusd/?q=&qftags=IN#result" title="IN - India (41702 documents)">IN</a> <a href="/plusd/?q=&qftags=CA#result" title="CA - Canada (41623 documents)">CA</a> <a href="/plusd/?q=&qftags=SCUL#result" title="SCUL - Social Affairs--Cultural Affairs (41509 documents)">SCUL</a> <a href="/plusd/?q=&qftags=CH#result" title="CH - China (Mainland) (40426 documents)">CH</a> <a href="/plusd/?q=&qftags=IR#result" title="IR - Iran (39924 documents)">IR</a> <a href="/plusd/?q=&qftags=IT#result" title="IT - Italy (39454 documents)">IT</a> <a href="/plusd/?q=&qftags=XF#result" title="XF - Middle East (38273 documents)">XF</a> <a href="/plusd/?q=&qftags=GW#result" title="GW - Germany (West) (37945 documents)">GW</a> <a href="/plusd/?q=&qftags=EINV#result" title="EINV - Economic Affairs--Investments; Foreign Investments (37616 documents)">EINV</a> <a href="/plusd/?q=&qftags=TH#result" title="TH - Thailand (37385 documents)">TH</a> <a href="/plusd/?q=&qftags=TECH#result" title="TECH - Technology and Science--Technology (36578 documents)">TECH</a> <a href="/plusd/?q=&qftags=SENV#result" title="SENV - Social Affairs--Environment (35665 documents)">SENV</a> <a href="/plusd/?q=&qftags=OREP#result" title="OREP - Operations--Congressional Travel (35140 documents)">OREP</a> <a href="/plusd/?q=&qftags=KS#result" title="KS - Korea (South) (34546 documents)">KS</a> <a href="/plusd/?q=&qftags=EGEN#result" title="EGEN - Economic Affairs--General (34287 documents)">EGEN</a> <a href="/plusd/?q=&qftags=PEPR#result" title="PEPR - PEPR (33866 documents)">PEPR</a> <a href="/plusd/?q=&qftags=MILI#result" title="MILI - Military and Defense Affairs--General (33710 documents)">MILI</a> <a href="/plusd/?q=&qftags=SHUM#result" title="SHUM - Social Affairs--Human Rights (33098 documents)">SHUM</a> <a href="/plusd/?q=&qftags=KISSINGER%2C+HENRY+A#result" title="KISSINGER, HENRY A - Henry Kissinger (32848 documents)">KISSINGER, HENRY A</a> <a href="/plusd/?q=&qftags=PL#result" title="PL - Poland (31163 documents)">PL</a> <a href="/plusd/?q=&qftags=BR#result" title="BR - Brazil (30797 documents)">BR</a> <a href="/plusd/?q=&qftags=RP#result" title="RP - Philippines (30198 documents)">RP</a> <a href="/plusd/?q=&qftags=GR#result" title="GR - Greece; Crete (30183 documents)">GR</a> <a href="/plusd/?q=&qftags=SF#result" title="SF - South Africa (30161 documents)">SF</a> <a href="/plusd/?q=&qftags=AFSP#result" title="AFSP - Administration--Post Administration (29315 documents)">AFSP</a> <a href="/plusd/?q=&qftags=SP#result" title="SP - Spain (29108 documents)">SP</a> <a href="/plusd/?q=&qftags=PTER#result" title="PTER - Political Affairs--Terrorists and Terrorism (28839 documents)">PTER</a> <a href="/plusd/?q=&qftags=MOPS#result" title="MOPS - Military and Defense Affairs--Military Operations (28821 documents)">MOPS</a> <a href="/plusd/?q=&qftags=SA#result" title="SA - Saudi Arabia (28190 documents)">SA</a> <a href="/plusd/?q=&qftags=UNGA#result" title="UNGA - UN General Assembly (27867 documents)">UNGA</a> <a href="/plusd/?q=&qftags=CGEN#result" title="CGEN - Consular Affairs--General (27680 documents)">CGEN</a> <a href="/plusd/?q=&qftags=ESTC#result" title="ESTC - Economic Affairs--Strategic Trade Controls (27627 documents)">ESTC</a> <a href="/plusd/?q=&qftags=SOPN#result" title="SOPN - Social Affairs--Public Opinion and Information (27583 documents)">SOPN</a> <a href="/plusd/?q=&qftags=RO#result" title="RO - Romania (27560 documents)">RO</a> <a href="/plusd/?q=&qftags=LE#result" title="LE - Lebanon (27323 documents)">LE</a> <a href="/plusd/?q=&qftags=TGEN#result" title="TGEN - Technology and Science--General (27058 documents)">TGEN</a> <a href="/plusd/?q=&qftags=PK#result" title="PK - Pakistan (26991 documents)">PK</a> <a href="/plusd/?q=&qftags=AR#result" title="AR - Argentina (26444 documents)">AR</a> <a href="/plusd/?q=&qftags=NI#result" title="NI - Nigeria (26170 documents)">NI</a> <a href="/plusd/?q=&qftags=OSCI#result" title="OSCI - Operations--Science Grants (25846 documents)">OSCI</a> <a href="/plusd/?q=&qftags=CI#result" title="CI - Chile (25827 documents)">CI</a> <a href="/plusd/?q=&qftags=EEC#result" title="EEC - European Common Market (European Communities); European Economic Community (25827 documents)">EEC</a> <a href="/plusd/?q=&qftags=VS#result" title="VS - South Vietnam (25800 documents)">VS</a> <a href="/plusd/?q=&qftags=YO#result" title="YO -  (25447 documents)">YO</a> <a href="/plusd/?q=&qftags=AFIN#result" title="AFIN - Administration--Financial Services (24705 documents)">AFIN</a> <a href="/plusd/?q=&qftags=OECD#result" title="OECD - Organization for Economic Cooperation and Development (24622 documents)">OECD</a> <a href="/plusd/?q=&qftags=SY#result" title="SY - Syria (24419 documents)">SY</a> <a href="/plusd/?q=&qftags=IZ#result" title="IZ - Iraq (24415 documents)">IZ</a> <a href="/plusd/?q=&qftags=ID#result" title="ID - Indonesia (23865 documents)">ID</a> <a href="/plusd/?q=&qftags=VE#result" title="VE - Venezuela (23792 documents)">VE</a> <a href="/plusd/?q=&qftags=TPHY#result" title="TPHY - Technology and Science--Physical Sciences (23741 documents)">TPHY</a> <a href="/plusd/?q=&qftags=TW#result" title="TW - Taiwan (23233 documents)">TW</a> <a href="/plusd/?q=&qftags=AS#result" title="AS - Australia (23143 documents)">AS</a> <a href="/plusd/?q=&qftags=PBOR#result" title="PBOR - Political Affairs--Boundary and Sovereignity Claims (23066 documents)">PBOR</a> 
+	</div>
+
+
+        <div class="sort" style="clear:both;">
+        <h3>Media Organizations</h3>
+        <a target="_blank" href="http://www.theage.com.au/">Australia - The Age</a>
+        <a target="_blank" href="http://www.pagina12.com.ar/">Argentina - Pagina 12</a>
+        <a target="_blank" href="http://www.apublica.org/?p=4041">Brazil - Publica</a>
+        <a target="_blank" href="https://bivol.bg/">Bulgaria - Bivol</a>
+        <a target="_blank" href="http://www.almasryalyoum.com/ ">Egypt - Al Masry Al Youm</a>
+        <a target="_blank" href="http://www.tanea.gr/">Greece - Ta Nea</a>
+        <a target="_blank" href="http://www.plazapublica.com.gt/content/los-cables-de-wikileaks">Guatemala - Plaza Publica</a>
+        <a target="_blank" href="http://www.haiti-liberte.com/">Haiti - Haiti Liberte</a>
+        <a target="_blank" href="http://www.thehindu.com/">India - The Hindu</a>
+        <a target="_blank" href="http://espresso.repubblica.it/">Italy - L'Espresso</a>
+        <a target="_blank" href="http://www.repubblica.it/">Italy - La Repubblica</a>
+        <a target="_blank" href="http://www.al-akhbar.com/">Lebanon - Al Akhbar</a>
+        <a target="_blank" href="http://www.jornada.unam.mx/ultimas/">Mexico - La Jornada</a>
+        <a target="_blank" href="http://www.publico.es/452776">Spain - Publico</a>
+        <a target="_blank" href="http://www.aftonbladet.se/nyheter/article16421007.ab">Sweden - Aftonbladet</a>
+        <a target="_blank" href="http://www.ap.org/">UK - AP</a>
+        <a target="_blank" href="http://thenation.com">US - The Nation</a>
+        </div>
+	<br style="clear: both;" />
+</div>
+
+<div id="content"><div id="content-main">
+
+<!--<p style="text-align: justify; font-size: medium">Click the <b>Chat</b> button above to join a secure chat channel dedicated to media partner The Kissinger Cables discussion. Please go on this to talk to the others currently working on this project. <br />When the chat window opens type the following in the white text space at the bottom of the screen to assign yourself a recognisable name: <b>/nick Espresso</b> and press enter</p>
+<center><h2 style="font-size: x-large;">Public Library of US Diplomacy: PlusD</h2></center>-->
+
+<center><img src="/plusd/images/plusdb.png" /></center>
+<div id="st" style="clear:both;">&nbsp;</div>
+<div id="topnav">
+        <a class="searchbutton active" href="//search.wikileaks.org/plusd/">Specified Search</a>
+        <a class="searchbutton sbinv" href="/plusd/map" target="_blank">View Map</a>
+        <a class="searchbutton sbinv" href="/plusd/graph" target="_blank">Make Timegraph</a>
+        <a class="searchbutton sbinv" href="/plusd/tags/" target="_blank">View Tags</a>
+        <a class="searchbutton sbinv" href="/plusd/imagelibrary/" target="_blank">Image Library</a>
+</div>
+<div class="sections"> 
+<div class="pane-content">
+	<table id="synopsis">
+		<tr style="background:#eee;">
+			<td colspan="2" style="font-size: medium; padding: 5px;color: #000; font-weight: bold; text-align: center;">OCTOBER 26 EA PRESS SUMMARY</td>
+		</tr>
+		<tr style="background:#eee;">
+			<td><div class="s_key"><a class="i" title="Date">Date:</a></div><div class="s_val" title=" 1978 October 27, 00:00 (Friday)">1978 October 27, 00:00 (Friday)</div></td>
+			<td><div class="s_key"><a class="i" title="Canonical ID">Canonical ID:</a></div><div class="s_val" title=" 1978STATE273765_d">1978STATE273765_d</div></td>
+		</tr>
+		<tr>
+			<td><div class="s_key"><a class="i" title="Original Classification">Original Classification:</a></div><div class="s_val" title=" UNCLASSIFIED (1339531 documents)">UNCLASSIFIED</div></td>
+			<td><div class="s_key"><a class="i" title="Current Classification">Current Classification:</a></div><div class="s_val" title=" UNCLASSIFIED (2592391 documents)">UNCLASSIFIED</div></td>
+		</tr>
+
+		<tr>
+			<td>
+<div class="s_key"><a class="i" title="Handling Restrictions", ">Handling Restrictions</a></div> <div class="s_val" title="-- N/A or Blank -- (2412734 documents)">-- N/A or Blank --</div><br /></td>
+			<td><div class="s_key"><a class="i" title="Character Count">Character Count:</a></div><div class="s_val" title=" 21523">21523</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Executive Order">Executive Order:</a></div><div class="s_val" title=" -- N/A or Blank -- (1894280 documents)">-- N/A or Blank --</div></td>
+			<td><div class="s_key"><a class="i" title="Locator">Locator:</a></div><div class="s_val" title=" TEXT ON MICROFILM,TEXT ONLINE">TEXT ON MICROFILM,TEXT ONLINE</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="TAGS">TAGS:</a></div><div class="s_val" title=" SOPN - Social Affairs--Public Opinion and Information | US - United States | XC - Southeast Asia"><a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=SOPN#result" title="SOPN Social Affairs: Public Opinion and Information (27583 documents)" >SOPN<span style="color: #216B7C;"> - Social Affairs--Public Opinion and Information</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=US#result" title="US United States (553685 documents)" >US<span style="color: #216B7C;"> - United States</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=XC#result" title="XC Southeast Asia (8202 documents)" >XC<span style="color: #216B7C;"> - Southeast Asia</span></a></div></td>
+			<td><div class="s_key"><a class="i" title="Concepts">Concepts:</a></div><div class="s_val" title=" PRESS SUMMARIES"><a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=PRESS+SUMMARIES#result" title="PRESS SUMMARIES (3029 documents)">PRESS SUMMARIES</a></div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Enclosure">Enclosure:</a></div><div class="s_val" title=" -- N/A or Blank -- (2333922 documents)">-- N/A or Blank --</div></td>
+			<td><div class="s_key"><a class="i" title="Type">Type:</a></div><div class="s_val" title=" TE - Telegram (cable) (2008616 documents)">TE - Telegram (cable)</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc">
+				<div class="s_key"><a class="i" title="Office Origin">Office Origin:</a></div><div class="s_val" title=" ORIGIN EA - Bureau of East Asian and Pacific Affairs (33058 documents)">ORIGIN EA - Bureau of East Asian and Pacific Affairs</div>				<br style="clear:both;"/>
+				<div class="s_key"><a class="i" title="Office Action">Office Action:</a></div><div class="s_val" title=" -- N/A or Blank -- (1411046 documents)">-- N/A or Blank --</div>			</td>
+			<td><div class="s_key"><a class="i" title="Archive Status">Archive Status:</a></div><div class="s_val" title=" Electronic Telegrams (1758257 documents)">Electronic Telegrams</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="From">From:</a></div><div class="s_val" title=" Department of State"><a style="color: #216B7C; " href="/plusd/?q=&qforigin=Department+of+State#result" title="Department of State (655860 documents)">Department of State</a></div></td>
+			<td><div class="s_key"><a class="i" title="Markings">Markings:</a></div><div class="s_val" title=" Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014 (325443 documents)">Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="To">To:</a></div><div class="s_val" title=" -- N/A or Blank --">-- N/A or Blank --</div></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<br />
+
+
+<br style="clear: both;" />
+
+</div>
+<div class="pane-tab"><div class="pane-header">Content</div><div class="pane-content"><div class="text-header hidden">PAGE 01
+STATE 273765
+ORIGIN EA-12
+INFO OCT-01 EUR-12 ISO-00 ICA-20 NSC-05 PM-05 CIAE-00
+INR-10 NSAE-00 PA-02 SP-02 AS-02 /071 R
+DRAFTED BY EA/STAFF:RC
+APPROVED BY EA/P:JCANNON
+DESIRED DISTRIBUTION
+ICA/EA:M SMITH; NSC:N PLATT
+------------------038441 280644Z /14
+R 271943Z OCT 78
+FM SECSTATE WASHDC
+TO ALL EAST ASIAN AND PACIFIC DIPLOMATIC POSTS
+HICOMTERPACIS SAIPAN MARIANA ISLANDS 0000
+AMEMBASSY MOSCOW
+AMEMBASSY PARIS
+INFO CINCPAC HONOLULU HAWAII 0000
+COAST GUARD WASHDC 0000
+GOVGUAM 0000
+TREASURY DEPARTMENT WASHDC 0000
+JCS WASHDC 0000
+UNCLAS STATE 273765
+ATTN PARIS FOR JOHNSTON
+E.O. 11652: N/A
+TAGS: SOPN, XC, US
+SUBJECT: OCTOBER 26 EA PRESS SUMMARY
+</div><div class="text-button" id="showhide">Show&nbsp;Headers</div><div class="text-content"><div id="tagged-text">1. CHINA
+WSJ REPORTS CHINA'S VICE PREMIER, TENG HSIAO-PING SAID IN
+TOKYO THAT NORMALIZATION OF US-CHINA RELS &quot;WILL FOLLOW IN
+THE GENERAL CURRENT OF EVENTS.&quot; BUT PEKING WILL STICK
+UNCLASSIFIEDSTATE 273765
+
+TO ITS DEMANDS THAT THE U.S. SEVER CERTAIN TIES WITH
+TAIWAN.
+CHINA'S VICE PREMIER, TENG HSIAO-PING DISCLOSED US-CHINA
+TALKS NOW UNDER WAY ON QUESTION ESTABLISHING FULL DIPLO
+RELS BETWN TWO COUNTRIES/ONLY OBSTACLE IS TAIWAN. THIS
+MAY BE NEXT BIG ISSUE TO PREOCCUPY PRES CARTER'S ADMIN.
+TO ENCOURAGE THIS, CHINESE ARE DANGLING CARROT OF
+EXPANDING TRADE BEFORE EYES OF US BUSINESSMEN. WITH
+MOUNTING US TRADE DEFICITS, TRADE IS KEY AND PROSPECT
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+OF INCREASED TRADE WITH CHINA ENTICING. TENG'S STATEMENT
+THAT &quot;THE ONLY HINDRANCE&quot; TO &quot;NORMALIZATION&quot; IS US MIL AND
+DIPLO LINK TO TAIWAN INVITES SPECULATION OTHER ISSUES
+EITHER HAVE BEEN RESOLVED OR PUT ON SHELF. MR. TENG DID NOT
+GIVE DATE FOR POSSIBLE NORMALIZATION (BALT. SUN TOKYO (AP)).
+AFTER 1ST DAY'S TALKS WITH CHINESE, POLITICAL SIGNIFICANCE
+OF SECY SCHLESINGER'S VISIT APPEARS LIKELY OUTWEIGH ANY
+TECHNICAL AGREEMENT THAT EMERGES. VISIT OFFERS CARTER
+ADMIN OPPORTUNITY REASSURE CHINESE AT TIME WHEN THEY ARE
+DEEPLY CONCERNED ABOUT AN IMPENDING US-SOVIET SALT
+AGREEMENT. CHINESE SEE SALT PACT AS SYMBOL OF US RETREAT
+FROM GLOBAL AFFAIRS, CLEARING WAY FOR SOVIET DOMINATION.
+VISIT ALSO PROVIDES ANOTHER HIGH-LEVEL OPPORTUNITY FOR
+U.S. REPEAT ITS VOW TO NORMALIZE RELS WITH PEKING, SOMETHING CHINESE REMAIN EAGER FOR, BUT CARTER AD;IN HAS NOT
+YET FOUND POLITICALLY OPPORTUNE BECAUSE IT MEANS
+SEVERING RELS WITH TAIWAN. (WSJ, KAREN ELLIOTT HOUSE,
+10/24).
+AT SAME TIME THAT SECRETARY OF ENERGY JAMES SCHLESINGER
+WAS MEETING WITH VICE PREMIER YU CHIU--I IN PEKING
+EXPLORING POSSIBILITIES OF EXPANDING ENERGY COOPERATION
+UNCLASSIFIED
+PAGE 03
+
+STATE 273765
+
+BETWEEN PEKING AND WASHINGTON, A 16 MEMBER U.S. TECHNICAL
+DELE WAS ALSO CONFERRING WITH CHINESE OFFICIALS IN
+5 FIELDS COVERING RENEWABLE ENERGY RESOURCES/HYDROELECTRIC POWER/COAL/OIL AND GAS AND HIGH ENERGY PHYSICS.
+(REUTER, PEKING 10/25).
+BOSTON GLOBE (10/25) REPORTS BOEING CO IS HOLDING TALKS
+WITH CHINA ON SALE OF LONG-RANGE 747 JETLINERS TO ADD
+TO CHINA'S CIVIL AIR FLEET.
+LINDA MATHEWS HONG KONG (PHINQ) WRITES CHINESE ADMIT
+THEY TOO, HAVE UNEMPLOYED. PEKING ACKNOWLEDGED THAT
+THOUSANDS YOUTHS WHO HAVE FLED BACK TO CITIES FROM
+THEIR MANDATORY TOURS OF DUTY IN COUNTRYSIDE ARE CREATING
+PROBLEM THAT IS FAMILIAR IN WEST BUT NEW TO CHINA.
+UNEMPLOYMENT BENEFITS UNHEARD OF IN CHINA/BURDEN OF
+SUPPORTING AN OUT-OF-WORK YOUTH FALLS ON HIS FAMILY.
+HUA KUO-FENG'S ADMIN SEEMS BE TRYING PUT YOUTHS TO WORK
+IN CITIES. THAT IS NOT EASY, BECAUSE THERE ARE SO MANY.
+WH HAS ORDERED INVESTIGATION INTO INTERNATIONAL INTRIGUE
+OF THE MUSHROOM CONNECTION. ACCORDING ARTICLE SEN
+H. JOHN HEINZ (R. PA) WHOSE STATE PRODUCES MUSHROOM
+WROTE ROBERT STRAUSS, PRESIDENT CARTER'S SPECIAL TRADE
+NEGOTIATOR THAT MUSHROOM IMPORTS FROM HONG KONG &quot;INCREASED
+FROM 160,000 POUNDS IN 9 MOS ENDING MARCH '77 TO 4,873,00
+POUNDS IN CORRESPONDING 9 MOS PERIOD ENDED IN MARCH '78.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+THIS IS CURIOUS, SINCE MUSHROOMS ARE NOT GROWN IN HONG
+KONG. STRAUSS TOLD US CUSTOMS SERVICE COMMISSIONER,
+ROBERT CHASEN OF HIS CONCERN/THAT HE UNDERSTOOD HK
+PACKERS HAVE BEEN DESALTING TAIWANESE MUSHROOMS, MIXING
+THEM WITH MUSHROOMS FROM PRC...TO BE SHIPPED TO, AMONG
+OTHER PLACES, THE US. STRAUSS ASKED CUSTOMS TO
+DETERMINE &quot;THE TRUE SOURCE OF CANNED MUSHROOMS SHIPPED
+TO THE US FROM HK/WHETHER THERE IS COMMINGLING OF THESE
+UNCLASSIFIED
+PAGE 04
+
+STATE 273765
+
+MUSHROOMS WITH PRC MUSHROOMS/ARE NOT BEING PROPERLY
+MARKED AND, THEREFORE, DUTIABLE AS PRODUCTS OF THE PRC&quot;
+(CHITRIB, AP 10/25).
+JAY MATHERS (HK, PHINQ) REPORTS WHEN CONDITIONS IMPROVE IN
+CHINA, PEOPLE LEAVE. SAYS SUDDEN INFLUX IMMIGRANTS FROM
+CHINA HAS CROWDED RAILWAYS AND WATERWAYS INTO HONG KONG.
+AS MANY AS 70,000 CHINESE MAY ENTER HK THIS YR LEGALLY
+AND ILLEGALLY, LARGEST NUMBER SINCE 1973/MEASURE OF
+HOW SOME ASPECTS OF LIFE IN CHINA HAVE IMPROVED RECENTLY.
+HENRY ALLEN, DIRECTOR OF INTL RESCUE COMMITTEE OFFICE,
+HK, SAYS &quot;WE'VE FOUND IN PAST THAT WHEN LEGAL IMMIGRATION
+INCREASES, ILLEGAL DOES TOO.&quot; THIS SUDDEN INCREASE
+IMMIGRATION SEVERELY STRAINS ALREADY OVERLOADED HOUSING
+AND WELFARE FACILITIES FOR HK'S 4.4 MIL PEOPLE. RELS
+BETWN CHINA AND HK APPEAR BE BEST EVER. CHINESE HAVE
+ASSURED BRITISH THEY HAVE NO INTENTION TAKING OVER
+TERRITORY. HK GOVT REALIZES IT CAN DO LITTLE MORE THAN
+MAKE POLITE PROTESTS ABOUT CHINESE POLICIES IT DOES NOT
+LIKE, SUCH AS INCREASED NUMBER OF EXIT PERMITS. GOVT
+HAS WORKED OUT FEW INFORMAL RULES APPEAR TO SUIT BOTH
+SIDES. ANY ILLEGAL REFUGEE APPREHENDED BY HK POLICE
+IN ACT OF CROSSING BORDER WILL BE RETURNED TO CHINA.
+FREDERIC A. MORITS (SCM, HONG KONG) WRITING AN ARTICLE
+ON CHANGE IN CHINA'S ATTITUDE TOWARDS ITS FARMERS, CITES
+INCIDENT OF DUCKLINGS ON &quot;LONG MARCH&quot; TO MARKET/LIVING
+ON LAND AS THEY MARCHED/REACHING MARKET AND MAKING EXTRA
+PROFITS FOR THOSE WHO SOLD THE TASTY &quot;SOLDIERS&quot; WITHOUT
+EVER UPSETTING PRICE OF FEED. ARTICLE SAYS THIS IS ONE
+EXAMPLE OF GREATER LEEWAY NOW BEING STRESSED FOR CHINESE
+FARMERS. CHINA'S PRESENT LEADERS NO LONGER ATTACKING THE
+&quot;MONEY-SEEKING MENTALITY.&quot; INSTEAD URGE PEASANTS EARN
+UNCLASSIFIED
+PAGE 05
+
+STATE 273765
+
+EXTRA INCOME BY CULTIVATING PRIVATE PLOTS AND ENGAGING
+IN SIDELINE ACTIVITIES. NEW POLICY STRESSES GREATER
+TOLERANCE FOR PRIVATE MARKETS AND TRADE FAIRS UNDER
+WHICH PRIVATELY GROWN PRODUCTS ARE SOLD.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+2. CHINA/JAPAN
+ACCORDING REUTER (TOKYO 10/25) JAPAN WILL ASK CHINA TO
+RETURN THE CORPSES OF NEARLY QUARTER OF A MILLION
+JAPANESE SOLDIERS KILLED IN NE CHINA DURING WWII. GOVT
+SOURCES THERE SAID FONMIN SONODA WOULD BROACH THE SUBJECT
+DURING TALKS W/PRC FONMIN HUANG HUA, WHO IS VISITING
+JAPAN WITH CHINESE VICE PREMIER TENG HSIAO-PING.
+CHINESE DEPUTY PREMIER TENG HSIAO-PING, IN TOKYO, HAS
+BEEN ASKING JAPANESE FOR MASSIVE SCIENTIFIC/TECHNOLOGICAL/
+FINANCIAL ASSISTANCE. TENG SAYS NOT ONLY JAPANESE HELP
+NEEDED BUT COOPERATION OF ADVANCED INDUSTRIAL COUNTRIES
+THROUGHOUT WORLD AS WELL TO CARRY OUT PEKING'S HUGE
+MODERNIZATION PROGRAM. TENG'S JAPANESE HOSTS EMPHASIZING
+IN PRIVATE THEY CANNOT UNDERSTAND HOW CHINA INTENDS PAY
+FOR ESTIMATED 400/600 BIL DOLS WORTH OF HIGHLY TECHNOLOGICAL PLANT AND EQUIPMENT I;;PORTS WHICH PROBABLY REQUIRED
+CARRY OUT CHINESE GRAND PLAN (JOC, CULLISON)
+3. JAPAN
+&quot;I SWEAR BY THE GODS OF HEAVEN AND EARTH THAT I HAVE
+NEVER BEEN INVOLVED&quot;, SAYS MR. YASUMITO NAKASONE, FORMER
+MIN OF INTL TRADE, AND ONE OF 4 CONTENDERS FOR LEADERSHIP
+OF JAPAN'S RULING LIBERAL DEMOCRATIC PARTY (LDP).
+MR. NAKASONE IS ACCUSED BY CARL KOTCHIAN, FORMER VICE
+CHAIRMAN OF LOCKHEED AIRCRAFT CORP IN DEPOSITIONS READ
+OUT BY PROSECUTORS IN A TOKYO DISTRICT HEARING INVOLVING
+UNCLASSIFIED
+PAGE 06
+
+STATE 273765
+
+LOCKHEED PAYOFF SCANDAL. 60 YR OLD MR. NAKASONE WOULD
+BECOME PM AUTOMATICALLY IF HE WON DEC LEADERSHIP ELECTION.
+MR. KOTCHAIN DEPOSITIONS SAID A JAPANESE INTERPRETER
+QUOTED RIGHTWINGER, YOSIO KODAMA, AS SAYING A MR. &quot;N&quot;
+IDENTIFIED AS MR. NAKASONE, HAD ADJUSTED CIRCUMSTANCES
+IN FAVOR OF LOCKHEED, AFTER THAT CO WAS ALLOWED SELL
+LOCKHEED TRISTAR JETLINERS TO ANA (ALL NIPPON AIRWAYS)
+REVIEWING JAPANESE GOVT PLAN FO, SALE OF PLANES TO JAPAN
+AIR LINES (JAL) (REUTER TOKYO).
+WP'S CHAPMAN (TOKYO, 10/25) REPORTS ON TENG HSIAO-PING'S
+COURTESY CALL ON THE DISGRACED FORMER LEADER, KAKUEI
+TANAKA, WHO STEPPED BRIEFLY BACK ON STAGE FOR FIRST
+TIME IN TWO YRS. SAYS TENG CALLED ON TANAKA AT HIS
+PRIVATE ESTATE IN CENTRAL TOKYO, WHERE THE FORMER PRIME
+MINISTER HAD ASSEMBLED ABOUT 40 MEMBERS FROM HIS
+PARLIAMENTARY FACTION. TENG THANKED HIM FOR HIS ROLE IN
+BRINGING THE TWO COUNTRIES TOGETHER/INVITED HIM TO VISIT
+PEKING, TANAKA SAID HE WOULD HAVE TO DISCUSS THAT MATTER
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+WITH HIS GOVERNMENT. ADDS LATER TENG CALLED ON ANOTHER
+OF PM FUKUDA POLITICAL EMEMIES, MASAYOSHI OHIRA, WHO WILL
+MAKE A BID FOR THE PRIME MINISTER'S OFFICE IN DEC
+ELECTIONS. OHIRA WAS FOREIGN MINISTER IN THE TANAKA
+CABINET IN 1972.
+JOC (10/24) SAYS A TEAM OF MORE THAN 50 JAPANESE BUSINESSMEN CURRENTLY SCOURING US IN SEARCH OF &quot;SOMETHING NEW,
+SOMETHING DIFFERENT&quot; IN COMESTIBLES -- SO FAR FOOD
+BUYERS HAVE BEEN IN SAN FRANCISCO,PORTLAND /CHICAGO/
+HAVE BOUGHT ABOUT 50 MIL DOL WORTH OF FOOD PRODUCTS.
+WP'S CHAPMAN/WSJ'S THARP (TOKYO) REPORTS THAT CHINESE
+UNCLASSIFIED
+PAGE 07
+
+STATE 273765
+
+VICE PREMIER TENG HSIAO-PING SAID 10/25 THAT HE BELIEVES
+HIS COUNTRY EVENTUALLY WILL HAVE NORMAL RELATIONS WITH
+US BUT ONLY AFTER TAIWAN ISSUE IS SETTLED ON CHINA'S
+TERMS. ADD HE ALSO SAID THERE WILL BE NO &quot;TENSION&quot; ON
+KOREAN PENINSULA SO LONG AS SKOREA DOES NOT ATTEMPT ANY
+&quot;ACTIONS&quot; AGAINST COMMUNIST NORTH.
+REUTER (WASHINGTON 10/25) REPORTS US CONGRESSIONAL PANEL
+SAID 4 JAPANESE TRADING FIRMS FUNNELLED 1.2 MIL DOLS
+IN POL CONTRIBUTIONS THRU THE US IN '71 TO SKOREAN
+PRESIDENT PARK'S PARTY. HIRC SUBCMTE ON INTL ORGS SAID
+IN A PRELIMINARY REPORT THAT THE FUNDS WERE PART OF A
+TOTAL OF 3.2 MIL DOLS IN COMMISSIONS RESULTING FROM
+CONSTRUCTION OF SUBWAY SYSTEM IN SEOUL. SUBCMTE HEADED
+BY DONALD FRASER (D-MINN) SAID IT FOUND NO EVIDENCE
+SUPPORT ALLEGATIONS IN JAPANESE PRESS THAT ANY OF THE
+FUNDS WERE USED FINANCE US ACTIVITIES OF THE KCIA.
+WSTAR (10/25) SAYS ACCORDING TO A NEW POLL, AMERICANS
+HAVE A &quot;DRAMATICALLY POSITIVE IMAGE&quot; OF JAPANESE PEOPLE
+AND REGARD JAPAN AS A RELIABLE FRIEND NEAR THE TOP OF
+LIST OF NATIONS IMPORTANT TO US GLOBAL INTERESTS.
+REUTER'S ANAI (TOKYO 10/25) REPORTS INHERENT MODESTY
+INHIBITS SEX EDUCATION IN JAPAN. SAYS ANCIENT JAPANESE
+HAD LITTLE DIFFICULTY TALKING ABOUT SEX,/NOT UNTIL THE
+4TH/5TH CENTURIES A.D. (WHEN CONFUCIAN PRINCIPLES OF
+PURITY/OBEDIENCE GAINED INFLUENCE) THAT TOPIC BECAME
+TABOO. TO BREAK THRU CENTURIES OF EMBARRASSMENT,
+JAPANESE PROF HIROSHI MARSUOKA OF OSAKA UNIV HAS PUBLISHED
+HONEST/INGENIOUS PAMPHLET &quot;WONDERFUL GROWTH&quot; FOR CHILDREN
+AGED 10 TO 12. JAPAN'S EDUCATION MINISTRY WAS QUICK TO
+PRAISE PUBLICATION, AND ONE MINISTRY OFFICIAL SAID SEX
+EDUCATION METHODS MUST REFLECT COUNTRY'S HISTORICAL/
+SOCIAL BACKGROUND.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+UNCLASSIFIED
+PAGE 08
+
+STATE 273765
+
+4. INDONESIA
+UPI (JAKARTA) REPORTS INDONESIA'S PRESIDENT SUHARTO 10/25
+EXPRESSED WISH TO DEVELOP TIES W/IRAN IN ECONOMIC/TRADE/
+CULTURAL FIELDS. WHILE RECEIVING CREDENTIALS OF NEW
+IRANIAN AMB, PRES SUHARTO SAID STRONGER COOP BETWN
+DEVELOPING COUNTRIES WAS NEEDED &quot;IN DETERMINING THE
+COURSE OF THE WORLD POLICY.&quot; HE ALSO STATED &quot;MUTUAL
+UNDERSTANDING BETWEEN THE TWO COUNTRIES WAS EXCELLENT&quot;
+/&quot;THE SIMILARITY OF POINT OF VIEW BETWEEN INDONESIA
+AND IRAN HAD BEEN OBVIOUS ON MANY OCCASION&quot; (JOC)
+5. PHILIPPINES
+MICHAEL PARKS WRITING IN THE BALT SUN (MANILA, 10/25)
+COMMENTS ON HOPES OF PHILS ECON TAKEOFF FADING. SAYS
+PHILS HOPES FOR RAPID ECON TAKEOFF, TRANSFORMING IT
+WITHIN GENERATION FROM AGRIC TO INDUSTRIAL COUNTRY,
+ARE RECEDING/MANILA MAY HAVE REAPPRAISE ITS BASIC
+DEVELOPHENT STRATEGY SOON. PRESIDENT MARCOS WARNED
+PHILS LAST WK THAT IT IS FACING &quot;SERIOUS ECON PROBLEMS&quot;,
+INCLUDING A POSSIBLE RECESSION OVER THE NEXT 2 YRS DUE TO
+THE LOW EXPORT EARNINGS. MARCOS TOLD FILIPINOS TO BE
+READY FOR &quot;MORE BELT-TIGHTENING&quot; AND ORDERED GOVT
+DEPARTMENTS TO CUT THEIR SPENDING BY 5 PCT IMMEDIATELY
+AND REVIEW ALL DEVELOPMENT PROJECTS TO SEE WHICH COULD
+BE DROPPED/DELAYED. CRITICS OF MARCOS' MARTIAL LAW
+REGIME ACCUSED HIM OF RENEGING AGAIN ON PROMISES OF
+HIGHER PAY/IMPROVED LIVING CONDITIONS FOR WORKERS AND
+PEASANTS. A UNIVERSITY ECONOMIST SAID &quot;NOW, MARCOS'
+'REVOLUTION OF THE POOR', AS HE CALLS IT, IS FADING
+UNCLASSIFIED
+PAGE 09
+
+STATE 273765
+
+INTO THE FUTURE AGAIN. PARKS ADDS THAT THE MARCOS GOVERNMENT IS COUNTING HEAVILY ON INCREASED FOREIGN INVESTMENT,
+PARTICULARLY IN LABOR-INTENSIVE INDUSTRIES TO PULL THE
+PHILS OUT OF THIS &quot;DEVELOPMENT TRAP,&quot; AS A PHIL BANKER
+CALLED IT, AND GIVE ECON DEVELOPMENT NEW MOMENTUM.
+PRESIDENT MARCOS' OPPONENTS CHARGE HIM WITH SELLING THE
+COUNTRY'S RESOURCES AND LABOR TO MULTINATIONAL FIRMS,
+ACCORDING PARKS.
+BALT SUN (10/25) MANILA, REPORTS MOST SKILLED WORKERS ENGINEERS, DOCTORS, NURSES, CARPENTERS, MECHANICS, CHEFS LEAVING PHILS AT INCREASING RATE FOR JOBS ABROAD. GOVT
+UNCERTAIN WHETHER TO DISCOURAGE SERIOUS DRAIN OF TALENT
+OR ENCOURAGE WHAT HAS BECOME IMPORTANT EXPORT INDUSTRY.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+THE 1.4 MIL FILIPINOS WORKING ABROAD SENT MORE THAN
+300 MIL DOLS HOME LAST YR, ACCORDING TO GOVT STUDY/TOTAL
+COULD BE AS MUCH AS 560 MIL THIS YR. OVER 6 YRS OF
+MARTIAL LAW, MARCOS GOVT HAS DRIVEN DOWN REAL WAGES
+OF SKILLED WORKERS BY MORE THAN 25 PCT, HOPING TO LURE
+FOREIGN INVESTMENT WITH CHEAP LABOR. OVERALL 1.4 MIL
+FILIPINOS NOW WORKING IN 103 COUNTRIES, ACCORDING OVERSEAS EMPLOYMENT BOARD (MANILA). ONE AMERICAN BUSINESSMAN
+SAID &quot;MARCOS' CRITICS NOTWITHSTANDING, THE PHILS HAS
+A GREAT FUTURE ONCE ITS ECON DEVELOPMENT GATHER SPEED,
+BUT THAT IS MUCH AS A GENERATION IN THE FUTURE.
+6. AUSTRALIA
+JOC'S STOVE (10/25) REPORTS AUSTRALIAN TRADE MISSION
+VISITING CHINA INDICATES IMPORTANCE AUSTRALIA PLACES ON
+CHINA MRKT--WORKING FOR ALTERNATIVE OUTLET DUE TO REDUCED
+SALES IN JAPAN/EC. SAYS ON INDIVIDUAL NATION BASIS, CHINA
+IS NOW AUSTRALIA'S 4TH BIGGEST CUSTOMER--HAS BEEN STEADY
+STREAM OF TRADE MISSIONS/BUSINESS DELS FROM AUSTRALIA
+TO CHINA OVER PAST COUPLE OF YRS. CHINA IS ALREADY
+UNCLASSIFIED
+PAGE 10
+
+STATE 273765
+
+SIGNIFICANT MRKT FOR AUSTRALIAN IRON ORE/IS LOOMING AS ONE
+OF AUSTRALIA'S BIGGEST. IRON ORE PRODUCERS HERE ARE
+IMPRESSED THAT AT TIME WHEN INTL STEEL INDUSTRY EXPERIENCING
+MAJOR DEPRESSION, CHINA IS EXPANDING STEEL PRODUCTION.
+ACCORDING AUSTRALIAN BUREAU OF STATISTICS, 220 PCT JUMP
+IN AUSSIE EXPORTS TO CHINA IN 11 MONTHS TO END OF MAY THIS
+YR FROM COMPARABLE PERIOD IN YR BEFORE. THIS CONTRASTED
+W/12 PCT DROP IN EXPORTS TO EC.
+CSM'S SOLOMON SAYS IN AN ABRUPT ABOUT-FACE, THE GOA HAS
+DECIDED TO IMPOSE STRICT CONTROLS OVER EXPORT OF IRON ORE,
+COAL, BAUXITE, ALUMINUM, AND OTHER MINERALS. DEPUTY PM,
+J DOUGLAS ANTHONY, WHO IS ALSO MIN FOR TRADE AND RESOURCES,
+WILL FROM NOW ON SUPERVISE THE TERMS OF ALL CONTRACTS
+NEGOTIATED FOR THE EXPORT OF THESE BULK RAW MATERIALS.
+SOLOMON ADDS HE WILL HAVE THE POWER TO DENY ANY EXPORT
+WHEN HE DOES NOT APPROVE THE PRICE, QUANTITIES, OR OTHER
+COMMERCIAL PROVISIONS IN THE CONTRACT, INCLUDING ITS
+DURATION. COMMENTS THAT ANTHONY'S ACTION BELIEVED TO HAVE
+BEEN PROMPTED BY RECENT COAL EXPORT NEGOTS WITH JAPAN-OFFICIALS SAY SOME OF THE CONTRACTS NEGOTIATED WOULD
+CONTAIN LITTLE OR NO PROFIT MARGIN. SAYS THAT RECENT
+ATTEMPT BY THE GOVT TO HAVE AUSSIE EXPORTERS TO COORDINATE
+VOLUNTARILY THEIR EXPORT CONTRACTS APPARENTLY FAILED.
+7. CAMBODIA
+LAT'S MCARTHUR (BANGKOK) REPORTS ON CAMBODIA'S TRAVELING
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+FONMIN SARY--WHO DEPARTED MANILA 10/20--ATTEMPTS TO
+IMPROVE CAMBODIAN REGIME'S IMAGE ABROAD W/SOFT WORDS.
+EARLIER THIS MONTH SARY INVITED UN SECY GENERAL WALDHEIM
+TO VISIT CAMBODIA/IN BANGKOK ARRANGEMENTS BEING MADE TO
+FLY GROUP OF DIPLOS TO GUIDED TOUR OF ANCIENT TEMPLES OF
+UNCLASSIFIED
+PAGE 11
+
+STATE 273765
+
+ANGKOR WAT IN WESTERN CAMBODIA. SOME DIPLOS BELIEVE THAT
+CAREFULLY CALCULATED PUBLIC RELATIONS CAMPAIGN IS MEASURE
+OF THE DESPERATION OF CAMBODIAN GOVT. SAYS IT IS OBVIOUS
+THAT CAMBODIA HAS REALIZED THE NEED FOR FRIENDS,
+PARTICULARLY IN SEASIA. CAMBODIA'S NEW DIPLOMACY HAS BEEN
+MAKING SOME HEADWAY AMONG NEIGHBORS WHO WOULD LIKE TO SEE
+LESS SHOOTING ON INDOCHINA PENINSULA.
+COMMENT AND ANALYSIS
+8. CHINA
+DANIEL SOUTHERLAND (CSM) WRITES THAT CHINA WATCHERS ARE
+LOOKING FORWARD TO WHAT HAPPENS WHEN 10 CHINESE FROM
+COMMUNIST CHINA AND 1 FROM TAIWAN ATTEND SAME SCIENTIFIC
+CONF IN SANFRANCISCO STARTING 10/29. IN PAST ONE SIDE OR
+OTHER HAS REFUSED PARTICIPATE IN ANY CONF ATTENDED BY ITS
+ADVERSARY. MAJOR CHANGE 2 MOS AGO WHEN DELS FROM 2 CHINAS
+SHOWED UP AT SCIENTIFIC CONF IN TOKYO. SAN FRANCISCO
+CONF MARKS 1ST TIME ON WHICH BOTH SIDES HAVE ATTENDED
+CONF IN US. US OFFICIALS VIEW PEKING'S WILLINGNESS ATTEND
+CONF W/TAIWAN DELS PRESENT AS ANOTHER SIGN OF CHINA'S
+GROWING PRAGMATISM AND PART OF ITS CURRENT &quot;UNITED FRONT&quot;
+CAMPAIGN TO WOO TAIWAN. US CHINA WATCHERS DO NOT SEE ANY
+SIGN PEKING HAS MODIFIED ANY OF PRINCIPLES IT HOLDS TO ON
+TAIWAN ISSUE. CHANGE IS MATTER OF TACTICS. US OFFICIALS
+POINT OUT PEKING HAS YET TO TALK PUBLICLY ABOUT A &quot;PEACEFUL
+RESOLUTION&quot; OR &quot;PEACEFUL REUNIFICATION&quot; WITH TAIWAN.
+AMERICAN OFFICIALS THUS CAUTION AGAINST HIGH EXPECTATIONS
+FOR FULL NORMALIZATION OF RELS W/PEKING ANY TIME SOON.
+PEKING HAS YET TO RENOUNCE POSSIBLE USE OF MIL FORCE TO
+LIBERATE TAIWAN, SOUTHERLAND SAYS. US OFFICIALS ARE
+INTRIGUED BY WHAT THEY CALL PEKING'S &quot;SMILING OFFENSIVE&quot;
+TOWARDS WEST AND TAIWAN.
+UNCLASSIFIED
+PAGE 12
+
+STATE 273765
+
+9. CAMBODIA
+CHITRIB'S YATES (BANGKOK) COMMENTS IN GLOBE (10/24) ON
+&quot;DEAF EAR ON CAMBODIA SLAUGHTER.&quot; SAYS GENERATION AGO
+A ZENOPHONIC PSYCHOPATH NAMED ADOLF HITLER WAS RELENTLESSLY
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+PURSUING HIS &quot;FINAL SOLUTION&quot;--A RATHER AMBIGUOUS METAPHOR
+FOR THE ANNIHILATION OF MILLIONS OF PEOPLE IN THE NAME OF
+RACIAL/POLITICAL PURITY. TODAY, YATES SAYS, IN A MISSOURISIZED CHUNK OF ASIA--CAMBODIA--HITLER'S LEGACY OF GENOCIDE
+LIVES ON. PERHAPS AS MANY AS ONE-THIRD OF CAMBODIA'S
+POPULATION HAVE DIED/BEEN KILLED OUTRIGHT BY HANDFUL OF
+MARXIST-INSPIRED ZEALOTS CALLED KHMER ROUGE. AND AS WAS
+CASE 40 YRS AGO, THE INTL COMMUNITY, THIS TIME UNDER
+PHLEGMATIC/DESENSITIZED LEADERSHIP OF UN, HAS CHOSEN IGNORE
+PLANET'S LATEST OUTBREAK OF MALEVOLENT SOCIAL ENGINEERING.
+NOTES SEVERAL FACTORS, NOT THE LEAST OF WHICH ARE POL
+NAIVETE/HYPOCRISY, CAN BE ATTRIBUTED TO THIS: 1) LEFTISTS
+REFUSE TO BELIEVE ONE OF THE PUREST MARXIST REVOLUTIONS
+EVER CONCEIVED HAS SUDDENLY/INEXPLICABLY TURNED TO
+VINEGAR; 2) CONSERVATIVES HAVE TENDED TO DILUTE THE AMOUNT
+OF ATTENTION FOCUSED ON CAMBODIA BY ATTRIBUTING RAMPAGE
+THERE TO NATURAL NIHILISTIC TENDENCIES OF ALL LEFT-WING
+GOVTS.
+YATES SAYS BOTH WORLD'S LIBERALS/CONSERVATIVES NEED TO
+REALIZE THAT WHAT HAS BEEN CONSTRUCTED UPON BONES OF
+MILLIONS CAMBODIANS IS A FEUDAL, AGRARIAN-BASED SOCIETY
+GOVERNED BY OMNIPOTENT TERRITORIAL WARLORDS. NOTES
+GREATEST CRITICISM OF CAMBODIA'S NEW MASTERS HAS COME,
+IRONICALLY, FROM ITS ANTAGONISTIC COMMUNIST NEIGHBOR,
+VIETNAM. RECENTLY VIETNAMESE PREMIER PHAM VAN DONG
+UNCLASSIFIED
+PAGE 13
+
+STATE 273765
+
+RESPONDED TO REPORTERS' QUESTIONS ABOUT HUMAN RTS
+VIOLATIONS IN VIETNAM BY SAYING: &quot;NEXT TO POL POT, I'M
+AN ANGEL.&quot;
+ACCORDING YATES, THE UN IS FULLY AWARE OF WHAT IS
+HAPPENING IN CAMBODIA BUT REFUSES TO EITHER SPEAK OUT OR
+TAKE ACTION AGAINST WHAT IT CONSIDERS TO BE A STRUGGLING,
+LEFT-WING 3RD WORLD NATION. THE US, HE SAYS, MORE THAN
+ANY OTHER NATION IS RESPONSIBLE FOR WHAT IS HAPPENING IN
+CAMBODIA, BUT, LIKE THE UN, HAS CHOSEN TO REMAIN
+RELATIVELY SILENT. SAID, ACCORDING TO SEVERAL ANGRY/OUTSPOKEN MEMBERS OF US DIPLO CORPS IN BANGKOK, THERE IS GROSS
+HYPOCRISY MOTIVATED BY POLITICAL EXPEDIENCY WITHIN THE
+DOS. &quot;TO SOUND OFF AGAINST CAMBODIA MIGHT RUIN WASHINGTON'S RAPPORT WITH CHINA, CAMBODIA'S GODFATHER, AND OF
+COURSE WE CAN'T HAVE THAT,&quot; SA-D A BITTER AMERICAN DIPLO
+IN BANGKOK. &quot;WHEN IT COMES RIGHT DOWN TO IT, THE
+AMERICAN GOVERNMENT HAS CONCLUDED THAT THE CAMBODIAN
+PEOPLE ARE EXPENDABLE.&quot; VANCE
+UNCLASSIFIED
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+&lt;&lt; END OF DOCUMENT &gt;&gt;
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014</div></div><br /></div></div><div class="pane-tab"><div class="pane-header">Raw content</div><div class="pane-content"><div class="text-content">PAGE 01
+STATE 273765
+ORIGIN EA-12
+INFO OCT-01 EUR-12 ISO-00 ICA-20 NSC-05 PM-05 CIAE-00
+INR-10 NSAE-00 PA-02 SP-02 AS-02 /071 R
+DRAFTED BY EA/STAFF:RC
+APPROVED BY EA/P:JCANNON
+DESIRED DISTRIBUTION
+ICA/EA:M SMITH; NSC:N PLATT
+------------------038441 280644Z /14
+R 271943Z OCT 78
+FM SECSTATE WASHDC
+TO ALL EAST ASIAN AND PACIFIC DIPLOMATIC POSTS
+HICOMTERPACIS SAIPAN MARIANA ISLANDS 0000
+AMEMBASSY MOSCOW
+AMEMBASSY PARIS
+INFO CINCPAC HONOLULU HAWAII 0000
+COAST GUARD WASHDC 0000
+GOVGUAM 0000
+TREASURY DEPARTMENT WASHDC 0000
+JCS WASHDC 0000
+UNCLAS STATE 273765
+ATTN PARIS FOR JOHNSTON
+E.O. 11652: N/A
+TAGS: SOPN, XC, US
+SUBJECT: OCTOBER 26 EA PRESS SUMMARY
+1. CHINA
+WSJ REPORTS CHINA'S VICE PREMIER, TENG HSIAO-PING SAID IN
+TOKYO THAT NORMALIZATION OF US-CHINA RELS &quot;WILL FOLLOW IN
+THE GENERAL CURRENT OF EVENTS.&quot; BUT PEKING WILL STICK
+UNCLASSIFIED
+PAGE 02
+
+STATE 273765
+
+TO ITS DEMANDS THAT THE U.S. SEVER CERTAIN TIES WITH
+TAIWAN.
+CHINA'S VICE PREMIER, TENG HSIAO-PING DISCLOSED US-CHINA
+TALKS NOW UNDER WAY ON QUESTION ESTABLISHING FULL DIPLO
+RELS BETWN TWO COUNTRIES/ONLY OBSTACLE IS TAIWAN. THIS
+MAY BE NEXT BIG ISSUE TO PREOCCUPY PRES CARTER'S ADMIN.
+TO ENCOURAGE THIS, CHINESE ARE DANGLING CARROT OF
+EXPANDING TRADE BEFORE EYES OF US BUSINESSMEN. WITH
+MOUNTING US TRADE DEFICITS, TRADE IS KEY AND PROSPECT
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+OF INCREASED TRADE WITH CHINA ENTICING. TENG'S STATEMENT
+THAT &quot;THE ONLY HINDRANCE&quot; TO &quot;NORMALIZATION&quot; IS US MIL AND
+DIPLO LINK TO TAIWAN INVITES SPECULATION OTHER ISSUES
+EITHER HAVE BEEN RESOLVED OR PUT ON SHELF. MR. TENG DID NOT
+GIVE DATE FOR POSSIBLE NORMALIZATION (BALT. SUN TOKYO (AP)).
+AFTER 1ST DAY'S TALKS WITH CHINESE, POLITICAL SIGNIFICANCE
+OF SECY SCHLESINGER'S VISIT APPEARS LIKELY OUTWEIGH ANY
+TECHNICAL AGREEMENT THAT EMERGES. VISIT OFFERS CARTER
+ADMIN OPPORTUNITY REASSURE CHINESE AT TIME WHEN THEY ARE
+DEEPLY CONCERNED ABOUT AN IMPENDING US-SOVIET SALT
+AGREEMENT. CHINESE SEE SALT PACT AS SYMBOL OF US RETREAT
+FROM GLOBAL AFFAIRS, CLEARING WAY FOR SOVIET DOMINATION.
+VISIT ALSO PROVIDES ANOTHER HIGH-LEVEL OPPORTUNITY FOR
+U.S. REPEAT ITS VOW TO NORMALIZE RELS WITH PEKING, SOMETHING CHINESE REMAIN EAGER FOR, BUT CARTER AD;IN HAS NOT
+YET FOUND POLITICALLY OPPORTUNE BECAUSE IT MEANS
+SEVERING RELS WITH TAIWAN. (WSJ, KAREN ELLIOTT HOUSE,
+10/24).
+AT SAME TIME THAT SECRETARY OF ENERGY JAMES SCHLESINGER
+WAS MEETING WITH VICE PREMIER YU CHIU--I IN PEKING
+EXPLORING POSSIBILITIES OF EXPANDING ENERGY COOPERATION
+UNCLASSIFIED
+PAGE 03
+
+STATE 273765
+
+BETWEEN PEKING AND WASHINGTON, A 16 MEMBER U.S. TECHNICAL
+DELE WAS ALSO CONFERRING WITH CHINESE OFFICIALS IN
+5 FIELDS COVERING RENEWABLE ENERGY RESOURCES/HYDROELECTRIC POWER/COAL/OIL AND GAS AND HIGH ENERGY PHYSICS.
+(REUTER, PEKING 10/25).
+BOSTON GLOBE (10/25) REPORTS BOEING CO IS HOLDING TALKS
+WITH CHINA ON SALE OF LONG-RANGE 747 JETLINERS TO ADD
+TO CHINA'S CIVIL AIR FLEET.
+LINDA MATHEWS HONG KONG (PHINQ) WRITES CHINESE ADMIT
+THEY TOO, HAVE UNEMPLOYED. PEKING ACKNOWLEDGED THAT
+THOUSANDS YOUTHS WHO HAVE FLED BACK TO CITIES FROM
+THEIR MANDATORY TOURS OF DUTY IN COUNTRYSIDE ARE CREATING
+PROBLEM THAT IS FAMILIAR IN WEST BUT NEW TO CHINA.
+UNEMPLOYMENT BENEFITS UNHEARD OF IN CHINA/BURDEN OF
+SUPPORTING AN OUT-OF-WORK YOUTH FALLS ON HIS FAMILY.
+HUA KUO-FENG'S ADMIN SEEMS BE TRYING PUT YOUTHS TO WORK
+IN CITIES. THAT IS NOT EASY, BECAUSE THERE ARE SO MANY.
+WH HAS ORDERED INVESTIGATION INTO INTERNATIONAL INTRIGUE
+OF THE MUSHROOM CONNECTION. ACCORDING ARTICLE SEN
+H. JOHN HEINZ (R. PA) WHOSE STATE PRODUCES MUSHROOM
+WROTE ROBERT STRAUSS, PRESIDENT CARTER'S SPECIAL TRADE
+NEGOTIATOR THAT MUSHROOM IMPORTS FROM HONG KONG &quot;INCREASED
+FROM 160,000 POUNDS IN 9 MOS ENDING MARCH '77 TO 4,873,00
+POUNDS IN CORRESPONDING 9 MOS PERIOD ENDED IN MARCH '78.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+THIS IS CURIOUS, SINCE MUSHROOMS ARE NOT GROWN IN HONG
+KONG. STRAUSS TOLD US CUSTOMS SERVICE COMMISSIONER,
+ROBERT CHASEN OF HIS CONCERN/THAT HE UNDERSTOOD HK
+PACKERS HAVE BEEN DESALTING TAIWANESE MUSHROOMS, MIXING
+THEM WITH MUSHROOMS FROM PRC...TO BE SHIPPED TO, AMONG
+OTHER PLACES, THE US. STRAUSS ASKED CUSTOMS TO
+DETERMINE &quot;THE TRUE SOURCE OF CANNED MUSHROOMS SHIPPED
+TO THE US FROM HK/WHETHER THERE IS COMMINGLING OF THESE
+UNCLASSIFIED
+PAGE 04
+
+STATE 273765
+
+MUSHROOMS WITH PRC MUSHROOMS/ARE NOT BEING PROPERLY
+MARKED AND, THEREFORE, DUTIABLE AS PRODUCTS OF THE PRC&quot;
+(CHITRIB, AP 10/25).
+JAY MATHERS (HK, PHINQ) REPORTS WHEN CONDITIONS IMPROVE IN
+CHINA, PEOPLE LEAVE. SAYS SUDDEN INFLUX IMMIGRANTS FROM
+CHINA HAS CROWDED RAILWAYS AND WATERWAYS INTO HONG KONG.
+AS MANY AS 70,000 CHINESE MAY ENTER HK THIS YR LEGALLY
+AND ILLEGALLY, LARGEST NUMBER SINCE 1973/MEASURE OF
+HOW SOME ASPECTS OF LIFE IN CHINA HAVE IMPROVED RECENTLY.
+HENRY ALLEN, DIRECTOR OF INTL RESCUE COMMITTEE OFFICE,
+HK, SAYS &quot;WE'VE FOUND IN PAST THAT WHEN LEGAL IMMIGRATION
+INCREASES, ILLEGAL DOES TOO.&quot; THIS SUDDEN INCREASE
+IMMIGRATION SEVERELY STRAINS ALREADY OVERLOADED HOUSING
+AND WELFARE FACILITIES FOR HK'S 4.4 MIL PEOPLE. RELS
+BETWN CHINA AND HK APPEAR BE BEST EVER. CHINESE HAVE
+ASSURED BRITISH THEY HAVE NO INTENTION TAKING OVER
+TERRITORY. HK GOVT REALIZES IT CAN DO LITTLE MORE THAN
+MAKE POLITE PROTESTS ABOUT CHINESE POLICIES IT DOES NOT
+LIKE, SUCH AS INCREASED NUMBER OF EXIT PERMITS. GOVT
+HAS WORKED OUT FEW INFORMAL RULES APPEAR TO SUIT BOTH
+SIDES. ANY ILLEGAL REFUGEE APPREHENDED BY HK POLICE
+IN ACT OF CROSSING BORDER WILL BE RETURNED TO CHINA.
+FREDERIC A. MORITS (SCM, HONG KONG) WRITING AN ARTICLE
+ON CHANGE IN CHINA'S ATTITUDE TOWARDS ITS FARMERS, CITES
+INCIDENT OF DUCKLINGS ON &quot;LONG MARCH&quot; TO MARKET/LIVING
+ON LAND AS THEY MARCHED/REACHING MARKET AND MAKING EXTRA
+PROFITS FOR THOSE WHO SOLD THE TASTY &quot;SOLDIERS&quot; WITHOUT
+EVER UPSETTING PRICE OF FEED. ARTICLE SAYS THIS IS ONE
+EXAMPLE OF GREATER LEEWAY NOW BEING STRESSED FOR CHINESE
+FARMERS. CHINA'S PRESENT LEADERS NO LONGER ATTACKING THE
+&quot;MONEY-SEEKING MENTALITY.&quot; INSTEAD URGE PEASANTS EARN
+UNCLASSIFIED
+PAGE 05
+
+STATE 273765
+
+EXTRA INCOME BY CULTIVATING PRIVATE PLOTS AND ENGAGING
+IN SIDELINE ACTIVITIES. NEW POLICY STRESSES GREATER
+TOLERANCE FOR PRIVATE MARKETS AND TRADE FAIRS UNDER
+WHICH PRIVATELY GROWN PRODUCTS ARE SOLD.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+2. CHINA/JAPAN
+ACCORDING REUTER (TOKYO 10/25) JAPAN WILL ASK CHINA TO
+RETURN THE CORPSES OF NEARLY QUARTER OF A MILLION
+JAPANESE SOLDIERS KILLED IN NE CHINA DURING WWII. GOVT
+SOURCES THERE SAID FONMIN SONODA WOULD BROACH THE SUBJECT
+DURING TALKS W/PRC FONMIN HUANG HUA, WHO IS VISITING
+JAPAN WITH CHINESE VICE PREMIER TENG HSIAO-PING.
+CHINESE DEPUTY PREMIER TENG HSIAO-PING, IN TOKYO, HAS
+BEEN ASKING JAPANESE FOR MASSIVE SCIENTIFIC/TECHNOLOGICAL/
+FINANCIAL ASSISTANCE. TENG SAYS NOT ONLY JAPANESE HELP
+NEEDED BUT COOPERATION OF ADVANCED INDUSTRIAL COUNTRIES
+THROUGHOUT WORLD AS WELL TO CARRY OUT PEKING'S HUGE
+MODERNIZATION PROGRAM. TENG'S JAPANESE HOSTS EMPHASIZING
+IN PRIVATE THEY CANNOT UNDERSTAND HOW CHINA INTENDS PAY
+FOR ESTIMATED 400/600 BIL DOLS WORTH OF HIGHLY TECHNOLOGICAL PLANT AND EQUIPMENT I;;PORTS WHICH PROBABLY REQUIRED
+CARRY OUT CHINESE GRAND PLAN (JOC, CULLISON)
+3. JAPAN
+&quot;I SWEAR BY THE GODS OF HEAVEN AND EARTH THAT I HAVE
+NEVER BEEN INVOLVED&quot;, SAYS MR. YASUMITO NAKASONE, FORMER
+MIN OF INTL TRADE, AND ONE OF 4 CONTENDERS FOR LEADERSHIP
+OF JAPAN'S RULING LIBERAL DEMOCRATIC PARTY (LDP).
+MR. NAKASONE IS ACCUSED BY CARL KOTCHIAN, FORMER VICE
+CHAIRMAN OF LOCKHEED AIRCRAFT CORP IN DEPOSITIONS READ
+OUT BY PROSECUTORS IN A TOKYO DISTRICT HEARING INVOLVING
+UNCLASSIFIED
+PAGE 06
+
+STATE 273765
+
+LOCKHEED PAYOFF SCANDAL. 60 YR OLD MR. NAKASONE WOULD
+BECOME PM AUTOMATICALLY IF HE WON DEC LEADERSHIP ELECTION.
+MR. KOTCHAIN DEPOSITIONS SAID A JAPANESE INTERPRETER
+QUOTED RIGHTWINGER, YOSIO KODAMA, AS SAYING A MR. &quot;N&quot;
+IDENTIFIED AS MR. NAKASONE, HAD ADJUSTED CIRCUMSTANCES
+IN FAVOR OF LOCKHEED, AFTER THAT CO WAS ALLOWED SELL
+LOCKHEED TRISTAR JETLINERS TO ANA (ALL NIPPON AIRWAYS)
+REVIEWING JAPANESE GOVT PLAN FO, SALE OF PLANES TO JAPAN
+AIR LINES (JAL) (REUTER TOKYO).
+WP'S CHAPMAN (TOKYO, 10/25) REPORTS ON TENG HSIAO-PING'S
+COURTESY CALL ON THE DISGRACED FORMER LEADER, KAKUEI
+TANAKA, WHO STEPPED BRIEFLY BACK ON STAGE FOR FIRST
+TIME IN TWO YRS. SAYS TENG CALLED ON TANAKA AT HIS
+PRIVATE ESTATE IN CENTRAL TOKYO, WHERE THE FORMER PRIME
+MINISTER HAD ASSEMBLED ABOUT 40 MEMBERS FROM HIS
+PARLIAMENTARY FACTION. TENG THANKED HIM FOR HIS ROLE IN
+BRINGING THE TWO COUNTRIES TOGETHER/INVITED HIM TO VISIT
+PEKING, TANAKA SAID HE WOULD HAVE TO DISCUSS THAT MATTER
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+WITH HIS GOVERNMENT. ADDS LATER TENG CALLED ON ANOTHER
+OF PM FUKUDA POLITICAL EMEMIES, MASAYOSHI OHIRA, WHO WILL
+MAKE A BID FOR THE PRIME MINISTER'S OFFICE IN DEC
+ELECTIONS. OHIRA WAS FOREIGN MINISTER IN THE TANAKA
+CABINET IN 1972.
+JOC (10/24) SAYS A TEAM OF MORE THAN 50 JAPANESE BUSINESSMEN CURRENTLY SCOURING US IN SEARCH OF &quot;SOMETHING NEW,
+SOMETHING DIFFERENT&quot; IN COMESTIBLES -- SO FAR FOOD
+BUYERS HAVE BEEN IN SAN FRANCISCO,PORTLAND /CHICAGO/
+HAVE BOUGHT ABOUT 50 MIL DOL WORTH OF FOOD PRODUCTS.
+WP'S CHAPMAN/WSJ'S THARP (TOKYO) REPORTS THAT CHINESE
+UNCLASSIFIED
+PAGE 07
+
+STATE 273765
+
+VICE PREMIER TENG HSIAO-PING SAID 10/25 THAT HE BELIEVES
+HIS COUNTRY EVENTUALLY WILL HAVE NORMAL RELATIONS WITH
+US BUT ONLY AFTER TAIWAN ISSUE IS SETTLED ON CHINA'S
+TERMS. ADD HE ALSO SAID THERE WILL BE NO &quot;TENSION&quot; ON
+KOREAN PENINSULA SO LONG AS SKOREA DOES NOT ATTEMPT ANY
+&quot;ACTIONS&quot; AGAINST COMMUNIST NORTH.
+REUTER (WASHINGTON 10/25) REPORTS US CONGRESSIONAL PANEL
+SAID 4 JAPANESE TRADING FIRMS FUNNELLED 1.2 MIL DOLS
+IN POL CONTRIBUTIONS THRU THE US IN '71 TO SKOREAN
+PRESIDENT PARK'S PARTY. HIRC SUBCMTE ON INTL ORGS SAID
+IN A PRELIMINARY REPORT THAT THE FUNDS WERE PART OF A
+TOTAL OF 3.2 MIL DOLS IN COMMISSIONS RESULTING FROM
+CONSTRUCTION OF SUBWAY SYSTEM IN SEOUL. SUBCMTE HEADED
+BY DONALD FRASER (D-MINN) SAID IT FOUND NO EVIDENCE
+SUPPORT ALLEGATIONS IN JAPANESE PRESS THAT ANY OF THE
+FUNDS WERE USED FINANCE US ACTIVITIES OF THE KCIA.
+WSTAR (10/25) SAYS ACCORDING TO A NEW POLL, AMERICANS
+HAVE A &quot;DRAMATICALLY POSITIVE IMAGE&quot; OF JAPANESE PEOPLE
+AND REGARD JAPAN AS A RELIABLE FRIEND NEAR THE TOP OF
+LIST OF NATIONS IMPORTANT TO US GLOBAL INTERESTS.
+REUTER'S ANAI (TOKYO 10/25) REPORTS INHERENT MODESTY
+INHIBITS SEX EDUCATION IN JAPAN. SAYS ANCIENT JAPANESE
+HAD LITTLE DIFFICULTY TALKING ABOUT SEX,/NOT UNTIL THE
+4TH/5TH CENTURIES A.D. (WHEN CONFUCIAN PRINCIPLES OF
+PURITY/OBEDIENCE GAINED INFLUENCE) THAT TOPIC BECAME
+TABOO. TO BREAK THRU CENTURIES OF EMBARRASSMENT,
+JAPANESE PROF HIROSHI MARSUOKA OF OSAKA UNIV HAS PUBLISHED
+HONEST/INGENIOUS PAMPHLET &quot;WONDERFUL GROWTH&quot; FOR CHILDREN
+AGED 10 TO 12. JAPAN'S EDUCATION MINISTRY WAS QUICK TO
+PRAISE PUBLICATION, AND ONE MINISTRY OFFICIAL SAID SEX
+EDUCATION METHODS MUST REFLECT COUNTRY'S HISTORICAL/
+SOCIAL BACKGROUND.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+UNCLASSIFIED
+PAGE 08
+
+STATE 273765
+
+4. INDONESIA
+UPI (JAKARTA) REPORTS INDONESIA'S PRESIDENT SUHARTO 10/25
+EXPRESSED WISH TO DEVELOP TIES W/IRAN IN ECONOMIC/TRADE/
+CULTURAL FIELDS. WHILE RECEIVING CREDENTIALS OF NEW
+IRANIAN AMB, PRES SUHARTO SAID STRONGER COOP BETWN
+DEVELOPING COUNTRIES WAS NEEDED &quot;IN DETERMINING THE
+COURSE OF THE WORLD POLICY.&quot; HE ALSO STATED &quot;MUTUAL
+UNDERSTANDING BETWEEN THE TWO COUNTRIES WAS EXCELLENT&quot;
+/&quot;THE SIMILARITY OF POINT OF VIEW BETWEEN INDONESIA
+AND IRAN HAD BEEN OBVIOUS ON MANY OCCASION&quot; (JOC)
+5. PHILIPPINES
+MICHAEL PARKS WRITING IN THE BALT SUN (MANILA, 10/25)
+COMMENTS ON HOPES OF PHILS ECON TAKEOFF FADING. SAYS
+PHILS HOPES FOR RAPID ECON TAKEOFF, TRANSFORMING IT
+WITHIN GENERATION FROM AGRIC TO INDUSTRIAL COUNTRY,
+ARE RECEDING/MANILA MAY HAVE REAPPRAISE ITS BASIC
+DEVELOPHENT STRATEGY SOON. PRESIDENT MARCOS WARNED
+PHILS LAST WK THAT IT IS FACING &quot;SERIOUS ECON PROBLEMS&quot;,
+INCLUDING A POSSIBLE RECESSION OVER THE NEXT 2 YRS DUE TO
+THE LOW EXPORT EARNINGS. MARCOS TOLD FILIPINOS TO BE
+READY FOR &quot;MORE BELT-TIGHTENING&quot; AND ORDERED GOVT
+DEPARTMENTS TO CUT THEIR SPENDING BY 5 PCT IMMEDIATELY
+AND REVIEW ALL DEVELOPMENT PROJECTS TO SEE WHICH COULD
+BE DROPPED/DELAYED. CRITICS OF MARCOS' MARTIAL LAW
+REGIME ACCUSED HIM OF RENEGING AGAIN ON PROMISES OF
+HIGHER PAY/IMPROVED LIVING CONDITIONS FOR WORKERS AND
+PEASANTS. A UNIVERSITY ECONOMIST SAID &quot;NOW, MARCOS'
+'REVOLUTION OF THE POOR', AS HE CALLS IT, IS FADING
+UNCLASSIFIED
+PAGE 09
+
+STATE 273765
+
+INTO THE FUTURE AGAIN. PARKS ADDS THAT THE MARCOS GOVERNMENT IS COUNTING HEAVILY ON INCREASED FOREIGN INVESTMENT,
+PARTICULARLY IN LABOR-INTENSIVE INDUSTRIES TO PULL THE
+PHILS OUT OF THIS &quot;DEVELOPMENT TRAP,&quot; AS A PHIL BANKER
+CALLED IT, AND GIVE ECON DEVELOPMENT NEW MOMENTUM.
+PRESIDENT MARCOS' OPPONENTS CHARGE HIM WITH SELLING THE
+COUNTRY'S RESOURCES AND LABOR TO MULTINATIONAL FIRMS,
+ACCORDING PARKS.
+BALT SUN (10/25) MANILA, REPORTS MOST SKILLED WORKERS ENGINEERS, DOCTORS, NURSES, CARPENTERS, MECHANICS, CHEFS LEAVING PHILS AT INCREASING RATE FOR JOBS ABROAD. GOVT
+UNCERTAIN WHETHER TO DISCOURAGE SERIOUS DRAIN OF TALENT
+OR ENCOURAGE WHAT HAS BECOME IMPORTANT EXPORT INDUSTRY.
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+THE 1.4 MIL FILIPINOS WORKING ABROAD SENT MORE THAN
+300 MIL DOLS HOME LAST YR, ACCORDING TO GOVT STUDY/TOTAL
+COULD BE AS MUCH AS 560 MIL THIS YR. OVER 6 YRS OF
+MARTIAL LAW, MARCOS GOVT HAS DRIVEN DOWN REAL WAGES
+OF SKILLED WORKERS BY MORE THAN 25 PCT, HOPING TO LURE
+FOREIGN INVESTMENT WITH CHEAP LABOR. OVERALL 1.4 MIL
+FILIPINOS NOW WORKING IN 103 COUNTRIES, ACCORDING OVERSEAS EMPLOYMENT BOARD (MANILA). ONE AMERICAN BUSINESSMAN
+SAID &quot;MARCOS' CRITICS NOTWITHSTANDING, THE PHILS HAS
+A GREAT FUTURE ONCE ITS ECON DEVELOPMENT GATHER SPEED,
+BUT THAT IS MUCH AS A GENERATION IN THE FUTURE.
+6. AUSTRALIA
+JOC'S STOVE (10/25) REPORTS AUSTRALIAN TRADE MISSION
+VISITING CHINA INDICATES IMPORTANCE AUSTRALIA PLACES ON
+CHINA MRKT--WORKING FOR ALTERNATIVE OUTLET DUE TO REDUCED
+SALES IN JAPAN/EC. SAYS ON INDIVIDUAL NATION BASIS, CHINA
+IS NOW AUSTRALIA'S 4TH BIGGEST CUSTOMER--HAS BEEN STEADY
+STREAM OF TRADE MISSIONS/BUSINESS DELS FROM AUSTRALIA
+TO CHINA OVER PAST COUPLE OF YRS. CHINA IS ALREADY
+UNCLASSIFIED
+PAGE 10
+
+STATE 273765
+
+SIGNIFICANT MRKT FOR AUSTRALIAN IRON ORE/IS LOOMING AS ONE
+OF AUSTRALIA'S BIGGEST. IRON ORE PRODUCERS HERE ARE
+IMPRESSED THAT AT TIME WHEN INTL STEEL INDUSTRY EXPERIENCING
+MAJOR DEPRESSION, CHINA IS EXPANDING STEEL PRODUCTION.
+ACCORDING AUSTRALIAN BUREAU OF STATISTICS, 220 PCT JUMP
+IN AUSSIE EXPORTS TO CHINA IN 11 MONTHS TO END OF MAY THIS
+YR FROM COMPARABLE PERIOD IN YR BEFORE. THIS CONTRASTED
+W/12 PCT DROP IN EXPORTS TO EC.
+CSM'S SOLOMON SAYS IN AN ABRUPT ABOUT-FACE, THE GOA HAS
+DECIDED TO IMPOSE STRICT CONTROLS OVER EXPORT OF IRON ORE,
+COAL, BAUXITE, ALUMINUM, AND OTHER MINERALS. DEPUTY PM,
+J DOUGLAS ANTHONY, WHO IS ALSO MIN FOR TRADE AND RESOURCES,
+WILL FROM NOW ON SUPERVISE THE TERMS OF ALL CONTRACTS
+NEGOTIATED FOR THE EXPORT OF THESE BULK RAW MATERIALS.
+SOLOMON ADDS HE WILL HAVE THE POWER TO DENY ANY EXPORT
+WHEN HE DOES NOT APPROVE THE PRICE, QUANTITIES, OR OTHER
+COMMERCIAL PROVISIONS IN THE CONTRACT, INCLUDING ITS
+DURATION. COMMENTS THAT ANTHONY'S ACTION BELIEVED TO HAVE
+BEEN PROMPTED BY RECENT COAL EXPORT NEGOTS WITH JAPAN-OFFICIALS SAY SOME OF THE CONTRACTS NEGOTIATED WOULD
+CONTAIN LITTLE OR NO PROFIT MARGIN. SAYS THAT RECENT
+ATTEMPT BY THE GOVT TO HAVE AUSSIE EXPORTERS TO COORDINATE
+VOLUNTARILY THEIR EXPORT CONTRACTS APPARENTLY FAILED.
+7. CAMBODIA
+LAT'S MCARTHUR (BANGKOK) REPORTS ON CAMBODIA'S TRAVELING
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+FONMIN SARY--WHO DEPARTED MANILA 10/20--ATTEMPTS TO
+IMPROVE CAMBODIAN REGIME'S IMAGE ABROAD W/SOFT WORDS.
+EARLIER THIS MONTH SARY INVITED UN SECY GENERAL WALDHEIM
+TO VISIT CAMBODIA/IN BANGKOK ARRANGEMENTS BEING MADE TO
+FLY GROUP OF DIPLOS TO GUIDED TOUR OF ANCIENT TEMPLES OF
+UNCLASSIFIED
+PAGE 11
+
+STATE 273765
+
+ANGKOR WAT IN WESTERN CAMBODIA. SOME DIPLOS BELIEVE THAT
+CAREFULLY CALCULATED PUBLIC RELATIONS CAMPAIGN IS MEASURE
+OF THE DESPERATION OF CAMBODIAN GOVT. SAYS IT IS OBVIOUS
+THAT CAMBODIA HAS REALIZED THE NEED FOR FRIENDS,
+PARTICULARLY IN SEASIA. CAMBODIA'S NEW DIPLOMACY HAS BEEN
+MAKING SOME HEADWAY AMONG NEIGHBORS WHO WOULD LIKE TO SEE
+LESS SHOOTING ON INDOCHINA PENINSULA.
+COMMENT AND ANALYSIS
+8. CHINA
+DANIEL SOUTHERLAND (CSM) WRITES THAT CHINA WATCHERS ARE
+LOOKING FORWARD TO WHAT HAPPENS WHEN 10 CHINESE FROM
+COMMUNIST CHINA AND 1 FROM TAIWAN ATTEND SAME SCIENTIFIC
+CONF IN SANFRANCISCO STARTING 10/29. IN PAST ONE SIDE OR
+OTHER HAS REFUSED PARTICIPATE IN ANY CONF ATTENDED BY ITS
+ADVERSARY. MAJOR CHANGE 2 MOS AGO WHEN DELS FROM 2 CHINAS
+SHOWED UP AT SCIENTIFIC CONF IN TOKYO. SAN FRANCISCO
+CONF MARKS 1ST TIME ON WHICH BOTH SIDES HAVE ATTENDED
+CONF IN US. US OFFICIALS VIEW PEKING'S WILLINGNESS ATTEND
+CONF W/TAIWAN DELS PRESENT AS ANOTHER SIGN OF CHINA'S
+GROWING PRAGMATISM AND PART OF ITS CURRENT &quot;UNITED FRONT&quot;
+CAMPAIGN TO WOO TAIWAN. US CHINA WATCHERS DO NOT SEE ANY
+SIGN PEKING HAS MODIFIED ANY OF PRINCIPLES IT HOLDS TO ON
+TAIWAN ISSUE. CHANGE IS MATTER OF TACTICS. US OFFICIALS
+POINT OUT PEKING HAS YET TO TALK PUBLICLY ABOUT A &quot;PEACEFUL
+RESOLUTION&quot; OR &quot;PEACEFUL REUNIFICATION&quot; WITH TAIWAN.
+AMERICAN OFFICIALS THUS CAUTION AGAINST HIGH EXPECTATIONS
+FOR FULL NORMALIZATION OF RELS W/PEKING ANY TIME SOON.
+PEKING HAS YET TO RENOUNCE POSSIBLE USE OF MIL FORCE TO
+LIBERATE TAIWAN, SOUTHERLAND SAYS. US OFFICIALS ARE
+INTRIGUED BY WHAT THEY CALL PEKING'S &quot;SMILING OFFENSIVE&quot;
+TOWARDS WEST AND TAIWAN.
+UNCLASSIFIED
+PAGE 12
+
+STATE 273765
+
+9. CAMBODIA
+CHITRIB'S YATES (BANGKOK) COMMENTS IN GLOBE (10/24) ON
+&quot;DEAF EAR ON CAMBODIA SLAUGHTER.&quot; SAYS GENERATION AGO
+A ZENOPHONIC PSYCHOPATH NAMED ADOLF HITLER WAS RELENTLESSLY
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+PURSUING HIS &quot;FINAL SOLUTION&quot;--A RATHER AMBIGUOUS METAPHOR
+FOR THE ANNIHILATION OF MILLIONS OF PEOPLE IN THE NAME OF
+RACIAL/POLITICAL PURITY. TODAY, YATES SAYS, IN A MISSOURISIZED CHUNK OF ASIA--CAMBODIA--HITLER'S LEGACY OF GENOCIDE
+LIVES ON. PERHAPS AS MANY AS ONE-THIRD OF CAMBODIA'S
+POPULATION HAVE DIED/BEEN KILLED OUTRIGHT BY HANDFUL OF
+MARXIST-INSPIRED ZEALOTS CALLED KHMER ROUGE. AND AS WAS
+CASE 40 YRS AGO, THE INTL COMMUNITY, THIS TIME UNDER
+PHLEGMATIC/DESENSITIZED LEADERSHIP OF UN, HAS CHOSEN IGNORE
+PLANET'S LATEST OUTBREAK OF MALEVOLENT SOCIAL ENGINEERING.
+NOTES SEVERAL FACTORS, NOT THE LEAST OF WHICH ARE POL
+NAIVETE/HYPOCRISY, CAN BE ATTRIBUTED TO THIS: 1) LEFTISTS
+REFUSE TO BELIEVE ONE OF THE PUREST MARXIST REVOLUTIONS
+EVER CONCEIVED HAS SUDDENLY/INEXPLICABLY TURNED TO
+VINEGAR; 2) CONSERVATIVES HAVE TENDED TO DILUTE THE AMOUNT
+OF ATTENTION FOCUSED ON CAMBODIA BY ATTRIBUTING RAMPAGE
+THERE TO NATURAL NIHILISTIC TENDENCIES OF ALL LEFT-WING
+GOVTS.
+YATES SAYS BOTH WORLD'S LIBERALS/CONSERVATIVES NEED TO
+REALIZE THAT WHAT HAS BEEN CONSTRUCTED UPON BONES OF
+MILLIONS CAMBODIANS IS A FEUDAL, AGRARIAN-BASED SOCIETY
+GOVERNED BY OMNIPOTENT TERRITORIAL WARLORDS. NOTES
+GREATEST CRITICISM OF CAMBODIA'S NEW MASTERS HAS COME,
+IRONICALLY, FROM ITS ANTAGONISTIC COMMUNIST NEIGHBOR,
+VIETNAM. RECENTLY VIETNAMESE PREMIER PHAM VAN DONG
+UNCLASSIFIED
+PAGE 13
+
+STATE 273765
+
+RESPONDED TO REPORTERS' QUESTIONS ABOUT HUMAN RTS
+VIOLATIONS IN VIETNAM BY SAYING: &quot;NEXT TO POL POT, I'M
+AN ANGEL.&quot;
+ACCORDING YATES, THE UN IS FULLY AWARE OF WHAT IS
+HAPPENING IN CAMBODIA BUT REFUSES TO EITHER SPEAK OUT OR
+TAKE ACTION AGAINST WHAT IT CONSIDERS TO BE A STRUGGLING,
+LEFT-WING 3RD WORLD NATION. THE US, HE SAYS, MORE THAN
+ANY OTHER NATION IS RESPONSIBLE FOR WHAT IS HAPPENING IN
+CAMBODIA, BUT, LIKE THE UN, HAS CHOSEN TO REMAIN
+RELATIVELY SILENT. SAID, ACCORDING TO SEVERAL ANGRY/OUTSPOKEN MEMBERS OF US DIPLO CORPS IN BANGKOK, THERE IS GROSS
+HYPOCRISY MOTIVATED BY POLITICAL EXPEDIENCY WITHIN THE
+DOS. &quot;TO SOUND OFF AGAINST CAMBODIA MIGHT RUIN WASHINGTON'S RAPPORT WITH CHINA, CAMBODIA'S GODFATHER, AND OF
+COURSE WE CAN'T HAVE THAT,&quot; SA-D A BITTER AMERICAN DIPLO
+IN BANGKOK. &quot;WHEN IT COMES RIGHT DOWN TO IT, THE
+AMERICAN GOVERNMENT HAS CONCLUDED THAT THE CAMBODIAN
+PEOPLE ARE EXPENDABLE.&quot; VANCE
+UNCLASSIFIED
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+&lt;&lt; END OF DOCUMENT &gt;&gt;
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014
+
+Sheryl P. Walter Declassified/Released US Department of State EO Systematic Review 20 Mar 2014</div></div></div><div class="pane-tab"><div class="pane-header">Metadata</div><div class="pane-content"><div class="text-content">---
+Automatic Decaptioning: X
+Capture Date: 26 sep 1999
+Channel Indicators: n/a
+Current Classification: UNCLASSIFIED
+Concepts: PRESS SUMMARIES
+Control Number: n/a
+Copy: SINGLE
+Draft Date: 27 oct 1978
+Decaption Date: 01 jan 1960
+Decaption Note: ''
+Disposition Action: n/a
+Disposition Approved on Date: ''
+Disposition Case Number: n/a
+Disposition Comment: ''
+Disposition Date: 01 jan 1960
+Disposition Event: ''
+Disposition History: n/a
+Disposition Reason: ''
+Disposition Remarks: ''
+Document Number: 1978STATE273765
+Document Source: ADS
+Document Unique ID: '00'
+Drafter: EA/STAFF:RC
+Enclosure: n/a
+Executive Order: N/A
+Errors: n/a
+Expiration: ''
+Film Number: D780444-0306
+Format: TEL
+From: STATE
+Handling Restrictions: n/a
+Image Path: ''
+ISecure: '1'
+Legacy Key: link1978/newtext/t197810124/baaafaih.tel
+Line Count: ! '487 Litigation Code IDs:'
+Litigation Codes: ''
+Litigation History: ''
+Locator: TEXT ON-LINE, TEXT ON MICROFILM
+Message ID: b263422e-c288-dd11-92da-001cc4696bcc
+Office: ORIGIN EA
+Original Classification: UNCLASSIFIED
+Original Handling Restrictions: n/a
+Original Previous Classification: n/a
+Original Previous Handling Restrictions: n/a
+Page Count: '9'
+Previous Channel Indicators: ''
+Previous Classification: n/a
+Previous Handling Restrictions: n/a
+Reference: n/a
+Retention: '0'
+Review Action: RELEASED, APPROVED
+Review Content Flags: ''
+Review Date: 29 mar 2005
+Review Event: ''
+Review Exemptions: n/a
+Review Media Identifier: ''
+Review Release Date: N/A
+Review Release Event: n/a
+Review Transfer Date: ''
+Review Withdrawn Fields: n/a
+SAS ID: '896739'
+Secure: OPEN
+Status: NATIVE
+Subject: OCTOBER 26 EA PRESS SUMMARY
+TAGS: SOPN, XC, US
+To: ALL EAST ASIAN AND PACIFIC DIPLOMATIC POSTS HICOMTERPACIS SAIPAN MARIANA ISLANDS
+  MULTIPLE
+Type: TE
+vdkvgwkey: odbc://SAS/SAS.dbo.SAS_Docs/b263422e-c288-dd11-92da-001cc4696bcc
+Review Markings: ! ' Sheryl P. Walter Declassified/Released US Department of State
+  EO Systematic Review 20 Mar 2014'
+Markings: Sheryl P. Walter Declassified/Released US Department of State EO Systematic
+  Review 20 Mar 2014 Sheryl P. Walter Declassified/Released US Department of State
+  EO Systematic Review 20 Mar 2014
+</div></div></div><div class="pane-tab"><div class="pane-header">Raw source</div><div class="pane-content"><div class="text-content"><a href="https://file.wikileaks.org/oc/oc/2694/267814.pdf">oc/2694/267814.pdf</a></div></div></div>
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 61px">Print</div><div class="pane-content pane-print">
+<p>You can use this tool to generate a print-friendly PDF of the document <strong>1978STATE273765_d</strong>.</p>
+<form action="/plusd/pdf/?df=47180" method="post">
+	<input type="hidden" name="p" value="d" />
+	<input type="hidden" name="r" value="1978STATE273765_d" />
+	<input type="checkbox" name="s" id="is" value="cake"><label for="is">Include summary</label></input><br />
+	<input type="checkbox" name="h" id="ih" value="is a"><label for="ih">Include headers</label></input><br />
+	<input type="checkbox" name="m" id="im" value="lie"><label for="im">Include raw metadata</label></input><br /><br />
+	<input type="submit" value="Generate pdf" />
+</form>
+</div></div>
+
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 60px">Share</div><div class="pane-content pane-share">
+<p>The formal reference of this document is <strong>1978STATE273765_d</strong>, please use it for anything written about this document. This will permit you and others to search for it.</p>
+<div class="share-panel">
+<label for="share-link">Direct link to document</label>
+<input readonly="readonly" type="text" class="share" id="share-link" value="https://www.wikileaks.org/plusd/cables/1978STATE273765_d.html" /><br />
+
+<label for="share-reddit">Reddit code</label>
+<input readonly="readonly" type="text" class="share" id="share-reddit" value="[1978STATE273765_d](https://www.wikileaks.org/plusd/cables/1978STATE273765_d.html)" /><br />
+
+<label for="share-html">HTML code</label>
+<input readonly="readonly" type="text" class="share" id="share-html" value="&lt;a href=&quot;https://www.wikileaks.org/plusd/cables/1978STATE273765_d.html&quot; title=&quot;1978STATE273765_d&quot;&gt;1978STATE273765_d&lt;/a&gt;" /><br />
+
+<label for="share-bbcode">Forum code (bbcode)</label>
+<input readonly="readonly" type="text" class="share" id="share-bbcode" value="[url=https://www.wikileaks.org/plusd/cables/1978STATE273765_d.html]1978STATE273765_d[/url]" />
+</div>
+
+
+
+<br style="clear: both;" />
+<p>Submit this story</p>
+<div class="share">
+	<a href="http://www.reddit.com/submit?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1978STATE273765_d.html"><img src="/plusd/images/Reddit-ico.png" /></a>
+</div>
+
+<div class="share">
+        <a href="http://twitter.com/home?status=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1978STATE273765_d.html"><img src="/plusd/images/Twitter-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1978STATE273765_d"><img src="/plusd/images/Gplus-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=1978STATE273765_d&amp;p[summary]=Summary&amp;p[url]=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1978STATE273765_d.html"><img src="/plusd/images/Facebook-ico.png" /></a>
+</div>
+
+<br style="clear: both;" />
+</div></div>
+
+<!--<div class="pane-tab"><div class="pane-header tab-right tab-find">Find</div><div class="pane-content pane-find">-->
+<!--</div></div>-->
+
+<!--<div id="tagged-text"> -->
+	<div id="pane-root" style="display:none">
+		<div id="pane-tabs"></div>
+
+		<div id="pane-contents"></div>
+
+	</div>
+<!--</div>-->
+<div class="pane-content pane-extra">
+<div class="dnpage visible">
+<h1>Help Expand The Public Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+
+
+</div>
+
+</div>
+<br />
+<script type="text/javascript" src="/plusd/js/mootools-core-and-more.js"></script>
+<script type="text/javascript" src="/plusd/js/efatmarker.min.js"></script>
+<script type="text/javascript">
+(function(){
+	window.addEvent('domready', function(){
+	        $$("#showhide").addEvent( "click", function() {
+			$$(".text-header").toggleClass("hidden");
+			t=$$("#showhide");
+			if(t.get("html")=="Show&nbsp;Headers")
+				t.set("html", "Hide&nbsp;Headers");
+			else
+				t.set("html", "Show&nbsp;Headers");
+		} );
+
+		var pane_root = $('pane-root'),
+			pane_tabs = $('pane-tabs'),
+			pane_contents = $('pane-contents'),
+			panes = $$('.pane-tab'),
+			num_panes = panes.length,
+			i, pane,
+			pane_header,
+			pane_content;
+		var activate_tab = function(target) {
+			$$('#pane-contents .pane-content').each(function(e,i){
+				if (i === target) {
+					e.addClass('top');
+					}
+				else {
+					e.removeClass('top');
+					}
+				});
+			$$('#pane-tabs .pane-header').each(function(e,i){
+				if (i === target) {
+					e.removeClass('nottop');
+					e.addClass('ontop');
+					}
+				else {
+					e.addClass('nottop');
+					e.removeClass('ontop');
+					}
+				});
+			};
+		for (i=0; i<num_panes; i++) {
+			pane = panes[i];
+			pane_header = pane.getElement('.pane-header');
+			pane_tabs.grab(pane_header);
+			pane_header.addEvent('click', function(){
+				var target = $('pane-tabs').getChildren().indexOf(this);
+				activate_tab(target);
+				});
+			pane_content = pane.getElement('.pane-content');
+			pane_contents.grab(pane_content);
+			pane.destroy();
+			}
+		activate_tab(0);
+		$('pane-root').style.display = '';
+		}); /* event handler function() */
+	})(); /* namespace function() */
+</script>
+<div id="efm-button">
+	<div id="efm-menu">
+		<h3 style="margin:0 0 2px 0">e-Highlighter</h3>
+		<a id="efm-permalink" class="efm-need-highlight" href="" style="margin-bottom:0;padding-bottom:0;"></a>
+		<p style="margin-top:0;padding-top:0" class="efm-need-highlight">Click to send permalink to address bar, or right-click to copy permalink.</p>
+		<a id="efm-twitter-button" class="efm-need-highlight" href="#" target="_blank"><img src="/plusd/images/tweetn.png" alt="Tweet" title="Tweet these highlights" style="vertical-align:middle"> these highlights</a>
+		<p style="margin:0.5em 0;padding:0;border-top:1px dotted #ccc;height:1px"></p>
+		<a id="efm-unhighlightall" class="efm-need-highlight">Un-highlight all</a>
+		<a id="efm-unhighlight">Un-highlight selection<span>u</span></a>
+		<a id="efm-highlight">Highlight selection<span>h</span></a>
+		</div>
+	</div>
+</div></div></div>
+<script type="text/javascript">
+
+(function(){
+	window.addEvent('domready', function(){
+
+		var markerButton = $('efm-button');
+		if ( markerButton ) {
+			eMarker = new EFatMarker($('content-main'));
+			eMarker.tokenToSpans(); // apply whatever token is there
+			// need to act on mousedown or else selection disappear
+			markerButton.addEvent('mousedown', function(){
+				eMarker.interpretSelection(true);
+				return false;
+				});
+			$('efm-unhighlightall').addEvent('mousedown', function(){
+				eMarker.unhighlightAll(true);
+				return false;
+				});
+			$('efm-unhighlight').addEvent('mousedown', function(){
+				eMarker.unhighlightSelection(true);
+				return false;
+				});
+			$('efm-highlight').addEvent('mousedown', function(){
+				eMarker.highlightSelection(true);
+				return false;
+				});
+			$('efm-permalink').addEvent('mousedown', function(){
+				window.location.href = this.href;
+				return false;
+				});
+			// if Mootools Keyboard is available, use it
+			if (Keyboard) {
+				var keyboard = new Keyboard({
+					defaultEventType: 'keyup',
+					events: {
+						'h': function(){
+							eMarker.highlightSelection(true);
+							},
+						'u': function(){
+							eMarker.unhighlightSelection(true);
+							}
+						}
+					});
+				keyboard.activate();
+				}
+			eMarker.syncDOM();
+			// auto scroll to first highlight, if any
+			if (eMarker.hasSpans()) {
+				var scroll = new Fx.Scroll(window,{offset:{'x':0,'y':-100}}),
+					highlights = $$('#content-main .efm-hi');
+				if (highlights.length > 0) {
+					scroll.toElement(highlights[0]);
+					}
+				}
+			}
+		});
+	})();
+
+</script>
+
+<div class="dnflood"></div>
+<div class="dnbutton">
+<div class="dnmain">
+<h1><span class="dnclose">X</span>Help Expand The Public<br />Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+</div>
+</div>
+
+</div>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<link href="/static/css/styles_footer.css" rel="stylesheet">
+<footer id="page-footer" class="footer-recommendations">
+  <div class="footer-wrapper">
+    <div class="recommendation-container">
+      <a href="#" class="top">Top</a>
+      
+        <ul class="recommendation-links">
+                <li class="recommendation">
+                    <a href="https://our.wikileaks.org" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton666.png" width="360" height="240" />
+                        </div>
+                        <p><p>WL Research Community - user contributed research based on documents published by WikiLeaks. 
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.torproject.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton401.png" width="360" height="240" />
+                        </div>
+                        <p><p>Tor is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://tails.boum.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton405.png" width="360" height="240" />
+                        </div>
+                        <p><p> Tails is a live operating system, that you can start on almost any computer from a DVD, USB stick, or SD card. It aims at preserving your privacy and anonymity.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.couragefound.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton404.png" width="360" height="240" />
+                        </div>
+                        <p><p>The Courage Foundation is an international organisation that supports those who risk life or liberty to make significant contributions to the historical record.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.bitcoin.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton403.png" width="360" height="240" />
+                        </div>
+                        <p><p>Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network.
+</p></p>
+                    </a>
+                </li>
+            </li>
+        </ul>
+      
+      <ul class="social-links">
+        <li>
+          <a href="https://www.facebook.com/wikileaks" target="_blank" alt="Facebook">
+            <img src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" target="_blank" alt="Twitter">
+            <img src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
