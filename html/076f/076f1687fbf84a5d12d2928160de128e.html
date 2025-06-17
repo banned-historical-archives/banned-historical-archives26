@@ -1,0 +1,2373 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/cerulean.min.css" rel="stylesheet">
+<link href="/bootstrap/css/new-gen.css" rel="stylesheet">
+<link href="/bootstrap/css/submit.css" rel="stylesheet">
+<script type="text/javascript" src="/plusd/js/jquery.min.js"></script>
+<script type="text/javascript" src="/plusd/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<script type="text/javascript" src="/plusd/js/wikipedia.js"></script>
+<script type="text/javascript" src="/plusd/js/qtip.min.js"></script>
+<script type="text/javascript" src="/plusd/js/idle-timer.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+
+(function($) {
+	var show_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").show();
+	}
+	var hide_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").hide();
+	}
+	$(document).idleTimer(180000);
+	$(document).on("idle.idleTimer", show_button);
+	$(document).ready(function() {
+		if( typeof setupDoubleClick == 'function' )
+			setupDoubleClick('http://en.wikipedia.org/w/index.php', 'british', 'tagged-text', 4, "_blank", "/words/ps.json");
+		var current = Math.floor(( new Date( ) ).getTime( )/1000);
+
+		$("#ddonate").click(show_button);
+		$(".dnclose").click(hide_button);
+		$('a.i').each( function() {
+			i=$(this);
+			i.attr("alt", descr[i.attr("title")]);
+		} );
+		$('a.i').qtip( {
+			show: {
+				event: 'click',
+				solo: true
+			},
+			hide: 'click',
+			content: {
+				attr: 'alt',
+				title: {
+					button: true
+				}
+			},
+			style: {
+				classes: 'qtip-blue qtip-shadow'
+			}
+		} );
+
+	} );
+
+
+	var descr = {
+	'Subject': 'Subject line of the document','From': 'Who/where sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-fr/\">A list of origins, with citations for any acronyms used, is available here.</a>','To': 'Who/where received the document.<br /><br /><a href=\"/plusd/about-to/\" class=\"j\">A list of destinations, with citations for any acronyms used, is available here.</a>','Original Classification': 'Classification the document was originally given when produced.<br /><br /><a href=\"/plusd/about-oc/\" class=\"j\">Citations for acronyms used are available here.</a>','Current Classification': 'Classification the document currently holds.<br /><br /><a href=\"/plusd/about-cc/\" class=\"j\">Citations for acronyms used are available here.</a>','Handling Restrictions': 'All handling restrictions governing the document distribution that have been used to date.<br /><br /><i>In the metadata of the Kissinger Cables this field is called \'Previous Handling Restrictions\'.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i><br /><br /><a href=\"/plusd/about-hr/\" class=\"j\">Citations for acronyms used are available here.</a>','Archive Status': 'Original documents not deleted or lost by State Department after review are available in one of four formats:<ul><li>Electronic Telegram - declassified and made available (content and metadata available)</li><li>Electronic Telegram Withdrawal Card - telegram not declassified, or was declassified but not released for other reasons (limited metadata available)</li><li>P-reel Index - Index card for other document type that is stored on microfilm (only metadata available)</li><li>P-reel Index Withdrawal Card - P-reel index card that was not declassified, or was declassified but not released for other reasons (limited metadata available)</li></ul><br /><i class=\"b\">The Kissinger Cables\' metadata does not have this field. It is taken from subsets the documents were released in after State Department review.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Type': 'Correspondence type or format of original document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TE\' (Telegram).</i><br /><br /><a href=\"/plusd/about-ty/\" class=\"j\">Citations for acronyms used are available here.</a>','Locator': 'Where the original document is now held - online or on microfilm, or remains in \"ADS\" (State Department\'s 1973 Automated Data System of indexing by TAGS of electronic telegrams and P-reels) with the text either garbled, not converted or unretrievable.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TEXT ONLINE\'.</i>','Executive Order': 'Executive Order information - often a reference to the E.O. governing the declassification/downgrade of the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Markings': 'Markings of declassification/release review of the document.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'. </i>','Enclosure': 'Attachments or other items sent with the original document. These are not necessarily currently held in this library.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.','Concepts': 'Keywords of subjects dealt with in the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\' for this field.</i>','TAGS': 'Traffic Analysis by Geography and Subject (TAGS)<br /><br />There are geographic, organization and subject \"TAGS\" - the classification system implemented by the Department of State for its central files in 1973.<br /><br /><a href=\"/plusd/about-ta/\" class=\"j\">A list of TAGS, with citations for any acronyms used, is available here.</a>','Office': 'Which United States government office or bureau is dealing with the topics the document concerns.<br /><br /><a href=\"/plusd/about-of/\" class=\"j\">A list offices, with citations for acronym expansions, is available here.</a>','Office Origin': 'Which State Department office or bureau sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Office Action': 'Which State Department office or bureau received the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Character Count': 'The number of characters, including spaces, in the document.','Date': 'The date the document was created.','Canonical ID': 'Unique document identification number.<br /><br /><i>We have created a canonical ID by taking the original document ID and adding a \'_\' at the end and then WikiLeaks\' annotation for different datasets: Cablegate = a, the Kissinger Cables = b, etc. If document IDs are duplicated in the original datasets we number each duplicate, eg 1976WARSAW05657_b2 is the second document with that ID in the Kissinger Cables.</i>','Other cables with the same ID': 'Documents that are linked, for example a P-reel index and the document it is the index for. Or documents that were originally given the same document ID number.',	};
+
+
+
+})(jQuery);
+</script>
+<title>Cable: 1976STATE233038_b</title>
+<link rel="stylesheet" type="text/css" href="/plusd/css/qtip.min.css" id="qtip">
+<link rel="stylesheet" type="text/css" href="/plusd/css/main.css" id="maincss">
+<link rel="stylesheet" type="text/css" href="/plusd/css/print.css" media="print" id="printcss">
+</head>
+<body style="text-align: center;">
+    <div id="submit_wlkey" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<p>Key fingerprint <b>9EF0 C41A FBA5 64AA 650A  0259 9C6D CD17 283E 454C</b></p>
+		<pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+=5a6T
+-----END PGP PUBLIC KEY BLOCK-----
+
+		</pre>
+	</div>
+</div>
+
+<div id="submit_help_contact" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Contact</h3>
+		<p>If you need help using Tor you can contact WikiLeaks for assistance in setting it up using our simple webchat available at: <a href="https://wikileaks.org/talk">https://wikileaks.org/talk</a></p>
+		<p>If you can use Tor, but need to contact WikiLeaks for other reasons use our secured webchat available at <b>http://wlchatc3pjwpli5r.onion</b></p>
+		<p>We recommend contacting us over Tor if you can.</p>
+	</div>
+</div>
+
+<div id="submit_help_tor" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Tor</h3>
+		<p><a href="https://www.torproject.org">Tor</a> is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.</p>
+		<p>In order to use the WikiLeaks public submission system as detailed above you can download the Tor Browser Bundle, which is a Firefox-like browser available for Windows, Mac OS X and GNU/Linux and pre-configured to connect using the anonymising system Tor.</p>
+		<h4>Tails</h4>
+		<p>If you are at high risk and you have the capacity to do so, you can also access the submission system through a secure operating system called <a href="https://tails.boum.org">Tails</a>. Tails is an operating system launched from a USB stick or a DVD that aim to leaves no traces when the computer is shut down after use and automatically routes your internet traffic through Tor. Tails will require you to have either a USB stick or a DVD at least 4GB big and a laptop or desktop computer.</p>
+	</div>
+</div>
+
+<div id="submit_help_tips" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>Tips</h3>
+		<p>Our submission system works hard to preserve your anonymity, but we recommend you also take some of your own precautions. Please review these basic guidelines. </p>
+		<div>
+			<h4>1. Contact us if you have specific problems</h4>
+			<p>If you have a very large submission, or a submission with a complex format, or are a high-risk source, please <a href="#submit_help_contact">contact us</a>. In our experience it is always possible to find a custom solution for even the most seemingly difficult situations.</p>
+		</div>
+		<div>
+			<h4>2. What computer to use</h4>
+			<p>If the computer you are uploading from could subsequently be audited in an investigation, consider using a computer that is not easily tied to you. Technical users can also use <a href="https://tails.boum.org">Tails</a> to help ensure you do not leave any records of your submission on the computer.</p>
+		</div>
+		<div>
+			<h4>3. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+	</div>
+</div>
+
+<div id="submit_help_after" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>After</h3>
+
+		<div>
+			<h4>1. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+		<div>
+			<h4>2. Act normal</h4>
+			<p>If you are a high-risk source, avoid saying anything or doing anything after submitting which might promote suspicion. In particular, you should try to stick to your normal routine and behaviour.</p>
+		</div>
+
+		<div>
+			<h4>3. Remove traces of your submission</h4>
+			<p>If you are a high-risk source and the computer you prepared your submission on, or uploaded it from, could subsequently be audited in an investigation, we recommend that you format and dispose of the computer hard drive and any other storage media you used.</p>
+			<p>In particular, hard drives retain data after formatting which may be visible to a digital forensics team and flash media (USB sticks, memory cards and SSD drives) retain data even after a secure erasure. If you used flash media to store sensitive data, it is important to destroy the media.</p>
+			<p>If you do this and are a high-risk source you should make sure there are no traces of the clean-up, since such traces themselves may draw suspicion.</p>
+			<div>
+				<h4>4. If you face legal action</h4>
+				<p>If a legal action is brought against you as a result of your submission, there are organisations that may help you. The Courage Foundation is an international organisation dedicated to the protection of journalistic sources. You can find more details at <a href="https://www.couragefound.org">https://www.couragefound.org</a>.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="submit" class="submit_banner">
+	<div class="container">
+		<div class="page-header">
+			<h1>Submit documents to WikiLeaks</h1>
+			<a class="remove-button" href="#"><span class="glyphicon glyphicon-remove-circle"></span></a>
+		</div>
+		<p>WikiLeaks publishes documents of political or historical importance that are censored or otherwise suppressed. We specialise in strategic global publishing and large archives.</p>
+		<p>The following is the address of our secure site where you can anonymously upload your documents to WikiLeaks editors. You can only access this submissions system through Tor. (See our <a href="#submit_help_tor">Tor tab</a> for more information.) We also advise you to read our <a href="#submit_help_tips">tips for sources</a> before submitting.</p>
+
+		<div class="alert alert-info">
+			<div class="onion-url">http://ibfckmpsmylhbfovflajicjgldsqpc75k5w454irzwlh7qifgglncbad.onion </div>
+			<!--<div>
+				Copy this address into your Tor browser. Advanced users, if they wish, can also add a further layer of encryption to their submission using <a href="#submit_wlkey">our public PGP key</a>.
+			</div>-->
+		</div>
+
+		<p>If you cannot use Tor, or your submission is very large, or you have specific requirements, WikiLeaks provides several alternative methods. <a href="#submit_help_contact">Contact us</a> to discuss how to proceed.</p>
+	</div>
+</div>
+<div id="submit_help_buttons" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="main">
+	    
+
+<link href="/static/css/styles_topnav.css" rel="stylesheet">
+<link href="/static/css/styles_sidenav.css" rel="stylesheet">
+<div class="top-navigation">
+  <nav class="navbar">
+      <a href="#menu" class="mobile-only hot-dog nav-element">
+      </a>
+    <div class="nav-logo">
+      <a href="https://wikileaks.org">
+        <h1>WikiLeaks</h1>
+      </a>
+    </div>
+    <div class="action-buttons">
+      <a class="button-face donate-link" href="https://shop.wikileaks.org/donate">Donate</a>
+      <a class="button-face submit-link" href="#submit">Submit</a>
+    </div>
+    <form class="global-search" method="get" action="https://search.wikileaks.org/">
+      <input type="text" name="q" placeholder="Search">
+      <button class="btn-search" type="submit"></button>
+    </form>
+    <div class="main-nav">
+
+        <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+            </li>
+
+            <li>
+              <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+            </li>
+
+        </ul>
+
+    </div>
+  </nav>
+</div>
+
+<nav id="menu" class="side-nav rub">
+  <div class="menu-wrapper">
+    <a class="close-btn nav-element" href="#"></a>
+
+      <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+
+          </li>
+
+          <li>
+            <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+
+          </li>
+
+      </ul>
+
+    <aside class="friends mobile-only">
+
+        <ul class="first-level">
+                <li>
+                <a href="https://our.wikileaks.org" target="_blank">our.wikileaks.org</a>
+                </li>
+                <li>
+                <a href="https://www.torproject.org/" target="_blank">Tor Project</a>
+                </li>
+                <li>
+                <a href="https://tails.boum.org/" target="_blank">Tails</a>
+                </li>
+                <li>
+                <a href="https://www.couragefound.org/" target="_blank">Courage</a>
+                </li>
+                <li>
+                <a href="https://www.bitcoin.org/" target="_blank">Bitcoin</a>
+                </li>
+        
+        </ul>
+
+    </aside>
+    <aside class="social mobile-only">
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/wikileaks" class="nav-element" target="_blank" alt="Facebook">
+            <img class="img-responsive" src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" class="nav-element" target="_blank" alt="Twitter">
+            <img class="img-responsive" src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</nav>
+
+
+<div id="overall">
+
+<div id="leftmenu">
+
+        <center><img src="/plusd/images/wl2.jpg" alt="WikiLeaks" /></center>
+        <a class="button" href="/plusd/pressrelease/">Press release</a>
+        <a class="button" href="/plusd/about/">About PlusD</a>
+
+        <div class="pick">
+	<h3>Browse by creation date</h3>
+
+<a href="/plusd/?q=&qtfrom=1966-01-01&qtto=1966-12-31#result">1966</a>
+<a href="/plusd/?q=&qtfrom=1972-01-01&qtto=1972-12-31#result">1972</a>
+<a href="/plusd/?q=&qtfrom=1973-01-01&qtto=1973-12-31#result">1973</a>
+<a href="/plusd/?q=&qtfrom=1974-01-01&qtto=1974-12-31#result">1974</a>
+<a href="/plusd/?q=&qtfrom=1975-01-01&qtto=1975-12-31#result">1975</a>
+<a href="/plusd/?q=&qtfrom=1976-01-01&qtto=1976-12-31#result">1976</a>
+<a href="/plusd/?q=&qtfrom=1977-01-01&qtto=1977-12-31#result">1977</a>
+<a href="/plusd/?q=&qtfrom=1978-01-01&qtto=1978-12-31#result">1978</a>
+<a href="/plusd/?q=&qtfrom=1979-01-01&qtto=1979-12-31#result">1979</a>
+<a href="/plusd/?q=&qtfrom=1985-01-01&qtto=1985-12-31#result">1985</a>
+<a href="/plusd/?q=&qtfrom=1986-01-01&qtto=1986-12-31#result">1986</a>
+<a href="/plusd/?q=&qtfrom=1987-01-01&qtto=1987-12-31#result">1987</a>
+<a href="/plusd/?q=&qtfrom=1988-01-01&qtto=1988-12-31#result">1988</a>
+<a href="/plusd/?q=&qtfrom=1989-01-01&qtto=1989-12-31#result">1989</a>
+<a href="/plusd/?q=&qtfrom=1990-01-01&qtto=1990-12-31#result">1990</a>
+<a href="/plusd/?q=&qtfrom=1991-01-01&qtto=1991-12-31#result">1991</a>
+<a href="/plusd/?q=&qtfrom=1992-01-01&qtto=1992-12-31#result">1992</a>
+<a href="/plusd/?q=&qtfrom=1993-01-01&qtto=1993-12-31#result">1993</a>
+<a href="/plusd/?q=&qtfrom=1994-01-01&qtto=1994-12-31#result">1994</a>
+<a href="/plusd/?q=&qtfrom=1995-01-01&qtto=1995-12-31#result">1995</a>
+<a href="/plusd/?q=&qtfrom=1996-01-01&qtto=1996-12-31#result">1996</a>
+<a href="/plusd/?q=&qtfrom=1997-01-01&qtto=1997-12-31#result">1997</a>
+<a href="/plusd/?q=&qtfrom=1998-01-01&qtto=1998-12-31#result">1998</a>
+<a href="/plusd/?q=&qtfrom=1999-01-01&qtto=1999-12-31#result">1999</a>
+<a href="/plusd/?q=&qtfrom=2000-01-01&qtto=2000-12-31#result">2000</a>
+<a href="/plusd/?q=&qtfrom=2001-01-01&qtto=2001-12-31#result">2001</a>
+<a href="/plusd/?q=&qtfrom=2002-01-01&qtto=2002-12-31#result">2002</a>
+<a href="/plusd/?q=&qtfrom=2003-01-01&qtto=2003-12-31#result">2003</a>
+<a href="/plusd/?q=&qtfrom=2004-01-01&qtto=2004-12-31#result">2004</a>
+<a href="/plusd/?q=&qtfrom=2005-01-01&qtto=2005-12-31#result">2005</a>
+<a href="/plusd/?q=&qtfrom=2006-01-01&qtto=2006-12-31#result">2006</a>
+<a href="/plusd/?q=&qtfrom=2007-01-01&qtto=2007-12-31#result">2007</a>
+<a href="/plusd/?q=&qtfrom=2008-01-01&qtto=2008-12-31#result">2008</a>
+<a href="/plusd/?q=&qtfrom=2009-01-01&qtto=2009-12-31#result">2009</a>
+<a href="/plusd/?q=&qtfrom=2010-01-01&qtto=2010-12-31#result">2010</a>
+
+        </div>
+
+        <div class="sort">
+	<h3>Browse by Classification</h3>
+
+<a href="/plusd/?q=&qfoclass=UNCLASSIFIED#result" title="UNCLASSIFIED (1339531 documents)">UNCLASSIFIED</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL#result" title="CONFIDENTIAL (503750 documents)">CONFIDENTIAL</a><a href="/plusd/?q=&qfoclass=LIMITED+OFFICIAL+USE#result" title="LIMITED OFFICIAL USE (435536 documents)">LIMITED OFFICIAL USE</a><a href="/plusd/?q=&qfoclass=SECRET#result" title="SECRET (120598 documents)">SECRET</a><a href="/plusd/?q=&qfoclass=UNCLASSIFIED%2F%2FFOR+OFFICIAL+USE+ONLY#result" title="UNCLASSIFIED//FOR OFFICIAL USE ONLY (58095 documents)">UNCLASSIFIED//FOR OFFICIAL USE ONLY</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL%2F%2FNOFORN#result" title="CONFIDENTIAL//NOFORN (4678 documents)">CONFIDENTIAL//NOFORN</a><a href="/plusd/?q=&qfoclass=SECRET%2F%2FNOFORN#result" title="SECRET//NOFORN (4330 documents)">SECRET//NOFORN</a>
+        </div>
+
+	<div class="sort">
+	<h3>Browse by Handling Restriction</h3>
+
+<a href="/plusd/?q=&qforiginalhandlingrestriction=EXDIS#result" title="EXDIS - Exclusive Distribution Only (71108 documents)">EXDIS - Exclusive Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=ONLY#result" title="ONLY - Eyes Only (32583 documents)">ONLY - Eyes Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LIMDIS#result" title="LIMDIS - Limited Distribution Only (25098 documents)">LIMDIS - Limited Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NODIS#result" title="NODIS - No Distribution (other than to persons indicated) (24437 documents)">NODIS - No Distribution (other than to persons indicated)</a><a href="/plusd/?q=&qforiginalhandlingrestriction=STADIS#result" title="STADIS - State Distribution Only (20286 documents)">STADIS - State Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CHEROKEE#result" title="CHEROKEE - Limited to senior officials (4343 documents)">CHEROKEE - Limited to senior officials</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NOFORN#result" title="NOFORN - No Foreign Distribution (2197 documents)">NOFORN - No Foreign Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LOU#result" title="LOU - Limited Official Use (598 documents)">LOU - Limited Official Use</a><a href="/plusd/?q=&qforiginalhandlingrestriction=SENSITIVE#result" title="SENSITIVE -  (43 documents)">SENSITIVE - </a><a href="/plusd/?q=&qforiginalhandlingrestriction=BU#result" title="BU - Background Use Only (3 documents)">BU - Background Use Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CONDIS#result" title="CONDIS - Controlled Distribution (1 documents)">CONDIS - Controlled Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=US#result" title="US - US Government Only (1 documents)">US - US Government Only</a>	</div>
+
+	<div class="pick wide">
+	<h3>Browse by TAGS</h3>
+<a href="/plusd/?q=&qftags=US#result" title="US - United States (553685 documents)">US</a> <a href="/plusd/?q=&qftags=PFOR#result" title="PFOR - Political Affairs--Foreign Policy and Relations (294672 documents)">PFOR</a> <a href="/plusd/?q=&qftags=PGOV#result" title="PGOV - Political Affairs--Government; Internal Governmental Affairs (180409 documents)">PGOV</a> <a href="/plusd/?q=&qftags=PREL#result" title="PREL - Political Affairs--External Political Relations (149906 documents)">PREL</a> <a href="/plusd/?q=&qftags=ETRD#result" title="ETRD - Economic Affairs--Foreign Trade (124244 documents)">ETRD</a> <a href="/plusd/?q=&qftags=UR#result" title="UR - Soviet Union (USSR) (117139 documents)">UR</a> <a href="/plusd/?q=&qftags=OVIP#result" title="OVIP - Operations--VIP Travel Arrangements (114816 documents)">OVIP</a> <a href="/plusd/?q=&qftags=ASEC#result" title="ASEC - Administration--Security (114594 documents)">ASEC</a> <a href="/plusd/?q=&qftags=OGEN#result" title="OGEN - Operations--General (114085 documents)">OGEN</a> <a href="/plusd/?q=&qftags=CASC#result" title="CASC - Consular Affairs--Assistance to Citizens (113486 documents)">CASC</a> <a href="/plusd/?q=&qftags=PINT#result" title="PINT - Political Affairs--Internal Political Affairs (104641 documents)">PINT</a> <a href="/plusd/?q=&qftags=EFIN#result" title="EFIN - Economic Affairs--Financial and Monetary Affairs (102225 documents)">EFIN</a> <a href="/plusd/?q=&qftags=BEXP#result" title="BEXP - Business Services--Trade Expansion and Promotion (102142 documents)">BEXP</a> <a href="/plusd/?q=&qftags=OEXC#result" title="OEXC - Operations--Educational and Cultural Exchange Operations (89751 documents)">OEXC</a> <a href="/plusd/?q=&qftags=EAID#result" title="EAID - Economic Affairs--Foreign Assistance (80469 documents)">EAID</a> <a href="/plusd/?q=&qftags=CVIS#result" title="CVIS - Consular Affairs--Visas (79634 documents)">CVIS</a> <a href="/plusd/?q=&qftags=OTRA#result" title="OTRA - Operations--Travel and Visits (79042 documents)">OTRA</a> <a href="/plusd/?q=&qftags=ENRG#result" title="ENRG - Economic Affairs--Energy and Power (76814 documents)">ENRG</a> <a href="/plusd/?q=&qftags=OCON#result" title="OCON - Operations--Conferences and Meetings (76271 documents)">OCON</a> <a href="/plusd/?q=&qftags=ECON#result" title="ECON - Economic Affairs--Economic Conditions, Trends and Potential (75832 documents)">ECON</a> <a href="/plusd/?q=&qftags=NATO#result" title="NATO - North Atlantic Treaty Organization (74653 documents)">NATO</a> <a href="/plusd/?q=&qftags=PINS#result" title="PINS - Political Affairs--Internal Security (72716 documents)">PINS</a> <a href="/plusd/?q=&qftags=GE#result" title="GE - Germany (East) (69261 documents)">GE</a> <a href="/plusd/?q=&qftags=JA#result" title="JA - Japan; Okinawa; (67491 documents)">JA</a> <a href="/plusd/?q=&qftags=UK#result" title="UK - United Kingdom (65645 documents)">UK</a> <a href="/plusd/?q=&qftags=IS#result" title="IS - Israel (61813 documents)">IS</a> <a href="/plusd/?q=&qftags=MARR#result" title="MARR - Military and Defense Affairs--Military and Defense Arrangements (59054 documents)">MARR</a> <a href="/plusd/?q=&qftags=PARM#result" title="PARM - Political Affairs--Arms Controls and Disarmament (58794 documents)">PARM</a> <a href="/plusd/?q=&qftags=UN#result" title="UN - United Nations (58176 documents)">UN</a> <a href="/plusd/?q=&qftags=EG#result" title="EG - Egypt (57176 documents)">EG</a> <a href="/plusd/?q=&qftags=FR#result" title="FR - France (56597 documents)">FR</a> <a href="/plusd/?q=&qftags=PHUM#result" title="PHUM - Political Affairs--Human Rights (55302 documents)">PHUM</a> <a href="/plusd/?q=&qftags=SREF#result" title="SREF - Social Affairs--Refugees (53585 documents)">SREF</a> <a href="/plusd/?q=&qftags=EAIR#result" title="EAIR - Economic Affairs--Aeronautics and Aviation; Civil Aviation (52511 documents)">EAIR</a> <a href="/plusd/?q=&qftags=MASS#result" title="MASS - Military and Defense Affairs--Military Assistance and Sales (51560 documents)">MASS</a> <a href="/plusd/?q=&qftags=APER#result" title="APER - Administration--Personnel (51272 documents)">APER</a> <a href="/plusd/?q=&qftags=SNAR#result" title="SNAR - Social Affairs--Narcotics (49299 documents)">SNAR</a> <a href="/plusd/?q=&qftags=PINR#result" title="PINR - Political Affairs--Intelligence (48667 documents)">PINR</a> <a href="/plusd/?q=&qftags=EAGR#result" title="EAGR - Economic Affairs--Agriculture and Forestry (47350 documents)">EAGR</a> <a href="/plusd/?q=&qftags=PDIP#result" title="PDIP - Political Affairs--Diplomatic and Consular Representation (47061 documents)">PDIP</a> <a href="/plusd/?q=&qftags=AORG#result" title="AORG - Administration--International Organization Administration (42798 documents)">AORG</a> <a href="/plusd/?q=&qftags=PORG#result" title="PORG - Political Affairs--Policy Relations With International Organizations (42754 documents)">PORG</a> <a href="/plusd/?q=&qftags=MX#result" title="MX - Mexico (42577 documents)">MX</a> <a href="/plusd/?q=&qftags=TU#result" title="TU - Turkey (42476 documents)">TU</a> <a href="/plusd/?q=&qftags=ELAB#result" title="ELAB - Economic Affairs--Labor and Manpower; Labor Sector Affairs (41921 documents)">ELAB</a> <a href="/plusd/?q=&qftags=IN#result" title="IN - India (41702 documents)">IN</a> <a href="/plusd/?q=&qftags=CA#result" title="CA - Canada (41623 documents)">CA</a> <a href="/plusd/?q=&qftags=SCUL#result" title="SCUL - Social Affairs--Cultural Affairs (41509 documents)">SCUL</a> <a href="/plusd/?q=&qftags=CH#result" title="CH - China (Mainland) (40426 documents)">CH</a> <a href="/plusd/?q=&qftags=IR#result" title="IR - Iran (39924 documents)">IR</a> <a href="/plusd/?q=&qftags=IT#result" title="IT - Italy (39454 documents)">IT</a> <a href="/plusd/?q=&qftags=XF#result" title="XF - Middle East (38273 documents)">XF</a> <a href="/plusd/?q=&qftags=GW#result" title="GW - Germany (West) (37945 documents)">GW</a> <a href="/plusd/?q=&qftags=EINV#result" title="EINV - Economic Affairs--Investments; Foreign Investments (37616 documents)">EINV</a> <a href="/plusd/?q=&qftags=TH#result" title="TH - Thailand (37385 documents)">TH</a> <a href="/plusd/?q=&qftags=TECH#result" title="TECH - Technology and Science--Technology (36578 documents)">TECH</a> <a href="/plusd/?q=&qftags=SENV#result" title="SENV - Social Affairs--Environment (35665 documents)">SENV</a> <a href="/plusd/?q=&qftags=OREP#result" title="OREP - Operations--Congressional Travel (35140 documents)">OREP</a> <a href="/plusd/?q=&qftags=KS#result" title="KS - Korea (South) (34546 documents)">KS</a> <a href="/plusd/?q=&qftags=EGEN#result" title="EGEN - Economic Affairs--General (34287 documents)">EGEN</a> <a href="/plusd/?q=&qftags=PEPR#result" title="PEPR - PEPR (33866 documents)">PEPR</a> <a href="/plusd/?q=&qftags=MILI#result" title="MILI - Military and Defense Affairs--General (33710 documents)">MILI</a> <a href="/plusd/?q=&qftags=SHUM#result" title="SHUM - Social Affairs--Human Rights (33098 documents)">SHUM</a> <a href="/plusd/?q=&qftags=KISSINGER%2C+HENRY+A#result" title="KISSINGER, HENRY A - Henry Kissinger (32848 documents)">KISSINGER, HENRY A</a> <a href="/plusd/?q=&qftags=PL#result" title="PL - Poland (31163 documents)">PL</a> <a href="/plusd/?q=&qftags=BR#result" title="BR - Brazil (30797 documents)">BR</a> <a href="/plusd/?q=&qftags=RP#result" title="RP - Philippines (30198 documents)">RP</a> <a href="/plusd/?q=&qftags=GR#result" title="GR - Greece; Crete (30183 documents)">GR</a> <a href="/plusd/?q=&qftags=SF#result" title="SF - South Africa (30161 documents)">SF</a> <a href="/plusd/?q=&qftags=AFSP#result" title="AFSP - Administration--Post Administration (29315 documents)">AFSP</a> <a href="/plusd/?q=&qftags=SP#result" title="SP - Spain (29108 documents)">SP</a> <a href="/plusd/?q=&qftags=PTER#result" title="PTER - Political Affairs--Terrorists and Terrorism (28839 documents)">PTER</a> <a href="/plusd/?q=&qftags=MOPS#result" title="MOPS - Military and Defense Affairs--Military Operations (28821 documents)">MOPS</a> <a href="/plusd/?q=&qftags=SA#result" title="SA - Saudi Arabia (28190 documents)">SA</a> <a href="/plusd/?q=&qftags=UNGA#result" title="UNGA - UN General Assembly (27867 documents)">UNGA</a> <a href="/plusd/?q=&qftags=CGEN#result" title="CGEN - Consular Affairs--General (27680 documents)">CGEN</a> <a href="/plusd/?q=&qftags=ESTC#result" title="ESTC - Economic Affairs--Strategic Trade Controls (27627 documents)">ESTC</a> <a href="/plusd/?q=&qftags=SOPN#result" title="SOPN - Social Affairs--Public Opinion and Information (27583 documents)">SOPN</a> <a href="/plusd/?q=&qftags=RO#result" title="RO - Romania (27560 documents)">RO</a> <a href="/plusd/?q=&qftags=LE#result" title="LE - Lebanon (27323 documents)">LE</a> <a href="/plusd/?q=&qftags=TGEN#result" title="TGEN - Technology and Science--General (27058 documents)">TGEN</a> <a href="/plusd/?q=&qftags=PK#result" title="PK - Pakistan (26991 documents)">PK</a> <a href="/plusd/?q=&qftags=AR#result" title="AR - Argentina (26444 documents)">AR</a> <a href="/plusd/?q=&qftags=NI#result" title="NI - Nigeria (26170 documents)">NI</a> <a href="/plusd/?q=&qftags=OSCI#result" title="OSCI - Operations--Science Grants (25846 documents)">OSCI</a> <a href="/plusd/?q=&qftags=CI#result" title="CI - Chile (25827 documents)">CI</a> <a href="/plusd/?q=&qftags=EEC#result" title="EEC - European Common Market (European Communities); European Economic Community (25827 documents)">EEC</a> <a href="/plusd/?q=&qftags=VS#result" title="VS - South Vietnam (25800 documents)">VS</a> <a href="/plusd/?q=&qftags=YO#result" title="YO -  (25447 documents)">YO</a> <a href="/plusd/?q=&qftags=AFIN#result" title="AFIN - Administration--Financial Services (24705 documents)">AFIN</a> <a href="/plusd/?q=&qftags=OECD#result" title="OECD - Organization for Economic Cooperation and Development (24622 documents)">OECD</a> <a href="/plusd/?q=&qftags=SY#result" title="SY - Syria (24419 documents)">SY</a> <a href="/plusd/?q=&qftags=IZ#result" title="IZ - Iraq (24415 documents)">IZ</a> <a href="/plusd/?q=&qftags=ID#result" title="ID - Indonesia (23865 documents)">ID</a> <a href="/plusd/?q=&qftags=VE#result" title="VE - Venezuela (23792 documents)">VE</a> <a href="/plusd/?q=&qftags=TPHY#result" title="TPHY - Technology and Science--Physical Sciences (23741 documents)">TPHY</a> <a href="/plusd/?q=&qftags=TW#result" title="TW - Taiwan (23233 documents)">TW</a> <a href="/plusd/?q=&qftags=AS#result" title="AS - Australia (23143 documents)">AS</a> <a href="/plusd/?q=&qftags=PBOR#result" title="PBOR - Political Affairs--Boundary and Sovereignity Claims (23066 documents)">PBOR</a> 
+	</div>
+
+
+        <div class="sort" style="clear:both;">
+        <h3>Media Organizations</h3>
+        <a target="_blank" href="http://www.theage.com.au/">Australia - The Age</a>
+        <a target="_blank" href="http://www.pagina12.com.ar/">Argentina - Pagina 12</a>
+        <a target="_blank" href="http://www.apublica.org/?p=4041">Brazil - Publica</a>
+        <a target="_blank" href="https://bivol.bg/">Bulgaria - Bivol</a>
+        <a target="_blank" href="http://www.almasryalyoum.com/ ">Egypt - Al Masry Al Youm</a>
+        <a target="_blank" href="http://www.tanea.gr/">Greece - Ta Nea</a>
+        <a target="_blank" href="http://www.plazapublica.com.gt/content/los-cables-de-wikileaks">Guatemala - Plaza Publica</a>
+        <a target="_blank" href="http://www.haiti-liberte.com/">Haiti - Haiti Liberte</a>
+        <a target="_blank" href="http://www.thehindu.com/">India - The Hindu</a>
+        <a target="_blank" href="http://espresso.repubblica.it/">Italy - L'Espresso</a>
+        <a target="_blank" href="http://www.repubblica.it/">Italy - La Repubblica</a>
+        <a target="_blank" href="http://www.al-akhbar.com/">Lebanon - Al Akhbar</a>
+        <a target="_blank" href="http://www.jornada.unam.mx/ultimas/">Mexico - La Jornada</a>
+        <a target="_blank" href="http://www.publico.es/452776">Spain - Publico</a>
+        <a target="_blank" href="http://www.aftonbladet.se/nyheter/article16421007.ab">Sweden - Aftonbladet</a>
+        <a target="_blank" href="http://www.ap.org/">UK - AP</a>
+        <a target="_blank" href="http://thenation.com">US - The Nation</a>
+        </div>
+	<br style="clear: both;" />
+</div>
+
+<div id="content"><div id="content-main">
+
+<!--<p style="text-align: justify; font-size: medium">Click the <b>Chat</b> button above to join a secure chat channel dedicated to media partner The Kissinger Cables discussion. Please go on this to talk to the others currently working on this project. <br />When the chat window opens type the following in the white text space at the bottom of the screen to assign yourself a recognisable name: <b>/nick Espresso</b> and press enter</p>
+<center><h2 style="font-size: x-large;">Public Library of US Diplomacy: PlusD</h2></center>-->
+
+<center><img src="/plusd/images/plusdb.png" /></center>
+<div id="st" style="clear:both;">&nbsp;</div>
+<div id="topnav">
+        <a class="searchbutton active" href="//search.wikileaks.org/plusd/">Specified Search</a>
+        <a class="searchbutton sbinv" href="/plusd/map" target="_blank">View Map</a>
+        <a class="searchbutton sbinv" href="/plusd/graph" target="_blank">Make Timegraph</a>
+        <a class="searchbutton sbinv" href="/plusd/tags/" target="_blank">View Tags</a>
+        <a class="searchbutton sbinv" href="/plusd/imagelibrary/" target="_blank">Image Library</a>
+</div>
+<div class="sections"> 
+<div class="pane-content">
+	<table id="synopsis">
+		<tr style="background:#eee;">
+			<td colspan="2" style="font-size: medium; padding: 5px;color: #000; font-weight: bold; text-align: center;">TRAVELING PRESS REPORTAGE, MID MORNING, SEPT 20,1976</td>
+		</tr>
+		<tr style="background:#eee;">
+			<td><div class="s_key"><a class="i" title="Date">Date:</a></div><div class="s_val" title=" 1976 September 20, 21:21 (Monday)">1976 September 20, 21:21 (Monday)</div></td>
+			<td><div class="s_key"><a class="i" title="Canonical ID">Canonical ID:</a></div><div class="s_val" title=" 1976STATE233038_b">1976STATE233038_b</div></td>
+		</tr>
+		<tr>
+			<td><div class="s_key"><a class="i" title="Original Classification">Original Classification:</a></div><div class="s_val" title=" UNCLASSIFIED (1339531 documents)">UNCLASSIFIED</div></td>
+			<td><div class="s_key"><a class="i" title="Current Classification">Current Classification:</a></div><div class="s_val" title=" UNCLASSIFIED (2592391 documents)">UNCLASSIFIED</div></td>
+		</tr>
+
+		<tr>
+			<td>
+<div class="s_key"><a class="i" title="Handling Restrictions", ">Handling Restrictions</a></div> <div class="s_val" title="-- N/A or Blank -- (2412734 documents)">-- N/A or Blank --</div><br /></td>
+			<td><div class="s_key"><a class="i" title="Character Count">Character Count:</a></div><div class="s_val" title=" 27752">27752</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Executive Order">Executive Order:</a></div><div class="s_val" title=" -- N/A or Blank -- (1894280 documents)">-- N/A or Blank --</div></td>
+			<td><div class="s_key"><a class="i" title="Locator">Locator:</a></div><div class="s_val" title=" TEXT ON MICROFILM,TEXT ONLINE">TEXT ON MICROFILM,TEXT ONLINE</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="TAGS">TAGS:</a></div><div class="s_val" title=" KISSINGER, HENRY A - Henry Kissinger | OVIP - Operations--VIP Travel Arrangements | SOPN - Social Affairs--Public Opinion and Information | US - United States | XJ - Africa South of the Sahara"><a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=KISSINGER%2C+HENRY+A#result" title="KISSINGER, HENRY A Henry Kissinger (32848 documents)" >KISSINGER, HENRY A<span style="color: #216B7C;"> - Henry Kissinger</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=OVIP#result" title="OVIP Operations: VIP Travel Arrangements (114816 documents)" >OVIP<span style="color: #216B7C;"> - Operations--VIP Travel Arrangements</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=SOPN#result" title="SOPN Social Affairs: Public Opinion and Information (27583 documents)" >SOPN<span style="color: #216B7C;"> - Social Affairs--Public Opinion and Information</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=US#result" title="US United States (553685 documents)" >US<span style="color: #216B7C;"> - United States</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=XJ#result" title="XJ Africa South of the Sahara (2138 documents)" >XJ<span style="color: #216B7C;"> - Africa South of the Sahara</span></a></div></td>
+			<td><div class="s_key"><a class="i" title="Concepts">Concepts:</a></div><div class="s_val" title=" PRESS COMMENTS | TOSEC"><a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=PRESS+COMMENTS#result" title="PRESS COMMENTS (47742 documents)">PRESS COMMENTS</a> <span style=''color:#000;''>|</span> <a style="color: #216B7C; " target="_blank" href="/plusd/?q=&qfconcept=TOSEC#result" title="TOSEC (9741 documents)">TOSEC</a></div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Enclosure">Enclosure:</a></div><div class="s_val" title=" -- N/A or Blank -- (2333922 documents)">-- N/A or Blank --</div></td>
+			<td><div class="s_key"><a class="i" title="Type">Type:</a></div><div class="s_val" title=" TE - Telegram (cable) (2008616 documents)">TE - Telegram (cable)</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc">
+				<div class="s_key"><a class="i" title="Office Origin">Office Origin:</a></div><div class="s_val" title=" ORIGIN PRS - Office of Press Relations (1623 documents)">ORIGIN PRS - Office of Press Relations</div>				<br style="clear:both;"/>
+				<div class="s_key"><a class="i" title="Office Action">Office Action:</a></div><div class="s_val" title=" -- N/A or Blank -- (1411046 documents)">-- N/A or Blank --</div>			</td>
+			<td><div class="s_key"><a class="i" title="Archive Status">Archive Status:</a></div><div class="s_val" title=" Electronic Telegrams (1758257 documents)">Electronic Telegrams</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="From">From:</a></div><div class="s_val" title=" Department of State"><a style="color: #216B7C; " href="/plusd/?q=&qforigin=Department+of+State#result" title="Department of State (655860 documents)">Department of State</a></div></td>
+			<td><div class="s_key"><a class="i" title="Markings">Markings:</a></div><div class="s_val" title=" Margaret P. Grafeld Declassified/Released US Department of State EO Systematic Review 04 MAY 2006 (347411 documents)">Margaret P. Grafeld Declassified/Released US Department of State EO Systematic Review 04 MAY 2006</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="To">To:</a></div><div class="s_val" title=" Secretary of State   | US Delegation Secretary "><a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Secretary of State#result" title="Secretary of State  (1328443 documents)">Secretary of State </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=US Delegation Secretary#result" title="US Delegation Secretary  (9075 documents)">US Delegation Secretary </a></div></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<br />
+
+
+<br style="clear: both;" />
+
+</div>
+<div class="pane-tab"><div class="pane-header">Content</div><div class="pane-content"><div class="text-header hidden">
+
+UNCLASSIFIED
+
+PAGE 01        STATE  233038 TOSEC 270408
+
+62
+ORIGIN PRS-01
+
+INFO  OCT-01  ISO-00  SS-15  SSO-00  CCO-00  AF-08  IO-13  NSCE-00
+
+NSC-05  /043 R
+
+DRAFTED BY S/PRS:JMORDWAY:AVW
+APPROVED BY S/PRS:JMORDWAY
+S/S- PSBRIDGES
+---------------------     106271
+P 202121Z SEP 76 ZFF4
+FM SECSTATE WASHDC
+TO USDEL SECRETARY PRIORITY
+
+UNCLAS STATE 233038 TOSEC 270408
+
+FOR EAGLEBURGER FROM S/PRS
+
+E.O. 11652:   N/A
+
+TAGS:   SOPN (KISSINGER, HENRY A.)
+
+SUBJECT:TRAVELING PRESS REPORTAGE, MID MORNING, SEPT 20,1976</div><div class="text-button" id="showhide">Show&nbsp;Headers</div><div class="text-content"><div id="tagged-text">NO. 26
+
+1.  LA TIMES (JOHNSTON), PRETORIA:  &quot;KISSINGER, SMITH TALK
+FOR 8 HOURS; RESULT UNCERTAIN&quot; - RHODESIAN PM SMITH MET
+FOR NEARLY 8 HOURS SUNDAY WITH KISSINGER, THEN RETURNED
+HOME WITHOUT COMMENTING ON ANGLO-AMERICAN PROPOSALS FOR
+TRANSFERRING POWER TO HIS COUNTRY'S BLACK MAJORITY.
+
+...U.S. OFFICIALS WERE UNUSUALLY RETICENT SUNDAY NIGHT AND
+REFUSED TO PROVIDE DETAILS OF THE TALKS.
+
+ON THE RECORD, KISSINGER WAS CLAIMING NO NEGOTIATING BREAK-
+THROUGH--EVEN THOUGH KAUNDA AND NYERERE, IN PUBLIC STATE-
+MENTS LAST WEEK, LEFT UNMISTAKABLE IMPRESSION THAT A
+NEGOTIATING BREAKTHROUGH ON RHODESIA ISSUE WAS LEAST THAT
+WOULD SATISFY THEM.
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 02        STATE  233038 TOSEC 270408
+
+
+THE BEST KISSINGER COULD OFFER SUNDAY WAS PROPOSITION,
+DUBIOUS EVEN TO WHITE SOUTH AFRICAN LISTENERS, THAT &quot;IF
+PROGRESS HAD NOT BEEN MADE, THERE WOULD BE NOTHING TO
+REPORT TO THE RHODESIAN CABINET.&quot;
+
+LATESUNDAY NIGHT A SPOKESMAN REPORTED THAT AFTER SMITH'S
+DEPARTURE, VORSTER AND KISSINGER SPOKE FOR TWO AND A HALF
+HOURS MORE ON OTHER MAIN SUBJECT ON THEIR AGENDA, NAMIBIA
+(SOUTH-WEST AFRICA). WITHOUT GIVING ANY DETAILS, SPOKES-
+MAN EAGLEBURGER SAID &quot;CONSIDERABLE PROGRESS WAS MADE&quot; ON
+THIS ISSUE, WHICH INVOLVES DEVISING A MECHANISM ACCEPTABLE
+TO BLACK AFRICANS FOR A TRANSFER OF AUTHORITY FROM SOUTH
+AFRICA TO BLACK MAJORITY RULE THERE.
+
+THERE WAS NO INFORMATION THAT WOULD BEAR OUT KISSINGER'S
+EARLIER OPTIMISM CONVEYED TO REPORTERS ON THE WAY HERE
+FROM ZAMBIA LAST FRIDAY.
+
+... BY THE VERY ACT OF AGREEING TO SEE SMITH AT THIS STAGE
+IN THE NEGOTIATIONS, KISSINGER HAS SIGNIFICANTLY RELAXED
+THE BARGAINING PRECONDITIONS HE HAD EARLIER IMPOSED.
+
+...BY LATE SATURDAY NIGHT, WHEN DECISION TO SEE SMITH WAS
+TAKEN, REPORTERS WERE TOLD KISSINGER WISHED TO ESCAPE CON-
+FINES OF THAT FORMULATION AND SEE SMITH ON THE MORE AMBI-
+GUOUS GROUND THAT &quot;SIGNIFICANT PROGRESS&quot; IMMINENT.
+
+THIS GAVE RISE TO REPORTS FROM BRITISH SOURCES THAT TWO-
+YEAR TIMETABLE HAD BEEN SCRAPPED BY KISSINGER.  RHODESIAN
+SOURCES SUNDAY CONFIRMED THAT SMITH WOULD ON NO ACCOUNT
+ACCEPT A TWO-YEAR DEADLINE FOR BLACK AMJORITY RULE IN
+HIS COUNTRY.... (SEPTEMBER 20)
+
+2.  LA TIMES (JOHNSTON) PRETORIA (SEPTEMBER 18): &quot;KISSINGER
+HINTS AT BREAKTHROUGH ON NAMIBIA FUTURE&quot; - KISSINGER
+ARRIVED HERE FRIDAY TO BEGIN CRUCIAL STAGE OF HIS AFRICAN
+MISSION, EXPRESSING UNUSUAL BUT PRECISELY QUALIFIED CON-
+FIDENCE THAT AN IMPORTANT BREAKTHROUGH ON FUTURE OF NAMIBIA
+(SOUTH-WEST AFRICA) MAY BE AT HAND.
+
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 03        STATE  233038 TOSEC 270408
+
+THROUGH A COMBINATION OF PUBLIC AND SEMIPRIVATE STATEMENTS
+TO REPORTERS TRAVELING WITH OFFICIAL PARTY, KISSINGER AND
+HIS AIDES CLEARLY INDICATED THEY EXPECT SOUTH AFRICAN
+PM VORSTER TO MAKE AN IMPORTANT CONCESSION TO BLACK DEMANDS
+ON ISSUE OF NAMIBIA, UN TRUST TERRITORY THAT SOUTH AFRICA
+HOLDS UNDER DISPUTED CONTROL.
+
+...IN PAST NEGOTIATIONS KISSINGER, AN ACCOMPLISHED STAGE
+MANAGER, HAS ALWAYS SOUGHT TO CULTIVATE A PUBLIC APPEAR-
+ANCE OF PROGRESS AND SUCCESS WHEN HE APPROACHES A TURN-
+ING POINT IN HIS EFFORT.
+
+ACCORDINGLY, CAREFULLY NURTURED HINTS OF PROBABLE SUCCESS
+ON NAMIBIA AND POSSIBLE PROGRESS ON RHODESIA FIT IN WELL
+WITH HIS METHODS.
+BUT IT IS ALSO TRUE THAT KISSINGER RECEIVED A GENUINE
+LIFT THURSDAY FROM ZAMBIAN PRESIDENT KAUNDA, WHOSE EMO-
+TIONAL DECLARATION OF HOPE FOR KISSINGER'S MISSION AND OF
+CONFIDENCE IN HIS MOTIVES CLEARLY BOOSTED THE MORALE OF
+THE AMERICAN PARTY.
+
+...AT KAUNDA'S REQUEST, HE MET FOR FIFTEEN MINUTES FRIDAY
+MORNING IN LUSAKA WITH KNOMO, LEADER OF OLDEST, MOST
+ESTABLISHED AND LEAST MILITANT OF BLACK RHODESIAN FACTIONS,
+WHICH ARE PLANNING AN EXPANDED GUERRILLA CAMPAIGN THIS
+FALL IF THE CURRENT DIPLOMATIC EFFORT PRODUCES NO IMMEDIATE
+RESULT.
+
+3.  LA TIMES (JOHNSTON), PRETORIA:  &quot;KISSINGER AND SMITH
+TO MEET ON RHODESIA - 'SIGNIFICANT PROGRESS' CITED AS
+REASON FOR BRINGING PM INTO TALKS&quot; - KISSINGER HAS DECIDED
+TO MEET WITH RHODESIAN PM SMITH TO BRING SMITH DIRECTLY
+INTO HIS DIPLOMATIC EFFORT TO AVOID RACE WAR IN SOUTHERN
+AFRICA, U.S. OFFICIALS ANNOUNCED HERE EARLY TODAY.
+
+...UNTIL RECENTLY, SUCH A MTG BETWEEN KISSINGER AND SMITH
+HAD BEEN RULED OUT BECAUSE KISSINGER HAD REQUIRED AT LEAST
+SMITH'S TACIT ACCEPTANCE OF BLACK MAJORITY RULE IN HIS
+COUNTRY WITHIN TWO YEARS AS A PRECONDITION.  NOW STANDARDS
+APPARENTLY HAVE BEEN RELAXED TO POINT THAT KISSINGER
+AGREED TO SEE SMITH BECAUSE, IN HIS OWN JUDGMENT, &quot;SIGNI-
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 04        STATE  233038 TOSEC 270408
+
+FICANT PROGRESS&quot; HAS BEEN MADE TOWARD AN AGREEMENT ON
+BLACK MAJORITY RULE.
+
+BY LATE SATURDAY, REPORTERS WERE TOLD, KISSINGER BELIEVED
+SOME PROGRESS HAD BEEN MADE ON RHODESIA, BUT THAT LATE
+AFTERNOON SESSION BETWEEN VORSTER AND SMITH WOULD BE
+NECESSARY BEFORE KISSINGER COULD RISK MEETING SMITH.
+
+...KISSINGER, FRIDAY HINTED THAT SOUTH AFRICAN ACQUIESCENCE
+IN BLACK NATIONALIST PARTICIPATION AT AN INTERNATIONAL
+CONFERENCE ON FUTURE OF SOUTH-WEST AFRICAN TRUST TERRITORY
+MIGHT BE WITHIN SIGHT.
+
+BY SATURDAY, HOWEVER, IT WAS EVIDENT NO SUCH SUCCESS WAS
+LIKELY TO EMERGE FROM CURRENT TALKS.
+
+INSTEAD OF PRESSING FOR OUTRIGHT SOUTH AFRICAN ACCEPTANCE
+OF SOUTH-WEST AFRICAN PEOPLES' ORGANIZATION AS A NEGOTIA-
+TING PARTNER, IT WAS UNDERSTOOD FROM SOURCES CLOSE TO
+TALKS THAT KISSINGER WAS TRYING TO DEVELOP ONE OF TORTUOUS
+COMPROMISES FOR WHICH HE IS NOTED.  IT WOULD INVOLVE A
+MULTI-STAGE CONFERENCE WITH DIFFERING LEVELS OF PARTICIPA-
+TION BY VARIOUS NAMIBIAN GROUPS, AT DIFFERING TIMES.
+
+AS IS CUSTOMARY WITH A KISSINGER-RUN NEGOTIATION AT MID-
+POINT, PUBLIC KNOWLEDGE OF PROGRESS OF TALKS HAS BEEN
+FRAGMENTARY, AMBIGUOUS AND EASILY SUSCEPTIBLE TO MANIPU-
+LATION BY PARTICIPANTS.
+
+BUT SEQUENCE OF EVENTS SINCE LAST WEDNESDAY, WHEN KISSINGER
+MET WITH PRESIDENT NYERERE, APPEARED BEGINNING TO FALL
+INTO A PATTERN -- ONE IN WHICH KISSINGER, THE GO-BETWEEN,
+FIRST FOUND HIMSELF PRESSED FOR RESULTS BY NYERERE AND
+OTHER BLACK AFRICAN LEADERS MORE HARSHLY THAN EXPECTED,
+THEN LATER FOUND VORSTER UNWILLING TO BE AS COOPERATIVE
+AS KISSINGERHAD EXPECTED.
+
+RESULT, IT SEEMED SATURDAY, WAS THAT KISSINGER FOUND HIM-
+SELF IN DANGER OF FACING A DEADLOCKED NEGOTIATION -- AND
+THEREFORE A FAILED NEGOTIATION -- AT A POINT WHERE, ONLY
+A WEEK AGO, HE MIGHT HAVE EXPECTED MORE PROGRESS POSSIBLE.
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 05        STATE  233038 TOSEC 270408
+
+
+AS REPORTERS WERE TOLD SATURDAY, IT IS POSSIBLE TO CLAIM
+CONSIDERABLE PROGRESS IN A NEGOTIATION, AND IN FACT TO
+HAVE ACHIEVED PROGRESS, AND STILL HAVE IT BEEN DEEMED A
+FAILURE.
+
+HENCE, APPARENTLY, RESORT TO MTG WITH SMITH.  WHILE RELAX-
+ING HIS STAND THAT IN RETURN FOR MTG SMITH MUST ACCEPT
+PUBLICLY PRINCIPLE OF MAJORITY RULE, KISSINGER STILL IN-
+SISTED UPON &quot;SIGNIFICANT PROGRESS.&quot;
+
+...UNOFFICIAL REPORTS REACHING HERE SATURDAY FROM DAR ES
+SALAAM SUGGESTED, MOROEVER, THAT NEGOTIATING HONEYMOON
+BETWEEN KISSINGER AND NYERERE MAY BE OVER.  TANZANIAN
+PRESIDENT WAS REPORTED TO BE INCENSED BY NEWS REPORTS
+THAT A &quot;SENIOR OFFICIAL&quot; TRAVELING WITH KISSINGER, A UNI-
+VERSALLY ACCEPTED DESIGNATION FOR THE SECRETARY HIMSELF,
+HAD DISMISSED NYERERE'S PUBLIC PESSIMISM AT A NEWS CON-
+FERENCE WEDNESDAY IN FAVOR OF WHAT WERE DESCRIBED TO BE
+MORE MODERATE EXPRESSIONS IN PRIVATE CONVERSATION.
+
+AT SAME TIME, CONCLUSION APPEARED UNAVOIDABLE THAT SMITH
+HAD PLAYED A VERY ADROIT GAME TO MAKE QUESTION OF WHETHER
+HE MET KISSINGER IN PRETORIA THIS WEEKEND SEEM CRUCIAL
+ISSUES FACING KISSINGER-VORSTER TALKS.
+
+...DURING MORNING, A GROUP OF RHODESIAN CITIZENS PRESENTED
+THEMSELVES AT U.S. EMBASSY CHANCERY HERE, REQUESTING PER-
+MISSION TO PRESENT A GIFT, AN OIL PORTRAIT OF KISSINGER
+EXECUTED BY A RHODESIAN ARTIST.
+
+FOLLOWING PROTOCOL FOR DEALING WITH NATIONALS OF A COUNTRY
+WHICH U.S. DOES NOT RECOGNIZE, SECURITY GUARDS AT EMBASSY
+POLITELY TURNED RHODESIANS AWAY WHILE ACCEPTING PORTRAIT.
+
+SOON AFTERWARDS, MEMBERS OF SECRET SERVICE DETAIL GUARDING
+KISSINGER WERE SEEN CARRYING PORTRAIT UPSTAIRS IN ELEVATOR
+OF HOTEL IN WHICH KISSINGER PARTY IS STAYING.  IT APPEARED
+THAT SMITH, HOWEVER VICARIOUSLY, HAD ONCE AGAIN SUCCEEDED
+IN GETTING IN BACK WAY.  (SEPTEMBER 19)
+
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 06        STATE  233038 TOSEC 270408
+
+MAGAZINES
+
+1. NEWSWEEK
+
+HEADING:  &quot;PROGRESS IN PRETORIA&quot;
+
+THE FIRST LEG OF HENRY KISSINGER'S AFRICAN SHUTTLE WAS
+BEHIND HIM, AND IT HAD BEEN A ROUGH ONE.  NOW HE WAS FLYING
+INTO A STATE BESIEGED.  WHEN KISSINGER ARRIVED IN SOUTH
+AFRICA LAST WEEK, NEW BLACK RIOTS WERE ERUPTING IN
+URBAN GHETTOS, AND AS HE DROVE INTO PRETORIA, THE
+LOCAL NEWSPAPER CARRIED A GIANT PHOTOGRAPH OF HIM ALONG
+WITH THE HEADLINE &quot;MAKE OR BREAK&quot;.  KISSINGER QUICKLY
+BEGAN A ROUND OF TALKS WITH SOUTH AFRICAN PM JOHN VORSTER.
+THEN, ONLY A DAY LATER, CAME THE SURPRISE ANNOUNCEMENT:
+SECSTATE WOULD ALSO MEET WITH IAN SMITH, THE PM OF WHITE-
+SUPREMACIST RHODESIA.                                  -
+
+KISSINGER'S APPOINTMENT WITH THE STUBBORN LEADER OF
+THE BREAKAWAY BRITISH COLONY SET OFF SPECULATION
+THAT A BREAKTHROUGH WAS IMMINENT IN THE SEC'S EFFORT TO
+HEAD OFF A RACE WAR IN SOUTHERN AFRICA.  HAK, IT SEEMED,
+HAD ALREADY PERSUADED VORSTER TO SOFTEN HIS STAND ON
+INDEPENDENCE FOR NAMIBIA, THE SOUTH AFRICAN-RULED TRUST
+TERRITORY ALSO KNOWN AS SOUTHWEST AFRICA.  NOW, IT
+APPEARED TO MANY PEOPLE THAT SMITH WAS RESPONDING TO
+PRESSURE FROM KISSINGER -- AND PERHAPS FROM VORSTER, TOO.
+
+WEEKS OF HELL:  SO FAR, NO ONE KNEW WHAT SECRET DIPLOMACY
+LAY BEHIND THE ANNOUNCEMENT OF THE SUMMIT WITH SMITH.
+BUT IT WAS WIDELY ASSUMED THAT THE RHODESIAN LEADER WAS
+PREPARED TO MAKE AT LEAST PARTIAL CONCESSIONS.  THROUGH-
+OUT THE SHUTTLE, THE AMERICANS HAD ACKNOWLEDGED THAT
+KISSINGER COULD NOT RISK OFFENDING THE BLACK AFRICAN NATIONS
+ON HIS ITINERARY BY MEETING WITH SMITH UNLESS SOMETHING
+IMPORTANT WAS TO BE GAINED.  ONE SENIOR OFFICIAL IN THE
+AMERICAN PARTY SAID THE SEC WOULD SIT DOWN WITH SMITH
+ONLY IF HAK WAS &quot;ABLE TO REPORT TO THE BLACK PRESIDENTS
+THAT SOME SIGNIFICANT PROGRESS WAS BEING MADE THAT THEY
+WOULD RECOGNIZE AS SIGNIFICANT PROGRESS.&quot;  EVEN SO, THE
+OFFICIAL ADDED, HAK &quot;MIGHT HAVE TO TAKE HELL FOR A FEW
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 07        STATE  233038 TOSEC 270408
+
+WEEKS&quot; IN BLACK AFRICA.  &quot;BUT IF AT THE END OF A FEW
+WEEKS OR A MONTH THINGS ARE CONCLUDED, IT MIGHT HAVE BEEN
+WORTH IT.&quot;
+
+THE AMERICAN SECSTATE HAD JUST COME FROM TALKS WITH
+TWO BLACK AFRICAN LEADERS, PRES JULIUS NYERERE OF TANZ-
+ANIA AND PRES KENNETH KAUNDA OF ZAMBIA.  THERE HAK RAN
+INTO SOMETHING FOR WHICH ALL HIS YEARS OF MIRACLE-WORKING
+HAD NOT PREPARED HIM:  A STYLE OF DIPLOMACY IN WHICH HIS
+HOSTS PRIVATELY GAVE HIM CAUTIOUS ENCOURAGEMENT -- AND
+THEN PUBLICLY CAST DOUBT ON HIS MISSION.  ALTHOUGH
+ANGERED BY THOSE TACTICS, HAK FELT THERE WAS REASON
+ENOUGH TO CARRY ONE.
+
+THE FIRST PART OF HAK'S AFRICAN JOURNEY, A TWO-DAY STOP
+IN THE TANZANIAN CAPITAL OF DAR ES SALAAM, BEGAN BADLY.
+HE WAS VISIBLY TAKEN ABACK WHEN A CROWD OF 200
+DEMONSTRATORS MET HIM AT THE AIRPORT CHANTING &quot;GO HOME,
+GO HOME&quot; AND WAVING SIGNS DENOUNCING HIM AS, AMONG OTHER
+THINGS, THE &quot;TRAVELING CASHIER OF IMPERIALISM.&quot;  WHEN
+THE DEMONSTRATORS CLIMBED INTO BUSES TO FOLLOW HIM
+INTO TOWN, IT BECAME CLEAR THAT THE NOISY PROTEST
+HAD BEEN GOVT SANCTIONED.  AT HIS HOTEL, HAK RESPONDED
+WITH A BRUSQUE STATEMENT THAT THE TRIP TO AFRICA WAS
+NOT HIS IDEA.  &quot;THIS INITIATIVE STARTED AT THE REQUEST
+OF THE AFRICAN LEADERS DURING MY VISIT IN APRIL,&quot; HE
+DECLARED.  &quot;EVERY STEP THAT HAS BROUGHT US HERE HAS BEEN
+CAREFULLY DISCUSSED WITH LEADERS IN AFRICA AND ESPECIALLY
+THE (BLACK)PRESIDENTS.&quot;
+
+UPBEAT:  THE NEXT MORNING, HAK CHIDED PRES NYERERE ABOUT
+THE DEMONSTRATIONS, AND THE 54-YEAR-OLD TANZANIAN LEADER
+REPLIED THAT HE COULD NOT CONTROL SUCH OUTPOURINGS IN
+A DEMOCRACY.  NONETHELESS, SOURCES SAID THE MOOD OF THE
+FOUR-HOUR MEETING WAS GENERALLY FRIENDLY AND UPBEAT.
+AT A PRESS CONFERENCE LATER, NYERERE PRAISED HAK'S JOURNEY
+AS A &quot;SHUTTLE OF CLARITY&quot; AND REJECTED THE IDEA THAT IT
+WAS DOOMED TO FAILURE.  BUT THEN NYERERE GAVE HAK THE BACK
+OF HIS HAND.  &quot;REALLY, ON THE BASIS OF WHAT I KNOW UP TO
+NOW,&quot; HE OBSERVED, &quot;I COULD EVEN SAY I AM LESS HOPEFUL THAN
+I WAS.&quot;
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 08        STATE  233038 TOSEC 270408
+
+
+ONE DIPLOMAT IN DAR ES SALAAM INTERPRETED NYERERE'S CURT
+STATEMENT AS AN ATTEMPT TO &quot;COVER HIS REAR IN CASE THE
+HAK MISSION FAILS AND ALSO APPEASE HARD-LINE ELEMENTS WHO
+DISTRUST HAK'S MOTIVES.&quot;  HAK HIMSELF, THOUGH SURPRISED,
+BRUSHED ASIDE NYERERE'S REMARKS AS A MATTER OF NEGOTIATING
+TACTICS.  HAK'S PUBLIC RECEPTION WAS WARMER IN THE ZAM-
+BIAN CAPITAL OF LUSAKA.  FORNMIN SITEKE MWALE GREETED
+HIM AT THE AIRPORT WITH AN EMBRACE AND PRES KAUNDA LATER
+ASSURED THE AMERICAN THAT HE WAS PRAYING HARD FOR HIS
+SUCCESS.  BUT AS THE TWO MEN SAT ACROSS FROM EACH OTHER AT
+A CONFERENCE TABLE IN THE RED BRICK STATE HOUSE, KAUNDA
+ISSUED A BLUNT WARNING.  &quot;YOU HAVE ONLY A FEW DAYS -- NOT
+WEEKS -- TO SUCCEED,&quot; HE SAID.  &quot;IF YOU FAIL, WE SHALL
+HAVE REACHED THE POINT OF NO RETURN.&quot;
+
+EMOTION:  THE 52-YEAR-OLD KAUNDA, A MODERATE WHO IS OFTEN
+CALLED THE &quot;CONSCIENCE OF AFRICA,&quot; WAS SOON OVERCOME BY
+EMOTION, DABBING AT HIS EYES WITH A WHITE HANDKERCHIEF.
+VISIBLY TOUCHED, HAK RESPONDED:  &quot;I PRAY FOR ALL OF US --
+FOR YOUR PEOPLE AND OUR PEOPLE -- THAT I CAN BRING YOU
+ENCOURAGING NEWS.&quot;  AFTER HIS TALKS WITH KAUNDA, HAK
+MET BRIEFLY WITH JOSHUA NKOMO, LEADER OF ONE OF THE
+BLACK FACTIONS FIGHTING IN RHODESIA.  PERHAPS TO DIVERT
+NEWSMEN, KAUNDA HELD AN IMPROMPTU PRESS CONFERENCE, IN
+WHICH HIS VIEWS ON THE HAK SHUTTLE WERE LESS FERVID.  HE
+CALLED HIS TALKS WITH THE SEC &quot;USEFUL DISCUSSIONS,&quot;
+BUT ADDED:  &quot;I DIDN'T EXPECT HIM TO BRING ANYTHING NEW.&quot;
+
+AS HAK LEFT LUSAKA FOR HIS MEETING WITH VORSTER, SOUTH
+AFRICA ITSELF WAS IN TURMOIL.  IN CAPE TOWN, POLICE HAD
+OPENED FIRE ON COLORED DEMONSTRATORS.  IN JOHANNESBURG,
+FIRE BOMBS EXPLODED IN TWO DEPT STORES, AND BLACKS STONED
+BUSES CARRYING WHITE COMMUTERS -- THE FIRST OMINOUS
+SIGNS OF TERRORISM DELIBERATELY AIMED AT WHITES.  AT
+ALMOST THE SAME TIME THAT HAK'S PLANE TOUCHED DOWN AT
+WATERKLOOF MILITARY AIRPORT, BLACK STUDENTS IN SOWETO
+STAGED A MASS MARCH, CARRYING BANNERS READING &quot;KISSINGER
+IS A KILLER&quot; AND SINGING PROTEST SONGS.  WHEN THE
+CROWD TRIED TO MARCH ON NEARBY JOHANNESBURG AND IGNORED
+A WARNING TO TURN BACK, POLICE SHOT THREE OF THEM DEAD.
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 09        STATE  233038 TOSEC 270408
+
+
+THEOLOGY:  EVEN SO, HAK APPEARED OPTIMISTIC FOR PROGRESS
+IN HIS TALKS WITH VORSTER ON THE ISSUE OF NAMIBIA.  VORSTER,
+HE THOUGHT, MIGHT AGREE TO INDEPENDENCE FOR THE DISPUTED
+TERRITORY BY THE END OF NEXT YEAR, A YEAR AHEAD OF THE
+CURRENT SCHEDULE.  HAK ALSO WAS PRESSING VORSTER TO
+INCLUDE IN FUTURE TALKS ON NAMIBIA THE PRINCIPAL BLACK
+GUERRILLA GROUP THERE, THE SWAPO.  BUT THERE WERE STILL
+MANY QUESTIONS TO BE RESOLVED THAT COULD BLOCK PROGRESS
+TOWARD A SETTLEMENT.  &quot;THE NAMIBIAN THING IS DOWN NOW TO
+THEOLOGICAL POINTS THAT MEAN A HELL OF A LOT TO THE
+PARTICIPANTS,&quot; SAID A SENIOR OFFICIAL IN KISSINGER'S PARTY.
+&quot;AND THAT MAY BLOW IT SKY HIGH.&quot;
+
+AS THE DISCUSSIONS CONTINUED, SMITH FLEW TO SOUTH AFRICA.
+AT THE OUTSET OF THE HAK SHUTTLE, PROGRESS ON RHODESIA
+WAS THOUGHT TO BE A LOT LESS LIKELY THAN AGREEMENT ON
+NAMIBIA.  BUT THEN VORSTER WENT TO WORK ON HIS
+GUEST.  THEY MET FIRST AT VORSTER'S HILLTOP RESIDENCE
+(SMITH ARRIVED ONLY MINUTES AFTER KISSINGER HAD LEFT
+FOR A MEETING WITH SOUTH AFRICAN OPPOSITION LEADERS).
+THEN THE TWO MEN ATTENDED A RUGBY FOOTBALL MATCH.  THAT
+EVENING, HAK JOINED VORSTER FOR DINNER, AND AFTERWARD
+US SPOKESMAN LAWRENCE EAGLEBURGER MADE THE ANNOUNCEMENT:
+&quot;THE SECRETARY WILL MEET WITH PRIME MINISTER SMITH AT
+9:30 (THE NEXT MORNING) AT THE AMERICAN AMBASSADOR'S
+RESIDENCE.&quot;
+
+EAGLEBURGER BRUSHED ASIDE ALL QUESTIONS, AND THERE WAS NO
+INDICATION OF WHAT PRICE -- IF ANY -- KISSINGER HAD EX-
+TRACTED FROM SMITH IN RETURN FOR THE MEETING.  SO FAR,
+THE RHODESIAN LEADER HAD ADAMANTLY REJECTED DEMANDS FOR
+BLACK MAJORITY RULE IN HIS COUNTRY.   THERE WAS NO EV-
+IDENCE THAT HE WOULD CAVE IN BEFORE KISSINGER.  BUT IT
+WAS EQUALLY UNLIKELY THAT HAK WOULD HAVE AGREED TO THE
+MEETING WITHOUT SOME REASON TO HOPE FOR AT LEAST PRIVATE
+ASSURANCES OF PROGRESS TOWARD A SETTLEMENT.  WHATEVER
+TRANSPIRED WITH SMITH, THE FIRST WEEK OF KISSINGER'S
+AFRICAN SHUTTLE HAD ALREADY PRODUCED MORE RESULTS THAN
+MANY PEOPLE HAD EXPECTED.
+
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 10        STATE  233038 TOSEC 270408
+
+-- RAYMOND CARROLL WITH MILTON R. BENJAMIN IN KISSINGER'S
+PARTY AND PETER YOUNGHUSBAND IN CAPE TOWN
+
+2.  TIME MAGAZINE, SEPTEMBER 27 ISSUE:
+
+&quot;SOUTHERN AFRICA: SHUTTLING BETWEEN BLACK AND WHITE&quot;
+
+&quot;SCORES OF SOLDIERS AND POLICE, AS WELL AS AN ALL-BLACK
+HONOR GUARD, WERE ON HAND TO GREET HENRY KISSINGER AS HE A
+ARRIVED IN THE SOUTH AFRICAN CAPITAL OF PRETORIA LATE LAST
+WEEK ON THE THIRD STOP OF HIS LATEST EFFORT AT SHUTTLE
+DIPLOMACY.  ALL WEEK LONG SPORADIC RIOTING HAD CONTINUED
+IN THE NONWHITE TOWNSHIPS AROUND JOHANNESBURG AND CAPE
+TOWN, AND A DEPARTMENT STORE IN DOWNTOWN JOHANNESBURG
+WAS FIRE-BOMBED -- THE FIRST SUCH ACT OF URBAN TERRORISM
+IN THE COUNTRY'S HISTORY.  SHORTLY BEFORE KISSINGER'S
+BLUE AND WHITE 707 TOUCHED DOWN, POLICE FIRED AT
+DEMONSTRATORS IN JOHANNESBURG'S SOWETO TOWNSHIP, KILLING
+SIX STUDENTS AND WOUNDING 35.  IN NO TIME, RUMORS WERE
+CIRCULTATING IN LONDON, NEW YORK AND ELSEWHERE THAT THE
+SECRETARY HAD BEEN ASSASSINATED.  PARAPHRASING MARK
+TWAIN, KISSINGER QUICKLY RETORTED THAT THE REPORTS OF HIS
+'HAVING BEEN SHOT WERE GROSSLY EXAGGERATED.'
+
+&quot;BRUTAL TALK:  THE SECRETARY DID NOT FIND MANY OPPORTUNITIES
+FOR JOCULARITY IN HIS ATTEMPT TO HEAD OFF BY NEGOTIATION
+THE RACIAL ARMAGEDDON THAT SEEMS TO BE LOOMING IN SOUTHERN
+AFRICA. TANZANIA'S PRESIDENT J. NYERERE HAD ANNOUNCED
+THAT HE WAS NOT 'PARTICULARLY ENCOURAGED' BY KISSINGER'S
+MISSION. ZAMBIA'S PRESIDENT K. KAUNDA HAD DECLARED THAT
+KISSINGER MIGHT HAVE 'ONLY A FEW DAYS, NOT WEEKS' TO
+SUCCEED IN AVERTING A BLACK-WHITE WAR.
+
+&quot;WHEN KISSINGER ARRIVED IN PRETORIA, HE HAD NO EXPECTATION
+OF BRINGING ABOUT ANY CHANGE IN SOUTH AFRICA'S CHERISHED
+SYSTEM OF APARTHEID, OR 'SEPARATE DEVELOPMENT.'    BUT
+HE WAS ANXIOUS TO SEE WHETHER A ROUND OF SUSTAINED
+NEGOTIATIONS COULD END THE IMPASSE OVER RHODESIA, WHOSE
+WHITE MINORITY GOVERNMENT BROKE AWAY FROM BRITISH RULE
+ELEVEN YEARS AGO.  AND HE WAS PARTICULARLY HOPEFUL THAT IF
+ALL :LSE FAILED, HE COULD ACHIEVE SOME MEASURED PROGRESS
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 11        STATE  233038 TOSEC 270408
+
+ON NAMIBIA,  OR S-W AFRICA, THE ONETIME LEAGUE OF NATIONS
+TERRITORY THAT SOUTH AFRICA HAS RULED SINCE 1920.
+
+&quot;SOUTH AFRICAN PRIME MINISTER J. VORSTER MADE IT CLEAR
+FROM THE BEGINNING THAT HIS DISCUSSIONS WITH KISSINGER
+WOULD NOT DEAL WITH SOUTH AFRICA ITSELF.  IF VORSTER
+IS DETERMINED TO MAINTAIN WHITE RULE AT HOME, HE IS ALSO
+CONVINCED, HOWEVER, THAT IT CAN NO LONGER BE UPHELD IN
+EITHER RHODESIA OR NAMIBIA.  BY AGREEING TO A TRANSITION
+TO MAJORITY RULE IN THOSE TERRITORIES, HE BELIEVES SOUTH
+AFRICA CAN GAIN ENOUGH TIME FOR ITSELF TO BUILD LASTING
+TIES WITH ITS BLACK NEIGHBORS.  AT ZURICH TWO WEEKS AGO,
+VORSTER HINTED TO KISSINGER THAT HE WAS PREPARED TO STEP
+UP THE PRESSURE ON RHODESIAN PRIME MINISTER IAN SMITH.
+ACCORDINGLY, VORSTER LAST WEEK TREATED SMITH TO A DUTCH
+UNCLE TALK THAT ONE DIPLOMAT DESCRIBED AS 'TOUGH TO THE
+POINT OF BRUTALITY.'  EVIDENTLY, HE WARNED SMITH THAT
+PRETORIA'S FUTURE CAPACITY FOR HELPING RHODESIA WILL BE
+INCREASINGLY LIMITED.  AS SMITH WELL KNOWS, AN ESTIMATED
+$100 MILLION WORTH OF RHODESIAN BULK EXPORTS OF CORN,
+MINERALS AND TOBACCO ARE ALREADY HELD UP ON THE RHODESIAN
+SIDE OF THE BORDER FOR LACK OF SPACE ON SOUTH AFRICA'S
+CROWDED RAIL LINES TO CARRY THEM TO THE SEA.
+
+&quot;BE HONEST:  SMITH LEFT THE MEETING LOOKING PALE AND
+ANGRY.  HE TOOK OFF IMMEDIATELY FOR THE RHODESIAN BORDER
+TOWN OF UMTALI, WHERE THE ANNUAL CONGRESS OF HIS RHODESIAN
+FRONT PARTY WAS UNDER WAY.  THOUGH IT SEEMS HARD TO IMAGINE,
+SMITH IS A MODERATE BY RHODESIAN STANDARDS, AND AT UMTALI
+HE FACED A RIGHT-WING REVOLT LED BY PARTY CHAIRMAN
+DESMOND FROST, WHO WOULD LIKE TO SPLIT RHODESIA INTO
+BLACK AND WHITE SECTORS UNDER OVERALL WHITE CONTROL.
+AFTER SIX HOURS OF SPEECHMAKING AND DEBATE, SMITH FORCED
+THE ISSUE IN A DRAMATIC SCENE,'ARE YOU WITH MR OR ARE YOU
+NOT?' HE DEMANDED.  'FOR GOD'S SAKE, BE HONEST'.  HE WON A
+FIVE-MINUTE STANDING OVATION, AFTER WHICH THE CONGRESS
+VOTED UNANIMOUSLY TO GIVE HIM 'A FREE HAND TO NEGOTIATE
+IN FUTURE ON BEHALF OF ALL RHODESIANS.'
+
+&quot;SOON SMITH WAS ON HIS WAY BACK TO SOUTH AFRICA FOR A
+SATURDAY NIGHT RUGBY MATCH -- AND, AS IT TURNED OUT,
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 12        STATE  233038 TOSEC 270408
+
+THE MEETING HE WANTED WITH HENRY KISSINGER.  PREVIOUSLY,
+THE SECRETARY HAD SAID HE WOULD TALK TO SMITH ONLY IF
+HE WERE ASSURED IN ADVANCE OF 'MAJOR PROGRESS.'  IN THE
+END, HE AGREED TO A SUNDAY MORNING MEETING IN ORDER TO
+SUSTAIN THE MOMENTUM OF  HIS MISSION.
+
+&quot;ON NAMIBIA, KISSINGER HAD REASON TO HOPE FOR SOME GENUINE
+PROGRESS.   SOUTH AFRICA IS ALREADY COMMITTED TO THE PRIN-
+CIPLE OF NAMIBIAN INDEPENDENCE, AND LAST MONTH A CON-
+STITUTIONAL CONFERENCE IN WINDHOEK, THE NAMIBIAN CAPITAL,
+SETTLED ON DECEMBER 31, 1978, AS THE DATE FOR THE TRANSFER
+OF POWER.
+
+&quot;THE BIGGEST SNAG IS THAT THE NEGOTIATORS AT WINDHOEK
+DID NOT INCLUDE ANY REPRESENTATIVES OF THE SOUTH WEST
+PEOPLE'S ORGANIZATION, THE LIBERATION -- AND GUERRILLA --
+MOVEMENT THAT IS RECOGNIZED BY THE UNITED NATIONS AND
+THE ORGANIZATION OF AFRICAN UNITY AS THE SOLE REPRESENTATIVE
+OF THE NAMIBIAN PEOPLE.  KISSINGER'S FIRST CHORE WAS TO TRY
+TO GET SOUTH AFRICA AND SWAPO TOGETHER OVER THE SAME
+
+CONFERENCE TABLE, PERHAPS IN GENEVA.
+
+&quot;KISSINGER'S SHUTTLE GOT OFF TO AN INAUSPICIOUS BEGINNING
+LAST WEEK WHEN HE LANDED AT DAR ES SALAAM, TANZANIA.
+ON ARRIVAL, HE FOUND THE TANZANIAN GOVERNMENT LESS
+RECEPTIVE TO HIS MISSION THAN HE HAD HOPED.  STUDENT
+DEMONSTRATORS, OBVIOUSLY ACTING WITH GOVERNMENT ACQUIESCENCE
+GREETED THE SECRETARY WITH SIGNS BRANDING HIM A 'CYNICAL
+MURDERER.'  LATER, AFTER FIVE HOURS OF TALKS, PRESIDENT
+NYERERE TOLD NEWSMEN THAT HE FELT 'EVEN LESS HOPEFUL'
+ABOUT NAMIBIA THAN HE HAD BEEN BEFORE.  BUT AT THE
+VERY LEAST, NYERERE REMARKED, THE MISSION WOULD
+CLARIFY US VIEWS ON SOUTHERN AFRICA.  IN THAT SENSE,
+HE ADDED, 'A SHUTTLE OF CLARITY IS NOT A SHUTTLE OF
+FAILURE.'
+
+&quot;MAJORITY RULE:  KISSINGER'S SECOND HOST, ZAMBIA'S
+PRESIDENT KAUNDA, WAS MORE ENTHUSIASTIC.  KAUNDA, AN
+EMOTIONAL IDEALIST, WEPT AS HE SPOKE OF THE SEEMINGLY
+INEXORABLE SLIDE OF SOUTHERN AFRICA TOWARD BLOODSHED AND
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 13        STATE  233038 TOSEC 270408
+
+WAR.  'WE DEMAND WHAT IS RIGHT AND FAIR AND JUST TO ALL
+MEN,' HE ADDED, PLEDGING HIS COUNTRY TO FIGHT 'TO THE
+LAST MAN IF NECESSARY,' FOR MAJORITY RULE IN ZIMBABWE,
+THE AFRICAN NAME FOR RHODESIA.  AT THE END OF THEIR
+DISCUSSIONS, KAUNDA OBSERVED OF KISSINGER:  'HIS HEART
+IS IN THE RIGHT PLACE, AND HE HAS OUR PRAYERS.'  THE
+SECRETARY RESPONDED THAT HE WOULD RETURN TO LUSAKA
+AFTER HIS VISIT TO PRETORIA 'TO REPORT TO YOU, AND I PRAY
+FOR ALL OF US THAT I CAN BRING YOU ENCOURAGING NEWS.'
+AT WEEK'S END, AS KISSINGER PROCEEDED WITH HIS TALKS
+IN SOUTH AFRICA  AND PREPARED TO REPORT BACK TO KAUNDA,
+NYERERE AND OTHER AFRICAN LEADERS ON HIS WAY HOME,
+IT WAS UNCERTAIN WHETHER HE WOULD HAVE MUCH ENCOURAGEMENT
+TO OFFER.&quot;
+
+3.  NEWSWEEK:
+
+&quot;PLAYING BY THE AFRICAN RULES&quot;
+
+&quot;EVEN FOR A DIPLOMAT AS SKILLED AS HENRY KISSINGER, BLACK
+AFRICA WAS FULL OF UNSETTLING SURPRISES.  NONE OF HIS
+PREVIOUS SHUTTLES FULLY PREPARED THE SECRETARY OF STATE
+FOR THE NEGOTIATING STYLE HE ENCOUNTERED IN TANZANIA
+AND ZAMBIA, AND HE SPENT A LARGE AND FRUSTRATING PART OF
+HIS WEEK LEARNING THE RULES OF A NEW DIPLOMATIC GAME.
+
+&quot;NEVER BEFORE HAD KISSINGER DEALT WITH SO MANY INTERESTED
+PARTIES.  HIS NEGOTIATIONS WITH RUSSIA AND CHINA HAD BEEN
+BILATERAL AFFAIRS, AND EVEN IN THE MIDDLE EAST HE HAD
+BEEN REQUIRED, FOR THE MOST PART, TO WORK WITH ONLY TWO
+NATIONS AT ONE TIME; THE TROUBLESOME PALESTINIANS WERE
+EXCLUDED. IN BLACK AFRICA, FIVE 'FRONTLINE' NATIONS,
+IN VARYING HUES OF RADICALISM, PLUS FOUR GUERRILLA
+MOVEMENTS HAD TO BE CONSIDERED, AND MANY OF THEM WERE AT
+ODDS WITH EACH OTHER.  MOST OF THE BLACK STATESMEN WERE IN
+FAR WEAKER POSITONS POLITICALLY THAN A MAO TSE-TUNG OR AN
+ANWAR SADAT -- AND THUS UNABLE TO DEAL AS FREELY.
+AFTER TANZANIAN PRESIDENT J. NYERERE FOLLOWED UP HIS
+PRIVATE EXPRESSIONS OF CAUTIOUS OPTIMISM WITH A PUBLIC
+EXPRESSION OF DOUBT, US SOURCES SPOKE REPEATEDLY OF
+NYERERE'S NEED 'TO SHORE UP HIS REVOLUTIONARY CREDENTIALS.'
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 14        STATE  233038 TOSEC 270408
+
+
+&quot;THE POETRY OF REVOLUTION RUNS STRONG IN AFRICA, AND
+KISSINGER'S TALKS HAD A HIGH EMOTIONAL CONTENT.  MANY LEAD-
+ERS OF BLACK NATIONS BEGAN THEIR STRUGGLE IN THE BUSH
+AND LIKE TO SAY THAT THEY WON THEIR INDEPENDENCE THROUGH
+REVOLUTIONARY STRUGGLE -- EVEN IF, IN SOME CASES,
+THE COLONIAL POWERS MERELY WALKED AWAY AND HANDED THEM
+THE KEYS.  EVEN THE MODERATE K. KAUNDA RESORTED TO
+RADICAL RHETORIC, WARNING THAT IF THE SHUTTLE FAILED,
+'WE WILL FIGHT -- TO THE LAST MAN IF NECESSARY.'
+
+&quot;HONEST BROKER:KISSINGER'S USUAL STYLE IS TO MORE OR
+LESS NAIL DOWN A GENERAL AGREEMENT BEFORE HE HIMSELF
+APPEARS ON THE SCENE, AND THAT TAKES COOPERATION FROM
+HIS OPPOSITE NUMBERS.  BUT THIS TIME, THE BLACK AFRICANS
+WERE NOT EVEN COMMITTED TO THE IDEA OF NEGOTIATION.  'I
+THINK THIS IS THE BASIC OBSTACLE -- THE RELUCTANCE OF ANY-
+BODY TO ADMIT THAT NEGOTIATIONS CAN SUCCEED' KISSINGER SAID
+IN DAR ES SALAAM.
+
+&quot;A BIGGER OBSTACLE MAY HAVE BEEN THAT MANY BLACKS STILL
+
+DID NOT COMPLETELY TRUST KISSINGER OR BELIEVE HIS CLAIMS
+THAT HE WAS SIMPLY TRYING TO BE AN HONEST BROKER.  IN
+TANZANIA, KISSINGER ASSERTED THAT THE US 'WILL DO WHAT
+WE ARE ASKED TO DO ... WE WILL TAKE NO INITIATIVES THAT
+ARE NOT INVITED, AND WHATEVER PROGRESS WILL OCCUR DEPENDS
+OF THE ATTITUDE OF THE PARTIES AND THE GOODWILL OF THE
+PARTICIPANTS.'
+
+&quot;SOME FOREIGN DIPLOMATS, HOWEVER, ARGUED THAT KISSINGER
+WOULD BE BETTER ADVISED TO ADMIT FRANKLY THAT THE US HAS
+LARGE DIPLOMATIC, ECONOMIC AND STRATEGIC STAKES IN SOUTHERN
+AFRICA.  AND SOME OF THE BLACK 'PARTIES' THEMSELVES HAD
+DOUBTS ABOUT THE DEPTH OF AMERICAN GOODWILL.  IN A FORMAL
+STATEMENT, THE TANZANIAN FOREIGN MINISTER ASKED:  'WHY
+CANNOT THE AMERICAN GOVERNMENT ALSO SAY THAT IF A PEACEFUL
+TRANSFER OR POWER IS IMPOSSIBLE BECAUSE OF THE INTRANS-
+
+IGENCE OF THE RACISTS, THEN IT WILL BE ON THE SIDE OF
+THOSE WHO FIGHT FOR FREEDON?'
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 15        STATE  233038 TOSEC 270408
+
+
+&quot;'OBSESSION':  SOME BLACKS, SUCH AS NYERERE, ALSO
+COMPLAINED THAT THE US APPEARED TO BE SO AFRAID OF
+SOVIET AND CUBAN PENETRATION IN SOUTHERN AFRICA THAT IT
+CONFUSED BLACK NATIONALISM WITH A MARXIST BID FOR POWER.
+'CUBA, CUBA, CUBA' STORMED NYERERE.  'I FIND THIS CUBAN
+OBSESSION INCREDIBLE -- AND IT COMES FROM INTELLIGENT
+PEOPLE.' 'THE AFRICANS WANT AN AFRICAN SOLUTION, NOT ONE
+THAT FALLS INTO LINE WITH THE WESTERN VIEW OF THE WORLD,'
+
+SAID A FOREIGN DIPLOMAT.   AN AFRICAN JOURNALIST ADDED:
+'THEY HAVE LEARNED THAT THE WEST AND THE SOVIET
+UNION PURSUE THEIR OWN GOALS, AND THEY ARE EQUALLY
+CYNICAL ABOUT BOTH.'  WHETHER OR NOT SUCH JUDGMENTS WERE
+FAIR, THEY WERE ONES THAT KISSINGER WOULD HAVE TO LIVE
+WITH -- OR ADROITLY WORK HIS WAY AROUND.&quot;
+(MARK STEVENS WITH JAMES PRINGLE IN LUSAKA AND DAR AND
+MILTON R. BENJAMIN WITH KISSINGER'S PARTY).
+ROBINSON
+
+
+UNCLASSIFIED
+
+
+
+
+NNN
+
+</div></div><br /></div></div><div class="pane-tab"><div class="pane-header">Raw content</div><div class="pane-content"><div class="text-content">
+
+UNCLASSIFIED
+
+PAGE 01        STATE  233038 TOSEC 270408
+
+62
+ORIGIN PRS-01
+
+INFO  OCT-01  ISO-00  SS-15  SSO-00  CCO-00  AF-08  IO-13  NSCE-00
+
+NSC-05  /043 R
+
+DRAFTED BY S/PRS:JMORDWAY:AVW
+APPROVED BY S/PRS:JMORDWAY
+S/S- PSBRIDGES
+---------------------     106271
+P 202121Z SEP 76 ZFF4
+FM SECSTATE WASHDC
+TO USDEL SECRETARY PRIORITY
+
+UNCLAS STATE 233038 TOSEC 270408
+
+FOR EAGLEBURGER FROM S/PRS
+
+E.O. 11652:   N/A
+
+TAGS:   SOPN (KISSINGER, HENRY A.)
+
+SUBJECT:TRAVELING PRESS REPORTAGE, MID MORNING, SEPT 20,1976
+
+NO. 26
+
+1.  LA TIMES (JOHNSTON), PRETORIA:  &quot;KISSINGER, SMITH TALK
+FOR 8 HOURS; RESULT UNCERTAIN&quot; - RHODESIAN PM SMITH MET
+FOR NEARLY 8 HOURS SUNDAY WITH KISSINGER, THEN RETURNED
+HOME WITHOUT COMMENTING ON ANGLO-AMERICAN PROPOSALS FOR
+TRANSFERRING POWER TO HIS COUNTRY'S BLACK MAJORITY.
+
+...U.S. OFFICIALS WERE UNUSUALLY RETICENT SUNDAY NIGHT AND
+REFUSED TO PROVIDE DETAILS OF THE TALKS.
+
+ON THE RECORD, KISSINGER WAS CLAIMING NO NEGOTIATING BREAK-
+THROUGH--EVEN THOUGH KAUNDA AND NYERERE, IN PUBLIC STATE-
+MENTS LAST WEEK, LEFT UNMISTAKABLE IMPRESSION THAT A
+NEGOTIATING BREAKTHROUGH ON RHODESIA ISSUE WAS LEAST THAT
+WOULD SATISFY THEM.
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 02        STATE  233038 TOSEC 270408
+
+
+THE BEST KISSINGER COULD OFFER SUNDAY WAS PROPOSITION,
+DUBIOUS EVEN TO WHITE SOUTH AFRICAN LISTENERS, THAT &quot;IF
+PROGRESS HAD NOT BEEN MADE, THERE WOULD BE NOTHING TO
+REPORT TO THE RHODESIAN CABINET.&quot;
+
+LATESUNDAY NIGHT A SPOKESMAN REPORTED THAT AFTER SMITH'S
+DEPARTURE, VORSTER AND KISSINGER SPOKE FOR TWO AND A HALF
+HOURS MORE ON OTHER MAIN SUBJECT ON THEIR AGENDA, NAMIBIA
+(SOUTH-WEST AFRICA). WITHOUT GIVING ANY DETAILS, SPOKES-
+MAN EAGLEBURGER SAID &quot;CONSIDERABLE PROGRESS WAS MADE&quot; ON
+THIS ISSUE, WHICH INVOLVES DEVISING A MECHANISM ACCEPTABLE
+TO BLACK AFRICANS FOR A TRANSFER OF AUTHORITY FROM SOUTH
+AFRICA TO BLACK MAJORITY RULE THERE.
+
+THERE WAS NO INFORMATION THAT WOULD BEAR OUT KISSINGER'S
+EARLIER OPTIMISM CONVEYED TO REPORTERS ON THE WAY HERE
+FROM ZAMBIA LAST FRIDAY.
+
+... BY THE VERY ACT OF AGREEING TO SEE SMITH AT THIS STAGE
+IN THE NEGOTIATIONS, KISSINGER HAS SIGNIFICANTLY RELAXED
+THE BARGAINING PRECONDITIONS HE HAD EARLIER IMPOSED.
+
+...BY LATE SATURDAY NIGHT, WHEN DECISION TO SEE SMITH WAS
+TAKEN, REPORTERS WERE TOLD KISSINGER WISHED TO ESCAPE CON-
+FINES OF THAT FORMULATION AND SEE SMITH ON THE MORE AMBI-
+GUOUS GROUND THAT &quot;SIGNIFICANT PROGRESS&quot; IMMINENT.
+
+THIS GAVE RISE TO REPORTS FROM BRITISH SOURCES THAT TWO-
+YEAR TIMETABLE HAD BEEN SCRAPPED BY KISSINGER.  RHODESIAN
+SOURCES SUNDAY CONFIRMED THAT SMITH WOULD ON NO ACCOUNT
+ACCEPT A TWO-YEAR DEADLINE FOR BLACK AMJORITY RULE IN
+HIS COUNTRY.... (SEPTEMBER 20)
+
+2.  LA TIMES (JOHNSTON) PRETORIA (SEPTEMBER 18): &quot;KISSINGER
+HINTS AT BREAKTHROUGH ON NAMIBIA FUTURE&quot; - KISSINGER
+ARRIVED HERE FRIDAY TO BEGIN CRUCIAL STAGE OF HIS AFRICAN
+MISSION, EXPRESSING UNUSUAL BUT PRECISELY QUALIFIED CON-
+FIDENCE THAT AN IMPORTANT BREAKTHROUGH ON FUTURE OF NAMIBIA
+(SOUTH-WEST AFRICA) MAY BE AT HAND.
+
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 03        STATE  233038 TOSEC 270408
+
+THROUGH A COMBINATION OF PUBLIC AND SEMIPRIVATE STATEMENTS
+TO REPORTERS TRAVELING WITH OFFICIAL PARTY, KISSINGER AND
+HIS AIDES CLEARLY INDICATED THEY EXPECT SOUTH AFRICAN
+PM VORSTER TO MAKE AN IMPORTANT CONCESSION TO BLACK DEMANDS
+ON ISSUE OF NAMIBIA, UN TRUST TERRITORY THAT SOUTH AFRICA
+HOLDS UNDER DISPUTED CONTROL.
+
+...IN PAST NEGOTIATIONS KISSINGER, AN ACCOMPLISHED STAGE
+MANAGER, HAS ALWAYS SOUGHT TO CULTIVATE A PUBLIC APPEAR-
+ANCE OF PROGRESS AND SUCCESS WHEN HE APPROACHES A TURN-
+ING POINT IN HIS EFFORT.
+
+ACCORDINGLY, CAREFULLY NURTURED HINTS OF PROBABLE SUCCESS
+ON NAMIBIA AND POSSIBLE PROGRESS ON RHODESIA FIT IN WELL
+WITH HIS METHODS.
+BUT IT IS ALSO TRUE THAT KISSINGER RECEIVED A GENUINE
+LIFT THURSDAY FROM ZAMBIAN PRESIDENT KAUNDA, WHOSE EMO-
+TIONAL DECLARATION OF HOPE FOR KISSINGER'S MISSION AND OF
+CONFIDENCE IN HIS MOTIVES CLEARLY BOOSTED THE MORALE OF
+THE AMERICAN PARTY.
+
+...AT KAUNDA'S REQUEST, HE MET FOR FIFTEEN MINUTES FRIDAY
+MORNING IN LUSAKA WITH KNOMO, LEADER OF OLDEST, MOST
+ESTABLISHED AND LEAST MILITANT OF BLACK RHODESIAN FACTIONS,
+WHICH ARE PLANNING AN EXPANDED GUERRILLA CAMPAIGN THIS
+FALL IF THE CURRENT DIPLOMATIC EFFORT PRODUCES NO IMMEDIATE
+RESULT.
+
+3.  LA TIMES (JOHNSTON), PRETORIA:  &quot;KISSINGER AND SMITH
+TO MEET ON RHODESIA - 'SIGNIFICANT PROGRESS' CITED AS
+REASON FOR BRINGING PM INTO TALKS&quot; - KISSINGER HAS DECIDED
+TO MEET WITH RHODESIAN PM SMITH TO BRING SMITH DIRECTLY
+INTO HIS DIPLOMATIC EFFORT TO AVOID RACE WAR IN SOUTHERN
+AFRICA, U.S. OFFICIALS ANNOUNCED HERE EARLY TODAY.
+
+...UNTIL RECENTLY, SUCH A MTG BETWEEN KISSINGER AND SMITH
+HAD BEEN RULED OUT BECAUSE KISSINGER HAD REQUIRED AT LEAST
+SMITH'S TACIT ACCEPTANCE OF BLACK MAJORITY RULE IN HIS
+COUNTRY WITHIN TWO YEARS AS A PRECONDITION.  NOW STANDARDS
+APPARENTLY HAVE BEEN RELAXED TO POINT THAT KISSINGER
+AGREED TO SEE SMITH BECAUSE, IN HIS OWN JUDGMENT, &quot;SIGNI-
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 04        STATE  233038 TOSEC 270408
+
+FICANT PROGRESS&quot; HAS BEEN MADE TOWARD AN AGREEMENT ON
+BLACK MAJORITY RULE.
+
+BY LATE SATURDAY, REPORTERS WERE TOLD, KISSINGER BELIEVED
+SOME PROGRESS HAD BEEN MADE ON RHODESIA, BUT THAT LATE
+AFTERNOON SESSION BETWEEN VORSTER AND SMITH WOULD BE
+NECESSARY BEFORE KISSINGER COULD RISK MEETING SMITH.
+
+...KISSINGER, FRIDAY HINTED THAT SOUTH AFRICAN ACQUIESCENCE
+IN BLACK NATIONALIST PARTICIPATION AT AN INTERNATIONAL
+CONFERENCE ON FUTURE OF SOUTH-WEST AFRICAN TRUST TERRITORY
+MIGHT BE WITHIN SIGHT.
+
+BY SATURDAY, HOWEVER, IT WAS EVIDENT NO SUCH SUCCESS WAS
+LIKELY TO EMERGE FROM CURRENT TALKS.
+
+INSTEAD OF PRESSING FOR OUTRIGHT SOUTH AFRICAN ACCEPTANCE
+OF SOUTH-WEST AFRICAN PEOPLES' ORGANIZATION AS A NEGOTIA-
+TING PARTNER, IT WAS UNDERSTOOD FROM SOURCES CLOSE TO
+TALKS THAT KISSINGER WAS TRYING TO DEVELOP ONE OF TORTUOUS
+COMPROMISES FOR WHICH HE IS NOTED.  IT WOULD INVOLVE A
+MULTI-STAGE CONFERENCE WITH DIFFERING LEVELS OF PARTICIPA-
+TION BY VARIOUS NAMIBIAN GROUPS, AT DIFFERING TIMES.
+
+AS IS CUSTOMARY WITH A KISSINGER-RUN NEGOTIATION AT MID-
+POINT, PUBLIC KNOWLEDGE OF PROGRESS OF TALKS HAS BEEN
+FRAGMENTARY, AMBIGUOUS AND EASILY SUSCEPTIBLE TO MANIPU-
+LATION BY PARTICIPANTS.
+
+BUT SEQUENCE OF EVENTS SINCE LAST WEDNESDAY, WHEN KISSINGER
+MET WITH PRESIDENT NYERERE, APPEARED BEGINNING TO FALL
+INTO A PATTERN -- ONE IN WHICH KISSINGER, THE GO-BETWEEN,
+FIRST FOUND HIMSELF PRESSED FOR RESULTS BY NYERERE AND
+OTHER BLACK AFRICAN LEADERS MORE HARSHLY THAN EXPECTED,
+THEN LATER FOUND VORSTER UNWILLING TO BE AS COOPERATIVE
+AS KISSINGERHAD EXPECTED.
+
+RESULT, IT SEEMED SATURDAY, WAS THAT KISSINGER FOUND HIM-
+SELF IN DANGER OF FACING A DEADLOCKED NEGOTIATION -- AND
+THEREFORE A FAILED NEGOTIATION -- AT A POINT WHERE, ONLY
+A WEEK AGO, HE MIGHT HAVE EXPECTED MORE PROGRESS POSSIBLE.
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 05        STATE  233038 TOSEC 270408
+
+
+AS REPORTERS WERE TOLD SATURDAY, IT IS POSSIBLE TO CLAIM
+CONSIDERABLE PROGRESS IN A NEGOTIATION, AND IN FACT TO
+HAVE ACHIEVED PROGRESS, AND STILL HAVE IT BEEN DEEMED A
+FAILURE.
+
+HENCE, APPARENTLY, RESORT TO MTG WITH SMITH.  WHILE RELAX-
+ING HIS STAND THAT IN RETURN FOR MTG SMITH MUST ACCEPT
+PUBLICLY PRINCIPLE OF MAJORITY RULE, KISSINGER STILL IN-
+SISTED UPON &quot;SIGNIFICANT PROGRESS.&quot;
+
+...UNOFFICIAL REPORTS REACHING HERE SATURDAY FROM DAR ES
+SALAAM SUGGESTED, MOROEVER, THAT NEGOTIATING HONEYMOON
+BETWEEN KISSINGER AND NYERERE MAY BE OVER.  TANZANIAN
+PRESIDENT WAS REPORTED TO BE INCENSED BY NEWS REPORTS
+THAT A &quot;SENIOR OFFICIAL&quot; TRAVELING WITH KISSINGER, A UNI-
+VERSALLY ACCEPTED DESIGNATION FOR THE SECRETARY HIMSELF,
+HAD DISMISSED NYERERE'S PUBLIC PESSIMISM AT A NEWS CON-
+FERENCE WEDNESDAY IN FAVOR OF WHAT WERE DESCRIBED TO BE
+MORE MODERATE EXPRESSIONS IN PRIVATE CONVERSATION.
+
+AT SAME TIME, CONCLUSION APPEARED UNAVOIDABLE THAT SMITH
+HAD PLAYED A VERY ADROIT GAME TO MAKE QUESTION OF WHETHER
+HE MET KISSINGER IN PRETORIA THIS WEEKEND SEEM CRUCIAL
+ISSUES FACING KISSINGER-VORSTER TALKS.
+
+...DURING MORNING, A GROUP OF RHODESIAN CITIZENS PRESENTED
+THEMSELVES AT U.S. EMBASSY CHANCERY HERE, REQUESTING PER-
+MISSION TO PRESENT A GIFT, AN OIL PORTRAIT OF KISSINGER
+EXECUTED BY A RHODESIAN ARTIST.
+
+FOLLOWING PROTOCOL FOR DEALING WITH NATIONALS OF A COUNTRY
+WHICH U.S. DOES NOT RECOGNIZE, SECURITY GUARDS AT EMBASSY
+POLITELY TURNED RHODESIANS AWAY WHILE ACCEPTING PORTRAIT.
+
+SOON AFTERWARDS, MEMBERS OF SECRET SERVICE DETAIL GUARDING
+KISSINGER WERE SEEN CARRYING PORTRAIT UPSTAIRS IN ELEVATOR
+OF HOTEL IN WHICH KISSINGER PARTY IS STAYING.  IT APPEARED
+THAT SMITH, HOWEVER VICARIOUSLY, HAD ONCE AGAIN SUCCEEDED
+IN GETTING IN BACK WAY.  (SEPTEMBER 19)
+
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 06        STATE  233038 TOSEC 270408
+
+MAGAZINES
+
+1. NEWSWEEK
+
+HEADING:  &quot;PROGRESS IN PRETORIA&quot;
+
+THE FIRST LEG OF HENRY KISSINGER'S AFRICAN SHUTTLE WAS
+BEHIND HIM, AND IT HAD BEEN A ROUGH ONE.  NOW HE WAS FLYING
+INTO A STATE BESIEGED.  WHEN KISSINGER ARRIVED IN SOUTH
+AFRICA LAST WEEK, NEW BLACK RIOTS WERE ERUPTING IN
+URBAN GHETTOS, AND AS HE DROVE INTO PRETORIA, THE
+LOCAL NEWSPAPER CARRIED A GIANT PHOTOGRAPH OF HIM ALONG
+WITH THE HEADLINE &quot;MAKE OR BREAK&quot;.  KISSINGER QUICKLY
+BEGAN A ROUND OF TALKS WITH SOUTH AFRICAN PM JOHN VORSTER.
+THEN, ONLY A DAY LATER, CAME THE SURPRISE ANNOUNCEMENT:
+SECSTATE WOULD ALSO MEET WITH IAN SMITH, THE PM OF WHITE-
+SUPREMACIST RHODESIA.                                  -
+
+KISSINGER'S APPOINTMENT WITH THE STUBBORN LEADER OF
+THE BREAKAWAY BRITISH COLONY SET OFF SPECULATION
+THAT A BREAKTHROUGH WAS IMMINENT IN THE SEC'S EFFORT TO
+HEAD OFF A RACE WAR IN SOUTHERN AFRICA.  HAK, IT SEEMED,
+HAD ALREADY PERSUADED VORSTER TO SOFTEN HIS STAND ON
+INDEPENDENCE FOR NAMIBIA, THE SOUTH AFRICAN-RULED TRUST
+TERRITORY ALSO KNOWN AS SOUTHWEST AFRICA.  NOW, IT
+APPEARED TO MANY PEOPLE THAT SMITH WAS RESPONDING TO
+PRESSURE FROM KISSINGER -- AND PERHAPS FROM VORSTER, TOO.
+
+WEEKS OF HELL:  SO FAR, NO ONE KNEW WHAT SECRET DIPLOMACY
+LAY BEHIND THE ANNOUNCEMENT OF THE SUMMIT WITH SMITH.
+BUT IT WAS WIDELY ASSUMED THAT THE RHODESIAN LEADER WAS
+PREPARED TO MAKE AT LEAST PARTIAL CONCESSIONS.  THROUGH-
+OUT THE SHUTTLE, THE AMERICANS HAD ACKNOWLEDGED THAT
+KISSINGER COULD NOT RISK OFFENDING THE BLACK AFRICAN NATIONS
+ON HIS ITINERARY BY MEETING WITH SMITH UNLESS SOMETHING
+IMPORTANT WAS TO BE GAINED.  ONE SENIOR OFFICIAL IN THE
+AMERICAN PARTY SAID THE SEC WOULD SIT DOWN WITH SMITH
+ONLY IF HAK WAS &quot;ABLE TO REPORT TO THE BLACK PRESIDENTS
+THAT SOME SIGNIFICANT PROGRESS WAS BEING MADE THAT THEY
+WOULD RECOGNIZE AS SIGNIFICANT PROGRESS.&quot;  EVEN SO, THE
+OFFICIAL ADDED, HAK &quot;MIGHT HAVE TO TAKE HELL FOR A FEW
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 07        STATE  233038 TOSEC 270408
+
+WEEKS&quot; IN BLACK AFRICA.  &quot;BUT IF AT THE END OF A FEW
+WEEKS OR A MONTH THINGS ARE CONCLUDED, IT MIGHT HAVE BEEN
+WORTH IT.&quot;
+
+THE AMERICAN SECSTATE HAD JUST COME FROM TALKS WITH
+TWO BLACK AFRICAN LEADERS, PRES JULIUS NYERERE OF TANZ-
+ANIA AND PRES KENNETH KAUNDA OF ZAMBIA.  THERE HAK RAN
+INTO SOMETHING FOR WHICH ALL HIS YEARS OF MIRACLE-WORKING
+HAD NOT PREPARED HIM:  A STYLE OF DIPLOMACY IN WHICH HIS
+HOSTS PRIVATELY GAVE HIM CAUTIOUS ENCOURAGEMENT -- AND
+THEN PUBLICLY CAST DOUBT ON HIS MISSION.  ALTHOUGH
+ANGERED BY THOSE TACTICS, HAK FELT THERE WAS REASON
+ENOUGH TO CARRY ONE.
+
+THE FIRST PART OF HAK'S AFRICAN JOURNEY, A TWO-DAY STOP
+IN THE TANZANIAN CAPITAL OF DAR ES SALAAM, BEGAN BADLY.
+HE WAS VISIBLY TAKEN ABACK WHEN A CROWD OF 200
+DEMONSTRATORS MET HIM AT THE AIRPORT CHANTING &quot;GO HOME,
+GO HOME&quot; AND WAVING SIGNS DENOUNCING HIM AS, AMONG OTHER
+THINGS, THE &quot;TRAVELING CASHIER OF IMPERIALISM.&quot;  WHEN
+THE DEMONSTRATORS CLIMBED INTO BUSES TO FOLLOW HIM
+INTO TOWN, IT BECAME CLEAR THAT THE NOISY PROTEST
+HAD BEEN GOVT SANCTIONED.  AT HIS HOTEL, HAK RESPONDED
+WITH A BRUSQUE STATEMENT THAT THE TRIP TO AFRICA WAS
+NOT HIS IDEA.  &quot;THIS INITIATIVE STARTED AT THE REQUEST
+OF THE AFRICAN LEADERS DURING MY VISIT IN APRIL,&quot; HE
+DECLARED.  &quot;EVERY STEP THAT HAS BROUGHT US HERE HAS BEEN
+CAREFULLY DISCUSSED WITH LEADERS IN AFRICA AND ESPECIALLY
+THE (BLACK)PRESIDENTS.&quot;
+
+UPBEAT:  THE NEXT MORNING, HAK CHIDED PRES NYERERE ABOUT
+THE DEMONSTRATIONS, AND THE 54-YEAR-OLD TANZANIAN LEADER
+REPLIED THAT HE COULD NOT CONTROL SUCH OUTPOURINGS IN
+A DEMOCRACY.  NONETHELESS, SOURCES SAID THE MOOD OF THE
+FOUR-HOUR MEETING WAS GENERALLY FRIENDLY AND UPBEAT.
+AT A PRESS CONFERENCE LATER, NYERERE PRAISED HAK'S JOURNEY
+AS A &quot;SHUTTLE OF CLARITY&quot; AND REJECTED THE IDEA THAT IT
+WAS DOOMED TO FAILURE.  BUT THEN NYERERE GAVE HAK THE BACK
+OF HIS HAND.  &quot;REALLY, ON THE BASIS OF WHAT I KNOW UP TO
+NOW,&quot; HE OBSERVED, &quot;I COULD EVEN SAY I AM LESS HOPEFUL THAN
+I WAS.&quot;
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 08        STATE  233038 TOSEC 270408
+
+
+ONE DIPLOMAT IN DAR ES SALAAM INTERPRETED NYERERE'S CURT
+STATEMENT AS AN ATTEMPT TO &quot;COVER HIS REAR IN CASE THE
+HAK MISSION FAILS AND ALSO APPEASE HARD-LINE ELEMENTS WHO
+DISTRUST HAK'S MOTIVES.&quot;  HAK HIMSELF, THOUGH SURPRISED,
+BRUSHED ASIDE NYERERE'S REMARKS AS A MATTER OF NEGOTIATING
+TACTICS.  HAK'S PUBLIC RECEPTION WAS WARMER IN THE ZAM-
+BIAN CAPITAL OF LUSAKA.  FORNMIN SITEKE MWALE GREETED
+HIM AT THE AIRPORT WITH AN EMBRACE AND PRES KAUNDA LATER
+ASSURED THE AMERICAN THAT HE WAS PRAYING HARD FOR HIS
+SUCCESS.  BUT AS THE TWO MEN SAT ACROSS FROM EACH OTHER AT
+A CONFERENCE TABLE IN THE RED BRICK STATE HOUSE, KAUNDA
+ISSUED A BLUNT WARNING.  &quot;YOU HAVE ONLY A FEW DAYS -- NOT
+WEEKS -- TO SUCCEED,&quot; HE SAID.  &quot;IF YOU FAIL, WE SHALL
+HAVE REACHED THE POINT OF NO RETURN.&quot;
+
+EMOTION:  THE 52-YEAR-OLD KAUNDA, A MODERATE WHO IS OFTEN
+CALLED THE &quot;CONSCIENCE OF AFRICA,&quot; WAS SOON OVERCOME BY
+EMOTION, DABBING AT HIS EYES WITH A WHITE HANDKERCHIEF.
+VISIBLY TOUCHED, HAK RESPONDED:  &quot;I PRAY FOR ALL OF US --
+FOR YOUR PEOPLE AND OUR PEOPLE -- THAT I CAN BRING YOU
+ENCOURAGING NEWS.&quot;  AFTER HIS TALKS WITH KAUNDA, HAK
+MET BRIEFLY WITH JOSHUA NKOMO, LEADER OF ONE OF THE
+BLACK FACTIONS FIGHTING IN RHODESIA.  PERHAPS TO DIVERT
+NEWSMEN, KAUNDA HELD AN IMPROMPTU PRESS CONFERENCE, IN
+WHICH HIS VIEWS ON THE HAK SHUTTLE WERE LESS FERVID.  HE
+CALLED HIS TALKS WITH THE SEC &quot;USEFUL DISCUSSIONS,&quot;
+BUT ADDED:  &quot;I DIDN'T EXPECT HIM TO BRING ANYTHING NEW.&quot;
+
+AS HAK LEFT LUSAKA FOR HIS MEETING WITH VORSTER, SOUTH
+AFRICA ITSELF WAS IN TURMOIL.  IN CAPE TOWN, POLICE HAD
+OPENED FIRE ON COLORED DEMONSTRATORS.  IN JOHANNESBURG,
+FIRE BOMBS EXPLODED IN TWO DEPT STORES, AND BLACKS STONED
+BUSES CARRYING WHITE COMMUTERS -- THE FIRST OMINOUS
+SIGNS OF TERRORISM DELIBERATELY AIMED AT WHITES.  AT
+ALMOST THE SAME TIME THAT HAK'S PLANE TOUCHED DOWN AT
+WATERKLOOF MILITARY AIRPORT, BLACK STUDENTS IN SOWETO
+STAGED A MASS MARCH, CARRYING BANNERS READING &quot;KISSINGER
+IS A KILLER&quot; AND SINGING PROTEST SONGS.  WHEN THE
+CROWD TRIED TO MARCH ON NEARBY JOHANNESBURG AND IGNORED
+A WARNING TO TURN BACK, POLICE SHOT THREE OF THEM DEAD.
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 09        STATE  233038 TOSEC 270408
+
+
+THEOLOGY:  EVEN SO, HAK APPEARED OPTIMISTIC FOR PROGRESS
+IN HIS TALKS WITH VORSTER ON THE ISSUE OF NAMIBIA.  VORSTER,
+HE THOUGHT, MIGHT AGREE TO INDEPENDENCE FOR THE DISPUTED
+TERRITORY BY THE END OF NEXT YEAR, A YEAR AHEAD OF THE
+CURRENT SCHEDULE.  HAK ALSO WAS PRESSING VORSTER TO
+INCLUDE IN FUTURE TALKS ON NAMIBIA THE PRINCIPAL BLACK
+GUERRILLA GROUP THERE, THE SWAPO.  BUT THERE WERE STILL
+MANY QUESTIONS TO BE RESOLVED THAT COULD BLOCK PROGRESS
+TOWARD A SETTLEMENT.  &quot;THE NAMIBIAN THING IS DOWN NOW TO
+THEOLOGICAL POINTS THAT MEAN A HELL OF A LOT TO THE
+PARTICIPANTS,&quot; SAID A SENIOR OFFICIAL IN KISSINGER'S PARTY.
+&quot;AND THAT MAY BLOW IT SKY HIGH.&quot;
+
+AS THE DISCUSSIONS CONTINUED, SMITH FLEW TO SOUTH AFRICA.
+AT THE OUTSET OF THE HAK SHUTTLE, PROGRESS ON RHODESIA
+WAS THOUGHT TO BE A LOT LESS LIKELY THAN AGREEMENT ON
+NAMIBIA.  BUT THEN VORSTER WENT TO WORK ON HIS
+GUEST.  THEY MET FIRST AT VORSTER'S HILLTOP RESIDENCE
+(SMITH ARRIVED ONLY MINUTES AFTER KISSINGER HAD LEFT
+FOR A MEETING WITH SOUTH AFRICAN OPPOSITION LEADERS).
+THEN THE TWO MEN ATTENDED A RUGBY FOOTBALL MATCH.  THAT
+EVENING, HAK JOINED VORSTER FOR DINNER, AND AFTERWARD
+US SPOKESMAN LAWRENCE EAGLEBURGER MADE THE ANNOUNCEMENT:
+&quot;THE SECRETARY WILL MEET WITH PRIME MINISTER SMITH AT
+9:30 (THE NEXT MORNING) AT THE AMERICAN AMBASSADOR'S
+RESIDENCE.&quot;
+
+EAGLEBURGER BRUSHED ASIDE ALL QUESTIONS, AND THERE WAS NO
+INDICATION OF WHAT PRICE -- IF ANY -- KISSINGER HAD EX-
+TRACTED FROM SMITH IN RETURN FOR THE MEETING.  SO FAR,
+THE RHODESIAN LEADER HAD ADAMANTLY REJECTED DEMANDS FOR
+BLACK MAJORITY RULE IN HIS COUNTRY.   THERE WAS NO EV-
+IDENCE THAT HE WOULD CAVE IN BEFORE KISSINGER.  BUT IT
+WAS EQUALLY UNLIKELY THAT HAK WOULD HAVE AGREED TO THE
+MEETING WITHOUT SOME REASON TO HOPE FOR AT LEAST PRIVATE
+ASSURANCES OF PROGRESS TOWARD A SETTLEMENT.  WHATEVER
+TRANSPIRED WITH SMITH, THE FIRST WEEK OF KISSINGER'S
+AFRICAN SHUTTLE HAD ALREADY PRODUCED MORE RESULTS THAN
+MANY PEOPLE HAD EXPECTED.
+
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 10        STATE  233038 TOSEC 270408
+
+-- RAYMOND CARROLL WITH MILTON R. BENJAMIN IN KISSINGER'S
+PARTY AND PETER YOUNGHUSBAND IN CAPE TOWN
+
+2.  TIME MAGAZINE, SEPTEMBER 27 ISSUE:
+
+&quot;SOUTHERN AFRICA: SHUTTLING BETWEEN BLACK AND WHITE&quot;
+
+&quot;SCORES OF SOLDIERS AND POLICE, AS WELL AS AN ALL-BLACK
+HONOR GUARD, WERE ON HAND TO GREET HENRY KISSINGER AS HE A
+ARRIVED IN THE SOUTH AFRICAN CAPITAL OF PRETORIA LATE LAST
+WEEK ON THE THIRD STOP OF HIS LATEST EFFORT AT SHUTTLE
+DIPLOMACY.  ALL WEEK LONG SPORADIC RIOTING HAD CONTINUED
+IN THE NONWHITE TOWNSHIPS AROUND JOHANNESBURG AND CAPE
+TOWN, AND A DEPARTMENT STORE IN DOWNTOWN JOHANNESBURG
+WAS FIRE-BOMBED -- THE FIRST SUCH ACT OF URBAN TERRORISM
+IN THE COUNTRY'S HISTORY.  SHORTLY BEFORE KISSINGER'S
+BLUE AND WHITE 707 TOUCHED DOWN, POLICE FIRED AT
+DEMONSTRATORS IN JOHANNESBURG'S SOWETO TOWNSHIP, KILLING
+SIX STUDENTS AND WOUNDING 35.  IN NO TIME, RUMORS WERE
+CIRCULTATING IN LONDON, NEW YORK AND ELSEWHERE THAT THE
+SECRETARY HAD BEEN ASSASSINATED.  PARAPHRASING MARK
+TWAIN, KISSINGER QUICKLY RETORTED THAT THE REPORTS OF HIS
+'HAVING BEEN SHOT WERE GROSSLY EXAGGERATED.'
+
+&quot;BRUTAL TALK:  THE SECRETARY DID NOT FIND MANY OPPORTUNITIES
+FOR JOCULARITY IN HIS ATTEMPT TO HEAD OFF BY NEGOTIATION
+THE RACIAL ARMAGEDDON THAT SEEMS TO BE LOOMING IN SOUTHERN
+AFRICA. TANZANIA'S PRESIDENT J. NYERERE HAD ANNOUNCED
+THAT HE WAS NOT 'PARTICULARLY ENCOURAGED' BY KISSINGER'S
+MISSION. ZAMBIA'S PRESIDENT K. KAUNDA HAD DECLARED THAT
+KISSINGER MIGHT HAVE 'ONLY A FEW DAYS, NOT WEEKS' TO
+SUCCEED IN AVERTING A BLACK-WHITE WAR.
+
+&quot;WHEN KISSINGER ARRIVED IN PRETORIA, HE HAD NO EXPECTATION
+OF BRINGING ABOUT ANY CHANGE IN SOUTH AFRICA'S CHERISHED
+SYSTEM OF APARTHEID, OR 'SEPARATE DEVELOPMENT.'    BUT
+HE WAS ANXIOUS TO SEE WHETHER A ROUND OF SUSTAINED
+NEGOTIATIONS COULD END THE IMPASSE OVER RHODESIA, WHOSE
+WHITE MINORITY GOVERNMENT BROKE AWAY FROM BRITISH RULE
+ELEVEN YEARS AGO.  AND HE WAS PARTICULARLY HOPEFUL THAT IF
+ALL :LSE FAILED, HE COULD ACHIEVE SOME MEASURED PROGRESS
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 11        STATE  233038 TOSEC 270408
+
+ON NAMIBIA,  OR S-W AFRICA, THE ONETIME LEAGUE OF NATIONS
+TERRITORY THAT SOUTH AFRICA HAS RULED SINCE 1920.
+
+&quot;SOUTH AFRICAN PRIME MINISTER J. VORSTER MADE IT CLEAR
+FROM THE BEGINNING THAT HIS DISCUSSIONS WITH KISSINGER
+WOULD NOT DEAL WITH SOUTH AFRICA ITSELF.  IF VORSTER
+IS DETERMINED TO MAINTAIN WHITE RULE AT HOME, HE IS ALSO
+CONVINCED, HOWEVER, THAT IT CAN NO LONGER BE UPHELD IN
+EITHER RHODESIA OR NAMIBIA.  BY AGREEING TO A TRANSITION
+TO MAJORITY RULE IN THOSE TERRITORIES, HE BELIEVES SOUTH
+AFRICA CAN GAIN ENOUGH TIME FOR ITSELF TO BUILD LASTING
+TIES WITH ITS BLACK NEIGHBORS.  AT ZURICH TWO WEEKS AGO,
+VORSTER HINTED TO KISSINGER THAT HE WAS PREPARED TO STEP
+UP THE PRESSURE ON RHODESIAN PRIME MINISTER IAN SMITH.
+ACCORDINGLY, VORSTER LAST WEEK TREATED SMITH TO A DUTCH
+UNCLE TALK THAT ONE DIPLOMAT DESCRIBED AS 'TOUGH TO THE
+POINT OF BRUTALITY.'  EVIDENTLY, HE WARNED SMITH THAT
+PRETORIA'S FUTURE CAPACITY FOR HELPING RHODESIA WILL BE
+INCREASINGLY LIMITED.  AS SMITH WELL KNOWS, AN ESTIMATED
+$100 MILLION WORTH OF RHODESIAN BULK EXPORTS OF CORN,
+MINERALS AND TOBACCO ARE ALREADY HELD UP ON THE RHODESIAN
+SIDE OF THE BORDER FOR LACK OF SPACE ON SOUTH AFRICA'S
+CROWDED RAIL LINES TO CARRY THEM TO THE SEA.
+
+&quot;BE HONEST:  SMITH LEFT THE MEETING LOOKING PALE AND
+ANGRY.  HE TOOK OFF IMMEDIATELY FOR THE RHODESIAN BORDER
+TOWN OF UMTALI, WHERE THE ANNUAL CONGRESS OF HIS RHODESIAN
+FRONT PARTY WAS UNDER WAY.  THOUGH IT SEEMS HARD TO IMAGINE,
+SMITH IS A MODERATE BY RHODESIAN STANDARDS, AND AT UMTALI
+HE FACED A RIGHT-WING REVOLT LED BY PARTY CHAIRMAN
+DESMOND FROST, WHO WOULD LIKE TO SPLIT RHODESIA INTO
+BLACK AND WHITE SECTORS UNDER OVERALL WHITE CONTROL.
+AFTER SIX HOURS OF SPEECHMAKING AND DEBATE, SMITH FORCED
+THE ISSUE IN A DRAMATIC SCENE,'ARE YOU WITH MR OR ARE YOU
+NOT?' HE DEMANDED.  'FOR GOD'S SAKE, BE HONEST'.  HE WON A
+FIVE-MINUTE STANDING OVATION, AFTER WHICH THE CONGRESS
+VOTED UNANIMOUSLY TO GIVE HIM 'A FREE HAND TO NEGOTIATE
+IN FUTURE ON BEHALF OF ALL RHODESIANS.'
+
+&quot;SOON SMITH WAS ON HIS WAY BACK TO SOUTH AFRICA FOR A
+SATURDAY NIGHT RUGBY MATCH -- AND, AS IT TURNED OUT,
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 12        STATE  233038 TOSEC 270408
+
+THE MEETING HE WANTED WITH HENRY KISSINGER.  PREVIOUSLY,
+THE SECRETARY HAD SAID HE WOULD TALK TO SMITH ONLY IF
+HE WERE ASSURED IN ADVANCE OF 'MAJOR PROGRESS.'  IN THE
+END, HE AGREED TO A SUNDAY MORNING MEETING IN ORDER TO
+SUSTAIN THE MOMENTUM OF  HIS MISSION.
+
+&quot;ON NAMIBIA, KISSINGER HAD REASON TO HOPE FOR SOME GENUINE
+PROGRESS.   SOUTH AFRICA IS ALREADY COMMITTED TO THE PRIN-
+CIPLE OF NAMIBIAN INDEPENDENCE, AND LAST MONTH A CON-
+STITUTIONAL CONFERENCE IN WINDHOEK, THE NAMIBIAN CAPITAL,
+SETTLED ON DECEMBER 31, 1978, AS THE DATE FOR THE TRANSFER
+OF POWER.
+
+&quot;THE BIGGEST SNAG IS THAT THE NEGOTIATORS AT WINDHOEK
+DID NOT INCLUDE ANY REPRESENTATIVES OF THE SOUTH WEST
+PEOPLE'S ORGANIZATION, THE LIBERATION -- AND GUERRILLA --
+MOVEMENT THAT IS RECOGNIZED BY THE UNITED NATIONS AND
+THE ORGANIZATION OF AFRICAN UNITY AS THE SOLE REPRESENTATIVE
+OF THE NAMIBIAN PEOPLE.  KISSINGER'S FIRST CHORE WAS TO TRY
+TO GET SOUTH AFRICA AND SWAPO TOGETHER OVER THE SAME
+
+CONFERENCE TABLE, PERHAPS IN GENEVA.
+
+&quot;KISSINGER'S SHUTTLE GOT OFF TO AN INAUSPICIOUS BEGINNING
+LAST WEEK WHEN HE LANDED AT DAR ES SALAAM, TANZANIA.
+ON ARRIVAL, HE FOUND THE TANZANIAN GOVERNMENT LESS
+RECEPTIVE TO HIS MISSION THAN HE HAD HOPED.  STUDENT
+DEMONSTRATORS, OBVIOUSLY ACTING WITH GOVERNMENT ACQUIESCENCE
+GREETED THE SECRETARY WITH SIGNS BRANDING HIM A 'CYNICAL
+MURDERER.'  LATER, AFTER FIVE HOURS OF TALKS, PRESIDENT
+NYERERE TOLD NEWSMEN THAT HE FELT 'EVEN LESS HOPEFUL'
+ABOUT NAMIBIA THAN HE HAD BEEN BEFORE.  BUT AT THE
+VERY LEAST, NYERERE REMARKED, THE MISSION WOULD
+CLARIFY US VIEWS ON SOUTHERN AFRICA.  IN THAT SENSE,
+HE ADDED, 'A SHUTTLE OF CLARITY IS NOT A SHUTTLE OF
+FAILURE.'
+
+&quot;MAJORITY RULE:  KISSINGER'S SECOND HOST, ZAMBIA'S
+PRESIDENT KAUNDA, WAS MORE ENTHUSIASTIC.  KAUNDA, AN
+EMOTIONAL IDEALIST, WEPT AS HE SPOKE OF THE SEEMINGLY
+INEXORABLE SLIDE OF SOUTHERN AFRICA TOWARD BLOODSHED AND
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 13        STATE  233038 TOSEC 270408
+
+WAR.  'WE DEMAND WHAT IS RIGHT AND FAIR AND JUST TO ALL
+MEN,' HE ADDED, PLEDGING HIS COUNTRY TO FIGHT 'TO THE
+LAST MAN IF NECESSARY,' FOR MAJORITY RULE IN ZIMBABWE,
+THE AFRICAN NAME FOR RHODESIA.  AT THE END OF THEIR
+DISCUSSIONS, KAUNDA OBSERVED OF KISSINGER:  'HIS HEART
+IS IN THE RIGHT PLACE, AND HE HAS OUR PRAYERS.'  THE
+SECRETARY RESPONDED THAT HE WOULD RETURN TO LUSAKA
+AFTER HIS VISIT TO PRETORIA 'TO REPORT TO YOU, AND I PRAY
+FOR ALL OF US THAT I CAN BRING YOU ENCOURAGING NEWS.'
+AT WEEK'S END, AS KISSINGER PROCEEDED WITH HIS TALKS
+IN SOUTH AFRICA  AND PREPARED TO REPORT BACK TO KAUNDA,
+NYERERE AND OTHER AFRICAN LEADERS ON HIS WAY HOME,
+IT WAS UNCERTAIN WHETHER HE WOULD HAVE MUCH ENCOURAGEMENT
+TO OFFER.&quot;
+
+3.  NEWSWEEK:
+
+&quot;PLAYING BY THE AFRICAN RULES&quot;
+
+&quot;EVEN FOR A DIPLOMAT AS SKILLED AS HENRY KISSINGER, BLACK
+AFRICA WAS FULL OF UNSETTLING SURPRISES.  NONE OF HIS
+PREVIOUS SHUTTLES FULLY PREPARED THE SECRETARY OF STATE
+FOR THE NEGOTIATING STYLE HE ENCOUNTERED IN TANZANIA
+AND ZAMBIA, AND HE SPENT A LARGE AND FRUSTRATING PART OF
+HIS WEEK LEARNING THE RULES OF A NEW DIPLOMATIC GAME.
+
+&quot;NEVER BEFORE HAD KISSINGER DEALT WITH SO MANY INTERESTED
+PARTIES.  HIS NEGOTIATIONS WITH RUSSIA AND CHINA HAD BEEN
+BILATERAL AFFAIRS, AND EVEN IN THE MIDDLE EAST HE HAD
+BEEN REQUIRED, FOR THE MOST PART, TO WORK WITH ONLY TWO
+NATIONS AT ONE TIME; THE TROUBLESOME PALESTINIANS WERE
+EXCLUDED. IN BLACK AFRICA, FIVE 'FRONTLINE' NATIONS,
+IN VARYING HUES OF RADICALISM, PLUS FOUR GUERRILLA
+MOVEMENTS HAD TO BE CONSIDERED, AND MANY OF THEM WERE AT
+ODDS WITH EACH OTHER.  MOST OF THE BLACK STATESMEN WERE IN
+FAR WEAKER POSITONS POLITICALLY THAN A MAO TSE-TUNG OR AN
+ANWAR SADAT -- AND THUS UNABLE TO DEAL AS FREELY.
+AFTER TANZANIAN PRESIDENT J. NYERERE FOLLOWED UP HIS
+PRIVATE EXPRESSIONS OF CAUTIOUS OPTIMISM WITH A PUBLIC
+EXPRESSION OF DOUBT, US SOURCES SPOKE REPEATEDLY OF
+NYERERE'S NEED 'TO SHORE UP HIS REVOLUTIONARY CREDENTIALS.'
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 14        STATE  233038 TOSEC 270408
+
+
+&quot;THE POETRY OF REVOLUTION RUNS STRONG IN AFRICA, AND
+KISSINGER'S TALKS HAD A HIGH EMOTIONAL CONTENT.  MANY LEAD-
+ERS OF BLACK NATIONS BEGAN THEIR STRUGGLE IN THE BUSH
+AND LIKE TO SAY THAT THEY WON THEIR INDEPENDENCE THROUGH
+REVOLUTIONARY STRUGGLE -- EVEN IF, IN SOME CASES,
+THE COLONIAL POWERS MERELY WALKED AWAY AND HANDED THEM
+THE KEYS.  EVEN THE MODERATE K. KAUNDA RESORTED TO
+RADICAL RHETORIC, WARNING THAT IF THE SHUTTLE FAILED,
+'WE WILL FIGHT -- TO THE LAST MAN IF NECESSARY.'
+
+&quot;HONEST BROKER:KISSINGER'S USUAL STYLE IS TO MORE OR
+LESS NAIL DOWN A GENERAL AGREEMENT BEFORE HE HIMSELF
+APPEARS ON THE SCENE, AND THAT TAKES COOPERATION FROM
+HIS OPPOSITE NUMBERS.  BUT THIS TIME, THE BLACK AFRICANS
+WERE NOT EVEN COMMITTED TO THE IDEA OF NEGOTIATION.  'I
+THINK THIS IS THE BASIC OBSTACLE -- THE RELUCTANCE OF ANY-
+BODY TO ADMIT THAT NEGOTIATIONS CAN SUCCEED' KISSINGER SAID
+IN DAR ES SALAAM.
+
+&quot;A BIGGER OBSTACLE MAY HAVE BEEN THAT MANY BLACKS STILL
+
+DID NOT COMPLETELY TRUST KISSINGER OR BELIEVE HIS CLAIMS
+THAT HE WAS SIMPLY TRYING TO BE AN HONEST BROKER.  IN
+TANZANIA, KISSINGER ASSERTED THAT THE US 'WILL DO WHAT
+WE ARE ASKED TO DO ... WE WILL TAKE NO INITIATIVES THAT
+ARE NOT INVITED, AND WHATEVER PROGRESS WILL OCCUR DEPENDS
+OF THE ATTITUDE OF THE PARTIES AND THE GOODWILL OF THE
+PARTICIPANTS.'
+
+&quot;SOME FOREIGN DIPLOMATS, HOWEVER, ARGUED THAT KISSINGER
+WOULD BE BETTER ADVISED TO ADMIT FRANKLY THAT THE US HAS
+LARGE DIPLOMATIC, ECONOMIC AND STRATEGIC STAKES IN SOUTHERN
+AFRICA.  AND SOME OF THE BLACK 'PARTIES' THEMSELVES HAD
+DOUBTS ABOUT THE DEPTH OF AMERICAN GOODWILL.  IN A FORMAL
+STATEMENT, THE TANZANIAN FOREIGN MINISTER ASKED:  'WHY
+CANNOT THE AMERICAN GOVERNMENT ALSO SAY THAT IF A PEACEFUL
+TRANSFER OR POWER IS IMPOSSIBLE BECAUSE OF THE INTRANS-
+
+IGENCE OF THE RACISTS, THEN IT WILL BE ON THE SIDE OF
+THOSE WHO FIGHT FOR FREEDON?'
+UNCLASSIFIED
+
+UNCLASSIFIED
+
+PAGE 15        STATE  233038 TOSEC 270408
+
+
+&quot;'OBSESSION':  SOME BLACKS, SUCH AS NYERERE, ALSO
+COMPLAINED THAT THE US APPEARED TO BE SO AFRAID OF
+SOVIET AND CUBAN PENETRATION IN SOUTHERN AFRICA THAT IT
+CONFUSED BLACK NATIONALISM WITH A MARXIST BID FOR POWER.
+'CUBA, CUBA, CUBA' STORMED NYERERE.  'I FIND THIS CUBAN
+OBSESSION INCREDIBLE -- AND IT COMES FROM INTELLIGENT
+PEOPLE.' 'THE AFRICANS WANT AN AFRICAN SOLUTION, NOT ONE
+THAT FALLS INTO LINE WITH THE WESTERN VIEW OF THE WORLD,'
+
+SAID A FOREIGN DIPLOMAT.   AN AFRICAN JOURNALIST ADDED:
+'THEY HAVE LEARNED THAT THE WEST AND THE SOVIET
+UNION PURSUE THEIR OWN GOALS, AND THEY ARE EQUALLY
+CYNICAL ABOUT BOTH.'  WHETHER OR NOT SUCH JUDGMENTS WERE
+FAIR, THEY WERE ONES THAT KISSINGER WOULD HAVE TO LIVE
+WITH -- OR ADROITLY WORK HIS WAY AROUND.&quot;
+(MARK STEVENS WITH JAMES PRINGLE IN LUSAKA AND DAR AND
+MILTON R. BENJAMIN WITH KISSINGER'S PARTY).
+ROBINSON
+
+
+UNCLASSIFIED
+
+
+
+
+NNN
+
+</div></div></div><div class="pane-tab"><div class="pane-header">Metadata</div><div class="pane-content"><div class="text-content">---
+Capture Date: 01 JAN 1994
+Channel Indicators: n/a
+Current Classification: UNCLASSIFIED
+Concepts: TOSEC, PRESS COMMENTS
+Control Number: n/a
+Copy: SINGLE
+Draft Date: 20 SEP 1976
+Decaption Date: 01 JAN 1960
+Decaption Note: n/a
+Disposition Action: n/a
+Disposition Approved on Date: n/a
+Disposition Authority: n/a
+Disposition Case Number: n/a
+Disposition Comment: n/a
+Disposition Date: 01 JAN 1960
+Disposition Event: n/a
+Disposition History: n/a
+Disposition Reason: n/a
+Disposition Remarks: n/a
+Document Number: 1976STATE233038
+Document Source: CORE
+Document Unique ID: '00'
+Drafter: JMORDWAY:AVW
+Enclosure: n/a
+Executive Order: N/A
+Errors: N/A
+Film Number: D760355-0449
+From: STATE
+Handling Restrictions: n/a
+Image Path: n/a
+ISecure: '1'
+Legacy Key: link1976/newtext/t19760940/aaaabiec.tel
+Line Count: '690'
+Locator: TEXT ON-LINE, ON MICROFILM
+Office: ORIGIN PRS
+Original Classification: UNCLASSIFIED
+Original Handling Restrictions: n/a
+Original Previous Classification: n/a
+Original Previous Handling Restrictions: n/a
+Page Count: '13'
+Previous Channel Indicators: n/a
+Previous Classification: n/a
+Previous Handling Restrictions: n/a
+Reference: n/a
+Review Action: RELEASED, APPROVED
+Review Authority: vandyklc
+Review Comment: n/a
+Review Content Flags: n/a
+Review Date: 12 FEB 2004
+Review Event: n/a
+Review Exemptions: n/a
+Review History: RELEASED &lt;12 FEB 2004 by MaustMC&gt;; APPROVED &lt;26 AUG 2004 by vandyklc&gt;
+Review Markings: ! 'n/a
+
+  Margaret P. Grafeld
+  US Department of State
+  EO Systematic Review
+  04 MAY 2006
+
+'
+Review Media Identifier: n/a
+Review Referrals: n/a
+Review Release Date: n/a
+Review Release Event: n/a
+Review Transfer Date: n/a
+Review Withdrawn Fields: n/a
+Secure: OPEN
+Status: NATIVE
+Subject: TRAVELING PRESS REPORTAGE, MID MORNING, SEPT 20,1976 NO. 26
+TAGS: SOPN, OVIP, US, XJ, (KISSINGER, HENRY A)
+To: SECRETARY
+Type: TE
+Markings: ! 'Margaret P. Grafeld Declassified/Released US Department of State EO Systematic
+  Review 04 MAY 2006
+  Margaret P. Grafeld Declassified/Released US Department of State EO Systematic Review
+  04 MAY 2006'
+</div></div></div><div class="pane-tab"><div class="pane-header">Raw source</div><div class="pane-content"><div class="text-content"><a href="https://file.wikileaks.org/oc/2082.2/240376.pdf">2082.2/240376.pdf</a></div></div></div>
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 61px">Print</div><div class="pane-content pane-print">
+<p>You can use this tool to generate a print-friendly PDF of the document <strong>1976STATE233038_b</strong>.</p>
+<form action="/plusd/pdf/?df=20943" method="post">
+	<input type="hidden" name="p" value="b" />
+	<input type="hidden" name="r" value="1976STATE233038_b" />
+	<input type="checkbox" name="s" id="is" value="cake"><label for="is">Include summary</label></input><br />
+	<input type="checkbox" name="h" id="ih" value="is a"><label for="ih">Include headers</label></input><br />
+	<input type="checkbox" name="m" id="im" value="lie"><label for="im">Include raw metadata</label></input><br /><br />
+	<input type="submit" value="Generate pdf" />
+</form>
+</div></div>
+
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 60px">Share</div><div class="pane-content pane-share">
+<p>The formal reference of this document is <strong>1976STATE233038_b</strong>, please use it for anything written about this document. This will permit you and others to search for it.</p>
+<div class="share-panel">
+<label for="share-link">Direct link to document</label>
+<input readonly="readonly" type="text" class="share" id="share-link" value="https://www.wikileaks.org/plusd/cables/1976STATE233038_b.html" /><br />
+
+<label for="share-reddit">Reddit code</label>
+<input readonly="readonly" type="text" class="share" id="share-reddit" value="[1976STATE233038_b](https://www.wikileaks.org/plusd/cables/1976STATE233038_b.html)" /><br />
+
+<label for="share-html">HTML code</label>
+<input readonly="readonly" type="text" class="share" id="share-html" value="&lt;a href=&quot;https://www.wikileaks.org/plusd/cables/1976STATE233038_b.html&quot; title=&quot;1976STATE233038_b&quot;&gt;1976STATE233038_b&lt;/a&gt;" /><br />
+
+<label for="share-bbcode">Forum code (bbcode)</label>
+<input readonly="readonly" type="text" class="share" id="share-bbcode" value="[url=https://www.wikileaks.org/plusd/cables/1976STATE233038_b.html]1976STATE233038_b[/url]" />
+</div>
+
+
+
+<br style="clear: both;" />
+<p>Submit this story</p>
+<div class="share">
+	<a href="http://www.reddit.com/submit?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1976STATE233038_b.html"><img src="/plusd/images/Reddit-ico.png" /></a>
+</div>
+
+<div class="share">
+        <a href="http://twitter.com/home?status=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1976STATE233038_b.html"><img src="/plusd/images/Twitter-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1976STATE233038_b"><img src="/plusd/images/Gplus-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=1976STATE233038_b&amp;p[summary]=Summary&amp;p[url]=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1976STATE233038_b.html"><img src="/plusd/images/Facebook-ico.png" /></a>
+</div>
+
+<br style="clear: both;" />
+</div></div>
+
+<!--<div class="pane-tab"><div class="pane-header tab-right tab-find">Find</div><div class="pane-content pane-find">-->
+<!--</div></div>-->
+
+<!--<div id="tagged-text"> -->
+	<div id="pane-root" style="display:none">
+		<div id="pane-tabs"></div>
+
+		<div id="pane-contents"></div>
+
+	</div>
+<!--</div>-->
+<div class="pane-content pane-extra">
+<table class="references">
+	<thead>
+		<tr>
+			<th>References to this document in other cables</th>
+			<th>References in this document to other cables</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+									<a class="j" href="/plusd/cables/1974STATE234598.html" title="STATE 233038">1974STATE234598</a>
+									<a class="j" href="/plusd/cables/1974BUCHAR04901.html" title="STATE 233038">1974BUCHAR04901</a>
+							</td>
+			<td>
+							</td>
+		</tr>
+	</tbody>
+
+</table>
+<p style="text-align:center">If the reference is ambiguous all possibilities are listed.</p>
+
+</div>
+<div class="pane-content pane-extra">
+<div class="dnpage visible">
+<h1>Help Expand The Public Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+
+
+</div>
+
+</div>
+<br />
+<script type="text/javascript" src="/plusd/js/mootools-core-and-more.js"></script>
+<script type="text/javascript" src="/plusd/js/efatmarker.min.js"></script>
+<script type="text/javascript">
+(function(){
+	window.addEvent('domready', function(){
+	        $$("#showhide").addEvent( "click", function() {
+			$$(".text-header").toggleClass("hidden");
+			t=$$("#showhide");
+			if(t.get("html")=="Show&nbsp;Headers")
+				t.set("html", "Hide&nbsp;Headers");
+			else
+				t.set("html", "Show&nbsp;Headers");
+		} );
+
+		var pane_root = $('pane-root'),
+			pane_tabs = $('pane-tabs'),
+			pane_contents = $('pane-contents'),
+			panes = $$('.pane-tab'),
+			num_panes = panes.length,
+			i, pane,
+			pane_header,
+			pane_content;
+		var activate_tab = function(target) {
+			$$('#pane-contents .pane-content').each(function(e,i){
+				if (i === target) {
+					e.addClass('top');
+					}
+				else {
+					e.removeClass('top');
+					}
+				});
+			$$('#pane-tabs .pane-header').each(function(e,i){
+				if (i === target) {
+					e.removeClass('nottop');
+					e.addClass('ontop');
+					}
+				else {
+					e.addClass('nottop');
+					e.removeClass('ontop');
+					}
+				});
+			};
+		for (i=0; i<num_panes; i++) {
+			pane = panes[i];
+			pane_header = pane.getElement('.pane-header');
+			pane_tabs.grab(pane_header);
+			pane_header.addEvent('click', function(){
+				var target = $('pane-tabs').getChildren().indexOf(this);
+				activate_tab(target);
+				});
+			pane_content = pane.getElement('.pane-content');
+			pane_contents.grab(pane_content);
+			pane.destroy();
+			}
+		activate_tab(0);
+		$('pane-root').style.display = '';
+		}); /* event handler function() */
+	})(); /* namespace function() */
+</script>
+<div id="efm-button">
+	<div id="efm-menu">
+		<h3 style="margin:0 0 2px 0">e-Highlighter</h3>
+		<a id="efm-permalink" class="efm-need-highlight" href="" style="margin-bottom:0;padding-bottom:0;"></a>
+		<p style="margin-top:0;padding-top:0" class="efm-need-highlight">Click to send permalink to address bar, or right-click to copy permalink.</p>
+		<a id="efm-twitter-button" class="efm-need-highlight" href="#" target="_blank"><img src="/plusd/images/tweetn.png" alt="Tweet" title="Tweet these highlights" style="vertical-align:middle"> these highlights</a>
+		<p style="margin:0.5em 0;padding:0;border-top:1px dotted #ccc;height:1px"></p>
+		<a id="efm-unhighlightall" class="efm-need-highlight">Un-highlight all</a>
+		<a id="efm-unhighlight">Un-highlight selection<span>u</span></a>
+		<a id="efm-highlight">Highlight selection<span>h</span></a>
+		</div>
+	</div>
+</div></div></div>
+<script type="text/javascript">
+
+(function(){
+	window.addEvent('domready', function(){
+
+		var markerButton = $('efm-button');
+		if ( markerButton ) {
+			eMarker = new EFatMarker($('content-main'));
+			eMarker.tokenToSpans(); // apply whatever token is there
+			// need to act on mousedown or else selection disappear
+			markerButton.addEvent('mousedown', function(){
+				eMarker.interpretSelection(true);
+				return false;
+				});
+			$('efm-unhighlightall').addEvent('mousedown', function(){
+				eMarker.unhighlightAll(true);
+				return false;
+				});
+			$('efm-unhighlight').addEvent('mousedown', function(){
+				eMarker.unhighlightSelection(true);
+				return false;
+				});
+			$('efm-highlight').addEvent('mousedown', function(){
+				eMarker.highlightSelection(true);
+				return false;
+				});
+			$('efm-permalink').addEvent('mousedown', function(){
+				window.location.href = this.href;
+				return false;
+				});
+			// if Mootools Keyboard is available, use it
+			if (Keyboard) {
+				var keyboard = new Keyboard({
+					defaultEventType: 'keyup',
+					events: {
+						'h': function(){
+							eMarker.highlightSelection(true);
+							},
+						'u': function(){
+							eMarker.unhighlightSelection(true);
+							}
+						}
+					});
+				keyboard.activate();
+				}
+			eMarker.syncDOM();
+			// auto scroll to first highlight, if any
+			if (eMarker.hasSpans()) {
+				var scroll = new Fx.Scroll(window,{offset:{'x':0,'y':-100}}),
+					highlights = $$('#content-main .efm-hi');
+				if (highlights.length > 0) {
+					scroll.toElement(highlights[0]);
+					}
+				}
+			}
+		});
+	})();
+
+</script>
+
+<div class="dnflood"></div>
+<div class="dnbutton">
+<div class="dnmain">
+<h1><span class="dnclose">X</span>Help Expand The Public<br />Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+</div>
+</div>
+
+</div>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<link href="/static/css/styles_footer.css" rel="stylesheet">
+<footer id="page-footer" class="footer-recommendations">
+  <div class="footer-wrapper">
+    <div class="recommendation-container">
+      <a href="#" class="top">Top</a>
+      
+        <ul class="recommendation-links">
+                <li class="recommendation">
+                    <a href="https://our.wikileaks.org" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton666.png" width="360" height="240" />
+                        </div>
+                        <p><p>WL Research Community - user contributed research based on documents published by WikiLeaks. 
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.torproject.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton401.png" width="360" height="240" />
+                        </div>
+                        <p><p>Tor is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://tails.boum.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton405.png" width="360" height="240" />
+                        </div>
+                        <p><p> Tails is a live operating system, that you can start on almost any computer from a DVD, USB stick, or SD card. It aims at preserving your privacy and anonymity.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.couragefound.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton404.png" width="360" height="240" />
+                        </div>
+                        <p><p>The Courage Foundation is an international organisation that supports those who risk life or liberty to make significant contributions to the historical record.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.bitcoin.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton403.png" width="360" height="240" />
+                        </div>
+                        <p><p>Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network.
+</p></p>
+                    </a>
+                </li>
+            </li>
+        </ul>
+      
+      <ul class="social-links">
+        <li>
+          <a href="https://www.facebook.com/wikileaks" target="_blank" alt="Facebook">
+            <img src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" target="_blank" alt="Twitter">
+            <img src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

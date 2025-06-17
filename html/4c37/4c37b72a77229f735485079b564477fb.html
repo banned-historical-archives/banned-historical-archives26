@@ -1,0 +1,2762 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/cerulean.min.css" rel="stylesheet">
+<link href="/bootstrap/css/new-gen.css" rel="stylesheet">
+<link href="/bootstrap/css/submit.css" rel="stylesheet">
+<script type="text/javascript" src="/plusd/js/jquery.min.js"></script>
+<script type="text/javascript" src="/plusd/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+</script>
+<script type="text/javascript" src="/plusd/js/wikipedia.js"></script>
+<script type="text/javascript" src="/plusd/js/qtip.min.js"></script>
+<script type="text/javascript" src="/plusd/js/idle-timer.min.js"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+
+(function($) {
+	var show_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").show();
+	}
+	var hide_button = function() {
+		$(".dnbutton,.dnflood,.dnmain").hide();
+	}
+	$(document).idleTimer(180000);
+	$(document).on("idle.idleTimer", show_button);
+	$(document).ready(function() {
+		if( typeof setupDoubleClick == 'function' )
+			setupDoubleClick('http://en.wikipedia.org/w/index.php', 'british', 'tagged-text', 4, "_blank", "/words/ps.json");
+		var current = Math.floor(( new Date( ) ).getTime( )/1000);
+
+		$("#ddonate").click(show_button);
+		$(".dnclose").click(hide_button);
+		$('a.i').each( function() {
+			i=$(this);
+			i.attr("alt", descr[i.attr("title")]);
+		} );
+		$('a.i').qtip( {
+			show: {
+				event: 'click',
+				solo: true
+			},
+			hide: 'click',
+			content: {
+				attr: 'alt',
+				title: {
+					button: true
+				}
+			},
+			style: {
+				classes: 'qtip-blue qtip-shadow'
+			}
+		} );
+
+	} );
+
+
+	var descr = {
+	'Subject': 'Subject line of the document','From': 'Who/where sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-fr/\">A list of origins, with citations for any acronyms used, is available here.</a>','To': 'Who/where received the document.<br /><br /><a href=\"/plusd/about-to/\" class=\"j\">A list of destinations, with citations for any acronyms used, is available here.</a>','Original Classification': 'Classification the document was originally given when produced.<br /><br /><a href=\"/plusd/about-oc/\" class=\"j\">Citations for acronyms used are available here.</a>','Current Classification': 'Classification the document currently holds.<br /><br /><a href=\"/plusd/about-cc/\" class=\"j\">Citations for acronyms used are available here.</a>','Handling Restrictions': 'All handling restrictions governing the document distribution that have been used to date.<br /><br /><i>In the metadata of the Kissinger Cables this field is called \'Previous Handling Restrictions\'.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i><br /><br /><a href=\"/plusd/about-hr/\" class=\"j\">Citations for acronyms used are available here.</a>','Archive Status': 'Original documents not deleted or lost by State Department after review are available in one of four formats:<ul><li>Electronic Telegram - declassified and made available (content and metadata available)</li><li>Electronic Telegram Withdrawal Card - telegram not declassified, or was declassified but not released for other reasons (limited metadata available)</li><li>P-reel Index - Index card for other document type that is stored on microfilm (only metadata available)</li><li>P-reel Index Withdrawal Card - P-reel index card that was not declassified, or was declassified but not released for other reasons (limited metadata available)</li></ul><br /><i class=\"b\">The Kissinger Cables\' metadata does not have this field. It is taken from subsets the documents were released in after State Department review.<br /><br />Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Type': 'Correspondence type or format of original document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TE\' (Telegram).</i><br /><br /><a href=\"/plusd/about-ty/\" class=\"j\">Citations for acronyms used are available here.</a>','Locator': 'Where the original document is now held - online or on microfilm, or remains in \"ADS\" (State Department\'s 1973 Automated Data System of indexing by TAGS of electronic telegrams and P-reels) with the text either garbled, not converted or unretrievable.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'TEXT ONLINE\'.</i>','Executive Order': 'Executive Order information - often a reference to the E.O. governing the declassification/downgrade of the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.</i>','Markings': 'Markings of declassification/release review of the document.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'. </i>','Enclosure': 'Attachments or other items sent with the original document. These are not necessarily currently held in this library.<br /><br /><i class=\"b\">Cablegate does not originally have this field. We have given it the entry \'Not Assigned\'.','Concepts': 'Keywords of subjects dealt with in the document.<br /><br /><i>Cablegate does not originally have this field. We have given it the entry \'Not Assigned\' for this field.</i>','TAGS': 'Traffic Analysis by Geography and Subject (TAGS)<br /><br />There are geographic, organization and subject \"TAGS\" - the classification system implemented by the Department of State for its central files in 1973.<br /><br /><a href=\"/plusd/about-ta/\" class=\"j\">A list of TAGS, with citations for any acronyms used, is available here.</a>','Office': 'Which United States government office or bureau is dealing with the topics the document concerns.<br /><br /><a href=\"/plusd/about-of/\" class=\"j\">A list offices, with citations for acronym expansions, is available here.</a>','Office Origin': 'Which State Department office or bureau sent the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Office Action': 'Which State Department office or bureau received the document.<br /><br /><a class=\"j\" href=\"/plusd/about-of/\">A list of offices, with citations for any acronyms used, is available here.</a>','Character Count': 'The number of characters, including spaces, in the document.','Date': 'The date the document was created.','Canonical ID': 'Unique document identification number.<br /><br /><i>We have created a canonical ID by taking the original document ID and adding a \'_\' at the end and then WikiLeaks\' annotation for different datasets: Cablegate = a, the Kissinger Cables = b, etc. If document IDs are duplicated in the original datasets we number each duplicate, eg 1976WARSAW05657_b2 is the second document with that ID in the Kissinger Cables.</i>','Other cables with the same ID': 'Documents that are linked, for example a P-reel index and the document it is the index for. Or documents that were originally given the same document ID number.',	};
+
+
+
+})(jQuery);
+</script>
+<title>Cable: 1975NATO05933_b</title>
+<link rel="stylesheet" type="text/css" href="/plusd/css/qtip.min.css" id="qtip">
+<link rel="stylesheet" type="text/css" href="/plusd/css/main.css" id="maincss">
+<link rel="stylesheet" type="text/css" href="/plusd/css/print.css" media="print" id="printcss">
+</head>
+<body style="text-align: center;">
+    <div id="submit_wlkey" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<p>Key fingerprint <b>9EF0 C41A FBA5 64AA 650A  0259 9C6D CD17 283E 454C</b></p>
+		<pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQQBBGBjDtIBH6DJa80zDBgR+VqlYGaXu5bEJg9HEgAtJeCLuThdhXfl5Zs32RyB
+I1QjIlttvngepHQozmglBDmi2FZ4S+wWhZv10bZCoyXPIPwwq6TylwPv8+buxuff
+B6tYil3VAB9XKGPyPjKrlXn1fz76VMpuTOs7OGYR8xDidw9EHfBvmb+sQyrU1FOW
+aPHxba5lK6hAo/KYFpTnimsmsz0Cvo1sZAV/EFIkfagiGTL2J/NhINfGPScpj8LB
+bYelVN/NU4c6Ws1ivWbfcGvqU4lymoJgJo/l9HiV6X2bdVyuB24O3xeyhTnD7laf
+epykwxODVfAt4qLC3J478MSSmTXS8zMumaQMNR1tUUYtHCJC0xAKbsFukzbfoRDv
+m2zFCCVxeYHvByxstuzg0SurlPyuiFiy2cENek5+W8Sjt95nEiQ4suBldswpz1Kv
+n71t7vd7zst49xxExB+tD+vmY7GXIds43Rb05dqksQuo2yCeuCbY5RBiMHX3d4nU
+041jHBsv5wY24j0N6bpAsm/s0T0Mt7IO6UaN33I712oPlclTweYTAesW3jDpeQ7A
+ioi0CMjWZnRpUxorcFmzL/Cc/fPqgAtnAL5GIUuEOqUf8AlKmzsKcnKZ7L2d8mxG
+QqN16nlAiUuUpchQNMr+tAa1L5S1uK/fu6thVlSSk7KMQyJfVpwLy6068a1WmNj4
+yxo9HaSeQNXh3cui+61qb9wlrkwlaiouw9+bpCmR0V8+XpWma/D/TEz9tg5vkfNo
+eG4t+FUQ7QgrrvIkDNFcRyTUO9cJHB+kcp2NgCcpCwan3wnuzKka9AWFAitpoAwx
+L6BX0L8kg/LzRPhkQnMOrj/tuu9hZrui4woqURhWLiYi2aZe7WCkuoqR/qMGP6qP
+EQRcvndTWkQo6K9BdCH4ZjRqcGbY1wFt/qgAxhi+uSo2IWiM1fRI4eRCGifpBtYK
+Dw44W9uPAu4cgVnAUzESEeW0bft5XXxAqpvyMBIdv3YqfVfOElZdKbteEu4YuOao
+FLpbk4ajCxO4Fzc9AugJ8iQOAoaekJWA7TjWJ6CbJe8w3thpznP0w6jNG8ZleZ6a
+jHckyGlx5wzQTRLVT5+wK6edFlxKmSd93jkLWWCbrc0Dsa39OkSTDmZPoZgKGRhp
+Yc0C4jePYreTGI6p7/H3AFv84o0fjHt5fn4GpT1Xgfg+1X/wmIv7iNQtljCjAqhD
+6XN+QiOAYAloAym8lOm9zOoCDv1TSDpmeyeP0rNV95OozsmFAUaKSUcUFBUfq9FL
+uyr+rJZQw2DPfq2wE75PtOyJiZH7zljCh12fp5yrNx6L7HSqwwuG7vGO4f0ltYOZ
+dPKzaEhCOO7o108RexdNABEBAAG0Rldpa2lMZWFrcyBFZGl0b3JpYWwgT2ZmaWNl
+IEhpZ2ggU2VjdXJpdHkgQ29tbXVuaWNhdGlvbiBLZXkgKDIwMjEtMjAyNCmJBDEE
+EwEKACcFAmBjDtICGwMFCQWjmoAFCwkIBwMFFQoJCAsFFgIDAQACHgECF4AACgkQ
+nG3NFyg+RUzRbh+eMSKgMYOdoz70u4RKTvev4KyqCAlwji+1RomnW7qsAK+l1s6b
+ugOhOs8zYv2ZSy6lv5JgWITRZogvB69JP94+Juphol6LIImC9X3P/bcBLw7VCdNA
+mP0XQ4OlleLZWXUEW9EqR4QyM0RkPMoxXObfRgtGHKIkjZYXyGhUOd7MxRM8DBzN
+yieFf3CjZNADQnNBk/ZWRdJrpq8J1W0dNKI7IUW2yCyfdgnPAkX/lyIqw4ht5UxF
+VGrva3PoepPir0TeKP3M0BMxpsxYSVOdwcsnkMzMlQ7TOJlsEdtKQwxjV6a1vH+t
+k4TpR4aG8fS7ZtGzxcxPylhndiiRVwdYitr5nKeBP69aWH9uLcpIzplXm4DcusUc
+Bo8KHz+qlIjs03k8hRfqYhUGB96nK6TJ0xS7tN83WUFQXk29fWkXjQSp1Z5dNCcT
+sWQBTxWxwYyEI8iGErH2xnok3HTyMItdCGEVBBhGOs1uCHX3W3yW2CooWLC/8Pia
+qgss3V7m4SHSfl4pDeZJcAPiH3Fm00wlGUslVSziatXW3499f2QdSyNDw6Qc+chK
+hUFflmAaavtpTqXPk+Lzvtw5SSW+iRGmEQICKzD2chpy05mW5v6QUy+G29nchGDD
+rrfpId2Gy1VoyBx8FAto4+6BOWVijrOj9Boz7098huotDQgNoEnidvVdsqP+P1RR
+QJekr97idAV28i7iEOLd99d6qI5xRqc3/QsV+y2ZnnyKB10uQNVPLgUkQljqN0wP
+XmdVer+0X+aeTHUd1d64fcc6M0cpYefNNRCsTsgbnWD+x0rjS9RMo+Uosy41+IxJ
+6qIBhNrMK6fEmQoZG3qTRPYYrDoaJdDJERN2E5yLxP2SPI0rWNjMSoPEA/gk5L91
+m6bToM/0VkEJNJkpxU5fq5834s3PleW39ZdpI0HpBDGeEypo/t9oGDY3Pd7JrMOF
+zOTohxTyu4w2Ql7jgs+7KbO9PH0Fx5dTDmDq66jKIkkC7DI0QtMQclnmWWtn14BS
+KTSZoZekWESVYhORwmPEf32EPiC9t8zDRglXzPGmJAPISSQz+Cc9o1ipoSIkoCCh
+2MWoSbn3KFA53vgsYd0vS/+Nw5aUksSleorFns2yFgp/w5Ygv0D007k6u3DqyRLB
+W5y6tJLvbC1ME7jCBoLW6nFEVxgDo727pqOpMVjGGx5zcEokPIRDMkW/lXjw+fTy
+c6misESDCAWbgzniG/iyt77Kz711unpOhw5aemI9LpOq17AiIbjzSZYt6b1Aq7Wr
+aB+C1yws2ivIl9ZYK911A1m69yuUg0DPK+uyL7Z86XC7hI8B0IY1MM/MbmFiDo6H
+dkfwUckE74sxxeJrFZKkBbkEAQRgYw7SAR+gvktRnaUrj/84Pu0oYVe49nPEcy/7
+5Fs6LvAwAj+JcAQPW3uy7D7fuGFEQguasfRrhWY5R87+g5ria6qQT2/Sf19Tpngs
+d0Dd9DJ1MMTaA1pc5F7PQgoOVKo68fDXfjr76n1NchfCzQbozS1HoM8ys3WnKAw+
+Neae9oymp2t9FB3B+To4nsvsOM9KM06ZfBILO9NtzbWhzaAyWwSrMOFFJfpyxZAQ
+8VbucNDHkPJjhxuafreC9q2f316RlwdS+XjDggRY6xD77fHtzYea04UWuZidc5zL
+VpsuZR1nObXOgE+4s8LU5p6fo7jL0CRxvfFnDhSQg2Z617flsdjYAJ2JR4apg3Es
+G46xWl8xf7t227/0nXaCIMJI7g09FeOOsfCmBaf/ebfiXXnQbK2zCbbDYXbrYgw6
+ESkSTt940lHtynnVmQBvZqSXY93MeKjSaQk1VKyobngqaDAIIzHxNCR941McGD7F
+qHHM2YMTgi6XXaDThNC6u5msI1l/24PPvrxkJxjPSGsNlCbXL2wqaDgrP6LvCP9O
+uooR9dVRxaZXcKQjeVGxrcRtoTSSyZimfjEercwi9RKHt42O5akPsXaOzeVjmvD9
+EB5jrKBe/aAOHgHJEIgJhUNARJ9+dXm7GofpvtN/5RE6qlx11QGvoENHIgawGjGX
+Jy5oyRBS+e+KHcgVqbmV9bvIXdwiC4BDGxkXtjc75hTaGhnDpu69+Cq016cfsh+0
+XaRnHRdh0SZfcYdEqqjn9CTILfNuiEpZm6hYOlrfgYQe1I13rgrnSV+EfVCOLF4L
+P9ejcf3eCvNhIhEjsBNEUDOFAA6J5+YqZvFYtjk3efpM2jCg6XTLZWaI8kCuADMu
+yrQxGrM8yIGvBndrlmmljUqlc8/Nq9rcLVFDsVqb9wOZjrCIJ7GEUD6bRuolmRPE
+SLrpP5mDS+wetdhLn5ME1e9JeVkiSVSFIGsumZTNUaT0a90L4yNj5gBE40dvFplW
+7TLeNE/ewDQk5LiIrfWuTUn3CqpjIOXxsZFLjieNgofX1nSeLjy3tnJwuTYQlVJO
+3CbqH1k6cOIvE9XShnnuxmiSoav4uZIXnLZFQRT9v8UPIuedp7TO8Vjl0xRTajCL
+PdTk21e7fYriax62IssYcsbbo5G5auEdPO04H/+v/hxmRsGIr3XYvSi4ZWXKASxy
+a/jHFu9zEqmy0EBzFzpmSx+FrzpMKPkoU7RbxzMgZwIYEBk66Hh6gxllL0JmWjV0
+iqmJMtOERE4NgYgumQT3dTxKuFtywmFxBTe80BhGlfUbjBtiSrULq59np4ztwlRT
+wDEAVDoZbN57aEXhQ8jjF2RlHtqGXhFMrg9fALHaRQARAQABiQQZBBgBCgAPBQJg
+Yw7SAhsMBQkFo5qAAAoJEJxtzRcoPkVMdigfoK4oBYoxVoWUBCUekCg/alVGyEHa
+ekvFmd3LYSKX/WklAY7cAgL/1UlLIFXbq9jpGXJUmLZBkzXkOylF9FIXNNTFAmBM
+3TRjfPv91D8EhrHJW0SlECN+riBLtfIQV9Y1BUlQthxFPtB1G1fGrv4XR9Y4TsRj
+VSo78cNMQY6/89Kc00ip7tdLeFUHtKcJs+5EfDQgagf8pSfF/TWnYZOMN2mAPRRf
+fh3SkFXeuM7PU/X0B6FJNXefGJbmfJBOXFbaSRnkacTOE9caftRKN1LHBAr8/RPk
+pc9p6y9RBc/+6rLuLRZpn2W3m3kwzb4scDtHHFXXQBNC1ytrqdwxU7kcaJEPOFfC
+XIdKfXw9AQll620qPFmVIPH5qfoZzjk4iTH06Yiq7PI4OgDis6bZKHKyyzFisOkh
+DXiTuuDnzgcu0U4gzL+bkxJ2QRdiyZdKJJMswbm5JDpX6PLsrzPmN314lKIHQx3t
+NNXkbfHL/PxuoUtWLKg7/I3PNnOgNnDqCgqpHJuhU1AZeIkvewHsYu+urT67tnpJ
+AK1Z4CgRxpgbYA4YEV1rWVAPHX1u1okcg85rc5FHK8zh46zQY1wzUTWubAcxqp9K
+1IqjXDDkMgIX2Z2fOA1plJSwugUCbFjn4sbT0t0YuiEFMPMB42ZCjcCyA1yysfAd
+DYAmSer1bq47tyTFQwP+2ZnvW/9p3yJ4oYWzwMzadR3T0K4sgXRC2Us9nPL9k2K5
+TRwZ07wE2CyMpUv+hZ4ja13A/1ynJZDZGKys+pmBNrO6abxTGohM8LIWjS+YBPIq
+trxh8jxzgLazKvMGmaA6KaOGwS8vhfPfxZsu2TJaRPrZMa/HpZ2aEHwxXRy4nm9G
+Kx1eFNJO6Ues5T7KlRtl8gflI5wZCCD/4T5rto3SfG0s0jr3iAVb3NCn9Q73kiph
+PSwHuRxcm+hWNszjJg3/W+Fr8fdXAh5i0JzMNscuFAQNHgfhLigenq+BpCnZzXya
+01kqX24AdoSIbH++vvgE0Bjj6mzuRrH5VJ1Qg9nQ+yMjBWZADljtp3CARUbNkiIg
+tUJ8IJHCGVwXZBqY4qeJc3h/RiwWM2UIFfBZ+E06QPznmVLSkwvvop3zkr4eYNez
+cIKUju8vRdW6sxaaxC/GECDlP0Wo6lH0uChpE3NJ1daoXIeymajmYxNt+drz7+pd
+jMqjDtNA2rgUrjptUgJK8ZLdOQ4WCrPY5pP9ZXAO7+mK7S3u9CTywSJmQpypd8hv
+8Bu8jKZdoxOJXxj8CphK951eNOLYxTOxBUNB8J2lgKbmLIyPvBvbS1l1lCM5oHlw
+WXGlp70pspj3kaX4mOiFaWMKHhOLb+er8yh8jspM184=
+=5a6T
+-----END PGP PUBLIC KEY BLOCK-----
+
+		</pre>
+	</div>
+</div>
+
+<div id="submit_help_contact" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Contact</h3>
+		<p>If you need help using Tor you can contact WikiLeaks for assistance in setting it up using our simple webchat available at: <a href="https://wikileaks.org/talk">https://wikileaks.org/talk</a></p>
+		<p>If you can use Tor, but need to contact WikiLeaks for other reasons use our secured webchat available at <b>http://wlchatc3pjwpli5r.onion</b></p>
+		<p>We recommend contacting us over Tor if you can.</p>
+	</div>
+</div>
+
+<div id="submit_help_tor" class="submit_elem">
+	<div class="container">
+		<div class="text-center"><div class="submit_buttons btn-group" role="group">
+			<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+			<a href="#submit_help_tor" class="btn-wl">What is Tor?</a>
+			<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+			<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+		</div></div>
+
+		<h3>Tor</h3>
+		<p><a href="https://www.torproject.org">Tor</a> is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.</p>
+		<p>In order to use the WikiLeaks public submission system as detailed above you can download the Tor Browser Bundle, which is a Firefox-like browser available for Windows, Mac OS X and GNU/Linux and pre-configured to connect using the anonymising system Tor.</p>
+		<h4>Tails</h4>
+		<p>If you are at high risk and you have the capacity to do so, you can also access the submission system through a secure operating system called <a href="https://tails.boum.org">Tails</a>. Tails is an operating system launched from a USB stick or a DVD that aim to leaves no traces when the computer is shut down after use and automatically routes your internet traffic through Tor. Tails will require you to have either a USB stick or a DVD at least 4GB big and a laptop or desktop computer.</p>
+	</div>
+</div>
+
+<div id="submit_help_tips" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>Tips</h3>
+		<p>Our submission system works hard to preserve your anonymity, but we recommend you also take some of your own precautions. Please review these basic guidelines. </p>
+		<div>
+			<h4>1. Contact us if you have specific problems</h4>
+			<p>If you have a very large submission, or a submission with a complex format, or are a high-risk source, please <a href="#submit_help_contact">contact us</a>. In our experience it is always possible to find a custom solution for even the most seemingly difficult situations.</p>
+		</div>
+		<div>
+			<h4>2. What computer to use</h4>
+			<p>If the computer you are uploading from could subsequently be audited in an investigation, consider using a computer that is not easily tied to you. Technical users can also use <a href="https://tails.boum.org">Tails</a> to help ensure you do not leave any records of your submission on the computer.</p>
+		</div>
+		<div>
+			<h4>3. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+	</div>
+</div>
+
+<div id="submit_help_after" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl">After Submitting</a>
+			</div>
+		</div>
+
+		<h3>After</h3>
+
+		<div>
+			<h4>1. Do not talk about your submission to others</h4>
+			<p>If you have any issues talk to WikiLeaks. We are the global experts in source protection – it is a complex field. Even those who mean well often do not have the experience or expertise to advise properly. This includes other media organisations.</p>
+		</div>
+
+		<div>
+			<h4>2. Act normal</h4>
+			<p>If you are a high-risk source, avoid saying anything or doing anything after submitting which might promote suspicion. In particular, you should try to stick to your normal routine and behaviour.</p>
+		</div>
+
+		<div>
+			<h4>3. Remove traces of your submission</h4>
+			<p>If you are a high-risk source and the computer you prepared your submission on, or uploaded it from, could subsequently be audited in an investigation, we recommend that you format and dispose of the computer hard drive and any other storage media you used.</p>
+			<p>In particular, hard drives retain data after formatting which may be visible to a digital forensics team and flash media (USB sticks, memory cards and SSD drives) retain data even after a secure erasure. If you used flash media to store sensitive data, it is important to destroy the media.</p>
+			<p>If you do this and are a high-risk source you should make sure there are no traces of the clean-up, since such traces themselves may draw suspicion.</p>
+			<div>
+				<h4>4. If you face legal action</h4>
+				<p>If a legal action is brought against you as a result of your submission, there are organisations that may help you. The Courage Foundation is an international organisation dedicated to the protection of journalistic sources. You can find more details at <a href="https://www.couragefound.org">https://www.couragefound.org</a>.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="submit" class="submit_banner">
+	<div class="container">
+		<div class="page-header">
+			<h1>Submit documents to WikiLeaks</h1>
+			<a class="remove-button" href="#"><span class="glyphicon glyphicon-remove-circle"></span></a>
+		</div>
+		<p>WikiLeaks publishes documents of political or historical importance that are censored or otherwise suppressed. We specialise in strategic global publishing and large archives.</p>
+		<p>The following is the address of our secure site where you can anonymously upload your documents to WikiLeaks editors. You can only access this submissions system through Tor. (See our <a href="#submit_help_tor">Tor tab</a> for more information.) We also advise you to read our <a href="#submit_help_tips">tips for sources</a> before submitting.</p>
+
+		<div class="alert alert-info">
+			<div class="onion-url">http://ibfckmpsmylhbfovflajicjgldsqpc75k5w454irzwlh7qifgglncbad.onion </div>
+			<!--<div>
+				Copy this address into your Tor browser. Advanced users, if they wish, can also add a further layer of encryption to their submission using <a href="#submit_wlkey">our public PGP key</a>.
+			</div>-->
+		</div>
+
+		<p>If you cannot use Tor, or your submission is very large, or you have specific requirements, WikiLeaks provides several alternative methods. <a href="#submit_help_contact">Contact us</a> to discuss how to proceed.</p>
+	</div>
+</div>
+<div id="submit_help_buttons" class="submit_elem">
+	<div class="container">
+		<div class="text-center">
+			<div class="submit_buttons btn-group" role="group">
+				<a href="#submit_help_contact" class="btn-wl btn-wl-empty">How to contact WikiLeaks?</a>
+				<a href="#submit_help_tor" class="btn-wl btn-wl-empty">What is Tor?</a>
+				<a href="#submit_help_tips" class="btn-wl btn-wl-empty">Tips for Sources</a>
+				<a href="#submit_help_after" class="btn-wl btn-wl-empty">After Submitting</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="main">
+	    
+
+<link href="/static/css/styles_topnav.css" rel="stylesheet">
+<link href="/static/css/styles_sidenav.css" rel="stylesheet">
+<div class="top-navigation">
+  <nav class="navbar">
+      <a href="#menu" class="mobile-only hot-dog nav-element">
+      </a>
+    <div class="nav-logo">
+      <a href="https://wikileaks.org">
+        <h1>WikiLeaks</h1>
+      </a>
+    </div>
+    <div class="action-buttons">
+      <a class="button-face donate-link" href="https://shop.wikileaks.org/donate">Donate</a>
+      <a class="button-face submit-link" href="#submit">Submit</a>
+    </div>
+    <form class="global-search" method="get" action="https://search.wikileaks.org/">
+      <input type="text" name="q" placeholder="Search">
+      <button class="btn-search" type="submit"></button>
+    </form>
+    <div class="main-nav">
+
+        <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+            </li>
+
+            <li>
+              <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+            </li>
+
+        </ul>
+
+    </div>
+  </nav>
+</div>
+
+<nav id="menu" class="side-nav rub">
+  <div class="menu-wrapper">
+    <a class="close-btn nav-element" href="#"></a>
+
+      <ul class="first-level">
+
+            <li>
+              <a class=" leaks-menu-item" href="https://wikileaks.org/-Leaks-.html">Leaks</a>
+            </li>
+
+            <li>
+              <a class=" news-menu-item" href="https://wikileaks.org/-News-.html">News</a>
+            </li>
+
+            <li>
+              <a class=" about-menu-item" href="https://wikileaks.org/What-is-WikiLeaks.html">About</a>
+
+          </li>
+
+          <li>
+            <a class=" partners-menu-item" href="https://wikileaks.org/-Partners-.html">Partners</a>
+
+          </li>
+
+      </ul>
+
+    <aside class="friends mobile-only">
+
+        <ul class="first-level">
+                <li>
+                <a href="https://our.wikileaks.org" target="_blank">our.wikileaks.org</a>
+                </li>
+                <li>
+                <a href="https://www.torproject.org/" target="_blank">Tor Project</a>
+                </li>
+                <li>
+                <a href="https://tails.boum.org/" target="_blank">Tails</a>
+                </li>
+                <li>
+                <a href="https://www.couragefound.org/" target="_blank">Courage</a>
+                </li>
+                <li>
+                <a href="https://www.bitcoin.org/" target="_blank">Bitcoin</a>
+                </li>
+        
+        </ul>
+
+    </aside>
+    <aside class="social mobile-only">
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/wikileaks" class="nav-element" target="_blank" alt="Facebook">
+            <img class="img-responsive" src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" class="nav-element" target="_blank" alt="Twitter">
+            <img class="img-responsive" src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</nav>
+
+
+<div id="overall">
+
+<div id="leftmenu">
+
+        <center><img src="/plusd/images/wl2.jpg" alt="WikiLeaks" /></center>
+        <a class="button" href="/plusd/pressrelease/">Press release</a>
+        <a class="button" href="/plusd/about/">About PlusD</a>
+
+        <div class="pick">
+	<h3>Browse by creation date</h3>
+
+<a href="/plusd/?q=&qtfrom=1966-01-01&qtto=1966-12-31#result">1966</a>
+<a href="/plusd/?q=&qtfrom=1972-01-01&qtto=1972-12-31#result">1972</a>
+<a href="/plusd/?q=&qtfrom=1973-01-01&qtto=1973-12-31#result">1973</a>
+<a href="/plusd/?q=&qtfrom=1974-01-01&qtto=1974-12-31#result">1974</a>
+<a href="/plusd/?q=&qtfrom=1975-01-01&qtto=1975-12-31#result">1975</a>
+<a href="/plusd/?q=&qtfrom=1976-01-01&qtto=1976-12-31#result">1976</a>
+<a href="/plusd/?q=&qtfrom=1977-01-01&qtto=1977-12-31#result">1977</a>
+<a href="/plusd/?q=&qtfrom=1978-01-01&qtto=1978-12-31#result">1978</a>
+<a href="/plusd/?q=&qtfrom=1979-01-01&qtto=1979-12-31#result">1979</a>
+<a href="/plusd/?q=&qtfrom=1985-01-01&qtto=1985-12-31#result">1985</a>
+<a href="/plusd/?q=&qtfrom=1986-01-01&qtto=1986-12-31#result">1986</a>
+<a href="/plusd/?q=&qtfrom=1987-01-01&qtto=1987-12-31#result">1987</a>
+<a href="/plusd/?q=&qtfrom=1988-01-01&qtto=1988-12-31#result">1988</a>
+<a href="/plusd/?q=&qtfrom=1989-01-01&qtto=1989-12-31#result">1989</a>
+<a href="/plusd/?q=&qtfrom=1990-01-01&qtto=1990-12-31#result">1990</a>
+<a href="/plusd/?q=&qtfrom=1991-01-01&qtto=1991-12-31#result">1991</a>
+<a href="/plusd/?q=&qtfrom=1992-01-01&qtto=1992-12-31#result">1992</a>
+<a href="/plusd/?q=&qtfrom=1993-01-01&qtto=1993-12-31#result">1993</a>
+<a href="/plusd/?q=&qtfrom=1994-01-01&qtto=1994-12-31#result">1994</a>
+<a href="/plusd/?q=&qtfrom=1995-01-01&qtto=1995-12-31#result">1995</a>
+<a href="/plusd/?q=&qtfrom=1996-01-01&qtto=1996-12-31#result">1996</a>
+<a href="/plusd/?q=&qtfrom=1997-01-01&qtto=1997-12-31#result">1997</a>
+<a href="/plusd/?q=&qtfrom=1998-01-01&qtto=1998-12-31#result">1998</a>
+<a href="/plusd/?q=&qtfrom=1999-01-01&qtto=1999-12-31#result">1999</a>
+<a href="/plusd/?q=&qtfrom=2000-01-01&qtto=2000-12-31#result">2000</a>
+<a href="/plusd/?q=&qtfrom=2001-01-01&qtto=2001-12-31#result">2001</a>
+<a href="/plusd/?q=&qtfrom=2002-01-01&qtto=2002-12-31#result">2002</a>
+<a href="/plusd/?q=&qtfrom=2003-01-01&qtto=2003-12-31#result">2003</a>
+<a href="/plusd/?q=&qtfrom=2004-01-01&qtto=2004-12-31#result">2004</a>
+<a href="/plusd/?q=&qtfrom=2005-01-01&qtto=2005-12-31#result">2005</a>
+<a href="/plusd/?q=&qtfrom=2006-01-01&qtto=2006-12-31#result">2006</a>
+<a href="/plusd/?q=&qtfrom=2007-01-01&qtto=2007-12-31#result">2007</a>
+<a href="/plusd/?q=&qtfrom=2008-01-01&qtto=2008-12-31#result">2008</a>
+<a href="/plusd/?q=&qtfrom=2009-01-01&qtto=2009-12-31#result">2009</a>
+<a href="/plusd/?q=&qtfrom=2010-01-01&qtto=2010-12-31#result">2010</a>
+
+        </div>
+
+        <div class="sort">
+	<h3>Browse by Classification</h3>
+
+<a href="/plusd/?q=&qfoclass=UNCLASSIFIED#result" title="UNCLASSIFIED (1339531 documents)">UNCLASSIFIED</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL#result" title="CONFIDENTIAL (503750 documents)">CONFIDENTIAL</a><a href="/plusd/?q=&qfoclass=LIMITED+OFFICIAL+USE#result" title="LIMITED OFFICIAL USE (435536 documents)">LIMITED OFFICIAL USE</a><a href="/plusd/?q=&qfoclass=SECRET#result" title="SECRET (120598 documents)">SECRET</a><a href="/plusd/?q=&qfoclass=UNCLASSIFIED%2F%2FFOR+OFFICIAL+USE+ONLY#result" title="UNCLASSIFIED//FOR OFFICIAL USE ONLY (58095 documents)">UNCLASSIFIED//FOR OFFICIAL USE ONLY</a><a href="/plusd/?q=&qfoclass=CONFIDENTIAL%2F%2FNOFORN#result" title="CONFIDENTIAL//NOFORN (4678 documents)">CONFIDENTIAL//NOFORN</a><a href="/plusd/?q=&qfoclass=SECRET%2F%2FNOFORN#result" title="SECRET//NOFORN (4330 documents)">SECRET//NOFORN</a>
+        </div>
+
+	<div class="sort">
+	<h3>Browse by Handling Restriction</h3>
+
+<a href="/plusd/?q=&qforiginalhandlingrestriction=EXDIS#result" title="EXDIS - Exclusive Distribution Only (71108 documents)">EXDIS - Exclusive Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=ONLY#result" title="ONLY - Eyes Only (32583 documents)">ONLY - Eyes Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LIMDIS#result" title="LIMDIS - Limited Distribution Only (25098 documents)">LIMDIS - Limited Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NODIS#result" title="NODIS - No Distribution (other than to persons indicated) (24437 documents)">NODIS - No Distribution (other than to persons indicated)</a><a href="/plusd/?q=&qforiginalhandlingrestriction=STADIS#result" title="STADIS - State Distribution Only (20286 documents)">STADIS - State Distribution Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CHEROKEE#result" title="CHEROKEE - Limited to senior officials (4343 documents)">CHEROKEE - Limited to senior officials</a><a href="/plusd/?q=&qforiginalhandlingrestriction=NOFORN#result" title="NOFORN - No Foreign Distribution (2197 documents)">NOFORN - No Foreign Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=LOU#result" title="LOU - Limited Official Use (598 documents)">LOU - Limited Official Use</a><a href="/plusd/?q=&qforiginalhandlingrestriction=SENSITIVE#result" title="SENSITIVE -  (43 documents)">SENSITIVE - </a><a href="/plusd/?q=&qforiginalhandlingrestriction=BU#result" title="BU - Background Use Only (3 documents)">BU - Background Use Only</a><a href="/plusd/?q=&qforiginalhandlingrestriction=CONDIS#result" title="CONDIS - Controlled Distribution (1 documents)">CONDIS - Controlled Distribution</a><a href="/plusd/?q=&qforiginalhandlingrestriction=US#result" title="US - US Government Only (1 documents)">US - US Government Only</a>	</div>
+
+	<div class="pick wide">
+	<h3>Browse by TAGS</h3>
+<a href="/plusd/?q=&qftags=US#result" title="US - United States (553685 documents)">US</a> <a href="/plusd/?q=&qftags=PFOR#result" title="PFOR - Political Affairs--Foreign Policy and Relations (294672 documents)">PFOR</a> <a href="/plusd/?q=&qftags=PGOV#result" title="PGOV - Political Affairs--Government; Internal Governmental Affairs (180409 documents)">PGOV</a> <a href="/plusd/?q=&qftags=PREL#result" title="PREL - Political Affairs--External Political Relations (149906 documents)">PREL</a> <a href="/plusd/?q=&qftags=ETRD#result" title="ETRD - Economic Affairs--Foreign Trade (124244 documents)">ETRD</a> <a href="/plusd/?q=&qftags=UR#result" title="UR - Soviet Union (USSR) (117139 documents)">UR</a> <a href="/plusd/?q=&qftags=OVIP#result" title="OVIP - Operations--VIP Travel Arrangements (114816 documents)">OVIP</a> <a href="/plusd/?q=&qftags=ASEC#result" title="ASEC - Administration--Security (114594 documents)">ASEC</a> <a href="/plusd/?q=&qftags=OGEN#result" title="OGEN - Operations--General (114085 documents)">OGEN</a> <a href="/plusd/?q=&qftags=CASC#result" title="CASC - Consular Affairs--Assistance to Citizens (113486 documents)">CASC</a> <a href="/plusd/?q=&qftags=PINT#result" title="PINT - Political Affairs--Internal Political Affairs (104641 documents)">PINT</a> <a href="/plusd/?q=&qftags=EFIN#result" title="EFIN - Economic Affairs--Financial and Monetary Affairs (102225 documents)">EFIN</a> <a href="/plusd/?q=&qftags=BEXP#result" title="BEXP - Business Services--Trade Expansion and Promotion (102142 documents)">BEXP</a> <a href="/plusd/?q=&qftags=OEXC#result" title="OEXC - Operations--Educational and Cultural Exchange Operations (89751 documents)">OEXC</a> <a href="/plusd/?q=&qftags=EAID#result" title="EAID - Economic Affairs--Foreign Assistance (80469 documents)">EAID</a> <a href="/plusd/?q=&qftags=CVIS#result" title="CVIS - Consular Affairs--Visas (79634 documents)">CVIS</a> <a href="/plusd/?q=&qftags=OTRA#result" title="OTRA - Operations--Travel and Visits (79042 documents)">OTRA</a> <a href="/plusd/?q=&qftags=ENRG#result" title="ENRG - Economic Affairs--Energy and Power (76814 documents)">ENRG</a> <a href="/plusd/?q=&qftags=OCON#result" title="OCON - Operations--Conferences and Meetings (76271 documents)">OCON</a> <a href="/plusd/?q=&qftags=ECON#result" title="ECON - Economic Affairs--Economic Conditions, Trends and Potential (75832 documents)">ECON</a> <a href="/plusd/?q=&qftags=NATO#result" title="NATO - North Atlantic Treaty Organization (74653 documents)">NATO</a> <a href="/plusd/?q=&qftags=PINS#result" title="PINS - Political Affairs--Internal Security (72716 documents)">PINS</a> <a href="/plusd/?q=&qftags=GE#result" title="GE - Germany (East) (69261 documents)">GE</a> <a href="/plusd/?q=&qftags=JA#result" title="JA - Japan; Okinawa; (67491 documents)">JA</a> <a href="/plusd/?q=&qftags=UK#result" title="UK - United Kingdom (65645 documents)">UK</a> <a href="/plusd/?q=&qftags=IS#result" title="IS - Israel (61813 documents)">IS</a> <a href="/plusd/?q=&qftags=MARR#result" title="MARR - Military and Defense Affairs--Military and Defense Arrangements (59054 documents)">MARR</a> <a href="/plusd/?q=&qftags=PARM#result" title="PARM - Political Affairs--Arms Controls and Disarmament (58794 documents)">PARM</a> <a href="/plusd/?q=&qftags=UN#result" title="UN - United Nations (58176 documents)">UN</a> <a href="/plusd/?q=&qftags=EG#result" title="EG - Egypt (57176 documents)">EG</a> <a href="/plusd/?q=&qftags=FR#result" title="FR - France (56597 documents)">FR</a> <a href="/plusd/?q=&qftags=PHUM#result" title="PHUM - Political Affairs--Human Rights (55302 documents)">PHUM</a> <a href="/plusd/?q=&qftags=SREF#result" title="SREF - Social Affairs--Refugees (53585 documents)">SREF</a> <a href="/plusd/?q=&qftags=EAIR#result" title="EAIR - Economic Affairs--Aeronautics and Aviation; Civil Aviation (52511 documents)">EAIR</a> <a href="/plusd/?q=&qftags=MASS#result" title="MASS - Military and Defense Affairs--Military Assistance and Sales (51560 documents)">MASS</a> <a href="/plusd/?q=&qftags=APER#result" title="APER - Administration--Personnel (51272 documents)">APER</a> <a href="/plusd/?q=&qftags=SNAR#result" title="SNAR - Social Affairs--Narcotics (49299 documents)">SNAR</a> <a href="/plusd/?q=&qftags=PINR#result" title="PINR - Political Affairs--Intelligence (48667 documents)">PINR</a> <a href="/plusd/?q=&qftags=EAGR#result" title="EAGR - Economic Affairs--Agriculture and Forestry (47350 documents)">EAGR</a> <a href="/plusd/?q=&qftags=PDIP#result" title="PDIP - Political Affairs--Diplomatic and Consular Representation (47061 documents)">PDIP</a> <a href="/plusd/?q=&qftags=AORG#result" title="AORG - Administration--International Organization Administration (42798 documents)">AORG</a> <a href="/plusd/?q=&qftags=PORG#result" title="PORG - Political Affairs--Policy Relations With International Organizations (42754 documents)">PORG</a> <a href="/plusd/?q=&qftags=MX#result" title="MX - Mexico (42577 documents)">MX</a> <a href="/plusd/?q=&qftags=TU#result" title="TU - Turkey (42476 documents)">TU</a> <a href="/plusd/?q=&qftags=ELAB#result" title="ELAB - Economic Affairs--Labor and Manpower; Labor Sector Affairs (41921 documents)">ELAB</a> <a href="/plusd/?q=&qftags=IN#result" title="IN - India (41702 documents)">IN</a> <a href="/plusd/?q=&qftags=CA#result" title="CA - Canada (41623 documents)">CA</a> <a href="/plusd/?q=&qftags=SCUL#result" title="SCUL - Social Affairs--Cultural Affairs (41509 documents)">SCUL</a> <a href="/plusd/?q=&qftags=CH#result" title="CH - China (Mainland) (40426 documents)">CH</a> <a href="/plusd/?q=&qftags=IR#result" title="IR - Iran (39924 documents)">IR</a> <a href="/plusd/?q=&qftags=IT#result" title="IT - Italy (39454 documents)">IT</a> <a href="/plusd/?q=&qftags=XF#result" title="XF - Middle East (38273 documents)">XF</a> <a href="/plusd/?q=&qftags=GW#result" title="GW - Germany (West) (37945 documents)">GW</a> <a href="/plusd/?q=&qftags=EINV#result" title="EINV - Economic Affairs--Investments; Foreign Investments (37616 documents)">EINV</a> <a href="/plusd/?q=&qftags=TH#result" title="TH - Thailand (37385 documents)">TH</a> <a href="/plusd/?q=&qftags=TECH#result" title="TECH - Technology and Science--Technology (36578 documents)">TECH</a> <a href="/plusd/?q=&qftags=SENV#result" title="SENV - Social Affairs--Environment (35665 documents)">SENV</a> <a href="/plusd/?q=&qftags=OREP#result" title="OREP - Operations--Congressional Travel (35140 documents)">OREP</a> <a href="/plusd/?q=&qftags=KS#result" title="KS - Korea (South) (34546 documents)">KS</a> <a href="/plusd/?q=&qftags=EGEN#result" title="EGEN - Economic Affairs--General (34287 documents)">EGEN</a> <a href="/plusd/?q=&qftags=PEPR#result" title="PEPR - PEPR (33866 documents)">PEPR</a> <a href="/plusd/?q=&qftags=MILI#result" title="MILI - Military and Defense Affairs--General (33710 documents)">MILI</a> <a href="/plusd/?q=&qftags=SHUM#result" title="SHUM - Social Affairs--Human Rights (33098 documents)">SHUM</a> <a href="/plusd/?q=&qftags=KISSINGER%2C+HENRY+A#result" title="KISSINGER, HENRY A - Henry Kissinger (32848 documents)">KISSINGER, HENRY A</a> <a href="/plusd/?q=&qftags=PL#result" title="PL - Poland (31163 documents)">PL</a> <a href="/plusd/?q=&qftags=BR#result" title="BR - Brazil (30797 documents)">BR</a> <a href="/plusd/?q=&qftags=RP#result" title="RP - Philippines (30198 documents)">RP</a> <a href="/plusd/?q=&qftags=GR#result" title="GR - Greece; Crete (30183 documents)">GR</a> <a href="/plusd/?q=&qftags=SF#result" title="SF - South Africa (30161 documents)">SF</a> <a href="/plusd/?q=&qftags=AFSP#result" title="AFSP - Administration--Post Administration (29315 documents)">AFSP</a> <a href="/plusd/?q=&qftags=SP#result" title="SP - Spain (29108 documents)">SP</a> <a href="/plusd/?q=&qftags=PTER#result" title="PTER - Political Affairs--Terrorists and Terrorism (28839 documents)">PTER</a> <a href="/plusd/?q=&qftags=MOPS#result" title="MOPS - Military and Defense Affairs--Military Operations (28821 documents)">MOPS</a> <a href="/plusd/?q=&qftags=SA#result" title="SA - Saudi Arabia (28190 documents)">SA</a> <a href="/plusd/?q=&qftags=UNGA#result" title="UNGA - UN General Assembly (27867 documents)">UNGA</a> <a href="/plusd/?q=&qftags=CGEN#result" title="CGEN - Consular Affairs--General (27680 documents)">CGEN</a> <a href="/plusd/?q=&qftags=ESTC#result" title="ESTC - Economic Affairs--Strategic Trade Controls (27627 documents)">ESTC</a> <a href="/plusd/?q=&qftags=SOPN#result" title="SOPN - Social Affairs--Public Opinion and Information (27583 documents)">SOPN</a> <a href="/plusd/?q=&qftags=RO#result" title="RO - Romania (27560 documents)">RO</a> <a href="/plusd/?q=&qftags=LE#result" title="LE - Lebanon (27323 documents)">LE</a> <a href="/plusd/?q=&qftags=TGEN#result" title="TGEN - Technology and Science--General (27058 documents)">TGEN</a> <a href="/plusd/?q=&qftags=PK#result" title="PK - Pakistan (26991 documents)">PK</a> <a href="/plusd/?q=&qftags=AR#result" title="AR - Argentina (26444 documents)">AR</a> <a href="/plusd/?q=&qftags=NI#result" title="NI - Nigeria (26170 documents)">NI</a> <a href="/plusd/?q=&qftags=OSCI#result" title="OSCI - Operations--Science Grants (25846 documents)">OSCI</a> <a href="/plusd/?q=&qftags=CI#result" title="CI - Chile (25827 documents)">CI</a> <a href="/plusd/?q=&qftags=EEC#result" title="EEC - European Common Market (European Communities); European Economic Community (25827 documents)">EEC</a> <a href="/plusd/?q=&qftags=VS#result" title="VS - South Vietnam (25800 documents)">VS</a> <a href="/plusd/?q=&qftags=YO#result" title="YO -  (25447 documents)">YO</a> <a href="/plusd/?q=&qftags=AFIN#result" title="AFIN - Administration--Financial Services (24705 documents)">AFIN</a> <a href="/plusd/?q=&qftags=OECD#result" title="OECD - Organization for Economic Cooperation and Development (24622 documents)">OECD</a> <a href="/plusd/?q=&qftags=SY#result" title="SY - Syria (24419 documents)">SY</a> <a href="/plusd/?q=&qftags=IZ#result" title="IZ - Iraq (24415 documents)">IZ</a> <a href="/plusd/?q=&qftags=ID#result" title="ID - Indonesia (23865 documents)">ID</a> <a href="/plusd/?q=&qftags=VE#result" title="VE - Venezuela (23792 documents)">VE</a> <a href="/plusd/?q=&qftags=TPHY#result" title="TPHY - Technology and Science--Physical Sciences (23741 documents)">TPHY</a> <a href="/plusd/?q=&qftags=TW#result" title="TW - Taiwan (23233 documents)">TW</a> <a href="/plusd/?q=&qftags=AS#result" title="AS - Australia (23143 documents)">AS</a> <a href="/plusd/?q=&qftags=PBOR#result" title="PBOR - Political Affairs--Boundary and Sovereignity Claims (23066 documents)">PBOR</a> 
+	</div>
+
+
+        <div class="sort" style="clear:both;">
+        <h3>Media Organizations</h3>
+        <a target="_blank" href="http://www.theage.com.au/">Australia - The Age</a>
+        <a target="_blank" href="http://www.pagina12.com.ar/">Argentina - Pagina 12</a>
+        <a target="_blank" href="http://www.apublica.org/?p=4041">Brazil - Publica</a>
+        <a target="_blank" href="https://bivol.bg/">Bulgaria - Bivol</a>
+        <a target="_blank" href="http://www.almasryalyoum.com/ ">Egypt - Al Masry Al Youm</a>
+        <a target="_blank" href="http://www.tanea.gr/">Greece - Ta Nea</a>
+        <a target="_blank" href="http://www.plazapublica.com.gt/content/los-cables-de-wikileaks">Guatemala - Plaza Publica</a>
+        <a target="_blank" href="http://www.haiti-liberte.com/">Haiti - Haiti Liberte</a>
+        <a target="_blank" href="http://www.thehindu.com/">India - The Hindu</a>
+        <a target="_blank" href="http://espresso.repubblica.it/">Italy - L'Espresso</a>
+        <a target="_blank" href="http://www.repubblica.it/">Italy - La Repubblica</a>
+        <a target="_blank" href="http://www.al-akhbar.com/">Lebanon - Al Akhbar</a>
+        <a target="_blank" href="http://www.jornada.unam.mx/ultimas/">Mexico - La Jornada</a>
+        <a target="_blank" href="http://www.publico.es/452776">Spain - Publico</a>
+        <a target="_blank" href="http://www.aftonbladet.se/nyheter/article16421007.ab">Sweden - Aftonbladet</a>
+        <a target="_blank" href="http://www.ap.org/">UK - AP</a>
+        <a target="_blank" href="http://thenation.com">US - The Nation</a>
+        </div>
+	<br style="clear: both;" />
+</div>
+
+<div id="content"><div id="content-main">
+
+<!--<p style="text-align: justify; font-size: medium">Click the <b>Chat</b> button above to join a secure chat channel dedicated to media partner The Kissinger Cables discussion. Please go on this to talk to the others currently working on this project. <br />When the chat window opens type the following in the white text space at the bottom of the screen to assign yourself a recognisable name: <b>/nick Espresso</b> and press enter</p>
+<center><h2 style="font-size: x-large;">Public Library of US Diplomacy: PlusD</h2></center>-->
+
+<center><img src="/plusd/images/plusdb.png" /></center>
+<div id="st" style="clear:both;">&nbsp;</div>
+<div id="topnav">
+        <a class="searchbutton active" href="//search.wikileaks.org/plusd/">Specified Search</a>
+        <a class="searchbutton sbinv" href="/plusd/map" target="_blank">View Map</a>
+        <a class="searchbutton sbinv" href="/plusd/graph" target="_blank">Make Timegraph</a>
+        <a class="searchbutton sbinv" href="/plusd/tags/" target="_blank">View Tags</a>
+        <a class="searchbutton sbinv" href="/plusd/imagelibrary/" target="_blank">Image Library</a>
+</div>
+<div class="sections"> 
+<div class="pane-content">
+	<table id="synopsis">
+		<tr style="background:#eee;">
+			<td colspan="2" style="font-size: medium; padding: 5px;color: #000; font-weight: bold; text-align: center;">REINFORCED NAC ON THE FAR EAST, OCTOBER 29, 1975</td>
+		</tr>
+		<tr style="background:#eee;">
+			<td><div class="s_key"><a class="i" title="Date">Date:</a></div><div class="s_val" title=" 1975 October 31, 15:30 (Friday)">1975 October 31, 15:30 (Friday)</div></td>
+			<td><div class="s_key"><a class="i" title="Canonical ID">Canonical ID:</a></div><div class="s_val" title=" 1975NATO05933_b">1975NATO05933_b</div></td>
+		</tr>
+		<tr>
+			<td><div class="s_key"><a class="i" title="Original Classification">Original Classification:</a></div><div class="s_val" title=" CONFIDENTIAL (503750 documents)">CONFIDENTIAL</div></td>
+			<td><div class="s_key"><a class="i" title="Current Classification">Current Classification:</a></div><div class="s_val" title=" UNCLASSIFIED (2592391 documents)">UNCLASSIFIED</div></td>
+		</tr>
+
+		<tr>
+			<td>
+<div class="s_key"><a class="i" title="Handling Restrictions", ">Handling Restrictions</a></div> <div class="s_val" title="-- N/A or Blank -- (2412734 documents)">-- N/A or Blank --</div><br /></td>
+			<td><div class="s_key"><a class="i" title="Character Count">Character Count:</a></div><div class="s_val" title=" 38956">38956</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Executive Order">Executive Order:</a></div><div class="s_val" title=" 11652 GDS (13337 documents)">11652 GDS</div></td>
+			<td><div class="s_key"><a class="i" title="Locator">Locator:</a></div><div class="s_val" title=" TEXT ONLINE (1885254 documents)">TEXT ONLINE</div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="TAGS">TAGS:</a></div><div class="s_val" title=" NAC - North Atlantic Council (NATO) | NATO - North Atlantic Treaty Organization | PFOR - Political Affairs--Foreign Policy and Relations | XB - East Asia and Pacific (Pacific Basin) | XP - Pacific Ocean Area"><a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=NAC#result" title="NAC North Atlantic Council (NATO) (3558 documents)" >NAC<span style="color: #216B7C;"> - North Atlantic Council (NATO)</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=NATO#result" title="NATO North Atlantic Treaty Organization (74653 documents)" >NATO<span style="color: #216B7C;"> - North Atlantic Treaty Organization</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=PFOR#result" title="PFOR Political Affairs: Foreign Policy and Relations (294672 documents)" >PFOR<span style="color: #216B7C;"> - Political Affairs--Foreign Policy and Relations</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=XB#result" title="XB East Asia and Pacific (Pacific Basin) (2326 documents)" >XB<span style="color: #216B7C;"> - East Asia and Pacific (Pacific Basin)</span></a> <span style=''color: #000'';>|</span> <a style="color: #216B7C;" target="_blank" href="/plusd/?q=&qftags=XP#result" title="XP Pacific Ocean Area (2041 documents)" >XP<span style="color: #216B7C;"> - Pacific Ocean Area</span></a></div></td>
+			<td><div class="s_key"><a class="i" title="Concepts">Concepts:</a></div><div class="s_val" title=" -- N/A or Blank --"><a title="-- N/A or Blank -- (1154091 documents)" style="color: #216B7C; " target="_blank" href="/plusd/?q=&amp;qfconcept=-- N/A OR BLANK --#result">-- N/A or Blank --</a></div></td>
+		</tr>
+
+		<tr>
+			<td><div class="s_key"><a class="i" title="Enclosure">Enclosure:</a></div><div class="s_val" title=" -- N/A or Blank -- (2333922 documents)">-- N/A or Blank --</div></td>
+			<td><div class="s_key"><a class="i" title="Type">Type:</a></div><div class="s_val" title=" TE - Telegram (cable) (2008616 documents)">TE - Telegram (cable)</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc">
+				<div class="s_key"><a class="i" title="Office Origin">Office Origin:</a></div><div class="s_val" title=" -- N/A or Blank -- (2117535 documents)">-- N/A or Blank --</div>				<br style="clear:both;"/>
+				<div class="s_key"><a class="i" title="Office Action">Office Action:</a></div><div class="s_val" title=" ACTION EUR - Bureau of European and Eurasian Affairs (214050 documents)">ACTION EUR - Bureau of European and Eurasian Affairs</div>			</td>
+			<td><div class="s_key"><a class="i" title="Archive Status">Archive Status:</a></div><div class="s_val" title=" Electronic Telegrams (1758257 documents)">Electronic Telegrams</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="From">From:</a></div><div class="s_val" title=" North Atlantic Treaty Organization (NATO)"><a style="color: #216B7C; " href="/plusd/?q=&qforigin=North+Atlantic+Treaty+Organization+(NATO)#result" title="North Atlantic Treaty Organization (NATO) (44216 documents)">North Atlantic Treaty Organization (NATO)</a></div></td>
+			<td><div class="s_key"><a class="i" title="Markings">Markings:</a></div><div class="s_val" title=" Margaret P. Grafeld Declassified/Released US Department of State EO Systematic Review 06 JUL 2006 (196606 documents)">Margaret P. Grafeld Declassified/Released US Department of State EO Systematic Review 06 JUL 2006</div></td>
+		</tr>
+
+		<tr>
+			<td class="sc"><div class="s_key"><a class="i" title="To">To:</a></div><div class="s_val" title=" Group Destinations All NATO Capitals  | National Military Representative Supreme Headquarters Allied Powers Europe   | Secretary of State   | USCINCEUR (BY POUCH) "><a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Group Destinations%23%23All NATO Capitals#result" title="Group Destinations All NATO Capitals (3892 documents)">Group Destinations All NATO Capitals</a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=National Military Representative Supreme Headquarters Allied Powers Europe#result" title="National Military Representative Supreme Headquarters Allied Powers Europe  (13159 documents)">National Military Representative Supreme Headquarters Allied Powers Europe </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=Secretary of State#result" title="Secretary of State  (1328443 documents)">Secretary of State </a>  | <a style="color: #216B7C; " href="/plusd/?q=&qfdestination=USCINCEUR (BY POUCH)#result" title="USCINCEUR (BY POUCH)  (4 documents)">USCINCEUR (BY POUCH) </a></div></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<br />
+
+
+<br style="clear: both;" />
+
+</div>
+<div class="pane-tab"><div class="pane-header">Content</div><div class="pane-content"><div class="text-header hidden">
+
+
+PAGE 01  NATO 05933  01 OF 06  311750Z
+
+43
+ACTION EUR-12
+
+INFO  OCT-01  ISO-00  CIAE-00  DODE-00  PM-04  H-02  INR-07  L-03
+
+NSAE-00  NSC-05  PA-01  PRS-01  SP-02  SS-15  USIA-06  AF-06
+
+ARA-06  EA-07  NEA-10  ACDA-05  SAJ-01  TRSE-00  AID-05
+
+SAM-01  /100 W
+---------------------     083300
+R 311530Z OCT 75
+FM USMISSION NATO
+TO SECSTATE WASHDC 4360
+INFO ALL NATO CAPITALS (BY POUCH)
+USNMR SHAPE (BY POUCH)
+USCINCEUR (BY POUCH)
+
+C O N F I D E N T I A L SECTION 1 OF 6 USNATO 5933
+
+E.O. 11652: GDS
+TAGS: PFOR, NATO, NAC, XB, XP
+SUBJ: REINFORCED NAC ON THE FAR EAST, OCTOBER 29, 1975</div><div class="text-button" id="showhide">Show&nbsp;Headers</div><div class="text-content"><div id="tagged-text">SUMMARY: NAC CONSULTATION ON FAR EAST ON OCTOBER 29 WAS
+REINFORCED BY SENIOR POLICY OFFICIALS FROM BELGIUM, FRG,
+ITALY, NETHERLANDS, UK AND US. ASSISTANT SECRETARY OF STATE
+HABIB (US) LED OFF DISCUSSION, COVERING GENERAL EAST ASIAN
+DEVELOPMENTS IN THE SIX MONTHS SINCE THE FALL OF SAIGON. HE
+SAID THE INITIAL APPREHENSION FOLLOWING THE FALL OF SAIGON
+HAD DISSIPATED. THE SOUTHEAST ASIAN COUNTRIES ARE STILL CON-
+CERNED WITH THE IMPACT OF HANOI'S SUCCESS ON THEIR SECURITY;
+THEY ARE MOVING CLOSER TO THE NON-ALIGNED BLOC AND BEGINNING
+TO DEVELOP ASEAN INTO A MORE MEANINGFUL REGIONAL ORGANIZATION.
+AT THE SAME TIME, THEY CONTINUE TO RELY UPON THE US COMMIT-
+MENT, WHICH WE HAVE REAFFIRMED. PRC RELATIONS WITH THE US
+AND JAPAN ARE RELATIVELY GOOD, WHILE THOSE WITH THE SOVIETS
+ARE COOL. THE INTERNAL SCENE IN CHINA IS STABLE; THE LINES
+OF SUCCESSION ARE SET WITH THE CURRENT LEADERSHIP DISPLAYING
+A COLLEGIAL CHARACTER. JAPAN-US RELATIONS ARE THE BEST THEY
+HAVE EVER BEEN. JAPAN IS CLOSER TO PEKING THAN TO MOSCOW.
+CONFIDENTIAL
+
+PAGE 02  NATO 05933  01 OF 06  311750Z
+
+THE SITUATION ON THE KOREAN PENINSULA REMAINS CALM FOR THE
+TIME BEING, BUT PRESENTS THE GREATEST DANGER FOR POTENTIAL
+CONFRONTATION. HABIB'S PRESENTATION WAS FOLLOWED BY A WIDE-
+RANGING DISCUSSION INVOLVING PERMREPS AND VISITING OFFICIALS
+FROM CAPITALS.
+THIS REINFORCED NAC ON THE FAR EAST WAS GREETED WITH
+ENTHUSIASM BY PERMREPS. MENZIES (CANADA) WELCOMED THE CON-
+SULTATIONS AS &quot;USEFUL AND TIMELY&quot; AND PARTICULARLY BECAUSE
+OF PARTICIPATION BY HIGH-LEVEL OFFICIALS FROM CAPITALS.
+SIMILAR APPRECIATION WAS EXPRESSED BY KRAPF (FRG). CATALANO
+(ITALY) SAID THE SESSION WAS ONE OF THE BEST ALLIANCE CON-
+SULTATIONS HE COULD REMEMBER AND THAT MEETINGS OF THIS SORT
+SHOULD BE AMONG THE BEST TRADITIONS OF NATO. ACTING SECRETARY
+GENERAL PANSA SUMMED UP THE MEETING, CALLING IT &quot;EXTREMELY
+GOOD&quot;, PROVIDING EVIDENCE OF THE ALLIES PUTTING INTO PRACTICE
+THEIR RESOLVE WITH REGARD TO CONSULTATIONS AS EXPRESSED IN
+PARA 11 OF THE OTTAWA DECLARATION. COMMENT: WE CONSIDER
+REINFORCED NAC ON THE FAR EAST TO HAVE BEEN HIGHLY SUCCESSFUL
+IN ENHANCING THE POLITICAL CONSULTATIVE PROCESS IN THE ALLIANCE
+AND ALSO IN PROVIDING OUR 14 NATO ALLIES WITH A LUCID AND
+FORCEFUL EXPOSE OF US POLICIES AND OBJECTIVES IN THIS HIGHLY
+IMPORTANT REGION OF THE WORLD. END SUMMARY.
+
+1. ACTING SECRETARY GENERAL PANSA OPENED REINFORCED NAC OF
+OCTOBER 29 BY WELCOMING ATTENDANCE OF HIGH-LEVEL OFFICIALS
+FROM BELGIUM (AMBASSADOR WENDELEN), FRG (ASSISTANT SECRETARY
+LAHN), ITALY (MINISTER SALIMEI), NETHERLANDS (FE AFFAIRS
+DIRECTOR ROOKMAKER), UK (ASSISTANT UNDER-SECRETARY MALD) AND
+US (ASSISTANT SECRETARY HABIB). PANSA SAID THIS MEETING WOULD
+FURTHER STRENGTHEN THE PROCESS OF POLITICAL CONSULTATION
+WITHIN THE COUNCIL.
+
+2. ASSISTANT SECRETARY HABIB (US) SAID THERE WAS A GREAT
+DEAL OF APPREHENSION IN ASIA AFTER THE FALL OF SAIGON.
+GENERALLY SPEAKING, SUCH APPREHENSION HAS ABATED. THE MAJOR
+POWER BALANCE IN EAST ASIA REMAINS ESSENTIALLY UNCHANGED,
+ALTHOUGH THERE ARE SEVERAL NEW PRESSURE POINTS. THE REACTION
+OF THE REGION TO EVENTS IN INDOCHINA HAS BEEN MEASURED AND
+TEMPERATE. COUNTRIES ARE MOTIVATED BY NATIONALISTIC ASPIRATIONS
+AND ARE DETERMINED TO MAINTAIN THEIR INDEPENDENCE. THEY
+ARE EVOLVING THEIR OWN POLICIES AND HAVE DEVELOPED A
+CONFIDENTIAL
+
+PAGE 03  NATO 05933  01 OF 06  311750Z
+
+BETTER APPRECIATION OF THE SIGNIFICANCE OF SELF-RELIANCE AS
+A FACTOR IN SECURITY MATTERS. HE SAID THERE IS GENERAL DESIRE
+FOR CLOSER IDENTIFICATION WITH THE NON-ALIGNED BLOC. THIS
+IS ESPECIALLY TRUE IN NON-COMMUNIST SOUTHEAST ASIA; SOME OF
+THESE COUNTRIES WERE MEMBERS OF NON-ALIGNED IN THE PAST AND
+THEY HAVE BROUGHT OTHERS ALONG. THERE IS A WIDE-SPREAD
+REGIONAL VIEW THAT CONTINUED US PRESENCE AND INVOLVEMENT
+IN THE AREA IS BENEFICIAL FOR ASIA.
+
+3. HABIB DESCRIBED US REACTION TO THE INDOCHINA AFTERMATH
+AS NOT SUBSTANTIAL. A DIVISIVE DOMESTIC POLITICAL ISSUE HAS
+BEEN REMOVED. US INTENDS TO MAINTAIN MORE NORMAL INTERESTS
+IN ASIA. THIS WILL INCLUDE CONTINUED FORWARD DEPLOYMENT OF
+US FORCES IN ASIA INCLUDING SUBSIDIARY DEPLOYMENT OF FORCES
+IN KOREA AND THAILAND, ALTHOUGH THE LATTER DEPLOYMENT WILL
+END NEXT YEAR.
+
+4. HABIB SAW CERTAIN RESTRAINTS ON MAJOR POWERS -- CHINA,
+SOVIET UNION, JAPAN AND US -- AFTER THE FALL OF INDOCHINA.
+ALL MAJOR POWERS RECOGNIZE THAT UNDER PRESENT CIRCUMSTANCES,
+NO ONE POWER CAN ESTABLISH HEGEMONY IN THE AREA. THE OVER-
+RIDING CHINESE PREOCCUPATION IS THREAT OF SOVIET HEGEMONY
+IN ASIA. ALL MAJOR POWERS RECOGNIZE THAT IN THIS PERIOD,
+IT IS IN OUR COMMON INTEREST TO ACT WITH MODERATION AND
+RESTRAINT. THE SINO-SOVIET RIVALRY, THE US-JAPANESE ALLIANCE,
+US AND JAPANESE ECONOMIC PREDOMINANCE IN ASIA, AND LIMITED
+SOVIET ENTREE TO ASIAN SECURITY ARRANGEMENTS GENERALLY
+CONTRIBUTE TO STABILITY. THESE FACTORS ARE NOT LIKELY TO
+CHANGE SIGNIFICANTLY OVER THE SHORT TERM, AND PROBABLY NOT
+OVER THE MEDIUM TERM AS WELL. EQUILIBRIUM COULD BE CHANGED
+SIGNIFICANTLY IF THE SINO-SOVIET RIVALRY WERE DRASTICALLY
+ALTERED OR IF RUSSIA ATTAINED MAJOR INFLUENCE IN ASIA, BUT
+NEITHER APPEARS A LIKELY PROSPECT.
+
+CONFIDENTIAL
+
+
+PAGE 01  NATO 05933  02 OF 06  311805Z
+
+43
+ACTION EUR-12
+
+INFO  OCT-01  ISO-00  CIAE-00  DODE-00  PM-04  H-02  INR-07  L-03
+
+NSAE-00  NSC-05  PA-01  PRS-01  SP-02  SS-15  USIA-06  AF-06
+
+ARA-06  EA-07  NEA-10  ACDA-05  SAJ-01  TRSE-00  AID-05
+
+SAM-01  /100 W
+---------------------     083438
+R 311530Z OCT 75
+FM USMISSION NATO
+TO SECSTATE WASHDC 4361
+INFO ALL NATO CAPITALS (BY POUCH)
+USNMR SHAPE (BY POUCH)
+USCINCEUR (BY POUCH)
+
+C O N F I D E N T I A L SECTION 2 OF 6 USNATO 5933
+
+5. SMALLER COUNTRIES, ESPECIALLY IN SOUTHEAST ASIA, CAN
+EXERCISE GREATER FLEXIBILITY AND MANEUVERABILITY IN SEEKING
+NEW DIPLOMATIC INITIATIVES. THEY SEE USEFULNESS IN REGIONAL
+GROUPINGS SUCH AS ASEAN. THERE WILL PROBABLY BE AN ASEAN
+SUMMIT WITHIN THE NEXT FEW MONTHS. ASEAN IS BEGINNING TO GO
+BEYOND GENERALITIES, INCLUDING PLANNING EXPANDED COORDIN-
+ATION OF SECURITY EFFORTS. ASEAN IS SEEKING BETTER UNDER-
+STANDING AND REALTIONS WITH COMMUNIST NEIGHBORS AND IS PAR-
+TICULARLY CONCERNED ABOUT HANOI AS A SUB-REGIONAL POWER.
+THEY ARE CONCERNED ABOUT THAILAND, WHICH IS REGARDED AS SICK
+MAN OF ASIA. TWO COUNTRIES, THE PHILIPPINES AND THAILAND,
+MOVED QUICKLY TO NORMALIZE RELATIONS WITH THE PRC. ASEAN IS
+CONCERNED WITH THE IMPACT OF HANOI'S SUCCESS ON THEIR DOMESTIC
+INSURGENTS' MOVEMENTS. THERE ARE A NUMBER OF INSURGENT
+GROUPS IN BURMA. THREE DIFFERENT AREAS IN THAILAND AR
+THREATENED. INSURGENTS IN MALAYSIA HAVE RECENTLY BECOME MORE
+ACTIVE. THERE ARE TWO SUCH MOVEMENTS IN THE PHILIPPINES,
+ONE MOSLEM AND ONE COMMUNIST. THERE IS ALSO AN INCIPIENT
+MOVEMENT IN INDONESIA, SEPARATE FROM THE PROBLEM OF TIMOR.
+
+6. HABIB SAID US-PRC RELATIONS ARE GOOD ALTHOUGH THEY ARE
+CONFIDENTIAL
+
+PAGE 02  NATO 05933  02 OF 06  311805Z
+
+NOT YET FULLY NORMALIZED. THE PRC SEES US AS A COUNTER-
+BALANCE AGAINST MOSCOW. THIS INTEREST IS STRONGER NOW TAN
+AT THE BEGINNING OF US-PRC RELATIONSHIP. PEKING IS UNHAPPY
+WITH DETENTE, AND MAKES ITS DISPLEASURE KNOWN AT EVERY OPPOR-
+TUNITY BY EMPHASIZING THE DANGERS OF DETENTE. THE PRC CON-
+TINUES TO HARP ON THEME THAT SOVIETS ARE FEINTING IN THE EAST
+WHILE PREPARING TO STRIKE IN THE WEST.THEY CANNOT SEE THAT
+THIS IS IRRELEVANT. THE PRC SEES US MILITARY PRESENCE ABROAD,
+IN BOTH EUROPE AND ASIA, AS A NECESSARY COUNTERWEIGHT TO
+SOVIET EXPANSIONISM. TAIWAN IS STILL THE MAIN OBSTACLE
+PREVENTING FULL NORMALIZATION OF US-PRC RELATIONS. THE
+PRC'S INSISTENCE ON THREE POINTS REGARDING TAIWAN -- ABRO-
+GATION OF THE US-ROC DEFENSE TREATY, WITHDRAWAL OF US FORCES
+AND BREAKING US-ROC RELATIONS -- ARE UNCHANGED. THE PRC IS
+NOT, HOWEVER, PRESSING ON THIS ISSUE. PRESIDENT FORD WILL
+VISIT PEKING WITHIN THE NEXT FEW WEEKS, BUT THIS TRIP WILL
+INVOLVE MORE POLITICAL SYMBOLISM THAN CONCRETE RESULTS.
+
+7. SINO-SOVIET RELATIONS REMAIN COOL. BORDER DISCUSSIONS
+ARE IN A RECESS AND TRADE IS STAGNATING, WHILE THE RHETORICAL
+BATTLE HAS GROWN SHARPER. PEKING SAYS MOSCOW IS THE
+CHIEF THREAT TO WORLD PEACE AND SECURITY. THE SOVIETS AND
+PRC COMPETE IN HANOI, PYONGYANG, TOKYO AND SOUTHEAST ASIA.
+
+8. SINO-JAPANESE RELATIONS ARE RELATIVELY GOOD. THE CHINESE
+CONTINUE TO INSIST ON THEIR ANTI-HEGEMONY CLAUSE IN ANY PEACE
+TREATY WITH JAPAN. ALTHOUGH THIS WILL DELAY SIGNING OF A
+TREATY, ONE WILL, IN THE END, BE SIGNED. THE PRC BACKS JAPAN
+AGAINST MOSCOW ON THE NORTHERN TERRITORIES ISSUE. THE PRC
+IS FOND OF SAYING, INCLUDING TO JAPANESE VISITORS, THAT US-
+JAPANESE RELATIONS ARE MORE IMPORTANT AT THIS TIME THAN
+JAPANESE-PRC RELATIONS. TOKYO'S RELATIONS ARE BETTER WITH
+PEKING THAN WITH MOSCOW.
+
+9. HABIB CHARACTERIZED THE INTERNAL SCENE IN CHINA AS
+STESSING POLITICAL STABILITY, UNITY AND ECONOMIC DEVELOPMENT.
+CHOU EN-LAI IS ILL, AND FOR THIS REASON COULD NOT SEE SECRETARY
+KISSINGER. MAO TSE-TUNG IS STILL ACTIVELY CONCERNED WITH
+OVERALL POLICY AND FOREIGN AFFAIRS, ESPECIALLY RELATIONS WITH
+MOSCOW. TENG HSIAO-P'ING IS SEEMINGLY IN CONFIDENT CONTROL.
+THERE IS A COLLEGIAL CHARACTER TO CURRENT PRC LEADERSHIP.
+CONFIDENTIAL
+
+PAGE 03  NATO 05933  02 OF 06  311805Z
+
+REHABILITATION OF SOME OF THOSE PURGED DURING THE CULTURAL
+REVOLUTION INDICATES MOVEMENT TOWARD MAINTAINING THE BALANCE
+WITHIN THE LEADERSHIP. THE SHUI HU CAMPAIGN HAS APPARENTLY
+ENDED, REPLACED BY A CAMPAIGN TO INCREASE AGRICULTURAL PRO-
+DUCTIVITY. ANOTHER IDEOLOGICAL CAMPAIGN APPEARS TO BE IN
+THE OFFERING. THE LINES OF SUCCESSION APPEAR TO BE SET, BUT
+IT IS NOT CLEAR WHETHER THE SUCCESSION WILL PERPETRATE COL-
+LEGIAL LEADERSHIP.
+
+10. HABIB SAID JAPANESE RELATIONS WITH THE US ARE THE BEST
+THEY HAVE EVER BEEN. EFFECTS OF THE NIXON SHOCKS ARE CLEARLY
+PAST. THE EMPORER'S VISIT TO THE US WAS SYMBOLIC OF EXCELLENT,
+CLOSE BILATERAL RELATIONS. WE DO NOT HAVE PROBLEMS WITH
+JAPAN IN THE OLD SENSE OF THE WORD. WE COOPERATE CLOSELY
+WITH JAPAN ON ALL MATTERS, INCLUDING DEFENSE. WE ARE PREPARED
+TO ACCOMMODATE TO THE PACE SET BY JAPAN, AND WE ARE NOT
+PRESSING JAPAN TO EXPAND ITS DEFENSE FORCES SIGNIFICANTLY.
+WE BELIEVE CONSTITUTIONAL, POLITICAL AND BUDGETARY CONSTRAINTS
+WILL PROVIDE APPROPRIATE LIMITATIONS.
+
+11. JAPAN'S RELATIONS WITH THE SOVIETS ARE NOT ALL THAT WARM.
+THERE IS A JAPANESE TILT TOWARD CHINA. SOVIET PRESSURE
+TACTICS REGARDING THE PRC HEGEMONY CLAUSE IN A FUTURE PEACE
+TREATY AND A HARDENED SOVIET ATTITUDE TOWARD THE NORTHERN
+TERRITORIES HAVE COOLED TOKYO-MOSCOW RELATIONS. JOINT ECONOMIC
+ACTIVITIES WITH THE SOVIETS ARE MOVING SLOWLY.
+
+12. TOKYO IS KEENLY ATTUNED TO DEVELOPMENTS IN ASIA, PAR-
+TICULARLY ON THE KOREAN PENINSUAL AND IN SOUTHEAST ASIA.
+JAPANESE RELATIONS WITH THE ROK HAVE IMPROVED. JAPAN IS ALSO
+SEEKING TO DEFUSE TENSIONS ON THE KOREAN PENINSUAL BY TRYING
+TO DRAW NORTH KOREA INTO MORE REASONABLE RELATIONSHIPS WITH
+THE ROK AND EVEN WITH THE US. JAPAN'S INTEREST IN SOUTHEAST
+ASIA IS PRIMARILY ECONOMIC. JAPAN ADJUSTED RELATIONS WITH
+HANOI QUICKLY. THEY HAVE AN EMBASSY IN HANOI AND WILL PROVIDE
+US$45 MILLION IN AID TO THE DRV OVER NEXT TWO YEARS.
+JAPAN SEES ITSELF AS A BRIDGE BETWEEN HANOI AND THE US.
+
+13. HABIB SAW THE NATURAL DIVERSITY OF THE REGION AS A SIG-
+NIFICANT FACTOR IN THE POWER EQUILIBRIUM. OUR PREOCCUPATION,
+AND THAT OF OTHERS, WITH INDOCHINA IS FINISHED. WHEN WE
+CONFIDENTIAL
+
+PAGE 04  NATO 05933  02 OF 06  311805Z
+
+PREOCCUPIED HANOI'S ATTENTION THERE WAS LITTLE CONCERN IN
+ASEAN. NOW THAT THIS PERIOD IS FINISHED, IT HAS CREATED
+PROBLEMS FOR ASEAN. THE COUNTRIES OF THIS REGION SEE ECON-
+OMIC DEVELOPMENT AND SECURITY GOING HAND IN HAND. THEY SEE
+THEIR DEPENDENCE UPON A US COMMITMENT AND ARE CONCERNED
+WHETHER WE WILL FULFILL THAT COMMITMENT. WE HAVE TRIED TO
+REASSURE THESE COUNTRIES OF THE CONSTANCY AND CHARACTER OF
+OUR COMMITMENT. THEREFORE WE HAVE NOT WITHDRAWN ANY OF OUR
+FORCES PRECIPITOUSLY, EVEN FROM THAILAND. THE DIVERSITY OF
+THE REGION, FORCES OF NATIONALISM, AND THE FAR-RANGING NATURE
+OF SINO-SOVIET RIVALRY ARE FACTORS WHICH MAINTAIN THE
+EQUILIBRIUM OF POWER IN ASIA. THESE PUT A PREMIUM ON FLEXI-
+BILITY AND ON THE NEED TO WORK TO REDUCE TENSIONS AND CON-
+FRONTATIONS. THIS EQUILIBRIUM OF THE POWER DYNAMIC MAY
+NOT PREVAIL, BUT IT WIDENS THE OPPORTUNITY TO AVOID CONFRON-
+TATION.
+
+CONFIDENTIAL
+
+
+PAGE 01  NATO 05933  03 OF 06  311826Z
+
+43
+ACTION EUR-12
+
+INFO  OCT-01  ISO-00  CIAE-00  DODE-00  PM-04  H-02  INR-07  L-03
+
+NSAE-00  NSC-05  PA-01  PRS-01  SP-02  SS-15  USIA-06  AF-06
+
+ARA-06  EA-07  NEA-10  ACDA-05  SAJ-01  TRSE-00  AID-05
+
+SAM-01  /100 W
+---------------------     083738
+R 311530Z OCT 75
+FM USMISSION NATO
+TO SECSTATE WASHDC 4362
+INFO ZEN ALL NATO CAPITALS
+ZEN USNMR SHAPE
+ZEN USCINCEUR
+
+C O N F I D E N T I A L SECTION 3 OF 6 USNATO 5933
+
+14. DR. ROOKMAKER (NETHERLANDS EXPERT) DISCUSSED THE
+DEVELOPMENT OF ASEAN COUNTRIES' POLICIES AND THEIR IMPLICATIONS
+FOR WESTERN APPROACH TO THE AREA. HE EMPHASIZED THAT SINCE THE
+END OF THE VIETNAM CONFLICT ASEAN COUNTRIES HAVE RECOGNIZED
+THAT THEY CANNOT FIGHT COMMUNISM WITH WEAPONS AND MUST CONCENTRATE
+ON ECONOMIC DEVELOPMENT PARTICULARLY FOR THE POORER SECTORS
+OF THEIR SOCIETIES. HE SAID ASEAN COUNTRIES HAVE ADOPTED A
+CONSTRUCTIVE POLICY TOWARD INDOCHINA AND HOPE EVENTUALLY THAT
+THEIR OWN CONCEPT OF NEUTRALISM CAN BE EXTENDED TO EMBRACE
+INDOCHINA. HE BELIEVED WESTERN COUNTRIES SHOULD TAKE ASEAN
+ASPIRATIONS INTO ACCOUNT AND SHOULD NOT DISCRIMINATE AGAINST
+INDOCHINA IN A WAY WHICH WOULD INHIBIT THE ACHIEVEMENT OF ASEAN'S
+OBJECTIVES. FOR EXAMPLE, COOPERATION BETWEEN ASEAN AND INDOCHINA
+WOULD BE FACILITATED IF WESTERN AID TO THE AREA WAS NOT DIRECTED
+EXCLUSIVELY TO ASEAN COUNTRIES.
+
+15. ERALP (TURKEY) ASKED HABIB TO COMMENT ON INTERNAL DEVELOPMENTS
+IN CAMBODIA AND THE RELATIONSHIP OF CAMBODIA TO HANOI,
+CHINA, AND THE USSR. HABIB RECALLED THAT WHEN PHNOM PENH
+FELL, THE KHMER ROUGE EMPTIED PHNOM PENH AS WELL AS OTHER
+CAMBODIAN CITIES AND ELIMINATED ALL OFFICIALS OF ANY STATURE.
+CONFIDENTIAL
+
+PAGE 02  NATO 05933  03 OF 06  311826Z
+
+THE YOUND AND THE OLD SUFFERED MOST IN THIS OPERATION,
+DURING WHICH THOUSANDS OF PEOPLE LOST THEIR LIVES. THE KHMER
+ROUGE APPARENTLY WANTED TO BREAK DOWN THE EXISTING URBAN
+STRUCTURE WHICH HAD CONTROLLED THE COUNTRY UNDER SIHANOUK
+AND TO RULE THROUGH THE PARTY STRUCTURE OF THE KHMER ROUGE.
+THIS STRUCTIRE REMAINS SHADOWY AND IT IS NOT YET POSSIBLE TO
+DETERMINE WHO IS ON TOP.
+
+16. AS TO CAMBODIA'S EXTERNAL RELATIONS, HABIB NOTED EVIDENCE
+OF CONTINUING DISAGREEMENTS WITH HANOI. THERE HAD BEEN
+FIGHTING OVER OFF-SHORE ISLANDS AND ENGAGEMENTS IN BORDER
+AREAS. WHILE HANOI HAD WON THESE ENCOUNTERS, IT HAD NOT
+ALWAYS DONE SO EASILY AND IN SOME INSTANCES NEEDED TO EMPLOY
+ITS AIR FORCE. THERE WERE CONTACTS BETWEEN CAMBODIA AND
+NORTH VIETNAMESE OFFICIALS AIMED AT SETTLING BORDER CONFLICTS,
+BTU THESE EFFORTS HAD NOT BEEN VERY SUCCESSFUL. HABIB NOTED
+THAT THE PRINCIPAL EXTERNAL INFLUENCE IN CAMBODIA AT PRESENT
+IS PEKING. THE KHMER ROUGE HAVE NOT FORGOTTEN SOVIET SUPPORT
+FOR LON NOL AND THE SOVIETS HAVE BEEN EFFECTIVELY EXLUDED
+FROM CAMBODIA. IN THE NEAR FUTURE, THE KHMER ROUGE APPARENTLY
+INTEND TO ALLOW ONLY THREE COUNTRIES, WHICH HELPED THEM
+DURING THEIR STRUGGLE, TO BE REPRESENTED IN PHNOM PENH;
+NORTH VIETNAM, CHINA, AND NORTH KOREA. HABIB OBSERVED THAT
+THE RIVALRY BETWEEN HANOI AND PEKING IN CAMBODIA IS NOT
+ENTIRELY CLEAR. HOWEVER, ONE CAN ARGUE THAT PEKING LOOKS ON
+CAMBODIA AS A BUFFER STATE THAT COULD LIMIT HANOI'S SUBREGIONAL
+HEGEMONY, WHICH PEKING FEARS MIGHT SERVE AS A SURROGATE
+FOR SOVIET INFLUENCE IN THE AREA. HABIB CONCLUDED
+THAT OUR INFORMATION INDICATES THE KHMER ROUGE DO NOT INTEND
+TO PERMIT ANY WESTERN EMBASSIES IN CAMBODIA FOR SOME TIME.
+IT MAY BE A YEAR OR TWO BEFORE THE WEST BEGINS TO DEVELOP
+SOME INFLUENCE IN CAMBODIA.
+
+17. BUSCH (NORWAY) PROVIDED THE FOLLOWING INDICATIONS OF
+CAMBODIAN POLICIES PICKED UP RECENTLY BY NORWEGIAN OFFICIALS:
+A CAMBODIAN IN CONTACT WITH SIHANOUK SAID THE PRINCE IS NEEDED
+AS A NATIONAL SYMBOL IN CAMBODIA BUT WOULD NOT BE GIVEN ANY
+INTERNAL POWER. SIHANOUK WOULD RETURN TO CAMBODIA AT THE END
+OF DECEMBER AND WOULD REMAIN THERE FOR SOME SIX MONTHS. AN
+EASTERN EUROPEAN CONTACT TOLD THE NORWEGIANS THE KHMER ROUGE
+INTEND TO PERMIT EIGHT ADDITIONAL COUNTRIES TO ESTABLISH A
+CONFIDENTIAL
+
+PAGE 03  NATO 05933  03 OF 06  311826Z
+
+DIPLOMATIC PRESENCE IN CAMBODIA: ALGERIA, ALBANIA, ROMANIA,
+YUGOSLAVIA, EGYPT, LAOS, MAURITANIA, AND SOUTH VIETNAM.
+SWEDEN MAY ACCREDIT A DIPLOMATIC REPRESENTATIVE TO CAMBODIA
+BY THE END OF THIS YEAR. THE KHMER ROUGE MAY BEGIN TO ADMIT
+CORRESPONDENTS INTO CAMBODIA BY THE BEGINNING OF 1976. BUSCH
+ALSO MENTIONED THAT NORWEGIAN CONTACTS HAVE NOT BEEN ABLE TO
+ESTABLISH ANY POSITIVE CONFIRMATION THAT NORTH VIETNAM IS
+PROVIDING MILITARY ASSISTANCE TO THAI INSURGENTS THROUGH
+CAMBODIA.
+
+18. ASSISTNAT UNDER-SECRETARY MALE (UK EXPERT) AGREED WITH
+HABIB'S PRESENTATION AND SAID THE UK APPROACHES THE REGION
+IN TERMS OF THE UK DESIRE FOR STABILITY IN THE AREA. HE
+NOTED THAT CHINESE-SOVIET COMPETITION HAS A DEFINITE EFFECT
+ON DEVELOPMENTS IN SOUTHEAST ASIA. ON THE BASIS OF BRITISH
+EXPERIENCE, HE CONFIRMED THAT THE CINESE ARE EMPHASIZING
+THE DANGERS OF DETENTE TO WESTERN VISITORS. TENG HSIAO-P'ING
+MADE THIS CLEAR TO HEATH AS DID MAO IN EVEN STARKER TERMS.
+UK POLICY TOWARD CHINA AIRMS TO DO WHAT IS POSSIBLE TO BRING
+CHINA INTO THE BROADER WORLD. UK RELATIONS WITH THE PRC
+ARE GOOD AS IS EVIDENCED BY THE LACK OF ANY UNCOMFORTABLE
+CHINESE INTERVENTIONS IN HONG KONG. BRITISH INTEREST TO A
+CONSIDERABLE DEGREE FOCUSES ON HONG KONG WHERE CHINA OBVIOUSLY
+COULD MAKE TROUBLE IF IT WISHED TO.
+
+19. MALE SAID THE BRITISH REGARD THE CURRENT KOREAN SITUATION
+AS &quot;SAFE&quot;, PARTICULARLY SINCE KIM IL-SONG WAS REBUFFED
+IN PEKING WHEN HE SOUGHT SUPPORT FOR A FORWARD POLICY AFTER
+THE FALL OF SAIGON. AS TO ASEAN, THE BRITISH REGARD THIS AS
+A LOCALLY GROWN ORGANIZATION AND THUS ONE WHICH HAS A GOOD
+INTERNATIONAL APPEARANCE. IT APPEARS TO BE AN ORGANIZATION
+WITH A LONG-TERM POTENTIAL, BUT WITHOUT IMMEDIATE EFFICACY.
+THE BRITISH ARE CONCERNED ABOUT THE PROGRESS OF THE INSUGENCIES
+IN THAILAND AND MALAYSIA.
+
+20. KILLICK (UK) NOTED WITH INTEREST HABIB'S REPORT THAT
+DURING THEIR VISIT TO PEKING, US OFFICIALS HAD TOLD THE
+CHINESE THAT IT WAS IRRELEVANT WHETHER THE USSR WAS, AS THE
+CHINESE MAINTAIN, FEINTING TO THE EAST WHILE ATTACKING TO
+THE WEST. KILLICK AGREED THAT THE CHINESE POSITION MIGHT
+BE IRRELEVANT IN A GEOPHYSICAL OR STRATEGIC SENSE. HOWEVER,
+CONFIDENTIAL
+
+PAGE 04  NATO 05933  03 OF 06  311826Z
+
+HE BELIEVED THE US ATTITUDE WAS RELEVANT IN TERMS OF
+US SECURITY COMMITMENTS. HE ASKED WHETHER HE WAS CORRECT
+IN INTERPRETING THE US COMMENTS TO MEAN THAT THE US WOULD
+NOT STAND IDLY BY IF THE SOVIETS MOVED AGAINST THE EAST.
+HABIB SAID KILLICK WAS CORRECT. KILLICK'S ANALYSIS WAS
+PRESCIENT: THAT WAS PRECISLY WHAT SECRETARY KISSINGER
+MEANT TO CONVEY. THE US WOULD OPPOSE EFFORTS TO ACHIEVE
+HEGEMONY IN THE EAST OR IN THE WEST. HABIB EMPHASIZED THAT
+IT WAS NOT FOR HIM TO SAY HOW THE US WOULD OPPOSE MOVES
+TOWARD HEGEMONY IN THE EAST. ANY SUCH MOVES WOULD NATURALLY
+RAISE SERIOUS ISSUES WHICH WOULD HAVE TO BE CONSIDERED
+AT THE HIGHEST LEVEL OF THE US GOVERNMENT.
+
+21. SPEAKING TO MALE'S COMMENTS ON KOREA, HABIB SAID THE
+US GENERALLY AGREES THAT THE SITUATION IS CURRENTLY &quot;SAFE&quot;
+IN THAT THERE IS NO INDICATION THAT HOSTILITIES MIGHT BREAK
+OUT IN THE NEAR FUTURE. HE EMPHASIZED, HOWEVER, THAT
+KOREA IS ONE AREA IN EAST ASIA WHERE MISCALCULATION COULD
+LEAD TO CONFLICT INVOLVING THE MAJOR POWERS, INCLUDING THE
+US, WHICH CONTINUES TO MAINTAIN 40,000 TROOPS IN KOREA.
+HABIB AGREED, AS WELL, THAT THE CHINESE WITHHELD THE SUPPORT
+WHICH KIM SOUGHT IMMEDIATELY FOLLOWING THE END OF THE
+VIETNAM CONFLICT. HE NOTED, HOWEVER, THAT THE UNITED STATES
+ALSO MADE IT CLEAR IN UNMISTAKEABLE TERMS THAT WE WOULD NOT
+PERMIT KIM TO CARRY OUT ADVENTURES IN SOUTH KOREA. WE BELIEVE
+KIM GOT THE MESSAGE.
+
+CONFIDENTIAL
+
+
+PAGE 01  NATO 05933  04 OF 06  311913Z
+
+43
+ACTION EUR-12
+
+INFO  OCT-01  ISO-00  CIAE-00  DODE-00  PM-04  H-02  INR-07  L-03
+
+NSAE-00  NSC-05  PA-01  PRS-01  SP-02  SS-15  USIA-06  AF-06
+
+ARA-06  EA-07  NEA-10  ACDA-05  SAJ-01  TRSE-00  AID-05
+
+SAM-01  /100 W
+---------------------     084333
+R 311530Z OCT 75
+FM USMISSION NATO
+TO SECSTATE WASHDC 4363
+INFO ZEN ALL NATO CAPITALS
+ZEN USNMR SHAPE
+ZEN USCINCEUR
+
+C O N F I D E N T I A L SECTION 4 OF 6 USNATO 5933
+
+22. HABIB SAID NORTH KOREA'S CURRENT POLICY APPEARED AIMED
+AT A) WEAKENING THE INTERNATIONAL POSITION OF SOUTH KOREA,
+B) ACHIEVING US WITHDRAWAL FROM SOUTH KOREA, AND C) AWAITING
+INTERNAL CONTRADICTIONS IN SOUTH KOREA WHICH NORTH KOREA
+COULD EXPLOIT. HABIB SAID THESE OBJECTIVES ARE REFLECTED IN
+NORTH KOREAN TACTICS AT THE UN WHICH ARE CLEARLY DIRECTED
+NOT ONLY AT BREAKING DOWN INTERNATIONAL SUPPORT FOR SOUTH
+KOREA, BUT ALSO AGAINST THE UNITED STATES AND ITS POLICIES
+TOWARD SOUTH KOREA. HABIB WAS GLAD TO SEE THAT OUR EUROPEAN
+ALLIES APPEAR GENERALLY TO RECOGNIZE NORTH KOREA'S OBJECTIVES
+AND THAT THEY OPPOSE THE UNFRIENDLY RESOLUTION ON KOREA AND
+SUPPORT THE FRIENDLY RESOLUTION. HE STRESSED THE IMPORTANCE
+OF MAINTAINING A COHESIVE WESTERN EFFORT IN THIS REGARD
+BECAUSE THERE WOULD BE A REAL PROSPECT OF SERIOUS TROUBLE
+IN EAST ASIA IF US SUPPORT FOR SOUTH KOREA WAS WITHDRAWN,
+IF SOUTH KOREA WERE WEAKENED INTERNALLY, OR IF SOUTH KOREA
+WAS CUT OFF FROM OTHER INTERNATIONAL SUPPORT.
+
+23. DE STAERCKE (BELGIUM) ASKED HABIB TO COMMENT ON A) THE
+DISSOLUTION OF SEATO AND HIS OBSERVATION THAT THE US STILL
+RETAINS A COMMITMENT, AND B) THE PARADOX OF CHINESE POLICY
+CONFIDENTIAL
+
+PAGE 02  NATO 05933  04 OF 06  311913Z
+
+WHICH URGES THE WEST TO PROTECT ITSELF AGAINST THE USSR, BUT
+ENCOURAGES DEVELOPMENTS WHICH TEND TO UNDERMINE THE POWER OF
+THE WEST.
+
+24. HABIB POINTED OUT THAT, AT THE INSISTENCE OF THE
+PHILIPPINES, SEATO WOULD DISAPPEAR OVER A TWO-YEAR PERIOD.
+MANILA HAS A BILATERAL DEFENSE ARRANGEMENT WITHTHE UNITED
+STATES AND THUS DOES NOT DEPEND ON SEATO. THAILAND DID NOT
+HAVE SIMILAR ARRANGEMENTS WITH THE UNITED STATES AND HAD
+WITHER WANTED SEATO RETAINED OR, AT A MINIMUM, THAT THE PROVISIONS
+OF THE MANILA PACT REMAIN VALID. ACCORDINGLY, THE
+PROVISIONS OF THE MANILA TREATY AS WELL AS THOSE OF THE RUSH-
+THANAT EXCHANGE, WHICH FURTHER DEFINES THE US-THAI RELATIONSHIP,
+REMAIN IN FORCE. THE US DID NOT ATTEMPT TO FORCE
+DECISIONS ONE WAY OR THE OTHER ON THE RETENTION OF SEATO,
+PREFERRING TO LET THE ASIANS DECIDE THE ISSUE.
+
+25. RESPONDING TO THE QUESTION OF PRC INVOLVEMENT IN THE
+THIRD WORLD, HABIB NOTED SOME CHINESE ACTIVITY IN AFRICA,
+MOST RECENTLY IN ANGOLA, BUT SAID THE CHINESE DO NOT HAVE
+THE ECONOMIC OR POLITICAL POWER TO PROJECT INTO THE THIRD
+WORLD. CHINA CAN BE EXPECTED, HOWEVER, TO SUPPORT CAUSES
+IN THIRD WORLD FORA THAT ARE INIMICAL TO SOVIET INTERESTS.
+MOREOVER, THE CHINESE WILL INSIST THAT THEY ARE PART OF THE
+THIRD WORLD, THOUGH MANY THIRD WORLD COUNTRIES WOULD QUESTION
+THAT ASSERTION. GENERALLY SPEAKING, CHINA CANNOT BE EXPECTED
+TO BE VERY ACTIVE OUTSIDE OF ITS OWN BOUNDARIES EXCEPT WHERE
+SOVIET INTERESTS ARE CONCERNED. THE USSR IS THE &quot;BE-ALL,
+END-ALL OF CHINESE ENMITY&quot; AND PEKING CAN THUS BE COUNTED
+UPON TO ATTEMPT TO FRUSTRATE THE SOVIETS WHEREVER AND WHEN-
+EVER THEY CAN.
+
+26 FRG PERMREP KRAP THANKED HABIB FOR HIS ILLUMINATING
+AND CONCISE PRESENTATION. HE AGREED THAT KOREA IS POTENTIALLY
+THE MOST DANGEROUS AREA IN THE FAR EAST. RECALLING
+HIS OWN EXTENSIVE EXPERIENCE IN JAPAN, KRAPF NOTED THAT THE
+JAPANESE HAD NEVER FELT PARTICULARLY THREATENED BY CHINA OR
+THE SOVIET UNION, BUT FEARED INVOLVEMENT IN A POSSIBLE KOREAN
+CONFLICT. JAPAN THUS IS WORRIED ABOUT POSSIBLE UNWISE
+INITIATIVES TAKEN BY THE SOUTH KOREANS ACTING ON THE PREMISE
+THAT THEY ARE MILITARILY SUPERIOR TO THE NORTH KOREANS.
+CONFIDENTIAL
+
+PAGE 03  NATO 05933  04 OF 06  311913Z
+
+KRAPF NOTED THAT THE US SEEMED TO ACCEPT THE SLOW PACE OF
+JAPAN'S DEFENSE BUILDUP. DOES THAT PACE CARRYWITH IT THE
+INFERENCE THAT JAPAN NO LONGER FEELS A STRONG DEFENSE
+NECESSARY BECAUSE IT SEES LESS RISK OF A NEW KOREAN CONFLICT?
+
+27. HABIB REPLIED THAT JAPAN SAW KOREAN DEFENSE AS PRIMARILY
+A US RESPONSIBILITY. WHILE REALIZING THAT KOREAN SECURITY
+IS IMPORTNAT TO THEIR OWN, THE JAPANESE BELIEVE THE US WILL
+DEFEND SOUTH KOREA. ALTHOUGH JAPAN CAN DO NOTHING MILITARILY
+IN KOREA, IT CAN PROVIDE ECONOMIC ASSISTANCE, JAPAN AGREES
+WITH THE US THAT THERE IS NO IMMEDIATE PROSPECT OF KOREAN
+HOSTILITIES. THE JAPANESE FULLY APPRECIATE, HOWEVER, THE
+MEANING OF THE LINE DIVIDING THE TWO KOREAS AND THE FACT THAT
+THERE ARE ONE MILLION MEN UNDER ARMS FACING EACH OTHER ACROSS
+THAT LINE WITH INCREASINGLY MORE MODERN WEAPONS. MOREOVER,
+THE JAPANESE RECOGNIZE NORTH KOREA AS PERHAPS THE MOST PUGNACIOUS
+COMMUNIST POWER -- ONE THAT MAY BE EVEN MORE ISOLATED
+THAN ALBANIA -- WHERE THE CULT OF THE INDIVIDUAL IS CARRIED
+TO THE EXTREME AND WHERE IRRATIONAL ACTS MIGHT BE POSSIBLE.
+JAPAN CLEARLY HOPES THAT THE KOREAN PROBLEM CAN BE ACCOMMODATED
+AND PERMANENTLY DEFUSED OVER TIME. IN THE MEANTIME, TOKYO
+WARNS THE US ABOUT THE KOREAN SITUATION AND URGES THAT US
+FORCES NOT BE REDUCED. A FURTHER RESTRAINING FACTOR
+IS THE FACT THAT NORTH
+KOREA KNOWS THAT IT COULD NOT EARILY
+ATTACK THE SOUTH.
+
+28. AMBASSADOR KRAPF NOTED JAPAN'S AWARENESS THAT WHILE IT
+COULD NOT SEND TROOPS TO KOREA, IT COULD BECOME INVOLVED
+IN A KOREAN CONFLICT THROUGH US USE OF ITS BASES IN JAPAN.
+HABIB REPLIED THAT JAPAN HAD GUARANTEED CONTINUED US USE OF
+ITS JAPANESE BASES AND FULLY RECOGNIZES THAT IT WOULD
+BE EXTREMELY DIFFICULT FOR THE US TO FIGHT IN KOREA WITHOUT
+BASES IN JAPAN.
+
+29. CANADIAN PERMREP MENZIES WELCOMED THE FAR EASTERN CONSULTATION
+AS USEFUL AND TIMELY. HE PARTICULALY WELCOMED ASSISTANT
+SECRETARY HABIB AND EXPERTS FROM OTHER ALLIED CAPITALS, AND
+EXPRESSED REGRET THAT A CANADIAN EXPERT COULD NOT BE PRESENT.
+REFERRING TO CANADA'S (AND THEREFORE TO NATO'S) 2400-MILE
+FRONTIER ON THE PACIFIC, MENZIES NOTED ACTIVE CANADIAN INTEREST
+CONFIDENTIAL
+
+PAGE 04  NATO 05933  04 OF 06  311913Z
+
+IN PACIFIC DEVELOPMENTS EVEN THOUGH CANADA CAN TAKE SHELTER
+BEHIND THE UNITED STATES' PACIFIC DEFENSE EFFORT. CANADA'S
+ROLE IN THE AREA HAD BEEN LIMITED TO PEACEKEEPING BOTH IN KOREA
+AND, WITH A SOMEWHAT LESS SALUTARY RESULT, IN VIETNAM.
+CANADA APPRECIATED US EFFORTS IN THE PACIFIC, THOUGH SOMETIMES
+IN THE PAST OTTAWA THOUGHT THE US WAS OVEREXTENDED IN THE AREA
+AND PERHAPS OVERLY HOSTILE TO THE PRC. ALTOGETHER, THE GOC FOUND
+RECENT POST-VIETNAM ADJUSTMENTS IN US ASIAN POLICY MUCH MORE
+PALATABLE AND SATISFACTORY. CANADA NOW AGREED WITH US ASIAN
+POLICY.
+
+CONFIDENTIAL
+
+
+PAGE 01  NATO 05933  05 OF 06  311928Z
+
+43
+ACTION EUR-12
+
+INFO  OCT-01  ISO-00  CIAE-00  DODE-00  PM-04  H-02  INR-07  L-03
+
+NSAE-00  NSC-05  PA-01  PRS-01  SP-02  SS-15  USIA-06  AF-06
+
+ARA-06  EA-07  NEA-10  ACDA-05  SAJ-01  TRSE-00  AID-05
+
+SAM-01  /100 W
+---------------------     084445
+R 311530Z OCT 75
+FM USMISSION NATO
+TO SECSTATE WASHDC 4364
+INFO ALL NATO CAPITALS (BY POUCH)
+USNMR SHAPE (BY POUCH)
+USCINCEUR (BY POUCH)
+
+C O N F I D E N T I A L SECTION 5 OF 6 USNATO 5933
+
+30. MENZIES CHARACTERIZED THE THEME OF THE NAC CONSULTATION
+AS THE SEARCH FOR STABILITY IN THE PACIFIC AREA. MANY NATO
+COUNTRIES HAVE INTERESTS IN ASIA -- AN AREA WHICH PRESENTLY
+HAS NO REGIONAL IDENTITY, AND WHERE SOME POWER MAY TRY TO
+EXPLOIT THE POST-VIETNAM SITUATION DESPITE US ASSURANCES OF
+CONTINUING SUPPORT FOR EXISTING RELATIONSHIPS IN THE AREA.
+WHILE IT APPEARED THAT THE ASIAN MAINLAND HAS NO RESOURCES
+IN WHICH NATO COUNTRIES HAD A DIRECT INTEREST, THIS WAS NOT
+TRUE IN THE CASE OF INSULAR ASIA WITH THE OIL AND MINERAL
+RESOURCES OF INDONESIA, THE MINERAL WEALTH OF THE PHILIPPINES,
+AND THE ENORMOUS MINERAL DEPOSITS OF AUSTRALIA AND PAPUA-NEW
+GUINEA. THE ALLIES MIGHT APPROPRIATELY ASK THEMSELVES
+IF THEY ARE PAYING ENOUGH ATTENTIION TO NAVAL DEVELOPMENTS
+IN THE PACIFIC. NATO'S NAVAL ADVISORS TALK FREQUENTLY
+ABOUT PROTECTING THE VITAL TRADE ROUTES IN THE INDIAN
+AND ATLANTIC OCEANS. THEY SHOULD ALSO BE CONSCIOUS
+THAT THE TRADE ROUTES SUSTAINING JAPAN WERE SIMILARLY ESSEN-
+TIAL GIVEN JAPAN'S ECONOMIC IMPORTANCE AND THE REQUIREMENT
+THAT IT NOT BE FORCED TO CHOOSE BETWEEN CHINA OR THE SOVIET
+UNION.
+
+CONFIDENTIAL
+
+PAGE 02  NATO 05933  05 OF 06  311928Z
+
+31. RAISING A SERIES OF QUESTIONS, MENZIES ASKED FIRST IF
+JAPAN'S RELUCTANCE TO SUPPORT SOUTH KOREA MILITARILY MEANT
+THAT JAPAN MIGHT BE PREAPRED TO MAKE A NAVAL DEFENSE CONTRI-
+BUTION, PERHAPS IN ANTI-SUBMARINE WARFARE, IN DISTANT AREAS
+AS FAR SOUTH AS SINGAPORE. NOTING HABIB'S STATEMENT OF US
+INTEREST IN MAINTAINING THE BALANCE OF POWER BETWEEN CHINA
+AND THE USSR, MENZIES SAID HE FOUND IT DIFFICULT TO CONCEIVE
+OF A US STRATEGIC RESPONSE ON CHINA'S BEHALF WERE THE
+SOVIETS TO LAUNCH A PRE-EMPTIVE STRIKE ON CHINESE STRATEGIC
+NUCLEAR INSTALLATIONS. MENZIES SAID HE COULD PERSONALLY
+UNDERSTAND US SUPPORT FOR CHINA IN SUCH A SITUATION, BUT ONLY
+BY MEANS SHORT OF DIRECT MILITARY INTERVENTION. HE COULD
+NOT CONCEIVE OF DIRECT US CONVENTIONAL INVOLVEMENT IN A
+BORDER SCUFFLE ALONG THE LONG SINO-SOVIET FRONTIER. MENZIES
+ASKED, THEREFORE, HOW THE US MIGHT USE ITS &quot;STRATEGIC NUCLEAR
+UMBRELLA&quot; IN THE ABOVE CONTEXT. IN THE EVENT OF SINO-SOVIET
+HOSTILITIES, MENZIES ASSUMED THAT MOST COUNTRIES WOULD &quot;THANK
+GOD&quot; THAT THEY ARE NOT CAUGHT BETWEEN THE TWO ANTAGONISTS
+LIKE CANADA IS BETWEEN THE US AND THE USSR.
+
+32. MENZIES ALSO ASKED FRENCH PERMREP DE ROSE ABOUT THE
+MAINTANANCE OF FRENCH CULTURAL INFLUENCE IN INDOCHINA AFTER
+THE COMMUNIST ASSUMPTION OF POWER IN THOSE STATES. MENZIES
+NOTED THAT ONLY THREE COUNTRIES NOW MAINTAIN DIPLOMATIC
+RELATIONS WITH CAMBODIA. IN HIS PERSONAL VIEW, FRENCH
+INFLUENCE IN INDOCHINA HAD ALWAYS BEEN STRONG AND WOULD NOT
+BE EASILY ERASED FROM THE AREA. HE WONDERED, THEREFORE, IF
+AMBASSADOR DE ROSE COULD COMMENT ON FRENCH RELATIONS WITH
+NORTH AND SOUTH VIETNAM AND ON CAMBODIA. (DE ROSE DID NOT
+RESPOND).
+
+33. REFERRING TO MENZIES' COMMENT ABOUT NAVAL DEVELOPMENTS
+IN THE PACIFIC, PANSA NOTED AN OCTOBER 29 AFP REPORT THAT
+THE SOVIET PACIFIC FLEET WAS CURRENTLY &quot;TWICE AS IMPORTANT&quot;
+AS THE US SEVENTH FLEET.
+
+34. CONCERNING JAPANESE &quot;OVERSEAS DEPLOYMENT&quot;, HABIB
+RESPONDED THAT THE BASIC JAPANESE POSTURE IS IN DEFENSE OF
+THE HOMELAND ISLANDS. SOME YEARS AGO, THERE WAS TALK OF
+EXPANDING THEIR CAPABILITY, BUT THIS HAS BEEN DROPPED. FOR
+THE FORESEEABLE FUTURE, JAPAN WILL BE DEPLOYED WITHIN THE
+CONFIDENTIAL
+
+PAGE 03  NATO 05933  05 OF 06  311928Z
+
+IMMEDIATE AREA, I.E., WITHIN 1,000 MILES OF THE HOMELAND
+ISLANDS AND WITH A MAJOR EMPHASIS ON ANTI-SUBMARINE WARFARE.
+
+35. CONCERNING THE QUESTION OF STRATEGY, HABIB REPEATED THAT
+GENERALLY SPEAKING, THE UNITED STATES WOULD OPPOSE ANY MOVE
+BY THE SOVIETS TO IMPOSE BY FORCE RPT FORCE ITS PRESENCE
+IN EAST ASIA. AS TO AMBASSADOR MENZIES' THEORETICAL QUESTION,
+HABIB COULD ONLY REPEAT THAT THE MEANS WHICH WOULD BE EMPLOYED
+TOWARD THIS END WOULD DEPEND ON THE CIRCUMSTANCES.
+
+36. SVART (DENMARK) WISHED TO CLARIFY THAT THE FAILURE OF
+A DANISH FAR EAST EXPERT TO BE IN ATTENDANCE SHOULD NOT BE
+TAKEN AS SUGGESTING A LACK OF INTEREST IN THIS CONSULTATION
+OR IN THE FAR EAST. HE SAID IT WAS SIMPLY A QUESTION OF THE
+THINNESS OF DANISH MFA RESOURCES. AS A MEASURE OF HIS
+COUNTRY'S INTEREST, SVART CALLED ATTENTION TO THE VISIT WHICH
+FONMIN ANDERSON HAS JUST BEGUN TO SEVERAL COUNTRIES IN THE
+FAR EAST. TURNING TO HIS QUESTIONS, SVART ASKED WHETHER
+DURING HABIB'S RECENT TRAVELS HE HAD ENCOUNTERED ANY NEW
+INDICATIONS OF SOVIET EFFORTS IN EAST ASIA ALONG THE LINES
+OF THEIR PROPOSAL FOR AN ASIAN COLLECTIVE SECURITY PACT
+OR A WORLD-WIDE CONFERENCE OF COMMUNIST PARTIES. SECONDLY,
+SVART ASKED WHAT IS GOING ON IN SAIGON AT THE PRESENT TIME.
+
+37. HABIB OBSERVED THAT AS A GENERAL PROPOSITION, ALL THE
+ASIANS HE MET TENDED TO LOOK WITH &quot;CONCERN&quot; ON THE PEOPLE'S
+REPUBLIC AND THE HANOI REGIME. IN CONTRAST, THEY WOULD EXPRESS
+&quot;FEAR&quot; OF SOVIET POWER AND INTENTIONS. THROUGHOUT THE EAST
+ASIAN ARCH, THIS PHENOMENON OF PREJUDICE, WELL-BASED IN
+HISTORY OF COURSE, SEEMED TO PREVAIL. CONCERNING SAIGON,
+HABIB SAID THE UNITED STATES NEVER DOUBTED THAT HANOI RAN
+THE COMMUNIST MOVEMENT IN SOUTH VIETNAM. ON THE BASIS OF
+WHAT THE UNITED STATES HAS BEEN ABLE TO PICK UP FROM VARIOUS
+SOURCES ABOUT WHAT IS GOING ON IN SAIGON, THIS VIEWPOINT
+HAS BEEN CONFIRMED. A RESTRUCTURING OF THE SOCIETY RIGHT
+DOWN TO THE VILLAGE LEVEL SEEMS TO BE IN PROGRESS. THERE IS
+NO REAL GOVERNMENT IN THE SOUTH INDEPENDENT OF THE HANOI
+STRUCTURE. IN FACT, THERE IS VERY LITTLE PRETENSE OF AN
+INDEPENDENT GOVERNMENT IN THE SOUTH. THE PRG, WHICH WAS
+NEVER ANYTHING MORE THAN A SHADOW GOVERNMENT, DOES NOT EVEN
+FUNCTION IN SAIGON, WHICH IS RUN BY A GENERAL. THE NUMBER ONE
+CONFIDENTIAL
+
+PAGE 04  NATO 05933  05 OF 06  311928Z
+
+MAN IN THE SOUTH IS MR. PHAM HUNG, A MEMBER OF THE NORTH
+VIETNAMESE POLITBURO, AND HE CONTINUES AS NUMBER ONE JUST
+AS HE HAS BEEN SINCE THE '60S, WHEN HIS PREDECESSOR WAS KILLED
+IN A B-52 RAID. FURTHERMORE, THERE SEEMS TO BE AN INCREASE
+OF NORTH VIETNAMESE-TRAINED SOUTHERN CADRE RETURNING TO THE
+SOUTH AFTER PERIODS OF TRAINING IN NORTH VIETNAM. HABIB
+SAID HIS PERSONAL OPINION IS THAT REUNIFICATION WILL COME
+ABOUT SOONER RATHER THAN LATER, EVEN BEFORE THE END OF 1976.
+
+38. HABIB SAID THAT THUS FAR, THE MASSIVE BLOOD BATH WHICH
+THE UNITED STATES FEARED HAS NOT TAKEN PLACE. IT SHOULD BE
+BORNE IN MIND THE UNITED STATES TOOK OUT 130,000 SOUTH
+VIETNAMESE WHO MIGHT BE CONSIDERED AS PRIMARY TARGETS FOR
+VIOLENT REPRISALS. OTHERWISE, HE SAID IT SEEMS A MASSIVE
+RE-EDUCATION PROCESS IS UNDER WAY, WITH ORGANIZATION OF THE
+URBAN POPULATION INTO CELLS AND BLOCK CELLS WITH THE EFFORT
+GRADUALLY EXPANDING OUT INTO THE COUNTRYSIDE.
+
+CONFIDENTIAL
+
+
+PAGE 01  NATO 05933  06 OF 06  311945Z
+
+43
+ACTION EUR-12
+
+INFO  OCT-01  ISO-00  CIAE-00  DODE-00  PM-04  H-02  INR-07  L-03
+
+NSAE-00  NSC-05  PA-01  PRS-01  SP-02  SS-15  USIA-06  AF-06
+
+ARA-06  EA-07  NEA-10  ACDA-05  SAJ-01  TRSE-00  AID-05
+
+SAM-01  /100 W
+---------------------     084591
+R 311530Z OCT 75
+FM USMISSION NATO
+TO SECSTATE WASHDC 4365
+INFO ZEN ALL NATO CAPITALS
+ZEN USNMR SHAPE
+ZEN USCINCEUR
+
+C O N F I D E N T I A L SECTION 6 OF 6 USNATO 5933
+
+39. CATALANO (ITALY) JOINED IN EXPRESSING APPRECIATION FOR
+HABIS'S PRESENCE AND HIS BRIEFING. HE SAID ALREADY THE
+MORNING SESSION HAD, IN HIS VIEW, BEEN ONE OF THE BEST
+ALLIANCE CONCULTATIONS HE COULD REMEMBER AND THAT MEETINGS
+OF THIS SORT OUGHT TO BE AMONG THE BEST TRADITIONS OF NATO.
+HE WISHED SIMPLY TO OBSERVE THAT HIS GOVERNMENT'S INFORMATION
+CONFIRMED WHAT HABIB HAD SAID ABOUT THE SITUATION IN SAIGON; AND
+HE ALSO WISHED TO ADD THAT JUST AS THE USSR MISSES NO CHANCE TO
+CALL ATTENTION TO THE CHINESE DANGER, SIMILARLY, CHINA DOES THE
+SAME ABOUT THE SOVIET DANGER.
+
+40. DR. LAHN (FRG ASSISTANT STATE SECRETARY) NOTED THAT
+FEDERAL CHANCELLOR SCHMIDT WAS ARRIVING IN PEKING ON THAT
+VERY DAY. LAHN WISHED TO POINT OUT THAT AMONG PLACES SCHMIDT
+WAS SCHEDULED TO VISIT ON HIS ORIGINAL PROGRAM WAS SHANGHAI.
+HE SAID AT THE LAST MINUTE, PEKING HAD CANCELLED THE SHANGHAI
+VISIT AND PROPOSED THAT SCHMIDT GO TO THE PROVINCE OF SINKIANG
+AND ITS CAPITAL URUMCHI, WHICH IS A CENTER FOR CHINESE NUCLEAR
+FACILITIES. LAHN SIMPLY WISHED TO POINT OUT THE CHANGE WAS
+THE IDEA OF THE HOST AND AND NOT THE GUEST. HE ALSO INDICATED
+THAT IF BY ANY WILD CHANCE THE CHINESE SHOULD SHOW SCHMIDT
+CONFIDENTIAL
+
+PAGE 02  NATO 05933  06 OF 06  311945Z
+
+SOME NUCLEAR INSTALLATIONS, THE FRG WOULD, OF COURSE, REPORT
+TO THE ALLIES.
+
+41. LAHN THEN WISHED TO POSE A QUESTION CONCERNING THE RELATIONSHIP
+BETWEEN SOUTH AND NORTH VIETNAM. HE WAS INTERESTED IN HABIB'S
+SPECULATIONS THAT &quot;UNIFICATION&quot; MAY BE IMPOSED IN A VERY
+SHORT TIME. NOTING THAT LE DUAN HAS RECENTLY BEEN TO
+PEKING, MOSCOW AND A NUMBER OF EAST EUROPEAN CAPITALS,
+AND NOTING THAT THE SOVIETS SEEM TO BE PREACHING THE THEME
+OF UNIFICATION MORE STRONGLY THAN THE CHINESE, LAHN WONDERED
+IF REUNIFICATION TOOK PLACE IN THE SHORT RUN, WOULD THIS
+CAUSE A SUDDEN IMBALANCE IN THE EQUILIBRIUM OF WHICH HABIB
+HAD SPOKEN? HABIB SAID THE US HAS HEARD RECURRING REPORTS
+THAT PEKING PREFERS TO KEEP THE TWO VIETNAMS SEPARATE. THIS
+SEEMS LIKE A LOGICAL POSITION FOR PEKING TO TAKE, AND IT MAY
+BE THIS LOGIC RATHER THAN ANY BAIS IN FACT WHICH IS THE
+SOURCE OF THE SERIES OF REPORTS. HABIB SAID THAT IT MAY BE
+THAT A REUNIFIED VIETNAM WHICH HAS THE ABILITY TO LOOK
+OUTWARD WILL BE A DISTURBING INFLUENCE IN EAST ASIA. HE
+BELIEVES THIS PERSONALLY AND HE NOTED THAT VIETNAM'S NEIGHBORS
+ALSO BELIEVE THIS. BUT HE CAUTIONED THAT THIS EVENTUALITY
+WILL NOT COME ABOUT VERY QUICKLY. FURTHERMORE, PEKING MAY
+REALIZE THAT IT CANNOT PREVENT REUNIFICATION EVEN IF IT
+WISHED TO AND FOR THAT REASON MAY DECIDE NOT TO MAKE ANY
+EFFORT TO PREVENT IT.
+
+42. A/SYG PANSA CONCLUDED THE DISUCSSION, CALLING IT &quot;EXTREMELY
+GOOD&quot;, ESPECIALLY IN THAT IT INVOLVED THE ALLIES IN THESE FAR
+EAST QUESTIONS WHICH ARE NOT USUALLY WITHIN &quot;OUR SPHERE&quot;,
+BUT WHICH ARE MATTERS RELATING TO THE COMMON INTERESTS OF THE ALLIES.
+HE SAID THE MORNING CONSULTATION WAS IN HIW VIEW &quot;A GOOD OMEN&quot;
+FOR FUTURE REINFORCED NAC CONSULTATIONS ON REGIONAL QUESTIONS.
+HE COULD ONLY HOPE THAT SUCH FUTURE CONSULTATIONS WOULD BE AS
+PROFITABLE AS THE ONE WHICH TOOK PLACE TODAY, AND WHICH WAS
+VIVID EVIDENCE OF THE ALLIES PUTTING INTO PRACTICE THEIR RESOLVE
+WITH REGARD TO CONSULTATIONS AS EXPRESSED IN PARA 11 OF THE OTTAWA
+DECLARATION. PANSA THANKED ALL THE HIGH-LEVEL OFFICIALS WHO
+HAD COME FROM CAPITALS AND ESPECIALLY AMBASSADOR HABIB, &quot;WHO
+HAD COME THE LONGEST WAY&quot;.
+
+43. PANSA THEN SAID IN ACCORD WITH COMMON PRACTICE, HE WOULD
+CONFIDENTIAL
+
+PAGE 03  NATO 05933  06 OF 06  311945Z
+
+RPOPOSE THE NATO SPOKESMAN, ON AN IF-ASKED BASIS, TO DRAW ON THE
+FOLLOWING GUIDANCE: &quot;AT TODAY'S REGULAR WEEKLY MEETING OF THE
+NORTH ATLANTIC COUNCIL, ALLIED REPRESENTATIVES DISCUSSED THE
+GENERAL SUBJECT OF EAST ASIA. THE PERMANENT REPRESENTATIVES
+WERE JOINED BY SENIOR OFFICIALS FROM CAPITALS AS FOLLOWS:
+
+BELGIUM - AMBASSAODR ANDRE WENDELEN
+GERMANY - DR. LOTHAR LAHN, ASSISTANT STATE SECRETARY
+ITALY - MINISTER MARCELLO SALIMEI
+NETHERLANDS - MR. J. ROOKMAKER, DIRECTOR OF EASTERN AFFAIRS DEPARTMEN
+T
+UNITED KINGDOM - MR. P.J.E. MALE, ASSISTANT UNDER SECRETARY
+OF STATE
+UNITED STATES - MR. PHILIP C. HABIB, ASSISTANT SECRETARY OF
+STATE FOR EAST ASIAN AND PACIFIC AFFAIRS
+
+&quot;THIS EXCHANGE OF VIEWS ON EAST ASIA IS PART OF THE CONTINUOUS
+PROCESS OF ALLIED POLITICAL CONSULTATION WHICH HAS ALWAYS
+BEEN PART OF NATO ACITVITIES. THE IMPORTANCE OF THIS PROCESS
+WAS CONFIRMED IN ARTICLE II OF THE OTTAWA DECLARATION IN
+JUNE 1974, AND AFFIRMED ONCE MORE BY THE NATO HEADS OF
+GOVERNMENT WHEN THEY MET IN BRUSSELS IN MAY 1975.&quot; THERE
+WAS NO OBJECTION.
+BRUCE
+
+CONFIDENTIAL
+
+
+&lt;&lt; END OF DOCUMENT &gt;&gt;
+</div></div><br /></div></div><div class="pane-tab"><div class="pane-header">Raw content</div><div class="pane-content"><div class="text-content">
+
+
+PAGE 01  NATO 05933  01 OF 06  311750Z
+
+43
+ACTION EUR-12
+
+INFO  OCT-01  ISO-00  CIAE-00  DODE-00  PM-04  H-02  INR-07  L-03
+
+NSAE-00  NSC-05  PA-01  PRS-01  SP-02  SS-15  USIA-06  AF-06
+
+ARA-06  EA-07  NEA-10  ACDA-05  SAJ-01  TRSE-00  AID-05
+
+SAM-01  /100 W
+---------------------     083300
+R 311530Z OCT 75
+FM USMISSION NATO
+TO SECSTATE WASHDC 4360
+INFO ALL NATO CAPITALS (BY POUCH)
+USNMR SHAPE (BY POUCH)
+USCINCEUR (BY POUCH)
+
+C O N F I D E N T I A L SECTION 1 OF 6 USNATO 5933
+
+E.O. 11652: GDS
+TAGS: PFOR, NATO, NAC, XB, XP
+SUBJ: REINFORCED NAC ON THE FAR EAST, OCTOBER 29, 1975
+
+SUMMARY: NAC CONSULTATION ON FAR EAST ON OCTOBER 29 WAS
+REINFORCED BY SENIOR POLICY OFFICIALS FROM BELGIUM, FRG,
+ITALY, NETHERLANDS, UK AND US. ASSISTANT SECRETARY OF STATE
+HABIB (US) LED OFF DISCUSSION, COVERING GENERAL EAST ASIAN
+DEVELOPMENTS IN THE SIX MONTHS SINCE THE FALL OF SAIGON. HE
+SAID THE INITIAL APPREHENSION FOLLOWING THE FALL OF SAIGON
+HAD DISSIPATED. THE SOUTHEAST ASIAN COUNTRIES ARE STILL CON-
+CERNED WITH THE IMPACT OF HANOI'S SUCCESS ON THEIR SECURITY;
+THEY ARE MOVING CLOSER TO THE NON-ALIGNED BLOC AND BEGINNING
+TO DEVELOP ASEAN INTO A MORE MEANINGFUL REGIONAL ORGANIZATION.
+AT THE SAME TIME, THEY CONTINUE TO RELY UPON THE US COMMIT-
+MENT, WHICH WE HAVE REAFFIRMED. PRC RELATIONS WITH THE US
+AND JAPAN ARE RELATIVELY GOOD, WHILE THOSE WITH THE SOVIETS
+ARE COOL. THE INTERNAL SCENE IN CHINA IS STABLE; THE LINES
+OF SUCCESSION ARE SET WITH THE CURRENT LEADERSHIP DISPLAYING
+A COLLEGIAL CHARACTER. JAPAN-US RELATIONS ARE THE BEST THEY
+HAVE EVER BEEN. JAPAN IS CLOSER TO PEKING THAN TO MOSCOW.
+CONFIDENTIAL
+
+PAGE 02  NATO 05933  01 OF 06  311750Z
+
+THE SITUATION ON THE KOREAN PENINSULA REMAINS CALM FOR THE
+TIME BEING, BUT PRESENTS THE GREATEST DANGER FOR POTENTIAL
+CONFRONTATION. HABIB'S PRESENTATION WAS FOLLOWED BY A WIDE-
+RANGING DISCUSSION INVOLVING PERMREPS AND VISITING OFFICIALS
+FROM CAPITALS.
+THIS REINFORCED NAC ON THE FAR EAST WAS GREETED WITH
+ENTHUSIASM BY PERMREPS. MENZIES (CANADA) WELCOMED THE CON-
+SULTATIONS AS &quot;USEFUL AND TIMELY&quot; AND PARTICULARLY BECAUSE
+OF PARTICIPATION BY HIGH-LEVEL OFFICIALS FROM CAPITALS.
+SIMILAR APPRECIATION WAS EXPRESSED BY KRAPF (FRG). CATALANO
+(ITALY) SAID THE SESSION WAS ONE OF THE BEST ALLIANCE CON-
+SULTATIONS HE COULD REMEMBER AND THAT MEETINGS OF THIS SORT
+SHOULD BE AMONG THE BEST TRADITIONS OF NATO. ACTING SECRETARY
+GENERAL PANSA SUMMED UP THE MEETING, CALLING IT &quot;EXTREMELY
+GOOD&quot;, PROVIDING EVIDENCE OF THE ALLIES PUTTING INTO PRACTICE
+THEIR RESOLVE WITH REGARD TO CONSULTATIONS AS EXPRESSED IN
+PARA 11 OF THE OTTAWA DECLARATION. COMMENT: WE CONSIDER
+REINFORCED NAC ON THE FAR EAST TO HAVE BEEN HIGHLY SUCCESSFUL
+IN ENHANCING THE POLITICAL CONSULTATIVE PROCESS IN THE ALLIANCE
+AND ALSO IN PROVIDING OUR 14 NATO ALLIES WITH A LUCID AND
+FORCEFUL EXPOSE OF US POLICIES AND OBJECTIVES IN THIS HIGHLY
+IMPORTANT REGION OF THE WORLD. END SUMMARY.
+
+1. ACTING SECRETARY GENERAL PANSA OPENED REINFORCED NAC OF
+OCTOBER 29 BY WELCOMING ATTENDANCE OF HIGH-LEVEL OFFICIALS
+FROM BELGIUM (AMBASSADOR WENDELEN), FRG (ASSISTANT SECRETARY
+LAHN), ITALY (MINISTER SALIMEI), NETHERLANDS (FE AFFAIRS
+DIRECTOR ROOKMAKER), UK (ASSISTANT UNDER-SECRETARY MALD) AND
+US (ASSISTANT SECRETARY HABIB). PANSA SAID THIS MEETING WOULD
+FURTHER STRENGTHEN THE PROCESS OF POLITICAL CONSULTATION
+WITHIN THE COUNCIL.
+
+2. ASSISTANT SECRETARY HABIB (US) SAID THERE WAS A GREAT
+DEAL OF APPREHENSION IN ASIA AFTER THE FALL OF SAIGON.
+GENERALLY SPEAKING, SUCH APPREHENSION HAS ABATED. THE MAJOR
+POWER BALANCE IN EAST ASIA REMAINS ESSENTIALLY UNCHANGED,
+ALTHOUGH THERE ARE SEVERAL NEW PRESSURE POINTS. THE REACTION
+OF THE REGION TO EVENTS IN INDOCHINA HAS BEEN MEASURED AND
+TEMPERATE. COUNTRIES ARE MOTIVATED BY NATIONALISTIC ASPIRATIONS
+AND ARE DETERMINED TO MAINTAIN THEIR INDEPENDENCE. THEY
+ARE EVOLVING THEIR OWN POLICIES AND HAVE DEVELOPED A
+CONFIDENTIAL
+
+PAGE 03  NATO 05933  01 OF 06  311750Z
+
+BETTER APPRECIATION OF THE SIGNIFICANCE OF SELF-RELIANCE AS
+A FACTOR IN SECURITY MATTERS. HE SAID THERE IS GENERAL DESIRE
+FOR CLOSER IDENTIFICATION WITH THE NON-ALIGNED BLOC. THIS
+IS ESPECIALLY TRUE IN NON-COMMUNIST SOUTHEAST ASIA; SOME OF
+THESE COUNTRIES WERE MEMBERS OF NON-ALIGNED IN THE PAST AND
+THEY HAVE BROUGHT OTHERS ALONG. THERE IS A WIDE-SPREAD
+REGIONAL VIEW THAT CONTINUED US PRESENCE AND INVOLVEMENT
+IN THE AREA IS BENEFICIAL FOR ASIA.
+
+3. HABIB DESCRIBED US REACTION TO THE INDOCHINA AFTERMATH
+AS NOT SUBSTANTIAL. A DIVISIVE DOMESTIC POLITICAL ISSUE HAS
+BEEN REMOVED. US INTENDS TO MAINTAIN MORE NORMAL INTERESTS
+IN ASIA. THIS WILL INCLUDE CONTINUED FORWARD DEPLOYMENT OF
+US FORCES IN ASIA INCLUDING SUBSIDIARY DEPLOYMENT OF FORCES
+IN KOREA AND THAILAND, ALTHOUGH THE LATTER DEPLOYMENT WILL
+END NEXT YEAR.
+
+4. HABIB SAW CERTAIN RESTRAINTS ON MAJOR POWERS -- CHINA,
+SOVIET UNION, JAPAN AND US -- AFTER THE FALL OF INDOCHINA.
+ALL MAJOR POWERS RECOGNIZE THAT UNDER PRESENT CIRCUMSTANCES,
+NO ONE POWER CAN ESTABLISH HEGEMONY IN THE AREA. THE OVER-
+RIDING CHINESE PREOCCUPATION IS THREAT OF SOVIET HEGEMONY
+IN ASIA. ALL MAJOR POWERS RECOGNIZE THAT IN THIS PERIOD,
+IT IS IN OUR COMMON INTEREST TO ACT WITH MODERATION AND
+RESTRAINT. THE SINO-SOVIET RIVALRY, THE US-JAPANESE ALLIANCE,
+US AND JAPANESE ECONOMIC PREDOMINANCE IN ASIA, AND LIMITED
+SOVIET ENTREE TO ASIAN SECURITY ARRANGEMENTS GENERALLY
+CONTRIBUTE TO STABILITY. THESE FACTORS ARE NOT LIKELY TO
+CHANGE SIGNIFICANTLY OVER THE SHORT TERM, AND PROBABLY NOT
+OVER THE MEDIUM TERM AS WELL. EQUILIBRIUM COULD BE CHANGED
+SIGNIFICANTLY IF THE SINO-SOVIET RIVALRY WERE DRASTICALLY
+ALTERED OR IF RUSSIA ATTAINED MAJOR INFLUENCE IN ASIA, BUT
+NEITHER APPEARS A LIKELY PROSPECT.
+
+CONFIDENTIAL
+
+
+PAGE 01  NATO 05933  02 OF 06  311805Z
+
+43
+ACTION EUR-12
+
+INFO  OCT-01  ISO-00  CIAE-00  DODE-00  PM-04  H-02  INR-07  L-03
+
+NSAE-00  NSC-05  PA-01  PRS-01  SP-02  SS-15  USIA-06  AF-06
+
+ARA-06  EA-07  NEA-10  ACDA-05  SAJ-01  TRSE-00  AID-05
+
+SAM-01  /100 W
+---------------------     083438
+R 311530Z OCT 75
+FM USMISSION NATO
+TO SECSTATE WASHDC 4361
+INFO ALL NATO CAPITALS (BY POUCH)
+USNMR SHAPE (BY POUCH)
+USCINCEUR (BY POUCH)
+
+C O N F I D E N T I A L SECTION 2 OF 6 USNATO 5933
+
+5. SMALLER COUNTRIES, ESPECIALLY IN SOUTHEAST ASIA, CAN
+EXERCISE GREATER FLEXIBILITY AND MANEUVERABILITY IN SEEKING
+NEW DIPLOMATIC INITIATIVES. THEY SEE USEFULNESS IN REGIONAL
+GROUPINGS SUCH AS ASEAN. THERE WILL PROBABLY BE AN ASEAN
+SUMMIT WITHIN THE NEXT FEW MONTHS. ASEAN IS BEGINNING TO GO
+BEYOND GENERALITIES, INCLUDING PLANNING EXPANDED COORDIN-
+ATION OF SECURITY EFFORTS. ASEAN IS SEEKING BETTER UNDER-
+STANDING AND REALTIONS WITH COMMUNIST NEIGHBORS AND IS PAR-
+TICULARLY CONCERNED ABOUT HANOI AS A SUB-REGIONAL POWER.
+THEY ARE CONCERNED ABOUT THAILAND, WHICH IS REGARDED AS SICK
+MAN OF ASIA. TWO COUNTRIES, THE PHILIPPINES AND THAILAND,
+MOVED QUICKLY TO NORMALIZE RELATIONS WITH THE PRC. ASEAN IS
+CONCERNED WITH THE IMPACT OF HANOI'S SUCCESS ON THEIR DOMESTIC
+INSURGENTS' MOVEMENTS. THERE ARE A NUMBER OF INSURGENT
+GROUPS IN BURMA. THREE DIFFERENT AREAS IN THAILAND AR
+THREATENED. INSURGENTS IN MALAYSIA HAVE RECENTLY BECOME MORE
+ACTIVE. THERE ARE TWO SUCH MOVEMENTS IN THE PHILIPPINES,
+ONE MOSLEM AND ONE COMMUNIST. THERE IS ALSO AN INCIPIENT
+MOVEMENT IN INDONESIA, SEPARATE FROM THE PROBLEM OF TIMOR.
+
+6. HABIB SAID US-PRC RELATIONS ARE GOOD ALTHOUGH THEY ARE
+CONFIDENTIAL
+
+PAGE 02  NATO 05933  02 OF 06  311805Z
+
+NOT YET FULLY NORMALIZED. THE PRC SEES US AS A COUNTER-
+BALANCE AGAINST MOSCOW. THIS INTEREST IS STRONGER NOW TAN
+AT THE BEGINNING OF US-PRC RELATIONSHIP. PEKING IS UNHAPPY
+WITH DETENTE, AND MAKES ITS DISPLEASURE KNOWN AT EVERY OPPOR-
+TUNITY BY EMPHASIZING THE DANGERS OF DETENTE. THE PRC CON-
+TINUES TO HARP ON THEME THAT SOVIETS ARE FEINTING IN THE EAST
+WHILE PREPARING TO STRIKE IN THE WEST.THEY CANNOT SEE THAT
+THIS IS IRRELEVANT. THE PRC SEES US MILITARY PRESENCE ABROAD,
+IN BOTH EUROPE AND ASIA, AS A NECESSARY COUNTERWEIGHT TO
+SOVIET EXPANSIONISM. TAIWAN IS STILL THE MAIN OBSTACLE
+PREVENTING FULL NORMALIZATION OF US-PRC RELATIONS. THE
+PRC'S INSISTENCE ON THREE POINTS REGARDING TAIWAN -- ABRO-
+GATION OF THE US-ROC DEFENSE TREATY, WITHDRAWAL OF US FORCES
+AND BREAKING US-ROC RELATIONS -- ARE UNCHANGED. THE PRC IS
+NOT, HOWEVER, PRESSING ON THIS ISSUE. PRESIDENT FORD WILL
+VISIT PEKING WITHIN THE NEXT FEW WEEKS, BUT THIS TRIP WILL
+INVOLVE MORE POLITICAL SYMBOLISM THAN CONCRETE RESULTS.
+
+7. SINO-SOVIET RELATIONS REMAIN COOL. BORDER DISCUSSIONS
+ARE IN A RECESS AND TRADE IS STAGNATING, WHILE THE RHETORICAL
+BATTLE HAS GROWN SHARPER. PEKING SAYS MOSCOW IS THE
+CHIEF THREAT TO WORLD PEACE AND SECURITY. THE SOVIETS AND
+PRC COMPETE IN HANOI, PYONGYANG, TOKYO AND SOUTHEAST ASIA.
+
+8. SINO-JAPANESE RELATIONS ARE RELATIVELY GOOD. THE CHINESE
+CONTINUE TO INSIST ON THEIR ANTI-HEGEMONY CLAUSE IN ANY PEACE
+TREATY WITH JAPAN. ALTHOUGH THIS WILL DELAY SIGNING OF A
+TREATY, ONE WILL, IN THE END, BE SIGNED. THE PRC BACKS JAPAN
+AGAINST MOSCOW ON THE NORTHERN TERRITORIES ISSUE. THE PRC
+IS FOND OF SAYING, INCLUDING TO JAPANESE VISITORS, THAT US-
+JAPANESE RELATIONS ARE MORE IMPORTANT AT THIS TIME THAN
+JAPANESE-PRC RELATIONS. TOKYO'S RELATIONS ARE BETTER WITH
+PEKING THAN WITH MOSCOW.
+
+9. HABIB CHARACTERIZED THE INTERNAL SCENE IN CHINA AS
+STESSING POLITICAL STABILITY, UNITY AND ECONOMIC DEVELOPMENT.
+CHOU EN-LAI IS ILL, AND FOR THIS REASON COULD NOT SEE SECRETARY
+KISSINGER. MAO TSE-TUNG IS STILL ACTIVELY CONCERNED WITH
+OVERALL POLICY AND FOREIGN AFFAIRS, ESPECIALLY RELATIONS WITH
+MOSCOW. TENG HSIAO-P'ING IS SEEMINGLY IN CONFIDENT CONTROL.
+THERE IS A COLLEGIAL CHARACTER TO CURRENT PRC LEADERSHIP.
+CONFIDENTIAL
+
+PAGE 03  NATO 05933  02 OF 06  311805Z
+
+REHABILITATION OF SOME OF THOSE PURGED DURING THE CULTURAL
+REVOLUTION INDICATES MOVEMENT TOWARD MAINTAINING THE BALANCE
+WITHIN THE LEADERSHIP. THE SHUI HU CAMPAIGN HAS APPARENTLY
+ENDED, REPLACED BY A CAMPAIGN TO INCREASE AGRICULTURAL PRO-
+DUCTIVITY. ANOTHER IDEOLOGICAL CAMPAIGN APPEARS TO BE IN
+THE OFFERING. THE LINES OF SUCCESSION APPEAR TO BE SET, BUT
+IT IS NOT CLEAR WHETHER THE SUCCESSION WILL PERPETRATE COL-
+LEGIAL LEADERSHIP.
+
+10. HABIB SAID JAPANESE RELATIONS WITH THE US ARE THE BEST
+THEY HAVE EVER BEEN. EFFECTS OF THE NIXON SHOCKS ARE CLEARLY
+PAST. THE EMPORER'S VISIT TO THE US WAS SYMBOLIC OF EXCELLENT,
+CLOSE BILATERAL RELATIONS. WE DO NOT HAVE PROBLEMS WITH
+JAPAN IN THE OLD SENSE OF THE WORD. WE COOPERATE CLOSELY
+WITH JAPAN ON ALL MATTERS, INCLUDING DEFENSE. WE ARE PREPARED
+TO ACCOMMODATE TO THE PACE SET BY JAPAN, AND WE ARE NOT
+PRESSING JAPAN TO EXPAND ITS DEFENSE FORCES SIGNIFICANTLY.
+WE BELIEVE CONSTITUTIONAL, POLITICAL AND BUDGETARY CONSTRAINTS
+WILL PROVIDE APPROPRIATE LIMITATIONS.
+
+11. JAPAN'S RELATIONS WITH THE SOVIETS ARE NOT ALL THAT WARM.
+THERE IS A JAPANESE TILT TOWARD CHINA. SOVIET PRESSURE
+TACTICS REGARDING THE PRC HEGEMONY CLAUSE IN A FUTURE PEACE
+TREATY AND A HARDENED SOVIET ATTITUDE TOWARD THE NORTHERN
+TERRITORIES HAVE COOLED TOKYO-MOSCOW RELATIONS. JOINT ECONOMIC
+ACTIVITIES WITH THE SOVIETS ARE MOVING SLOWLY.
+
+12. TOKYO IS KEENLY ATTUNED TO DEVELOPMENTS IN ASIA, PAR-
+TICULARLY ON THE KOREAN PENINSUAL AND IN SOUTHEAST ASIA.
+JAPANESE RELATIONS WITH THE ROK HAVE IMPROVED. JAPAN IS ALSO
+SEEKING TO DEFUSE TENSIONS ON THE KOREAN PENINSUAL BY TRYING
+TO DRAW NORTH KOREA INTO MORE REASONABLE RELATIONSHIPS WITH
+THE ROK AND EVEN WITH THE US. JAPAN'S INTEREST IN SOUTHEAST
+ASIA IS PRIMARILY ECONOMIC. JAPAN ADJUSTED RELATIONS WITH
+HANOI QUICKLY. THEY HAVE AN EMBASSY IN HANOI AND WILL PROVIDE
+US$45 MILLION IN AID TO THE DRV OVER NEXT TWO YEARS.
+JAPAN SEES ITSELF AS A BRIDGE BETWEEN HANOI AND THE US.
+
+13. HABIB SAW THE NATURAL DIVERSITY OF THE REGION AS A SIG-
+NIFICANT FACTOR IN THE POWER EQUILIBRIUM. OUR PREOCCUPATION,
+AND THAT OF OTHERS, WITH INDOCHINA IS FINISHED. WHEN WE
+CONFIDENTIAL
+
+PAGE 04  NATO 05933  02 OF 06  311805Z
+
+PREOCCUPIED HANOI'S ATTENTION THERE WAS LITTLE CONCERN IN
+ASEAN. NOW THAT THIS PERIOD IS FINISHED, IT HAS CREATED
+PROBLEMS FOR ASEAN. THE COUNTRIES OF THIS REGION SEE ECON-
+OMIC DEVELOPMENT AND SECURITY GOING HAND IN HAND. THEY SEE
+THEIR DEPENDENCE UPON A US COMMITMENT AND ARE CONCERNED
+WHETHER WE WILL FULFILL THAT COMMITMENT. WE HAVE TRIED TO
+REASSURE THESE COUNTRIES OF THE CONSTANCY AND CHARACTER OF
+OUR COMMITMENT. THEREFORE WE HAVE NOT WITHDRAWN ANY OF OUR
+FORCES PRECIPITOUSLY, EVEN FROM THAILAND. THE DIVERSITY OF
+THE REGION, FORCES OF NATIONALISM, AND THE FAR-RANGING NATURE
+OF SINO-SOVIET RIVALRY ARE FACTORS WHICH MAINTAIN THE
+EQUILIBRIUM OF POWER IN ASIA. THESE PUT A PREMIUM ON FLEXI-
+BILITY AND ON THE NEED TO WORK TO REDUCE TENSIONS AND CON-
+FRONTATIONS. THIS EQUILIBRIUM OF THE POWER DYNAMIC MAY
+NOT PREVAIL, BUT IT WIDENS THE OPPORTUNITY TO AVOID CONFRON-
+TATION.
+
+CONFIDENTIAL
+
+
+PAGE 01  NATO 05933  03 OF 06  311826Z
+
+43
+ACTION EUR-12
+
+INFO  OCT-01  ISO-00  CIAE-00  DODE-00  PM-04  H-02  INR-07  L-03
+
+NSAE-00  NSC-05  PA-01  PRS-01  SP-02  SS-15  USIA-06  AF-06
+
+ARA-06  EA-07  NEA-10  ACDA-05  SAJ-01  TRSE-00  AID-05
+
+SAM-01  /100 W
+---------------------     083738
+R 311530Z OCT 75
+FM USMISSION NATO
+TO SECSTATE WASHDC 4362
+INFO ZEN ALL NATO CAPITALS
+ZEN USNMR SHAPE
+ZEN USCINCEUR
+
+C O N F I D E N T I A L SECTION 3 OF 6 USNATO 5933
+
+14. DR. ROOKMAKER (NETHERLANDS EXPERT) DISCUSSED THE
+DEVELOPMENT OF ASEAN COUNTRIES' POLICIES AND THEIR IMPLICATIONS
+FOR WESTERN APPROACH TO THE AREA. HE EMPHASIZED THAT SINCE THE
+END OF THE VIETNAM CONFLICT ASEAN COUNTRIES HAVE RECOGNIZED
+THAT THEY CANNOT FIGHT COMMUNISM WITH WEAPONS AND MUST CONCENTRATE
+ON ECONOMIC DEVELOPMENT PARTICULARLY FOR THE POORER SECTORS
+OF THEIR SOCIETIES. HE SAID ASEAN COUNTRIES HAVE ADOPTED A
+CONSTRUCTIVE POLICY TOWARD INDOCHINA AND HOPE EVENTUALLY THAT
+THEIR OWN CONCEPT OF NEUTRALISM CAN BE EXTENDED TO EMBRACE
+INDOCHINA. HE BELIEVED WESTERN COUNTRIES SHOULD TAKE ASEAN
+ASPIRATIONS INTO ACCOUNT AND SHOULD NOT DISCRIMINATE AGAINST
+INDOCHINA IN A WAY WHICH WOULD INHIBIT THE ACHIEVEMENT OF ASEAN'S
+OBJECTIVES. FOR EXAMPLE, COOPERATION BETWEEN ASEAN AND INDOCHINA
+WOULD BE FACILITATED IF WESTERN AID TO THE AREA WAS NOT DIRECTED
+EXCLUSIVELY TO ASEAN COUNTRIES.
+
+15. ERALP (TURKEY) ASKED HABIB TO COMMENT ON INTERNAL DEVELOPMENTS
+IN CAMBODIA AND THE RELATIONSHIP OF CAMBODIA TO HANOI,
+CHINA, AND THE USSR. HABIB RECALLED THAT WHEN PHNOM PENH
+FELL, THE KHMER ROUGE EMPTIED PHNOM PENH AS WELL AS OTHER
+CAMBODIAN CITIES AND ELIMINATED ALL OFFICIALS OF ANY STATURE.
+CONFIDENTIAL
+
+PAGE 02  NATO 05933  03 OF 06  311826Z
+
+THE YOUND AND THE OLD SUFFERED MOST IN THIS OPERATION,
+DURING WHICH THOUSANDS OF PEOPLE LOST THEIR LIVES. THE KHMER
+ROUGE APPARENTLY WANTED TO BREAK DOWN THE EXISTING URBAN
+STRUCTURE WHICH HAD CONTROLLED THE COUNTRY UNDER SIHANOUK
+AND TO RULE THROUGH THE PARTY STRUCTURE OF THE KHMER ROUGE.
+THIS STRUCTIRE REMAINS SHADOWY AND IT IS NOT YET POSSIBLE TO
+DETERMINE WHO IS ON TOP.
+
+16. AS TO CAMBODIA'S EXTERNAL RELATIONS, HABIB NOTED EVIDENCE
+OF CONTINUING DISAGREEMENTS WITH HANOI. THERE HAD BEEN
+FIGHTING OVER OFF-SHORE ISLANDS AND ENGAGEMENTS IN BORDER
+AREAS. WHILE HANOI HAD WON THESE ENCOUNTERS, IT HAD NOT
+ALWAYS DONE SO EASILY AND IN SOME INSTANCES NEEDED TO EMPLOY
+ITS AIR FORCE. THERE WERE CONTACTS BETWEEN CAMBODIA AND
+NORTH VIETNAMESE OFFICIALS AIMED AT SETTLING BORDER CONFLICTS,
+BTU THESE EFFORTS HAD NOT BEEN VERY SUCCESSFUL. HABIB NOTED
+THAT THE PRINCIPAL EXTERNAL INFLUENCE IN CAMBODIA AT PRESENT
+IS PEKING. THE KHMER ROUGE HAVE NOT FORGOTTEN SOVIET SUPPORT
+FOR LON NOL AND THE SOVIETS HAVE BEEN EFFECTIVELY EXLUDED
+FROM CAMBODIA. IN THE NEAR FUTURE, THE KHMER ROUGE APPARENTLY
+INTEND TO ALLOW ONLY THREE COUNTRIES, WHICH HELPED THEM
+DURING THEIR STRUGGLE, TO BE REPRESENTED IN PHNOM PENH;
+NORTH VIETNAM, CHINA, AND NORTH KOREA. HABIB OBSERVED THAT
+THE RIVALRY BETWEEN HANOI AND PEKING IN CAMBODIA IS NOT
+ENTIRELY CLEAR. HOWEVER, ONE CAN ARGUE THAT PEKING LOOKS ON
+CAMBODIA AS A BUFFER STATE THAT COULD LIMIT HANOI'S SUBREGIONAL
+HEGEMONY, WHICH PEKING FEARS MIGHT SERVE AS A SURROGATE
+FOR SOVIET INFLUENCE IN THE AREA. HABIB CONCLUDED
+THAT OUR INFORMATION INDICATES THE KHMER ROUGE DO NOT INTEND
+TO PERMIT ANY WESTERN EMBASSIES IN CAMBODIA FOR SOME TIME.
+IT MAY BE A YEAR OR TWO BEFORE THE WEST BEGINS TO DEVELOP
+SOME INFLUENCE IN CAMBODIA.
+
+17. BUSCH (NORWAY) PROVIDED THE FOLLOWING INDICATIONS OF
+CAMBODIAN POLICIES PICKED UP RECENTLY BY NORWEGIAN OFFICIALS:
+A CAMBODIAN IN CONTACT WITH SIHANOUK SAID THE PRINCE IS NEEDED
+AS A NATIONAL SYMBOL IN CAMBODIA BUT WOULD NOT BE GIVEN ANY
+INTERNAL POWER. SIHANOUK WOULD RETURN TO CAMBODIA AT THE END
+OF DECEMBER AND WOULD REMAIN THERE FOR SOME SIX MONTHS. AN
+EASTERN EUROPEAN CONTACT TOLD THE NORWEGIANS THE KHMER ROUGE
+INTEND TO PERMIT EIGHT ADDITIONAL COUNTRIES TO ESTABLISH A
+CONFIDENTIAL
+
+PAGE 03  NATO 05933  03 OF 06  311826Z
+
+DIPLOMATIC PRESENCE IN CAMBODIA: ALGERIA, ALBANIA, ROMANIA,
+YUGOSLAVIA, EGYPT, LAOS, MAURITANIA, AND SOUTH VIETNAM.
+SWEDEN MAY ACCREDIT A DIPLOMATIC REPRESENTATIVE TO CAMBODIA
+BY THE END OF THIS YEAR. THE KHMER ROUGE MAY BEGIN TO ADMIT
+CORRESPONDENTS INTO CAMBODIA BY THE BEGINNING OF 1976. BUSCH
+ALSO MENTIONED THAT NORWEGIAN CONTACTS HAVE NOT BEEN ABLE TO
+ESTABLISH ANY POSITIVE CONFIRMATION THAT NORTH VIETNAM IS
+PROVIDING MILITARY ASSISTANCE TO THAI INSURGENTS THROUGH
+CAMBODIA.
+
+18. ASSISTNAT UNDER-SECRETARY MALE (UK EXPERT) AGREED WITH
+HABIB'S PRESENTATION AND SAID THE UK APPROACHES THE REGION
+IN TERMS OF THE UK DESIRE FOR STABILITY IN THE AREA. HE
+NOTED THAT CHINESE-SOVIET COMPETITION HAS A DEFINITE EFFECT
+ON DEVELOPMENTS IN SOUTHEAST ASIA. ON THE BASIS OF BRITISH
+EXPERIENCE, HE CONFIRMED THAT THE CINESE ARE EMPHASIZING
+THE DANGERS OF DETENTE TO WESTERN VISITORS. TENG HSIAO-P'ING
+MADE THIS CLEAR TO HEATH AS DID MAO IN EVEN STARKER TERMS.
+UK POLICY TOWARD CHINA AIRMS TO DO WHAT IS POSSIBLE TO BRING
+CHINA INTO THE BROADER WORLD. UK RELATIONS WITH THE PRC
+ARE GOOD AS IS EVIDENCED BY THE LACK OF ANY UNCOMFORTABLE
+CHINESE INTERVENTIONS IN HONG KONG. BRITISH INTEREST TO A
+CONSIDERABLE DEGREE FOCUSES ON HONG KONG WHERE CHINA OBVIOUSLY
+COULD MAKE TROUBLE IF IT WISHED TO.
+
+19. MALE SAID THE BRITISH REGARD THE CURRENT KOREAN SITUATION
+AS &quot;SAFE&quot;, PARTICULARLY SINCE KIM IL-SONG WAS REBUFFED
+IN PEKING WHEN HE SOUGHT SUPPORT FOR A FORWARD POLICY AFTER
+THE FALL OF SAIGON. AS TO ASEAN, THE BRITISH REGARD THIS AS
+A LOCALLY GROWN ORGANIZATION AND THUS ONE WHICH HAS A GOOD
+INTERNATIONAL APPEARANCE. IT APPEARS TO BE AN ORGANIZATION
+WITH A LONG-TERM POTENTIAL, BUT WITHOUT IMMEDIATE EFFICACY.
+THE BRITISH ARE CONCERNED ABOUT THE PROGRESS OF THE INSUGENCIES
+IN THAILAND AND MALAYSIA.
+
+20. KILLICK (UK) NOTED WITH INTEREST HABIB'S REPORT THAT
+DURING THEIR VISIT TO PEKING, US OFFICIALS HAD TOLD THE
+CHINESE THAT IT WAS IRRELEVANT WHETHER THE USSR WAS, AS THE
+CHINESE MAINTAIN, FEINTING TO THE EAST WHILE ATTACKING TO
+THE WEST. KILLICK AGREED THAT THE CHINESE POSITION MIGHT
+BE IRRELEVANT IN A GEOPHYSICAL OR STRATEGIC SENSE. HOWEVER,
+CONFIDENTIAL
+
+PAGE 04  NATO 05933  03 OF 06  311826Z
+
+HE BELIEVED THE US ATTITUDE WAS RELEVANT IN TERMS OF
+US SECURITY COMMITMENTS. HE ASKED WHETHER HE WAS CORRECT
+IN INTERPRETING THE US COMMENTS TO MEAN THAT THE US WOULD
+NOT STAND IDLY BY IF THE SOVIETS MOVED AGAINST THE EAST.
+HABIB SAID KILLICK WAS CORRECT. KILLICK'S ANALYSIS WAS
+PRESCIENT: THAT WAS PRECISLY WHAT SECRETARY KISSINGER
+MEANT TO CONVEY. THE US WOULD OPPOSE EFFORTS TO ACHIEVE
+HEGEMONY IN THE EAST OR IN THE WEST. HABIB EMPHASIZED THAT
+IT WAS NOT FOR HIM TO SAY HOW THE US WOULD OPPOSE MOVES
+TOWARD HEGEMONY IN THE EAST. ANY SUCH MOVES WOULD NATURALLY
+RAISE SERIOUS ISSUES WHICH WOULD HAVE TO BE CONSIDERED
+AT THE HIGHEST LEVEL OF THE US GOVERNMENT.
+
+21. SPEAKING TO MALE'S COMMENTS ON KOREA, HABIB SAID THE
+US GENERALLY AGREES THAT THE SITUATION IS CURRENTLY &quot;SAFE&quot;
+IN THAT THERE IS NO INDICATION THAT HOSTILITIES MIGHT BREAK
+OUT IN THE NEAR FUTURE. HE EMPHASIZED, HOWEVER, THAT
+KOREA IS ONE AREA IN EAST ASIA WHERE MISCALCULATION COULD
+LEAD TO CONFLICT INVOLVING THE MAJOR POWERS, INCLUDING THE
+US, WHICH CONTINUES TO MAINTAIN 40,000 TROOPS IN KOREA.
+HABIB AGREED, AS WELL, THAT THE CHINESE WITHHELD THE SUPPORT
+WHICH KIM SOUGHT IMMEDIATELY FOLLOWING THE END OF THE
+VIETNAM CONFLICT. HE NOTED, HOWEVER, THAT THE UNITED STATES
+ALSO MADE IT CLEAR IN UNMISTAKEABLE TERMS THAT WE WOULD NOT
+PERMIT KIM TO CARRY OUT ADVENTURES IN SOUTH KOREA. WE BELIEVE
+KIM GOT THE MESSAGE.
+
+CONFIDENTIAL
+
+
+PAGE 01  NATO 05933  04 OF 06  311913Z
+
+43
+ACTION EUR-12
+
+INFO  OCT-01  ISO-00  CIAE-00  DODE-00  PM-04  H-02  INR-07  L-03
+
+NSAE-00  NSC-05  PA-01  PRS-01  SP-02  SS-15  USIA-06  AF-06
+
+ARA-06  EA-07  NEA-10  ACDA-05  SAJ-01  TRSE-00  AID-05
+
+SAM-01  /100 W
+---------------------     084333
+R 311530Z OCT 75
+FM USMISSION NATO
+TO SECSTATE WASHDC 4363
+INFO ZEN ALL NATO CAPITALS
+ZEN USNMR SHAPE
+ZEN USCINCEUR
+
+C O N F I D E N T I A L SECTION 4 OF 6 USNATO 5933
+
+22. HABIB SAID NORTH KOREA'S CURRENT POLICY APPEARED AIMED
+AT A) WEAKENING THE INTERNATIONAL POSITION OF SOUTH KOREA,
+B) ACHIEVING US WITHDRAWAL FROM SOUTH KOREA, AND C) AWAITING
+INTERNAL CONTRADICTIONS IN SOUTH KOREA WHICH NORTH KOREA
+COULD EXPLOIT. HABIB SAID THESE OBJECTIVES ARE REFLECTED IN
+NORTH KOREAN TACTICS AT THE UN WHICH ARE CLEARLY DIRECTED
+NOT ONLY AT BREAKING DOWN INTERNATIONAL SUPPORT FOR SOUTH
+KOREA, BUT ALSO AGAINST THE UNITED STATES AND ITS POLICIES
+TOWARD SOUTH KOREA. HABIB WAS GLAD TO SEE THAT OUR EUROPEAN
+ALLIES APPEAR GENERALLY TO RECOGNIZE NORTH KOREA'S OBJECTIVES
+AND THAT THEY OPPOSE THE UNFRIENDLY RESOLUTION ON KOREA AND
+SUPPORT THE FRIENDLY RESOLUTION. HE STRESSED THE IMPORTANCE
+OF MAINTAINING A COHESIVE WESTERN EFFORT IN THIS REGARD
+BECAUSE THERE WOULD BE A REAL PROSPECT OF SERIOUS TROUBLE
+IN EAST ASIA IF US SUPPORT FOR SOUTH KOREA WAS WITHDRAWN,
+IF SOUTH KOREA WERE WEAKENED INTERNALLY, OR IF SOUTH KOREA
+WAS CUT OFF FROM OTHER INTERNATIONAL SUPPORT.
+
+23. DE STAERCKE (BELGIUM) ASKED HABIB TO COMMENT ON A) THE
+DISSOLUTION OF SEATO AND HIS OBSERVATION THAT THE US STILL
+RETAINS A COMMITMENT, AND B) THE PARADOX OF CHINESE POLICY
+CONFIDENTIAL
+
+PAGE 02  NATO 05933  04 OF 06  311913Z
+
+WHICH URGES THE WEST TO PROTECT ITSELF AGAINST THE USSR, BUT
+ENCOURAGES DEVELOPMENTS WHICH TEND TO UNDERMINE THE POWER OF
+THE WEST.
+
+24. HABIB POINTED OUT THAT, AT THE INSISTENCE OF THE
+PHILIPPINES, SEATO WOULD DISAPPEAR OVER A TWO-YEAR PERIOD.
+MANILA HAS A BILATERAL DEFENSE ARRANGEMENT WITHTHE UNITED
+STATES AND THUS DOES NOT DEPEND ON SEATO. THAILAND DID NOT
+HAVE SIMILAR ARRANGEMENTS WITH THE UNITED STATES AND HAD
+WITHER WANTED SEATO RETAINED OR, AT A MINIMUM, THAT THE PROVISIONS
+OF THE MANILA PACT REMAIN VALID. ACCORDINGLY, THE
+PROVISIONS OF THE MANILA TREATY AS WELL AS THOSE OF THE RUSH-
+THANAT EXCHANGE, WHICH FURTHER DEFINES THE US-THAI RELATIONSHIP,
+REMAIN IN FORCE. THE US DID NOT ATTEMPT TO FORCE
+DECISIONS ONE WAY OR THE OTHER ON THE RETENTION OF SEATO,
+PREFERRING TO LET THE ASIANS DECIDE THE ISSUE.
+
+25. RESPONDING TO THE QUESTION OF PRC INVOLVEMENT IN THE
+THIRD WORLD, HABIB NOTED SOME CHINESE ACTIVITY IN AFRICA,
+MOST RECENTLY IN ANGOLA, BUT SAID THE CHINESE DO NOT HAVE
+THE ECONOMIC OR POLITICAL POWER TO PROJECT INTO THE THIRD
+WORLD. CHINA CAN BE EXPECTED, HOWEVER, TO SUPPORT CAUSES
+IN THIRD WORLD FORA THAT ARE INIMICAL TO SOVIET INTERESTS.
+MOREOVER, THE CHINESE WILL INSIST THAT THEY ARE PART OF THE
+THIRD WORLD, THOUGH MANY THIRD WORLD COUNTRIES WOULD QUESTION
+THAT ASSERTION. GENERALLY SPEAKING, CHINA CANNOT BE EXPECTED
+TO BE VERY ACTIVE OUTSIDE OF ITS OWN BOUNDARIES EXCEPT WHERE
+SOVIET INTERESTS ARE CONCERNED. THE USSR IS THE &quot;BE-ALL,
+END-ALL OF CHINESE ENMITY&quot; AND PEKING CAN THUS BE COUNTED
+UPON TO ATTEMPT TO FRUSTRATE THE SOVIETS WHEREVER AND WHEN-
+EVER THEY CAN.
+
+26 FRG PERMREP KRAP THANKED HABIB FOR HIS ILLUMINATING
+AND CONCISE PRESENTATION. HE AGREED THAT KOREA IS POTENTIALLY
+THE MOST DANGEROUS AREA IN THE FAR EAST. RECALLING
+HIS OWN EXTENSIVE EXPERIENCE IN JAPAN, KRAPF NOTED THAT THE
+JAPANESE HAD NEVER FELT PARTICULARLY THREATENED BY CHINA OR
+THE SOVIET UNION, BUT FEARED INVOLVEMENT IN A POSSIBLE KOREAN
+CONFLICT. JAPAN THUS IS WORRIED ABOUT POSSIBLE UNWISE
+INITIATIVES TAKEN BY THE SOUTH KOREANS ACTING ON THE PREMISE
+THAT THEY ARE MILITARILY SUPERIOR TO THE NORTH KOREANS.
+CONFIDENTIAL
+
+PAGE 03  NATO 05933  04 OF 06  311913Z
+
+KRAPF NOTED THAT THE US SEEMED TO ACCEPT THE SLOW PACE OF
+JAPAN'S DEFENSE BUILDUP. DOES THAT PACE CARRYWITH IT THE
+INFERENCE THAT JAPAN NO LONGER FEELS A STRONG DEFENSE
+NECESSARY BECAUSE IT SEES LESS RISK OF A NEW KOREAN CONFLICT?
+
+27. HABIB REPLIED THAT JAPAN SAW KOREAN DEFENSE AS PRIMARILY
+A US RESPONSIBILITY. WHILE REALIZING THAT KOREAN SECURITY
+IS IMPORTNAT TO THEIR OWN, THE JAPANESE BELIEVE THE US WILL
+DEFEND SOUTH KOREA. ALTHOUGH JAPAN CAN DO NOTHING MILITARILY
+IN KOREA, IT CAN PROVIDE ECONOMIC ASSISTANCE, JAPAN AGREES
+WITH THE US THAT THERE IS NO IMMEDIATE PROSPECT OF KOREAN
+HOSTILITIES. THE JAPANESE FULLY APPRECIATE, HOWEVER, THE
+MEANING OF THE LINE DIVIDING THE TWO KOREAS AND THE FACT THAT
+THERE ARE ONE MILLION MEN UNDER ARMS FACING EACH OTHER ACROSS
+THAT LINE WITH INCREASINGLY MORE MODERN WEAPONS. MOREOVER,
+THE JAPANESE RECOGNIZE NORTH KOREA AS PERHAPS THE MOST PUGNACIOUS
+COMMUNIST POWER -- ONE THAT MAY BE EVEN MORE ISOLATED
+THAN ALBANIA -- WHERE THE CULT OF THE INDIVIDUAL IS CARRIED
+TO THE EXTREME AND WHERE IRRATIONAL ACTS MIGHT BE POSSIBLE.
+JAPAN CLEARLY HOPES THAT THE KOREAN PROBLEM CAN BE ACCOMMODATED
+AND PERMANENTLY DEFUSED OVER TIME. IN THE MEANTIME, TOKYO
+WARNS THE US ABOUT THE KOREAN SITUATION AND URGES THAT US
+FORCES NOT BE REDUCED. A FURTHER RESTRAINING FACTOR
+IS THE FACT THAT NORTH
+KOREA KNOWS THAT IT COULD NOT EARILY
+ATTACK THE SOUTH.
+
+28. AMBASSADOR KRAPF NOTED JAPAN'S AWARENESS THAT WHILE IT
+COULD NOT SEND TROOPS TO KOREA, IT COULD BECOME INVOLVED
+IN A KOREAN CONFLICT THROUGH US USE OF ITS BASES IN JAPAN.
+HABIB REPLIED THAT JAPAN HAD GUARANTEED CONTINUED US USE OF
+ITS JAPANESE BASES AND FULLY RECOGNIZES THAT IT WOULD
+BE EXTREMELY DIFFICULT FOR THE US TO FIGHT IN KOREA WITHOUT
+BASES IN JAPAN.
+
+29. CANADIAN PERMREP MENZIES WELCOMED THE FAR EASTERN CONSULTATION
+AS USEFUL AND TIMELY. HE PARTICULALY WELCOMED ASSISTANT
+SECRETARY HABIB AND EXPERTS FROM OTHER ALLIED CAPITALS, AND
+EXPRESSED REGRET THAT A CANADIAN EXPERT COULD NOT BE PRESENT.
+REFERRING TO CANADA'S (AND THEREFORE TO NATO'S) 2400-MILE
+FRONTIER ON THE PACIFIC, MENZIES NOTED ACTIVE CANADIAN INTEREST
+CONFIDENTIAL
+
+PAGE 04  NATO 05933  04 OF 06  311913Z
+
+IN PACIFIC DEVELOPMENTS EVEN THOUGH CANADA CAN TAKE SHELTER
+BEHIND THE UNITED STATES' PACIFIC DEFENSE EFFORT. CANADA'S
+ROLE IN THE AREA HAD BEEN LIMITED TO PEACEKEEPING BOTH IN KOREA
+AND, WITH A SOMEWHAT LESS SALUTARY RESULT, IN VIETNAM.
+CANADA APPRECIATED US EFFORTS IN THE PACIFIC, THOUGH SOMETIMES
+IN THE PAST OTTAWA THOUGHT THE US WAS OVEREXTENDED IN THE AREA
+AND PERHAPS OVERLY HOSTILE TO THE PRC. ALTOGETHER, THE GOC FOUND
+RECENT POST-VIETNAM ADJUSTMENTS IN US ASIAN POLICY MUCH MORE
+PALATABLE AND SATISFACTORY. CANADA NOW AGREED WITH US ASIAN
+POLICY.
+
+CONFIDENTIAL
+
+
+PAGE 01  NATO 05933  05 OF 06  311928Z
+
+43
+ACTION EUR-12
+
+INFO  OCT-01  ISO-00  CIAE-00  DODE-00  PM-04  H-02  INR-07  L-03
+
+NSAE-00  NSC-05  PA-01  PRS-01  SP-02  SS-15  USIA-06  AF-06
+
+ARA-06  EA-07  NEA-10  ACDA-05  SAJ-01  TRSE-00  AID-05
+
+SAM-01  /100 W
+---------------------     084445
+R 311530Z OCT 75
+FM USMISSION NATO
+TO SECSTATE WASHDC 4364
+INFO ALL NATO CAPITALS (BY POUCH)
+USNMR SHAPE (BY POUCH)
+USCINCEUR (BY POUCH)
+
+C O N F I D E N T I A L SECTION 5 OF 6 USNATO 5933
+
+30. MENZIES CHARACTERIZED THE THEME OF THE NAC CONSULTATION
+AS THE SEARCH FOR STABILITY IN THE PACIFIC AREA. MANY NATO
+COUNTRIES HAVE INTERESTS IN ASIA -- AN AREA WHICH PRESENTLY
+HAS NO REGIONAL IDENTITY, AND WHERE SOME POWER MAY TRY TO
+EXPLOIT THE POST-VIETNAM SITUATION DESPITE US ASSURANCES OF
+CONTINUING SUPPORT FOR EXISTING RELATIONSHIPS IN THE AREA.
+WHILE IT APPEARED THAT THE ASIAN MAINLAND HAS NO RESOURCES
+IN WHICH NATO COUNTRIES HAD A DIRECT INTEREST, THIS WAS NOT
+TRUE IN THE CASE OF INSULAR ASIA WITH THE OIL AND MINERAL
+RESOURCES OF INDONESIA, THE MINERAL WEALTH OF THE PHILIPPINES,
+AND THE ENORMOUS MINERAL DEPOSITS OF AUSTRALIA AND PAPUA-NEW
+GUINEA. THE ALLIES MIGHT APPROPRIATELY ASK THEMSELVES
+IF THEY ARE PAYING ENOUGH ATTENTIION TO NAVAL DEVELOPMENTS
+IN THE PACIFIC. NATO'S NAVAL ADVISORS TALK FREQUENTLY
+ABOUT PROTECTING THE VITAL TRADE ROUTES IN THE INDIAN
+AND ATLANTIC OCEANS. THEY SHOULD ALSO BE CONSCIOUS
+THAT THE TRADE ROUTES SUSTAINING JAPAN WERE SIMILARLY ESSEN-
+TIAL GIVEN JAPAN'S ECONOMIC IMPORTANCE AND THE REQUIREMENT
+THAT IT NOT BE FORCED TO CHOOSE BETWEEN CHINA OR THE SOVIET
+UNION.
+
+CONFIDENTIAL
+
+PAGE 02  NATO 05933  05 OF 06  311928Z
+
+31. RAISING A SERIES OF QUESTIONS, MENZIES ASKED FIRST IF
+JAPAN'S RELUCTANCE TO SUPPORT SOUTH KOREA MILITARILY MEANT
+THAT JAPAN MIGHT BE PREAPRED TO MAKE A NAVAL DEFENSE CONTRI-
+BUTION, PERHAPS IN ANTI-SUBMARINE WARFARE, IN DISTANT AREAS
+AS FAR SOUTH AS SINGAPORE. NOTING HABIB'S STATEMENT OF US
+INTEREST IN MAINTAINING THE BALANCE OF POWER BETWEEN CHINA
+AND THE USSR, MENZIES SAID HE FOUND IT DIFFICULT TO CONCEIVE
+OF A US STRATEGIC RESPONSE ON CHINA'S BEHALF WERE THE
+SOVIETS TO LAUNCH A PRE-EMPTIVE STRIKE ON CHINESE STRATEGIC
+NUCLEAR INSTALLATIONS. MENZIES SAID HE COULD PERSONALLY
+UNDERSTAND US SUPPORT FOR CHINA IN SUCH A SITUATION, BUT ONLY
+BY MEANS SHORT OF DIRECT MILITARY INTERVENTION. HE COULD
+NOT CONCEIVE OF DIRECT US CONVENTIONAL INVOLVEMENT IN A
+BORDER SCUFFLE ALONG THE LONG SINO-SOVIET FRONTIER. MENZIES
+ASKED, THEREFORE, HOW THE US MIGHT USE ITS &quot;STRATEGIC NUCLEAR
+UMBRELLA&quot; IN THE ABOVE CONTEXT. IN THE EVENT OF SINO-SOVIET
+HOSTILITIES, MENZIES ASSUMED THAT MOST COUNTRIES WOULD &quot;THANK
+GOD&quot; THAT THEY ARE NOT CAUGHT BETWEEN THE TWO ANTAGONISTS
+LIKE CANADA IS BETWEEN THE US AND THE USSR.
+
+32. MENZIES ALSO ASKED FRENCH PERMREP DE ROSE ABOUT THE
+MAINTANANCE OF FRENCH CULTURAL INFLUENCE IN INDOCHINA AFTER
+THE COMMUNIST ASSUMPTION OF POWER IN THOSE STATES. MENZIES
+NOTED THAT ONLY THREE COUNTRIES NOW MAINTAIN DIPLOMATIC
+RELATIONS WITH CAMBODIA. IN HIS PERSONAL VIEW, FRENCH
+INFLUENCE IN INDOCHINA HAD ALWAYS BEEN STRONG AND WOULD NOT
+BE EASILY ERASED FROM THE AREA. HE WONDERED, THEREFORE, IF
+AMBASSADOR DE ROSE COULD COMMENT ON FRENCH RELATIONS WITH
+NORTH AND SOUTH VIETNAM AND ON CAMBODIA. (DE ROSE DID NOT
+RESPOND).
+
+33. REFERRING TO MENZIES' COMMENT ABOUT NAVAL DEVELOPMENTS
+IN THE PACIFIC, PANSA NOTED AN OCTOBER 29 AFP REPORT THAT
+THE SOVIET PACIFIC FLEET WAS CURRENTLY &quot;TWICE AS IMPORTANT&quot;
+AS THE US SEVENTH FLEET.
+
+34. CONCERNING JAPANESE &quot;OVERSEAS DEPLOYMENT&quot;, HABIB
+RESPONDED THAT THE BASIC JAPANESE POSTURE IS IN DEFENSE OF
+THE HOMELAND ISLANDS. SOME YEARS AGO, THERE WAS TALK OF
+EXPANDING THEIR CAPABILITY, BUT THIS HAS BEEN DROPPED. FOR
+THE FORESEEABLE FUTURE, JAPAN WILL BE DEPLOYED WITHIN THE
+CONFIDENTIAL
+
+PAGE 03  NATO 05933  05 OF 06  311928Z
+
+IMMEDIATE AREA, I.E., WITHIN 1,000 MILES OF THE HOMELAND
+ISLANDS AND WITH A MAJOR EMPHASIS ON ANTI-SUBMARINE WARFARE.
+
+35. CONCERNING THE QUESTION OF STRATEGY, HABIB REPEATED THAT
+GENERALLY SPEAKING, THE UNITED STATES WOULD OPPOSE ANY MOVE
+BY THE SOVIETS TO IMPOSE BY FORCE RPT FORCE ITS PRESENCE
+IN EAST ASIA. AS TO AMBASSADOR MENZIES' THEORETICAL QUESTION,
+HABIB COULD ONLY REPEAT THAT THE MEANS WHICH WOULD BE EMPLOYED
+TOWARD THIS END WOULD DEPEND ON THE CIRCUMSTANCES.
+
+36. SVART (DENMARK) WISHED TO CLARIFY THAT THE FAILURE OF
+A DANISH FAR EAST EXPERT TO BE IN ATTENDANCE SHOULD NOT BE
+TAKEN AS SUGGESTING A LACK OF INTEREST IN THIS CONSULTATION
+OR IN THE FAR EAST. HE SAID IT WAS SIMPLY A QUESTION OF THE
+THINNESS OF DANISH MFA RESOURCES. AS A MEASURE OF HIS
+COUNTRY'S INTEREST, SVART CALLED ATTENTION TO THE VISIT WHICH
+FONMIN ANDERSON HAS JUST BEGUN TO SEVERAL COUNTRIES IN THE
+FAR EAST. TURNING TO HIS QUESTIONS, SVART ASKED WHETHER
+DURING HABIB'S RECENT TRAVELS HE HAD ENCOUNTERED ANY NEW
+INDICATIONS OF SOVIET EFFORTS IN EAST ASIA ALONG THE LINES
+OF THEIR PROPOSAL FOR AN ASIAN COLLECTIVE SECURITY PACT
+OR A WORLD-WIDE CONFERENCE OF COMMUNIST PARTIES. SECONDLY,
+SVART ASKED WHAT IS GOING ON IN SAIGON AT THE PRESENT TIME.
+
+37. HABIB OBSERVED THAT AS A GENERAL PROPOSITION, ALL THE
+ASIANS HE MET TENDED TO LOOK WITH &quot;CONCERN&quot; ON THE PEOPLE'S
+REPUBLIC AND THE HANOI REGIME. IN CONTRAST, THEY WOULD EXPRESS
+&quot;FEAR&quot; OF SOVIET POWER AND INTENTIONS. THROUGHOUT THE EAST
+ASIAN ARCH, THIS PHENOMENON OF PREJUDICE, WELL-BASED IN
+HISTORY OF COURSE, SEEMED TO PREVAIL. CONCERNING SAIGON,
+HABIB SAID THE UNITED STATES NEVER DOUBTED THAT HANOI RAN
+THE COMMUNIST MOVEMENT IN SOUTH VIETNAM. ON THE BASIS OF
+WHAT THE UNITED STATES HAS BEEN ABLE TO PICK UP FROM VARIOUS
+SOURCES ABOUT WHAT IS GOING ON IN SAIGON, THIS VIEWPOINT
+HAS BEEN CONFIRMED. A RESTRUCTURING OF THE SOCIETY RIGHT
+DOWN TO THE VILLAGE LEVEL SEEMS TO BE IN PROGRESS. THERE IS
+NO REAL GOVERNMENT IN THE SOUTH INDEPENDENT OF THE HANOI
+STRUCTURE. IN FACT, THERE IS VERY LITTLE PRETENSE OF AN
+INDEPENDENT GOVERNMENT IN THE SOUTH. THE PRG, WHICH WAS
+NEVER ANYTHING MORE THAN A SHADOW GOVERNMENT, DOES NOT EVEN
+FUNCTION IN SAIGON, WHICH IS RUN BY A GENERAL. THE NUMBER ONE
+CONFIDENTIAL
+
+PAGE 04  NATO 05933  05 OF 06  311928Z
+
+MAN IN THE SOUTH IS MR. PHAM HUNG, A MEMBER OF THE NORTH
+VIETNAMESE POLITBURO, AND HE CONTINUES AS NUMBER ONE JUST
+AS HE HAS BEEN SINCE THE '60S, WHEN HIS PREDECESSOR WAS KILLED
+IN A B-52 RAID. FURTHERMORE, THERE SEEMS TO BE AN INCREASE
+OF NORTH VIETNAMESE-TRAINED SOUTHERN CADRE RETURNING TO THE
+SOUTH AFTER PERIODS OF TRAINING IN NORTH VIETNAM. HABIB
+SAID HIS PERSONAL OPINION IS THAT REUNIFICATION WILL COME
+ABOUT SOONER RATHER THAN LATER, EVEN BEFORE THE END OF 1976.
+
+38. HABIB SAID THAT THUS FAR, THE MASSIVE BLOOD BATH WHICH
+THE UNITED STATES FEARED HAS NOT TAKEN PLACE. IT SHOULD BE
+BORNE IN MIND THE UNITED STATES TOOK OUT 130,000 SOUTH
+VIETNAMESE WHO MIGHT BE CONSIDERED AS PRIMARY TARGETS FOR
+VIOLENT REPRISALS. OTHERWISE, HE SAID IT SEEMS A MASSIVE
+RE-EDUCATION PROCESS IS UNDER WAY, WITH ORGANIZATION OF THE
+URBAN POPULATION INTO CELLS AND BLOCK CELLS WITH THE EFFORT
+GRADUALLY EXPANDING OUT INTO THE COUNTRYSIDE.
+
+CONFIDENTIAL
+
+
+PAGE 01  NATO 05933  06 OF 06  311945Z
+
+43
+ACTION EUR-12
+
+INFO  OCT-01  ISO-00  CIAE-00  DODE-00  PM-04  H-02  INR-07  L-03
+
+NSAE-00  NSC-05  PA-01  PRS-01  SP-02  SS-15  USIA-06  AF-06
+
+ARA-06  EA-07  NEA-10  ACDA-05  SAJ-01  TRSE-00  AID-05
+
+SAM-01  /100 W
+---------------------     084591
+R 311530Z OCT 75
+FM USMISSION NATO
+TO SECSTATE WASHDC 4365
+INFO ZEN ALL NATO CAPITALS
+ZEN USNMR SHAPE
+ZEN USCINCEUR
+
+C O N F I D E N T I A L SECTION 6 OF 6 USNATO 5933
+
+39. CATALANO (ITALY) JOINED IN EXPRESSING APPRECIATION FOR
+HABIS'S PRESENCE AND HIS BRIEFING. HE SAID ALREADY THE
+MORNING SESSION HAD, IN HIS VIEW, BEEN ONE OF THE BEST
+ALLIANCE CONCULTATIONS HE COULD REMEMBER AND THAT MEETINGS
+OF THIS SORT OUGHT TO BE AMONG THE BEST TRADITIONS OF NATO.
+HE WISHED SIMPLY TO OBSERVE THAT HIS GOVERNMENT'S INFORMATION
+CONFIRMED WHAT HABIB HAD SAID ABOUT THE SITUATION IN SAIGON; AND
+HE ALSO WISHED TO ADD THAT JUST AS THE USSR MISSES NO CHANCE TO
+CALL ATTENTION TO THE CHINESE DANGER, SIMILARLY, CHINA DOES THE
+SAME ABOUT THE SOVIET DANGER.
+
+40. DR. LAHN (FRG ASSISTANT STATE SECRETARY) NOTED THAT
+FEDERAL CHANCELLOR SCHMIDT WAS ARRIVING IN PEKING ON THAT
+VERY DAY. LAHN WISHED TO POINT OUT THAT AMONG PLACES SCHMIDT
+WAS SCHEDULED TO VISIT ON HIS ORIGINAL PROGRAM WAS SHANGHAI.
+HE SAID AT THE LAST MINUTE, PEKING HAD CANCELLED THE SHANGHAI
+VISIT AND PROPOSED THAT SCHMIDT GO TO THE PROVINCE OF SINKIANG
+AND ITS CAPITAL URUMCHI, WHICH IS A CENTER FOR CHINESE NUCLEAR
+FACILITIES. LAHN SIMPLY WISHED TO POINT OUT THE CHANGE WAS
+THE IDEA OF THE HOST AND AND NOT THE GUEST. HE ALSO INDICATED
+THAT IF BY ANY WILD CHANCE THE CHINESE SHOULD SHOW SCHMIDT
+CONFIDENTIAL
+
+PAGE 02  NATO 05933  06 OF 06  311945Z
+
+SOME NUCLEAR INSTALLATIONS, THE FRG WOULD, OF COURSE, REPORT
+TO THE ALLIES.
+
+41. LAHN THEN WISHED TO POSE A QUESTION CONCERNING THE RELATIONSHIP
+BETWEEN SOUTH AND NORTH VIETNAM. HE WAS INTERESTED IN HABIB'S
+SPECULATIONS THAT &quot;UNIFICATION&quot; MAY BE IMPOSED IN A VERY
+SHORT TIME. NOTING THAT LE DUAN HAS RECENTLY BEEN TO
+PEKING, MOSCOW AND A NUMBER OF EAST EUROPEAN CAPITALS,
+AND NOTING THAT THE SOVIETS SEEM TO BE PREACHING THE THEME
+OF UNIFICATION MORE STRONGLY THAN THE CHINESE, LAHN WONDERED
+IF REUNIFICATION TOOK PLACE IN THE SHORT RUN, WOULD THIS
+CAUSE A SUDDEN IMBALANCE IN THE EQUILIBRIUM OF WHICH HABIB
+HAD SPOKEN? HABIB SAID THE US HAS HEARD RECURRING REPORTS
+THAT PEKING PREFERS TO KEEP THE TWO VIETNAMS SEPARATE. THIS
+SEEMS LIKE A LOGICAL POSITION FOR PEKING TO TAKE, AND IT MAY
+BE THIS LOGIC RATHER THAN ANY BAIS IN FACT WHICH IS THE
+SOURCE OF THE SERIES OF REPORTS. HABIB SAID THAT IT MAY BE
+THAT A REUNIFIED VIETNAM WHICH HAS THE ABILITY TO LOOK
+OUTWARD WILL BE A DISTURBING INFLUENCE IN EAST ASIA. HE
+BELIEVES THIS PERSONALLY AND HE NOTED THAT VIETNAM'S NEIGHBORS
+ALSO BELIEVE THIS. BUT HE CAUTIONED THAT THIS EVENTUALITY
+WILL NOT COME ABOUT VERY QUICKLY. FURTHERMORE, PEKING MAY
+REALIZE THAT IT CANNOT PREVENT REUNIFICATION EVEN IF IT
+WISHED TO AND FOR THAT REASON MAY DECIDE NOT TO MAKE ANY
+EFFORT TO PREVENT IT.
+
+42. A/SYG PANSA CONCLUDED THE DISUCSSION, CALLING IT &quot;EXTREMELY
+GOOD&quot;, ESPECIALLY IN THAT IT INVOLVED THE ALLIES IN THESE FAR
+EAST QUESTIONS WHICH ARE NOT USUALLY WITHIN &quot;OUR SPHERE&quot;,
+BUT WHICH ARE MATTERS RELATING TO THE COMMON INTERESTS OF THE ALLIES.
+HE SAID THE MORNING CONSULTATION WAS IN HIW VIEW &quot;A GOOD OMEN&quot;
+FOR FUTURE REINFORCED NAC CONSULTATIONS ON REGIONAL QUESTIONS.
+HE COULD ONLY HOPE THAT SUCH FUTURE CONSULTATIONS WOULD BE AS
+PROFITABLE AS THE ONE WHICH TOOK PLACE TODAY, AND WHICH WAS
+VIVID EVIDENCE OF THE ALLIES PUTTING INTO PRACTICE THEIR RESOLVE
+WITH REGARD TO CONSULTATIONS AS EXPRESSED IN PARA 11 OF THE OTTAWA
+DECLARATION. PANSA THANKED ALL THE HIGH-LEVEL OFFICIALS WHO
+HAD COME FROM CAPITALS AND ESPECIALLY AMBASSADOR HABIB, &quot;WHO
+HAD COME THE LONGEST WAY&quot;.
+
+43. PANSA THEN SAID IN ACCORD WITH COMMON PRACTICE, HE WOULD
+CONFIDENTIAL
+
+PAGE 03  NATO 05933  06 OF 06  311945Z
+
+RPOPOSE THE NATO SPOKESMAN, ON AN IF-ASKED BASIS, TO DRAW ON THE
+FOLLOWING GUIDANCE: &quot;AT TODAY'S REGULAR WEEKLY MEETING OF THE
+NORTH ATLANTIC COUNCIL, ALLIED REPRESENTATIVES DISCUSSED THE
+GENERAL SUBJECT OF EAST ASIA. THE PERMANENT REPRESENTATIVES
+WERE JOINED BY SENIOR OFFICIALS FROM CAPITALS AS FOLLOWS:
+
+BELGIUM - AMBASSAODR ANDRE WENDELEN
+GERMANY - DR. LOTHAR LAHN, ASSISTANT STATE SECRETARY
+ITALY - MINISTER MARCELLO SALIMEI
+NETHERLANDS - MR. J. ROOKMAKER, DIRECTOR OF EASTERN AFFAIRS DEPARTMEN
+T
+UNITED KINGDOM - MR. P.J.E. MALE, ASSISTANT UNDER SECRETARY
+OF STATE
+UNITED STATES - MR. PHILIP C. HABIB, ASSISTANT SECRETARY OF
+STATE FOR EAST ASIAN AND PACIFIC AFFAIRS
+
+&quot;THIS EXCHANGE OF VIEWS ON EAST ASIA IS PART OF THE CONTINUOUS
+PROCESS OF ALLIED POLITICAL CONSULTATION WHICH HAS ALWAYS
+BEEN PART OF NATO ACITVITIES. THE IMPORTANCE OF THIS PROCESS
+WAS CONFIRMED IN ARTICLE II OF THE OTTAWA DECLARATION IN
+JUNE 1974, AND AFFIRMED ONCE MORE BY THE NATO HEADS OF
+GOVERNMENT WHEN THEY MET IN BRUSSELS IN MAY 1975.&quot; THERE
+WAS NO OBJECTION.
+BRUCE
+
+CONFIDENTIAL
+
+
+&lt;&lt; END OF DOCUMENT &gt;&gt;
+</div></div></div><div class="pane-tab"><div class="pane-header">Metadata</div><div class="pane-content"><div class="text-content">---
+Capture Date: 18 AUG 1999
+Channel Indicators: n/a
+Current Classification: UNCLASSIFIED
+Concepts: n/a
+Control Number: n/a
+Copy: SINGLE
+Draft Date: 31 OCT 1975
+Decaption Date: 01 JAN 1960
+Decaption Note: n/a
+Disposition Action: RELEASED
+Disposition Approved on Date: n/a
+Disposition Authority: GolinoFR
+Disposition Case Number: n/a
+Disposition Comment: 25 YEAR REVIEW
+Disposition Date: 28 MAY 2004
+Disposition Event: n/a
+Disposition History: n/a
+Disposition Reason: n/a
+Disposition Remarks: n/a
+Document Number: 1975NATO05933
+Document Source: ADS
+Document Unique ID: '00'
+Drafter: n/a
+Enclosure: n/a
+Executive Order: 11652 GDS
+Errors: n/a
+Film Number: n/a
+From: NATO
+Handling Restrictions: n/a
+Image Path: n/a
+ISecure: '1'
+Legacy Key: link1975/newtext/t197510101/abbrzmxg.tel
+Line Count: '884'
+Locator: TEXT ON-LINE
+Office: n/a
+Original Classification: CONFIDENTIAL
+Original Handling Restrictions: n/a
+Original Previous Classification: n/a
+Original Previous Handling Restrictions: n/a
+Page Count: '17'
+Previous Channel Indicators: n/a
+Previous Classification: CONFIDENTIAL
+Previous Handling Restrictions: n/a
+Reference: n/a
+Review Action: RELEASED, APPROVED
+Review Authority: GolinoFR
+Review Comment: n/a
+Review Content Flags: n/a
+Review Date: 28 APR 2003
+Review Event: n/a
+Review Exemptions: n/a
+Review History: RELEASED &lt;28 APR 2003 by BoyleJA&gt;; APPROVED &lt;29 APR 2003 by GolinoFR&gt;
+Review Markings: ! 'n/a
+
+  Margaret P. Grafeld
+  US Department of State
+  EO Systematic Review
+  06 JUL 2006
+
+'
+Review Media Identifier: n/a
+Review Referrals: n/a
+Review Release Date: n/a
+Review Release Event: n/a
+Review Transfer Date: n/a
+Review Withdrawn Fields: n/a
+Secure: OPEN
+Status: NATIVE
+Subject: REINFORCED NAC ON THE FAR EAST, OCTOBER 29, 1975
+TAGS: PFOR, NATO, NAC, XB, XP
+To: ! 'STATE INFO ALL NATO CAPITALS (BY POUCH)
+  USNMR SHAPE (BY POUCH)
+  USCINCEUR (BY POUCH)'
+Type: TE
+Markings: ! 'Margaret P. Grafeld Declassified/Released US Department of State EO Systematic
+  Review 06 JUL 2006
+  Margaret P. Grafeld Declassified/Released US Department of State EO Systematic Review
+  06 JUL 2006'
+</div></div></div><div class="pane-tab"><div class="pane-header">Raw source</div><div class="pane-content"><div class="text-content"><a href="https://file.wikileaks.org/oc/2476/189439.pdf">2476/189439.pdf</a></div></div></div>
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 61px">Print</div><div class="pane-content pane-print">
+<p>You can use this tool to generate a print-friendly PDF of the document <strong>1975NATO05933_b</strong>.</p>
+<form action="/plusd/pdf/?df=82714" method="post">
+	<input type="hidden" name="p" value="b" />
+	<input type="hidden" name="r" value="1975NATO05933_b" />
+	<input type="checkbox" name="s" id="is" value="cake"><label for="is">Include summary</label></input><br />
+	<input type="checkbox" name="h" id="ih" value="is a"><label for="ih">Include headers</label></input><br />
+	<input type="checkbox" name="m" id="im" value="lie"><label for="im">Include raw metadata</label></input><br /><br />
+	<input type="submit" value="Generate pdf" />
+</form>
+</div></div>
+
+<div class="pane-tab"><div class="pane-header tab-right" style="width: 60px">Share</div><div class="pane-content pane-share">
+<p>The formal reference of this document is <strong>1975NATO05933_b</strong>, please use it for anything written about this document. This will permit you and others to search for it.</p>
+<div class="share-panel">
+<label for="share-link">Direct link to document</label>
+<input readonly="readonly" type="text" class="share" id="share-link" value="https://www.wikileaks.org/plusd/cables/1975NATO05933_b.html" /><br />
+
+<label for="share-reddit">Reddit code</label>
+<input readonly="readonly" type="text" class="share" id="share-reddit" value="[1975NATO05933_b](https://www.wikileaks.org/plusd/cables/1975NATO05933_b.html)" /><br />
+
+<label for="share-html">HTML code</label>
+<input readonly="readonly" type="text" class="share" id="share-html" value="&lt;a href=&quot;https://www.wikileaks.org/plusd/cables/1975NATO05933_b.html&quot; title=&quot;1975NATO05933_b&quot;&gt;1975NATO05933_b&lt;/a&gt;" /><br />
+
+<label for="share-bbcode">Forum code (bbcode)</label>
+<input readonly="readonly" type="text" class="share" id="share-bbcode" value="[url=https://www.wikileaks.org/plusd/cables/1975NATO05933_b.html]1975NATO05933_b[/url]" />
+</div>
+
+
+
+<br style="clear: both;" />
+<p>Submit this story</p>
+<div class="share">
+	<a href="http://www.reddit.com/submit?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1975NATO05933_b.html"><img src="/plusd/images/Reddit-ico.png" /></a>
+</div>
+
+<div class="share">
+        <a href="http://twitter.com/home?status=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1975NATO05933_b.html"><img src="/plusd/images/Twitter-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1975NATO05933_b"><img src="/plusd/images/Gplus-ico.png" /></a>
+</div>
+
+<div class="share">
+	<a href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=1975NATO05933_b&amp;p[summary]=Summary&amp;p[url]=https%3A%2F%2Fwww.wikileaks.org%2Fplusd%2Fcables%2F1975NATO05933_b.html"><img src="/plusd/images/Facebook-ico.png" /></a>
+</div>
+
+<br style="clear: both;" />
+</div></div>
+
+<!--<div class="pane-tab"><div class="pane-header tab-right tab-find">Find</div><div class="pane-content pane-find">-->
+<!--</div></div>-->
+
+<!--<div id="tagged-text"> -->
+	<div id="pane-root" style="display:none">
+		<div id="pane-tabs"></div>
+
+		<div id="pane-contents"></div>
+
+	</div>
+<!--</div>-->
+<div class="pane-content pane-extra">
+<table class="references">
+	<thead>
+		<tr>
+			<th>References to this document in other cables</th>
+			<th>References in this document to other cables</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+									<a class="j" href="/plusd/cables/1974STATE236946.html" title="NATO 5933">1974STATE236946</a>
+							</td>
+			<td>
+							</td>
+		</tr>
+	</tbody>
+
+</table>
+<p style="text-align:center">If the reference is ambiguous all possibilities are listed.</p>
+
+</div>
+<div class="pane-content pane-extra">
+<div class="dnpage visible">
+<h1>Help Expand The Public Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+
+
+</div>
+
+</div>
+<br />
+<script type="text/javascript" src="/plusd/js/mootools-core-and-more.js"></script>
+<script type="text/javascript" src="/plusd/js/efatmarker.min.js"></script>
+<script type="text/javascript">
+(function(){
+	window.addEvent('domready', function(){
+	        $$("#showhide").addEvent( "click", function() {
+			$$(".text-header").toggleClass("hidden");
+			t=$$("#showhide");
+			if(t.get("html")=="Show&nbsp;Headers")
+				t.set("html", "Hide&nbsp;Headers");
+			else
+				t.set("html", "Show&nbsp;Headers");
+		} );
+
+		var pane_root = $('pane-root'),
+			pane_tabs = $('pane-tabs'),
+			pane_contents = $('pane-contents'),
+			panes = $$('.pane-tab'),
+			num_panes = panes.length,
+			i, pane,
+			pane_header,
+			pane_content;
+		var activate_tab = function(target) {
+			$$('#pane-contents .pane-content').each(function(e,i){
+				if (i === target) {
+					e.addClass('top');
+					}
+				else {
+					e.removeClass('top');
+					}
+				});
+			$$('#pane-tabs .pane-header').each(function(e,i){
+				if (i === target) {
+					e.removeClass('nottop');
+					e.addClass('ontop');
+					}
+				else {
+					e.addClass('nottop');
+					e.removeClass('ontop');
+					}
+				});
+			};
+		for (i=0; i<num_panes; i++) {
+			pane = panes[i];
+			pane_header = pane.getElement('.pane-header');
+			pane_tabs.grab(pane_header);
+			pane_header.addEvent('click', function(){
+				var target = $('pane-tabs').getChildren().indexOf(this);
+				activate_tab(target);
+				});
+			pane_content = pane.getElement('.pane-content');
+			pane_contents.grab(pane_content);
+			pane.destroy();
+			}
+		activate_tab(0);
+		$('pane-root').style.display = '';
+		}); /* event handler function() */
+	})(); /* namespace function() */
+</script>
+<div id="efm-button">
+	<div id="efm-menu">
+		<h3 style="margin:0 0 2px 0">e-Highlighter</h3>
+		<a id="efm-permalink" class="efm-need-highlight" href="" style="margin-bottom:0;padding-bottom:0;"></a>
+		<p style="margin-top:0;padding-top:0" class="efm-need-highlight">Click to send permalink to address bar, or right-click to copy permalink.</p>
+		<a id="efm-twitter-button" class="efm-need-highlight" href="#" target="_blank"><img src="/plusd/images/tweetn.png" alt="Tweet" title="Tweet these highlights" style="vertical-align:middle"> these highlights</a>
+		<p style="margin:0.5em 0;padding:0;border-top:1px dotted #ccc;height:1px"></p>
+		<a id="efm-unhighlightall" class="efm-need-highlight">Un-highlight all</a>
+		<a id="efm-unhighlight">Un-highlight selection<span>u</span></a>
+		<a id="efm-highlight">Highlight selection<span>h</span></a>
+		</div>
+	</div>
+</div></div></div>
+<script type="text/javascript">
+
+(function(){
+	window.addEvent('domready', function(){
+
+		var markerButton = $('efm-button');
+		if ( markerButton ) {
+			eMarker = new EFatMarker($('content-main'));
+			eMarker.tokenToSpans(); // apply whatever token is there
+			// need to act on mousedown or else selection disappear
+			markerButton.addEvent('mousedown', function(){
+				eMarker.interpretSelection(true);
+				return false;
+				});
+			$('efm-unhighlightall').addEvent('mousedown', function(){
+				eMarker.unhighlightAll(true);
+				return false;
+				});
+			$('efm-unhighlight').addEvent('mousedown', function(){
+				eMarker.unhighlightSelection(true);
+				return false;
+				});
+			$('efm-highlight').addEvent('mousedown', function(){
+				eMarker.highlightSelection(true);
+				return false;
+				});
+			$('efm-permalink').addEvent('mousedown', function(){
+				window.location.href = this.href;
+				return false;
+				});
+			// if Mootools Keyboard is available, use it
+			if (Keyboard) {
+				var keyboard = new Keyboard({
+					defaultEventType: 'keyup',
+					events: {
+						'h': function(){
+							eMarker.highlightSelection(true);
+							},
+						'u': function(){
+							eMarker.unhighlightSelection(true);
+							}
+						}
+					});
+				keyboard.activate();
+				}
+			eMarker.syncDOM();
+			// auto scroll to first highlight, if any
+			if (eMarker.hasSpans()) {
+				var scroll = new Fx.Scroll(window,{offset:{'x':0,'y':-100}}),
+					highlights = $$('#content-main .efm-hi');
+				if (highlights.length > 0) {
+					scroll.toElement(highlights[0]);
+					}
+				}
+			}
+		});
+	})();
+
+</script>
+
+<div class="dnflood"></div>
+<div class="dnbutton">
+<div class="dnmain">
+<h1><span class="dnclose">X</span>Help Expand The Public<br />Library of US Diplomacy</h1>
+<p>Your role is important:<br />
+WikiLeaks maintains its robust independence through your contributions.</p>
+
+
+<p style="font-weight: bold;font-size: medium; text-align: center">Please see<br /><a class="st" href="https://shop.wikileaks.org/donate">https://shop.wikileaks.org/donate</a> to learn about all ways to donate.</p>
+</div>
+</div>
+
+</div>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<link href="/static/css/styles_footer.css" rel="stylesheet">
+<footer id="page-footer" class="footer-recommendations">
+  <div class="footer-wrapper">
+    <div class="recommendation-container">
+      <a href="#" class="top">Top</a>
+      
+        <ul class="recommendation-links">
+                <li class="recommendation">
+                    <a href="https://our.wikileaks.org" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton666.png" width="360" height="240" />
+                        </div>
+                        <p><p>WL Research Community - user contributed research based on documents published by WikiLeaks. 
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.torproject.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton401.png" width="360" height="240" />
+                        </div>
+                        <p><p>Tor is an encrypted anonymising network that makes it harder to intercept internet communications, or see where communications are coming from or going to.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://tails.boum.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton405.png" width="360" height="240" />
+                        </div>
+                        <p><p> Tails is a live operating system, that you can start on almost any computer from a DVD, USB stick, or SD card. It aims at preserving your privacy and anonymity.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.couragefound.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton404.png" width="360" height="240" />
+                        </div>
+                        <p><p>The Courage Foundation is an international organisation that supports those who risk life or liberty to make significant contributions to the historical record.
+</p></p>
+                    </a>
+                </li>
+            </li>
+                <li class="recommendation">
+                    <a href="https://www.bitcoin.org/" target="_blank">
+                        <div class="teaser">
+                            <img class="spip_logos" alt="" src="/IMG/arton403.png" width="360" height="240" />
+                        </div>
+                        <p><p>Bitcoin uses peer-to-peer technology to operate with no central authority or banks; managing transactions and the issuing of bitcoins is carried out collectively by the network.
+</p></p>
+                    </a>
+                </li>
+            </li>
+        </ul>
+      
+      <ul class="social-links">
+        <li>
+          <a href="https://www.facebook.com/wikileaks" target="_blank" alt="Facebook">
+            <img src="/static/img/fb-logo.png" alt="Facebook" title="Facebook page" />
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/wikileaks" target="_blank" alt="Twitter">
+            <img src="/static/img/twitter-logo.png" alt="Twitter" title="Twitter page" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
